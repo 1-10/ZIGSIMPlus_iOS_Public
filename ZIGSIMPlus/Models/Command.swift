@@ -12,3 +12,10 @@ public protocol Command: AnyObject {
     func start(completion: ((String?) -> Void)?)
     func stop(completion: ((String?) -> Void)?)
 }
+
+public protocol ManualUpdatedCommand: Command {
+    func monitor(completion: ((String?) -> Void)?)
+}
+
+public protocol AutoUpdatedCommand: Command {
+}

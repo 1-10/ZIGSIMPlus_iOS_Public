@@ -9,12 +9,12 @@
 import Foundation
 import CoreMotion
 
-public final class AccelerationMonitoringCommand: Command {
+public final class AccelerationMonitoringCommand: AutoUpdatedCommand {
     let motionManager = CMMotionManager()
     
     public func start(completion: ((String?) -> Void)?) {
         if motionManager.isAccelerometerAvailable {
-            motionManager.accelerometerUpdateInterval = 0.2
+            motionManager.accelerometerUpdateInterval = AppSettingModel.shared.messageInterval
             motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (accelerationData, error) in
                 guard error == nil else {
                     completion?(error!.localizedDescription)
@@ -26,7 +26,11 @@ public final class AccelerationMonitoringCommand: Command {
                     return
                 }
                 
-                completion?("x: \(accelData.acceleration.x) y: \(accelData.acceleration.y) z: \(accelData.acceleration.z)")
+                completion?("""
+                    Accel x: \(accelData.acceleration.x)
+                    Accel y: \(accelData.acceleration.y)
+                    Accel z: \(accelData.acceleration.z)
+                    """)
             }
         } else {
             completion?("Accelerometer Unavailable")

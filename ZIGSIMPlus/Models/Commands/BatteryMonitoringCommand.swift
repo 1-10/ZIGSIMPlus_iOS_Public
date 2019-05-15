@@ -8,18 +8,22 @@
 
 import UIKit
 
-public final class BatteryMonitoringCommand: Command {
+public final class BatteryMonitoringCommand: ManualUpdatedCommand {
     public func start(completion: ((String?) -> Void)?) {
         UIDevice.current.isBatteryMonitoringEnabled = true
-        if UIDevice.current.batteryLevel != -1 {
-            completion?("Battery Level: \(UIDevice.current.batteryLevel)")
-        } else {
-            completion?("Battery Level Unknown")
-        }
+        monitor(completion: completion)
     }
     
     public func stop(completion: ((String?) -> Void)?) {
         UIDevice.current.isBatteryMonitoringEnabled = false
         completion?(nil)
+    }
+
+    public func monitor(completion: ((String?) -> Void)?) {
+        if UIDevice.current.batteryLevel != -1 {
+            completion?("Battery Level: \(UIDevice.current.batteryLevel)")
+        } else {
+            completion?("Battery Level Unknown")
+        }
     }
 }
