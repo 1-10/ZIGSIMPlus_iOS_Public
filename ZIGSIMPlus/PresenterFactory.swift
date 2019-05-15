@@ -19,6 +19,7 @@ class PresenterFactory {
         let presenter = CommandOutputPresenter()
         presenter.view = view
         presenter.autoUpdatedCommands[LabelConstants.accelaration] = AccelerationMonitoringCommand()
+        presenter.autoUpdatedCommands[LabelConstants.ndi] = NdiMonitoringCommand()
         presenter.manualUpdatedCommands[LabelConstants.battery] = BatteryMonitoringCommand()
         return presenter
     }

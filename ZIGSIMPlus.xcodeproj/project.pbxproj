@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		021E5EE2228BED7500C098A0 /* Private in Resources */ = {isa = PBXBuildFile; fileRef = 021E5EE1228BED7500C098A0 /* Private */; };
+		02E72671228BFCB500A2D51C /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E72670228BFCB500A2D51C /* libndi_ios.a */; };
+		02E7267D228BFF1F00A2D51C /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02E7267B228BFF1F00A2D51C /* NDI.cpp */; };
+		02E7267F228C084F00A2D51C /* NdiMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7267E228C084F00A2D51C /* NdiMonitoringCommand.swift */; };
+		02E72681228C08C400A2D51C /* NDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E72680228C08C400A2D51C /* NDI.swift */; };
+		02E72686228C0CA000A2D51C /* NDIAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02E72685228C0CA000A2D51C /* NDIAdapter.mm */; };
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
 		902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */; };
@@ -43,6 +49,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		021E5EE1228BED7500C098A0 /* Private */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Private; sourceTree = "<group>"; };
+		02E72670228BFCB500A2D51C /* libndi_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libndi_ios.a; path = Private/NDI/SDK/lib/libndi_ios.a; sourceTree = "<group>"; };
+		02E7267A228BFF1E00A2D51C /* ZIGSIMPlus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZIGSIMPlus-Bridging-Header.h"; sourceTree = "<group>"; };
+		02E7267B228BFF1F00A2D51C /* NDI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NDI.cpp; path = Private/NDI/Bindings/NDI.cpp; sourceTree = SOURCE_ROOT; };
+		02E7267C228BFF1F00A2D51C /* NDI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = NDI.hpp; path = Private/NDI/Bindings/NDI.hpp; sourceTree = SOURCE_ROOT; };
+		02E7267E228C084F00A2D51C /* NdiMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdiMonitoringCommand.swift; sourceTree = "<group>"; };
+		02E72680228C08C400A2D51C /* NDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NDI.swift; path = Private/NDI/NDI.swift; sourceTree = SOURCE_ROOT; };
+		02E72685228C0CA000A2D51C /* NDIAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = NDIAdapter.mm; path = Private/NDI/Bindings/NDIAdapter.mm; sourceTree = "<group>"; };
 		634B8D92228565F00043607D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		902EB9C6227BE68D008F1650 /* ZIGSIMPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIGSIMPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9C9227BE68D008F1650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E72671228BFCB500A2D51C /* libndi_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,10 +107,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02E7266F228BFCB500A2D51C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02E72670228BFCB500A2D51C /* libndi_ios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		634B8D94228566C30043607D /* Commands */ = {
 			isa = PBXGroup;
 			children = (
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
+				02E7267E228C084F00A2D51C /* NdiMonitoringCommand.swift */,
 				9092E4D2227EE3890019F1C1 /* AccelerationMonitoringCommand.swift */,
 			);
 			path = Commands;
@@ -104,10 +128,13 @@
 		902EB9BD227BE68D008F1650 = {
 			isa = PBXGroup;
 			children = (
+				02E72685228C0CA000A2D51C /* NDIAdapter.mm */,
 				902EB9C8227BE68D008F1650 /* ZIGSIMPlus */,
 				902EB9DD227BE68F008F1650 /* ZIGSIMPlusTests */,
 				902EB9E8227BE68F008F1650 /* ZIGSIMPlusUITests */,
 				902EB9C7227BE68D008F1650 /* Products */,
+				021E5EE1228BED7500C098A0 /* Private */,
+				02E7266F228BFCB500A2D51C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
+				02E7267B228BFF1F00A2D51C /* NDI.cpp */,
+				02E7267C228BFF1F00A2D51C /* NDI.hpp */,
 				9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */,
 				9092E4C7227D85890019F1C1 /* Models */,
 				902EB9F7227BECC7008F1650 /* Views */,
@@ -134,6 +163,8 @@
 				902EB9D0227BE68F008F1650 /* Assets.xcassets */,
 				902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */,
 				902EB9D5227BE68F008F1650 /* Info.plist */,
+				02E7267A228BFF1E00A2D51C /* ZIGSIMPlus-Bridging-Header.h */,
+				02E72680228C08C400A2D51C /* NDI.swift */,
 			);
 			path = ZIGSIMPlus;
 			sourceTree = "<group>";
@@ -260,6 +291,7 @@
 				TargetAttributes = {
 					902EB9C5227BE68D008F1650 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					902EB9D9227BE68F008F1650 = {
 						CreatedOnToolsVersion = 10.1;
@@ -298,6 +330,7 @@
 			files = (
 				902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */,
 				902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */,
+				021E5EE2228BED7500C098A0 /* Private in Resources */,
 				902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,12 +359,16 @@
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandSelectionPresenter.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* AccelerationMonitoringCommand.swift in Sources */,
+				02E7267D228BFF1F00A2D51C /* NDI.cpp in Sources */,
+				02E72686228C0CA000A2D51C /* NDIAdapter.mm in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
+				02E7267F228C084F00A2D51C /* NdiMonitoringCommand.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,
+				02E72681228C08C400A2D51C /* NDI.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
 			);
@@ -508,15 +545,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Private/NDI/SDK/include\"",
+					"\"$(SRCROOT)/Private/NDI/Bindings\"",
+				);
 				INFOPLIST_FILE = ZIGSIMPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -526,15 +574,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Private/NDI/SDK/include\"",
+					"\"$(SRCROOT)/Private/NDI/Bindings\"",
+				);
 				INFOPLIST_FILE = ZIGSIMPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

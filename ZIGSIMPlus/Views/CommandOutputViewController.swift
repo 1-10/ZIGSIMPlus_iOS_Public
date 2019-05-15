@@ -10,6 +10,7 @@ import UIKit
 
 class CommandOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
     var presenter: CommandOutputPresenterProtocol!
     
     override func viewDidLoad() {
@@ -28,5 +29,9 @@ class CommandOutputViewController: UIViewController {
 extension CommandOutputViewController: CommandOutputPresenterDelegate {
     func updateOutput(with output: String) {
         textField.text = output
+    }
+    
+    func updateImagePreview(with image: UIImage) {
+        imageView.image = image
     }
 }

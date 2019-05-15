@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CommandOutputPresenterProtocol {
     func startCommands()
@@ -15,6 +16,7 @@ protocol CommandOutputPresenterProtocol {
 
 protocol CommandOutputPresenterDelegate: AnyObject {
     func updateOutput(with output: String)
+    func updateImagePreview(with image: UIImage)
 }
 
 final class CommandOutputPresenter: CommandOutputPresenterProtocol {
@@ -50,9 +52,16 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
         guard let isActive = AppSettingModel.shared.isActiveByCommand[label],
             let command = autoUpdatedCommands[label] else { return }
         if isActive {
-            command.start { (result) in
-                guard let r = result else { return }
-                self.resultByCommand[label] = r
+            switch command {
+            case let c as ImageCommand:
+                c.startImage { (image) in
+                    self.updateImagePreview(with: image)
+                }
+            default:
+                command.start { (result) in
+                    guard let r = result else { return }
+                    self.resultByCommand[label] = r
+                }
             }
         }
     }
@@ -123,5 +132,9 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
         }
         
         view.updateOutput(with: output)
+    }
+    
+    private func updateImagePreview(with image: UIImage) {
+        view.updateImagePreview(with: image)
     }
 }
