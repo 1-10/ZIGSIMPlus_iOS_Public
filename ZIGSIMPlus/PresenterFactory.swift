@@ -18,8 +18,8 @@ class PresenterFactory {
     func createCommandOutputPresenter(view: CommandOutputPresenterDelegate) -> CommandOutputPresenter {
         let presenter = CommandOutputPresenter()
         presenter.view = view
-        presenter.accelerationMonitoringCommand = AccelerationMonitoringCommand()
-        presenter.batteryMonitoringCommand = BatteryMonitoringCommand()
+        presenter.autoUpdatedCommands[LabelConstants.accelaration] = AccelerationMonitoringCommand()
+        presenter.manualUpdatedCommands[LabelConstants.battery] = BatteryMonitoringCommand()
         return presenter
     }
 }

@@ -9,15 +9,17 @@
 import Foundation
 
 public class AppSettingModel {
-    private init() {}
-    static let shared = AppSettingModel()
+    private init() {
+        for label in LabelConstants.commands {
+            isActiveByCommand[label] = false
+        }
+    }
     
+    static let shared = AppSettingModel()
+    var isActiveByCommand: Dictionary<String, Bool> = [:]
     var messageRatePerSecond: Int = 60
     
     var messageInterval: TimeInterval {
         return 1.0 / Double(messageRatePerSecond)
     }
-    
-    var isAccelerationMonitoringActive: Bool = false
-    var isBatteryMonitoringActive: Bool = false
 }

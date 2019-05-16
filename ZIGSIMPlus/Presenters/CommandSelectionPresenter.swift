@@ -18,27 +18,19 @@ protocol CommandSelectionPresenterDelegate: AnyObject {
 }
 
 final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
-    private let commandLabelList = [LabelConstants.Accelaration, LabelConstants.Battery]
     var view: CommandSelectionPresenterDelegate!
     
     var numberOfCommandLabels: Int {
-        return commandLabelList.count
+        return LabelConstants.commands.count
     }
     
     func getCommandLabel(forRow row: Int) -> String? {
-        guard row < commandLabelList.count else { return nil }
-        return commandLabelList[row]
+        guard row < LabelConstants.commands.count else { return nil }
+        return LabelConstants.commands[row]
     }
     
     func didSelectRow(atLabel label: String) {
-        switch label {
-        case LabelConstants.Accelaration:
-            AppSettingModel.shared.isAccelerationMonitoringActive.toggle()
-        case LabelConstants.Battery:
-            AppSettingModel.shared.isBatteryMonitoringActive.toggle()
-        default:
-            break
-        }
+        AppSettingModel.shared.isActiveByCommand[label]?.toggle()
     }
 }
 

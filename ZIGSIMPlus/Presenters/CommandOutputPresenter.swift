@@ -19,14 +19,15 @@ protocol CommandOutputPresenterDelegate: AnyObject {
 
 final class CommandOutputPresenter: CommandOutputPresenterProtocol {
     var view: CommandOutputPresenterDelegate!
-    var accelerationMonitoringCommand: AutoUpdatedCommand!
-    var batteryMonitoringCommand: ManualUpdatedCommand!
+    var autoUpdatedCommands: Dictionary<String, AutoUpdatedCommand> = [:]
+    var manualUpdatedCommands: Dictionary<String, ManualUpdatedCommand> = [:]
+    private var resultByCommand: Dictionary<String, String> = [:]
     private var updatingTimer: Timer?
-    private var resultDictionary: Dictionary<String, String> = [LabelConstants.Accelaration: "",
-                                                                LabelConstants.Battery: ""]
     
+    
+    // MARK: Start commands
     func startCommands() {
-        initializeResult()
+        initializeResults()
         updatingTimer = Timer.scheduledTimer(
             timeInterval: AppSettingModel.shared.messageInterval,
             target: self,
@@ -34,55 +35,93 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
             userInfo: nil,
             repeats: true)
 
-        if AppSettingModel.shared.isAccelerationMonitoringActive {
-            accelerationMonitoringCommand.start { (result) in
-                if let r = result {
-                    self.resultDictionary[LabelConstants.Accelaration] = r
-                }
-            }
+        for label in LabelConstants.autoUpdatedCommands {
+            startAutoUpdatedCommand(of: label)
         }
         
-        if AppSettingModel.shared.isBatteryMonitoringActive {
-            batteryMonitoringCommand.start { (result) in
-                if let r = result {
-                    self.resultDictionary[LabelConstants.Battery] = r
-                }
-            }
+        for label in LabelConstants.manualUpdatedCommands {
+            startManualUpdatedCommand(of: label)
         }
-        
+
         updateOutput()
     }
     
+    private func startAutoUpdatedCommand(of label: String) {
+        guard let isActive = AppSettingModel.shared.isActiveByCommand[label],
+            let command = autoUpdatedCommands[label] else { return }
+        if isActive {
+            command.start { (result) in
+                guard let r = result else { return }
+                self.resultByCommand[label] = r
+            }
+        }
+    }
+    
+    private func startManualUpdatedCommand(of label: String) {
+        guard let isActive = AppSettingModel.shared.isActiveByCommand[label],
+            let command = manualUpdatedCommands[label] else { return }
+        if isActive {
+            command.start { (result) in
+                guard let r = result else { return }
+                self.resultByCommand[label] = r
+            }
+        }
+    }
+    
+    private func initializeResults() {
+        for label in LabelConstants.commands {
+            resultByCommand[label] = ""
+        }
+    }
+    
+    
+    // MARK: Monitor commands
     @objc private func monitorCommands() {
-        if AppSettingModel.shared.isBatteryMonitoringActive {
-            batteryMonitoringCommand.monitor { (result) in
-                if let r = result {
-                    self.resultDictionary[LabelConstants.Battery] = r
-                }
-            }
+        for label in LabelConstants.manualUpdatedCommands {
+            monitorManualUpdatedCommand(of: label)
         }
-        
+
         updateOutput()
     }
     
+    private func monitorManualUpdatedCommand(of label: String) {
+        guard let isActive = AppSettingModel.shared.isActiveByCommand[label],
+            let command = manualUpdatedCommands[label] else { return }
+        if isActive {
+            command.monitor { (result) in
+                guard let r = result else { return }
+                self.resultByCommand[label] = r
+            }
+        }
+    }
+    
+    
+    // MARK: Stop commands
     func stopCommands() {
         guard let t = updatingTimer else { return }
         if t.isValid {
             t.invalidate()
         }
         
-        accelerationMonitoringCommand.stop(completion: nil)
-        batteryMonitoringCommand.stop(completion: nil)
+        for label in LabelConstants.autoUpdatedCommands {
+            autoUpdatedCommands[label]?.stop(completion: nil)
+        }
+
+        for label in LabelConstants.manualUpdatedCommands {
+            manualUpdatedCommands[label]?.stop(completion: nil)
+        }
     }
     
+    
+    // MARK: Methods used in multiple timings
     private func updateOutput() {
-        var result = ""
-        result += (resultDictionary[LabelConstants.Accelaration]!.count > 0 ? resultDictionary[LabelConstants.Accelaration]! + "\n" : "")
-        result += (resultDictionary[LabelConstants.Battery]!.count > 0 ? resultDictionary[LabelConstants.Battery]! + "\n" : "")
-        view.updateOutput(with: result)
-    }
-    
-    private func initializeResult() {
-        resultDictionary.keys.forEach { resultDictionary[$0] = "" }
+        var output = ""
+        
+        for label in LabelConstants.commands {
+            guard let r = resultByCommand[label] else { continue }
+            output += (r.count > 0 ? r + "\n" : "")
+        }
+        
+        view.updateOutput(with: output)
     }
 }
