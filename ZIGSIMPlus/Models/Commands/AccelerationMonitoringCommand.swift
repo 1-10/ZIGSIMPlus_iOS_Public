@@ -22,18 +22,18 @@ public final class AccelerationMonitoringCommand: AutoUpdatedCommand {
                 }
                 
                 guard let accelData = accelerationData else {
-                    completion?("No Acceleration Data")
+                    completion?("no accel data")
                     return
                 }
                 
                 completion?("""
-                    Accel x: \(accelData.acceleration.x)
-                    Accel y: \(accelData.acceleration.y)
-                    Accel z: \(accelData.acceleration.z)
+                    accel:x:\(accelData.acceleration.x)
+                    accel:y:\(accelData.acceleration.y)
+                    accel:z:\(accelData.acceleration.z)
                     """)
             }
         } else {
-            completion?("Accelerometer Unavailable")
+            completion?("accel unavailable")
         }
     }
     
