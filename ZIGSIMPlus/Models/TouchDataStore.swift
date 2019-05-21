@@ -58,7 +58,7 @@ public class TouchDataStore {
         
         for touchToRemove in touchesToRemove {
             for (i, t) in touchPoints.enumerated() {
-                if t.touch == touchToRemove.touch && t.point == touchToRemove.point {
+                if t.touch == touchToRemove.touch {
                     touchPoints.remove(at: i)
                     break
                 }
