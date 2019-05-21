@@ -23,6 +23,7 @@
 		9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */; };
 		9092E4D3227EE3890019F1C1 /* AccelerationMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D2227EE3890019F1C1 /* AccelerationMonitoringCommand.swift */; };
 		9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */; };
+		B3C401B42293AB98007C66DC /* ProximityMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C401B32293AB98007C66DC /* ProximityMonitoringCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputPresenter.swift; sourceTree = "<group>"; };
 		9092E4D2227EE3890019F1C1 /* AccelerationMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerationMonitoringCommand.swift; sourceTree = "<group>"; };
 		9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
+		B3C401B32293AB98007C66DC /* ProximityMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximityMonitoringCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
 				9092E4D2227EE3890019F1C1 /* AccelerationMonitoringCommand.swift */,
+				B3C401B32293AB98007C66DC /* ProximityMonitoringCommand.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
+				B3C401B42293AB98007C66DC /* ProximityMonitoringCommand.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,

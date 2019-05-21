@@ -11,7 +11,8 @@ import Foundation
 public struct LabelConstants {
     public static let accelaration = "Acceleration"
     public static let battery = "Battery"
-    public static let autoUpdatedCommands: [String] = [accelaration]
+    public static let proximity = "Proximity"
+    public static let autoUpdatedCommands: [String] = [accelaration,proximity]
     public static let manualUpdatedCommands: [String] = [battery]
     
     public static var commands: [String] {

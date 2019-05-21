@@ -20,6 +20,7 @@ class PresenterFactory {
         presenter.view = view
         presenter.autoUpdatedCommands[LabelConstants.accelaration] = AccelerationMonitoringCommand()
         presenter.manualUpdatedCommands[LabelConstants.battery] = BatteryMonitoringCommand()
+        presenter.autoUpdatedCommands[LabelConstants.proximity] = ProximityMonitoringCommand()
         return presenter
     }
 }
