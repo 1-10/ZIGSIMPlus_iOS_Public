@@ -13,6 +13,7 @@ import UIKit
 public final class ProximityMonitoringCommand: AutoUpdatedCommand {
     
     private var proximity = false
+    private var timer: Timer?
     
     public func start(completion: ((String?) -> Void)?) {
         UIDevice.current.isProximityMonitoringEnabled = true
@@ -20,10 +21,14 @@ public final class ProximityMonitoringCommand: AutoUpdatedCommand {
                                                selector: #selector(proximitySensorStateDidChange),
                                                name: UIDevice.proximityStateDidChangeNotification,
                                                object: nil)
-        Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(ProximityMonitoringCommand.completion), userInfo: completion, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(ProximityMonitoringCommand.completion), userInfo: completion, repeats: true)
     }
     
     public func stop(completion: ((String?) -> Void)?) {
+        self.timer?.invalidate()
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIDevice.proximityStateDidChangeNotification,
+                                                  object: nil)
         completion?(nil)
     }
     
