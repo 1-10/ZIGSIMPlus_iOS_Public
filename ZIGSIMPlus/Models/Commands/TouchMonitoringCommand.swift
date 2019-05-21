@@ -15,23 +15,25 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
             var stringMsg = ""
             
             for touch in touches {
+                let point = touch.location(in: touch.view!)
+                
                 // Position
                 stringMsg += """
-                touch:x:\(touch.point.x)
-                touch:y:\(touch.point.y)
+                touch:x:\(point.x)
+                touch:y:\(point.y)
                 
                 """
                 
                 // touch radius
                 if #available(iOS 8.0, *) {
-                    stringMsg += "touch:radius:\(touch.touch.majorRadius)\n"
+                    stringMsg += "touch:radius:\(touch.majorRadius)\n"
                 } else {
                     // Fallback on earlier versions
                 }
                 
                 // 3d touch
                 if #available(iOS 9.0, *) {
-                    stringMsg += "touch:force:\(touch.touch.force)\n"
+                    stringMsg += "touch:force:\(touch.force)\n"
                 } else {
                     // Fallback on earlier versions
                 }

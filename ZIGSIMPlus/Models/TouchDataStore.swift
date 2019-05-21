@@ -9,16 +9,6 @@
 import Foundation
 import UIKit
 
-public struct TouchData {
-    let touch: UITouch
-    let point: CGPoint
-//    public var hash(into hasher: inout Hasher) {
-//        get {
-//            return touch.hashValue &* 31 &+ point.hashValue
-//        }
-//    }
-}
-
 public class TouchDataStore {
     // Singleton instance
     static let shared = TouchDataStore()
@@ -26,12 +16,12 @@ public class TouchDataStore {
     // MARK: - Instance Properties
     
     var isEnabled: Bool
-    var touchPoints: [TouchData]
-    var callback: (([TouchData]) -> Void)?
+    var touchPoints: [UITouch]
+    var callback: (([UITouch]) -> Void)?
 
     private init() {
         isEnabled = false
-        touchPoints = [TouchData]()
+        touchPoints = [UITouch]()
         callback = nil
     }
     
@@ -46,19 +36,19 @@ public class TouchDataStore {
         touchPoints.removeAll() // Reset data
     }
     
-    func addTouches(_ touches: [TouchData]) {
+    func addTouches(_ touches: Set<UITouch>) {
         if !isEnabled { return }
         
         touchPoints.append(contentsOf: touches)
         update()
     }
     
-    func removeTouches(_ touchesToRemove: [TouchData]) {
+    func removeTouches(_ touchesToRemove: Set<UITouch>) {
         if !isEnabled { return }
         
         for touchToRemove in touchesToRemove {
             for (i, t) in touchPoints.enumerated() {
-                if t.touch == touchToRemove.touch {
+                if t == touchToRemove {
                     touchPoints.remove(at: i)
                     break
                 }
@@ -67,12 +57,12 @@ public class TouchDataStore {
         update()
     }
     
-    func updateTouches(_ touchesToUpdate: [TouchData]) {
+    func updateTouches(_ touchesToUpdate: Set<UITouch>) {
         if !isEnabled { return }
 
         for touchToUpdate in touchesToUpdate {
             for (i, t) in touchPoints.enumerated() {
-                if t.touch == touchToUpdate.touch {
+                if t == touchToUpdate {
                     touchPoints[i] = touchToUpdate
                     break
                 }

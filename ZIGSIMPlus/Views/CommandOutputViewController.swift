@@ -26,23 +26,16 @@ class CommandOutputViewController: UIViewController {
 
     // MARK: - Touch Events
 
-    private func touchesWithPoints(_ touches: Set<UITouch>) -> [TouchData] {
-        return touches.map {
-            let pos = $0.location(in: view!)
-            return TouchData(touch: $0, point: pos)
-        }
-    }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        TouchDataStore.shared.addTouches(touchesWithPoints(touches))
+        TouchDataStore.shared.addTouches(touches)
     }   
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        TouchDataStore.shared.updateTouches(touchesWithPoints(touches))
+        TouchDataStore.shared.updateTouches(touches)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        TouchDataStore.shared.removeTouches(touchesWithPoints(touches))
+        TouchDataStore.shared.removeTouches(touches)
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
