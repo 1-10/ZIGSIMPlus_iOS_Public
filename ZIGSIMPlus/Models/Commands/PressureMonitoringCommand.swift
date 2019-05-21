@@ -26,9 +26,8 @@ public final class PressureMonitoringCommand: AutoUpdatedCommand {
             if CMAltimeter.isRelativeAltitudeAvailable() {
                 altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: { (data, error) in
                     if error == nil {
-                        print("ok")
                         completion?("""
-                            pressure:pressure: \(Double(truncating: data!.pressure) * 10.0))
+                            pressure:pressure: \(Double(truncating: data!.pressure) * 10.0)
                             pressure:altitude: \(Double(truncating: data!.relativeAltitude))
                             """)
                     }
