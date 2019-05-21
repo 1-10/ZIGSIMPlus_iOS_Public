@@ -67,6 +67,20 @@ public class TouchDataStore {
         update()
     }
     
+    func updateTouches(_ touchesToUpdate: [TouchData]) {
+        if !isEnabled { return }
+
+        for touchToUpdate in touchesToUpdate {
+            for (i, t) in touchPoints.enumerated() {
+                if t.touch == touchToUpdate.touch {
+                    touchPoints[i] = touchToUpdate
+                    break
+                }
+            }
+        }
+        update()
+    }
+
     func removeAllTouches() {
         if !isEnabled { return }
         

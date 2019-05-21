@@ -38,7 +38,7 @@ class CommandOutputViewController: UIViewController {
     }   
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // TBD
+        TouchDataStore.shared.updateTouches(touchesWithPoints(touches))
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
