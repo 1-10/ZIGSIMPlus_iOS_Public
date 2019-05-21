@@ -23,6 +23,7 @@
 		9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */; };
 		9092E4D3227EE3890019F1C1 /* AccelerationMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D2227EE3890019F1C1 /* AccelerationMonitoringCommand.swift */; };
 		9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */; };
+		B3C401B62293C5C0007C66DC /* PressureMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C401B52293C5C0007C66DC /* PressureMonitoringCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputPresenter.swift; sourceTree = "<group>"; };
 		9092E4D2227EE3890019F1C1 /* AccelerationMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerationMonitoringCommand.swift; sourceTree = "<group>"; };
 		9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
+		B3C401B52293C5C0007C66DC /* PressureMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureMonitoringCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 		634B8D94228566C30043607D /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				B3C401B52293C5C0007C66DC /* PressureMonitoringCommand.swift */,
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
 				9092E4D2227EE3890019F1C1 /* AccelerationMonitoringCommand.swift */,
 			);
@@ -323,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C401B62293C5C0007C66DC /* PressureMonitoringCommand.swift in Sources */,
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandSelectionPresenter.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* AccelerationMonitoringCommand.swift in Sources */,
