@@ -29,7 +29,7 @@ public class LocationDataStore: NSObject {
         // Init beacons
         let appSetting = AppSettingModel.shared
         let uuid = UUID(uuidString: appSetting.beaconUUID)!
-        let deviceUUID = "12345678" // TODO: replace with AppSettingModel.shared.deviceUUID
+        let deviceUUID =  appSetting.deviceUUID
         beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: "\(deviceUUID) region")
         beaconsCallback = nil
     }

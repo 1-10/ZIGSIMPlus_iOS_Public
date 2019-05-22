@@ -23,5 +23,7 @@ public class AppSettingModel {
         return 1.0 / Double(messageRatePerSecond)
     }
     
-    let beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000" // TODO: Get value from settings view
+    // TODO: Save values to device storage like UserDefaults
+    let deviceUUID:String = Utils.randomStringWithLength(16)
+    let beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
 }
