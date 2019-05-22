@@ -8,20 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
+		63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
-		902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */; };
+		902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */; };
 		902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9CD227BE68D008F1650 /* Main.storyboard */; };
 		902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9D0227BE68F008F1650 /* Assets.xcassets */; };
 		902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */; };
 		902EB9DF227BE68F008F1650 /* ZIGSIMPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9DE227BE68F008F1650 /* ZIGSIMPlusTests.swift */; };
 		902EB9EA227BE68F008F1650 /* ZIGSIMPlusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9E9227BE68F008F1650 /* ZIGSIMPlusUITests.swift */; };
-		902EB9FA227BED1B008F1650 /* CommandSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9F9227BED1B008F1650 /* CommandSelectionPresenter.swift */; };
+		902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */; };
 		903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903BA770227D6C2100A2C378 /* AppSettingModel.swift */; };
-		9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */; };
+		9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */; };
 		9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4CB227EBF4D0019F1C1 /* LabelConstants.swift */; };
 		9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */; };
-		9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */; };
-		9092E4D3227EE3890019F1C1 /* AccelerationMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D2227EE3890019F1C1 /* AccelerationMonitoringCommand.swift */; };
+		9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */; };
+		9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */; };
 		9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */; };
 		B3C401C02293EB41007C66DC /* AudioLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C401BF2293EB41007C66DC /* AudioLevel.swift */; };
 		B3C401C22293EF40007C66DC /* MiclevelMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C401C12293EF40007C66DC /* MiclevelMonitoringCommand.swift */; };
@@ -46,9 +47,10 @@
 
 /* Begin PBXFileReference section */
 		634B8D92228565F00043607D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndCommandDataMediator.swift; sourceTree = "<group>"; };
 		902EB9C6227BE68D008F1650 /* ZIGSIMPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIGSIMPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9C9227BE68D008F1650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelectionViewController.swift; sourceTree = "<group>"; };
+		902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSelectionViewController.swift; sourceTree = "<group>"; };
 		902EB9CE227BE68D008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		902EB9D0227BE68F008F1650 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902EB9D3227BE68F008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,13 +61,13 @@
 		902EB9E5227BE68F008F1650 /* ZIGSIMPlusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIGSIMPlusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9E9227BE68F008F1650 /* ZIGSIMPlusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGSIMPlusUITests.swift; sourceTree = "<group>"; };
 		902EB9EB227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		902EB9F9227BED1B008F1650 /* CommandSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelectionPresenter.swift; sourceTree = "<group>"; };
+		902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSelectionPresenter.swift; sourceTree = "<group>"; };
 		903BA770227D6C2100A2C378 /* AppSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingModel.swift; sourceTree = "<group>"; };
-		9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputViewController.swift; sourceTree = "<group>"; };
+		9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataOutputViewController.swift; sourceTree = "<group>"; };
 		9092E4CB227EBF4D0019F1C1 /* LabelConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelConstants.swift; sourceTree = "<group>"; };
 		9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryMonitoringCommand.swift; sourceTree = "<group>"; };
-		9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputPresenter.swift; sourceTree = "<group>"; };
-		9092E4D2227EE3890019F1C1 /* AccelerationMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerationMonitoringCommand.swift; sourceTree = "<group>"; };
+		9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataOutputPresenter.swift; sourceTree = "<group>"; };
+		9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionMonitoringCommand.swift; sourceTree = "<group>"; };
 		9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
 		B3C401BF2293EB41007C66DC /* AudioLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLevel.swift; sourceTree = "<group>"; };
 		B3C401C12293EF40007C66DC /* MiclevelMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiclevelMonitoringCommand.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
 				9092E4D2227EE3890019F1C1 /* AccelerationMonitoringCommand.swift */,
 				B3C401C12293EF40007C66DC /* MiclevelMonitoringCommand.swift */,
+				9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -164,8 +167,8 @@
 		902EB9F7227BECC7008F1650 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */,
-				9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */,
+				902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */,
+				9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,8 +176,8 @@
 		902EB9F8227BECDD008F1650 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				902EB9F9227BED1B008F1650 /* CommandSelectionPresenter.swift */,
-				9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */,
+				902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */,
+				9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				B3C401BF2293EB41007C66DC /* AudioLevel.swift */,
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				634B8D92228565F00043607D /* Command.swift */,
+				63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */,
 				634B8D94228566C30043607D /* Commands */,
 			);
 			path = Models;
@@ -336,11 +340,16 @@
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
 				B3C401C02293EB41007C66DC /* AudioLevel.swift in Sources */,
+				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
+				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,
+				902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */,
+				9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
-				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,
+				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
+				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
