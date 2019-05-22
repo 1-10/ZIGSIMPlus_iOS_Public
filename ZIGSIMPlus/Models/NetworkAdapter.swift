@@ -22,17 +22,20 @@ public class NetworkAdapter {
     }
 
     private func sendTCP(_ data: Data) {
-        print(">> TBD")
-        
-//        let appSetting = AppSettingModel.shared
-//        let client = TCPClient(address: appSetting.address, port: appSetting.port)
-//
-//        switch client.send(data: data) {
-//        case .success:
-//
-//        case .failure(let error):
-//            print(">> TCP sending data failed")
-//        }
+        let appSetting = AppSettingModel.shared
+        let client = TCPClient(address: appSetting.address, port: appSetting.port)
+        switch client.connect(timeout: 1) {
+        case .success:
+            switch client.send(data: data) {
+            case .success:
+                print(">> TCP sending data succeeded")
+            case .failure(let error):
+                print(">> TCP sending data failed: \(error.localizedDescription)")
+            }
+            client.close()
+        case .failure(let error):
+            print(">> TCP connection failed: \(error.localizedDescription)")
+        }
     }
     
     private func sendUDP(_ data: Data) {

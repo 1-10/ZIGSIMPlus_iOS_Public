@@ -36,6 +36,7 @@ public class AppSettingModel {
     var address: String = "172.17.1.20"
     var port: Int32 = 3333
     
-    var transportProtocol: TransportProtocol = .UDP
+//    var transportProtocol: TransportProtocol = .UDP
+    var transportProtocol: TransportProtocol = .TCP
     var transportFormat: TransportFormat = .OSC
 }
