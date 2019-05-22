@@ -41,7 +41,6 @@ public class ProximityData {
     }
     
     public func initialDisplay() {
-        print("initialDisplay")
         update()
     }
     
