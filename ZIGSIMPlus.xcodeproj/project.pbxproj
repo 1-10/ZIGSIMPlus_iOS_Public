@@ -24,7 +24,8 @@
 		9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */; };
 		9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */; };
 		9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */; };
-		B3C401B62293C5C0007C66DC /* PressureMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C401B52293C5C0007C66DC /* PressureMonitoringCommand.swift */; };
+		B394C0BB229519CB00706BB3 /* AltimeterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0BA229519CB00706BB3 /* AltimeterData.swift */; };
+		B3C401B62293C5C0007C66DC /* AltimeterMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C401B52293C5C0007C66DC /* AltimeterMonitoringCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +69,8 @@
 		9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataOutputPresenter.swift; sourceTree = "<group>"; };
 		9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionMonitoringCommand.swift; sourceTree = "<group>"; };
 		9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
-		B3C401B52293C5C0007C66DC /* PressureMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureMonitoringCommand.swift; sourceTree = "<group>"; };
+		B394C0BA229519CB00706BB3 /* AltimeterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltimeterData.swift; sourceTree = "<group>"; };
+		B3C401B52293C5C0007C66DC /* AltimeterMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterMonitoringCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +101,7 @@
 		634B8D94228566C30043607D /* Commands */ = {
 			isa = PBXGroup;
 			children = (
-				B3C401B52293C5C0007C66DC /* PressureMonitoringCommand.swift */,
+				B3C401B52293C5C0007C66DC /* AltimeterMonitoringCommand.swift */,
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
 				9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */,
 			);
@@ -193,6 +195,7 @@
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				634B8D92228565F00043607D /* Command.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */,
+				B394C0BA229519CB00706BB3 /* AltimeterData.swift */,
 				634B8D94228566C30043607D /* Commands */,
 			);
 			path = Models;
@@ -329,7 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3C401B62293C5C0007C66DC /* PressureMonitoringCommand.swift in Sources */,
+				B3C401B62293C5C0007C66DC /* AltimeterMonitoringCommand.swift in Sources */,
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,
@@ -341,6 +344,7 @@
 				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
+				B394C0BB229519CB00706BB3 /* AltimeterData.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
