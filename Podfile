@@ -6,8 +6,8 @@ target 'ZIGSIMPlus' do
   use_frameworks!
 
   # Pods for ZIGSIMPlus
+  pod 'SwiftSocket'
   pod 'SwiftOSC', '~> 1.2'
-
 
   target 'ZIGSIMPlusTests' do
     inherit! :search_paths
