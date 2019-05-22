@@ -17,11 +17,12 @@ func AudioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
                                inPacketDescs: UnsafePointer<AudioStreamPacketDescription>?) {}
 
 class AudioLevelData {
-    var queue:AudioQueueRef! // 音声入力用のキュー
-    var timer:Timer! // 監視タイマー
-    var averageLevel:Float = 0.0
-    var maxLevel:Float = 0.0
+    // Singleton instance
+    static let shared = AudioLevelData()
     
+    // MARK: - Instance Properties
+    var queue: AudioQueueRef!
+    var timer: Timer!
     var dataFormat = AudioStreamBasicDescription(
         mSampleRate: 44100.0,
         mFormatID: kAudioFormatLinearPCM,
@@ -35,8 +36,43 @@ class AudioLevelData {
         mBitsPerChannel: 16,
         mReserved: 0
     )
+    var averageLevel: Float
+    var maxLevel: Float
+    var callbackAudio: (([Float]) -> Void)?
     
-    func start(fps:Double) {
+    private init() {
+        averageLevel = 0.0
+        maxLevel = 0.0
+    }
+    
+    private func update() {
+        print("ave:\(averageLevel) max:\(maxLevel)")
+        var level = [Float(0.0),Float(0.0)]
+        level[0] = self.maxLevel
+        level[1] = self.averageLevel
+        callbackAudio?(level)
+    }
+    
+    @objc func detectVolume(timer: Timer)
+    {
+        // Get level
+        var levelMeter = AudioQueueLevelMeterState()
+        var propertySize = UInt32(MemoryLayout<AudioQueueLevelMeterState>.size)
+        
+        AudioQueueGetProperty(
+            self.queue,
+            kAudioQueueProperty_CurrentLevelMeterDB,
+            &levelMeter,
+            &propertySize)
+        
+        averageLevel = levelMeter.mAveragePower
+        maxLevel = levelMeter.mPeakPower
+        update()
+    }
+    
+    // MARK: - Public methods
+    public func start(fps:Double) {
+        
         // Set data format
         var dataFormat = AudioStreamBasicDescription(
             mSampleRate: 44100.0,
@@ -71,14 +107,13 @@ class AudioLevelData {
         AudioQueueSetProperty(self.queue, kAudioQueueProperty_EnableLevelMetering, &enabledLevelMeter, UInt32(MemoryLayout<UInt32>.size))
         self.timer = Timer.scheduledTimer(timeInterval: 1.0 / fps,
                                           target: self,
-                                          selector: #selector(AudioLevel.detectVolume(timer:)),
-                                          // selector: #selector(AudioLevel.detectVolume(_:)),
+                                          selector: #selector(AudioLevelData.detectVolume(timer:)),
                                           userInfo: nil,
                                           repeats: true)
         self.timer?.fire()
     }
     
-    func stop()
+    public func stop()
     {
         // Finish observation
         self.timer.invalidate()
@@ -86,30 +121,6 @@ class AudioLevelData {
         AudioQueueFlush(self.queue)
         AudioQueueStop(self.queue, false)
         AudioQueueDispose(self.queue, true)
-    }
-    
-    func update() -> [Float] {
-        var level = [Float(0.0),Float(0.0)]
-        level[0] = self.maxLevel
-        level[1] = self.averageLevel
-        return level
-    }
-    
-    @objc func detectVolume(timer: Timer)
-    {
-        // Get level
-        var levelMeter = AudioQueueLevelMeterState()
-        var propertySize = UInt32(MemoryLayout<AudioQueueLevelMeterState>.size)
-        
-        AudioQueueGetProperty(
-            self.queue,
-            kAudioQueueProperty_CurrentLevelMeterDB,
-            &levelMeter,
-            &propertySize)
-        
-        averageLevel = levelMeter.mAveragePower
-        maxLevel = levelMeter.mPeakPower
-        // print("ave:\(averageLevel) max:\(maxLevel)")
     }
 }
 
