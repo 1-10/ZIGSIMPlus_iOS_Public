@@ -9,8 +9,11 @@
 import Foundation
 import CoreLocation
 
+/// Data store for commands which depend on LocationManager.
+/// e.g.) GPS, iBeacon, etc.
 public class LocationDataStore: NSObject {
-    // Singleton instance
+
+    /// Singleton instance
     static let shared = LocationDataStore()
     
     // MARK: - Instance Properties
@@ -30,7 +33,7 @@ public class LocationDataStore: NSObject {
         beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: "\(deviceUUID) region")
         beaconsCallback = nil
     }
-    
+
     // MARK: - Public methods
     
     func enable() {
@@ -43,6 +46,7 @@ public class LocationDataStore: NSObject {
                 locationManager.startRangingBeacons(in: beaconRegion)
             }
             else {
+                // Request authorization if needed
                 locationManager.requestAlwaysAuthorization()
             }
         } else {
@@ -59,17 +63,23 @@ public class LocationDataStore: NSObject {
         beacons.removeAll() // Reset data
     }
 
+    // MARK: - Private methods
+    
     private func updateBeacons() {
         print("beacons:\(beacons.count)")
         beaconsCallback?(beacons)
     }
 }
 
+// MARK: - CLLocationManagerDelegate methods
+
 extension LocationDataStore: CLLocationManagerDelegate {
+    // Called when the device started monitoring
     public func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
         print("Start monitoring for iBeacon")
     }
     
+    // Called when new data is received from beacons
     public func locationManager(_ manager: CLLocationManager, didRangeBeacons newBeacons: [CLBeacon], in region: CLBeaconRegion) {
         for b in newBeacons {
             // Check if the beacon is already registered
@@ -91,6 +101,7 @@ extension LocationDataStore: CLLocationManagerDelegate {
         updateBeacons()
     }
     
+    // Called when the user authorized monitorin location data
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
