@@ -20,6 +20,10 @@ public class CommandAndCommandDataMediator {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.battery]
             else { fatalError("AppSetting of the CommandData nil") }
             return b
+        } else if type(of: command) == TouchMonitoringCommand.self {
+            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.touch]
+            else { fatalError("AppSetting of the CommandData nil") }
+            return b
         }
         
         fatalError("Unexpected Command")
@@ -28,8 +32,10 @@ public class CommandAndCommandDataMediator {
     public func getCommandOutputOrder(of command: Command) -> Int {
         if type(of: command) == MotionMonitoringCommand.self {
             return 1
-        } else if type(of: command) == BatteryMonitoringCommand.self {
+        } else if type(of: command) == TouchMonitoringCommand.self {
             return 2
+        } else if type(of: command) == BatteryMonitoringCommand.self {
+            return 3
         }
         
         fatalError("Unexpected Command")

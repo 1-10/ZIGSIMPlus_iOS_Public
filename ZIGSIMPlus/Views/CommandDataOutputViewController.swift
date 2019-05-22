@@ -23,6 +23,24 @@ class CommandDataOutputViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         presenter.stopCommands()
     }
+
+    // MARK: - Touch Events
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        TouchDataStore.shared.addTouches(touches)
+    }   
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        TouchDataStore.shared.updateTouches(touches)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        TouchDataStore.shared.removeTouches(touches)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
+        TouchDataStore.shared.removeAllTouches()
+    }
 }
 
 extension CommandDataOutputViewController: CommandDataOutputPresenterDelegate {
