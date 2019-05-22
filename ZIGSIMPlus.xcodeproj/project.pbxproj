@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02EBC27C2295078500377F6E /* BeaconMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EBC27B2295078500377F6E /* BeaconMonitoringCommand.swift */; };
+		02EBC27E229508A900377F6E /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EBC27D229508A900377F6E /* LocationDataStore.swift */; };
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
 		63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		02EBC27B2295078500377F6E /* BeaconMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconMonitoringCommand.swift; sourceTree = "<group>"; };
+		02EBC27D229508A900377F6E /* LocationDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
 		634B8D92228565F00043607D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndCommandDataMediator.swift; sourceTree = "<group>"; };
 		902EB9C6227BE68D008F1650 /* ZIGSIMPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIGSIMPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
+				02EBC27D229508A900377F6E /* LocationDataStore.swift */,
 				634B8D92228565F00043607D /* Command.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */,
 				634B8D94228566C30043607D /* Commands */,
@@ -341,6 +344,7 @@
 				634B8D93228565F00043607D /* Command.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
+				02EBC27E229508A900377F6E /* LocationDataStore.swift in Sources */,
 				02EBC27C2295078500377F6E /* BeaconMonitoringCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

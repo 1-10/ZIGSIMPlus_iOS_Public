@@ -22,4 +22,6 @@ public class AppSettingModel {
     var messageInterval: TimeInterval {
         return 1.0 / Double(messageRatePerSecond)
     }
+    
+    let beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000" // TODO: Get value from settings view
 }
