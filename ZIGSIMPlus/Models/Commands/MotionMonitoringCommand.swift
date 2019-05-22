@@ -1,5 +1,5 @@
-    //
-//  AccelerationMonitoringCommand.swift
+//
+//  MotionMonitoringCommand.swift
 //  ZIGSIMPlus
 //
 //  Created by Nozomu Kuwae on 5/10/19.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreMotion
 
-public final class AccelerationMonitoringCommand: AutoUpdatedCommand {
+public final class MotionMonitoringCommand: AutoUpdatedCommand {
     let motionManager = CMMotionManager()
     
     public func start(completion: ((String?) -> Void)?) {

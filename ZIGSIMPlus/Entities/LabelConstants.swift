@@ -9,13 +9,9 @@
 import Foundation
 
 public struct LabelConstants {
-    public static let accelaration = "Acceleration"
+    public static let acceleration = "Acceleration"
+    public static let gravity = "Gravity"
     public static let battery = "Battery"
     public static let ndi = "NDI"
-    public static let autoUpdatedCommands: [String] = [accelaration, ndi]
-    public static let manualUpdatedCommands: [String] = [battery]
-
-    public static var commands: [String] {
-        return autoUpdatedCommands + manualUpdatedCommands
-    }
+    public static let commandDatas: [String] = [acceleration, gravity, battery, ndi]
 }

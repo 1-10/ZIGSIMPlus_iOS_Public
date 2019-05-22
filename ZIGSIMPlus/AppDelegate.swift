@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let presenterFactory = PresenterFactory()
         let tabBarController = window?.rootViewController as! UITabBarController
         for viewController in tabBarController.viewControllers! {
-            if type(of: viewController) == CommandSelectionViewController.self {
-                let vc = viewController as! CommandSelectionViewController
-                vc.presenter = presenterFactory.createCommandSelectionPresenter(view: vc)
-            } else if type(of: viewController) == CommandOutputViewController.self {
-                let vc = viewController as! CommandOutputViewController
-                vc.presenter = presenterFactory.createCommandOutputPresenter(view: vc)
+            if type(of: viewController) == CommandDataSelectionViewController.self {
+                let vc = viewController as! CommandDataSelectionViewController
+                vc.presenter = presenterFactory.createCommandDataSelectionPresenter(view: vc)
+            } else if type(of: viewController) == CommandDataOutputViewController.self {
+                let vc = viewController as! CommandDataOutputViewController
+                vc.presenter = presenterFactory.createCommandDataOutputPresenter(view: vc)
             } else {
                 print("else")
             }

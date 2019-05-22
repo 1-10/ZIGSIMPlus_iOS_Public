@@ -20,6 +20,7 @@ public final class NdiMonitoringCommand: ImageCommand {
     public func start(completion: ((String?) -> Void)?) {}
     
     public func stop(completion: ((String?) -> Void)?) {
+        print(">> stop")
         ndi.stop()
         completion?("TBD")
     }
