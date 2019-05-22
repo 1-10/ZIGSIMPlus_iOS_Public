@@ -1,5 +1,5 @@
 //
-//  CommandOutputViewController.swift
+//  CommandDataOutputViewController.swift
 //  ZIGSIMPlus
 //
 //  Created by Nozomu Kuwae on 5/10/19.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CommandOutputViewController: UIViewController {
+class CommandDataOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
-    var presenter: CommandOutputPresenterProtocol!
+    var presenter: CommandDataOutputPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class CommandOutputViewController: UIViewController {
     }
 }
 
-extension CommandOutputViewController: CommandOutputPresenterDelegate {
+extension CommandDataOutputViewController: CommandDataOutputPresenterDelegate {
     func updateOutput(with output: String) {
         textField.text = output
     }
