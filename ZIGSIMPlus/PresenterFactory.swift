@@ -22,6 +22,7 @@ class PresenterFactory {
         presenter.mediator = mediator
         presenter.commands.append(MotionMonitoringCommand())
         presenter.commands.append(BatteryMonitoringCommand())
+        presenter.commands.append(BeaconMonitoringCommand())
         return presenter
     }
 }
