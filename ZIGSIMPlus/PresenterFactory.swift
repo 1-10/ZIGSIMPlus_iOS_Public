@@ -9,18 +9,20 @@
 import Foundation
 
 class PresenterFactory {
-    func createCommandSelectionPresenter(view: CommandSelectionPresenterDelegate) -> CommandSelectionPresenter {
-        let presenter = CommandSelectionPresenter()
+    func createCommandDataSelectionPresenter(view: CommandDataSelectionPresenterDelegate) -> CommandDataSelectionPresenter {
+        let presenter = CommandDataSelectionPresenter()
         presenter.view = view
         return presenter
     }
     
-    func createCommandOutputPresenter(view: CommandOutputPresenterDelegate) -> CommandOutputPresenter {
-        let presenter = CommandOutputPresenter()
+    func createCommandDataOutputPresenter(view: CommandDataOutputPresenterDelegate) -> CommandDataOutputPresenter {
+        let presenter = CommandDataOutputPresenter()
         presenter.view = view
-        presenter.autoUpdatedCommands[LabelConstants.accelaration] = AccelerationMonitoringCommand()
-        presenter.manualUpdatedCommands[LabelConstants.battery] = BatteryMonitoringCommand()
-        presenter.autoUpdatedCommands[LabelConstants.proximity] = ProximityMonitoringCommand()
+        let mediator = CommandAndCommandDataMediator()
+        presenter.mediator = mediator
+        presenter.commands.append(MotionMonitoringCommand())
+        presenter.commands.append(BatteryMonitoringCommand())
+        presenter.commands.append(ProximityMonitoringCommand())
         return presenter
     }
 }

@@ -7,37 +7,20 @@
 //
 
 import Foundation
-import CoreMotion
-import UIKit
 
 public final class ProximityMonitoringCommand: AutoUpdatedCommand {
     
-    private var proximity = false
-    private var timer: Timer?
-    
     public func start(completion: ((String?) -> Void)?) {
-        UIDevice.current.isProximityMonitoringEnabled = true
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(proximitySensorStateDidChange),
-                                               name: UIDevice.proximityStateDidChangeNotification,
-                                               object: nil)
-        self.timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(ProximityMonitoringCommand.completion), userInfo: completion, repeats: true)
+        ProximityData.shared.start()
+        ProximityData.shared.callbackProximity = { proximity in
+            completion?("proximitymonitor:proximitymonitor:\(proximity)")
+        }
+        ProximityData.shared.initialDisplay()
     }
     
     public func stop(completion: ((String?) -> Void)?) {
-        self.timer?.invalidate()
-        NotificationCenter.default.removeObserver(self,
-                                                  name: UIDevice.proximityStateDidChangeNotification,
-                                                  object: nil)
+        ProximityData.shared.stop()
         completion?(nil)
     }
     
-    @objc func proximitySensorStateDidChange() {
-        self.proximity = UIDevice.current.proximityState
-    }
-    
-    @objc func completion(_ timer: Timer!) {
-        let completion = timer.userInfo as! (String?) -> Void
-        completion("proximitymonitor:proximitymonitor:\(self.proximity)")
-    }
 }

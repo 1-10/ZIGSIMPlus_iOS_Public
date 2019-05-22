@@ -10,13 +10,13 @@ import Foundation
 
 public class AppSettingModel {
     private init() {
-        for label in LabelConstants.commands {
-            isActiveByCommand[label] = false
+        for label in LabelConstants.commandDatas {
+            isActiveByCommandData[label] = false
         }
     }
     
     static let shared = AppSettingModel()
-    var isActiveByCommand: Dictionary<String, Bool> = [:]
+    var isActiveByCommandData: Dictionary<String, Bool> = [:]
     var messageRatePerSecond: Int = 60
     
     var messageInterval: TimeInterval {
