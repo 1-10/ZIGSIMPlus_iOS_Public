@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02EBC2822295367100377F6E /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EBC2812295367100377F6E /* NetworkAdapter.swift */; };
 		37A2725E23462FEB4D3433B7 /* Pods_ZIGSIMPlusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75235E7F29CB7E869238D714 /* Pods_ZIGSIMPlusUITests.framework */; };
 		60776B10F232C70EBBA4B438 /* Pods_ZIGSIMPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE62A7B168DD3792F03672D /* Pods_ZIGSIMPlus.framework */; };
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02EBC2812295367100377F6E /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		070A425B44087347AFA8348C /* Pods-ZIGSIMPlusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.release.xcconfig"; sourceTree = "<group>"; };
 		18D9E56D6DBE3B5271EE7005 /* Pods-ZIGSIMPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.release.xcconfig"; sourceTree = "<group>"; };
 		49435AC91E8F6ED54D9B0491 /* Pods-ZIGSIMPlusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				634B8D92228565F00043607D /* Command.swift */,
+				02EBC2812295367100377F6E /* NetworkAdapter.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */,
 				634B8D94228566C30043607D /* Commands */,
 			);
@@ -222,7 +225,6 @@
 				6C6721D9A85E61C2757479B9 /* Pods-ZIGSIMPlusUITests.debug.xcconfig */,
 				49435AC91E8F6ED54D9B0491 /* Pods-ZIGSIMPlusUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -399,12 +401,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOSC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -464,6 +468,7 @@
 			files = (
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
+				02EBC2822295367100377F6E /* NetworkAdapter.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */,

@@ -8,6 +8,16 @@
 
 import Foundation
 
+enum TransportProtocol {
+    case TCP
+    case UDP
+}
+
+enum TransportFormat {
+    case OSC
+    case JSON
+}
+
 public class AppSettingModel {
     private init() {
         for label in LabelConstants.commandDatas {
@@ -22,4 +32,10 @@ public class AppSettingModel {
     var messageInterval: TimeInterval {
         return 1.0 / Double(messageRatePerSecond)
     }
+    
+    var address: String = "172.17.1.20"
+    var port: Int32 = 3333
+    
+    var transportProtocol: TransportProtocol = .UDP
+    var transportFormat: TransportFormat = .OSC
 }
