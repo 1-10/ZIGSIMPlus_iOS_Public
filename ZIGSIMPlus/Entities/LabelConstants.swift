@@ -12,5 +12,7 @@ public struct LabelConstants {
     public static let acceleration = "Acceleration"
     public static let gravity = "Gravity"
     public static let battery = "Battery"
-    public static let commandDatas: [String] = [acceleration, gravity, battery]
+    public static let compass = "Compass"
+    public static let gps     = "Gps"
+    public static let commandDatas: [String] = [acceleration, gravity, battery, compass, gps]
 }
