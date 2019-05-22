@@ -21,9 +21,9 @@ public final class BatteryMonitoringCommand: ManualUpdatedCommand {
 
     public func monitor(completion: ((String?) -> Void)?) {
         if UIDevice.current.batteryLevel != -1 {
-            completion?("Battery Level: \(UIDevice.current.batteryLevel)")
+            completion?("battery:level:\(UIDevice.current.batteryLevel)")
         } else {
-            completion?("Battery Level Unknown")
+            completion?("battery level unknown")
         }
     }
 }
