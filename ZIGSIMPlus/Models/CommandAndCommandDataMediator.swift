@@ -12,10 +12,12 @@ public class CommandAndCommandDataMediator {
     public func isActive(command: Command) -> Bool {
         if type(of: command) == MotionMonitoringCommand.self {
             guard let b1 = AppSettingModel.shared.isActiveByCommandData[LabelConstants.acceleration],
-                let b2 = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gravity]
+                let b2 = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gravity],
+                let b3 = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gyro],
+                let b4 = AppSettingModel.shared.isActiveByCommandData[LabelConstants.quaternion]
                 else { fatalError("AppSetting of the CommandData nil") }
 
-            return (b1 || b2)
+            return (b1 || b2 || b3 || b4)
         } else if type(of: command) == BatteryMonitoringCommand.self {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.battery]
                 else { fatalError("AppSetting of the CommandData nil") }
