@@ -107,17 +107,30 @@ public class GpsCompassData :NSObject,CLLocationManagerDelegate {
 extension GpsCompassData : Store {
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
+        var data = [OSCMessage]()
         
-        return [
-            OSCMessage(OSCAddressPattern("/\(deviceUUID)/gps"), latitudeData, longitudeData),
-            OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData),
-        ]
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gps]! {
+            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/gps"), latitudeData, longitudeData))
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]! {
+            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData))
+        }
+        
+        return data
     }
     
     func toJSON() -> [String:AnyObject] {
-        return [
-            "gps": [latitudeData, longitudeData] as AnyObject,
-            "compass": [compassData] as AnyObject
-        ]
+        var data = [String:AnyObject]()
+
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gps]! {
+            data.merge(["gps": [latitudeData, longitudeData] as AnyObject]) { $1 }
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]! {
+            data.merge(["compass": compassData as AnyObject]) { $1 }
+        }
+
+        return data
     }
 }

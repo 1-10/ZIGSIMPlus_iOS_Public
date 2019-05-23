@@ -87,6 +87,10 @@ public class TouchDataStore {
 
 extension TouchDataStore : Store {
     func toOSC() -> [OSCMessage] {
+        if !AppSettingModel.shared.isActiveByCommandData[LabelConstants.touch]! {
+            return []
+        }
+        
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
             
@@ -96,7 +100,7 @@ extension TouchDataStore : Store {
             // Position
             messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)1"), Float(point.x)))
             messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)2"), Float(point.y)))
-            
+
             if #available(iOS 8.0, *) {
                 messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touchradius\(i)"), Float(touch.majorRadius)))
             }
@@ -109,6 +113,10 @@ extension TouchDataStore : Store {
     }
     
     func toJSON() -> [String:AnyObject] {
+        if !AppSettingModel.shared.isActiveByCommandData[LabelConstants.touch]! {
+            return [:]
+        }
+        
         let objs: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
             let point = touch.location(in: touch.view!)
             var obj = ["x": point.x, "y": point.y]

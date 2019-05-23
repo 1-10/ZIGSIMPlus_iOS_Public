@@ -118,6 +118,10 @@ extension LocationDataStore: CLLocationManagerDelegate {
 
 extension LocationDataStore : Store {
     func toOSC() -> [OSCMessage] {
+        if !AppSettingModel.shared.isActiveByCommandData[LabelConstants.beacon]! {
+            return []
+        }
+        
         let deviceUUID = AppSettingModel.shared.deviceUUID
         
         return beacons.enumerated().map { (i, beacon)  in
@@ -132,6 +136,10 @@ extension LocationDataStore : Store {
     }
     
     func toJSON() -> [String:AnyObject] {
+        if !AppSettingModel.shared.isActiveByCommandData[LabelConstants.beacon]! {
+            return [:]
+        }
+        
         let objs = beacons.map { beacon in
             return [
                 "uuid": beacon.proximityUUID.uuidString,
