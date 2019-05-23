@@ -18,7 +18,6 @@ public class LocationDataStore: NSObject {
 
     // MARK: - Instance Properties
 
-    private var isAuthorized: Bool = false
     private let locationManager: CLLocationManager = CLLocationManager()
 
     // For GPS
@@ -170,11 +169,8 @@ extension LocationDataStore: CLLocationManagerDelegate {
 
     // Called when the user authorized monitorin location data
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            isAuthorized = true
-        default:
-            isAuthorized = false
+        if status != .authorizedAlways || status != .authorizedWhenInUse {
+            // TODO: Show error message
         }
     }
 }
