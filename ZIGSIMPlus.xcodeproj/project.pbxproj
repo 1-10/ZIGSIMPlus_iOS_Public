@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02EBC27C2295078500377F6E /* BeaconMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EBC27B2295078500377F6E /* BeaconMonitoringCommand.swift */; };
-		02EBC27E229508A900377F6E /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EBC27D229508A900377F6E /* LocationDataStore.swift */; };
-		02EBC2802295266E00377F6E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EBC27F2295266E00377F6E /* Utils.swift */; };
+		023BB10622965B490094363B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10522965B490094363B /* Utils.swift */; };
+		023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */; };
+		023BB10A22965B690094363B /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10922965B690094363B /* LocationDataStore.swift */; };
+		02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */; };
+		02E7F84C2293A864002B55F2 /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84B2293A864002B55F2 /* TouchDataStore.swift */; };
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
 		63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
@@ -47,9 +49,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02EBC27B2295078500377F6E /* BeaconMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconMonitoringCommand.swift; sourceTree = "<group>"; };
-		02EBC27D229508A900377F6E /* LocationDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
-		02EBC27F2295266E00377F6E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		023BB10522965B490094363B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconMonitoringCommand.swift; sourceTree = "<group>"; };
+		023BB10922965B690094363B /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
+		02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMonitoringCommand.swift; sourceTree = "<group>"; };
+		02E7F84B2293A864002B55F2 /* TouchDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
 		634B8D92228565F00043607D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndCommandDataMediator.swift; sourceTree = "<group>"; };
 		902EB9C6227BE68D008F1650 /* ZIGSIMPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIGSIMPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,7 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
-				02EBC27B2295078500377F6E /* BeaconMonitoringCommand.swift */,
+				02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */,
+				023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */,
 				9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */,
 			);
 			path = Commands;
@@ -195,10 +200,11 @@
 			isa = PBXGroup;
 			children = (
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
-				02EBC27F2295266E00377F6E /* Utils.swift */,
-				02EBC27D229508A900377F6E /* LocationDataStore.swift */,
 				634B8D92228565F00043607D /* Command.swift */,
+				02E7F84B2293A864002B55F2 /* TouchDataStore.swift */,
+				023BB10922965B690094363B /* LocationDataStore.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */,
+				023BB10522965B490094363B /* Utils.swift */,
 				634B8D94228566C30043607D /* Commands */,
 			);
 			path = Models;
@@ -337,19 +343,21 @@
 			files = (
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
+				023BB10A22965B690094363B /* LocationDataStore.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */,
-				02EBC2802295266E00377F6E /* Utils.swift in Sources */,
+				023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */,
+				023BB10622965B490094363B /* Utils.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */,
+				02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */,
+				02E7F84C2293A864002B55F2 /* TouchDataStore.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
-				02EBC27E229508A900377F6E /* LocationDataStore.swift in Sources */,
-				02EBC27C2295078500377F6E /* BeaconMonitoringCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
