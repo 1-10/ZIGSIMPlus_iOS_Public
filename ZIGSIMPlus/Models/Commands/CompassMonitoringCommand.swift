@@ -15,6 +15,7 @@ public final class CompassMonitoringCommand: AutoUpdatedCommand {
         GpsCompassData.shared.startCompass()
         GpsCompassData.shared.callbackCompass = { (compassData) in
             // compass:faceupは設定画面作成後に追加
+            Messenger.send(compass: compassData)
             completion?("""
                 compass:compass:\(compassData)
                 compass:faceup:

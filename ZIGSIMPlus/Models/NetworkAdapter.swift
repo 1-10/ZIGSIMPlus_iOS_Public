@@ -8,11 +8,13 @@
 
 import Foundation
 import SwiftSocket
+import SwiftOSC
+import CoreMotion
 
 public class NetworkAdapter {
     static let shared = NetworkAdapter()
     
-    func sendMessage(data: Data){        
+    func send(_ data: Data){
         switch AppSettingModel.shared.transportProtocol {
         case .TCP:
             sendTCP(data)

@@ -18,6 +18,7 @@ public final class BeaconMonitoringCommand: AutoUpdatedCommand {
                 stringMsg += "Beacon \(i): uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)\n"
             }
             
+            Messenger.send(beacons: beacons)
             completion?(stringMsg)
         }
         

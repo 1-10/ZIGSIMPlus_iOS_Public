@@ -21,6 +21,7 @@ public final class BatteryMonitoringCommand: ManualUpdatedCommand {
 
     public func monitor(completion: ((String?) -> Void)?) {
         if UIDevice.current.batteryLevel != -1 {
+            Messenger.send(battery: UIDevice.current.batteryLevel)
             completion?("battery:level:\(UIDevice.current.batteryLevel)")
         } else {
             completion?("battery level unknown")

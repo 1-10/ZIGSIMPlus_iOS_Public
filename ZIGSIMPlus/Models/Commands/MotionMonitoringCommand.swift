@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import CoreMotion 
-import SwiftOSC
+import CoreMotion
 
 public final class MotionMonitoringCommand: AutoUpdatedCommand {
     let motionManager = CMMotionManager()
@@ -27,13 +26,7 @@ public final class MotionMonitoringCommand: AutoUpdatedCommand {
                     return
                 }
                 
-                let msg = OSCMessage(
-                    OSCAddressPattern("/accel"),
-                    accelData.acceleration.x,
-                    accelData.acceleration.y,
-                    accelData.acceleration.z
-                )
-                NetworkAdapter.shared.sendMessage(data: msg.data)
+                Messenger.send(accel: accelData)
                 
                 completion?("""
                     accel:x:\(accelData.acceleration.x)
