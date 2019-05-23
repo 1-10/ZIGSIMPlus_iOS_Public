@@ -21,11 +21,11 @@ public final class BeaconMonitoringCommand: AutoUpdatedCommand {
             completion?(stringMsg)
         }
         
-        LocationDataStore.shared.enable()
+        LocationDataStore.shared.startBeacons()
     }
 
     public func stop(completion: ((String?) -> Void)?) {
-        LocationDataStore.shared.disable()
+        LocationDataStore.shared.stopBeacons()
         completion?(nil)
     }
 }

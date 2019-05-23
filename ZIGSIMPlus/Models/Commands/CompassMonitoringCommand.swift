@@ -12,8 +12,8 @@ import CoreLocation
 public final class CompassMonitoringCommand: AutoUpdatedCommand {
     
     public func start(completion: ((String?) -> Void)?) {
-        GpsCompassData.shared.startCompass()
-        GpsCompassData.shared.callbackCompass = { (compassData) in
+        LocationDataStore.shared.startCompass()
+        LocationDataStore.shared.compassCallback = { (compassData) in
             // compass:faceupは設定画面作成後に追加
             completion?("""
                 compass:compass:\(compassData)
@@ -23,7 +23,7 @@ public final class CompassMonitoringCommand: AutoUpdatedCommand {
     }
     
     public func stop(completion: ((String?) -> Void)?) {
-        GpsCompassData.shared.stopCompass()
+        LocationDataStore.shared.stopCompass()
         completion?(nil)
     }
 }
