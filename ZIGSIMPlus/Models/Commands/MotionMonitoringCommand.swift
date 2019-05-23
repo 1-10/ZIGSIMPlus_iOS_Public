@@ -26,6 +26,8 @@ public final class MotionMonitoringCommand: AutoUpdatedCommand {
                     return
                 }
                 
+                MiscDataStore.shared.accel = accelData
+                
                 completion?("""
                     accel:x:\(accelData.acceleration.x)
                     accel:y:\(accelData.acceleration.y)

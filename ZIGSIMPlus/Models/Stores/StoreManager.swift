@@ -45,6 +45,7 @@ class StoreManager {
         bundle.elements += LocationDataStore.shared.toOSC()
         bundle.elements += GpsCompassData.shared.toOSC()
         bundle.elements += TouchDataStore.shared.toOSC()
+        bundle.elements += MiscDataStore.shared.toOSC()
 
         return bundle.data
     }
@@ -63,9 +64,10 @@ class StoreManager {
             ]
         ] as [String:AnyObject]) { (_, new) in new }
         
-        data.merge(LocationDataStore.shared.toJSON()) { (_, new) in new }
-        data.merge(TouchDataStore.shared.toJSON()) { (_, new) in new }
-        data.merge(GpsCompassData.shared.toJSON()) { (_, new) in new }
+        data.merge(LocationDataStore.shared.toJSON()) { $1 }
+        data.merge(TouchDataStore.shared.toJSON()) { $1 }
+        data.merge(GpsCompassData.shared.toJSON()) { $1 }
+        data.merge(MiscDataStore.shared.toJSON()) { $1 }
 
         return toJSON(data)
     }
