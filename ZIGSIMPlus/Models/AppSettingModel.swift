@@ -39,6 +39,7 @@ public class AppSettingModel {
     var transportProtocol: TransportProtocol = .UDP
 //    var transportProtocol: TransportProtocol = .TCP
     var transportFormat: TransportFormat = .OSC
+//    var transportFormat: TransportFormat = .JSON
 
     // TODO: Save values to device storage like UserDefaults
     let deviceUUID:String = Utils.randomStringWithLength(16)

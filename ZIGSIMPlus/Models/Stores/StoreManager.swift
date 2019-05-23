@@ -38,7 +38,10 @@ class StoreManager {
             OSCAddressPattern("/\(settings.deviceUUID)/deviceinfo"),
             "__DEVICE_NAME__", // TODO: Replace with correct deviceName
             settings.deviceUUID,
-            "ios"
+            "ios", // TBD
+            12.2, // TBD
+            1125, // TBD
+            2001 // TBD
         ))
 
         // Add data from stores
@@ -52,22 +55,22 @@ class StoreManager {
     private func getJSON() -> Data {
         var data = [String:AnyObject]()
         
-        data.merge([
-            "device": [
-                "name": "__DEVICE_NAME__",
-                "uuid": AppSettingModel.shared.deviceUUID,
-                "os": "ios",
-                "osversion": "12.2",
-                "displaywidth": 1125,
-                "displayheight": 2001,
-            ]
-        ] as [String:AnyObject]) { (_, new) in new }
-        
         data.merge(LocationDataStore.shared.toJSON()) { $1 }
         data.merge(TouchDataStore.shared.toJSON()) { $1 }
         data.merge(MiscDataStore.shared.toJSON()) { $1 }
 
-        return toJSON(data)
+        return toJSON([
+            "device": [
+                "name": "__DEVICE_NAME__", // TBD
+                "uuid": AppSettingModel.shared.deviceUUID,
+                "os": "ios", // TBD
+                "osversion": "12.2", // TBD
+                "displaywidth": 1125, // TBD
+                "displayheight": 2001, // TBD
+            ] as AnyObject,
+            "timestamp": "2019_05_23_18:24:02.471" as AnyObject, // TBD
+            "sensordata": data as AnyObject
+        ])
     }
     
     private func toJSON(_ dic: Dictionary<String, AnyObject>)-> Data {
