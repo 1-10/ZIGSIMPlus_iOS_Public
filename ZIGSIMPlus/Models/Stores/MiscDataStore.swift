@@ -19,7 +19,11 @@ public class MiscDataStore {
     // MARK: - Instance Properties
     
     var battery: Float = 0.0
-    var accel: CMAccelerometerData = CMAccelerometerData()
+    var accel: CMAcceleration = CMAcceleration()
+    var gravity: CMAcceleration = CMAcceleration()
+    var gyro: CMRotationRate = CMRotationRate()
+//    var rotation: CMRotationRate = CMRotationRate()
+    var quaternion: CMQuaternion = CMQuaternion()
 }
 
 extension MiscDataStore : Store {
@@ -34,9 +38,9 @@ extension MiscDataStore : Store {
         if AppSettingModel.shared.isActiveByCommandData[LabelConstants.acceleration]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/accel"),
-                accel.acceleration.x,
-                accel.acceleration.y,
-                accel.acceleration.z
+                accel.x,
+                accel.y,
+                accel.z
             ))
         }
         
@@ -53,9 +57,9 @@ extension MiscDataStore : Store {
         if AppSettingModel.shared.isActiveByCommandData[LabelConstants.acceleration]! {
             data.merge([
                 "accel": [
-                    "x": accel.acceleration.x,
-                    "y": accel.acceleration.y,
-                    "z": accel.acceleration.z
+                    "x": accel.x,
+                    "y": accel.y,
+                    "z": accel.z
                 ] as AnyObject
             ]) { $1 }
         }
