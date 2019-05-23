@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftOSC
 
 public class TouchDataStore {
     // Singleton instance
@@ -81,5 +82,46 @@ public class TouchDataStore {
     private func update() {
         print("touchpoint:\(touchPoints.count)")
         callback?(touchPoints)
+    }
+}
+
+extension TouchDataStore : Store {
+    func toOSC() -> [OSCMessage] {
+        let deviceUUID = AppSettingModel.shared.deviceUUID
+        var messages = [OSCMessage]()
+            
+        for (i, touch) in touchPoints.enumerated() {
+            let point = touch.location(in: touch.view!)
+            
+            // Position
+            messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)1"), Float(point.x)))
+            messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)2"), Float(point.y)))
+            
+            if #available(iOS 8.0, *) {
+                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touchradius\(i)"), Float(touch.majorRadius)))
+            }
+            if #available(iOS 9.0, *) {
+                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touchforce\(i)"), Float(touch.force)))
+            }
+        }
+        
+        return messages
+    }
+    
+    func toJSON() -> [String:AnyObject] {
+        let objs: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
+            let point = touch.location(in: touch.view!)
+            var obj = ["x": point.x, "y": point.y]
+            
+            if #available(iOS 8.0, *) {
+                obj["radius"] = touch.majorRadius
+            }
+            if #available(iOS 9.0, *) {
+                obj["force"] = touch.force
+            }
+            
+            return obj
+        }
+        return ["touches": objs as AnyObject]
     }
 }

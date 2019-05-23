@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import SwiftOSC
 
 public class GpsCompassData :NSObject,CLLocationManagerDelegate {
     // Singleton instance
@@ -100,5 +101,23 @@ public class GpsCompassData :NSObject,CLLocationManagerDelegate {
                 self.locationManager?.stopUpdatingHeading()
             }
         }
+    }
+}
+
+extension GpsCompassData : Store {
+    func toOSC() -> [OSCMessage] {
+        let deviceUUID = AppSettingModel.shared.deviceUUID
+        
+        return [
+            OSCMessage(OSCAddressPattern("/\(deviceUUID)/gps"), latitudeData, longitudeData),
+            OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData),
+        ]
+    }
+    
+    func toJSON() -> [String:AnyObject] {
+        return [
+            "gps": [latitudeData, longitudeData] as AnyObject,
+            "compass": [compassData] as AnyObject
+        ]
     }
 }

@@ -14,7 +14,6 @@ public final class GpsMonitoringCommand: AutoUpdatedCommand {
     public func start(completion: ((String?) -> Void)?) {
         GpsCompassData.shared.startGps()
         GpsCompassData.shared.callbackGps = { (gpsData) in
-            Messenger.send(gps: gpsData)
             completion?("""
                 compass:latitude:\(gpsData[0])
                 compass:longitude:\(gpsData[1])

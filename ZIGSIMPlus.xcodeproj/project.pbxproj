@@ -12,6 +12,7 @@
 		023BB10A22965B690094363B /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10922965B690094363B /* LocationDataStore.swift */; };
 		02A8FA76229673B9001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA75229673B9001FB3DD /* NetworkAdapter.swift */; };
 		02A8FA7822967CBF001FB3DD /* Messenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA7722967CBF001FB3DD /* Messenger.swift */; };
+		02A8FA7B22969CE6001FB3DD /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA7A22969CE6001FB3DD /* StoreManager.swift */; };
 		02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */; };
 		02E7F84C2293A864002B55F2 /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84B2293A864002B55F2 /* TouchDataStore.swift */; };
 		25C833DC8B833BF811C5F815 /* Pods_ZIGSIMPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6769DB3DEBD3165833B674 /* Pods_ZIGSIMPlus.framework */; };
@@ -62,6 +63,7 @@
 		023BB10922965B690094363B /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
 		02A8FA75229673B9001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		02A8FA7722967CBF001FB3DD /* Messenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messenger.swift; sourceTree = "<group>"; };
+		02A8FA7A22969CE6001FB3DD /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMonitoringCommand.swift; sourceTree = "<group>"; };
 		02E7F84B2293A864002B55F2 /* TouchDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
 		053E29CE85A48E71B951565E /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02A8FA7922969CCA001FB3DD /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				02E7F84B2293A864002B55F2 /* TouchDataStore.swift */,
+				B394C0B222950F2E00706BB3 /* GpsCompassData.swift */,
+				023BB10922965B690094363B /* LocationDataStore.swift */,
+				02A8FA7A22969CE6001FB3DD /* StoreManager.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
 		634B8D94228566C30043607D /* Commands */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,11 +252,9 @@
 			isa = PBXGroup;
 			children = (
 				02A8FA75229673B9001FB3DD /* NetworkAdapter.swift */,
-				B394C0B222950F2E00706BB3 /* GpsCompassData.swift */,
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				634B8D92228565F00043607D /* Command.swift */,
-				02E7F84B2293A864002B55F2 /* TouchDataStore.swift */,
-				023BB10922965B690094363B /* LocationDataStore.swift */,
+				02A8FA7922969CCA001FB3DD /* Stores */,
 				63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */,
 				02A8FA7722967CBF001FB3DD /* Messenger.swift */,
 				023BB10522965B490094363B /* Utils.swift */,
@@ -494,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
+				02A8FA7B22969CE6001FB3DD /* StoreManager.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
 				023BB10A22965B690094363B /* LocationDataStore.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,

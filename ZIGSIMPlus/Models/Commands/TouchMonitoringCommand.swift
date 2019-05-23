@@ -39,7 +39,6 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
                 }
             }
             
-            Messenger.send(touches: touches)
             completion?(stringMsg)
         }
         

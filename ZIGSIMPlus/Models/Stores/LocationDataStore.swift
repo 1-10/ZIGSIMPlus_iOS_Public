@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import SwiftOSC
 
 /// Data store for commands which depend on LocationManager.
 /// e.g.) GPS, iBeacon, etc.
@@ -112,5 +113,33 @@ extension LocationDataStore: CLLocationManagerDelegate {
         default:
             break;
         }
+    }
+}
+
+extension LocationDataStore : Store {
+    func toOSC() -> [OSCMessage] {
+        let deviceUUID = AppSettingModel.shared.deviceUUID
+        
+        return beacons.enumerated().map { (i, beacon)  in
+            return OSCMessage(
+                OSCAddressPattern("/\(deviceUUID)/beacon\(i)"),
+                beacon.proximityUUID.uuidString,
+                beacon.major.intValue,
+                beacon.minor.intValue,
+                beacon.rssi
+            )
+        }
+    }
+    
+    func toJSON() -> [String:AnyObject] {
+        let objs = beacons.map { beacon in
+            return [
+                "uuid": beacon.proximityUUID.uuidString,
+                "major": beacon.major.intValue,
+                "minor": beacon.minor.intValue,
+                "rssi": beacon.rssi
+            ]
+        }
+        return ["beacons": objs as AnyObject]
     }
 }

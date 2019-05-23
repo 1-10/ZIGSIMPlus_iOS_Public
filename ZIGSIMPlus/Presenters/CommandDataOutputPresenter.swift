@@ -64,6 +64,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             }
         }
 
+        StoreManager.shared.send()
         updateOutput()
     }
     

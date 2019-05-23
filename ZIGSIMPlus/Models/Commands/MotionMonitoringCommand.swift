@@ -26,8 +26,6 @@ public final class MotionMonitoringCommand: AutoUpdatedCommand {
                     return
                 }
                 
-                Messenger.send(accel: accelData)
-                
                 completion?("""
                     accel:x:\(accelData.acceleration.x)
                     accel:y:\(accelData.acceleration.y)
