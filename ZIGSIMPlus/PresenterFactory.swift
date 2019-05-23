@@ -23,6 +23,7 @@ class PresenterFactory {
         presenter.commands.append(MotionMonitoringCommand())
         presenter.commands.append(TouchMonitoringCommand())
         presenter.commands.append(BatteryMonitoringCommand())
+        presenter.commands.append(BeaconMonitoringCommand())
         return presenter
     }
 }

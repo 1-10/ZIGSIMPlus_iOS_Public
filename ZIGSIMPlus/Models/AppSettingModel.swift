@@ -22,4 +22,8 @@ public class AppSettingModel {
     var messageInterval: TimeInterval {
         return 1.0 / Double(messageRatePerSecond)
     }
+    
+    // TODO: Save values to device storage like UserDefaults
+    let deviceUUID:String = Utils.randomStringWithLength(16)
+    let beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
 }
