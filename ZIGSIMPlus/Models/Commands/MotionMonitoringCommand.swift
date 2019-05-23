@@ -41,32 +41,32 @@ public final class MotionMonitoringCommand: AutoUpdatedCommand {
 
         var result = ""
         if isAccelerationActive {
-            result += """
+            result.appendLines("""
             accel:x:\(motion.userAcceleration.x)
             accel:y:\(motion.userAcceleration.y)
             accel:z:\(motion.userAcceleration.z)
-            """
+            """)
         }
         if isGravityActive {
-            result += """
+            result.appendLines("""
             gravity:x:\(motion.gravity.x)
             gravity:y:\(motion.gravity.y)
             gravity:z:\(motion.gravity.z)
-            """
+            """)
         }
         if isGyroActive {
-            result += """
+            result.appendLines("""
             gyro:x:\(motion.rotationRate.x)
             gyro:y:\(motion.rotationRate.y)
             gyro:z:\(motion.rotationRate.z)
-            """
+            """)
         }
         if isQuaternionActive {
-            result += """
+            result.appendLines("""
             quaternion:x:\(motion.attitude.quaternion.x)
             quaternion:y:\(motion.attitude.quaternion.y)
             quaternion:z:\(motion.attitude.quaternion.z)
-            """
+            """)
         }
         
         return result
