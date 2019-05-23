@@ -22,7 +22,6 @@ public class MiscDataStore {
     var accel: CMAcceleration = CMAcceleration()
     var gravity: CMAcceleration = CMAcceleration()
     var gyro: CMRotationRate = CMRotationRate()
-//    var rotation: CMRotationRate = CMRotationRate()
     var quaternion: CMQuaternion = CMQuaternion()
 }
 
@@ -44,6 +43,34 @@ extension MiscDataStore : Store {
             ))
         }
         
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gravity]! {
+            messages.append(OSCMessage(
+                OSCAddressPattern("/\(deviceUUID)/gravity"),
+                gravity.x,
+                gravity.y,
+                gravity.z
+            ))
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gyro]! {
+            messages.append(OSCMessage(
+                OSCAddressPattern("/\(deviceUUID)/gyro"),
+                gyro.x,
+                gyro.y,
+                gyro.z
+            ))
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.quaternion]! {
+            messages.append(OSCMessage(
+                OSCAddressPattern("/\(deviceUUID)/quaternion"),
+                quaternion.x,
+                quaternion.y,
+                quaternion.z,
+                quaternion.w
+            ))
+        }
+        
         return messages
     }
     
@@ -60,10 +87,41 @@ extension MiscDataStore : Store {
                     "x": accel.x,
                     "y": accel.y,
                     "z": accel.z
-                ] as AnyObject
+                    ] as AnyObject
             ]) { $1 }
         }
-
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gravity]! {
+            data.merge([
+                "gravity": [
+                    "x": gravity.x,
+                    "y": gravity.y,
+                    "z": gravity.z
+                    ] as AnyObject
+            ]) { $1 }
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gyro]! {
+            data.merge([
+                "gyro": [
+                    "x": gyro.x,
+                    "y": gyro.y,
+                    "z": gyro.z
+                    ] as AnyObject
+            ]) { $1 }
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.quaternion]! {
+            data.merge([
+                "quaternion": [
+                    "x": quaternion.x,
+                    "y": quaternion.y,
+                    "z": quaternion.z,
+                    "w": quaternion.w
+                    ] as AnyObject
+            ]) { $1 }
+        }
+        
         return data
     }
 }
