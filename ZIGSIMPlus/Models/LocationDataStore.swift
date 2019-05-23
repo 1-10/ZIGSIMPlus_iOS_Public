@@ -18,18 +18,17 @@ public class LocationDataStore: NSObject {
 
     // MARK: - Instance Properties
 
-    private var isEnabled: Bool = false
     private var isAuthorized: Bool = false
     private let locationManager: CLLocationManager = CLLocationManager()
 
     // For GPS
     private var latitudeData: Double = 0.0
     private var longitudeData: Double = 0.0
-    var callbackGps: (([Double]) -> Void)? = nil
+    var gpsCallback: (([Double]) -> Void)? = nil
 
     // For compass
     private var compassData: Double = 0.0
-    var callbackCompass: ((Double) -> Void)? = nil
+    var compassCallback: ((Double) -> Void)? = nil
 
     // beacons data
     private let beaconRegion : CLBeaconRegion
@@ -42,7 +41,7 @@ public class LocationDataStore: NSObject {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
         // Init compass
-        /* T.B.D 設定画面で向きを設定変更できるようにする↓ */
+        // T.B.D 設定画面で向きを設定変更できるようにする↓
         locationManager.headingOrientation = .faceUp
         locationManager.headingOrientation = .portrait
 
@@ -51,31 +50,23 @@ public class LocationDataStore: NSObject {
         let uuid = UUID(uuidString: appSetting.beaconUUID)!
         let deviceUUID =  appSetting.deviceUUID
         beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: "\(deviceUUID) region")
+
+        super.init()
+        locationManager.delegate = self
     }
 
     // MARK: - Public methods
 
-    func enable() {
-        isEnabled = true
-
-        if #available(iOS 8.0, *) {
-            locationManager.delegate = self
-            if isAuthorized {
-                locationManager.startMonitoring(for: beaconRegion)
-                locationManager.startRangingBeacons(in: beaconRegion)
-            }
-            else {
-                // Request authorization if needed
-                locationManager.requestAlwaysAuthorization()
-            }
-        } else {
-            // Fallback on earlier versions
+    func startBeacons() {
+        if isLocationAvailable() {
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startMonitoring(for: beaconRegion)
+            locationManager.startRangingBeacons(in: beaconRegion)
         }
     }
 
-    func disable() {
-        isEnabled = false
-        if isAuthorized {
+    func stopBeacons() {
+        if isLocationAvailable() {
             locationManager.stopRangingBeacons(in: beaconRegion)
             locationManager.stopMonitoring(for: beaconRegion)
         }
@@ -83,34 +74,28 @@ public class LocationDataStore: NSObject {
     }
 
     func startGps() {
-        if #available(iOS 8.0, *) {
-            if CLLocationManager.locationServicesEnabled() {
-                locationManager.startUpdatingLocation()
-            }
+        if isLocationAvailable() {
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
         }
     }
 
     func stopGps() {
-        if #available(iOS 8.0, *) {
-            if CLLocationManager.locationServicesEnabled() {
-                locationManager.stopUpdatingLocation()
-            }
+        if isLocationAvailable() {
+            locationManager.stopUpdatingLocation()
         }
     }
 
     func startCompass() {
-        if #available(iOS 8.0, *) {
-            if CLLocationManager.locationServicesEnabled() {
-                locationManager.startUpdatingHeading()
-            }
+        if isLocationAvailable() {
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingHeading()
         }
     }
 
     func stopCompass() {
-        if #available(iOS 8.0, *) {
-            if CLLocationManager.locationServicesEnabled() {
-                locationManager.stopUpdatingHeading()
-            }
+        if isLocationAvailable() {
+            locationManager.stopUpdatingHeading()
         }
     }
 
@@ -118,21 +103,27 @@ public class LocationDataStore: NSObject {
 
     private func updateCompassData() {
         print("compassData:\(self.compassData)")
-        callbackCompass?(self.compassData)
+        compassCallback?(self.compassData)
     }
 
     private func updateGpsData() {
         print("gpsData:latitudeData:\(self.latitudeData)")
         print("gpsData:longitudeData:\(self.longitudeData)")
-        var gpsData = [0.0,0.0]
-        gpsData[0] = self.latitudeData
-        gpsData[1] = self.longitudeData
-        callbackGps?(gpsData)
+        gpsCallback?([latitudeData, longitudeData])
     }
 
     private func updateBeaconsData() {
         print("beacons:\(beacons.count)")
         beaconsCallback?(beacons)
+    }
+    
+    private func isLocationAvailable() -> Bool {
+        if #available(iOS 8.0, *) {
+            if CLLocationManager.locationServicesEnabled() {
+                return true
+            }
+        }
+        return false
     }
 }
 
@@ -182,11 +173,8 @@ extension LocationDataStore: CLLocationManagerDelegate {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             isAuthorized = true
-            locationManager.startMonitoring(for: beaconRegion)
-            locationManager.startRangingBeacons(in: beaconRegion)
-            break;
         default:
-            break;
+            isAuthorized = false
         }
     }
 }

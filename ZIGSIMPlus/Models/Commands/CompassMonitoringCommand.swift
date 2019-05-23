@@ -13,7 +13,7 @@ public final class CompassMonitoringCommand: AutoUpdatedCommand {
     
     public func start(completion: ((String?) -> Void)?) {
         LocationDataStore.shared.startCompass()
-        LocationDataStore.shared.callbackCompass = { (compassData) in
+        LocationDataStore.shared.compassCallback = { (compassData) in
             // compass:faceupは設定画面作成後に追加
             completion?("""
                 compass:compass:\(compassData)

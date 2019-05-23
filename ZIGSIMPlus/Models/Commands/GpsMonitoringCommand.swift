@@ -13,7 +13,7 @@ public final class GpsMonitoringCommand: AutoUpdatedCommand {
 
     public func start(completion: ((String?) -> Void)?) {
         LocationDataStore.shared.startGps()
-        LocationDataStore.shared.callbackGps = { (gpsData) in
+        LocationDataStore.shared.gpsCallback = { (gpsData) in
             completion?("""
                 compass:latitude:\(gpsData[0])
                 compass:longitude:\(gpsData[1])
