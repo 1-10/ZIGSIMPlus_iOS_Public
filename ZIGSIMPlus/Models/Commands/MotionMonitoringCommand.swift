@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CoreMotion
+import CoreMotion 
 import SwiftOSC
 
 public final class MotionMonitoringCommand: AutoUpdatedCommand {

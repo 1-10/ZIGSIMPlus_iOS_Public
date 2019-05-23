@@ -39,4 +39,8 @@ public class AppSettingModel {
 //    var transportProtocol: TransportProtocol = .UDP
     var transportProtocol: TransportProtocol = .TCP
     var transportFormat: TransportFormat = .OSC
+
+    // TODO: Save values to device storage like UserDefaults
+    let deviceUUID:String = Utils.randomStringWithLength(16)
+    let beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
 }
