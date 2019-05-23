@@ -28,6 +28,14 @@ public class CommandAndCommandDataMediator {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.touch]
             else { fatalError("AppSetting of the CommandData nil") }
             return b
+        } else if type(of: command) == CompassMonitoringCommand.self {
+            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]
+            else { fatalError("AppSetting of the CommandData nil") }
+            return b
+        } else if type(of: command) == GpsMonitoringCommand.self {
+            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gps]
+            else { fatalError("AppSetting of the CommandData nil") }
+            return b
         }
 
         fatalError("Unexpected Command")
@@ -38,6 +46,10 @@ public class CommandAndCommandDataMediator {
             return 1
         } else if type(of: command) == TouchMonitoringCommand.self {
             return 2
+        } else if type(of: command) == CompassMonitoringCommand.self {
+            return 3
+        } else if type(of: command) == GpsMonitoringCommand.self {
+            return 4
         } else if type(of: command) == BeaconMonitoringCommand.self {
             return 11
         } else if type(of: command) == BatteryMonitoringCommand.self {

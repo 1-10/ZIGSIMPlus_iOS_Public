@@ -14,7 +14,7 @@ class PresenterFactory {
         presenter.view = view
         return presenter
     }
-    
+
     func createCommandDataOutputPresenter(view: CommandDataOutputPresenterDelegate) -> CommandDataOutputPresenter {
         let presenter = CommandDataOutputPresenter()
         presenter.view = view
@@ -23,6 +23,8 @@ class PresenterFactory {
         presenter.commands.append(MotionMonitoringCommand())
         presenter.commands.append(TouchMonitoringCommand())
         presenter.commands.append(BatteryMonitoringCommand())
+        presenter.commands.append(CompassMonitoringCommand())
+        presenter.commands.append(GpsMonitoringCommand())
         presenter.commands.append(BeaconMonitoringCommand())
         return presenter
     }

@@ -29,6 +29,9 @@
 		9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */; };
 		9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */; };
 		9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */; };
+		B394C0B322950F2F00706BB3 /* GpsCompassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B222950F2E00706BB3 /* GpsCompassData.swift */; };
+		B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */; };
+		B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataOutputPresenter.swift; sourceTree = "<group>"; };
 		9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionMonitoringCommand.swift; sourceTree = "<group>"; };
 		9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
+		B394C0B222950F2E00706BB3 /* GpsCompassData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GpsCompassData.swift; sourceTree = "<group>"; };
+		B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsMonitoringCommand.swift; sourceTree = "<group>"; };
+		B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassMonitoringCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,8 @@
 				02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */,
 				023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */,
 				9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */,
+				B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */,
+				B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -199,6 +207,7 @@
 		9092E4C7227D85890019F1C1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B394C0B222950F2E00706BB3 /* GpsCompassData.swift */,
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				634B8D92228565F00043607D /* Command.swift */,
 				02E7F84B2293A864002B55F2 /* TouchDataStore.swift */,
@@ -354,9 +363,12 @@
 				02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */,
 				02E7F84C2293A864002B55F2 /* TouchDataStore.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
+				B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
+				B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */,
+				B394C0B322950F2F00706BB3 /* GpsCompassData.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
