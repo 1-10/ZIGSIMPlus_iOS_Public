@@ -10,19 +10,19 @@ import Foundation
 import CoreLocation
 
 public final class GpsMonitoringCommand: AutoUpdatedCommand {
-    
+
     public func start(completion: ((String?) -> Void)?) {
-        GpsCompassData.shared.startGps()
-        GpsCompassData.shared.callbackGps = { (gpsData) in
+        LocationDataStore.shared.startGps()
+        LocationDataStore.shared.callbackGps = { (gpsData) in
             completion?("""
                 compass:latitude:\(gpsData[0])
                 compass:longitude:\(gpsData[1])
                 """)
         }
     }
-    
+
     public func stop(completion: ((String?) -> Void)?) {
-        GpsCompassData.shared.stopGps()
+        LocationDataStore.shared.stopGps()
         completion?(nil)
     }
 }
