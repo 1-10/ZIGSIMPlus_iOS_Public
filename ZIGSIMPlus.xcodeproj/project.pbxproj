@@ -32,7 +32,6 @@
 		B358A85C22981F7700D2AB5A /* MiscDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B358A85B22981F7700D2AB5A /* MiscDataStore.swift */; };
 		B358A85E22981F7B00D2AB5A /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B358A85D22981F7B00D2AB5A /* StoreManager.swift */; };
 		B358A86022981F7E00D2AB5A /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B358A85F22981F7E00D2AB5A /* TouchDataStore.swift */; };
-		B358A86C2298250100D2AB5A /* Utils in Resources */ = {isa = PBXBuildFile; fileRef = B358A86B2298250100D2AB5A /* Utils */; };
 		B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */; };
 		B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */; };
 		B3BB76842296781C003F6B2B /* CommandDataSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BB76832296781C003F6B2B /* CommandDataSettingViewController.swift */; };
@@ -97,7 +96,6 @@
 		B358A85B22981F7700D2AB5A /* MiscDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscDataStore.swift; sourceTree = "<group>"; };
 		B358A85D22981F7B00D2AB5A /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		B358A85F22981F7E00D2AB5A /* TouchDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
-		B358A86B2298250100D2AB5A /* Utils */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Utils; sourceTree = "<group>"; };
 		B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsMonitoringCommand.swift; sourceTree = "<group>"; };
 		B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassMonitoringCommand.swift; sourceTree = "<group>"; };
 		B3BB76832296781C003F6B2B /* CommandDataSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSettingViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 		902EB9C8227BE68D008F1650 /* ZIGSIMPlus */ = {
 			isa = PBXGroup;
 			children = (
-				B358A86B2298250100D2AB5A /* Utils */,
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
 				9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */,
 				9092E4C7227D85890019F1C1 /* Models */,
@@ -389,7 +386,6 @@
 			files = (
 				902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */,
 				902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */,
-				B358A86C2298250100D2AB5A /* Utils in Resources */,
 				902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
