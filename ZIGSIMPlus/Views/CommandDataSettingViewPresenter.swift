@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyUserDefaults
 
 public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDelegate, ContentScrollable{
     
@@ -35,50 +36,45 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
         self.view.addSubview(self.scrollView)
 
         // set delegate and editor
-        setTextFieldSetting(texField: ipAdressTextField, text: AppSettingModel.userIpAdress)
-        setTextFieldSetting(texField: portNumberTextField, text: AppSettingModel.userPortNumber)
-        setTextFieldSetting(texField: uuidTextField, text: AppSettingModel.userDeviceUUID)
-        setTextFieldSetting(texField: beaconUUID1TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:0))
-        setTextFieldSetting(texField: beaconUUID2TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:1))
-        setTextFieldSetting(texField: beaconUUID3TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:2))
-        setTextFieldSetting(texField: beaconUUID4TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:3))
-        setTextFieldSetting(texField: beaconUUID5TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:4))
+        setTextFieldSetting(texField: ipAdressTextField, text: Defaults[.userDataDestination]!.description)
+        setTextFieldSetting(texField: portNumberTextField, text: Defaults[.userPortNumber]!.description)
+        setTextFieldSetting(texField: uuidTextField, text: Defaults[.userDeviceUUID]!.description)
+        setTextFieldSetting(texField: beaconUUID1TextField, text: Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:0))
+        setTextFieldSetting(texField: beaconUUID2TextField, text: Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:1))
+        setTextFieldSetting(texField: beaconUUID3TextField, text: Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:2))
+        setTextFieldSetting(texField: beaconUUID4TextField, text: Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:3))
+        setTextFieldSetting(texField: beaconUUID5TextField, text: Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:4))
         
-        // set segment
-        if AppSettingModel.userDataDestination == "LOCAL_FILE" {
+        // set segmented control
+        if Defaults[.userDataDestination] == "LOCAL_FILE" {
             dataDestinationSeg.selectedSegmentIndex = 0
-        } else if AppSettingModel.userDataDestination == "OTHER_APP" {
+        } else if Defaults[.userDataDestination] == "OTHER_APP" {
             dataDestinationSeg.selectedSegmentIndex = 1
         }
-        if AppSettingModel.userProtocolo == "UDP" {
+        if Defaults[.userProtocolo] == "UDP" {
             protocoloSeg.selectedSegmentIndex = 0
-        } else if AppSettingModel.userProtocolo == "TCP" {
+        } else if Defaults[.userProtocolo] == "TCP" {
             protocoloSeg.selectedSegmentIndex = 1
         }
-        if AppSettingModel.userMessageFormat == "JSON" {
+        if Defaults[.userMessageFormat] == "JSON" {
             messageFormatSeg.selectedSegmentIndex = 0
-        } else if AppSettingModel.userMessageFormat == "OSC" {
+        } else if Defaults[.userMessageFormat] == "OSC" {
             messageFormatSeg.selectedSegmentIndex = 1
         }
-        if  AppSettingModel.userMessageRatePerSecond == 1 {
+        if  Defaults[.userMessageRatePerSecond] == 1 {
             messageRateSeg.selectedSegmentIndex = 0
-        } else if  AppSettingModel.userMessageRatePerSecond == 10 {
+        } else if Defaults[.userMessageRatePerSecond] == 10 {
             messageRateSeg.selectedSegmentIndex = 1
-        } else if  AppSettingModel.userMessageRatePerSecond == 30 {
+        } else if Defaults[.userMessageRatePerSecond] == 30 {
             messageRateSeg.selectedSegmentIndex = 2
-        } else if  AppSettingModel.userMessageRatePerSecond == 60 {
+        } else if Defaults[.userMessageRatePerSecond] == 60 {
             messageRateSeg.selectedSegmentIndex = 3
         }
-        if AppSettingModel.userCompassAngle == 0.0 {
+        if Defaults[.userCompassAngle] == 0.0 {
             compassAngleSeg.selectedSegmentIndex = 0
-        } else if AppSettingModel.userCompassAngle == 1.0 {
+        } else if Defaults[.userCompassAngle] == 1.0 {
             compassAngleSeg.selectedSegmentIndex = 1
         }
-    }
-    
-    public func setTextFieldSetting(texField:UITextField, text:String) {
-        texField.text = String(text)
-        texField.delegate = self
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -87,73 +83,66 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
     }
     
     override public func viewWillDisappear(_ animated: Bool) {
-        
+        super.viewWillDisappear(animated)
         removeObserver()
         
-        // DATA DESTINATION
+        // set DATA DESTINATION
         if dataDestinationSeg.selectedSegmentIndex == 0 {
             AppSettingModel.shared.dataDestination = "LOCAL_FILE"
-            AppSettingModel.userDataDestination = AppSettingModel.shared.dataDestination
         } else if dataDestinationSeg.selectedSegmentIndex == 1 {
             AppSettingModel.shared.dataDestination = "OTHER_APP"
-            AppSettingModel.userDataDestination = AppSettingModel.shared.dataDestination
         }
+        Defaults[.userDataDestination] = AppSettingModel.shared.dataDestination
         
-        // PROTOCOL
+        // set PROTOCOL
         if protocoloSeg.selectedSegmentIndex == 0 {
             AppSettingModel.shared.protocolo = "UDP"
-            AppSettingModel.userProtocolo = AppSettingModel.shared.protocolo
         } else if protocoloSeg.selectedSegmentIndex == 1 {
             AppSettingModel.shared.protocolo = "TCP"
-            AppSettingModel.userProtocolo = AppSettingModel.shared.protocolo
         }
+        Defaults[.userProtocolo] = AppSettingModel.shared.protocolo
         
-        // IP ADDRESS
+        // set IP ADDRESS
         AppSettingModel.shared.ipAdress = ipAdressTextField.text!
-        AppSettingModel.userIpAdress = AppSettingModel.shared.ipAdress
+        Defaults[.userIpAdress] = AppSettingModel.shared.ipAdress
         
-        // PORT NUMBER
+        // set PORT NUMBER
         AppSettingModel.shared.portNumber = portNumberTextField.text!
-        AppSettingModel.userPortNumber = AppSettingModel.shared.portNumber
+        Defaults[.userPortNumber] = AppSettingModel.shared.portNumber
         
-        // MESSAGE FORMAT
+        // set MESSAGE FORMAT
         if messageFormatSeg.selectedSegmentIndex == 0 {
             AppSettingModel.shared.messageFormat = "JSON"
-            AppSettingModel.userMessageFormat = AppSettingModel.shared.messageFormat
         } else if messageFormatSeg.selectedSegmentIndex == 1 {
-           AppSettingModel.shared.messageFormat = "OSC"
-           AppSettingModel.userMessageFormat = AppSettingModel.shared.messageFormat
+            AppSettingModel.shared.messageFormat = "OSC"
         }
+        Defaults[.userMessageFormat] = AppSettingModel.shared.messageFormat
         
-        // MESSAGE RATE(PER SEC)
+        // set MESSAGE RATE(PER SEC)
         if  messageRateSeg.selectedSegmentIndex == 0 {
             AppSettingModel.shared.messageRatePerSecond = 1
-            AppSettingModel.userMessageRatePerSecond = AppSettingModel.shared.messageRatePerSecond
         } else if  messageRateSeg.selectedSegmentIndex == 1 {
             AppSettingModel.shared.messageRatePerSecond = 10
-            AppSettingModel.userMessageRatePerSecond = AppSettingModel.shared.messageRatePerSecond
         } else if  messageRateSeg.selectedSegmentIndex == 2 {
             AppSettingModel.shared.messageRatePerSecond = 30
-            AppSettingModel.userMessageRatePerSecond = AppSettingModel.shared.messageRatePerSecond
         } else if  messageRateSeg.selectedSegmentIndex == 3 {
             AppSettingModel.shared.messageRatePerSecond = 60
-            AppSettingModel.userMessageRatePerSecond = AppSettingModel.shared.messageRatePerSecond
         }
+        Defaults[.userMessageRatePerSecond] = AppSettingModel.shared.messageRatePerSecond
         
-        // DEVICE UUID
+        // set DEVICE UUID
         AppSettingModel.shared.deviceUUID = uuidTextField.text!
-        AppSettingModel.userDeviceUUID = AppSettingModel.shared.deviceUUID
+        Defaults[.userDeviceUUID] = AppSettingModel.shared.deviceUUID
         
-        // COMPASS ANGLE
+        // set COMPASS ANGLE
         if compassAngleSeg.selectedSegmentIndex == 0 {
             AppSettingModel.shared.compassAngle = 0.0
-            AppSettingModel.userCompassAngle = AppSettingModel.shared.compassAngle
         } else if compassAngleSeg.selectedSegmentIndex == 1 {
             AppSettingModel.shared.compassAngle = 1.0
-            AppSettingModel.userCompassAngle = AppSettingModel.shared.compassAngle
         }
+        Defaults[.userCompassAngle] = AppSettingModel.shared.compassAngle
         
-        // BEACON UUID
+        // set BEACON UUID
         var beaconUUID = beaconUUID1TextField.text!
         beaconUUID += "-"
         beaconUUID += beaconUUID2TextField.text!
@@ -164,7 +153,12 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
         beaconUUID += "-"
         beaconUUID += beaconUUID5TextField.text!
         AppSettingModel.shared.beaconUUID = beaconUUID
-        AppSettingModel.userBeaconUUID = AppSettingModel.shared.beaconUUID
+        Defaults[.userBeaconUUID] = AppSettingModel.shared.beaconUUID
+    }
+    
+    public func setTextFieldSetting(texField:UITextField, text:String) {
+        texField.text = String(text)
+        texField.delegate = self
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
@@ -282,5 +276,4 @@ extension UITextField {
         
         selectedTextRange = selection
     }
-    
 }

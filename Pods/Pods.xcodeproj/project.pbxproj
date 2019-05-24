@@ -1,0 +1,999 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15225619F4D14EB363A2F4B8AE8E5AFE /* SwiftyUserDefaults-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BCF7B21DB4A709EAB5E64F77A51FB82 /* SwiftyUserDefaults-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		200CBB6D6524DBDA8FA70B2E07250CEF /* Pods-ZIGSIMPlusTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1535796B2FF08E9C59494403DEAD0694 /* Pods-ZIGSIMPlusTests-dummy.m */; };
+		36F6574D348052E5A1D23D1B45D2E9DC /* Defaults+Observing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896ECBDE54374C3B57A496899B868378 /* Defaults+Observing.swift */; };
+		3C958D69F66B81D7F2B368FEBD673838 /* DefaultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F3CAB56A54D5A899A2FADAE5144B76 /* DefaultsObserver.swift */; };
+		4431AD4CAE38DC102B467ED45A2C1319 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1A9289EB0AE88F010ABACD170F645 /* DefaultsKeys.swift */; };
+		605A80189985F59683B0629781535780 /* DefaultsSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAD22682D71DD5A9836338D9AEA7626 /* DefaultsSerializable.swift */; };
+		64F0B72EF94BDD6AA85750EE7E37D5A9 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA33BE5AE5EBE7CAD4AAC4C08E186E1 /* Defaults.swift */; };
+		67E4E3B7E999B7E2C1877A3C86CE732D /* Pods-ZIGSIMPlusTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BE857E76463DD0A7F736909A7542638E /* Pods-ZIGSIMPlusTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		696308F504C9E8A5E529719D7968BCEA /* DefaultsBridges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E544F226C22373FEF921F25012A9E /* DefaultsBridges.swift */; };
+		70107BE2506BB30C3EEEA236C174931E /* Pods-ZIGSIMPlusUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 72FC1D8C8139D1F0C22A793DDDEB27C6 /* Pods-ZIGSIMPlusUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7228B6A957D6DEE8B0082B142D41299C /* SwiftyUserDefaults-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 289A19B8A992599CEB6FFAA191A02DD6 /* SwiftyUserDefaults-dummy.m */; };
+		869A38AD620F7EA97FE65B4085B86010 /* Defaults+Subscripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3915CD10C42D34D0958EB69EAD5907 /* Defaults+Subscripts.swift */; };
+		A6FF1C6B0FA457311727D310A5593377 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		AC5B5F96C87589572A8E5C1807E5A158 /* Defaults+StringToBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9324C249EB0A2EBEE91DED1A65D6B9 /* Defaults+StringToBool.swift */; };
+		AEDC085D678516BF22DC6ABE967610DF /* DefaultsSerializable+BuiltIns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0801F1BCAACCEC4A33424A9634387D /* DefaultsSerializable+BuiltIns.swift */; };
+		B2B14B0AB63AA5450E4708A59F290E63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		B9B1F005113D0861F818A79D696AE240 /* Pods-ZIGSIMPlus-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A796D45B588A4E6EC65023FE49F34493 /* Pods-ZIGSIMPlus-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA9252537F395A9B0930C8713076A0F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		BE76D54DBF1676A0F5F95D7C922A8BC1 /* Pods-ZIGSIMPlus-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 68257931F64E26AE514D3D327629F665 /* Pods-ZIGSIMPlus-dummy.m */; };
+		E4B04EC7DFD15C0FDD0A7F91B2B733DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		E987A7F43B6430BFB12B729FC21DE08F /* Pods-ZIGSIMPlusUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA375B75BAFD0D1DD5CDF4B9085394FD /* Pods-ZIGSIMPlusUITests-dummy.m */; };
+		F133112ED0B1122C5C9A51F69E160B6C /* OptionalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6748E9BE5971129B869D34F3F1E8C6CA /* OptionalType.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2D89B1A97109E8CBE57DA825C6E45BCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06738016C076A024EB35CCE8E8B8D437;
+			remoteInfo = "Pods-ZIGSIMPlus";
+		};
+		398BC6C94FD5EFC58CFB5E8BDB1E5A4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5981ECAF5F37AF229ECFC9C9654958DB;
+			remoteInfo = SwiftyUserDefaults;
+		};
+		CF3CE91CE1DA73A8BC0DD93DD8BAD371 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06738016C076A024EB35CCE8E8B8D437;
+			remoteInfo = "Pods-ZIGSIMPlus";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		050D289735EE4FCB588F146F3B2E2C46 /* SwiftyUserDefaults-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyUserDefaults-Info.plist"; sourceTree = "<group>"; };
+		09413D5B30ED8C169C0A52F21E5CA0AB /* Pods-ZIGSIMPlus.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZIGSIMPlus.modulemap"; sourceTree = "<group>"; };
+		0BCF7B21DB4A709EAB5E64F77A51FB82 /* SwiftyUserDefaults-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyUserDefaults-umbrella.h"; sourceTree = "<group>"; };
+		13C2B01E8539EF23D8E335AD920F22FD /* SwiftyUserDefaults.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyUserDefaults.modulemap; sourceTree = "<group>"; };
+		1535796B2FF08E9C59494403DEAD0694 /* Pods-ZIGSIMPlusTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZIGSIMPlusTests-dummy.m"; sourceTree = "<group>"; };
+		25F3CAB56A54D5A899A2FADAE5144B76 /* DefaultsObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultsObserver.swift; path = Sources/DefaultsObserver.swift; sourceTree = "<group>"; };
+		289A19B8A992599CEB6FFAA191A02DD6 /* SwiftyUserDefaults-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyUserDefaults-dummy.m"; sourceTree = "<group>"; };
+		2EC1A9289EB0AE88F010ABACD170F645 /* DefaultsKeys.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultsKeys.swift; path = Sources/DefaultsKeys.swift; sourceTree = "<group>"; };
+		2FD3B44A5D9D3EAAE70246010DDC8A70 /* Pods-ZIGSIMPlusUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZIGSIMPlusUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		4BAD22682D71DD5A9836338D9AEA7626 /* DefaultsSerializable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultsSerializable.swift; path = Sources/DefaultsSerializable.swift; sourceTree = "<group>"; };
+		4C1ECBE94B1B90FBFB1755495E75E7D3 /* Pods-ZIGSIMPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZIGSIMPlus.release.xcconfig"; sourceTree = "<group>"; };
+		567722DDFA503E7BE37B5D3B7C991D2C /* Pods-ZIGSIMPlusTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZIGSIMPlusTests-Info.plist"; sourceTree = "<group>"; };
+		57675E55428F82E51C64E0940D521B4D /* Pods-ZIGSIMPlusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZIGSIMPlusTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6748E9BE5971129B869D34F3F1E8C6CA /* OptionalType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OptionalType.swift; path = Sources/OptionalType.swift; sourceTree = "<group>"; };
+		68257931F64E26AE514D3D327629F665 /* Pods-ZIGSIMPlus-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZIGSIMPlus-dummy.m"; sourceTree = "<group>"; };
+		6839EA3B4F8B9CB534BAD0FCC362B1C1 /* Pods-ZIGSIMPlusTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZIGSIMPlusTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		6C0801F1BCAACCEC4A33424A9634387D /* DefaultsSerializable+BuiltIns.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DefaultsSerializable+BuiltIns.swift"; path = "Sources/DefaultsSerializable+BuiltIns.swift"; sourceTree = "<group>"; };
+		72FC1D8C8139D1F0C22A793DDDEB27C6 /* Pods-ZIGSIMPlusUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZIGSIMPlusUITests-umbrella.h"; sourceTree = "<group>"; };
+		7A3915CD10C42D34D0958EB69EAD5907 /* Defaults+Subscripts.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Defaults+Subscripts.swift"; path = "Sources/Defaults+Subscripts.swift"; sourceTree = "<group>"; };
+		896ECBDE54374C3B57A496899B868378 /* Defaults+Observing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Defaults+Observing.swift"; path = "Sources/Defaults+Observing.swift"; sourceTree = "<group>"; };
+		8AA33BE5AE5EBE7CAD4AAC4C08E186E1 /* Defaults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Sources/Defaults.swift; sourceTree = "<group>"; };
+		8B8E11D1E581C63B50C50D44BC8D56C7 /* Pods-ZIGSIMPlusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZIGSIMPlusUITests.release.xcconfig"; sourceTree = "<group>"; };
+		938E544F226C22373FEF921F25012A9E /* DefaultsBridges.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultsBridges.swift; path = Sources/DefaultsBridges.swift; sourceTree = "<group>"; };
+		94CA958BC2D54AC9F098087069723C4B /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A5E14B87D33E28BF81855C3D31A834D6 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyUserDefaults.framework; path = SwiftyUserDefaults.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A796D45B588A4E6EC65023FE49F34493 /* Pods-ZIGSIMPlus-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZIGSIMPlus-umbrella.h"; sourceTree = "<group>"; };
+		A9C23BF5B4856675F3A25D99C8F22770 /* Pods-ZIGSIMPlusUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZIGSIMPlusUITests-Info.plist"; sourceTree = "<group>"; };
+		AA2D132A108DB627458C7B5938C1D751 /* Pods_ZIGSIMPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZIGSIMPlusUITests.framework; path = "Pods-ZIGSIMPlusUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACD1227A4D47337B4F85D06E9937846C /* Pods-ZIGSIMPlusUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZIGSIMPlusUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B58B3BB6007B4A88EA38B64E347D29D6 /* Pods-ZIGSIMPlusTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZIGSIMPlusTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BE857E76463DD0A7F736909A7542638E /* Pods-ZIGSIMPlusTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZIGSIMPlusTests-umbrella.h"; sourceTree = "<group>"; };
+		CA42FB184CE204347B344E65ED095225 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZIGSIMPlus.framework; path = "Pods-ZIGSIMPlus.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D4BBBF1EB0E10608E0E706A53D834172 /* Pods-ZIGSIMPlusUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZIGSIMPlusUITests.modulemap"; sourceTree = "<group>"; };
+		D5872A7632FD75CA648E93AA76B26E4E /* Pods-ZIGSIMPlusTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZIGSIMPlusTests.modulemap"; sourceTree = "<group>"; };
+		D8BEC02E049F3B0CEA72EBCA42299E2E /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
+		D99810CE758797271F5B9147442DE4D5 /* Pods-ZIGSIMPlusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZIGSIMPlusTests.release.xcconfig"; sourceTree = "<group>"; };
+		DD81D68E9760E8FFCDA3482364D85BB6 /* Pods-ZIGSIMPlus-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZIGSIMPlus-acknowledgements.plist"; sourceTree = "<group>"; };
+		DD90CAD1A18C236ABA6D692F4A14D0DF /* SwiftyUserDefaults.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyUserDefaults.xcconfig; sourceTree = "<group>"; };
+		E837CC6116A926A6C835CAE6DBCC7C0F /* Pods_ZIGSIMPlusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZIGSIMPlusTests.framework; path = "Pods-ZIGSIMPlusTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA375B75BAFD0D1DD5CDF4B9085394FD /* Pods-ZIGSIMPlusUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZIGSIMPlusUITests-dummy.m"; sourceTree = "<group>"; };
+		ED53B5F15D6520C6251ADB32DCA8CA16 /* Pods-ZIGSIMPlus-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZIGSIMPlus-Info.plist"; sourceTree = "<group>"; };
+		EDC26A118097B844C647C6AFDC8AAE36 /* Pods-ZIGSIMPlus-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZIGSIMPlus-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EE9324C249EB0A2EBEE91DED1A65D6B9 /* Defaults+StringToBool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Defaults+StringToBool.swift"; path = "Sources/Defaults+StringToBool.swift"; sourceTree = "<group>"; };
+		F14FF43D91180F702C99648F49E00BA7 /* SwiftyUserDefaults-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyUserDefaults-prefix.pch"; sourceTree = "<group>"; };
+		F424E063C907FB519CC07CDA0EB925AA /* Pods-ZIGSIMPlus-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZIGSIMPlus-frameworks.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2EB3C1872F23803F3C08393BAA97D2B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA9252537F395A9B0930C8713076A0F3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42E3FFB009FEB812CFEEADDE38D83FC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4B04EC7DFD15C0FDD0A7F91B2B733DB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BBF02C1FF15780DF3215D75140A793D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2B14B0AB63AA5450E4708A59F290E63 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E97F469A1097BA21580105AB5CDF0964 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6FF1C6B0FA457311727D310A5593377 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14B76F88595B3F4165668AF0B7FF74B1 /* Pods-ZIGSIMPlus */ = {
+			isa = PBXGroup;
+			children = (
+				09413D5B30ED8C169C0A52F21E5CA0AB /* Pods-ZIGSIMPlus.modulemap */,
+				EDC26A118097B844C647C6AFDC8AAE36 /* Pods-ZIGSIMPlus-acknowledgements.markdown */,
+				DD81D68E9760E8FFCDA3482364D85BB6 /* Pods-ZIGSIMPlus-acknowledgements.plist */,
+				68257931F64E26AE514D3D327629F665 /* Pods-ZIGSIMPlus-dummy.m */,
+				F424E063C907FB519CC07CDA0EB925AA /* Pods-ZIGSIMPlus-frameworks.sh */,
+				ED53B5F15D6520C6251ADB32DCA8CA16 /* Pods-ZIGSIMPlus-Info.plist */,
+				A796D45B588A4E6EC65023FE49F34493 /* Pods-ZIGSIMPlus-umbrella.h */,
+				D8BEC02E049F3B0CEA72EBCA42299E2E /* Pods-ZIGSIMPlus.debug.xcconfig */,
+				4C1ECBE94B1B90FBFB1755495E75E7D3 /* Pods-ZIGSIMPlus.release.xcconfig */,
+			);
+			name = "Pods-ZIGSIMPlus";
+			path = "Target Support Files/Pods-ZIGSIMPlus";
+			sourceTree = "<group>";
+		};
+		226E16B9FAA7D43A48A6EDE8128611EE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				14B76F88595B3F4165668AF0B7FF74B1 /* Pods-ZIGSIMPlus */,
+				25FA26A38AC1DD56E76B0BC48914C81C /* Pods-ZIGSIMPlusTests */,
+				C8B358ED1612508040238A57B1F6F3D0 /* Pods-ZIGSIMPlusUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		25FA26A38AC1DD56E76B0BC48914C81C /* Pods-ZIGSIMPlusTests */ = {
+			isa = PBXGroup;
+			children = (
+				D5872A7632FD75CA648E93AA76B26E4E /* Pods-ZIGSIMPlusTests.modulemap */,
+				B58B3BB6007B4A88EA38B64E347D29D6 /* Pods-ZIGSIMPlusTests-acknowledgements.markdown */,
+				6839EA3B4F8B9CB534BAD0FCC362B1C1 /* Pods-ZIGSIMPlusTests-acknowledgements.plist */,
+				1535796B2FF08E9C59494403DEAD0694 /* Pods-ZIGSIMPlusTests-dummy.m */,
+				567722DDFA503E7BE37B5D3B7C991D2C /* Pods-ZIGSIMPlusTests-Info.plist */,
+				BE857E76463DD0A7F736909A7542638E /* Pods-ZIGSIMPlusTests-umbrella.h */,
+				57675E55428F82E51C64E0940D521B4D /* Pods-ZIGSIMPlusTests.debug.xcconfig */,
+				D99810CE758797271F5B9147442DE4D5 /* Pods-ZIGSIMPlusTests.release.xcconfig */,
+			);
+			name = "Pods-ZIGSIMPlusTests";
+			path = "Target Support Files/Pods-ZIGSIMPlusTests";
+			sourceTree = "<group>";
+		};
+		71411086E6CA932282CE8C34BA7E9FE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83C3811CDFCD688004212968ADBFE1BC /* SwiftyUserDefaults */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		83C3811CDFCD688004212968ADBFE1BC /* SwiftyUserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				8AA33BE5AE5EBE7CAD4AAC4C08E186E1 /* Defaults.swift */,
+				896ECBDE54374C3B57A496899B868378 /* Defaults+Observing.swift */,
+				EE9324C249EB0A2EBEE91DED1A65D6B9 /* Defaults+StringToBool.swift */,
+				7A3915CD10C42D34D0958EB69EAD5907 /* Defaults+Subscripts.swift */,
+				938E544F226C22373FEF921F25012A9E /* DefaultsBridges.swift */,
+				2EC1A9289EB0AE88F010ABACD170F645 /* DefaultsKeys.swift */,
+				25F3CAB56A54D5A899A2FADAE5144B76 /* DefaultsObserver.swift */,
+				4BAD22682D71DD5A9836338D9AEA7626 /* DefaultsSerializable.swift */,
+				6C0801F1BCAACCEC4A33424A9634387D /* DefaultsSerializable+BuiltIns.swift */,
+				6748E9BE5971129B869D34F3F1E8C6CA /* OptionalType.swift */,
+				8FD1CBBAAB987C5BEDB94F6B3C375B26 /* Support Files */,
+			);
+			name = SwiftyUserDefaults;
+			path = SwiftyUserDefaults;
+			sourceTree = "<group>";
+		};
+		8FD1CBBAAB987C5BEDB94F6B3C375B26 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				13C2B01E8539EF23D8E335AD920F22FD /* SwiftyUserDefaults.modulemap */,
+				DD90CAD1A18C236ABA6D692F4A14D0DF /* SwiftyUserDefaults.xcconfig */,
+				289A19B8A992599CEB6FFAA191A02DD6 /* SwiftyUserDefaults-dummy.m */,
+				050D289735EE4FCB588F146F3B2E2C46 /* SwiftyUserDefaults-Info.plist */,
+				F14FF43D91180F702C99648F49E00BA7 /* SwiftyUserDefaults-prefix.pch */,
+				0BCF7B21DB4A709EAB5E64F77A51FB82 /* SwiftyUserDefaults-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyUserDefaults";
+			sourceTree = "<group>";
+		};
+		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C8B358ED1612508040238A57B1F6F3D0 /* Pods-ZIGSIMPlusUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D4BBBF1EB0E10608E0E706A53D834172 /* Pods-ZIGSIMPlusUITests.modulemap */,
+				ACD1227A4D47337B4F85D06E9937846C /* Pods-ZIGSIMPlusUITests-acknowledgements.markdown */,
+				2FD3B44A5D9D3EAAE70246010DDC8A70 /* Pods-ZIGSIMPlusUITests-acknowledgements.plist */,
+				EA375B75BAFD0D1DD5CDF4B9085394FD /* Pods-ZIGSIMPlusUITests-dummy.m */,
+				A9C23BF5B4856675F3A25D99C8F22770 /* Pods-ZIGSIMPlusUITests-Info.plist */,
+				72FC1D8C8139D1F0C22A793DDDEB27C6 /* Pods-ZIGSIMPlusUITests-umbrella.h */,
+				94CA958BC2D54AC9F098087069723C4B /* Pods-ZIGSIMPlusUITests.debug.xcconfig */,
+				8B8E11D1E581C63B50C50D44BC8D56C7 /* Pods-ZIGSIMPlusUITests.release.xcconfig */,
+			);
+			name = "Pods-ZIGSIMPlusUITests";
+			path = "Target Support Files/Pods-ZIGSIMPlusUITests";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				71411086E6CA932282CE8C34BA7E9FE2 /* Pods */,
+				D25192BB68ACB1D79CCDDA00DA121AA3 /* Products */,
+				226E16B9FAA7D43A48A6EDE8128611EE /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D25192BB68ACB1D79CCDDA00DA121AA3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA42FB184CE204347B344E65ED095225 /* Pods_ZIGSIMPlus.framework */,
+				E837CC6116A926A6C835CAE6DBCC7C0F /* Pods_ZIGSIMPlusTests.framework */,
+				AA2D132A108DB627458C7B5938C1D751 /* Pods_ZIGSIMPlusUITests.framework */,
+				A5E14B87D33E28BF81855C3D31A834D6 /* SwiftyUserDefaults.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		40135DDE17ED19E1FE42E7061BEAB1E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70107BE2506BB30C3EEEA236C174931E /* Pods-ZIGSIMPlusUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9007EA389FDB6BB38FC3AEF3C98C47DB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15225619F4D14EB363A2F4B8AE8E5AFE /* SwiftyUserDefaults-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94EF71AB4B59710356BCE61D0AFB89CF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9B1F005113D0861F818A79D696AE240 /* Pods-ZIGSIMPlus-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2C486E8F902A9DE6FF5AF613D881562 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67E4E3B7E999B7E2C1877A3C86CE732D /* Pods-ZIGSIMPlusTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		06738016C076A024EB35CCE8E8B8D437 /* Pods-ZIGSIMPlus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29BEB1DE7DD8C2F55DEEAB518E3FA9A5 /* Build configuration list for PBXNativeTarget "Pods-ZIGSIMPlus" */;
+			buildPhases = (
+				94EF71AB4B59710356BCE61D0AFB89CF /* Headers */,
+				1A0D6DEBADF7443871975ED66937CCF1 /* Sources */,
+				E97F469A1097BA21580105AB5CDF0964 /* Frameworks */,
+				0DB072B1BDFDA70F339B51AB591EF492 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1CEEF61AE0B44CB62C8328867C09B5A8 /* PBXTargetDependency */,
+			);
+			name = "Pods-ZIGSIMPlus";
+			productName = "Pods-ZIGSIMPlus";
+			productReference = CA42FB184CE204347B344E65ED095225 /* Pods_ZIGSIMPlus.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5981ECAF5F37AF229ECFC9C9654958DB /* SwiftyUserDefaults */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA45BEE4CFFD3DC7AB5612EEE79DF411 /* Build configuration list for PBXNativeTarget "SwiftyUserDefaults" */;
+			buildPhases = (
+				9007EA389FDB6BB38FC3AEF3C98C47DB /* Headers */,
+				01BF5A9AACFC013FAAD1F83A9FD2DB94 /* Sources */,
+				2EB3C1872F23803F3C08393BAA97D2B0 /* Frameworks */,
+				4BA7BB6478A78EABF76444B301E01F49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyUserDefaults;
+			productName = SwiftyUserDefaults;
+			productReference = A5E14B87D33E28BF81855C3D31A834D6 /* SwiftyUserDefaults.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		93315C1A1CC845B00617840A1B4CE105 /* Pods-ZIGSIMPlusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75F2B49AE2EA37F3550477B5C64FCB3D /* Build configuration list for PBXNativeTarget "Pods-ZIGSIMPlusUITests" */;
+			buildPhases = (
+				40135DDE17ED19E1FE42E7061BEAB1E4 /* Headers */,
+				9DB518E7AE30EC13441C5BD902C75E04 /* Sources */,
+				42E3FFB009FEB812CFEEADDE38D83FC6 /* Frameworks */,
+				77D734187C84E02EF7D5E4BFF7C2B34A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F83D4DDC3A1512021C41C01CF76749C6 /* PBXTargetDependency */,
+			);
+			name = "Pods-ZIGSIMPlusUITests";
+			productName = "Pods-ZIGSIMPlusUITests";
+			productReference = AA2D132A108DB627458C7B5938C1D751 /* Pods_ZIGSIMPlusUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E37A220BDB95693153330FBC90C98A69 /* Pods-ZIGSIMPlusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63BB0188936A4CB623FD46899E473B97 /* Build configuration list for PBXNativeTarget "Pods-ZIGSIMPlusTests" */;
+			buildPhases = (
+				B2C486E8F902A9DE6FF5AF613D881562 /* Headers */,
+				C10271DE1B4FD98E70F5E22EBCA02EEF /* Sources */,
+				8BBF02C1FF15780DF3215D75140A793D /* Frameworks */,
+				45165BDB0A1552A6C5EDF586BB746167 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4F0B7352E97A98F047F1399ACFEE411 /* PBXTargetDependency */,
+			);
+			name = "Pods-ZIGSIMPlusTests";
+			productName = "Pods-ZIGSIMPlusTests";
+			productReference = E837CC6116A926A6C835CAE6DBCC7C0F /* Pods_ZIGSIMPlusTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = D25192BB68ACB1D79CCDDA00DA121AA3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06738016C076A024EB35CCE8E8B8D437 /* Pods-ZIGSIMPlus */,
+				E37A220BDB95693153330FBC90C98A69 /* Pods-ZIGSIMPlusTests */,
+				93315C1A1CC845B00617840A1B4CE105 /* Pods-ZIGSIMPlusUITests */,
+				5981ECAF5F37AF229ECFC9C9654958DB /* SwiftyUserDefaults */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0DB072B1BDFDA70F339B51AB591EF492 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45165BDB0A1552A6C5EDF586BB746167 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BA7BB6478A78EABF76444B301E01F49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77D734187C84E02EF7D5E4BFF7C2B34A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01BF5A9AACFC013FAAD1F83A9FD2DB94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36F6574D348052E5A1D23D1B45D2E9DC /* Defaults+Observing.swift in Sources */,
+				AC5B5F96C87589572A8E5C1807E5A158 /* Defaults+StringToBool.swift in Sources */,
+				869A38AD620F7EA97FE65B4085B86010 /* Defaults+Subscripts.swift in Sources */,
+				64F0B72EF94BDD6AA85750EE7E37D5A9 /* Defaults.swift in Sources */,
+				696308F504C9E8A5E529719D7968BCEA /* DefaultsBridges.swift in Sources */,
+				4431AD4CAE38DC102B467ED45A2C1319 /* DefaultsKeys.swift in Sources */,
+				3C958D69F66B81D7F2B368FEBD673838 /* DefaultsObserver.swift in Sources */,
+				AEDC085D678516BF22DC6ABE967610DF /* DefaultsSerializable+BuiltIns.swift in Sources */,
+				605A80189985F59683B0629781535780 /* DefaultsSerializable.swift in Sources */,
+				F133112ED0B1122C5C9A51F69E160B6C /* OptionalType.swift in Sources */,
+				7228B6A957D6DEE8B0082B142D41299C /* SwiftyUserDefaults-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A0D6DEBADF7443871975ED66937CCF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE76D54DBF1676A0F5F95D7C922A8BC1 /* Pods-ZIGSIMPlus-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB518E7AE30EC13441C5BD902C75E04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E987A7F43B6430BFB12B729FC21DE08F /* Pods-ZIGSIMPlusUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C10271DE1B4FD98E70F5E22EBCA02EEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				200CBB6D6524DBDA8FA70B2E07250CEF /* Pods-ZIGSIMPlusTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1CEEF61AE0B44CB62C8328867C09B5A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyUserDefaults;
+			target = 5981ECAF5F37AF229ECFC9C9654958DB /* SwiftyUserDefaults */;
+			targetProxy = 398BC6C94FD5EFC58CFB5E8BDB1E5A4F /* PBXContainerItemProxy */;
+		};
+		B4F0B7352E97A98F047F1399ACFEE411 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-ZIGSIMPlus";
+			target = 06738016C076A024EB35CCE8E8B8D437 /* Pods-ZIGSIMPlus */;
+			targetProxy = CF3CE91CE1DA73A8BC0DD93DD8BAD371 /* PBXContainerItemProxy */;
+		};
+		F83D4DDC3A1512021C41C01CF76749C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-ZIGSIMPlus";
+			target = 06738016C076A024EB35CCE8E8B8D437 /* Pods-ZIGSIMPlus */;
+			targetProxy = 2D89B1A97109E8CBE57DA825C6E45BCB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		12B330D81AB2CCE9144BD23488B8385E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD90CAD1A18C236ABA6D692F4A14D0DF /* SwiftyUserDefaults.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyUserDefaults/SwiftyUserDefaults-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyUserDefaults/SwiftyUserDefaults-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyUserDefaults/SwiftyUserDefaults.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyUserDefaults;
+				PRODUCT_NAME = SwiftyUserDefaults;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		53D6CBEEDFD0CD0ABA3DD7DB919DB0C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94CA958BC2D54AC9F098087069723C4B /* Pods-ZIGSIMPlusUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7ED3F08991F51BADCD9E56DDC969B5E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8BEC02E049F3B0CEA72EBCA42299E2E /* Pods-ZIGSIMPlus.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9FBAD3AAAD93C8608A5DC743F2EA77CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57675E55428F82E51C64E0940D521B4D /* Pods-ZIGSIMPlusTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A105C1752A0A49B30ED621B71E226CDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		B67E2C7CAB1F2E1E0282C545542992F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B8E11D1E581C63B50C50D44BC8D56C7 /* Pods-ZIGSIMPlusUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C1391485F05B41BD35738A433056B7FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		CC63D5EF1D22D829470808D89F994CDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD90CAD1A18C236ABA6D692F4A14D0DF /* SwiftyUserDefaults.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyUserDefaults/SwiftyUserDefaults-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyUserDefaults/SwiftyUserDefaults-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyUserDefaults/SwiftyUserDefaults.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyUserDefaults;
+				PRODUCT_NAME = SwiftyUserDefaults;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D86AFAA843ABB6BF43E05471FDC2F55C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C1ECBE94B1B90FBFB1755495E75E7D3 /* Pods-ZIGSIMPlus.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DE77E91E97A14AD62D20A283C873D7B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D99810CE758797271F5B9147442DE4D5 /* Pods-ZIGSIMPlusTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		29BEB1DE7DD8C2F55DEEAB518E3FA9A5 /* Build configuration list for PBXNativeTarget "Pods-ZIGSIMPlus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ED3F08991F51BADCD9E56DDC969B5E0 /* Debug */,
+				D86AFAA843ABB6BF43E05471FDC2F55C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1391485F05B41BD35738A433056B7FA /* Debug */,
+				A105C1752A0A49B30ED621B71E226CDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63BB0188936A4CB623FD46899E473B97 /* Build configuration list for PBXNativeTarget "Pods-ZIGSIMPlusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FBAD3AAAD93C8608A5DC743F2EA77CD /* Debug */,
+				DE77E91E97A14AD62D20A283C873D7B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75F2B49AE2EA37F3550477B5C64FCB3D /* Build configuration list for PBXNativeTarget "Pods-ZIGSIMPlusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53D6CBEEDFD0CD0ABA3DD7DB919DB0C1 /* Debug */,
+				B67E2C7CAB1F2E1E0282C545542992F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA45BEE4CFFD3DC7AB5612EEE79DF411 /* Build configuration list for PBXNativeTarget "SwiftyUserDefaults" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12B330D81AB2CCE9144BD23488B8385E /* Debug */,
+				CC63D5EF1D22D829470808D89F994CDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
