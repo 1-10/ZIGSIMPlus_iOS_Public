@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftyUserDefaults
 
-public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDelegate, ContentScrollable{
+public class CommandDataSettingViewController : UIViewController, UITextFieldDelegate, ContentScrollable{
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var dataDestinationSeg: UISegmentedControl!
@@ -164,46 +164,10 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
         texField.delegate = self
     }
     
-    public func textFieldDidEndEditing(_ textField: UITextField) {
-        print("end editing!")
-    }
-    
-    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("start editing!")
-        return true
-    }
-    
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         print("should end editing!")
         // close keyboard
-        switch textField {
-        case ipAdressTextField:
-            ipAdressTextField.resignFirstResponder()
-            break
-        case portNumberTextField:
-            portNumberTextField.resignFirstResponder()
-            break
-        case uuidTextField:
-            uuidTextField.resignFirstResponder()
-            break
-        case beaconUUID1TextField:
-            beaconUUID1TextField.resignFirstResponder()
-            break
-        case beaconUUID2TextField:
-            beaconUUID2TextField.resignFirstResponder()
-            break
-        case beaconUUID3TextField:
-            beaconUUID3TextField.resignFirstResponder()
-            break
-        case beaconUUID4TextField:
-            beaconUUID4TextField.resignFirstResponder()
-            break
-        case beaconUUID5TextField:
-            beaconUUID5TextField.resignFirstResponder()
-            break
-        default:
-            break
-        }
+        view.endEditing(true)
         
         return true
     }
