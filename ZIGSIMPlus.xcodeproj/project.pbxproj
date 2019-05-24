@@ -7,29 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		021E5EE2228BED7500C098A0 /* Private in Resources */ = {isa = PBXBuildFile; fileRef = 021E5EE1228BED7500C098A0 /* Private */; };
-		024B0C5F22955F24008E95DA /* MotionMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B0C5E22955F24008E95DA /* MotionMonitoringCommand.swift */; };
-		024B0C6122955F32008E95DA /* CommandDataSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B0C6022955F32008E95DA /* CommandDataSelectionPresenter.swift */; };
-		024B0C6322955F3F008E95DA /* CommandDataOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B0C6222955F3F008E95DA /* CommandDataOutputPresenter.swift */; };
-		024B0C6622955F5B008E95DA /* CommandDataOutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B0C6422955F5B008E95DA /* CommandDataOutputViewController.swift */; };
-		024B0C6722955F5B008E95DA /* CommandDataSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B0C6522955F5B008E95DA /* CommandDataSelectionViewController.swift */; };
-		024B0C6922955F76008E95DA /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B0C6822955F76008E95DA /* CommandAndCommandDataMediator.swift */; };
-		02E72671228BFCB500A2D51C /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E72670228BFCB500A2D51C /* libndi_ios.a */; };
-		02E7267D228BFF1F00A2D51C /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02E7267B228BFF1F00A2D51C /* NDI.cpp */; };
-		02E7267F228C084F00A2D51C /* NdiMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7267E228C084F00A2D51C /* NdiMonitoringCommand.swift */; };
-		02E72681228C08C400A2D51C /* NDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E72680228C08C400A2D51C /* NDI.swift */; };
-		02E72686228C0CA000A2D51C /* NDIAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02E72685228C0CA000A2D51C /* NDIAdapter.mm */; };
+		023BB10622965B490094363B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10522965B490094363B /* Utils.swift */; };
+		023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */; };
+		023BB10A22965B690094363B /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10922965B690094363B /* LocationDataStore.swift */; };
+		026FD4952297E3950062968C /* NdiMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026FD4942297E3950062968C /* NdiMonitoringCommand.swift */; };
+		026FDEB42297E9500062968C /* NDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026FDD472297E94E0062968C /* NDI.swift */; };
+		026FDEB52297E9500062968C /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 026FDD582297E94E0062968C /* libndi_ios.a */; };
+		026FDEB62297E9500062968C /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026FDD5C2297E94E0062968C /* NDI.cpp */; };
+		026FDEB72297E9500062968C /* NDIAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 026FDD5D2297E94E0062968C /* NDIAdapter.mm */; };
+		02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */; };
+		02E7F84C2293A864002B55F2 /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84B2293A864002B55F2 /* TouchDataStore.swift */; };
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
+		63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */; };
+		63E57859229697E800C6340C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E57858229697E800C6340C /* StringExtension.swift */; };
+		63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E5785A2296991400C6340C /* StringExtensionTests.swift */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
+		902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */; };
 		902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9CD227BE68D008F1650 /* Main.storyboard */; };
 		902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9D0227BE68F008F1650 /* Assets.xcassets */; };
 		902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */; };
-		902EB9DF227BE68F008F1650 /* ZIGSIMPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9DE227BE68F008F1650 /* ZIGSIMPlusTests.swift */; };
 		902EB9EA227BE68F008F1650 /* ZIGSIMPlusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9E9227BE68F008F1650 /* ZIGSIMPlusUITests.swift */; };
+		902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */; };
 		903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903BA770227D6C2100A2C378 /* AppSettingModel.swift */; };
+		9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */; };
 		9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4CB227EBF4D0019F1C1 /* LabelConstants.swift */; };
 		9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */; };
+		9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */; };
+		9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */; };
 		9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */; };
+		B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */; };
+		B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,37 +57,57 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		021E5EE1228BED7500C098A0 /* Private */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Private; sourceTree = "<group>"; };
-		024B0C5E22955F24008E95DA /* MotionMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionMonitoringCommand.swift; sourceTree = "<group>"; };
-		024B0C6022955F32008E95DA /* CommandDataSelectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDataSelectionPresenter.swift; sourceTree = "<group>"; };
-		024B0C6222955F3F008E95DA /* CommandDataOutputPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDataOutputPresenter.swift; sourceTree = "<group>"; };
-		024B0C6422955F5B008E95DA /* CommandDataOutputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDataOutputViewController.swift; sourceTree = "<group>"; };
-		024B0C6522955F5B008E95DA /* CommandDataSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDataSelectionViewController.swift; sourceTree = "<group>"; };
-		024B0C6822955F76008E95DA /* CommandAndCommandDataMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandAndCommandDataMediator.swift; sourceTree = "<group>"; };
-		02E72670228BFCB500A2D51C /* libndi_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libndi_ios.a; path = Private/NDI/SDK/lib/libndi_ios.a; sourceTree = "<group>"; };
-		02E7267A228BFF1E00A2D51C /* ZIGSIMPlus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZIGSIMPlus-Bridging-Header.h"; sourceTree = "<group>"; };
-		02E7267B228BFF1F00A2D51C /* NDI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NDI.cpp; path = Private/NDI/Bindings/NDI.cpp; sourceTree = SOURCE_ROOT; };
-		02E7267C228BFF1F00A2D51C /* NDI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = NDI.hpp; path = Private/NDI/Bindings/NDI.hpp; sourceTree = SOURCE_ROOT; };
-		02E7267E228C084F00A2D51C /* NdiMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdiMonitoringCommand.swift; sourceTree = "<group>"; };
-		02E72680228C08C400A2D51C /* NDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NDI.swift; path = Private/NDI/NDI.swift; sourceTree = SOURCE_ROOT; };
-		02E72685228C0CA000A2D51C /* NDIAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = NDIAdapter.mm; path = Private/NDI/Bindings/NDIAdapter.mm; sourceTree = "<group>"; };
+		023BB10522965B490094363B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconMonitoringCommand.swift; sourceTree = "<group>"; };
+		023BB10922965B690094363B /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
+		026FD4942297E3950062968C /* NdiMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NdiMonitoringCommand.swift; sourceTree = "<group>"; };
+		026FDD472297E94E0062968C /* NDI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDI.swift; sourceTree = "<group>"; };
+		026FDD4A2297E94E0062968C /* Processing.NDI.compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.compat.h; sourceTree = "<group>"; };
+		026FDD4B2297E94E0062968C /* Processing.NDI.utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.utilities.h; sourceTree = "<group>"; };
+		026FDD4C2297E94E0062968C /* Processing.NDI.Recv.ex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Recv.ex.h; sourceTree = "<group>"; };
+		026FDD4D2297E94E0062968C /* Processing.NDI.deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.deprecated.h; sourceTree = "<group>"; };
+		026FDD4E2297E94E0062968C /* Processing.NDI.Routing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Routing.h; sourceTree = "<group>"; };
+		026FDD4F2297E94E0062968C /* Processing.NDI.Send.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Send.h; sourceTree = "<group>"; };
+		026FDD502297E94E0062968C /* Processing.NDI.structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.structs.h; sourceTree = "<group>"; };
+		026FDD512297E94E0062968C /* Processing.NDI.Lib.cplusplus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Lib.cplusplus.h; sourceTree = "<group>"; };
+		026FDD522297E94E0062968C /* Processing.NDI.FrameSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.FrameSync.h; sourceTree = "<group>"; };
+		026FDD532297E94E0062968C /* Processing.NDI.Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Find.h; sourceTree = "<group>"; };
+		026FDD542297E94E0062968C /* Processing.NDI.DynamicLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.DynamicLoad.h; sourceTree = "<group>"; };
+		026FDD552297E94E0062968C /* Processing.NDI.Recv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Recv.h; sourceTree = "<group>"; };
+		026FDD562297E94E0062968C /* Processing.NDI.Lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Lib.h; sourceTree = "<group>"; };
+		026FDD582297E94E0062968C /* libndi_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libndi_ios.a; sourceTree = "<group>"; };
+		026FDD5A2297E94E0062968C /* NDIAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDIAdapter.h; sourceTree = "<group>"; };
+		026FDD5B2297E94E0062968C /* NDI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NDI.hpp; sourceTree = "<group>"; };
+		026FDD5C2297E94E0062968C /* NDI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NDI.cpp; sourceTree = "<group>"; };
+		026FDD5D2297E94E0062968C /* NDIAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NDIAdapter.mm; sourceTree = "<group>"; };
+		02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMonitoringCommand.swift; sourceTree = "<group>"; };
+		02E7F84B2293A864002B55F2 /* TouchDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
 		634B8D92228565F00043607D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndCommandDataMediator.swift; sourceTree = "<group>"; };
+		63E57858229697E800C6340C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		63E5785A2296991400C6340C /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		902EB9C6227BE68D008F1650 /* ZIGSIMPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIGSIMPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9C9227BE68D008F1650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSelectionViewController.swift; sourceTree = "<group>"; };
 		902EB9CE227BE68D008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		902EB9D0227BE68F008F1650 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902EB9D3227BE68F008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		902EB9D5227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902EB9DA227BE68F008F1650 /* ZIGSIMPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIGSIMPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		902EB9DE227BE68F008F1650 /* ZIGSIMPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGSIMPlusTests.swift; sourceTree = "<group>"; };
 		902EB9E0227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902EB9E5227BE68F008F1650 /* ZIGSIMPlusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIGSIMPlusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9E9227BE68F008F1650 /* ZIGSIMPlusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGSIMPlusUITests.swift; sourceTree = "<group>"; };
 		902EB9EB227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSelectionPresenter.swift; sourceTree = "<group>"; };
 		903BA770227D6C2100A2C378 /* AppSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingModel.swift; sourceTree = "<group>"; };
+		9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataOutputViewController.swift; sourceTree = "<group>"; };
 		9092E4CB227EBF4D0019F1C1 /* LabelConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelConstants.swift; sourceTree = "<group>"; };
 		9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryMonitoringCommand.swift; sourceTree = "<group>"; };
+		9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataOutputPresenter.swift; sourceTree = "<group>"; };
+		9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionMonitoringCommand.swift; sourceTree = "<group>"; };
 		9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
+		B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsMonitoringCommand.swift; sourceTree = "<group>"; };
+		B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassMonitoringCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02E72671228BFCB500A2D51C /* libndi_ios.a in Frameworks */,
+				026FDEB52297E9500062968C /* libndi_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,34 +136,110 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02E7266F228BFCB500A2D51C /* Frameworks */ = {
+		026FDB622297E85A0062968C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				02E72670228BFCB500A2D51C /* libndi_ios.a */,
+				026FDB662297E94D0062968C /* Private */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		026FDB662297E94D0062968C /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				026FDD462297E94E0062968C /* NDI */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		026FDD462297E94E0062968C /* NDI */ = {
+			isa = PBXGroup;
+			children = (
+				026FDD472297E94E0062968C /* NDI.swift */,
+				026FDD482297E94E0062968C /* SDK */,
+				026FDD592297E94E0062968C /* Bindings */,
+			);
+			path = NDI;
+			sourceTree = "<group>";
+		};
+		026FDD482297E94E0062968C /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				026FDD492297E94E0062968C /* include */,
+				026FDD572297E94E0062968C /* lib */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		026FDD492297E94E0062968C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				026FDD4A2297E94E0062968C /* Processing.NDI.compat.h */,
+				026FDD4B2297E94E0062968C /* Processing.NDI.utilities.h */,
+				026FDD4C2297E94E0062968C /* Processing.NDI.Recv.ex.h */,
+				026FDD4D2297E94E0062968C /* Processing.NDI.deprecated.h */,
+				026FDD4E2297E94E0062968C /* Processing.NDI.Routing.h */,
+				026FDD4F2297E94E0062968C /* Processing.NDI.Send.h */,
+				026FDD502297E94E0062968C /* Processing.NDI.structs.h */,
+				026FDD512297E94E0062968C /* Processing.NDI.Lib.cplusplus.h */,
+				026FDD522297E94E0062968C /* Processing.NDI.FrameSync.h */,
+				026FDD532297E94E0062968C /* Processing.NDI.Find.h */,
+				026FDD542297E94E0062968C /* Processing.NDI.DynamicLoad.h */,
+				026FDD552297E94E0062968C /* Processing.NDI.Recv.h */,
+				026FDD562297E94E0062968C /* Processing.NDI.Lib.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		026FDD572297E94E0062968C /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				026FDD582297E94E0062968C /* libndi_ios.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		026FDD592297E94E0062968C /* Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				026FDD5A2297E94E0062968C /* NDIAdapter.h */,
+				026FDD5B2297E94E0062968C /* NDI.hpp */,
+				026FDD5C2297E94E0062968C /* NDI.cpp */,
+				026FDD5D2297E94E0062968C /* NDIAdapter.mm */,
+			);
+			path = Bindings;
 			sourceTree = "<group>";
 		};
 		634B8D94228566C30043607D /* Commands */ = {
 			isa = PBXGroup;
 			children = (
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
-				024B0C5E22955F24008E95DA /* MotionMonitoringCommand.swift */,
-				02E7267E228C084F00A2D51C /* NdiMonitoringCommand.swift */,
+				02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */,
+				023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */,
+				9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */,
+				026FD4942297E3950062968C /* NdiMonitoringCommand.swift */,
+				B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */,
+				B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */,
 			);
 			path = Commands;
+			sourceTree = "<group>";
+		};
+		63E57857229697CF00C6340C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				63E57858229697E800C6340C /* StringExtension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		902EB9BD227BE68D008F1650 = {
 			isa = PBXGroup;
 			children = (
-				02E72685228C0CA000A2D51C /* NDIAdapter.mm */,
 				902EB9C8227BE68D008F1650 /* ZIGSIMPlus */,
 				902EB9DD227BE68F008F1650 /* ZIGSIMPlusTests */,
 				902EB9E8227BE68F008F1650 /* ZIGSIMPlusUITests */,
 				902EB9C7227BE68D008F1650 /* Products */,
-				021E5EE1228BED7500C098A0 /* Private */,
-				02E7266F228BFCB500A2D51C /* Frameworks */,
+				026FDB622297E85A0062968C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,19 +257,16 @@
 			isa = PBXGroup;
 			children = (
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
-				02E7267B228BFF1F00A2D51C /* NDI.cpp */,
-				02E7267C228BFF1F00A2D51C /* NDI.hpp */,
 				9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */,
 				9092E4C7227D85890019F1C1 /* Models */,
 				902EB9F7227BECC7008F1650 /* Views */,
 				902EB9F8227BECDD008F1650 /* Presenters */,
 				902EB9FB227BF0DB008F1650 /* Entities */,
+				63E57857229697CF00C6340C /* Utils */,
 				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				902EB9D0227BE68F008F1650 /* Assets.xcassets */,
 				902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */,
 				902EB9D5227BE68F008F1650 /* Info.plist */,
-				02E7267A228BFF1E00A2D51C /* ZIGSIMPlus-Bridging-Header.h */,
-				02E72680228C08C400A2D51C /* NDI.swift */,
 			);
 			path = ZIGSIMPlus;
 			sourceTree = "<group>";
@@ -174,7 +274,7 @@
 		902EB9DD227BE68F008F1650 /* ZIGSIMPlusTests */ = {
 			isa = PBXGroup;
 			children = (
-				902EB9DE227BE68F008F1650 /* ZIGSIMPlusTests.swift */,
+				63E5785A2296991400C6340C /* StringExtensionTests.swift */,
 				902EB9E0227BE68F008F1650 /* Info.plist */,
 			);
 			path = ZIGSIMPlusTests;
@@ -192,8 +292,8 @@
 		902EB9F7227BECC7008F1650 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				024B0C6422955F5B008E95DA /* CommandDataOutputViewController.swift */,
-				024B0C6522955F5B008E95DA /* CommandDataSelectionViewController.swift */,
+				902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */,
+				9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,8 +301,8 @@
 		902EB9F8227BECDD008F1650 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				024B0C6022955F32008E95DA /* CommandDataSelectionPresenter.swift */,
-				024B0C6222955F3F008E95DA /* CommandDataOutputPresenter.swift */,
+				902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */,
+				9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -220,7 +320,10 @@
 			children = (
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				634B8D92228565F00043607D /* Command.swift */,
-				024B0C6822955F76008E95DA /* CommandAndCommandDataMediator.swift */,
+				02E7F84B2293A864002B55F2 /* TouchDataStore.swift */,
+				023BB10922965B690094363B /* LocationDataStore.swift */,
+				63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */,
+				023BB10522965B490094363B /* Utils.swift */,
 				634B8D94228566C30043607D /* Commands */,
 			);
 			path = Models;
@@ -294,7 +397,6 @@
 				TargetAttributes = {
 					902EB9C5227BE68D008F1650 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1020;
 					};
 					902EB9D9227BE68F008F1650 = {
 						CreatedOnToolsVersion = 10.1;
@@ -333,7 +435,6 @@
 			files = (
 				902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */,
 				902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */,
-				021E5EE2228BED7500C098A0 /* Private in Resources */,
 				902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,20 +461,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
-				024B0C6722955F5B008E95DA /* CommandDataSelectionViewController.swift in Sources */,
-				02E7267D228BFF1F00A2D51C /* NDI.cpp in Sources */,
-				02E72686228C0CA000A2D51C /* NDIAdapter.mm in Sources */,
-				024B0C6922955F76008E95DA /* CommandAndCommandDataMediator.swift in Sources */,
-				02E7267F228C084F00A2D51C /* NdiMonitoringCommand.swift in Sources */,
-				024B0C5F22955F24008E95DA /* MotionMonitoringCommand.swift in Sources */,
+				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
+				023BB10A22965B690094363B /* LocationDataStore.swift in Sources */,
+				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,
+				902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */,
+				026FDEB42297E9500062968C /* NDI.swift in Sources */,
+				9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */,
+				023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */,
+				023BB10622965B490094363B /* Utils.swift in Sources */,
+				63E57859229697E800C6340C /* StringExtension.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */,
+				026FDEB72297E9500062968C /* NDIAdapter.mm in Sources */,
+				02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */,
+				02E7F84C2293A864002B55F2 /* TouchDataStore.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
-				024B0C6622955F5B008E95DA /* CommandDataOutputViewController.swift in Sources */,
-				024B0C6322955F3F008E95DA /* CommandDataOutputPresenter.swift in Sources */,
-				02E72681228C08C400A2D51C /* NDI.swift in Sources */,
-				024B0C6122955F32008E95DA /* CommandDataSelectionPresenter.swift in Sources */,
+				026FDEB62297E9500062968C /* NDI.cpp in Sources */,
+				B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */,
+				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
+				026FD4952297E3950062968C /* NdiMonitoringCommand.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
+				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
+				B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,7 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902EB9DF227BE68F008F1650 /* ZIGSIMPlusTests.swift in Sources */,
+				63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,13 +658,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/Private/NDI/SDK/include\"",
-					"\"$(SRCROOT)/Private/NDI/Bindings\"",
-				);
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Private/NDI/SDK/include\"";
 				INFOPLIST_FILE = ZIGSIMPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -564,11 +669,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
+					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/vs/x64",
+					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/vs/Win32",
+					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/osx/x64",
+					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -578,13 +686,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/Private/NDI/SDK/include\"",
-					"\"$(SRCROOT)/Private/NDI/Bindings\"",
-				);
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Private/NDI/SDK/include\"";
 				INFOPLIST_FILE = ZIGSIMPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -593,10 +697,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
+					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/vs/x64",
+					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/vs/Win32",
+					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/osx/x64",
+					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

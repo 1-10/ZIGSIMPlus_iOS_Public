@@ -11,7 +11,24 @@ import Foundation
 public struct LabelConstants {
     public static let acceleration = "Acceleration"
     public static let gravity = "Gravity"
+    public static let gyro = "Gyro"
+    public static let quaternion = "Quaternion"
+    public static let touch = "Touch"
     public static let battery = "Battery"
+    public static let compass = "Compass"
+    public static let gps = "Gps"
+    public static let beacon = "Beacon"
     public static let ndi = "NDI"
-    public static let commandDatas: [String] = [acceleration, gravity, battery, ndi]
+    public static let commandDatas: [String] = [
+        acceleration,
+        gravity,
+        gyro,
+        quaternion,
+        touch,
+        compass,
+        gps,
+        beacon,
+        battery,
+        ndi
+    ]
 }
