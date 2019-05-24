@@ -37,9 +37,11 @@ public class AppSettingModel {
     // app default value & variable used in app
     var dataDestination: DataDestination = .OTHER_APP
     var transportProtocol: TransportProtocol = .UDP
-    var adress: String = "192.168.0.1"
-    var port: Int32 = 50000
+    // var transportProtocol: TransportProtocol = .TCP
+    var adress: String = "172.17.1.20"
+    var port: Int32 = 3333
     var transportFormat: TransportFormat = .OSC
+    // var transportFormat: TransportFormat = .JSON
     var messageRatePerSecond: Int = 60
     var deviceUUID: String = Utils.randomStringWithLength(16)
     var compassAngle: Double = 1.0 // 1.0 is faceup
@@ -47,6 +49,7 @@ public class AppSettingModel {
     var messageInterval: TimeInterval {
         return 1.0 / Double(messageRatePerSecond)
     }
+
 }
 
 // user default value
@@ -60,4 +63,5 @@ extension DefaultsKeys {
     static let userCompassAngle = DefaultsKey<Double?>("userCompassAngle", defaultValue: AppSettingModel.shared.compassAngle)
     static let userDeviceUUID = DefaultsKey<String?>("userDeviceUUID", defaultValue: AppSettingModel.shared.deviceUUID)
     static let userBeaconUUID = DefaultsKey<String?>("userBeaconUUID", defaultValue: AppSettingModel.shared.beaconUUID)
+
 }
