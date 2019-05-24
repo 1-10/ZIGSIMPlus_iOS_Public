@@ -49,7 +49,7 @@ public class AppSettingModel {
     }
 }
 
-// user default data
+// user default value
 extension DefaultsKeys {
     static let userDataDestination = DefaultsKey<Int?>("userDataDestination", defaultValue: 1)
     static let userProtocol = DefaultsKey<Int?>("userProtocol", defaultValue: 1)
