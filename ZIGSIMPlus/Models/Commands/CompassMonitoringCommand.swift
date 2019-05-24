@@ -15,9 +15,10 @@ public final class CompassMonitoringCommand: AutoUpdatedCommand {
         GpsCompassData.shared.startCompass()
         GpsCompassData.shared.callbackCompass = { (compassData) in
             // compass:faceupは設定画面作成後に追加
+            let appSetting = AppSettingModel.shared
             completion?("""
                 compass:compass:\(compassData)
-                compass:faceup:
+                compass:faceup:\(appSetting.compassAngle)
                 """)
         }
     }

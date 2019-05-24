@@ -32,6 +32,7 @@
 		B394C0B322950F2F00706BB3 /* GpsCompassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B222950F2E00706BB3 /* GpsCompassData.swift */; };
 		B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */; };
 		B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */; };
+		B3BB76842296781C003F6B2B /* CommandDataSettingViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BB76832296781C003F6B2B /* CommandDataSettingViewPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		B394C0B222950F2E00706BB3 /* GpsCompassData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GpsCompassData.swift; sourceTree = "<group>"; };
 		B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsMonitoringCommand.swift; sourceTree = "<group>"; };
 		B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassMonitoringCommand.swift; sourceTree = "<group>"; };
+		B3BB76832296781C003F6B2B /* CommandDataSettingViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSettingViewPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			children = (
 				902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */,
 				9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */,
+				B3BB76832296781C003F6B2B /* CommandDataSettingViewPresenter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			files = (
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
+				B3BB76842296781C003F6B2B /* CommandDataSettingViewPresenter.swift in Sources */,
 				023BB10A22965B690094363B /* LocationDataStore.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */,
