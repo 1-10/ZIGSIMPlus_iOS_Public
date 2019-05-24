@@ -16,12 +16,13 @@ public final class NdiMonitoringCommand: ImageCommand {
     public func startImage(callback: ((UIImage) -> Void)?) {
         ndi.start(callback: callback)
     }
-    
-    public func start(completion: ((String?) -> Void)?) {}
+
+    public func start(completion: ((String?) -> Void)?) {
+        print(">> NdiMonitoringCommand.start must not be called")
+    }
     
     public func stop(completion: ((String?) -> Void)?) {
-        print(">> stop")
         ndi.stop()
-        completion?("TBD")
+        completion?(nil)
     }
 }
