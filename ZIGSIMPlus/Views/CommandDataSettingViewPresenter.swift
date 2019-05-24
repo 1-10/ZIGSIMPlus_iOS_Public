@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDelegate {
+public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDelegate, ContentScrollable{
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var dataDestinationSeg: UISegmentedControl!
@@ -20,24 +20,29 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
     @IBOutlet weak var messageRateSeg: UISegmentedControl!
     @IBOutlet weak var uuidTextField: UITextField!
     @IBOutlet weak var compassAngleSeg: UISegmentedControl!
-    @IBOutlet weak var beaconuuid1TextField: UITextField!
-    @IBOutlet weak var beaconuuid2TextField: UITextField!
-    @IBOutlet weak var beaconuuid3TextField: UITextField!
-    @IBOutlet weak var beaconuuid4TextField: UITextField!
-    @IBOutlet weak var beaconuuid5TextField: UITextField!
+    @IBOutlet weak var beaconUUID1TextField: UITextField!
+    @IBOutlet weak var beaconUUID2TextField: UITextField!
+    @IBOutlet weak var beaconUUID3TextField: UITextField!
+    @IBOutlet weak var beaconUUID4TextField: UITextField!
+    @IBOutlet weak var beaconUUID5TextField: UITextField!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set scrollView
+        let mainBoundSize: CGSize = UIScreen.main.bounds.size
+        self.scrollView.contentSize = CGSize(width: mainBoundSize.width, height: mainBoundSize.height)
+        self.view.addSubview(self.scrollView)
 
         // set delegate and editor
         setTextFieldSetting(texField: ipAdressTextField, text: AppSettingModel.userIpAdress)
         setTextFieldSetting(texField: portNumberTextField, text: AppSettingModel.userPortNumber)
         setTextFieldSetting(texField: uuidTextField, text: AppSettingModel.userDeviceUUID)
-        setTextFieldSetting(texField: beaconuuid1TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:0))
-        setTextFieldSetting(texField: beaconuuid2TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:1))
-        setTextFieldSetting(texField: beaconuuid3TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:2))
-        setTextFieldSetting(texField: beaconuuid4TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:3))
-        setTextFieldSetting(texField: beaconuuid5TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:4))
+        setTextFieldSetting(texField: beaconUUID1TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:0))
+        setTextFieldSetting(texField: beaconUUID2TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:1))
+        setTextFieldSetting(texField: beaconUUID3TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:2))
+        setTextFieldSetting(texField: beaconUUID4TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:3))
+        setTextFieldSetting(texField: beaconUUID5TextField, text: Utils.separateBeaconUuid(uuid: AppSettingModel.userBeaconUUID, position:4))
         
         // set segment
         if AppSettingModel.userDataDestination == "LOCAL_FILE" {
@@ -69,19 +74,21 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
         } else if AppSettingModel.userCompassAngle == 1.0 {
             compassAngleSeg.selectedSegmentIndex = 1
         }
-        
-        
     }
     
     public func setTextFieldSetting(texField:UITextField, text:String) {
-//        texField.layer.backgroundColor = UIColor.blackColor().CGColor
-//        texField.layer.borderColor = SSAppUtility().greenColor().CGColor
         texField.text = String(text)
-        texField.layer.borderWidth = 1.0
         texField.delegate = self
     }
     
+    override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureObserver()
+    }
+    
     override public func viewWillDisappear(_ animated: Bool) {
+        
+        removeObserver()
         
         // DATA DESTINATION
         if dataDestinationSeg.selectedSegmentIndex == 0 {
@@ -147,17 +154,26 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
         }
         
         // BEACON UUID
-        var beaconUUID = beaconuuid1TextField.text!
+        var beaconUUID = beaconUUID1TextField.text!
         beaconUUID += "-"
-        beaconUUID += beaconuuid2TextField.text!
+        beaconUUID += beaconUUID2TextField.text!
         beaconUUID += "-"
-        beaconUUID += beaconuuid3TextField.text!
+        beaconUUID += beaconUUID3TextField.text!
         beaconUUID += "-"
-        beaconUUID += beaconuuid4TextField.text!
+        beaconUUID += beaconUUID4TextField.text!
         beaconUUID += "-"
-        beaconUUID += beaconuuid5TextField.text!
+        beaconUUID += beaconUUID5TextField.text!
         AppSettingModel.shared.beaconUUID = beaconUUID
         AppSettingModel.userBeaconUUID = AppSettingModel.shared.beaconUUID
+    }
+    
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        print("end editing!")
+    }
+    
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("start editing!")
+        return true
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
@@ -173,17 +189,20 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
         case uuidTextField:
             uuidTextField.resignFirstResponder()
             break
-        case beaconuuid1TextField:
-            beaconuuid1TextField.resignFirstResponder()
+        case beaconUUID1TextField:
+            beaconUUID1TextField.resignFirstResponder()
             break
-        case beaconuuid2TextField:
-            beaconuuid2TextField.resignFirstResponder()
+        case beaconUUID2TextField:
+            beaconUUID2TextField.resignFirstResponder()
             break
-        case beaconuuid3TextField:
-            beaconuuid3TextField.resignFirstResponder()
+        case beaconUUID3TextField:
+            beaconUUID3TextField.resignFirstResponder()
             break
-        case beaconuuid4TextField:
-            beaconuuid4TextField.resignFirstResponder()
+        case beaconUUID4TextField:
+            beaconUUID4TextField.resignFirstResponder()
+            break
+        case beaconUUID5TextField:
+            beaconUUID5TextField.resignFirstResponder()
             break
         default:
             break
@@ -191,4 +210,77 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
         
         return true
     }
+}
+
+// Scroll processing
+protocol ContentScrollable {
+    
+    var scrollView: UIScrollView! { get }
+    // set Notification
+    func configureObserver()
+    // delete Notification
+    func removeObserver()
+}
+
+extension ContentScrollable where Self: UIViewController {
+    func configureObserver() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { notification in
+            self.keyboardWillShow(notification)
+        }
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { notification in
+            self.keyboardWillHide(notification)
+        }
+    }
+    
+    func removeObserver() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        scrollView.contentInset.bottom = keyboardSize
+    }
+    
+    func keyboardWillHide(_ notification: Notification) {
+        scrollView.contentInset = .zero
+        scrollView.scrollIndicatorInsets = .zero
+    }
+}
+
+// Character limit
+private var maxLengths = [UITextField: Int]()
+extension UITextField {
+    
+    @IBInspectable var maxLength: Int {
+        get {
+            guard let length = maxLengths[self] else {
+                return Int.max
+            }
+            
+            return length
+        }
+        set {
+            maxLengths[self] = newValue
+            addTarget(self, action: #selector(limitLength), for: .editingChanged)
+        }
+    }
+    
+    @objc func limitLength(textField: UITextField) {
+        guard let prospectiveText = textField.text, prospectiveText.count > maxLength else {
+            return
+        }
+        
+        let selection = selectedTextRange
+        let maxCharIndex = prospectiveText.index(prospectiveText.startIndex, offsetBy: maxLength)
+        
+        #if swift(>=4.0)
+        text = String(prospectiveText[..<maxCharIndex])
+        #else
+        text = prospectiveText.substring(to: maxCharIndex)
+        #endif
+        
+        selectedTextRange = selection
+    }
+    
 }

@@ -26,8 +26,8 @@ public class AppSettingModel {
     var portNumber: String = "50000"
     var messageFormat: String = "JSON"
     var messageRatePerSecond: Int = 60
-    var compassAngle: Double = 1.0 // 1.0 is faceup
     var deviceUUID: String = Utils.randomStringWithLength(16)
+    var compassAngle: Double = 1.0 // 1.0 is faceup
     var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
     
     var messageInterval: TimeInterval {
