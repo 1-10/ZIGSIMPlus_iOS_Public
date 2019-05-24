@@ -18,7 +18,7 @@ public final class NdiMonitoringCommand: ImageCommand {
     }
 
     public func start(completion: ((String?) -> Void)?) {
-        print(">> NdiMonitoringCommand.start must not be called")
+        assertionFailure("NdiMonitoringCommand.start must not be called")
     }
     
     public func stop(completion: ((String?) -> Void)?) {
