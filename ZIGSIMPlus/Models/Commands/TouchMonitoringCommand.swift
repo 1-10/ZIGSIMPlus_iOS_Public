@@ -37,7 +37,6 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
                 } else {
                     // Fallback on earlier versions
                 }
-                
             }
             
             completion?(stringMsg)

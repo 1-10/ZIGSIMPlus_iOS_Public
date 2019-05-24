@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import SwiftOSC
 
 /// Data store for commands which depend on LocationManager.
 /// e.g.) GPS, iBeacon, etc.
@@ -172,5 +173,60 @@ extension LocationDataStore: CLLocationManagerDelegate {
         if status != .authorizedAlways || status != .authorizedWhenInUse {
             // TODO: Show error message
         }
+    }
+}
+
+extension LocationDataStore : Store {
+    func toOSC() -> [OSCMessage] {
+        let deviceUUID = AppSettingModel.shared.deviceUUID
+        var data = [OSCMessage]()
+
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gps]! {
+            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/gps"), latitudeData, longitudeData))
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]! {
+            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData))
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.beacon]! {
+            data += beacons.enumerated().map { (i, beacon)  in
+                return OSCMessage(
+                    OSCAddressPattern("/\(deviceUUID)/beacon\(i)"),
+                    beacon.proximityUUID.uuidString,
+                    beacon.major.intValue,
+                    beacon.minor.intValue,
+                    beacon.rssi
+                )
+            }
+        }
+
+        return data
+    }
+    
+    func toJSON() -> [String:AnyObject] {
+        var data = [String:AnyObject]()
+
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gps]! {
+            data.merge(["gps": [latitudeData, longitudeData] as AnyObject]) { $1 }
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]! {
+            data.merge(["compass": compassData as AnyObject]) { $1 }
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.beacon]! {
+            let objs = beacons.map { beacon in
+                return [
+                    "uuid": beacon.proximityUUID.uuidString,
+                    "major": beacon.major.intValue,
+                    "minor": beacon.minor.intValue,
+                    "rssi": beacon.rssi
+                ]
+            }
+            data.merge(["beacons": objs as AnyObject]) { $1 }
+        }
+
+        return data
     }
 }
