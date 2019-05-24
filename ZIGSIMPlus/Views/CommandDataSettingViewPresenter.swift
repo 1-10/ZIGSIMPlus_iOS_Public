@@ -36,7 +36,7 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
         self.view.addSubview(self.scrollView)
 
         // set delegate and editor
-        setTextFieldSetting(texField: ipAdressTextField, text: Defaults[.userDataDestination]!.description)
+        setTextFieldSetting(texField: ipAdressTextField, text: Defaults[.userIpAdress]!.description)
         setTextFieldSetting(texField: portNumberTextField, text: Defaults[.userPortNumber]!.description)
         setTextFieldSetting(texField: uuidTextField, text: Defaults[.userDeviceUUID]!.description)
         setTextFieldSetting(texField: beaconUUID1TextField, text: Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:0))
@@ -46,19 +46,19 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
         setTextFieldSetting(texField: beaconUUID5TextField, text: Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:4))
         
         // set segmented control
-        if Defaults[.userDataDestination] == "LOCAL_FILE" {
+        if Defaults[.userDataDestination] == 0 {
             dataDestinationSeg.selectedSegmentIndex = 0
-        } else if Defaults[.userDataDestination] == "OTHER_APP" {
+        } else if Defaults[.userDataDestination] == 1 {
             dataDestinationSeg.selectedSegmentIndex = 1
         }
-        if Defaults[.userProtocolo] == "UDP" {
+        if Defaults[.userProtocol] == 0 {
             protocoloSeg.selectedSegmentIndex = 0
-        } else if Defaults[.userProtocolo] == "TCP" {
+        } else if Defaults[.userProtocol] == 1 {
             protocoloSeg.selectedSegmentIndex = 1
         }
-        if Defaults[.userMessageFormat] == "JSON" {
+        if Defaults[.userMessageFormat] == 0 {
             messageFormatSeg.selectedSegmentIndex = 0
-        } else if Defaults[.userMessageFormat] == "OSC" {
+        } else if Defaults[.userMessageFormat] == 1 {
             messageFormatSeg.selectedSegmentIndex = 1
         }
         if  Defaults[.userMessageRatePerSecond] == 1 {
@@ -88,35 +88,38 @@ public class CommandDataSettingViewPresenter : UIViewController, UITextFieldDele
         
         // set DATA DESTINATION
         if dataDestinationSeg.selectedSegmentIndex == 0 {
-            AppSettingModel.shared.dataDestination = "LOCAL_FILE"
+            AppSettingModel.shared.dataDestination = .LOCAL_FILE
+            Defaults[.userDataDestination] = 0
         } else if dataDestinationSeg.selectedSegmentIndex == 1 {
-            AppSettingModel.shared.dataDestination = "OTHER_APP"
+            AppSettingModel.shared.dataDestination = .OTHER_APP
+            Defaults[.userDataDestination] = 1
         }
-        Defaults[.userDataDestination] = AppSettingModel.shared.dataDestination
         
         // set PROTOCOL
         if protocoloSeg.selectedSegmentIndex == 0 {
-            AppSettingModel.shared.protocolo = "UDP"
+            AppSettingModel.shared.transportProtocol = .UDP
+            Defaults[.userProtocol] = 0
         } else if protocoloSeg.selectedSegmentIndex == 1 {
-            AppSettingModel.shared.protocolo = "TCP"
+            AppSettingModel.shared.transportProtocol = .TCP
+            Defaults[.userProtocol] = 1
         }
-        Defaults[.userProtocolo] = AppSettingModel.shared.protocolo
         
         // set IP ADDRESS
-        AppSettingModel.shared.ipAdress = ipAdressTextField.text!
-        Defaults[.userIpAdress] = AppSettingModel.shared.ipAdress
+        AppSettingModel.shared.adress = ipAdressTextField.text!
+        Defaults[.userIpAdress] = AppSettingModel.shared.adress
         
         // set PORT NUMBER
-        AppSettingModel.shared.portNumber = portNumberTextField.text!
-        Defaults[.userPortNumber] = AppSettingModel.shared.portNumber
+        AppSettingModel.shared.port = Int32(portNumberTextField.text!)!
+        Defaults[.userPortNumber] = Int(AppSettingModel.shared.port)
         
         // set MESSAGE FORMAT
         if messageFormatSeg.selectedSegmentIndex == 0 {
-            AppSettingModel.shared.messageFormat = "JSON"
+            AppSettingModel.shared.transportFormat = .JSON
+            Defaults[.userMessageFormat] = 0
         } else if messageFormatSeg.selectedSegmentIndex == 1 {
-            AppSettingModel.shared.messageFormat = "OSC"
+            AppSettingModel.shared.transportFormat = .OSC
+            Defaults[.userMessageFormat] = 1
         }
-        Defaults[.userMessageFormat] = AppSettingModel.shared.messageFormat
         
         // set MESSAGE RATE(PER SEC)
         if  messageRateSeg.selectedSegmentIndex == 0 {

@@ -9,6 +9,21 @@
 import Foundation
 import SwiftyUserDefaults
 
+enum DataDestination {
+    case LOCAL_FILE
+    case OTHER_APP
+}
+
+enum TransportProtocol {
+    case TCP
+    case UDP
+}
+
+enum TransportFormat {
+    case OSC
+    case JSON
+}
+
 public class AppSettingModel {
     private init() {
         for label in LabelConstants.commandDatas {
@@ -19,12 +34,12 @@ public class AppSettingModel {
     static let shared = AppSettingModel()
     var isActiveByCommandData: Dictionary<String, Bool> = [:]
     
-    // app default data & variable used in app
-    var dataDestination: String = "OTHER_APP"
-    var protocolo: String = "UDP"
-    var ipAdress: String = "192.168.0.1"
-    var portNumber: String = "50000"
-    var messageFormat: String = "JSON"
+    // app default value & variable used in app
+    var dataDestination: DataDestination = .OTHER_APP
+    var transportProtocol: TransportProtocol = .UDP
+    var adress: String = "192.168.0.1"
+    var port: Int32 = 50000
+    var transportFormat: TransportFormat = .OSC
     var messageRatePerSecond: Int = 60
     var deviceUUID: String = Utils.randomStringWithLength(16)
     var compassAngle: Double = 1.0 // 1.0 is faceup
@@ -36,11 +51,11 @@ public class AppSettingModel {
 
 // user default data
 extension DefaultsKeys {
-    static let userDataDestination = DefaultsKey<String?>("userDataDestination", defaultValue: AppSettingModel.shared.dataDestination)
-    static let userProtocolo = DefaultsKey<String?>("userProtocolo", defaultValue: AppSettingModel.shared.protocolo)
-    static let userIpAdress = DefaultsKey<String?>("userIpAdress", defaultValue: AppSettingModel.shared.ipAdress)
-    static let userPortNumber = DefaultsKey<String?>("userPortNumber", defaultValue: AppSettingModel.shared.portNumber)
-    static let userMessageFormat = DefaultsKey<String?>("userMessageFormat", defaultValue: AppSettingModel.shared.messageFormat)
+    static let userDataDestination = DefaultsKey<Int?>("userDataDestination", defaultValue: 1)
+    static let userProtocol = DefaultsKey<Int?>("userProtocol", defaultValue: 1)
+    static let userIpAdress = DefaultsKey<String?>("userIpAdress", defaultValue: AppSettingModel.shared.adress)
+    static let userPortNumber = DefaultsKey<Int?>("userPortNumber", defaultValue: Int(AppSettingModel.shared.port))
+    static let userMessageFormat = DefaultsKey<Int?>("userMessageFormat", defaultValue: 0)
     static let userMessageRatePerSecond = DefaultsKey<Int?>("userMessageRatePerSecond", defaultValue: AppSettingModel.shared.messageRatePerSecond)
     static let userCompassAngle = DefaultsKey<Double?>("userCompassAngle", defaultValue: AppSettingModel.shared.compassAngle)
     static let userDeviceUUID = DefaultsKey<String?>("userDeviceUUID", defaultValue: AppSettingModel.shared.deviceUUID)
