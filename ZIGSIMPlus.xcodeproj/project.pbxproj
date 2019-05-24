@@ -32,7 +32,7 @@
 		B358A85C22981F7700D2AB5A /* MiscDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B358A85B22981F7700D2AB5A /* MiscDataStore.swift */; };
 		B358A85E22981F7B00D2AB5A /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B358A85D22981F7B00D2AB5A /* StoreManager.swift */; };
 		B358A86022981F7E00D2AB5A /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B358A85F22981F7E00D2AB5A /* TouchDataStore.swift */; };
-		B358A86A229823FA00D2AB5A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B358A869229823FA00D2AB5A /* StringExtension.swift */; };
+		B358A86C2298250100D2AB5A /* Utils in Resources */ = {isa = PBXBuildFile; fileRef = B358A86B2298250100D2AB5A /* Utils */; };
 		B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */; };
 		B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */; };
 		B3BB76842296781C003F6B2B /* CommandDataSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BB76832296781C003F6B2B /* CommandDataSettingViewController.swift */; };
@@ -97,7 +97,7 @@
 		B358A85B22981F7700D2AB5A /* MiscDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscDataStore.swift; sourceTree = "<group>"; };
 		B358A85D22981F7B00D2AB5A /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		B358A85F22981F7E00D2AB5A /* TouchDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
-		B358A869229823FA00D2AB5A /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = ZIGSIMPlus/Utils_/StringExtension.swift; sourceTree = SOURCE_ROOT; };
+		B358A86B2298250100D2AB5A /* Utils */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Utils; sourceTree = "<group>"; };
 		B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsMonitoringCommand.swift; sourceTree = "<group>"; };
 		B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassMonitoringCommand.swift; sourceTree = "<group>"; };
 		B3BB76832296781C003F6B2B /* CommandDataSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSettingViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		902EB9C8227BE68D008F1650 /* ZIGSIMPlus */ = {
 			isa = PBXGroup;
 			children = (
-				B358A868229823E000D2AB5A /* Utils */,
+				B358A86B2298250100D2AB5A /* Utils */,
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
 				9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */,
 				9092E4C7227D85890019F1C1 /* Models */,
@@ -277,14 +277,6 @@
 				B358A85922981F7400D2AB5A /* LocationDataStore.swift */,
 			);
 			path = Stores;
-			sourceTree = "<group>";
-		};
-		B358A868229823E000D2AB5A /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				B358A869229823FA00D2AB5A /* StringExtension.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,6 +389,7 @@
 			files = (
 				902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */,
 				902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */,
+				B358A86C2298250100D2AB5A /* Utils in Resources */,
 				902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,7 +530,6 @@
 				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
-				B358A86A229823FA00D2AB5A /* StringExtension.swift in Sources */,
 				B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */,
 				B358A85A22981F7400D2AB5A /* LocationDataStore.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
