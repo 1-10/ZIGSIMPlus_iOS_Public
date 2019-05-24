@@ -52,6 +52,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             }
         }
 
+        StoreManager.shared.send()
         updateOutput()
     }
     
@@ -73,6 +74,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             }
         }
 
+        StoreManager.shared.send()
         updateOutput()
     }
     
@@ -89,6 +91,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
                 command.stop(completion: nil)
             }
         }
+        StoreManager.shared.send()
     }
     
     

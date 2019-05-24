@@ -1,0 +1,6 @@
+framework module Pods_ZIGSIMPlus {
+  umbrella header "Pods-ZIGSIMPlus-umbrella.h"
+
+  export *
+  module * { export * }
+}

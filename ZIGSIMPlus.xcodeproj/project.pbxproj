@@ -7,20 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0236461B2298253900171F73 /* NDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* NDI.swift */; };
+		0236461C2298253900171F73 /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 023644BF2298253800171F73 /* libndi_ios.a */; };
+		0236461D2298253900171F73 /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 023644C32298253800171F73 /* NDI.cpp */; };
+		0236461E2298253900171F73 /* NDIAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 023644C42298253800171F73 /* NDIAdapter.mm */; };
+		02364621229825B900171F73 /* NdiMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02364620229825B900171F73 /* NdiMonitoringCommand.swift */; };
 		023BB10622965B490094363B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10522965B490094363B /* Utils.swift */; };
 		023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */; };
-		023BB10A22965B690094363B /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10922965B690094363B /* LocationDataStore.swift */; };
-		026FD4952297E3950062968C /* NdiMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026FD4942297E3950062968C /* NdiMonitoringCommand.swift */; };
-		026FDEB42297E9500062968C /* NDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026FDD472297E94E0062968C /* NDI.swift */; };
-		026FDEB52297E9500062968C /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 026FDD582297E94E0062968C /* libndi_ios.a */; };
-		026FDEB62297E9500062968C /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 026FDD5C2297E94E0062968C /* NDI.cpp */; };
-		026FDEB72297E9500062968C /* NDIAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 026FDD5D2297E94E0062968C /* NDIAdapter.mm */; };
+		02A8FA882296B62D001FB3DD /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA832296B62D001FB3DD /* TouchDataStore.swift */; };
+		02A8FA892296B62D001FB3DD /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA842296B62D001FB3DD /* LocationDataStore.swift */; };
+		02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA862296B62D001FB3DD /* MiscDataStore.swift */; };
+		02A8FA8C2296B62D001FB3DD /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA872296B62D001FB3DD /* StoreManager.swift */; };
+		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
 		02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */; };
-		02E7F84C2293A864002B55F2 /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84B2293A864002B55F2 /* TouchDataStore.swift */; };
+		515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */; };
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
 		63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */; };
 		63E57859229697E800C6340C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E57858229697E800C6340C /* StringExtension.swift */; };
 		63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E5785A2296991400C6340C /* StringExtensionTests.swift */; };
+		7C92CDE0A0952FD97D6D8271 /* Pods_ZIGSIMPlusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
 		902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */; };
 		902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9CD227BE68D008F1650 /* Main.storyboard */; };
@@ -37,6 +42,7 @@
 		9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */; };
 		B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */; };
 		B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */; };
+		FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,35 +63,44 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.release.xcconfig"; sourceTree = "<group>"; };
+		023644AE2298253800171F73 /* NDI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDI.swift; sourceTree = "<group>"; };
+		023644B12298253800171F73 /* Processing.NDI.compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.compat.h; sourceTree = "<group>"; };
+		023644B22298253800171F73 /* Processing.NDI.utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.utilities.h; sourceTree = "<group>"; };
+		023644B32298253800171F73 /* Processing.NDI.Recv.ex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Recv.ex.h; sourceTree = "<group>"; };
+		023644B42298253800171F73 /* Processing.NDI.deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.deprecated.h; sourceTree = "<group>"; };
+		023644B52298253800171F73 /* Processing.NDI.Routing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Routing.h; sourceTree = "<group>"; };
+		023644B62298253800171F73 /* Processing.NDI.Send.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Send.h; sourceTree = "<group>"; };
+		023644B72298253800171F73 /* Processing.NDI.structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.structs.h; sourceTree = "<group>"; };
+		023644B82298253800171F73 /* Processing.NDI.Lib.cplusplus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Lib.cplusplus.h; sourceTree = "<group>"; };
+		023644B92298253800171F73 /* Processing.NDI.FrameSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.FrameSync.h; sourceTree = "<group>"; };
+		023644BA2298253800171F73 /* Processing.NDI.Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Find.h; sourceTree = "<group>"; };
+		023644BB2298253800171F73 /* Processing.NDI.DynamicLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.DynamicLoad.h; sourceTree = "<group>"; };
+		023644BC2298253800171F73 /* Processing.NDI.Recv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Recv.h; sourceTree = "<group>"; };
+		023644BD2298253800171F73 /* Processing.NDI.Lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Lib.h; sourceTree = "<group>"; };
+		023644BF2298253800171F73 /* libndi_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libndi_ios.a; sourceTree = "<group>"; };
+		023644C12298253800171F73 /* NDIAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDIAdapter.h; sourceTree = "<group>"; };
+		023644C22298253800171F73 /* NDI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NDI.hpp; sourceTree = "<group>"; };
+		023644C32298253800171F73 /* NDI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NDI.cpp; sourceTree = "<group>"; };
+		023644C42298253800171F73 /* NDIAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NDIAdapter.mm; sourceTree = "<group>"; };
+		0236461F2298257500171F73 /* ZIGSIMPlus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZIGSIMPlus-Bridging-Header.h"; sourceTree = "<group>"; };
+		02364620229825B900171F73 /* NdiMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NdiMonitoringCommand.swift; sourceTree = "<group>"; };
 		023BB10522965B490094363B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconMonitoringCommand.swift; sourceTree = "<group>"; };
-		023BB10922965B690094363B /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
-		026FD4942297E3950062968C /* NdiMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NdiMonitoringCommand.swift; sourceTree = "<group>"; };
-		026FDD472297E94E0062968C /* NDI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDI.swift; sourceTree = "<group>"; };
-		026FDD4A2297E94E0062968C /* Processing.NDI.compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.compat.h; sourceTree = "<group>"; };
-		026FDD4B2297E94E0062968C /* Processing.NDI.utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.utilities.h; sourceTree = "<group>"; };
-		026FDD4C2297E94E0062968C /* Processing.NDI.Recv.ex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Recv.ex.h; sourceTree = "<group>"; };
-		026FDD4D2297E94E0062968C /* Processing.NDI.deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.deprecated.h; sourceTree = "<group>"; };
-		026FDD4E2297E94E0062968C /* Processing.NDI.Routing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Routing.h; sourceTree = "<group>"; };
-		026FDD4F2297E94E0062968C /* Processing.NDI.Send.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Send.h; sourceTree = "<group>"; };
-		026FDD502297E94E0062968C /* Processing.NDI.structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.structs.h; sourceTree = "<group>"; };
-		026FDD512297E94E0062968C /* Processing.NDI.Lib.cplusplus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Lib.cplusplus.h; sourceTree = "<group>"; };
-		026FDD522297E94E0062968C /* Processing.NDI.FrameSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.FrameSync.h; sourceTree = "<group>"; };
-		026FDD532297E94E0062968C /* Processing.NDI.Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Find.h; sourceTree = "<group>"; };
-		026FDD542297E94E0062968C /* Processing.NDI.DynamicLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.DynamicLoad.h; sourceTree = "<group>"; };
-		026FDD552297E94E0062968C /* Processing.NDI.Recv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Recv.h; sourceTree = "<group>"; };
-		026FDD562297E94E0062968C /* Processing.NDI.Lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Lib.h; sourceTree = "<group>"; };
-		026FDD582297E94E0062968C /* libndi_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libndi_ios.a; sourceTree = "<group>"; };
-		026FDD5A2297E94E0062968C /* NDIAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDIAdapter.h; sourceTree = "<group>"; };
-		026FDD5B2297E94E0062968C /* NDI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NDI.hpp; sourceTree = "<group>"; };
-		026FDD5C2297E94E0062968C /* NDI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NDI.cpp; sourceTree = "<group>"; };
-		026FDD5D2297E94E0062968C /* NDIAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NDIAdapter.mm; sourceTree = "<group>"; };
+		02A8FA832296B62D001FB3DD /* TouchDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
+		02A8FA842296B62D001FB3DD /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
+		02A8FA862296B62D001FB3DD /* MiscDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscDataStore.swift; sourceTree = "<group>"; };
+		02A8FA872296B62D001FB3DD /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMonitoringCommand.swift; sourceTree = "<group>"; };
-		02E7F84B2293A864002B55F2 /* TouchDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
+		0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		634B8D92228565F00043607D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndCommandDataMediator.swift; sourceTree = "<group>"; };
 		63E57858229697E800C6340C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		63E5785A2296991400C6340C /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
+		845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		902EB9C6227BE68D008F1650 /* ZIGSIMPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIGSIMPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9C9227BE68D008F1650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSelectionViewController.swift; sourceTree = "<group>"; };
@@ -106,8 +121,12 @@
 		9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataOutputPresenter.swift; sourceTree = "<group>"; };
 		9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionMonitoringCommand.swift; sourceTree = "<group>"; };
 		9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
+		9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.release.xcconfig"; sourceTree = "<group>"; };
+		9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsMonitoringCommand.swift; sourceTree = "<group>"; };
 		B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassMonitoringCommand.swift; sourceTree = "<group>"; };
+		BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +134,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				026FDEB52297E9500062968C /* libndi_ios.a in Frameworks */,
+				FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */,
+				0236461C2298253900171F73 /* libndi_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,84 +151,112 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C92CDE0A0952FD97D6D8271 /* Pods_ZIGSIMPlusUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		026FDB622297E85A0062968C /* Frameworks */ = {
+		023642CD2298253500171F73 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				026FDB662297E94D0062968C /* Private */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		026FDB662297E94D0062968C /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				026FDD462297E94E0062968C /* NDI */,
+				023644AD2298253800171F73 /* NDI */,
 			);
 			path = Private;
 			sourceTree = "<group>";
 		};
-		026FDD462297E94E0062968C /* NDI */ = {
+		023644AD2298253800171F73 /* NDI */ = {
 			isa = PBXGroup;
 			children = (
-				026FDD472297E94E0062968C /* NDI.swift */,
-				026FDD482297E94E0062968C /* SDK */,
-				026FDD592297E94E0062968C /* Bindings */,
+				023644AE2298253800171F73 /* NDI.swift */,
+				023644AF2298253800171F73 /* SDK */,
+				023644C02298253800171F73 /* Bindings */,
 			);
 			path = NDI;
 			sourceTree = "<group>";
 		};
-		026FDD482297E94E0062968C /* SDK */ = {
+		023644AF2298253800171F73 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				026FDD492297E94E0062968C /* include */,
-				026FDD572297E94E0062968C /* lib */,
+				023644B02298253800171F73 /* include */,
+				023644BE2298253800171F73 /* lib */,
 			);
 			path = SDK;
 			sourceTree = "<group>";
 		};
-		026FDD492297E94E0062968C /* include */ = {
+		023644B02298253800171F73 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				026FDD4A2297E94E0062968C /* Processing.NDI.compat.h */,
-				026FDD4B2297E94E0062968C /* Processing.NDI.utilities.h */,
-				026FDD4C2297E94E0062968C /* Processing.NDI.Recv.ex.h */,
-				026FDD4D2297E94E0062968C /* Processing.NDI.deprecated.h */,
-				026FDD4E2297E94E0062968C /* Processing.NDI.Routing.h */,
-				026FDD4F2297E94E0062968C /* Processing.NDI.Send.h */,
-				026FDD502297E94E0062968C /* Processing.NDI.structs.h */,
-				026FDD512297E94E0062968C /* Processing.NDI.Lib.cplusplus.h */,
-				026FDD522297E94E0062968C /* Processing.NDI.FrameSync.h */,
-				026FDD532297E94E0062968C /* Processing.NDI.Find.h */,
-				026FDD542297E94E0062968C /* Processing.NDI.DynamicLoad.h */,
-				026FDD552297E94E0062968C /* Processing.NDI.Recv.h */,
-				026FDD562297E94E0062968C /* Processing.NDI.Lib.h */,
+				023644B12298253800171F73 /* Processing.NDI.compat.h */,
+				023644B22298253800171F73 /* Processing.NDI.utilities.h */,
+				023644B32298253800171F73 /* Processing.NDI.Recv.ex.h */,
+				023644B42298253800171F73 /* Processing.NDI.deprecated.h */,
+				023644B52298253800171F73 /* Processing.NDI.Routing.h */,
+				023644B62298253800171F73 /* Processing.NDI.Send.h */,
+				023644B72298253800171F73 /* Processing.NDI.structs.h */,
+				023644B82298253800171F73 /* Processing.NDI.Lib.cplusplus.h */,
+				023644B92298253800171F73 /* Processing.NDI.FrameSync.h */,
+				023644BA2298253800171F73 /* Processing.NDI.Find.h */,
+				023644BB2298253800171F73 /* Processing.NDI.DynamicLoad.h */,
+				023644BC2298253800171F73 /* Processing.NDI.Recv.h */,
+				023644BD2298253800171F73 /* Processing.NDI.Lib.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		026FDD572297E94E0062968C /* lib */ = {
+		023644BE2298253800171F73 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				026FDD582297E94E0062968C /* libndi_ios.a */,
+				023644BF2298253800171F73 /* libndi_ios.a */,
 			);
 			path = lib;
 			sourceTree = "<group>";
 		};
-		026FDD592297E94E0062968C /* Bindings */ = {
+		023644C02298253800171F73 /* Bindings */ = {
 			isa = PBXGroup;
 			children = (
-				026FDD5A2297E94E0062968C /* NDIAdapter.h */,
-				026FDD5B2297E94E0062968C /* NDI.hpp */,
-				026FDD5C2297E94E0062968C /* NDI.cpp */,
-				026FDD5D2297E94E0062968C /* NDIAdapter.mm */,
+				023644C12298253800171F73 /* NDIAdapter.h */,
+				023644C22298253800171F73 /* NDI.hpp */,
+				023644C32298253800171F73 /* NDI.cpp */,
+				023644C42298253800171F73 /* NDIAdapter.mm */,
 			);
 			path = Bindings;
+			sourceTree = "<group>";
+		};
+		02A8FA822296B62D001FB3DD /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				02A8FA832296B62D001FB3DD /* TouchDataStore.swift */,
+				02A8FA842296B62D001FB3DD /* LocationDataStore.swift */,
+				02A8FA862296B62D001FB3DD /* MiscDataStore.swift */,
+				02A8FA872296B62D001FB3DD /* StoreManager.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		3047AA928C608382EC8AFA33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				023642CD2298253500171F73 /* Private */,
+				4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */,
+				D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */,
+				0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5AFFA0679D7FDCE3F553FDCF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */,
+				9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */,
+				BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */,
+				00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */,
+				845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */,
+				9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		634B8D94228566C30043607D /* Commands */ = {
@@ -217,7 +266,7 @@
 				02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */,
 				023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */,
 				9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */,
-				026FD4942297E3950062968C /* NdiMonitoringCommand.swift */,
+				02364620229825B900171F73 /* NdiMonitoringCommand.swift */,
 				B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */,
 				B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */,
 			);
@@ -239,7 +288,8 @@
 				902EB9DD227BE68F008F1650 /* ZIGSIMPlusTests */,
 				902EB9E8227BE68F008F1650 /* ZIGSIMPlusUITests */,
 				902EB9C7227BE68D008F1650 /* Products */,
-				026FDB622297E85A0062968C /* Frameworks */,
+				5AFFA0679D7FDCE3F553FDCF /* Pods */,
+				3047AA928C608382EC8AFA33 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -266,6 +316,7 @@
 				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				902EB9D0227BE68F008F1650 /* Assets.xcassets */,
 				902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */,
+				0236461F2298257500171F73 /* ZIGSIMPlus-Bridging-Header.h */,
 				902EB9D5227BE68F008F1650 /* Info.plist */,
 			);
 			path = ZIGSIMPlus;
@@ -320,10 +371,10 @@
 			children = (
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				634B8D92228565F00043607D /* Command.swift */,
-				02E7F84B2293A864002B55F2 /* TouchDataStore.swift */,
-				023BB10922965B690094363B /* LocationDataStore.swift */,
+				02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */,
 				023BB10522965B490094363B /* Utils.swift */,
+				02A8FA822296B62D001FB3DD /* Stores */,
 				634B8D94228566C30043607D /* Commands */,
 			);
 			path = Models;
@@ -336,9 +387,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 902EB9EE227BE68F008F1650 /* Build configuration list for PBXNativeTarget "ZIGSIMPlus" */;
 			buildPhases = (
+				76CC18D56D1D4013C08D7E64 /* [CP] Check Pods Manifest.lock */,
 				902EB9C2227BE68D008F1650 /* Sources */,
 				902EB9C3227BE68D008F1650 /* Frameworks */,
 				902EB9C4227BE68D008F1650 /* Resources */,
+				0C08B6B7878D8F62CABB8B9B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,6 +406,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 902EB9F1227BE68F008F1650 /* Build configuration list for PBXNativeTarget "ZIGSIMPlusTests" */;
 			buildPhases = (
+				C663413003CD65493E6D629C /* [CP] Check Pods Manifest.lock */,
 				902EB9D6227BE68F008F1650 /* Sources */,
 				902EB9D7227BE68F008F1650 /* Frameworks */,
 				902EB9D8227BE68F008F1650 /* Resources */,
@@ -371,6 +425,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 902EB9F4227BE68F008F1650 /* Build configuration list for PBXNativeTarget "ZIGSIMPlusUITests" */;
 			buildPhases = (
+				B91CD1447D838A119DF148B4 /* [CP] Check Pods Manifest.lock */,
 				902EB9E1227BE68F008F1650 /* Sources */,
 				902EB9E2227BE68F008F1650 /* Frameworks */,
 				902EB9E3227BE68F008F1650 /* Resources */,
@@ -455,34 +510,130 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0C08B6B7878D8F62CABB8B9B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOSC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76CC18D56D1D4013C08D7E64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZIGSIMPlus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B91CD1447D838A119DF148B4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZIGSIMPlusUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C663413003CD65493E6D629C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZIGSIMPlusTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		902EB9C2227BE68D008F1650 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
+				02364621229825B900171F73 /* NdiMonitoringCommand.swift in Sources */,
+				0236461D2298253900171F73 /* NDI.cpp in Sources */,
+				02A8FA8C2296B62D001FB3DD /* StoreManager.swift in Sources */,
+				02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
-				023BB10A22965B690094363B /* LocationDataStore.swift in Sources */,
+				02A8FA882296B62D001FB3DD /* TouchDataStore.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */,
-				026FDEB42297E9500062968C /* NDI.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */,
+				0236461B2298253900171F73 /* NDI.swift in Sources */,
 				023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */,
 				023BB10622965B490094363B /* Utils.swift in Sources */,
 				63E57859229697E800C6340C /* StringExtension.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */,
-				026FDEB72297E9500062968C /* NDIAdapter.mm in Sources */,
 				02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */,
-				02E7F84C2293A864002B55F2 /* TouchDataStore.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
-				026FDEB62297E9500062968C /* NDI.cpp in Sources */,
 				B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
-				026FD4952297E3950062968C /* NdiMonitoringCommand.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
+				02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
 				B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */,
+				0236461E2298253900171F73 /* NDIAdapter.mm in Sources */,
+				02A8FA892296B62D001FB3DD /* LocationDataStore.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,11 +807,17 @@
 		};
 		902EB9EF227BE68F008F1650 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Private/NDI/SDK/include\"";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Private/NDI/SDK/include\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftOSC/SwiftOSC.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftSocket/SwiftSocket.framework/Headers\"",
+				);
 				INFOPLIST_FILE = ZIGSIMPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -668,15 +825,15 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/vs/x64",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/vs/Win32",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/osx/x64",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
+					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -684,11 +841,17 @@
 		};
 		902EB9F0227BE68F008F1650 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Private/NDI/SDK/include\"";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Private/NDI/SDK/include\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftOSC/SwiftOSC.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftSocket/SwiftSocket.framework/Headers\"",
+				);
 				INFOPLIST_FILE = ZIGSIMPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -696,15 +859,15 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/vs/x64",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/vs/Win32",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/osx/x64",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
+					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -712,6 +875,7 @@
 		};
 		902EB9F2227BE68F008F1650 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -733,6 +897,7 @@
 		};
 		902EB9F3227BE68F008F1650 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -754,6 +919,7 @@
 		};
 		902EB9F5227BE68F008F1650 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -774,6 +940,7 @@
 		};
 		902EB9F6227BE68F008F1650 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

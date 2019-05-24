@@ -29,6 +29,12 @@ public final class MotionMonitoringCommand: AutoUpdatedCommand {
                         fatalError("AppSetting of the CommandData nil")
                 }
                 
+                // Save data to Store
+                MiscDataStore.shared.accel = motion.userAcceleration
+                MiscDataStore.shared.gravity = motion.gravity
+                MiscDataStore.shared.gyro = motion.rotationRate
+                MiscDataStore.shared.quaternion = motion.attitude.quaternion
+
                 let result = self.getMotionResult(from: motion, isAccelerationActive: isAccelerationActive, isGravityActive: isGravityActive, isGyroActive: isGyroActive, isQuaternionActive: isQuaternionActive)
                 completion?(result)
             }
