@@ -38,7 +38,7 @@ public class AppSettingModel {
     var dataDestination: DataDestination = .OTHER_APP
     var transportProtocol: TransportProtocol = .UDP
     // var transportProtocol: TransportProtocol = .TCP
-    var adress: String = "172.17.1.20"
+    var address: String = "172.17.1.20"
     var port: Int32 = 3333
     var transportFormat: TransportFormat = .OSC
     // var transportFormat: TransportFormat = .JSON
@@ -56,7 +56,7 @@ public class AppSettingModel {
 extension DefaultsKeys {
     static let userDataDestination = DefaultsKey<Int?>("userDataDestination", defaultValue: 1)
     static let userProtocol = DefaultsKey<Int?>("userProtocol", defaultValue: 1)
-    static let userIpAdress = DefaultsKey<String?>("userIpAdress", defaultValue: AppSettingModel.shared.adress)
+    static let userIpAdress = DefaultsKey<String?>("userIpAdress", defaultValue: AppSettingModel.shared.address)
     static let userPortNumber = DefaultsKey<Int?>("userPortNumber", defaultValue: Int(AppSettingModel.shared.port))
     static let userMessageFormat = DefaultsKey<Int?>("userMessageFormat", defaultValue: 0)
     static let userMessageRatePerSecond = DefaultsKey<Int?>("userMessageRatePerSecond", defaultValue: AppSettingModel.shared.messageRatePerSecond)

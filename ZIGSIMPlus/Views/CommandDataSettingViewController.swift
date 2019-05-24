@@ -105,8 +105,8 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
         }
         
         // set IP ADDRESS
-        AppSettingModel.shared.adress = ipAdressTextField.text!
-        Defaults[.userIpAdress] = AppSettingModel.shared.adress
+        AppSettingModel.shared.address = ipAdressTextField.text!
+        Defaults[.userIpAdress] = AppSettingModel.shared.address
         
         // set PORT NUMBER
         AppSettingModel.shared.port = Int32(portNumberTextField.text!)!
