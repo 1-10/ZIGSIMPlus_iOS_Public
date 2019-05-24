@@ -11,6 +11,7 @@ import UIKit
 import CoreMotion
 import SwiftOSC
 
+/// Data store for tiny data. e.g.) Motion, Battery, etc.
 public class MiscDataStore {
     // Singleton instance
     static let shared = MiscDataStore()

@@ -11,9 +11,11 @@ import SwiftSocket
 import SwiftOSC
 import CoreMotion
 
+/// Wrapper of SwiftSocket.
 public class NetworkAdapter {
     static let shared = NetworkAdapter()
     
+    /// Send data over TCP / UDP automatically
     func send(_ data: Data){
         switch AppSettingModel.shared.transportProtocol {
         case .TCP:
@@ -25,7 +27,7 @@ public class NetworkAdapter {
 
     private func sendTCP(_ data: Data) {
         let appSetting = AppSettingModel.shared
-        let client = TCPClient(address: appSetting.address, port: appSetting.port)
+        let client = TCPClient(address: appSetting.address, port: appSetting.port) // TODO: Save client to the instance
         switch client.connect(timeout: 1) {
         case .success:
             switch client.send(data: data) {
@@ -42,7 +44,7 @@ public class NetworkAdapter {
     
     private func sendUDP(_ data: Data) {
         let appSetting = AppSettingModel.shared
-        let client = UDPClient(address: appSetting.address, port: appSetting.port)
+        let client = UDPClient(address: appSetting.address, port: appSetting.port) // TODO: Save client to the instance
         switch client.send(data: data) {
         case .success:
             print(">> UDP sending data succeeded")

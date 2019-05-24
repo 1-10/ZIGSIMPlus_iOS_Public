@@ -14,6 +14,13 @@ protocol Store {
     func toJSON() -> [String:AnyObject]
 }
 
+/// StoreManager creates OSC / JSON data and send it over TCP / UDP.
+///
+/// This class does following things:
+/// - Fetch data from stores
+/// - Merge them into single OSC / JSON data
+/// - Add device data to it
+/// - Send it over network with NetworkAdapter
 class StoreManager {
     static let shared = StoreManager()
     private init() {}

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftOSC
 
+/// Data store for touch data.
 public class TouchDataStore {
     // Singleton instance
     static let shared = TouchDataStore()
