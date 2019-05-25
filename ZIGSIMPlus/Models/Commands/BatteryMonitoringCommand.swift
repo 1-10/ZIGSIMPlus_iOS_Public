@@ -9,6 +9,13 @@
 import UIKit
 
 public final class BatteryMonitoringCommand: ManualUpdatedCommand {
+    public static let shared: Command = BatteryMonitoringCommand()
+    private init() {}
+    
+    public func isAvailable() -> Bool {
+        return true
+    }
+    
     public func start(completion: ((String?) -> Void)?) {
         UIDevice.current.isBatteryMonitoringEnabled = true
         monitor(completion: completion)

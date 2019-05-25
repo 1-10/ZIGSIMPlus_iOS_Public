@@ -20,12 +20,12 @@ class PresenterFactory {
         presenter.view = view
         let mediator = CommandAndCommandDataMediator()
         presenter.mediator = mediator
-        presenter.commands.append(MotionMonitoringCommand())
-        presenter.commands.append(TouchMonitoringCommand())
-        presenter.commands.append(BatteryMonitoringCommand())
-        presenter.commands.append(CompassMonitoringCommand())
-        presenter.commands.append(GpsMonitoringCommand())
-        presenter.commands.append(BeaconMonitoringCommand())
+        presenter.commands.append(MotionMonitoringCommand.shared)
+        presenter.commands.append(TouchMonitoringCommand.shared)
+        presenter.commands.append(BatteryMonitoringCommand.shared)
+        presenter.commands.append(CompassMonitoringCommand.shared)
+        presenter.commands.append(GpsMonitoringCommand.shared)
+        presenter.commands.append(BeaconMonitoringCommand.shared)
         return presenter
     }
 }

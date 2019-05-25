@@ -98,6 +98,15 @@ public class LocationDataStore: NSObject {
             locationManager.stopUpdatingHeading()
         }
     }
+    
+    func isLocationAvailable() -> Bool {
+        if #available(iOS 8.0, *) {
+            if CLLocationManager.locationServicesEnabled() {
+                return true
+            }
+        }
+        return false
+    }
 
     // MARK: - Private methods
 
@@ -115,15 +124,6 @@ public class LocationDataStore: NSObject {
     private func updateBeaconsData() {
         print("beacons:\(beacons.count)")
         beaconsCallback?(beacons)
-    }
-    
-    private func isLocationAvailable() -> Bool {
-        if #available(iOS 8.0, *) {
-            if CLLocationManager.locationServicesEnabled() {
-                return true
-            }
-        }
-        return false
     }
 }
 

@@ -9,6 +9,12 @@
 import Foundation
 
 public final class TouchMonitoringCommand: AutoUpdatedCommand {
+    public static let shared: Command = TouchMonitoringCommand()
+    private init() {}
+    
+    public func isAvailable() -> Bool {
+        return true
+    }
     
     public func start(completion: ((String?) -> Void)?) {
         TouchDataStore.shared.callback = { (touches) in
