@@ -9,8 +9,8 @@
 import Foundation
 
 protocol CommandDataSelectionPresenterProtocol {
-    var numberOfCommandDataLabels: Int { get }
-    func getCommandDataLabel(forRow row: Int) -> String?
+    var numberOfCommandDataToSelect: Int { get }
+    func getCommandDataToSelect(forRow row: Int) -> CommandDataToSelect?
     func didSelectRow(atLabel label: String)
 }
 
@@ -19,14 +19,23 @@ protocol CommandDataSelectionPresenterDelegate: AnyObject {
 
 final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol {
     var view: CommandDataSelectionPresenterDelegate!
+    private var commandDatasToSelect: [CommandDataToSelect]
     
-    var numberOfCommandDataLabels: Int {
-        return LabelConstants.commandDatas.count
+    init() {
+        commandDatasToSelect = [CommandDataToSelect]()
+        let mediater = CommandAndCommandDataMediator()
+        for label in LabelConstants.commandDatas {
+            commandDatasToSelect.append(CommandDataToSelect(label: label, isAvailable: mediater.isAvailable(commandDataLabel: label)))
+        }
     }
     
-    func getCommandDataLabel(forRow row: Int) -> String? {
-        guard row < LabelConstants.commandDatas.count else { return nil }
-        return LabelConstants.commandDatas[row]
+    var numberOfCommandDataToSelect: Int {
+        return commandDatasToSelect.count
+    }
+    
+    func getCommandDataToSelect(forRow row: Int) -> CommandDataToSelect? {
+        guard row < commandDatasToSelect.count else { return nil }
+        return commandDatasToSelect[row]
     }
     
     func didSelectRow(atLabel label: String) {
