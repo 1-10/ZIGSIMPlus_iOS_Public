@@ -69,11 +69,7 @@ extension ProximityDataStore : Store {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]! {
-            data.merge(["proximitymonitor": proximity as AnyObject]) { $1 }
-        }
-        
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]! {
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.proximity]! {
             data.merge([
                 "proximitymonitor": [
                     "proximitymonitor": proximity
