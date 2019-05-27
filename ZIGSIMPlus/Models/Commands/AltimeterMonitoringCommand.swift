@@ -12,8 +12,8 @@ import CoreMotion
 public final class AltimeterMonitoringCommand: AutoUpdatedCommand {
     
     public func start(completion: ((String?) -> Void)?) {
-        AltimeterData.shared.startAltimeter()
-        AltimeterData.shared.callbackAltimeter = { (altimeterData) in
+        AltimeterDataStore.shared.startAltimeter()
+        AltimeterDataStore.shared.callbackAltimeter = { (altimeterData) in
             completion?("""
                 pressure:pressure:\(altimeterData[0])
                 pressure:altitude:\(altimeterData[1])
@@ -22,7 +22,7 @@ public final class AltimeterMonitoringCommand: AutoUpdatedCommand {
     }
     
     public func stop(completion: ((String?) -> Void)?) {
-        AltimeterData.shared.stopAltimeter()
+        AltimeterDataStore.shared.stopAltimeter()
         completion?(nil)
     }
 }

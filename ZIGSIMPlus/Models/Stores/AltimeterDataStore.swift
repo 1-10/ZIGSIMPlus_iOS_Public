@@ -1,5 +1,5 @@
 //
-//  AltimeterData.swift
+//  AltimeterDataStore.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/22.
@@ -8,10 +8,11 @@
 
 import Foundation
 import CoreMotion
+import SwiftOSC
 
-public class AltimeterData{
+public class AltimeterDataStore{
     // Singleton instance
-    static let shared = AltimeterData()
+    static let shared = AltimeterDataStore()
     
     // MARK: - Instance Properties
     var altimeter: AnyObject!
@@ -65,5 +66,37 @@ public class AltimeterData{
             isWorking = false
             altimeter.stopRelativeAltitudeUpdates()
         }
+    }
+}
+
+extension AltimeterDataStore : Store {
+    func toOSC() -> [OSCMessage] {
+        let deviceUUID = AppSettingModel.shared.deviceUUID
+        var messages = [OSCMessage]()
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.pressure]! {
+            messages.append(OSCMessage(
+                OSCAddressPattern("/\(deviceUUID)/pressure"),
+                pressureData,
+                altitudeData
+            ))
+        }
+        
+        return messages
+    }
+    
+    func toJSON() -> [String:AnyObject] {
+        var data = [String:AnyObject]()
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.pressure]! {
+            data.merge([
+                "pressure": [
+                    "pressure": pressureData,
+                    "altitude": altitudeData
+                    ] as AnyObject
+            ]) { $1 }
+        }
+        
+        return data
     }
 }
