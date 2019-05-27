@@ -8,6 +8,7 @@
 
 import Foundation
 import AudioToolbox
+import SwiftOSC
 
 func AudioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
                                inAQ: AudioQueueRef,
@@ -16,9 +17,9 @@ func AudioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
                                inNumberPacketDescriptions: UInt32,
                                inPacketDescs: UnsafePointer<AudioStreamPacketDescription>?) {}
 
-class AudioLevelData {
+class AudioLevelDataStore {
     // Singleton instance
-    static let shared = AudioLevelData()
+    static let shared = AudioLevelDataStore()
     
     // MARK: - Instance Properties
     var queue: AudioQueueRef!
@@ -107,7 +108,7 @@ class AudioLevelData {
         AudioQueueSetProperty(self.queue, kAudioQueueProperty_EnableLevelMetering, &enabledLevelMeter, UInt32(MemoryLayout<UInt32>.size))
         self.timer = Timer.scheduledTimer(timeInterval: 1.0 / fps,
                                           target: self,
-                                          selector: #selector(AudioLevelData.detectVolume(timer:)),
+                                          selector: #selector(AudioLevelDataStore.detectVolume(timer:)),
                                           userInfo: nil,
                                           repeats: true)
         self.timer?.fire()
@@ -121,6 +122,38 @@ class AudioLevelData {
         AudioQueueFlush(self.queue)
         AudioQueueStop(self.queue, false)
         AudioQueueDispose(self.queue, true)
+    }
+}
+
+extension AudioLevelDataStore : Store {
+    func toOSC() -> [OSCMessage] {
+        let deviceUUID = AppSettingModel.shared.deviceUUID
+        var data = [OSCMessage]()
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.micLevel]! {
+            data.append(OSCMessage(
+                OSCAddressPattern("/\(deviceUUID)/miclevel"),
+                averageLevel,
+                maxLevel
+            ))
+        }
+        
+        return data
+    }
+    
+    func toJSON() -> [String:AnyObject] {
+        var data = [String:AnyObject]()
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.micLevel]! {
+            data.merge([
+                "miclevel": [
+                    "average": averageLevel,
+                    "max": maxLevel
+                    ] as AnyObject
+            ]) { $1 }
+        }
+        
+        return data
     }
 }
 

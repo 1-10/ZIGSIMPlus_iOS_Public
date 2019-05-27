@@ -1,5 +1,5 @@
 //
-//  MiclevelMonitoringCommand.swift
+//  MicLevelMonitoringCommand.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/21.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class MiclevelMonitoringCommand: AutoUpdatedCommand {
+public final class MicLevelMonitoringCommand: AutoUpdatedCommand {
     
     public func start(completion: ((String?) -> Void)?) {
         /* fpsは設定画面から変更できるように修正する↓ */
