@@ -1,5 +1,5 @@
 //
-//  ProximityData.swift
+//  ProximityDataStore.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/22.
@@ -8,10 +8,11 @@
 
 import Foundation
 import UIKit
+import SwiftOSC
 
-public class ProximityData {
+public class ProximityDataStore {
     // Singleton instance
-    static let shared = ProximityData()
+    static let shared = ProximityDataStore()
     
     // MARK: - Instance Properties
     var proximity:Bool
@@ -52,3 +53,35 @@ public class ProximityData {
     }
     
 }
+
+extension ProximityDataStore : Store {
+    func toOSC() -> [OSCMessage] {
+        let deviceUUID = AppSettingModel.shared.deviceUUID
+        var data = [OSCMessage]()
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.proximity]! {
+            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/proximitymonitor"), proximity))
+        }
+        
+        return data
+    }
+    
+    func toJSON() -> [String:AnyObject] {
+        var data = [String:AnyObject]()
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]! {
+            data.merge(["proximitymonitor": proximity as AnyObject]) { $1 }
+        }
+        
+        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]! {
+            data.merge([
+                "proximitymonitor": [
+                    "proximitymonitor": proximity
+                    ] as AnyObject
+            ]) { $1 }
+        }
+        
+        return data
+    }
+}
+

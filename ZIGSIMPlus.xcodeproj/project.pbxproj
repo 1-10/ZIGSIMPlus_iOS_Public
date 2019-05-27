@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023BB10622965B490094363B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10522965B490094363B /* Utils.swift */; };
+		023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */; };
+		02A8FA882296B62D001FB3DD /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA832296B62D001FB3DD /* TouchDataStore.swift */; };
+		02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA862296B62D001FB3DD /* MiscDataStore.swift */; };
+		02A8FA8C2296B62D001FB3DD /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA872296B62D001FB3DD /* StoreManager.swift */; };
+		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
+		02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */; };
+		515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */; };
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
 		63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */; };
+		63E57859229697E800C6340C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E57858229697E800C6340C /* StringExtension.swift */; };
+		63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E5785A2296991400C6340C /* StringExtensionTests.swift */; };
+		7C92CDE0A0952FD97D6D8271 /* Pods_ZIGSIMPlusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
 		902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */; };
 		902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9CD227BE68D008F1650 /* Main.storyboard */; };
 		902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9D0227BE68F008F1650 /* Assets.xcassets */; };
 		902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */; };
-		902EB9DF227BE68F008F1650 /* ZIGSIMPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9DE227BE68F008F1650 /* ZIGSIMPlusTests.swift */; };
 		902EB9EA227BE68F008F1650 /* ZIGSIMPlusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9E9227BE68F008F1650 /* ZIGSIMPlusUITests.swift */; };
 		902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */; };
 		903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903BA770227D6C2100A2C378 /* AppSettingModel.swift */; };
@@ -24,8 +34,17 @@
 		9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */; };
 		9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */; };
 		9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */; };
-		B394C0BD229528F900706BB3 /* ProximityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0BC229528F900706BB3 /* ProximityData.swift */; };
-		B3C401B42293AB98007C66DC /* ProximityMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C401B32293AB98007C66DC /* ProximityMonitoringCommand.swift */; };
+		B3782788229B8A9000C587E3 /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3782787229B8A9000C587E3 /* LocationDataStore.swift */; };
+		B378278A229B8ADF00C587E3 /* CommandDataSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3782789229B8ADF00C587E3 /* CommandDataSettingViewController.swift */; };
+		B38A7241229BAF930047566C /* AudioLevelDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A7240229BAF930047566C /* AudioLevelDataStore.swift */; };
+		B38A7243229BAFD90047566C /* MicLevelMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A7242229BAFD90047566C /* MicLevelMonitoringCommand.swift */; };
+		B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */; };
+		B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */; };
+		B39CFF2C229BCBEC009A9558 /* AltimeterMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CFF2B229BCBEC009A9558 /* AltimeterMonitoringCommand.swift */; };
+		B39CFF2E229BCBFE009A9558 /* AltimeterDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CFF2D229BCBFE009A9558 /* AltimeterDataStore.swift */; };
+		B39CFF31229BCC12009A9558 /* ProximityMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CFF2F229BCC12009A9558 /* ProximityMonitoringCommand.swift */; };
+		B39CFF32229BCC12009A9558 /* ProximityDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CFF30229BCC12009A9558 /* ProximityDataStore.swift */; };
+		FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +65,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.release.xcconfig"; sourceTree = "<group>"; };
+		023BB10522965B490094363B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconMonitoringCommand.swift; sourceTree = "<group>"; };
+		02A8FA832296B62D001FB3DD /* TouchDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
+		02A8FA862296B62D001FB3DD /* MiscDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscDataStore.swift; sourceTree = "<group>"; };
+		02A8FA872296B62D001FB3DD /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
+		02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMonitoringCommand.swift; sourceTree = "<group>"; };
+		0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		634B8D92228565F00043607D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndCommandDataMediator.swift; sourceTree = "<group>"; };
+		63E57858229697E800C6340C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		63E5785A2296991400C6340C /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
+		845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		902EB9C6227BE68D008F1650 /* ZIGSIMPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIGSIMPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9C9227BE68D008F1650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSelectionViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +89,6 @@
 		902EB9D3227BE68F008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		902EB9D5227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902EB9DA227BE68F008F1650 /* ZIGSIMPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIGSIMPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		902EB9DE227BE68F008F1650 /* ZIGSIMPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGSIMPlusTests.swift; sourceTree = "<group>"; };
 		902EB9E0227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902EB9E5227BE68F008F1650 /* ZIGSIMPlusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIGSIMPlusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9E9227BE68F008F1650 /* ZIGSIMPlusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGSIMPlusUITests.swift; sourceTree = "<group>"; };
@@ -69,8 +101,20 @@
 		9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataOutputPresenter.swift; sourceTree = "<group>"; };
 		9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionMonitoringCommand.swift; sourceTree = "<group>"; };
 		9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
-		B394C0BC229528F900706BB3 /* ProximityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximityData.swift; sourceTree = "<group>"; };
-		B3C401B32293AB98007C66DC /* ProximityMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximityMonitoringCommand.swift; sourceTree = "<group>"; };
+		9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.release.xcconfig"; sourceTree = "<group>"; };
+		9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B3782787229B8A9000C587E3 /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
+		B3782789229B8ADF00C587E3 /* CommandDataSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDataSettingViewController.swift; sourceTree = "<group>"; };
+		B38A7240229BAF930047566C /* AudioLevelDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLevelDataStore.swift; sourceTree = "<group>"; };
+		B38A7242229BAFD90047566C /* MicLevelMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicLevelMonitoringCommand.swift; sourceTree = "<group>"; };
+		B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsMonitoringCommand.swift; sourceTree = "<group>"; };
+		B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassMonitoringCommand.swift; sourceTree = "<group>"; };
+		B39CFF2B229BCBEC009A9558 /* AltimeterMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterMonitoringCommand.swift; sourceTree = "<group>"; };
+		B39CFF2D229BCBFE009A9558 /* AltimeterDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterDataStore.swift; sourceTree = "<group>"; };
+		B39CFF2F229BCC12009A9558 /* ProximityMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityMonitoringCommand.swift; sourceTree = "<group>"; };
+		B39CFF30229BCC12009A9558 /* ProximityDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityDataStore.swift; sourceTree = "<group>"; };
+		BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,20 +138,72 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C92CDE0A0952FD97D6D8271 /* Pods_ZIGSIMPlusUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02A8FA822296B62D001FB3DD /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				B39CFF2D229BCBFE009A9558 /* AltimeterDataStore.swift */,
+				B39CFF30229BCC12009A9558 /* ProximityDataStore.swift */,
+				B38A7240229BAF930047566C /* AudioLevelDataStore.swift */,
+				B3782787229B8A9000C587E3 /* LocationDataStore.swift */,
+				02A8FA832296B62D001FB3DD /* TouchDataStore.swift */,
+				02A8FA862296B62D001FB3DD /* MiscDataStore.swift */,
+				02A8FA872296B62D001FB3DD /* StoreManager.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		3047AA928C608382EC8AFA33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */,
+				D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */,
+				0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5AFFA0679D7FDCE3F553FDCF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */,
+				9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */,
+				BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */,
+				00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */,
+				845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */,
+				9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		634B8D94228566C30043607D /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				B39CFF2B229BCBEC009A9558 /* AltimeterMonitoringCommand.swift */,
+				B39CFF2F229BCC12009A9558 /* ProximityMonitoringCommand.swift */,
+				B38A7242229BAFD90047566C /* MicLevelMonitoringCommand.swift */,
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
-				B3C401B32293AB98007C66DC /* ProximityMonitoringCommand.swift */,
+				02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */,
+				023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */,
 				9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */,
+				B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */,
+				B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */,
 			);
 			path = Commands;
+			sourceTree = "<group>";
+		};
+		63E57857229697CF00C6340C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				63E57858229697E800C6340C /* StringExtension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		902EB9BD227BE68D008F1650 = {
@@ -115,6 +213,8 @@
 				902EB9DD227BE68F008F1650 /* ZIGSIMPlusTests */,
 				902EB9E8227BE68F008F1650 /* ZIGSIMPlusUITests */,
 				902EB9C7227BE68D008F1650 /* Products */,
+				5AFFA0679D7FDCE3F553FDCF /* Pods */,
+				3047AA928C608382EC8AFA33 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +237,7 @@
 				902EB9F7227BECC7008F1650 /* Views */,
 				902EB9F8227BECDD008F1650 /* Presenters */,
 				902EB9FB227BF0DB008F1650 /* Entities */,
+				63E57857229697CF00C6340C /* Utils */,
 				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				902EB9D0227BE68F008F1650 /* Assets.xcassets */,
 				902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */,
@@ -148,7 +249,7 @@
 		902EB9DD227BE68F008F1650 /* ZIGSIMPlusTests */ = {
 			isa = PBXGroup;
 			children = (
-				902EB9DE227BE68F008F1650 /* ZIGSIMPlusTests.swift */,
+				63E5785A2296991400C6340C /* StringExtensionTests.swift */,
 				902EB9E0227BE68F008F1650 /* Info.plist */,
 			);
 			path = ZIGSIMPlusTests;
@@ -166,6 +267,7 @@
 		902EB9F7227BECC7008F1650 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3782789229B8ADF00C587E3 /* CommandDataSettingViewController.swift */,
 				902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */,
 				9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */,
 			);
@@ -194,8 +296,10 @@
 			children = (
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				634B8D92228565F00043607D /* Command.swift */,
+				02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */,
-				B394C0BC229528F900706BB3 /* ProximityData.swift */,
+				023BB10522965B490094363B /* Utils.swift */,
+				02A8FA822296B62D001FB3DD /* Stores */,
 				634B8D94228566C30043607D /* Commands */,
 			);
 			path = Models;
@@ -208,9 +312,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 902EB9EE227BE68F008F1650 /* Build configuration list for PBXNativeTarget "ZIGSIMPlus" */;
 			buildPhases = (
+				76CC18D56D1D4013C08D7E64 /* [CP] Check Pods Manifest.lock */,
 				902EB9C2227BE68D008F1650 /* Sources */,
 				902EB9C3227BE68D008F1650 /* Frameworks */,
 				902EB9C4227BE68D008F1650 /* Resources */,
+				0C08B6B7878D8F62CABB8B9B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -225,6 +331,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 902EB9F1227BE68F008F1650 /* Build configuration list for PBXNativeTarget "ZIGSIMPlusTests" */;
 			buildPhases = (
+				C663413003CD65493E6D629C /* [CP] Check Pods Manifest.lock */,
 				902EB9D6227BE68F008F1650 /* Sources */,
 				902EB9D7227BE68F008F1650 /* Frameworks */,
 				902EB9D8227BE68F008F1650 /* Resources */,
@@ -243,6 +350,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 902EB9F4227BE68F008F1650 /* Build configuration list for PBXNativeTarget "ZIGSIMPlusUITests" */;
 			buildPhases = (
+				B91CD1447D838A119DF148B4 /* [CP] Check Pods Manifest.lock */,
 				902EB9E1227BE68F008F1650 /* Sources */,
 				902EB9E2227BE68F008F1650 /* Frameworks */,
 				902EB9E3227BE68F008F1650 /* Resources */,
@@ -327,25 +435,134 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0C08B6B7878D8F62CABB8B9B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOSC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76CC18D56D1D4013C08D7E64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZIGSIMPlus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B91CD1447D838A119DF148B4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZIGSIMPlusUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C663413003CD65493E6D629C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZIGSIMPlusTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		902EB9C2227BE68D008F1650 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
-				B394C0BD229528F900706BB3 /* ProximityData.swift in Sources */,
+				02A8FA8C2296B62D001FB3DD /* StoreManager.swift in Sources */,
+				B38A7243229BAFD90047566C /* MicLevelMonitoringCommand.swift in Sources */,
+				02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
+				02A8FA882296B62D001FB3DD /* TouchDataStore.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,
+				B39CFF2C229BCBEC009A9558 /* AltimeterMonitoringCommand.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */,
+				023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */,
+				023BB10622965B490094363B /* Utils.swift in Sources */,
+				63E57859229697E800C6340C /* StringExtension.swift in Sources */,
+				B39CFF32229BCC12009A9558 /* ProximityDataStore.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
-				B3C401B42293AB98007C66DC /* ProximityMonitoringCommand.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */,
+				02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
+				B39CFF2E229BCBFE009A9558 /* AltimeterDataStore.swift in Sources */,
+				B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
+				B39CFF31229BCC12009A9558 /* ProximityMonitoringCommand.swift in Sources */,
+				B3782788229B8A9000C587E3 /* LocationDataStore.swift in Sources */,
+				02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
+				B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
+				B38A7241229BAF930047566C /* AudioLevelDataStore.swift in Sources */,
+				B378278A229B8ADF00C587E3 /* CommandDataSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902EB9DF227BE68F008F1650 /* ZIGSIMPlusTests.swift in Sources */,
+				63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +735,7 @@
 		};
 		902EB9EF227BE68F008F1650 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -536,6 +754,7 @@
 		};
 		902EB9F0227BE68F008F1650 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -554,6 +773,7 @@
 		};
 		902EB9F2227BE68F008F1650 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -575,6 +795,7 @@
 		};
 		902EB9F3227BE68F008F1650 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -596,6 +817,7 @@
 		};
 		902EB9F5227BE68F008F1650 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -616,6 +838,7 @@
 		};
 		902EB9F6227BE68F008F1650 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
