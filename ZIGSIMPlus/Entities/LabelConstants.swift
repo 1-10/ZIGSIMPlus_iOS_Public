@@ -18,6 +18,7 @@ public struct LabelConstants {
     public static let pressure = "Pressure"
     public static let gps     = "Gps"
     public static let beacon = "Beacon"
+    public static let proximity = "Proximity"
     public static let micLevel = "MIC LEVEL"
     public static let battery = "Battery"
     public static let commandDatas: [String] = [acceleration,
@@ -29,7 +30,7 @@ public struct LabelConstants {
                                                 pressure,
                                                 gps,
                                                 beacon,
+                                                proximity,
                                                 micLevel,
                                                 battery]
-
 }

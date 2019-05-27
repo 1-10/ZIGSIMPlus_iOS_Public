@@ -1,5 +1,5 @@
 //
-//  AudioLevelData.swift
+//  AudioLevelDataStore.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/21.

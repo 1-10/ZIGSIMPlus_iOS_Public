@@ -42,6 +42,10 @@ public class CommandAndCommandDataMediator {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gps]
             else { fatalError("AppSetting of the CommandData nil") }
             return b
+        } else if type(of: command) == ProximityMonitoringCommand.self {
+            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.proximity]
+                else { fatalError("AppSetting of the CommandData nil") }
+            return b
         } else if type(of: command) == MicLevelMonitoringCommand.self {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.micLevel]
             else { fatalError("AppSetting of the CommandData nil") }
@@ -64,6 +68,8 @@ public class CommandAndCommandDataMediator {
             return 5
         } else if type(of: command) == BeaconMonitoringCommand.self {
             return 11
+        } else if type(of: command) == ProximityMonitoringCommand.self {
+            return 12
         } else if type(of: command) == MicLevelMonitoringCommand.self {
             return 13
         } else if type(of: command) == BatteryMonitoringCommand.self {
