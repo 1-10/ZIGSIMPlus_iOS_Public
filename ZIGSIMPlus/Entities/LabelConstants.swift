@@ -15,6 +15,7 @@ public struct LabelConstants {
     public static let quaternion = "Quaternion"
     public static let touch = "Touch"
     public static let compass = "Compass"
+    public static let pressure = "Pressure"
     public static let gps     = "Gps"
     public static let beacon = "Beacon"
     public static let micLevel = "MIC LEVEL"
@@ -25,8 +26,10 @@ public struct LabelConstants {
                                                 quaternion,
                                                 touch,
                                                 compass,
+                                                pressure,
                                                 gps,
                                                 beacon,
                                                 micLevel,
                                                 battery]
+
 }
