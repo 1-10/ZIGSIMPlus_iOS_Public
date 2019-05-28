@@ -36,8 +36,14 @@
 		9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D4227F0D420019F1C1 /* PresenterFactory.swift */; };
 		B3782788229B8A9000C587E3 /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3782787229B8A9000C587E3 /* LocationDataStore.swift */; };
 		B378278A229B8ADF00C587E3 /* CommandDataSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3782789229B8ADF00C587E3 /* CommandDataSettingViewController.swift */; };
+		B38A7241229BAF930047566C /* AudioLevelDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A7240229BAF930047566C /* AudioLevelDataStore.swift */; };
+		B38A7243229BAFD90047566C /* MicLevelMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A7242229BAFD90047566C /* MicLevelMonitoringCommand.swift */; };
 		B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */; };
 		B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */; };
+		B39CFF2C229BCBEC009A9558 /* AltimeterMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CFF2B229BCBEC009A9558 /* AltimeterMonitoringCommand.swift */; };
+		B39CFF2E229BCBFE009A9558 /* AltimeterDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CFF2D229BCBFE009A9558 /* AltimeterDataStore.swift */; };
+		B39CFF31229BCC12009A9558 /* ProximityMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CFF2F229BCC12009A9558 /* ProximityMonitoringCommand.swift */; };
+		B39CFF32229BCC12009A9558 /* ProximityDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CFF30229BCC12009A9558 /* ProximityDataStore.swift */; };
 		FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,8 +105,14 @@
 		9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B3782787229B8A9000C587E3 /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
 		B3782789229B8ADF00C587E3 /* CommandDataSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDataSettingViewController.swift; sourceTree = "<group>"; };
+		B38A7240229BAF930047566C /* AudioLevelDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLevelDataStore.swift; sourceTree = "<group>"; };
+		B38A7242229BAFD90047566C /* MicLevelMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicLevelMonitoringCommand.swift; sourceTree = "<group>"; };
 		B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsMonitoringCommand.swift; sourceTree = "<group>"; };
 		B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassMonitoringCommand.swift; sourceTree = "<group>"; };
+		B39CFF2B229BCBEC009A9558 /* AltimeterMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterMonitoringCommand.swift; sourceTree = "<group>"; };
+		B39CFF2D229BCBFE009A9558 /* AltimeterDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterDataStore.swift; sourceTree = "<group>"; };
+		B39CFF2F229BCC12009A9558 /* ProximityMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityMonitoringCommand.swift; sourceTree = "<group>"; };
+		B39CFF30229BCC12009A9558 /* ProximityDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityDataStore.swift; sourceTree = "<group>"; };
 		BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -136,6 +148,9 @@
 		02A8FA822296B62D001FB3DD /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				B39CFF2D229BCBFE009A9558 /* AltimeterDataStore.swift */,
+				B39CFF30229BCC12009A9558 /* ProximityDataStore.swift */,
+				B38A7240229BAF930047566C /* AudioLevelDataStore.swift */,
 				B3782787229B8A9000C587E3 /* LocationDataStore.swift */,
 				02A8FA832296B62D001FB3DD /* TouchDataStore.swift */,
 				02A8FA862296B62D001FB3DD /* MiscDataStore.swift */,
@@ -170,6 +185,9 @@
 		634B8D94228566C30043607D /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				B39CFF2B229BCBEC009A9558 /* AltimeterMonitoringCommand.swift */,
+				B39CFF2F229BCC12009A9558 /* ProximityMonitoringCommand.swift */,
+				B38A7242229BAFD90047566C /* MicLevelMonitoringCommand.swift */,
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
 				02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */,
 				023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */,
@@ -517,27 +535,33 @@
 			files = (
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
 				02A8FA8C2296B62D001FB3DD /* StoreManager.swift in Sources */,
+				B38A7243229BAFD90047566C /* MicLevelMonitoringCommand.swift in Sources */,
 				02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
 				02A8FA882296B62D001FB3DD /* TouchDataStore.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,
+				B39CFF2C229BCBEC009A9558 /* AltimeterMonitoringCommand.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */,
 				023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */,
 				023BB10622965B490094363B /* Utils.swift in Sources */,
 				63E57859229697E800C6340C /* StringExtension.swift in Sources */,
+				B39CFF32229BCC12009A9558 /* ProximityDataStore.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */,
 				02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
+				B39CFF2E229BCBFE009A9558 /* AltimeterDataStore.swift in Sources */,
 				B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
+				B39CFF31229BCC12009A9558 /* ProximityMonitoringCommand.swift in Sources */,
 				B3782788229B8A9000C587E3 /* LocationDataStore.swift in Sources */,
 				02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
 				B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */,
 				9092E4D5227F0D420019F1C1 /* PresenterFactory.swift in Sources */,
+				B38A7241229BAF930047566C /* AudioLevelDataStore.swift in Sources */,
 				B378278A229B8ADF00C587E3 /* CommandDataSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

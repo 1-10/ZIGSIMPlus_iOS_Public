@@ -234,7 +234,7 @@
                                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                        <integer key="value" value="6"/>
+                                                                        <integer key="value" value="8"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
@@ -395,6 +395,7 @@
                             <constraint firstItem="fXg-6V-I99" firstAttribute="trailing" secondItem="600-gN-YTD" secondAttribute="trailingMargin" id="dkw-z7-gE4" userLabel="Scroll View.trailing = trailingMargin - 20"/>
                             <constraint firstItem="fXg-6V-I99" firstAttribute="leading" secondItem="600-gN-YTD" secondAttribute="leadingMargin" id="hOk-WM-nyr" userLabel="Scroll View.leading = leadingMargin - 20"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="dW0-Db-RIC"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="Mj7-0U-Ehy"/>
                     <connections>
