@@ -53,7 +53,7 @@ public class NetworkAdapter {
         case .success:
             print(">> TCP sending data succeeded")
         case .failure(let error):
-            print(">> TCP sending data failed: \(error.localizedDescription)")
+            showError(error)
         }
     }
 
@@ -70,7 +70,22 @@ public class NetworkAdapter {
         case .success:
             print(">> UDP sending data succeeded")
         case .failure(let error):
-            print(">> UDP sending data failed: \(error.localizedDescription)")
+            showError(error)
+        }
+    }
+
+    private func showError(_ error: Error) {
+        switch error {
+        case SocketError.queryFailed:
+            print(">> Socket Error: Host \(AppSettingModel.shared.address) not found")
+        case SocketError.connectionClosed:
+            print(">> Socket Error: Connection is closed")
+        case SocketError.connectionTimeout:
+            print(">> Socket Error: Connection timed out")
+        case SocketError.unknownError:
+            print(">> Socket Error: Unknown socket error")
+        default:
+            print(">> Socket Error: Unknown error")
         }
     }
 }
