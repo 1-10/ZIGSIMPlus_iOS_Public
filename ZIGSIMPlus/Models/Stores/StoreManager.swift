@@ -58,6 +58,8 @@ class StoreManager {
         bundle.elements += TouchDataStore.shared.toOSC()
         bundle.elements += MiscDataStore.shared.toOSC()
 
+        // TODO: Add timetag
+
         return bundle.data
     }
 
@@ -79,7 +81,7 @@ class StoreManager {
                 "displaywidth": Int(Utils.screenWidth),
                 "displayheight": Int(Utils.screenHeight),
             ] as AnyObject,
-            "timestamp": "2019_05_23_18:24:02.471" as AnyObject, // TBD
+            "timestamp": Utils.getTimestamp() as AnyObject,
             "sensordata": data as AnyObject
         ])
     }

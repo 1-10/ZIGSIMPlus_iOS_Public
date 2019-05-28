@@ -43,4 +43,11 @@ class Utils {
             y: pos.y / bounds.height * 2 - 1
         )
     }
+    
+    static func getTimestamp() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter.string(from: Date())
+    }
 }
