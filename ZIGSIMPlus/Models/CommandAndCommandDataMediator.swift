@@ -19,10 +19,18 @@ public class CommandAndCommandDataMediator {
             return BatteryMonitoringCommand.shared.isAvailable()
         case LabelConstants.compass:
             return CompassMonitoringCommand.shared.isAvailable()
+        case LabelConstants.pressure:
+            return AltimeterMonitoringCommand.shared.isAvailable()
         case LabelConstants.gps:
             return GpsMonitoringCommand.shared.isAvailable()
         case LabelConstants.beacon:
             return BeaconMonitoringCommand.shared.isAvailable()
+        case LabelConstants.proximity:
+            return ProximityMonitoringCommand.shared.isAvailable()
+        case LabelConstants.micLevel:
+            return MicLevelMonitoringCommand.shared.isAvailable()
+        case LabelConstants.ndi:
+            return NdiMonitoringCommand.shared.isAvailable()
         default:
             fatalError("Unexpected Command Data Label")
         }

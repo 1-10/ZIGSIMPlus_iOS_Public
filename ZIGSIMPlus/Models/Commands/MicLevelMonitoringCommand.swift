@@ -9,6 +9,12 @@
 import Foundation
 
 public final class MicLevelMonitoringCommand: AutoUpdatedCommand {
+    public static var shared: Command = MicLevelMonitoringCommand()
+    private init() {}
+    
+    public func isAvailable() -> Bool {
+        return true
+    }
     
     public func start(completion: ((String?) -> Void)?) {
         AudioLevelDataStore.shared.start(fps: Double(AppSettingModel.shared.messageRatePerSecond))

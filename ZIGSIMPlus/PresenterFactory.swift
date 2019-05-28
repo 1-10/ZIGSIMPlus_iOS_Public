@@ -24,8 +24,12 @@ class PresenterFactory {
         presenter.commands.append(TouchMonitoringCommand.shared)
         presenter.commands.append(BatteryMonitoringCommand.shared)
         presenter.commands.append(CompassMonitoringCommand.shared)
+        presenter.commands.append(AltimeterMonitoringCommand.shared)
         presenter.commands.append(GpsMonitoringCommand.shared)
         presenter.commands.append(BeaconMonitoringCommand.shared)
+        presenter.commands.append(ProximityMonitoringCommand.shared)
+        presenter.commands.append(MicLevelMonitoringCommand.shared)
+        presenter.commands.append(NdiMonitoringCommand.shared)
         return presenter
     }
 }

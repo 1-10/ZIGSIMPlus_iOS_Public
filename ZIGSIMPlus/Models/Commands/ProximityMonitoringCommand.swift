@@ -9,7 +9,13 @@
 import Foundation
 
 public final class ProximityMonitoringCommand: AutoUpdatedCommand {
+    public static var shared: Command = ProximityMonitoringCommand()
+    private init() {}
     
+    public func isAvailable() -> Bool {
+        return true
+    }
+
     public func start(completion: ((String?) -> Void)?) {
         ProximityDataStore.shared.start()
         ProximityDataStore.shared.callbackProximity = { proximity in
