@@ -18,8 +18,9 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
             var stringMsg = ""
             
             for touch in touches {
-                let point = touch.location(in: touch.view!)
-                
+                var point = touch.location(in: touch.view!)
+                point = Utils.remapToScreenCoord(point)
+
                 // Position
                 stringMsg += """
                 touch:x:\(point.x)
