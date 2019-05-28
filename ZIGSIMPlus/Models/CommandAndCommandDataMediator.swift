@@ -9,31 +9,58 @@
 import Foundation
 
 public class CommandAndCommandDataMediator {
+    public let commands: [Command] = [
+        MotionMonitoringCommand(),
+        TouchMonitoringCommand(),
+        BatteryMonitoringCommand(),
+        CompassMonitoringCommand(),
+        AltimeterMonitoringCommand(),
+        GpsMonitoringCommand(),
+        BeaconMonitoringCommand(),
+        ProximityMonitoringCommand(),
+        MicLevelMonitoringCommand(),
+        NdiMonitoringCommand()
+    ]
+    
     public func isAvailable(commandDataLabel: String) -> Bool {
+        return getCommand(by: commandDataLabel).isAvailable()
+    }
+    
+    public func getCommand(by commandDataLabel: String) -> Command {
         switch commandDataLabel {
         case LabelConstants.acceleration, LabelConstants.gravity, LabelConstants.gyro, LabelConstants.quaternion:
-            return MotionMonitoringCommand.shared.isAvailable()
+            return getCommand(by: MotionMonitoringCommand.self)
         case LabelConstants.touch:
-            return TouchMonitoringCommand.shared.isAvailable()
+            return getCommand(by: TouchMonitoringCommand.self)
         case LabelConstants.battery:
-            return BatteryMonitoringCommand.shared.isAvailable()
+            return getCommand(by: BatteryMonitoringCommand.self)
         case LabelConstants.compass:
-            return CompassMonitoringCommand.shared.isAvailable()
+            return getCommand(by: CompassMonitoringCommand.self)
         case LabelConstants.pressure:
-            return AltimeterMonitoringCommand.shared.isAvailable()
+            return getCommand(by: AltimeterMonitoringCommand.self)
         case LabelConstants.gps:
-            return GpsMonitoringCommand.shared.isAvailable()
+            return getCommand(by: GpsMonitoringCommand.self)
         case LabelConstants.beacon:
-            return BeaconMonitoringCommand.shared.isAvailable()
+            return getCommand(by: BeaconMonitoringCommand.self)
         case LabelConstants.proximity:
-            return ProximityMonitoringCommand.shared.isAvailable()
+            return getCommand(by: ProximityMonitoringCommand.self)
         case LabelConstants.micLevel:
-            return MicLevelMonitoringCommand.shared.isAvailable()
+            return getCommand(by: MicLevelMonitoringCommand.self)
         case LabelConstants.ndi:
-            return NdiMonitoringCommand.shared.isAvailable()
+            return getCommand(by: NdiMonitoringCommand.self)
         default:
             fatalError("Unexpected Command Data Label")
         }
+    }
+    
+    public func getCommand<T: Command> (by commandType: T.Type) -> Command {
+        for command in commands {
+            if type(of: command) == commandType {
+                return command
+            }
+        }
+        
+        fatalError("Unexpected Command Type")
     }
     
     public func isActive(command: Command) -> Bool {
