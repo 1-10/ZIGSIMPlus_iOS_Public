@@ -18,14 +18,16 @@ protocol CommandDataSelectionPresenterDelegate: AnyObject {
 }
 
 final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol {
-    var view: CommandDataSelectionPresenterDelegate!
+    private weak var view: CommandDataSelectionPresenterDelegate!
+    private var mediator: CommandAndCommandDataMediator
     private var commandDatasToSelect: [CommandDataToSelect]
     
-    init() {
+    init(view: CommandDataSelectionPresenterDelegate, mediator: CommandAndCommandDataMediator) {
+        self.view = view
+        self.mediator = mediator
         commandDatasToSelect = [CommandDataToSelect]()
-        let mediater = CommandAndCommandDataMediator()
         for label in LabelConstants.commandDatas {
-            commandDatasToSelect.append(CommandDataToSelect(label: label, isAvailable: mediater.isAvailable(commandDataLabel: label)))
+            commandDatasToSelect.append(CommandDataToSelect(label: label, isAvailable: mediator.isAvailable(commandDataLabel: label)))
         }
     }
     
