@@ -12,7 +12,7 @@ import SwiftyUserDefaults
 
 protocol CommandDataSettingPresenterProtocol {
     func initUserDefalut(view: UIView, scrollView: UIScrollView, textFilds: Array<Any>, segmentFilds: Array<Any>)
-    func validate()
+    func beaconUuidValidate()
     func setUserDefault()
 }
 
@@ -47,17 +47,17 @@ final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
         view.addSubview(scrollView)
         
         // set delegate and editor
-        ipAdressTextField = (textFilds[0] as! UITextField)
-        portNumberTextField = (textFilds[1] as! UITextField)
-        uuidTextField = (textFilds[2] as! UITextField)
+        ipAdressTextField    = (textFilds[0] as! UITextField)
+        portNumberTextField  = (textFilds[1] as! UITextField)
+        uuidTextField        = (textFilds[2] as! UITextField)
         beaconUUID1TextField = (textFilds[3] as! UITextField)
         beaconUUID2TextField = (textFilds[4] as! UITextField)
         beaconUUID3TextField = (textFilds[5] as! UITextField)
         beaconUUID4TextField = (textFilds[6] as! UITextField)
         beaconUUID5TextField = (textFilds[7] as! UITextField)
-        setTextFieldSetting(texField: textFilds[0] as! UITextField, text: Defaults[.userIpAdress]!.description)
-        setTextFieldSetting(texField: textFilds[1] as! UITextField, text: Defaults[.userPortNumber]!.description)
-        setTextFieldSetting(texField: textFilds[2] as! UITextField, text: Defaults[.userDeviceUUID]!.description)
+        setTextFieldSetting(texField: ipAdressTextField, text: Defaults[.userIpAdress]!.description)
+        setTextFieldSetting(texField: portNumberTextField, text: Defaults[.userPortNumber]!.description)
+        setTextFieldSetting(texField: uuidTextField, text: Defaults[.userDeviceUUID]!.description)
         setTextFieldSetting(texField: beaconUUID1TextField, text: Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:0))
         setTextFieldSetting(texField: beaconUUID2TextField, text: Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:1))
         setTextFieldSetting(texField: beaconUUID3TextField, text: Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:2))
@@ -66,10 +66,10 @@ final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
         
         // set segmented control
         dataDestinationSeg = (segmentFilds[0] as! UISegmentedControl)
-        protocoloSeg = (segmentFilds[1] as! UISegmentedControl)
-        messageFormatSeg = (segmentFilds[2] as! UISegmentedControl)
-        messageRateSeg = (segmentFilds[3] as! UISegmentedControl)
-        compassAngleSeg = (segmentFilds[4] as! UISegmentedControl)
+        protocoloSeg       = (segmentFilds[1] as! UISegmentedControl)
+        messageFormatSeg   = (segmentFilds[2] as! UISegmentedControl)
+        messageRateSeg     = (segmentFilds[3] as! UISegmentedControl)
+        compassAngleSeg    = (segmentFilds[4] as! UISegmentedControl)
         if Defaults[.userDataDestination] == 0 {
             dataDestinationSeg.selectedSegmentIndex = 0
         } else if Defaults[.userDataDestination] == 1 {
@@ -101,7 +101,7 @@ final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
         }
     }
     
-    func validate(){
+    func beaconUuidValidate(){
         
         if (beaconUUID1TextField.text!.count != 8) {
             beaconUUID1TextField.becomeFirstResponder()
@@ -199,6 +199,3 @@ final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
     }
     
 }
-
-
-

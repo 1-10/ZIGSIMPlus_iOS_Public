@@ -61,12 +61,12 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        presenter.validate()
+        presenter.beaconUuidValidate()
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         print("should end editing!")
-        presenter.validate()
+        presenter.beaconUuidValidate()
         return true
     }
 }
