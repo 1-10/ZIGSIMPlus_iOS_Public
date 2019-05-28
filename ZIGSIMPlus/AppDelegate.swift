@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else if type(of: viewController) == CommandDataOutputViewController.self {
                 let vc = viewController as! CommandDataOutputViewController
                 vc.presenter = presenterFactory.createCommandDataOutputPresenter(view: vc)
+            } else if type(of: viewController) == CommandDataSettingViewController.self {
+                let vc = viewController as! CommandDataSettingViewController
+                vc.presenter = presenterFactory.createCommandDataSettingPresenter(view: vc)
             } else {
                 print("else")
             }

@@ -32,4 +32,10 @@ class PresenterFactory {
 
         return presenter
     }
+    
+    func createCommandDataSettingPresenter(view: CommandDataSettingPresenterDelegate) -> CommandDataSettingPresenter {
+        let presenter = CommandDataSettingPresenter()
+        presenter.view = view
+        return presenter
+    }
 }
