@@ -17,7 +17,7 @@ protocol CommandDataSettingPresenterProtocol {
 }
 
 protocol CommandDataSettingPresenterDelegate: AnyObject {
-    func updateOutput(texField:UITextField, text:String)
+    func setDelegate(texField:UITextField)
 }
 
 final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
@@ -195,8 +195,7 @@ final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
     
     public func setTextFieldSetting(texField:UITextField, text:String) {
         texField.text = String(text)
-        //texField.delegate = self
-        self.view.updateOutput(texField: texField, text: text)
+        self.view.setDelegate(texField: texField)
     }
     
 }
