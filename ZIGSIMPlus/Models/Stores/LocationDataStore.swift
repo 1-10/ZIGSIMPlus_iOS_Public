@@ -41,10 +41,8 @@ public class LocationDataStore: NSObject {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
         // Init compass
-        // T.B.D 設定画面で向きを設定変更できるようにする↓
-        locationManager.headingOrientation = .faceUp
-        locationManager.headingOrientation = .portrait
-
+        locationManager.headingFilter = kCLHeadingFilterNone
+        
         // Init beacons
         let appSetting = AppSettingModel.shared
         let uuid = UUID(uuidString: appSetting.beaconUUID)!
@@ -89,6 +87,11 @@ public class LocationDataStore: NSObject {
     func startCompass() {
         if isLocationAvailable() {
             locationManager.requestAlwaysAuthorization()
+            if (AppSettingModel.shared.compassAngle == 0.0) {
+                locationManager.headingOrientation = .portrait
+            }  else if (AppSettingModel.shared.compassAngle == 1.0) {
+                locationManager.headingOrientation = .faceUp
+            }
             locationManager.startUpdatingHeading()
         }
     }

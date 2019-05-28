@@ -14,10 +14,10 @@ public final class CompassMonitoringCommand: AutoUpdatedCommand {
     public func start(completion: ((String?) -> Void)?) {
         LocationDataStore.shared.startCompass()
         LocationDataStore.shared.compassCallback = { (compassData) in
-            // compass:faceupは設定画面作成後に追加
+            let appSetting = AppSettingModel.shared
             completion?("""
                 compass:compass:\(compassData)
-                compass:faceup:
+                compass:faceup:\(appSetting.compassAngle)
                 """)
         }
     }

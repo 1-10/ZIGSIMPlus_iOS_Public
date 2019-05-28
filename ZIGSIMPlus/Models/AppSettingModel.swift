@@ -7,6 +7,12 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
+
+enum DataDestination {
+    case LOCAL_FILE
+    case OTHER_APP
+}
 
 enum TransportProtocol {
     case TCP
@@ -27,21 +33,35 @@ public class AppSettingModel {
     
     static let shared = AppSettingModel()
     var isActiveByCommandData: Dictionary<String, Bool> = [:]
-    var messageRatePerSecond: Int = 60
     
+    // app default value & variable used in app
+    var dataDestination: DataDestination = .OTHER_APP
+    var transportProtocol: TransportProtocol = .UDP
+    // var transportProtocol: TransportProtocol = .TCP
+    var address: String = "172.17.1.20"
+    var port: Int32 = 3333
+    var transportFormat: TransportFormat = .OSC
+    // var transportFormat: TransportFormat = .JSON
+    var messageRatePerSecond: Int = 60
+    var deviceUUID: String = Utils.randomStringWithLength(16)
+    var compassAngle: Double = 1.0 // 1.0 is faceup
+    var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
     var messageInterval: TimeInterval {
         return 1.0 / Double(messageRatePerSecond)
     }
-    
-    var address: String = "172.17.1.20"
-    var port: Int32 = 3333
-    
-    var transportProtocol: TransportProtocol = .UDP
-//    var transportProtocol: TransportProtocol = .TCP
-    var transportFormat: TransportFormat = .OSC
-//    var transportFormat: TransportFormat = .JSON
 
-    // TODO: Save values to device storage like UserDefaults
-    let deviceUUID:String = Utils.randomStringWithLength(16)
-    let beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
+}
+
+// user default value
+extension DefaultsKeys {
+    static let userDataDestination = DefaultsKey<Int?>("userDataDestination", defaultValue: 1)
+    static let userProtocol = DefaultsKey<Int?>("userProtocol", defaultValue: 1)
+    static let userIpAdress = DefaultsKey<String?>("userIpAdress", defaultValue: AppSettingModel.shared.address)
+    static let userPortNumber = DefaultsKey<Int?>("userPortNumber", defaultValue: Int(AppSettingModel.shared.port))
+    static let userMessageFormat = DefaultsKey<Int?>("userMessageFormat", defaultValue: 0)
+    static let userMessageRatePerSecond = DefaultsKey<Int?>("userMessageRatePerSecond", defaultValue: AppSettingModel.shared.messageRatePerSecond)
+    static let userCompassAngle = DefaultsKey<Double?>("userCompassAngle", defaultValue: AppSettingModel.shared.compassAngle)
+    static let userDeviceUUID = DefaultsKey<String?>("userDeviceUUID", defaultValue: AppSettingModel.shared.deviceUUID)
+    static let userBeaconUUID = DefaultsKey<String?>("userBeaconUUID", defaultValue: AppSettingModel.shared.beaconUUID)
+
 }
