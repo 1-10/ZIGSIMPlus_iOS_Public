@@ -31,11 +31,11 @@ extension MiscDataStore : Store {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.battery]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.battery]! {
             messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/battery"), battery))
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.acceleration]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.acceleration]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/accel"),
                 accel.x,
@@ -44,7 +44,7 @@ extension MiscDataStore : Store {
             ))
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gravity]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.gravity]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/gravity"),
                 gravity.x,
@@ -53,7 +53,7 @@ extension MiscDataStore : Store {
             ))
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gyro]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.gyro]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/gyro"),
                 gyro.x,
@@ -62,7 +62,7 @@ extension MiscDataStore : Store {
             ))
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.quaternion]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.quaternion]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/quaternion"),
                 quaternion.x,
@@ -78,11 +78,11 @@ extension MiscDataStore : Store {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
 
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.battery]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.battery]! {
             data.merge(["battery": battery as AnyObject]) { $1 }
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.acceleration]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.acceleration]! {
             data.merge([
                 "accel": [
                     "x": accel.x,
@@ -92,7 +92,7 @@ extension MiscDataStore : Store {
             ]) { $1 }
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gravity]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.gravity]! {
             data.merge([
                 "gravity": [
                     "x": gravity.x,
@@ -102,7 +102,7 @@ extension MiscDataStore : Store {
             ]) { $1 }
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gyro]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.gyro]! {
             data.merge([
                 "gyro": [
                     "x": gyro.x,
@@ -112,7 +112,7 @@ extension MiscDataStore : Store {
             ]) { $1 }
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.quaternion]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.quaternion]! {
             data.merge([
                 "quaternion": [
                     "x": quaternion.x,

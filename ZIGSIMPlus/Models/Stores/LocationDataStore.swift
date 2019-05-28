@@ -184,15 +184,15 @@ extension LocationDataStore : Store {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
 
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gps]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.gps]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/gps"), latitudeData, longitudeData))
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.compass]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData))
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.beacon]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.beacon]! {
             data += beacons.enumerated().map { (i, beacon)  in
                 return OSCMessage(
                     OSCAddressPattern("/\(deviceUUID)/beacon\(i)"),
@@ -210,15 +210,15 @@ extension LocationDataStore : Store {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
 
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.gps]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.gps]! {
             data.merge(["gps": [latitudeData, longitudeData] as AnyObject]) { $1 }
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.compass]! {
             data.merge(["compass": compassData as AnyObject]) { $1 }
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.beacon]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.beacon]! {
             let objs = beacons.map { beacon in
                 return [
                     "uuid": beacon.proximityUUID.uuidString,

@@ -11,7 +11,7 @@ import Foundation
 protocol CommandDataSelectionPresenterProtocol {
     var numberOfCommandDataLabels: Int { get }
     func getCommandDataLabel(forRow row: Int) -> String?
-    func didSelectRow(atLabel label: String)
+    func didSelectRow(atLabel labelString: String)
 }
 
 protocol CommandDataSelectionPresenterDelegate: AnyObject {
@@ -21,16 +21,20 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
     var view: CommandDataSelectionPresenterDelegate!
     
     var numberOfCommandDataLabels: Int {
-        return LabelConstants.commandDatas.count
+        return CommandDataLabels.count
     }
     
     func getCommandDataLabel(forRow row: Int) -> String? {
-        guard row < LabelConstants.commandDatas.count else { return nil }
-        return LabelConstants.commandDatas[row]
+        guard row < CommandDataLabels.count else { return nil }
+        return CommandDataLabels[row].rawValue
     }
     
-    func didSelectRow(atLabel label: String) {
-        AppSettingModel.shared.isActiveByCommandData[label]?.toggle()
+    func didSelectRow(atLabel labelString: String) {
+        let label = Label(rawValue: labelString)
+        if label == nil {
+            fatalError("Invalid CommandData selected: \(labelString)")
+        }
+        AppSettingModel.shared.isActiveByCommandData[label!]?.toggle()
     }
 }
 

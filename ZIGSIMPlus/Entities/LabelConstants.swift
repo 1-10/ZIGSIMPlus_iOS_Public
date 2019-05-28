@@ -8,33 +8,34 @@
 
 import Foundation
 
-public struct LabelConstants {
-    public static let acceleration = "Acceleration"
-    public static let gravity = "Gravity"
-    public static let gyro = "Gyro"
-    public static let quaternion = "Quaternion"
-    public static let touch = "Touch"
-    public static let compass = "Compass"
-    public static let pressure = "Pressure"
-    public static let gps     = "Gps"
-    public static let beacon = "Beacon"
-    public static let proximity = "Proximity"
-    public static let micLevel = "MIC LEVEL"
-    public static let battery = "Battery"
-    public static let ndi = "NDI"
-    public static let commandDatas: [String] = [
-      acceleration,
-      gravity,
-      gyro,
-      quaternion,
-      touch,
-      compass,
-      pressure,
-      gps,
-      beacon,
-      proximity,
-      micLevel,
-      battery,
-      ndi
-    ]
+public enum Label: String {
+    case acceleration = "Acceleration"
+    case gravity = "Gravity"
+    case gyro = "Gyro"
+    case quaternion = "Quaternion"
+    case touch = "Touch"
+    case compass = "Compass"
+    case pressure = "Pressure"
+    case gps = "Gps"
+    case beacon = "Beacon"
+    case proximity = "Proximity"
+    case micLevel = "MIC LEVEL"
+    case battery = "Battery"
+    case ndi = "NDI"
 }
+
+public let CommandDataLabels = [
+    Label.acceleration,
+    Label.gravity,
+    Label.gyro,
+    Label.quaternion,
+    Label.touch,
+    Label.compass,
+    Label.pressure,
+    Label.gps,
+    Label.beacon,
+    Label.proximity,
+    Label.micLevel,
+    Label.battery,
+    Label.ndi
+]
