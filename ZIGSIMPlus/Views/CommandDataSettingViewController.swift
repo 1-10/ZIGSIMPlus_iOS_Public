@@ -166,10 +166,38 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         print("should end editing!")
-        // close keyboard
-        view.endEditing(true)
+
+        if (beaconUUID1TextField.text!.count != 8) {
+            beaconUUID1TextField.becomeFirstResponder()
+        } else if (beaconUUID2TextField.text!.count != 4){
+            beaconUUID2TextField.becomeFirstResponder()
+        } else if (beaconUUID3TextField.text!.count != 4){
+            beaconUUID3TextField.becomeFirstResponder()
+        } else if (beaconUUID4TextField.text!.count != 4){
+            beaconUUID4TextField.becomeFirstResponder()
+        } else if (beaconUUID5TextField.text!.count != 12){
+            beaconUUID5TextField.becomeFirstResponder()
+        } else {
+            view.endEditing(true)
+        }
         
         return true
+    }
+    
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (beaconUUID1TextField.text!.count != 8) {
+            beaconUUID1TextField.becomeFirstResponder()
+        } else if (beaconUUID2TextField.text!.count != 4){
+            beaconUUID2TextField.becomeFirstResponder()
+        } else if (beaconUUID3TextField.text!.count != 4){
+            beaconUUID3TextField.becomeFirstResponder()
+        } else if (beaconUUID4TextField.text!.count != 4){
+            beaconUUID4TextField.becomeFirstResponder()
+        } else if (beaconUUID5TextField.text!.count != 12){
+            beaconUUID5TextField.becomeFirstResponder()
+        } else {
+            view.endEditing(true)
+        }
     }
 }
 
@@ -206,6 +234,12 @@ extension ContentScrollable where Self: UIViewController {
     func keyboardWillHide(_ notification: Notification) {
         scrollView.contentInset = .zero
         scrollView.scrollIndicatorInsets = .zero
+    }
+}
+
+extension UIScrollView {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.next?.touchesBegan(touches, with: event)
     }
 }
 
