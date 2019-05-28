@@ -9,9 +9,6 @@
 import Foundation
 
 public final class MicLevelMonitoringCommand: AutoUpdatedCommand {
-    public static var shared: Command = MicLevelMonitoringCommand()
-    private init() {}
-    
     public func isAvailable() -> Bool {
         return true
     }

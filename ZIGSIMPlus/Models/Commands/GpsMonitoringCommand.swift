@@ -10,9 +10,6 @@ import Foundation
 import CoreLocation
 
 public final class GpsMonitoringCommand: AutoUpdatedCommand {
-    public static let shared: Command = GpsMonitoringCommand()
-    private init() {}
-    
     public func isAvailable() -> Bool {
         return LocationDataStore.shared.isLocationAvailable()
     }

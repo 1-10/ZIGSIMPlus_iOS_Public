@@ -9,9 +9,6 @@
 import UIKit
 
 public final class BatteryMonitoringCommand: ManualUpdatedCommand {
-    public static let shared: Command = BatteryMonitoringCommand()
-    private init() {}
-    
     public func isAvailable() -> Bool {
         return true
     }

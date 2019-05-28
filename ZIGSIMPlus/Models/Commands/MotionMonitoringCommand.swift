@@ -10,9 +10,6 @@ import Foundation
 import CoreMotion
 
 public final class MotionMonitoringCommand: AutoUpdatedCommand {
-    public static let shared: Command = MotionMonitoringCommand()
-    private init() {}
-
     let motionManager = CMMotionManager()
     
     public func isAvailable() -> Bool {

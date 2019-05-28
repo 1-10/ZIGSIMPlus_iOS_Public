@@ -12,8 +12,6 @@ import UIKit
 
 public final class NdiMonitoringCommand: ImageCommand {
     let ndi = NDI()
-    public static var shared: Command = NdiMonitoringCommand()
-    private init() {}
     
     // TODO: This should be updated
     public func isAvailable() -> Bool {

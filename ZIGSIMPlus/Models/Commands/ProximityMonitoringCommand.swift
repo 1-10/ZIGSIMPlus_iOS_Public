@@ -9,9 +9,6 @@
 import Foundation
 
 public final class ProximityMonitoringCommand: AutoUpdatedCommand {
-    public static var shared: Command = ProximityMonitoringCommand()
-    private init() {}
-    
     public func isAvailable() -> Bool {
         return true
     }

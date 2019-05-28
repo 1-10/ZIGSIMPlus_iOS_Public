@@ -10,9 +10,6 @@ import Foundation
 import CoreMotion
 
 public final class AltimeterMonitoringCommand: AutoUpdatedCommand {
-    public static var shared: Command = AltimeterMonitoringCommand()
-    private init() {}
-    
     public func isAvailable() -> Bool {
         if #available(iOS 8.0, *) {
             return true

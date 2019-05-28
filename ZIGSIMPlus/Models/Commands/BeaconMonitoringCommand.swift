@@ -9,9 +9,6 @@
 import Foundation
 
 public final class BeaconMonitoringCommand: AutoUpdatedCommand {
-    public static let shared: Command = BeaconMonitoringCommand()
-    private init() {}
-    
     public func isAvailable() -> Bool {
         return LocationDataStore.shared.isLocationAvailable()
     }
