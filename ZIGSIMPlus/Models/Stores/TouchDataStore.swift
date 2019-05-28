@@ -96,8 +96,9 @@ extension TouchDataStore : Store {
         var messages = [OSCMessage]()
             
         for (i, touch) in touchPoints.enumerated() {
-            let point = touch.location(in: touch.view!)
-            
+            var point = touch.location(in: touch.view!)
+            point = Utils.remapToScreenCoord(point)
+
             // Position
             messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)1"), Float(point.x)))
             messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)2"), Float(point.y)))
@@ -119,7 +120,9 @@ extension TouchDataStore : Store {
         }
         
         let objs: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
-            let point = touch.location(in: touch.view!)
+            var point = touch.location(in: touch.view!)
+            point = Utils.remapToScreenCoord(point)
+
             var obj = ["x": point.x, "y": point.y]
             
             if #available(iOS 8.0, *) {
