@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public protocol Command: AnyObject {
     func start(completion: ((String?) -> Void)?)
@@ -18,4 +19,8 @@ public protocol ManualUpdatedCommand: Command {
 }
 
 public protocol AutoUpdatedCommand: Command {
+}
+
+public protocol ImageCommand: AutoUpdatedCommand {
+    func startImage(callback: ((UIImage) -> Void)?)
 }
