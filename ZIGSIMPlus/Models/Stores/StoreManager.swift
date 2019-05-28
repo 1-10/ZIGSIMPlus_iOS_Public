@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftOSC
+import DeviceKit
 
 protocol Store {
     func toOSC() -> [OSCMessage]
@@ -38,15 +39,16 @@ class StoreManager {
     
     private func getOSC() -> Data {
         let bundle = OSCBundle()
-        
+        let device = Device()
+
         // Default data
         let settings = AppSettingModel.shared
         bundle.add(OSCMessage(
             OSCAddressPattern("/\(settings.deviceUUID)/deviceinfo"),
-            "__DEVICE_NAME__", // TODO: Replace with correct deviceName
+            device.description,
             settings.deviceUUID,
             "ios",
-            UIDevice.current.systemVersion,
+            device.systemVersion,
             Int(Utils.screenWidth),
             Int(Utils.screenHeight)
         ))
@@ -66,12 +68,14 @@ class StoreManager {
         data.merge(TouchDataStore.shared.toJSON()) { $1 }
         data.merge(MiscDataStore.shared.toJSON()) { $1 }
 
+        let device = Device()
+        
         return toJSON([
             "device": [
-                "name": "__DEVICE_NAME__", // TBD
+                "name": device.description,
                 "uuid": AppSettingModel.shared.deviceUUID,
                 "os": "ios",
-                "osversion": UIDevice.current.systemVersion,
+                "osversion": device.systemVersion,
                 "displaywidth": Int(Utils.screenWidth),
                 "displayheight": Int(Utils.screenHeight),
             ] as AnyObject,
