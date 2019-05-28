@@ -10,78 +10,58 @@ import Foundation
 
 public class CommandAndCommandDataMediator {
     public func isActive(command: Command) -> Bool {
-        if type(of: command) == MotionMonitoringCommand.self {
-            guard let b1 = AppSettingModel.shared.isActiveByCommandData[LabelConstants.acceleration],
-                let b2 = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gravity],
-                let b3 = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gyro],
-                let b4 = AppSettingModel.shared.isActiveByCommandData[LabelConstants.quaternion]
-                else { fatalError("AppSetting of the CommandData nil") }
-
-            return (b1 || b2 || b3 || b4)
-        } else if type(of: command) == BatteryMonitoringCommand.self {
-            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.battery]
-                else { fatalError("AppSetting of the CommandData nil") }
-            return b
-        } else if type(of: command) == NdiMonitoringCommand.self {
-            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.ndi]
-                else { fatalError("AppSetting of the CommandData nil") }
-            return b
-        } else if type(of: command) == BeaconMonitoringCommand.self {
-            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.beacon]
-                else { fatalError("AppSetting of the CommandData nil") }
-            return b
-        } else if type(of: command) == TouchMonitoringCommand.self {
-            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.touch]
-            else { fatalError("AppSetting of the CommandData nil") }
-            return b
-        } else if type(of: command) == CompassMonitoringCommand.self {
-            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]
-            else { fatalError("AppSetting of the CommandData nil") }
-            return b
-        } else if type(of: command) == AltimeterMonitoringCommand.self {
-            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.pressure]
-                else { fatalError("AppSetting of the CommandData nil") }
-            return b
-        } else if type(of: command) == GpsMonitoringCommand.self {
-            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gps]
-            else { fatalError("AppSetting of the CommandData nil") }
-            return b
-        } else if type(of: command) == ProximityMonitoringCommand.self {
-            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.proximity]
-                else { fatalError("AppSetting of the CommandData nil") }
-            return b
-        } else if type(of: command) == MicLevelMonitoringCommand.self {
-            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.micLevel]
-            else { fatalError("AppSetting of the CommandData nil") }
-            return b
+        switch command {
+        case is MotionMonitoringCommand:
+            return (
+                isCommandDataActive(LabelConstants.acceleration) ||
+                    isCommandDataActive(LabelConstants.gravity) ||
+                    isCommandDataActive(LabelConstants.gyro) ||
+                    isCommandDataActive(LabelConstants.quaternion)
+            )
+        case is BatteryMonitoringCommand:
+            return isCommandDataActive(LabelConstants.battery)
+        case is NdiMonitoringCommand:
+            return isCommandDataActive(LabelConstants.ndi)
+        case is BeaconMonitoringCommand:
+            return isCommandDataActive(LabelConstants.beacon)
+        case is TouchMonitoringCommand:
+            return isCommandDataActive(LabelConstants.touch)
+        case is CompassMonitoringCommand:
+            return isCommandDataActive(LabelConstants.compass)
+        case is AltimeterMonitoringCommand:
+            return isCommandDataActive(LabelConstants.pressure)
+        case is GpsMonitoringCommand:
+            return isCommandDataActive(LabelConstants.gps)
+        case is ProximityMonitoringCommand:
+            return isCommandDataActive(LabelConstants.proximity)
+        case is MicLevelMonitoringCommand:
+            return isCommandDataActive(LabelConstants.micLevel)
+        default:
+            fatalError("Unexpected Command")
         }
-
-        fatalError("Unexpected Command")
     }
 
     public func getCommandOutputOrder(of command: Command) -> Int {
-        if type(of: command) == MotionMonitoringCommand.self {
-            return 1
-        } else if type(of: command) == TouchMonitoringCommand.self {
-            return 2
-        } else if type(of: command) == CompassMonitoringCommand.self {
-            return 3
-        } else if type(of: command) == AltimeterMonitoringCommand.self {
-            return 4
-        } else if type(of: command) == GpsMonitoringCommand.self {
-            return 5
-        } else if type(of: command) == BeaconMonitoringCommand.self {
-            return 11
-        } else if type(of: command) == ProximityMonitoringCommand.self {
-            return 12
-        } else if type(of: command) == MicLevelMonitoringCommand.self {
-            return 13
-        } else if type(of: command) == BatteryMonitoringCommand.self {
-            return 15
-        } else if type(of: command) == NdiMonitoringCommand.self {
-            return 22
+        switch command {
+        case is MotionMonitoringCommand: return 1
+        case is TouchMonitoringCommand: return 2
+        case is CompassMonitoringCommand: return 3
+        case is AltimeterMonitoringCommand: return 4
+        case is GpsMonitoringCommand: return 5
+        case is BeaconMonitoringCommand: return 11
+        case is ProximityMonitoringCommand: return 12
+        case is MicLevelMonitoringCommand: return 13
+        case is BatteryMonitoringCommand: return 15
+        case is NdiMonitoringCommand: return 22
+        default: fatalError("Unexpected Command")
         }
+    }
 
-        fatalError("Unexpected Command")
+    private func isCommandDataActive(_ key: String) -> Bool {
+        let b = AppSettingModel.shared.isActiveByCommandData[key]
+        if b == nil {
+            fatalError("AppSetting for CommandData \"\(key)\" is nil")
+        }
+        return b!
     }
 }
