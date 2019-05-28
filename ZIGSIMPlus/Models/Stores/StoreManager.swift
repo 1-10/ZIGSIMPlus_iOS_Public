@@ -47,8 +47,8 @@ class StoreManager {
             settings.deviceUUID,
             "ios",
             12.2, // TBD
-            Utils.screenWidth,
-            Utils.screenHeight
+            Int(Utils.screenWidth),
+            Int(Utils.screenHeight)
         ))
 
         // Add data from stores
@@ -72,8 +72,8 @@ class StoreManager {
                 "uuid": AppSettingModel.shared.deviceUUID,
                 "os": "ios",
                 "osversion": "12.2", // TBD
-                "displaywidth": Utils.screenWidth,
-                "displayheight": Utils.screenHeight,
+                "displaywidth": Int(Utils.screenWidth),
+                "displayheight": Int(Utils.screenHeight),
             ] as AnyObject,
             "timestamp": "2019_05_23_18:24:02.471" as AnyObject, // TBD
             "sensordata": data as AnyObject

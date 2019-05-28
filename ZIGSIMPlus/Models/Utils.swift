@@ -28,18 +28,19 @@ class Utils {
     }
 
     static var screenWidth: CGFloat {
-        return UIScreen.main.bounds.width
+        return UIScreen.main.bounds.width * UIScreen.main.scale
     }
 
     static var screenHeight: CGFloat {
-        return UIScreen.main.bounds.height
+        return UIScreen.main.bounds.height * UIScreen.main.scale
     }
 
     // Remap values to range [-1, 1]
     static func remapToScreenCoord(_ pos: CGPoint) -> CGPoint {
+        let bounds = UIScreen.main.bounds
         return CGPoint(
-            x: pos.x / screenWidth * 2 - 1,
-            y: pos.y / screenHeight * 2 - 1
+            x: pos.x / bounds.width * 2 - 1,
+            y: pos.y / bounds.height * 2 - 1
         )
     }
 }
