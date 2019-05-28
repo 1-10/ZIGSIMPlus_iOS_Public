@@ -20,6 +20,7 @@
 		02A03597229CD56E00E7399E /* AltimeterDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03594229CD56D00E7399E /* AltimeterDataStore.swift */; };
 		02A03598229CD56E00E7399E /* AudioLevelDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03595229CD56E00E7399E /* AudioLevelDataStore.swift */; };
 		02A03599229CD56E00E7399E /* ProximityDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03596229CD56E00E7399E /* ProximityDataStore.swift */; };
+		02A0359B229CD6F800E7399E /* CommandDataSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0359A229CD6F800E7399E /* CommandDataSettingViewController.swift */; };
 		02A8FA882296B62D001FB3DD /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA832296B62D001FB3DD /* TouchDataStore.swift */; };
 		02A8FA892296B62D001FB3DD /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA842296B62D001FB3DD /* LocationDataStore.swift */; };
 		02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA862296B62D001FB3DD /* MiscDataStore.swift */; };
@@ -99,6 +100,7 @@
 		02A03594229CD56D00E7399E /* AltimeterDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterDataStore.swift; sourceTree = "<group>"; };
 		02A03595229CD56E00E7399E /* AudioLevelDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLevelDataStore.swift; sourceTree = "<group>"; };
 		02A03596229CD56E00E7399E /* ProximityDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityDataStore.swift; sourceTree = "<group>"; };
+		02A0359A229CD6F800E7399E /* CommandDataSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDataSettingViewController.swift; sourceTree = "<group>"; };
 		02A8FA832296B62D001FB3DD /* TouchDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
 		02A8FA842296B62D001FB3DD /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
 		02A8FA862296B62D001FB3DD /* MiscDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscDataStore.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			children = (
 				902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */,
 				9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */,
+				02A0359A229CD6F800E7399E /* CommandDataSettingViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
+				02A0359B229CD6F800E7399E /* CommandDataSettingViewController.swift in Sources */,
 				02A03597229CD56E00E7399E /* AltimeterDataStore.swift in Sources */,
 				02364621229825B900171F73 /* NdiMonitoringCommand.swift in Sources */,
 				0236461D2298253900171F73 /* NDI.cpp in Sources */,
