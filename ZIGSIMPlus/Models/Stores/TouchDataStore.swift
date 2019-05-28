@@ -88,7 +88,7 @@ public class TouchDataStore {
 
 extension TouchDataStore : Store {
     func toOSC() -> [OSCMessage] {
-        if !AppSettingModel.shared.isActiveByCommandData[LabelConstants.touch]! {
+        if !AppSettingModel.shared.isActiveByCommandData[Label.touch]! {
             return []
         }
         
@@ -115,7 +115,7 @@ extension TouchDataStore : Store {
     }
     
     func toJSON() -> [String:AnyObject] {
-        if !AppSettingModel.shared.isActiveByCommandData[LabelConstants.touch]! {
+        if !AppSettingModel.shared.isActiveByCommandData[Label.touch]! {
             return [:]
         }
         

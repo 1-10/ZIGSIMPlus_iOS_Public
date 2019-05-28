@@ -13,29 +13,29 @@ public class CommandAndCommandDataMediator {
         switch command {
         case is MotionMonitoringCommand:
             return (
-                isCommandDataActive(LabelConstants.acceleration) ||
-                    isCommandDataActive(LabelConstants.gravity) ||
-                    isCommandDataActive(LabelConstants.gyro) ||
-                    isCommandDataActive(LabelConstants.quaternion)
+                isCommandDataActive(Label.acceleration) ||
+                    isCommandDataActive(Label.gravity) ||
+                    isCommandDataActive(Label.gyro) ||
+                    isCommandDataActive(Label.quaternion)
             )
         case is BatteryMonitoringCommand:
-            return isCommandDataActive(LabelConstants.battery)
+            return isCommandDataActive(Label.battery)
         case is NdiMonitoringCommand:
-            return isCommandDataActive(LabelConstants.ndi)
+            return isCommandDataActive(Label.ndi)
         case is BeaconMonitoringCommand:
-            return isCommandDataActive(LabelConstants.beacon)
+            return isCommandDataActive(Label.beacon)
         case is TouchMonitoringCommand:
-            return isCommandDataActive(LabelConstants.touch)
+            return isCommandDataActive(Label.touch)
         case is CompassMonitoringCommand:
-            return isCommandDataActive(LabelConstants.compass)
+            return isCommandDataActive(Label.compass)
         case is AltimeterMonitoringCommand:
-            return isCommandDataActive(LabelConstants.pressure)
+            return isCommandDataActive(Label.pressure)
         case is GpsMonitoringCommand:
-            return isCommandDataActive(LabelConstants.gps)
+            return isCommandDataActive(Label.gps)
         case is ProximityMonitoringCommand:
-            return isCommandDataActive(LabelConstants.proximity)
+            return isCommandDataActive(Label.proximity)
         case is MicLevelMonitoringCommand:
-            return isCommandDataActive(LabelConstants.micLevel)
+            return isCommandDataActive(Label.micLevel)
         default:
             fatalError("Unexpected Command")
         }
@@ -57,7 +57,7 @@ public class CommandAndCommandDataMediator {
         }
     }
 
-    private func isCommandDataActive(_ key: String) -> Bool {
+    private func isCommandDataActive(_ key: Label) -> Bool {
         let b = AppSettingModel.shared.isActiveByCommandData[key]
         if b == nil {
             fatalError("AppSetting for CommandData \"\(key)\" is nil")

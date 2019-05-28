@@ -59,7 +59,7 @@ extension ProximityDataStore : Store {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.proximity]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.proximity]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/proximitymonitor"), proximity))
         }
         
@@ -69,7 +69,7 @@ extension ProximityDataStore : Store {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.proximity]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.proximity]! {
             data.merge([
                 "proximitymonitor": [
                     "proximitymonitor": proximity
