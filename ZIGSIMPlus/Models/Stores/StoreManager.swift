@@ -46,7 +46,7 @@ class StoreManager {
             "__DEVICE_NAME__", // TODO: Replace with correct deviceName
             settings.deviceUUID,
             "ios",
-            12.2, // TBD
+            UIDevice.current.systemVersion,
             Int(Utils.screenWidth),
             Int(Utils.screenHeight)
         ))
@@ -71,7 +71,7 @@ class StoreManager {
                 "name": "__DEVICE_NAME__", // TBD
                 "uuid": AppSettingModel.shared.deviceUUID,
                 "os": "ios",
-                "osversion": "12.2", // TBD
+                "osversion": UIDevice.current.systemVersion,
                 "displaywidth": Int(Utils.screenWidth),
                 "displayheight": Int(Utils.screenHeight),
             ] as AnyObject,
