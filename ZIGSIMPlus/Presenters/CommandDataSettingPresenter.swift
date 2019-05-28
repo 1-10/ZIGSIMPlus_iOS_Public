@@ -44,7 +44,7 @@ final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
         // set scrollView
         let mainBoundSize: CGSize = UIScreen.main.bounds.size
         scrollView.contentSize = CGSize(width: mainBoundSize.width, height: mainBoundSize.height)
-        view.addSubview(scrollView)
+        settingView.addSubview(scrollView)
         
         // set delegate and editor
         ipAdressTextField    = (textFilds[0] as! UITextField)

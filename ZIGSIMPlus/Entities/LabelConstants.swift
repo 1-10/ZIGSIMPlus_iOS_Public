@@ -21,16 +21,20 @@ public struct LabelConstants {
     public static let proximity = "Proximity"
     public static let micLevel = "MIC LEVEL"
     public static let battery = "Battery"
-    public static let commandDatas: [String] = [acceleration,
-                                                gravity,
-                                                gyro,
-                                                quaternion,
-                                                touch,
-                                                compass,
-                                                pressure,
-                                                gps,
-                                                beacon,
-                                                proximity,
-                                                micLevel,
-                                                battery]
+    public static let ndi = "NDI"
+    public static let commandDatas: [String] = [
+      acceleration,
+      gravity,
+      gyro,
+      quaternion,
+      touch,
+      compass,
+      pressure,
+      gps,
+      beacon,
+      proximity,
+      micLevel,
+      battery,
+      ndi
+    ]
 }

@@ -427,14 +427,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QnG-HF-yg8">
+                                <rect key="frame" x="16" y="20" width="343" height="598"/>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-O2-Ptu">
                                 <rect key="frame" x="16" y="44" width="382" height="769"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFr-by-ckd" userLabel="Touch Area">
@@ -445,14 +449,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="w9T-O2-Ptu" firstAttribute="leading" secondItem="wNG-or-TOh" secondAttribute="leading" constant="16" id="4kM-Wz-6he"/>
+                            <constraint firstItem="QnG-HF-yg8" firstAttribute="leading" secondItem="wNG-or-TOh" secondAttribute="leading" constant="16" id="MWN-kY-KmV"/>
+                            <constraint firstItem="QnG-HF-yg8" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="W3Y-hN-XCI"/>
                             <constraint firstItem="w9T-O2-Ptu" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" id="cb3-hL-JhH"/>
                             <constraint firstItem="w9T-O2-Ptu" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="dET-yb-enz"/>
+                            <constraint firstItem="wNG-or-TOh" firstAttribute="trailing" secondItem="QnG-HF-yg8" secondAttribute="trailing" constant="16" id="rt4-cR-bFh"/>
                             <constraint firstItem="wNG-or-TOh" firstAttribute="trailing" secondItem="w9T-O2-Ptu" secondAttribute="trailing" constant="16" id="w3E-bs-oOu"/>
+                            <constraint firstItem="QnG-HF-yg8" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" id="wEm-aa-Mk3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wNG-or-TOh"/>
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Output" id="ZJH-dY-5eg"/>
                     <connections>
+                        <outlet property="imageView" destination="QnG-HF-yg8" id="VZF-CZ-vFg"/>
                         <outlet property="textField" destination="w9T-O2-Ptu" id="SBs-k4-5Vg"/>
                     </connections>
                 </viewController>

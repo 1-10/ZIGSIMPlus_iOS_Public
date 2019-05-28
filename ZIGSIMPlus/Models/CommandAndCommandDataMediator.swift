@@ -22,6 +22,10 @@ public class CommandAndCommandDataMediator {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.battery]
                 else { fatalError("AppSetting of the CommandData nil") }
             return b
+        } else if type(of: command) == NdiMonitoringCommand.self {
+            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.ndi]
+                else { fatalError("AppSetting of the CommandData nil") }
+            return b
         } else if type(of: command) == BeaconMonitoringCommand.self {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.beacon]
                 else { fatalError("AppSetting of the CommandData nil") }
@@ -74,6 +78,8 @@ public class CommandAndCommandDataMediator {
             return 13
         } else if type(of: command) == BatteryMonitoringCommand.self {
             return 15
+        } else if type(of: command) == NdiMonitoringCommand.self {
+            return 22
         }
 
         fatalError("Unexpected Command")

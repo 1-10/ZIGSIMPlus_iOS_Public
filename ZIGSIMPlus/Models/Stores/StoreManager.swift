@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftOSC
+import DeviceKit
 
 protocol Store {
     func toOSC() -> [OSCMessage]
@@ -38,23 +39,26 @@ class StoreManager {
     
     private func getOSC() -> Data {
         let bundle = OSCBundle()
-        
+        let device = Device()
+
         // Default data
         let settings = AppSettingModel.shared
         bundle.add(OSCMessage(
             OSCAddressPattern("/\(settings.deviceUUID)/deviceinfo"),
-            "__DEVICE_NAME__", // TODO: Replace with correct deviceName
+            device.description,
             settings.deviceUUID,
-            "ios", // TBD
-            12.2, // TBD
-            1125, // TBD
-            2001 // TBD
+            "ios",
+            device.systemVersion,
+            Int(Utils.screenWidth),
+            Int(Utils.screenHeight)
         ))
 
         // Add data from stores
         bundle.elements += LocationDataStore.shared.toOSC()
         bundle.elements += TouchDataStore.shared.toOSC()
         bundle.elements += MiscDataStore.shared.toOSC()
+
+        // TODO: Add timetag
 
         return bundle.data
     }
@@ -66,16 +70,18 @@ class StoreManager {
         data.merge(TouchDataStore.shared.toJSON()) { $1 }
         data.merge(MiscDataStore.shared.toJSON()) { $1 }
 
+        let device = Device()
+        
         return toJSON([
             "device": [
-                "name": "__DEVICE_NAME__", // TBD
+                "name": device.description,
                 "uuid": AppSettingModel.shared.deviceUUID,
-                "os": "ios", // TBD
-                "osversion": "12.2", // TBD
-                "displaywidth": 1125, // TBD
-                "displayheight": 2001, // TBD
+                "os": "ios",
+                "osversion": device.systemVersion,
+                "displaywidth": Int(Utils.screenWidth),
+                "displayheight": Int(Utils.screenHeight),
             ] as AnyObject,
-            "timestamp": "2019_05_23_18:24:02.471" as AnyObject, // TBD
+            "timestamp": Utils.getTimestamp() as AnyObject,
             "sensordata": data as AnyObject
         ])
     }

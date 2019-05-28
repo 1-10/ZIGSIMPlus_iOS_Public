@@ -29,7 +29,7 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
    
     override public func viewDidLoad() {
         super.viewDidLoad()
-        let UITexts = [
+        let allTexts = [
             ipAdressTextField,
             portNumberTextField,
             uuidTextField,
@@ -39,14 +39,14 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
             beaconUUID4TextField,
             beaconUUID5TextField
         ]
-        let UISegments = [
+        let allSegments = [
             dataDestinationSeg,
             protocoloSeg,
             messageFormatSeg,
             messageRateSeg,
             compassAngleSeg
         ]
-        presenter.initUserDefalut(view: self.view, scrollView: self.scrollView, textFilds: UITexts as Array<Any>, segmentFilds: UISegments as Array<Any>)
+        presenter.initUserDefalut(view: self.view, scrollView: self.scrollView, textFilds: allTexts as Array<Any>, segmentFilds: allSegments as Array<Any>)
     }
     
     override public func viewWillAppear(_ animated: Bool) {
