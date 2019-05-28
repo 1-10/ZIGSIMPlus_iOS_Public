@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Utils {
     static func randomStringWithLength(_ length: Int) -> String {
@@ -24,5 +25,21 @@ class Utils {
             }
         }
         return ""
+    }
+
+    static var screenWidth: CGFloat {
+        return UIScreen.main.bounds.width
+    }
+
+    static var screenHeight: CGFloat {
+        return UIScreen.main.bounds.height
+    }
+
+    // Remap values to range [-1, 1]
+    static func remapToScreenCoord(_ pos: CGPoint) -> CGPoint {
+        return CGPoint(
+            x: pos.x / screenWidth * 2 - 1,
+            y: pos.y / screenHeight * 2 - 1
+        )
     }
 }
