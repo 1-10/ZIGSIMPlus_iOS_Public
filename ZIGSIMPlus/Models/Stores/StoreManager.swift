@@ -45,10 +45,10 @@ class StoreManager {
             OSCAddressPattern("/\(settings.deviceUUID)/deviceinfo"),
             "__DEVICE_NAME__", // TODO: Replace with correct deviceName
             settings.deviceUUID,
-            "ios", // TBD
+            "ios",
             12.2, // TBD
-            1125, // TBD
-            2001 // TBD
+            Utils.screenWidth,
+            Utils.screenHeight
         ))
 
         // Add data from stores
@@ -70,10 +70,10 @@ class StoreManager {
             "device": [
                 "name": "__DEVICE_NAME__", // TBD
                 "uuid": AppSettingModel.shared.deviceUUID,
-                "os": "ios", // TBD
+                "os": "ios",
                 "osversion": "12.2", // TBD
-                "displaywidth": 1125, // TBD
-                "displayheight": 2001, // TBD
+                "displaywidth": Utils.screenWidth,
+                "displayheight": Utils.screenHeight,
             ] as AnyObject,
             "timestamp": "2019_05_23_18:24:02.471" as AnyObject, // TBD
             "sensordata": data as AnyObject
