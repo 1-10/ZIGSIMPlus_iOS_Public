@@ -41,6 +41,10 @@ public class CommandAndCommandDataMediator {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.battery]
                 else { fatalError("AppSetting of the CommandData nil") }
             return b
+        } else if type(of: command) == NdiMonitoringCommand.self {
+            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.ndi]
+                else { fatalError("AppSetting of the CommandData nil") }
+            return b
         } else if type(of: command) == BeaconMonitoringCommand.self {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.beacon]
                 else { fatalError("AppSetting of the CommandData nil") }
@@ -53,8 +57,20 @@ public class CommandAndCommandDataMediator {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.compass]
             else { fatalError("AppSetting of the CommandData nil") }
             return b
+        } else if type(of: command) == AltimeterMonitoringCommand.self {
+            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.pressure]
+                else { fatalError("AppSetting of the CommandData nil") }
+            return b
         } else if type(of: command) == GpsMonitoringCommand.self {
             guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gps]
+            else { fatalError("AppSetting of the CommandData nil") }
+            return b
+        } else if type(of: command) == ProximityMonitoringCommand.self {
+            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.proximity]
+                else { fatalError("AppSetting of the CommandData nil") }
+            return b
+        } else if type(of: command) == MicLevelMonitoringCommand.self {
+            guard let b = AppSettingModel.shared.isActiveByCommandData[LabelConstants.micLevel]
             else { fatalError("AppSetting of the CommandData nil") }
             return b
         }
@@ -69,12 +85,20 @@ public class CommandAndCommandDataMediator {
             return 2
         } else if type(of: command) == CompassMonitoringCommand.self {
             return 3
-        } else if type(of: command) == GpsMonitoringCommand.self {
+        } else if type(of: command) == AltimeterMonitoringCommand.self {
             return 4
+        } else if type(of: command) == GpsMonitoringCommand.self {
+            return 5
         } else if type(of: command) == BeaconMonitoringCommand.self {
             return 11
+        } else if type(of: command) == ProximityMonitoringCommand.self {
+            return 12
+        } else if type(of: command) == MicLevelMonitoringCommand.self {
+            return 13
         } else if type(of: command) == BatteryMonitoringCommand.self {
             return 15
+        } else if type(of: command) == NdiMonitoringCommand.self {
+            return 22
         }
 
         fatalError("Unexpected Command")

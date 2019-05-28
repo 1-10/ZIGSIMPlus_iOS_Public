@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public protocol Command: AnyObject {
     static var shared: Command { get }
@@ -20,4 +21,8 @@ public protocol ManualUpdatedCommand: Command {
 }
 
 public protocol AutoUpdatedCommand: Command {
+}
+
+public protocol ImageCommand: AutoUpdatedCommand {
+    func startImage(callback: ((UIImage) -> Void)?)
 }

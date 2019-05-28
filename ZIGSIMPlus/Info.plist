@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSMicrophoneUsageDescription</key>
 	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Beacons</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -43,9 +45,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Send camera image via NDI</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Send microphone sound via NDI</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Beacons</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Beacons</string>
 </dict>
 </plist>
