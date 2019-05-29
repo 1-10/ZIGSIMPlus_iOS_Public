@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 public final class CompassMonitoringCommand: AutoUpdatedCommand {
-    
+
     public func start(completion: ((String?) -> Void)?) {
         LocationDataStore.shared.startCompass()
         LocationDataStore.shared.compassCallback = { (compassData) in
@@ -21,11 +21,9 @@ public final class CompassMonitoringCommand: AutoUpdatedCommand {
                 """)
         }
     }
-    
+
     public func stop(completion: ((String?) -> Void)?) {
         LocationDataStore.shared.stopCompass()
         completion?(nil)
     }
 }
-
-
