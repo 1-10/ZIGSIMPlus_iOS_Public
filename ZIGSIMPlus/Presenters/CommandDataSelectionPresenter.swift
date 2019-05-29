@@ -11,7 +11,7 @@ import Foundation
 protocol CommandDataSelectionPresenterProtocol {
     var numberOfCommandDataToSelect: Int { get }
     func getCommandDataToSelect(forRow row: Int) -> CommandDataToSelect?
-    func didSelectRow(atLabel label: String)
+    func didSelectRow(atLabel labelString: String)
 }
 
 protocol CommandDataSelectionPresenterDelegate: AnyObject {
@@ -40,8 +40,12 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
         return commandDatasToSelect[row]
     }
     
-    func didSelectRow(atLabel label: String) {
-        AppSettingModel.shared.isActiveByCommandData[label]?.toggle()
+    func didSelectRow(atLabel labelString: String) {
+        let label = Label(rawValue: labelString)
+        if label == nil {
+            fatalError("Invalid CommandData selected: \(labelString)")
+        }
+        AppSettingModel.shared.isActiveByCommandData[label!]?.toggle()
     }
 }
 

@@ -130,7 +130,7 @@ extension AudioLevelDataStore : Store {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.micLevel]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.micLevel]! {
             data.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/miclevel"),
                 averageLevel,
@@ -144,7 +144,7 @@ extension AudioLevelDataStore : Store {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.micLevel]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.micLevel]! {
             data.merge([
                 "miclevel": [
                     "average": averageLevel,

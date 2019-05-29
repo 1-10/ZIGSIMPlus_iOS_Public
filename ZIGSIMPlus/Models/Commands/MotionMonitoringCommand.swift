@@ -25,10 +25,10 @@ public final class MotionMonitoringCommand: AutoUpdatedCommand {
                         return
                 }
                 
-                guard let isAccelerationActive = AppSettingModel.shared.isActiveByCommandData[LabelConstants.acceleration],
-                    let isGravityActive = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gravity],
-                    let isGyroActive = AppSettingModel.shared.isActiveByCommandData[LabelConstants.gyro],
-                    let isQuaternionActive = AppSettingModel.shared.isActiveByCommandData[LabelConstants.quaternion]
+                guard let isAccelerationActive = AppSettingModel.shared.isActiveByCommandData[Label.acceleration],
+                    let isGravityActive = AppSettingModel.shared.isActiveByCommandData[Label.gravity],
+                    let isGyroActive = AppSettingModel.shared.isActiveByCommandData[Label.gyro],
+                    let isQuaternionActive = AppSettingModel.shared.isActiveByCommandData[Label.quaternion]
                     else {
                         fatalError("AppSetting of the CommandData nil")
                 }

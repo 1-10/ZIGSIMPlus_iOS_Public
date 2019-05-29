@@ -26,13 +26,13 @@ enum TransportFormat {
 
 public class AppSettingModel {
     private init() {
-        for label in LabelConstants.commandDatas {
+        for label in CommandDataLabels {
             isActiveByCommandData[label] = false
         }
     }
     
     static let shared = AppSettingModel()
-    var isActiveByCommandData: Dictionary<String, Bool> = [:]
+    var isActiveByCommandData: Dictionary<Label, Bool> = [:]
     
     // app default value & variable used in app
     var dataDestination: DataDestination = .OTHER_APP

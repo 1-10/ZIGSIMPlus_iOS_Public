@@ -74,7 +74,7 @@ extension AltimeterDataStore : Store {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.pressure]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.pressure]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/pressure"),
                 pressureData,
@@ -88,7 +88,7 @@ extension AltimeterDataStore : Store {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
         
-        if AppSettingModel.shared.isActiveByCommandData[LabelConstants.pressure]! {
+        if AppSettingModel.shared.isActiveByCommandData[Label.pressure]! {
             data.merge([
                 "pressure": [
                     "pressure": pressureData,
