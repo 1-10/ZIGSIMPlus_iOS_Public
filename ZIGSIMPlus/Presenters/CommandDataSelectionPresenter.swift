@@ -10,7 +10,7 @@ import Foundation
 
 protocol CommandDataSelectionPresenterProtocol {
     var numberOfCommandDataToSelect: Int { get }
-    func getCommandDataToSelect(forRow row: Int) -> CommandDataToSelect?
+    func getCommandDataToSelect(forRow row: Int) -> CommandDataToSelect
     func didSelectRow(atLabel labelString: String)
 }
 
@@ -26,8 +26,8 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
         self.view = view
         self.mediator = mediator
         commandDatasToSelect = [CommandDataToSelect]()
-        for label in LabelConstants.commandDatas {
-            commandDatasToSelect.append(CommandDataToSelect(label: label, isAvailable: mediator.isAvailable(commandDataLabel: label)))
+        for label in CommandDataLabels {
+            commandDatasToSelect.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(commandDataLabel: label)))
         }
     }
     
@@ -35,17 +35,16 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
         return commandDatasToSelect.count
     }
     
-    func getCommandDataToSelect(forRow row: Int) -> CommandDataToSelect? {
-        guard row < commandDatasToSelect.count else { return nil }
+    func getCommandDataToSelect(forRow row: Int) -> CommandDataToSelect {
+        guard row < commandDatasToSelect.count else { fatalError("CommandData nil") }
         return commandDatasToSelect[row]
     }
     
     func didSelectRow(atLabel labelString: String) {
-        let label = Label(rawValue: labelString)
-        if label == nil {
+        guard let label = Label(rawValue: labelString) else {
             fatalError("Invalid CommandData selected: \(labelString)")
         }
-        AppSettingModel.shared.isActiveByCommandData[label!]?.toggle()
+        AppSettingModel.shared.isActiveByCommandData[label]?.toggle()
     }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias CommandDataToSelect = (label: String, isAvailable: Bool)
+typealias CommandDataToSelect = (labelString: String, isAvailable: Bool)
 
 final class CommandDataSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -36,8 +36,8 @@ extension CommandDataSelectionViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommandCell", for: indexPath)
-        guard let commandDataToSelect = presenter.getCommandDataToSelect(forRow: indexPath.row) else { fatalError("CommandData  nil") }
-        cell.textLabel!.text = commandDataToSelect.label
+        let commandDataToSelect = presenter.getCommandDataToSelect(forRow: indexPath.row)
+        cell.textLabel!.text = commandDataToSelect.labelString
         cell.isUserInteractionEnabled = commandDataToSelect.isAvailable
         return cell
     }
