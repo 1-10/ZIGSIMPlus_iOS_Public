@@ -54,9 +54,9 @@ class StoreManager {
         ))
 
         // Add data from stores
-//        bundle.elements += LocationDataStore.shared.toOSC()
-//        bundle.elements += TouchDataStore.shared.toOSC()
-//        bundle.elements += MiscDataStore.shared.toOSC()
+        bundle.elements += LocationDataStore.shared.toOSC()
+        bundle.elements += TouchDataStore.shared.toOSC()
+        bundle.elements += MiscDataStore.shared.toOSC()
 
         // TODO: Add timetag
 
