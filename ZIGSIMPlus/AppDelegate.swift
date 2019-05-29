@@ -17,15 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // Inject dependency here
-        let presenterFactory = PresenterFactory()
         let tabBarController = window?.rootViewController as! UITabBarController
+        let mediator = CommandAndCommandDataMediator()
         for viewController in tabBarController.viewControllers! {
             if type(of: viewController) == CommandDataSelectionViewController.self {
                 let vc = viewController as! CommandDataSelectionViewController
-                vc.presenter = presenterFactory.createCommandDataSelectionPresenter(view: vc)
+                vc.presenter = CommandDataSelectionPresenter(view: vc, mediator: mediator)
             } else if type(of: viewController) == CommandDataOutputViewController.self {
                 let vc = viewController as! CommandDataOutputViewController
-                vc.presenter = presenterFactory.createCommandDataOutputPresenter(view: vc)
+                vc.presenter = CommandDataOutputPresenter(view: vc, mediator: mediator)
             } else {
                 print("else")
             }

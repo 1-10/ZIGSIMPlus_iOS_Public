@@ -9,6 +9,58 @@
 import Foundation
 
 public class CommandAndCommandDataMediator {
+    public let commands: [Command] = [
+        MotionMonitoringCommand(),
+        TouchMonitoringCommand(),
+        BatteryMonitoringCommand(),
+        CompassMonitoringCommand(),
+        AltimeterMonitoringCommand(),
+        GpsMonitoringCommand(),
+        BeaconMonitoringCommand(),
+        ProximityMonitoringCommand(),
+        MicLevelMonitoringCommand(),
+        NdiMonitoringCommand()
+    ]
+    
+    public func isAvailable(commandDataLabel: Label) -> Bool {
+        return getCommand(by: commandDataLabel).isAvailable()
+    }
+    
+    public func getCommand(by commandDataLabel: Label) -> Command {
+        switch commandDataLabel {
+        case .acceleration, .gravity, .gyro, .quaternion:
+            return getCommand(by: MotionMonitoringCommand.self)
+        case .touch:
+            return getCommand(by: TouchMonitoringCommand.self)
+        case .battery:
+            return getCommand(by: BatteryMonitoringCommand.self)
+        case .compass:
+            return getCommand(by: CompassMonitoringCommand.self)
+        case .pressure:
+            return getCommand(by: AltimeterMonitoringCommand.self)
+        case .gps:
+            return getCommand(by: GpsMonitoringCommand.self)
+        case .beacon:
+            return getCommand(by: BeaconMonitoringCommand.self)
+        case .proximity:
+            return getCommand(by: ProximityMonitoringCommand.self)
+        case .micLevel:
+            return getCommand(by: MicLevelMonitoringCommand.self)
+        case .ndi:
+            return getCommand(by: NdiMonitoringCommand.self)
+        }
+    }
+    
+    public func getCommand<T: Command> (by commandType: T.Type) -> Command {
+        for command in commands {
+            if type(of: command) == commandType {
+                return command
+            }
+        }
+        
+        fatalError("Unexpected Command Type")
+    }
+    
     public func isActive(command: Command) -> Bool {
         switch command {
         case is MotionMonitoringCommand:
