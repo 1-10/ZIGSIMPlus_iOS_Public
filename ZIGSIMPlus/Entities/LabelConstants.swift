@@ -21,6 +21,7 @@ public enum Label: String {
     case proximity = "Proximity"
     case micLevel = "MIC LEVEL"
     case battery = "Battery"
+    case remoteControl = "Remote Control"
     case ndi = "NDI"
 }
 
@@ -37,5 +38,6 @@ public let CommandDataLabels = [
     Label.proximity,
     Label.micLevel,
     Label.battery,
+    Label.remoteControl,
     Label.ndi
 ]
