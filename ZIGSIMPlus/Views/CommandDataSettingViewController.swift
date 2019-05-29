@@ -5,7 +5,6 @@
 //  Created by YoneyamaShunpei on 2019/05/23.
 //  Copyright © 2019 Nozomu Kuwae. All rights reserved.
 //
-
 import Foundation
 import UIKit
 
@@ -26,27 +25,27 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
     @IBOutlet weak var beaconUUID4TextField: UITextField!
     @IBOutlet weak var beaconUUID5TextField: UITextField!
     var presenter: CommandDataSettingPresenterProtocol!
-   
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
-        let allTexts = [
-            ipAdressTextField,
-            portNumberTextField,
-            uuidTextField,
-            beaconUUID1TextField,
-            beaconUUID2TextField,
-            beaconUUID3TextField,
-            beaconUUID4TextField,
-            beaconUUID5TextField
-        ]
-        let allSegments = [
-            dataDestinationSeg,
-            protocoloSeg,
-            messageFormatSeg,
-            messageRateSeg,
-            compassAngleSeg
-        ]
-        presenter.initUserDefalut(view: self.view, scrollView: self.scrollView, textFilds: allTexts as Array<Any>, segmentFilds: allSegments as Array<Any>)
+        
+        let userDefaultTexts = presenter.getUserDefaultTexts()
+        setTextFieldSetting(texField: ipAdressTextField, text: userDefaultTexts["ipAdress"]!.description)
+        setTextFieldSetting(texField: portNumberTextField, text: userDefaultTexts["portNumber"]!.description)
+        setTextFieldSetting(texField: uuidTextField, text: userDefaultTexts["uuid"]!.description)
+        setTextFieldSetting(texField: beaconUUID1TextField, text: userDefaultTexts["beaconUUID1"]!.description)
+        setTextFieldSetting(texField: beaconUUID2TextField, text: userDefaultTexts["beaconUUID2"]!.description)
+        setTextFieldSetting(texField: beaconUUID3TextField, text: userDefaultTexts["beaconUUID3"]!.description)
+        setTextFieldSetting(texField: beaconUUID4TextField, text: userDefaultTexts["beaconUUID4"]!.description)
+        setTextFieldSetting(texField: beaconUUID5TextField, text: userDefaultTexts["beaconUUID5"]!.description)
+        
+        let userDefaultSegments = presenter.getUserDefaultSegments()
+        dataDestinationSeg.selectedSegmentIndex = userDefaultSegments["userDataDestination"]!
+        protocoloSeg.selectedSegmentIndex = userDefaultSegments["userProtocol"]!
+        messageFormatSeg.selectedSegmentIndex = userDefaultSegments["userMessageFormat"]!
+        messageRateSeg.selectedSegmentIndex = userDefaultSegments["userMessageRatePerSecond"]!
+        compassAngleSeg.selectedSegmentIndex = userDefaultSegments["userCompassAngle"]!
+        
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -57,25 +56,86 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
     override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeObserver()
-        presenter.setUserDefault()
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        presenter.beaconUuidValidate()
+        print("touch screen!")
+        beaconUuidValidate()
     }
     
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+    @IBAction func changeDataDestination(_ sender: Any) {
+        updateSettingData()
+    }
+    
+    @IBAction func changeProtocol(_ sender: Any) {
+        updateSettingData()
+    }
+    
+    @IBAction func changeMessageFormat(_ sender: Any) {
+        updateSettingData()
+    }
+    
+    @IBAction func changeMessageRate(_ sender: Any) {
+        updateSettingData()
+    }
+    
+    @IBAction func changeCompassAngle(_ sender: Any) {
+        updateSettingData()
+    }
+    
+    private func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         print("should end editing!")
-        presenter.beaconUuidValidate()
+        beaconUuidValidate()
         return true
+    }
+    
+    private func setTextFieldSetting(texField:UITextField, text:String) {
+        texField.text = String(text)
+        texField.delegate = self
+    }
+    
+    private func updateSettingData() {
+        let texts:[String:String] = [
+            "ipAdress": ipAdressTextField.text!,
+            "portNumber": portNumberTextField.text!,
+            "uuid": uuidTextField.text!,
+            "beaconUUID1": beaconUUID1TextField.text!,
+            "beaconUUID2": beaconUUID2TextField.text!,
+            "beaconUUID3": beaconUUID3TextField.text!,
+            "beaconUUID4": beaconUUID4TextField.text!,
+            "beaconUUID5": beaconUUID5TextField.text!
+        ]
+        presenter.updateTextsUserDefault(texts:texts)
+    
+        let segmentControls:[String:Int] = [
+            "userDataDestination": dataDestinationSeg.selectedSegmentIndex,
+            "userProtocol": protocoloSeg.selectedSegmentIndex,
+            "userMessageFormat": messageFormatSeg.selectedSegmentIndex,
+            "userMessageRatePerSecond": messageRateSeg.selectedSegmentIndex,
+            "userCompassAngle":compassAngleSeg.selectedSegmentIndex
+        ]
+        presenter.updateSegmentsUserDefault(segmentControls: segmentControls)
+    }
+    
+    private func beaconUuidValidate(){
+        if (beaconUUID1TextField.text!.count != 8) {
+            beaconUUID1TextField.becomeFirstResponder()
+        } else if (beaconUUID2TextField.text!.count != 4){
+            beaconUUID2TextField.becomeFirstResponder()
+        } else if (beaconUUID3TextField.text!.count != 4){
+            beaconUUID3TextField.becomeFirstResponder()
+        } else if (beaconUUID4TextField.text!.count != 4){
+            beaconUUID4TextField.becomeFirstResponder()
+        } else if (beaconUUID5TextField.text!.count != 12){
+            beaconUUID5TextField.becomeFirstResponder()
+        } else {
+            updateSettingData()
+            self.view.endEditing(true)
+        }
     }
 }
 
-extension CommandDataSettingViewController: CommandDataSettingPresenterDelegate {
-    public func setDelegate(texField:UITextField) {
-        texField.delegate = self
-    }
-}
+extension CommandDataSettingViewController: CommandDataSettingPresenterDelegate {}
 
 // Processing of Scroll view
 protocol ContentScrollable {

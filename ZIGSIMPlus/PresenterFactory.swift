@@ -36,6 +36,7 @@ class PresenterFactory {
     func createCommandDataSettingPresenter(view: CommandDataSettingPresenterDelegate) -> CommandDataSettingPresenter {
         let presenter = CommandDataSettingPresenter()
         presenter.view = view
+        presenter.initUserDefault()
         return presenter
     }
 }

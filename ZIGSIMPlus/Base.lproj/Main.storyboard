@@ -84,6 +84,9 @@
                                                     <segment title="LOCAL FILE"/>
                                                     <segment title="OTHER APP"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="changeDataDestination:" destination="Pgz-Cs-Esf" eventType="valueChanged" id="umC-u6-bld"/>
+                                                </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROTOCOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hi9-Ia-3DS">
                                                 <rect key="frame" x="134" y="89" width="106" height="21"/>
@@ -105,6 +108,9 @@
                                                     <segment title="UDP"/>
                                                     <segment title="TCP"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="changeProtocol:" destination="Pgz-Cs-Esf" eventType="valueChanged" id="DYc-Ay-6fv"/>
+                                                </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP ADDRESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ZN-mD-bHE" userLabel="IP ADDRESS">
                                                 <rect key="frame" x="134" y="154" width="106" height="21"/>
@@ -158,6 +164,9 @@
                                                     <segment title="JSON"/>
                                                     <segment title="OSC"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="changeMessageFormat:" destination="Pgz-Cs-Esf" eventType="valueChanged" id="WKJ-X6-lM9"/>
+                                                </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE RATE(PER SEC)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlW-UM-S4N">
                                                 <rect key="frame" x="86" y="353" width="202" height="21"/>
@@ -177,6 +186,9 @@
                                                     <segment title="30"/>
                                                     <segment title="60"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="changeMessageRate:" destination="Pgz-Cs-Esf" eventType="valueChanged" id="kYg-gb-3ZM"/>
+                                                </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVICE UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBs-WG-nJu" userLabel="DEVICE UUID">
                                                 <rect key="frame" x="135" y="418" width="104" height="21"/>
@@ -210,6 +222,9 @@
                                                     <segment title="PORTRAIT"/>
                                                     <segment title="FACEUP"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="changeCompassAngle:" destination="Pgz-Cs-Esf" eventType="valueChanged" id="oMN-PP-SDR"/>
+                                                </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEACON UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phG-uK-t20" userLabel="BEACON UUID">
                                                 <rect key="frame" x="130.66666666666666" y="549" width="113" height="21"/>
@@ -428,7 +443,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QnG-HF-yg8">
-                                <rect key="frame" x="16" y="20" width="343" height="598"/>
+                                <rect key="frame" x="16" y="44" width="382" height="769"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-O2-Ptu">
                                 <rect key="frame" x="16" y="44" width="382" height="769"/>
