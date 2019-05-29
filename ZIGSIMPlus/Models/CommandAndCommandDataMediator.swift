@@ -58,10 +58,9 @@ public class CommandAndCommandDataMediator {
     }
 
     private func isCommandDataActive(_ key: Label) -> Bool {
-        let b = AppSettingModel.shared.isActiveByCommandData[key]
-        if b == nil {
+        guard let b = AppSettingModel.shared.isActiveByCommandData[key] else {
             fatalError("AppSetting for CommandData \"\(key)\" is nil")
         }
-        return b!
+        return b
     }
 }
