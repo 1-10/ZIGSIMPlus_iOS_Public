@@ -29,6 +29,7 @@ class PresenterFactory {
         presenter.commands.append(BeaconMonitoringCommand())
         presenter.commands.append(ProximityMonitoringCommand())
         presenter.commands.append(MicLevelMonitoringCommand())
+        presenter.commands.append(RemoteControlCommand())
         presenter.commands.append(NdiMonitoringCommand())
         return presenter
     }

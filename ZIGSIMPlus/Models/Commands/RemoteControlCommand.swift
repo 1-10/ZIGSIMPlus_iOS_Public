@@ -8,7 +8,6 @@
 
 import Foundation
 import MediaPlayer
-import UIKit
 
 public final class RemoteControlCommand: AutoUpdatedCommand {
     
