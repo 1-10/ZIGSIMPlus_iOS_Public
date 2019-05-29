@@ -22,10 +22,10 @@ protocol CommandDataSettingPresenterDelegate: AnyObject {}
 final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
     var view: CommandDataSettingPresenterDelegate!
     func initUserDefault(){
-        AppSettingModel.shared.address = Defaults[.userIpAdress]!.description
-        AppSettingModel.shared.port = Int32(Defaults[.userPortNumber]!.description)!
-        AppSettingModel.shared.deviceUUID = Defaults[.userDeviceUUID]!.description
-        AppSettingModel.shared.beaconUUID = Defaults[.userBeaconUUID]!.description
+        AppSettingModel.shared.address = Defaults[.userIpAdress]?.description ?? ""
+        AppSettingModel.shared.port = Int32(Defaults[.userPortNumber]?.description ?? "") ?? 0
+        AppSettingModel.shared.deviceUUID = Defaults[.userDeviceUUID]?.description ?? ""
+        AppSettingModel.shared.beaconUUID = Defaults[.userBeaconUUID]?.description ?? ""
 
         if Defaults[.userDataDestination] == 0 {
             AppSettingModel.shared.dataDestination = .LOCAL_FILE
@@ -70,14 +70,14 @@ final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
             "beaconUUID5": ""
         ]
 
-        texts["ipAdress"] = Defaults[.userIpAdress]!.description
-        texts["portNumber"] = Defaults[.userPortNumber]!.description
-        texts["uuid"] = Defaults[.userDeviceUUID]!.description
-        texts["beaconUUID1"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:0)
-        texts["beaconUUID2"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:1)
-        texts["beaconUUID3"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:2)
-        texts["beaconUUID4"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:3)
-        texts["beaconUUID5"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]!.description, position:4)
+        texts["ipAdress"] = Defaults[.userIpAdress]?.description ?? ""
+        texts["portNumber"] = Defaults[.userPortNumber]?.description ?? ""
+        texts["uuid"] = Defaults[.userDeviceUUID]?.description ?? ""
+        texts["beaconUUID1"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:0)
+        texts["beaconUUID2"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:1)
+        texts["beaconUUID3"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:2)
+        texts["beaconUUID4"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:3)
+        texts["beaconUUID5"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:4)
         return texts
     }
     
@@ -124,21 +124,21 @@ final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
     }
     
     func updateTextsUserDefault(texts: Dictionary<String, String>) {
-        AppSettingModel.shared.address = texts["ipAdress"]!.description
+        AppSettingModel.shared.address = texts["ipAdress"]?.description ?? ""
         Defaults[.userIpAdress] = AppSettingModel.shared.address
-        AppSettingModel.shared.port = Int32(texts["portNumber"]!.description)!
+        AppSettingModel.shared.port = Int32(texts["portNumber"]?.description ?? "") ?? 0
         Defaults[.userPortNumber] = Int(AppSettingModel.shared.port)
-        AppSettingModel.shared.deviceUUID = texts["uuid"]!.description
+        AppSettingModel.shared.deviceUUID = texts["uuid"]?.description ?? ""
         Defaults[.userDeviceUUID] = AppSettingModel.shared.deviceUUID
-        var beaconUUID = texts["beaconUUID1"]!.description
+        var beaconUUID = texts["beaconUUID1"]?.description ?? ""
         beaconUUID += "-"
-        beaconUUID += texts["beaconUUID2"]!.description
+        beaconUUID += texts["beaconUUID2"]?.description ?? ""
         beaconUUID += "-"
-        beaconUUID += texts["beaconUUID3"]!.description
+        beaconUUID += texts["beaconUUID3"]?.description ?? ""
         beaconUUID += "-"
-        beaconUUID += texts["beaconUUID4"]!.description
+        beaconUUID += texts["beaconUUID4"]?.description ?? ""
         beaconUUID += "-"
-        beaconUUID += texts["beaconUUID5"]!.description
+        beaconUUID += texts["beaconUUID5"]?.description ?? ""
         AppSettingModel.shared.beaconUUID = beaconUUID
         Defaults[.userBeaconUUID] = AppSettingModel.shared.beaconUUID
     }

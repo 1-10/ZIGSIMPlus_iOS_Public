@@ -30,21 +30,21 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
         super.viewDidLoad()
         
         let userDefaultTexts = presenter.getUserDefaultTexts()
-        setTextFieldSetting(texField: ipAdressTextField, text: userDefaultTexts["ipAdress"]!.description)
-        setTextFieldSetting(texField: portNumberTextField, text: userDefaultTexts["portNumber"]!.description)
-        setTextFieldSetting(texField: uuidTextField, text: userDefaultTexts["uuid"]!.description)
-        setTextFieldSetting(texField: beaconUUID1TextField, text: userDefaultTexts["beaconUUID1"]!.description)
-        setTextFieldSetting(texField: beaconUUID2TextField, text: userDefaultTexts["beaconUUID2"]!.description)
-        setTextFieldSetting(texField: beaconUUID3TextField, text: userDefaultTexts["beaconUUID3"]!.description)
-        setTextFieldSetting(texField: beaconUUID4TextField, text: userDefaultTexts["beaconUUID4"]!.description)
-        setTextFieldSetting(texField: beaconUUID5TextField, text: userDefaultTexts["beaconUUID5"]!.description)
+        setTextFieldSetting(texField: ipAdressTextField, text: userDefaultTexts["ipAdress"]?.description ?? "")
+        setTextFieldSetting(texField: portNumberTextField, text: userDefaultTexts["portNumber"]?.description ?? "")
+        setTextFieldSetting(texField: uuidTextField, text: userDefaultTexts["uuid"]?.description ?? "")
+        setTextFieldSetting(texField: beaconUUID1TextField, text: userDefaultTexts["beaconUUID1"]?.description ?? "")
+        setTextFieldSetting(texField: beaconUUID2TextField, text: userDefaultTexts["beaconUUID2"]?.description ?? "")
+        setTextFieldSetting(texField: beaconUUID3TextField, text: userDefaultTexts["beaconUUID3"]?.description ?? "")
+        setTextFieldSetting(texField: beaconUUID4TextField, text: userDefaultTexts["beaconUUID4"]?.description ?? "")
+        setTextFieldSetting(texField: beaconUUID5TextField, text: userDefaultTexts["beaconUUID5"]?.description ?? "")
         
         let userDefaultSegments = presenter.getUserDefaultSegments()
-        dataDestinationSeg.selectedSegmentIndex = userDefaultSegments["userDataDestination"]!
-        protocoloSeg.selectedSegmentIndex = userDefaultSegments["userProtocol"]!
-        messageFormatSeg.selectedSegmentIndex = userDefaultSegments["userMessageFormat"]!
-        messageRateSeg.selectedSegmentIndex = userDefaultSegments["userMessageRatePerSecond"]!
-        compassAngleSeg.selectedSegmentIndex = userDefaultSegments["userCompassAngle"]!
+        dataDestinationSeg.selectedSegmentIndex = userDefaultSegments["userDataDestination"] ?? 0
+        protocoloSeg.selectedSegmentIndex = userDefaultSegments["userProtocol"] ?? 0
+        messageFormatSeg.selectedSegmentIndex = userDefaultSegments["userMessageFormat"] ?? 0
+        messageRateSeg.selectedSegmentIndex = userDefaultSegments["userMessageRatePerSecond"] ?? 0
+        compassAngleSeg.selectedSegmentIndex = userDefaultSegments["userCompassAngle"] ?? 0
         
     }
     
@@ -96,14 +96,14 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
     
     private func updateSettingData() {
         let texts:[String:String] = [
-            "ipAdress": ipAdressTextField.text!,
-            "portNumber": portNumberTextField.text!,
-            "uuid": uuidTextField.text!,
-            "beaconUUID1": beaconUUID1TextField.text!,
-            "beaconUUID2": beaconUUID2TextField.text!,
-            "beaconUUID3": beaconUUID3TextField.text!,
-            "beaconUUID4": beaconUUID4TextField.text!,
-            "beaconUUID5": beaconUUID5TextField.text!
+            "ipAdress": ipAdressTextField.text ?? "",
+            "portNumber": portNumberTextField.text ?? "",
+            "uuid": uuidTextField.text ?? "",
+            "beaconUUID1": beaconUUID1TextField.text ?? "",
+            "beaconUUID2": beaconUUID2TextField.text ?? "",
+            "beaconUUID3": beaconUUID3TextField.text ?? "",
+            "beaconUUID4": beaconUUID4TextField.text ?? "",
+            "beaconUUID5": beaconUUID5TextField.text ?? ""
         ]
         presenter.updateTextsUserDefault(texts:texts)
     
@@ -118,15 +118,15 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
     }
     
     private func beaconUuidValidate(){
-        if (beaconUUID1TextField.text!.count != 8) {
+        if ((beaconUUID1TextField.text?.description ?? "").count != 8) {
             beaconUUID1TextField.becomeFirstResponder()
-        } else if (beaconUUID2TextField.text!.count != 4){
+        } else if ((beaconUUID2TextField.text?.description ?? "").count  != 4){
             beaconUUID2TextField.becomeFirstResponder()
-        } else if (beaconUUID3TextField.text!.count != 4){
+        } else if ((beaconUUID3TextField.text?.description ?? "").count  != 4){
             beaconUUID3TextField.becomeFirstResponder()
-        } else if (beaconUUID4TextField.text!.count != 4){
+        } else if ((beaconUUID4TextField.text?.description ?? "").count  != 4){
             beaconUUID4TextField.becomeFirstResponder()
-        } else if (beaconUUID5TextField.text!.count != 12){
+        } else if ((beaconUUID5TextField.text?.description ?? "").count  != 12){
             beaconUUID5TextField.becomeFirstResponder()
         } else {
             updateSettingData()
