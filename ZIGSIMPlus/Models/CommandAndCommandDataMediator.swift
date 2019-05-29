@@ -22,34 +22,32 @@ public class CommandAndCommandDataMediator {
         NdiMonitoringCommand()
     ]
     
-    public func isAvailable(commandDataLabel: String) -> Bool {
+    public func isAvailable(commandDataLabel: Label) -> Bool {
         return getCommand(by: commandDataLabel).isAvailable()
     }
     
-    public func getCommand(by commandDataLabel: String) -> Command {
+    public func getCommand(by commandDataLabel: Label) -> Command {
         switch commandDataLabel {
-        case LabelConstants.acceleration, LabelConstants.gravity, LabelConstants.gyro, LabelConstants.quaternion:
+        case .acceleration, .gravity, .gyro, .quaternion:
             return getCommand(by: MotionMonitoringCommand.self)
-        case LabelConstants.touch:
+        case .touch:
             return getCommand(by: TouchMonitoringCommand.self)
-        case LabelConstants.battery:
+        case .battery:
             return getCommand(by: BatteryMonitoringCommand.self)
-        case LabelConstants.compass:
+        case .compass:
             return getCommand(by: CompassMonitoringCommand.self)
-        case LabelConstants.pressure:
+        case .pressure:
             return getCommand(by: AltimeterMonitoringCommand.self)
-        case LabelConstants.gps:
+        case .gps:
             return getCommand(by: GpsMonitoringCommand.self)
-        case LabelConstants.beacon:
+        case .beacon:
             return getCommand(by: BeaconMonitoringCommand.self)
-        case LabelConstants.proximity:
+        case .proximity:
             return getCommand(by: ProximityMonitoringCommand.self)
-        case LabelConstants.micLevel:
+        case .micLevel:
             return getCommand(by: MicLevelMonitoringCommand.self)
-        case LabelConstants.ndi:
+        case .ndi:
             return getCommand(by: NdiMonitoringCommand.self)
-        default:
-            fatalError("Unexpected Command Data Label")
         }
     }
     
