@@ -15,31 +15,49 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
     
     public func start(completion: ((String?) -> Void)?) {
         TouchDataStore.shared.callback = { (touches) in
+            
+            guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Label.touch],
+                let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Label.applePencil]
+                else {
+                    fatalError("AppSetting of the CommandData nil")
+            }
+            
             var stringMsg = ""
             
             for touch in touches {
                 var point = touch.location(in: touch.view!)
                 point = Utils.remapToScreenCoord(point)
 
-                // Position
-                stringMsg += """
-                touch:x:\(point.x)
-                touch:y:\(point.y)
-                
-                """
-                
-                // touch radius
-                if #available(iOS 8.0, *) {
-                    stringMsg += "touch:radius:\(touch.majorRadius)\n"
-                } else {
-                    // Fallback on earlier versions
+                if isTouchActive {
+                    // Position
+                    stringMsg += """
+                    touch:x:\(point.x)
+                    touch:y:\(point.y)
+                    
+                    """
+                    
+                    // touch radius
+                    if #available(iOS 8.0, *) {
+                        stringMsg += "touch:radius:\(touch.majorRadius)\n"
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                    
+                    // 3d touch
+                    if #available(iOS 9.0, *) {
+                        stringMsg += "touch:force:\(touch.force)\n"
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 }
                 
-                // 3d touch
-                if #available(iOS 9.0, *) {
-                    stringMsg += "touch:force:\(touch.force)\n"
-                } else {
-                    // Fallback on earlier versions
+                if isApplePencilActive && touch.type == .pencil {
+                    stringMsg += """
+                    pencil:touch:x:\(point.x)
+                    pencil:touch:y:\(point.y)
+                    pencil:altitude:\(touch.altitudeAngle)
+                    pencil:force:\(touch.force)
+                    """
                 }
             }
             

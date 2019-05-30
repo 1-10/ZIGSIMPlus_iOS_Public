@@ -30,7 +30,7 @@ public class CommandAndCommandDataMediator {
         switch commandDataLabel {
         case .acceleration, .gravity, .gyro, .quaternion:
             return getCommand(by: MotionMonitoringCommand.self)
-        case .touch:
+        case .touch, .applePencil:
             return getCommand(by: TouchMonitoringCommand.self)
         case .battery:
             return getCommand(by: BatteryMonitoringCommand.self)
@@ -77,7 +77,10 @@ public class CommandAndCommandDataMediator {
         case is BeaconMonitoringCommand:
             return isCommandDataActive(Label.beacon)
         case is TouchMonitoringCommand:
-            return isCommandDataActive(Label.touch)
+            return (
+                isCommandDataActive(Label.touch) ||
+                isCommandDataActive(Label.applePencil)
+            )
         case is CompassMonitoringCommand:
             return isCommandDataActive(Label.compass)
         case is AltimeterMonitoringCommand:
