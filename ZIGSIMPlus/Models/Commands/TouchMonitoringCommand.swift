@@ -22,7 +22,7 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
                     fatalError("AppSetting of the CommandData nil")
             }
             
-            var stringMsg = ""
+            var result = ""
             
             for touch in touches {
                 var point = touch.location(in: touch.view!)
@@ -30,39 +30,34 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
 
                 if isTouchActive {
                     // Position
-                    stringMsg += """
+                    result.appendLines("""
                     touch:x:\(point.x)
                     touch:y:\(point.y)
-                    
-                    """
+                    """)
                     
                     // touch radius
                     if #available(iOS 8.0, *) {
-                        stringMsg += "touch:radius:\(touch.majorRadius)\n"
-                    } else {
-                        // Fallback on earlier versions
+                        result.appendLines("touch:radius:\(touch.majorRadius)")
                     }
                     
                     // 3d touch
                     if #available(iOS 9.0, *) {
-                        stringMsg += "touch:force:\(touch.force)\n"
-                    } else {
-                        // Fallback on earlier versions
+                        result.appendLines("touch:force:\(touch.force)")
                     }
                 }
                 
                 if isApplePencilActive && touch.type == .pencil {
-                    stringMsg += """
+                    result.appendLines("""
                     pencil:touch:x:\(point.x)
                     pencil:touch:y:\(point.y)
                     pencil:altitude:\(touch.altitudeAngle)
                     pencil:azimuth:\(touch.azimuthAngle(in: touch.view!))
                     pencil:force:\(touch.force)
-                    """
+                    """)
                 }
             }
             
-            completion?(stringMsg)
+            completion?(result)
         }
         
         TouchDataStore.shared.enable()
