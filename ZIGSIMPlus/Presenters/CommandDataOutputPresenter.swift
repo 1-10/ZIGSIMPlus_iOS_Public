@@ -20,12 +20,15 @@ protocol CommandDataOutputPresenterDelegate: AnyObject {
 }
 
 final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
-    var view: CommandDataOutputPresenterDelegate!
-    var commands: [Command] = []
-    var mediator: CommandAndCommandDataMediator!
+    private weak var view: CommandDataOutputPresenterDelegate!
+    private var mediator: CommandAndCommandDataMediator
     private var resultByCommand: Dictionary<Int, String> = [:]
     private var updatingTimer: Timer?
     
+    init(view: CommandDataOutputPresenterDelegate, mediator: CommandAndCommandDataMediator) {
+        self.view = view
+        self.mediator = mediator
+    }
     
     // MARK: Start commands
     func startCommands() {
@@ -37,7 +40,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             userInfo: nil,
             repeats: true)
         
-        for command in commands {
+        for command in mediator.commands {
             if mediator.isActive(command: command) {
                 switch command {
                 case let c as ImageCommand:
@@ -65,7 +68,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
     
     // MARK: Monitor commands
     @objc private func monitorCommands() {
-        for command in commands {
+        for command in mediator.commands {
             if mediator.isActive(command: command) && command is ManualUpdatedCommand {
                 let c = command as! ManualUpdatedCommand
                 c.monitor { (result) in
@@ -86,7 +89,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             t.invalidate()
         }
         
-        for command in commands {
+        for command in mediator.commands {
             if mediator.isActive(command: command) {
                 command.stop(completion: nil)
             }

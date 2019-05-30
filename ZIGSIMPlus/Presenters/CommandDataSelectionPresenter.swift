@@ -9,8 +9,8 @@
 import Foundation
 
 protocol CommandDataSelectionPresenterProtocol {
-    var numberOfCommandDataLabels: Int { get }
-    func getCommandDataLabel(forRow row: Int) -> String?
+    var numberOfCommandDataToSelect: Int { get }
+    func getCommandDataToSelect(forRow row: Int) -> CommandDataToSelect
     func didSelectRow(atLabel labelString: String)
 }
 
@@ -18,23 +18,33 @@ protocol CommandDataSelectionPresenterDelegate: AnyObject {
 }
 
 final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol {
-    var view: CommandDataSelectionPresenterDelegate!
+    private weak var view: CommandDataSelectionPresenterDelegate!
+    private var mediator: CommandAndCommandDataMediator
+    private var commandDatasToSelect: [CommandDataToSelect]
     
-    var numberOfCommandDataLabels: Int {
-        return CommandDataLabels.count
+    init(view: CommandDataSelectionPresenterDelegate, mediator: CommandAndCommandDataMediator) {
+        self.view = view
+        self.mediator = mediator
+        commandDatasToSelect = [CommandDataToSelect]()
+        for label in CommandDataLabels {
+            commandDatasToSelect.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(commandDataLabel: label)))
+        }
     }
     
-    func getCommandDataLabel(forRow row: Int) -> String? {
-        guard row < CommandDataLabels.count else { return nil }
-        return CommandDataLabels[row].rawValue
+    var numberOfCommandDataToSelect: Int {
+        return commandDatasToSelect.count
+    }
+    
+    func getCommandDataToSelect(forRow row: Int) -> CommandDataToSelect {
+        guard row < commandDatasToSelect.count else { fatalError("CommandData nil") }
+        return commandDatasToSelect[row]
     }
     
     func didSelectRow(atLabel labelString: String) {
-        let label = Label(rawValue: labelString)
-        if label == nil {
+        guard let label = Label(rawValue: labelString) else {
             fatalError("Invalid CommandData selected: \(labelString)")
         }
-        AppSettingModel.shared.isActiveByCommandData[label!]?.toggle()
+        AppSettingModel.shared.isActiveByCommandData[label]?.toggle()
     }
 }
 

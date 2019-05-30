@@ -10,6 +10,9 @@ import Foundation
 import CoreLocation
 
 public final class CompassMonitoringCommand: AutoUpdatedCommand {
+    public func isAvailable() -> Bool {
+        return LocationDataStore.shared.isLocationAvailable()
+    }
 
     public func start(completion: ((String?) -> Void)?) {
         LocationDataStore.shared.startCompass()
