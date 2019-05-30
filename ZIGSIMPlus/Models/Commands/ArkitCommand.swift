@@ -11,12 +11,12 @@ import SceneKit
 
 public final class ArkitCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return ArkitDataStore.shared.isAvailable()
+        return ArkitDataStore.shared.isDeviceTrackingAvailable()
     }
 
     public func start(completion: ((String?) -> Void)?) {
-        ArkitDataStore.shared.start()
-        ArkitDataStore.shared.callback = { (pos, rot, featurePoints) in
+        ArkitDataStore.shared.startDeviceTracking()
+        ArkitDataStore.shared.deviceTrackingCallback = { (pos, rot, featurePoints) in
             completion?("""
                 arkit:position:(\(String(format: "%.5f, %.5f, %.5f", pos.x, pos.y, pos.z)))
                 arkit:rotation:(\(String(format: "%.5f, %.5f, %.5f", rot.x, rot.y, rot.z)))
@@ -26,7 +26,7 @@ public final class ArkitCommand: AutoUpdatedCommand {
     }
 
     public func stop(completion: ((String?) -> Void)?) {
-        ArkitDataStore.shared.stop()
+        ArkitDataStore.shared.stopDeviceTracking()
         completion?(nil)
     }
 }
