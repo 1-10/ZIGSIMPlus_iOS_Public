@@ -110,6 +110,7 @@
 		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		634B8D92228565F00043607D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZIGSIMPlus.entitlements; sourceTree = "<group>"; };
 		63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndCommandDataMediator.swift; sourceTree = "<group>"; };
 		63E57858229697E800C6340C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		63E5785A2296991400C6340C /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
@@ -324,6 +325,7 @@
 		902EB9C8227BE68D008F1650 /* ZIGSIMPlus */ = {
 			isa = PBXGroup;
 			children = (
+				63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */,
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
 				9092E4C7227D85890019F1C1 /* Models */,
 				902EB9F7227BECC7008F1650 /* Views */,
@@ -470,6 +472,11 @@
 				TargetAttributes = {
 					902EB9C5227BE68D008F1650 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 1;
+							};
+						};
 					};
 					902EB9D9227BE68F008F1650 = {
 						CreatedOnToolsVersion = 10.1;
@@ -838,6 +845,8 @@
 			baseConfigurationReference = 60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				HEADER_SEARCH_PATHS = (
@@ -859,8 +868,9 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus-Explicit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -872,6 +882,8 @@
 			baseConfigurationReference = 9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				HEADER_SEARCH_PATHS = (
@@ -893,8 +905,9 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus-Explicit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
