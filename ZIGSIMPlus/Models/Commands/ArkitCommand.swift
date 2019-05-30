@@ -16,11 +16,11 @@ public final class ArkitCommand: AutoUpdatedCommand {
 
     public func start(completion: ((String?) -> Void)?) {
         ArkitDataStore.shared.start()
-        ArkitDataStore.shared.callback = { (pos) in
+        ArkitDataStore.shared.callback = { (pos, rot, featurePoints) in
             completion?("""
-                arkit:position:x\(pos.x)
-                arkit:position:y\(pos.y)
-                arkit:position:z\(pos.z)
+                arkit:position:(\(String(format: "%.5f, %.5f, %.5f", pos.x, pos.y, pos.z)))
+                arkit:rotation:(\(String(format: "%.5f, %.5f, %.5f", rot.x, rot.y, rot.z)))
+                arkit:featurePoints: \(featurePoints.count)
                 """)
         }
     }

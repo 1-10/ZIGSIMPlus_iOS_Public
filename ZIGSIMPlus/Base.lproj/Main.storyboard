@@ -502,7 +502,7 @@
             <objects>
                 <viewController id="ETP-uh-VFr" customClass="ArkitViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="daY-ty-aJ3">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="769"/>
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chi-3Q-oa2">

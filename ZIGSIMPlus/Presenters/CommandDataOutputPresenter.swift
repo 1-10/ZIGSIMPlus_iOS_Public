@@ -72,7 +72,10 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
         let isImageViewActive = AppSettingModel.shared.isActiveByCommandData[Label.ndi]!
         view.setImageViewActive(isImageViewActive)
 
-        let isSceneViewActive = AppSettingModel.shared.isActiveByCommandData[Label.arkit]!
+        let isSceneViewActive = (
+            AppSettingModel.shared.isActiveByCommandData[Label.arkit]! ||
+            AppSettingModel.shared.isActiveByCommandData[Label.faceTracking]!
+        )
         view.setSceneViewActive(isSceneViewActive)
     }
 
