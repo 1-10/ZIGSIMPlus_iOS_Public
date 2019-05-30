@@ -12,6 +12,10 @@ import CoreMotion
 public final class MotionMonitoringCommand: AutoUpdatedCommand {
     let motionManager = CMMotionManager()
     
+    public func isAvailable() -> Bool {
+        return motionManager.isDeviceMotionAvailable
+    }
+    
     public func start(completion: ((String?) -> Void)?) {
         if motionManager.isDeviceMotionAvailable {
             motionManager.startDeviceMotionUpdates(to: OperationQueue.current!) { (deviceMotion, error) in
