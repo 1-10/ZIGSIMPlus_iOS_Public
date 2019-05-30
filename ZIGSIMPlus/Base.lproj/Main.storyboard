@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommandCell" id="BFY-6s-yrI">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommandCell" id="BFY-6s-yrI">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BFY-6s-yrI" id="udW-do-XvV">
@@ -428,8 +428,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QnG-HF-yg8">
-                                <rect key="frame" x="16" y="20" width="343" height="598"/>
+                                <rect key="frame" x="16" y="44" width="382" height="769"/>
                             </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3j9-Fj-S3j" userLabel="ARKit Container">
+                                <rect key="frame" x="16" y="44" width="382" height="769"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="ETP-uh-VFr" kind="embed" id="Vdq-Fl-qSo"/>
+                                </connections>
+                            </containerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-O2-Ptu">
                                 <rect key="frame" x="16" y="44" width="382" height="769"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -461,13 +468,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Output" id="ZJH-dY-5eg"/>
                     <connections>
+                        <outlet property="arkitView" destination="3j9-Fj-S3j" id="YAo-wY-ifM"/>
                         <outlet property="imageView" destination="QnG-HF-yg8" id="VZF-CZ-vFg"/>
                         <outlet property="textField" destination="w9T-O2-Ptu" id="SBs-k4-5Vg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTa-iw-AJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="846.9265367316342"/>
+            <point key="canvasLocation" x="1075.3623188405797" y="846.42857142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4iF-GW-zpL">
@@ -488,6 +496,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89Z-a4-GuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Arkit View Controller-->
+        <scene sceneID="AAi-Q4-3TT">
+            <objects>
+                <viewController id="ETP-uh-VFr" customClass="ArkitViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="daY-ty-aJ3">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="769"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chi-3Q-oa2">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="769"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="chi-3Q-oa2" secondAttribute="bottom" id="Ntf-pq-ytb"/>
+                            <constraint firstItem="chi-3Q-oa2" firstAttribute="top" secondItem="daY-ty-aJ3" secondAttribute="top" id="blV-PY-Q1G"/>
+                            <constraint firstItem="chi-3Q-oa2" firstAttribute="leading" secondItem="daY-ty-aJ3" secondAttribute="leading" id="lTN-9Y-Khc"/>
+                            <constraint firstAttribute="trailing" secondItem="chi-3Q-oa2" secondAttribute="trailing" id="zrh-x3-wYC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pRO-jZ-9sC"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="chi-3Q-oa2" id="hnz-ni-FzJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbW-ET-zaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892.753623188406" y="788.50446428571422"/>
         </scene>
     </scenes>
 </document>

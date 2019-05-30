@@ -19,6 +19,7 @@ public class CommandAndCommandDataMediator {
         BeaconMonitoringCommand(),
         ProximityMonitoringCommand(),
         MicLevelMonitoringCommand(),
+        ArkitCommand(),
         NdiMonitoringCommand()
     ]
     
@@ -46,6 +47,8 @@ public class CommandAndCommandDataMediator {
             return getCommand(by: ProximityMonitoringCommand.self)
         case .micLevel:
             return getCommand(by: MicLevelMonitoringCommand.self)
+        case .arkit:
+            return getCommand(by: ArkitCommand.self)
         case .ndi:
             return getCommand(by: NdiMonitoringCommand.self)
         }
@@ -88,6 +91,8 @@ public class CommandAndCommandDataMediator {
             return isCommandDataActive(Label.proximity)
         case is MicLevelMonitoringCommand:
             return isCommandDataActive(Label.micLevel)
+        case is ArkitCommand:
+            return isCommandDataActive(Label.arkit)
         default:
             fatalError("Unexpected Command")
         }
@@ -104,6 +109,7 @@ public class CommandAndCommandDataMediator {
         case is ProximityMonitoringCommand: return 12
         case is MicLevelMonitoringCommand: return 13
         case is BatteryMonitoringCommand: return 15
+        case is ArkitCommand: return 16
         case is NdiMonitoringCommand: return 22
         default: fatalError("Unexpected Command")
         }

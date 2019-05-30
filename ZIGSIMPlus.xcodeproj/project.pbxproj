@@ -27,6 +27,9 @@
 		02A8FA8C2296B62D001FB3DD /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA872296B62D001FB3DD /* StoreManager.swift */; };
 		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
 		02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */; };
+		02F0DBEC229FA86500D45E56 /* ArkitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBEB229FA86500D45E56 /* ArkitCommand.swift */; };
+		02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */; };
+		02F0DBF3229FC2EA00D45E56 /* ArkitDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF2229FC2EA00D45E56 /* ArkitDataStore.swift */; };
 		515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */; };
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
 		63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */; };
@@ -106,6 +109,9 @@
 		02A8FA872296B62D001FB3DD /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMonitoringCommand.swift; sourceTree = "<group>"; };
+		02F0DBEB229FA86500D45E56 /* ArkitCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitCommand.swift; sourceTree = "<group>"; };
+		02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitViewController.swift; sourceTree = "<group>"; };
+		02F0DBF2229FC2EA00D45E56 /* ArkitDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitDataStore.swift; sourceTree = "<group>"; };
 		0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +179,7 @@
 		023642CD2298253500171F73 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				02F0DBEF229FBB1700D45E56 /* ARKit */,
 				023644AD2298253800171F73 /* NDI */,
 			);
 			path = Private;
@@ -250,6 +257,15 @@
 			path = Stores;
 			sourceTree = "<group>";
 		};
+		02F0DBEF229FBB1700D45E56 /* ARKit */ = {
+			isa = PBXGroup;
+			children = (
+				02F0DBF2229FC2EA00D45E56 /* ArkitDataStore.swift */,
+				02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */,
+			);
+			path = ARKit;
+			sourceTree = "<group>";
+		};
 		3047AA928C608382EC8AFA33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +296,7 @@
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
 				02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */,
 				023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */,
+				02F0DBEB229FA86500D45E56 /* ArkitCommand.swift */,
 				02A0358C229CD53C00E7399E /* AltimeterMonitoringCommand.swift */,
 				02A0358E229CD54D00E7399E /* MicLevelMonitoringCommand.swift */,
 				02A03592229CD55A00E7399E /* ProximityMonitoringCommand.swift */,
@@ -639,6 +656,7 @@
 				02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
 				02A8FA882296B62D001FB3DD /* TouchDataStore.swift in Sources */,
+				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,
 				9092E4D3227EE3890019F1C1 /* MotionMonitoringCommand.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */,
@@ -654,7 +672,9 @@
 				02A0358D229CD53C00E7399E /* AltimeterMonitoringCommand.swift in Sources */,
 				B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
+				02F0DBF3229FC2EA00D45E56 /* ArkitDataStore.swift in Sources */,
 				02A03599229CD56E00E7399E /* ProximityDataStore.swift in Sources */,
+				02F0DBEC229FA86500D45E56 /* ArkitCommand.swift in Sources */,
 				634B8D93228565F00043607D /* Command.swift in Sources */,
 				02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
@@ -847,6 +867,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftSocket/SwiftSocket.framework/Headers\"",
 				);
 				INFOPLIST_FILE = ZIGSIMPlus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -881,6 +902,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftSocket/SwiftSocket.framework/Headers\"",
 				);
 				INFOPLIST_FILE = ZIGSIMPlus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
