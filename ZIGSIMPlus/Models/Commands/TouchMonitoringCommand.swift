@@ -56,6 +56,7 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
                     pencil:touch:x:\(point.x)
                     pencil:touch:y:\(point.y)
                     pencil:altitude:\(touch.altitudeAngle)
+                    pencil:azimuth:\(touch.azimuthAngle(in: touch.view!))
                     pencil:force:\(touch.force)
                     """
                 }
