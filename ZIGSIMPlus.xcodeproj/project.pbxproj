@@ -28,7 +28,7 @@
 		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
 		02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */; };
 		02F0DBE8229E203C00D45E56 /* RemoteControlCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBE7229E203C00D45E56 /* RemoteControlCommand.swift */; };
-		02F0DBEA229F774800D45E56 /* RemoteControllerDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBE9229F774800D45E56 /* RemoteControllerDataStore.swift */; };
+		02F0DBEA229F774800D45E56 /* RemoteControlDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBE9229F774800D45E56 /* RemoteControlDataStore.swift */; };
 		515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */; };
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
 		63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */; };
@@ -110,7 +110,7 @@
 		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMonitoringCommand.swift; sourceTree = "<group>"; };
 		02F0DBE7229E203C00D45E56 /* RemoteControlCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlCommand.swift; sourceTree = "<group>"; };
-		02F0DBE9229F774800D45E56 /* RemoteControllerDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControllerDataStore.swift; sourceTree = "<group>"; };
+		02F0DBE9229F774800D45E56 /* RemoteControlDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlDataStore.swift; sourceTree = "<group>"; };
 		0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 				02A03595229CD56E00E7399E /* AudioLevelDataStore.swift */,
 				02A03596229CD56E00E7399E /* ProximityDataStore.swift */,
 				02A8FA872296B62D001FB3DD /* StoreManager.swift */,
-				02F0DBE9229F774800D45E56 /* RemoteControllerDataStore.swift */,
+				02F0DBE9229F774800D45E56 /* RemoteControlDataStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -668,7 +668,7 @@
 				634B8D93228565F00043607D /* Command.swift in Sources */,
 				02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
-				02F0DBEA229F774800D45E56 /* RemoteControllerDataStore.swift in Sources */,
+				02F0DBEA229F774800D45E56 /* RemoteControlDataStore.swift in Sources */,
 				B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */,
 				02A03590229CD54D00E7399E /* MicLevelMonitoringCommand.swift in Sources */,
 				02A03593229CD55A00E7399E /* ProximityMonitoringCommand.swift in Sources */,

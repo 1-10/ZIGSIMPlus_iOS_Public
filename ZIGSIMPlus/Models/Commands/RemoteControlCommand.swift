@@ -11,17 +11,17 @@ import Foundation
 public final class RemoteControlCommand: AutoUpdatedCommand {
 
     public func start(completion: ((String?) -> Void)?) {
-        RemoteControllerDataStore.shared.callback = { (isPlaying, volume) in
+        RemoteControlDataStore.shared.callback = { (isPlaying, volume) in
             completion?("""
-                remotecontroller:playpause \(isPlaying)
-                remotecontroller:volume \(volume)
+                remotecontrol:playpause \(isPlaying)
+                remotecontrol:volume \(volume)
             """)
         }
-        RemoteControllerDataStore.shared.start()
+        RemoteControlDataStore.shared.start()
     }
 
     public func stop(completion: ((String?) -> Void)?) {
-        RemoteControllerDataStore.shared.stop()
+        RemoteControlDataStore.shared.stop()
         completion?(nil)
     }
 

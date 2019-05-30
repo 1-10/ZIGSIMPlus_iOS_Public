@@ -1,5 +1,5 @@
 //
-//  RemoteControllerDataStore.swift
+//  RemoteControlDataStore.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/05/30.
@@ -10,9 +10,9 @@ import Foundation
 import MediaPlayer
 import SwiftOSC
 
-public class RemoteControllerDataStore: NSObject {
+public class RemoteControlDataStore: NSObject {
     // Singleton instance
-    static let shared = RemoteControllerDataStore()
+    static let shared = RemoteControlDataStore()
 
     // MARK: - Instance Properties
     let audioEngine = AVAudioEngine()
@@ -44,7 +44,7 @@ public class RemoteControllerDataStore: NSObject {
     }
 
     private func update() {
-        print(">> remoteController: (\(isPlaying), \(volume))")
+        print(">> remoteControl: (\(isPlaying), \(volume))")
         callback?(isPlaying, volume)
     }
 
@@ -86,7 +86,7 @@ public class RemoteControllerDataStore: NSObject {
     }
 }
 
-extension RemoteControllerDataStore : Store {
+extension RemoteControlDataStore : Store {
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
@@ -100,7 +100,7 @@ extension RemoteControllerDataStore : Store {
 
         if AppSettingModel.shared.isActiveByCommandData[Label.remoteControl]! {
             messages.append(OSCMessage(
-                OSCAddressPattern("/\(deviceUUID)/remotecontroller"),
+                OSCAddressPattern("/\(deviceUUID)/remotecontrol"),
                 playPauseChanged,
                 volumeUp,
                 volumeDown,
@@ -124,7 +124,7 @@ extension RemoteControllerDataStore : Store {
 
         if AppSettingModel.shared.isActiveByCommandData[Label.remoteControl]! {
             data.merge([
-                "remoteController": [
+                "remoteControl": [
                     "playpause": playPauseChanged,
                     "volumeup": volumeUp,
                     "volumedown": volumeDown,
