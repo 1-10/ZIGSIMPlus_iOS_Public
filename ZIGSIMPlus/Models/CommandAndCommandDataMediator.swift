@@ -19,7 +19,8 @@ public class CommandAndCommandDataMediator {
         BeaconMonitoringCommand(),
         ProximityMonitoringCommand(),
         MicLevelMonitoringCommand(),
-        NdiMonitoringCommand()
+        NdiMonitoringCommand(),
+        NfcMonitoringCommand()
     ]
     
     public func isAvailable(commandDataLabel: Label) -> Bool {
@@ -48,6 +49,8 @@ public class CommandAndCommandDataMediator {
             return getCommand(by: MicLevelMonitoringCommand.self)
         case .ndi:
             return getCommand(by: NdiMonitoringCommand.self)
+        case .nfc:
+            return getCommand(by: NfcMonitoringCommand.self)
         }
     }
     
@@ -88,6 +91,8 @@ public class CommandAndCommandDataMediator {
             return isCommandDataActive(Label.proximity)
         case is MicLevelMonitoringCommand:
             return isCommandDataActive(Label.micLevel)
+        case is NfcMonitoringCommand:
+            return isCommandDataActive(Label.nfc)
         default:
             fatalError("Unexpected Command")
         }
@@ -105,6 +110,7 @@ public class CommandAndCommandDataMediator {
         case is MicLevelMonitoringCommand: return 13
         case is BatteryMonitoringCommand: return 15
         case is NdiMonitoringCommand: return 22
+        case is NfcMonitoringCommand: return 21
         default: fatalError("Unexpected Command")
         }
     }
