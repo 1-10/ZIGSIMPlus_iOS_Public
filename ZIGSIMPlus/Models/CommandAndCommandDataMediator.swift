@@ -19,6 +19,7 @@ public class CommandAndCommandDataMediator {
         BeaconMonitoringCommand(),
         ProximityMonitoringCommand(),
         MicLevelMonitoringCommand(),
+        RemoteControlCommand(),
         NdiMonitoringCommand()
     ]
     
@@ -46,6 +47,8 @@ public class CommandAndCommandDataMediator {
             return getCommand(by: ProximityMonitoringCommand.self)
         case .micLevel:
             return getCommand(by: MicLevelMonitoringCommand.self)
+        case .remoteControl:
+            return getCommand(by: RemoteControlCommand.self)
         case .ndi:
             return getCommand(by: NdiMonitoringCommand.self)
         }
