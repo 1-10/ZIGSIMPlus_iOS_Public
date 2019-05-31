@@ -91,6 +91,8 @@ public class CommandAndCommandDataMediator {
             return isCommandDataActive(Label.proximity)
         case is MicLevelMonitoringCommand:
             return isCommandDataActive(Label.micLevel)
+        case is RemoteControlCommand:
+            return isCommandDataActive(Label.remoteControl)
         case is NfcMonitoringCommand:
             return isCommandDataActive(Label.nfc)
         default:
@@ -109,7 +111,8 @@ public class CommandAndCommandDataMediator {
         case is ProximityMonitoringCommand: return 12
         case is MicLevelMonitoringCommand: return 13
         case is BatteryMonitoringCommand: return 15
-        case is NdiMonitoringCommand: return 22
+        case is RemoteControlCommand: return 22
+        case is NdiMonitoringCommand: return 23
         case is NfcMonitoringCommand: return 21
         default: fatalError("Unexpected Command")
         }
