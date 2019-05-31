@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class CommandDataOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
@@ -20,6 +21,10 @@ class CommandDataOutputViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        // Dummy volume view to disable default system volume hooks
+        let volumeView = MPVolumeView(frame: CGRect(x: -100, y: -100, width: 0, height: 0))
+        view.addSubview(volumeView)
+        
         presenter.startCommands()
     }
 
