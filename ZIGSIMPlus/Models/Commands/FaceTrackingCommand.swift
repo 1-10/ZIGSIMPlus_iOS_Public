@@ -11,7 +11,6 @@ import SceneKit
 
 public final class FaceTrackingCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        print(">> isavailable  \(ArkitDataStore.shared.isFaceTrackingAvailable())")
         return ArkitDataStore.shared.isFaceTrackingAvailable()
     }
 

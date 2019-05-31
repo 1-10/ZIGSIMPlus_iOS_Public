@@ -45,6 +45,12 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
             fatalError("Invalid CommandData selected: \(labelString)")
         }
         AppSettingModel.shared.isActiveByCommandData[label]?.toggle()
+
+        // Update commands availability
+        commandDatasToSelect = [CommandDataToSelect]()
+        for label in CommandDataLabels {
+            commandDatasToSelect.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(commandDataLabel: label)))
+        }
     }
 }
 
