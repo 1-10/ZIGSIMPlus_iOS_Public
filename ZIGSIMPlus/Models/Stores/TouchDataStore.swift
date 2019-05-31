@@ -88,7 +88,13 @@ public class TouchDataStore {
 
 extension TouchDataStore : Store {
     func toOSC() -> [OSCMessage] {
-        if !AppSettingModel.shared.isActiveByCommandData[Label.touch]! {
+        guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Label.touch],
+            let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Label.applePencil]
+            else {
+                fatalError("AppSetting of the CommandData nil")
+        }
+        
+        if !isTouchActive && !isApplePencilActive {
             return []
         }
         
@@ -99,15 +105,25 @@ extension TouchDataStore : Store {
             var point = touch.location(in: touch.view!)
             point = Utils.remapToScreenCoord(point)
 
-            // Position
-            messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)1"), Float(point.x)))
-            messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)2"), Float(point.y)))
+            if isTouchActive {
+                // Position
+                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)1"), Float(point.x)))
+                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)2"), Float(point.y)))
 
-            if #available(iOS 8.0, *) {
-                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touchradius\(i)"), Float(touch.majorRadius)))
+                if #available(iOS 8.0, *) {
+                    messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touchradius\(i)"), Float(touch.majorRadius)))
+                }
+                if #available(iOS 9.0, *) {
+                    messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touchforce\(i)"), Float(touch.force)))
+                }
             }
-            if #available(iOS 9.0, *) {
-                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touchforce\(i)"), Float(touch.force)))
+            
+            if isApplePencilActive && touch.type == .pencil {
+                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/penciltouch\(i)1"), Float(point.x)))
+                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/penciltouch\(i)2"), Float(point.y)))
+                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilaltitude\(i)"), Float(touch.altitudeAngle)))
+                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilazimuth\(i)"), Float(touch.azimuthAngle(in: touch.view!))))
+                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilforce\(i)"), Float(touch.force)))
             }
         }
         
@@ -115,25 +131,51 @@ extension TouchDataStore : Store {
     }
     
     func toJSON() -> [String:AnyObject] {
-        if !AppSettingModel.shared.isActiveByCommandData[Label.touch]! {
+        guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Label.touch],
+            let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Label.applePencil]
+            else {
+                fatalError("AppSetting of the CommandData nil")
+        }
+        
+        if !isTouchActive && !isApplePencilActive {
             return [:]
         }
         
-        let objs: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
-            var point = touch.location(in: touch.view!)
-            point = Utils.remapToScreenCoord(point)
+        var data = [String:AnyObject]()
+        if isTouchActive {
+            let touchData: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
+                var point = touch.location(in: touch.view!)
+                point = Utils.remapToScreenCoord(point)
 
-            var obj = ["x": point.x, "y": point.y]
-            
-            if #available(iOS 8.0, *) {
-                obj["radius"] = touch.majorRadius
+                var obj = ["x": point.x, "y": point.y]
+                
+                if #available(iOS 8.0, *) {
+                    obj["radius"] = touch.majorRadius
+                }
+                if #available(iOS 9.0, *) {
+                    obj["force"] = touch.force
+                }
+                
+                return obj
             }
-            if #available(iOS 9.0, *) {
-                obj["force"] = touch.force
-            }
-            
-            return obj
+            data.merge(["touches": touchData as AnyObject]) { $1 }
         }
-        return ["touches": objs as AnyObject]
+        
+        if isApplePencilActive {
+            let pencilData: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
+                var point = touch.location(in: touch.view!)
+                point = Utils.remapToScreenCoord(point)
+                
+                return ["x": point.x,
+                        "y": point.y,
+                        "altitude": touch.altitudeAngle,
+                        "azimuth": touch.azimuthAngle(in: touch.view!),
+                        "force": touch.force
+                        ]
+            }
+            data.merge(["pencil": pencilData as AnyObject]) { $1 }
+        }
+        
+        return data
     }
 }
