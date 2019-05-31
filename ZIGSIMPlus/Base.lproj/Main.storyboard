@@ -414,11 +414,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="Mj7-0U-Ehy"/>
                     <connections>
-                        <outlet property="beaconUUID1TextField" destination="MdQ-bK-cTr" id="10H-0F-X6g"/>
-                        <outlet property="beaconUUID2TextField" destination="m5y-VH-hdo" id="q3p-aJ-mgx"/>
-                        <outlet property="beaconUUID3TextField" destination="9VO-6u-Ofj" id="WM4-Cb-BXR"/>
-                        <outlet property="beaconUUID4TextField" destination="6rS-Ad-Eo4" id="Z6t-nK-Ulv"/>
-                        <outlet property="beaconUUID5TextField" destination="Y3R-W3-xuv" id="xJ7-Em-FpA"/>
                         <outlet property="compassAngleSeg" destination="thm-rP-1uQ" id="4fM-4y-abE"/>
                         <outlet property="dataDestinationSeg" destination="423-wr-2ya" id="WjA-NE-FAE"/>
                         <outlet property="ipAdressTextField" destination="PDn-6H-k5T" id="XnM-xG-KU5"/>
@@ -428,6 +423,11 @@
                         <outlet property="protocoloSeg" destination="xxD-lX-dtz" id="hk4-4i-oEp"/>
                         <outlet property="scrollView" destination="fXg-6V-I99" id="4Dj-AV-cdQ"/>
                         <outlet property="uuidTextField" destination="eFq-2M-d3D" id="Key-kM-gig"/>
+                        <outletCollection property="beaconUUIDTextFields" destination="MdQ-bK-cTr" collectionClass="NSMutableArray" id="W6A-c9-qlg"/>
+                        <outletCollection property="beaconUUIDTextFields" destination="m5y-VH-hdo" collectionClass="NSMutableArray" id="J3i-Ri-Dwh"/>
+                        <outletCollection property="beaconUUIDTextFields" destination="9VO-6u-Ofj" collectionClass="NSMutableArray" id="7zd-mc-eLt"/>
+                        <outletCollection property="beaconUUIDTextFields" destination="6rS-Ad-Eo4" collectionClass="NSMutableArray" id="ELq-ka-8db"/>
+                        <outletCollection property="beaconUUIDTextFields" destination="Y3R-W3-xuv" collectionClass="NSMutableArray" id="wyd-MD-JTJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wmr-jb-8c7" userLabel="First Responder" sceneMemberID="firstResponder"/>

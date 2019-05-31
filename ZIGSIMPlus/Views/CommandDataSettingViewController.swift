@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
-public class CommandDataSettingViewController : UIViewController, UITextFieldDelegate, ContentScrollable{
+protocol ContentScrollable {
+    var scrollView: UIScrollView! { get }
+    func configureObserver()
+    func removeObserver()
+}
+
+public class CommandDataSettingViewController : UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var dataDestinationSeg: UISegmentedControl!
@@ -19,11 +25,8 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
     @IBOutlet weak var messageRateSeg: UISegmentedControl!
     @IBOutlet weak var uuidTextField: UITextField!
     @IBOutlet weak var compassAngleSeg: UISegmentedControl!
-    @IBOutlet weak var beaconUUID1TextField: UITextField!
-    @IBOutlet weak var beaconUUID2TextField: UITextField!
-    @IBOutlet weak var beaconUUID3TextField: UITextField!
-    @IBOutlet weak var beaconUUID4TextField: UITextField!
-    @IBOutlet weak var beaconUUID5TextField: UITextField!
+    @IBOutlet var beaconUUIDTextFields: [UITextField]!
+    
     var presenter: CommandDataSettingPresenterProtocol!
     
     override public func viewDidLoad() {
@@ -33,12 +36,12 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
         setTextFieldSetting(texField: ipAdressTextField, text: userDefaultTexts["ipAdress"]?.description ?? "")
         setTextFieldSetting(texField: portNumberTextField, text: userDefaultTexts["portNumber"]?.description ?? "")
         setTextFieldSetting(texField: uuidTextField, text: userDefaultTexts["uuid"]?.description ?? "")
-        setTextFieldSetting(texField: beaconUUID1TextField, text: userDefaultTexts["beaconUUID1"]?.description ?? "")
-        setTextFieldSetting(texField: beaconUUID2TextField, text: userDefaultTexts["beaconUUID2"]?.description ?? "")
-        setTextFieldSetting(texField: beaconUUID3TextField, text: userDefaultTexts["beaconUUID3"]?.description ?? "")
-        setTextFieldSetting(texField: beaconUUID4TextField, text: userDefaultTexts["beaconUUID4"]?.description ?? "")
-        setTextFieldSetting(texField: beaconUUID5TextField, text: userDefaultTexts["beaconUUID5"]?.description ?? "")
-        
+        for i in 0 ..< beaconUUIDTextFields.count {
+            var beaconId = "beaconUUID"
+            beaconId = beaconId + String(i + 1)
+            setTextFieldSetting(texField: beaconUUIDTextFields[i], text: userDefaultTexts[beaconId]?.description ?? "")
+        }
+ 
         let userDefaultSegments = presenter.getUserDefaultSegments()
         dataDestinationSeg.selectedSegmentIndex = userDefaultSegments["userDataDestination"] ?? 0
         protocoloSeg.selectedSegmentIndex = userDefaultSegments["userProtocol"] ?? 0
@@ -46,16 +49,6 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
         messageRateSeg.selectedSegmentIndex = userDefaultSegments["userMessageRatePerSecond"] ?? 0
         compassAngleSeg.selectedSegmentIndex = userDefaultSegments["userCompassAngle"] ?? 0
         
-    }
-    
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureObserver()
-    }
-    
-    override public func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeObserver()
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -89,21 +82,16 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
         return true
     }
     
-    private func setTextFieldSetting(texField:UITextField, text:String) {
-        texField.text = String(text)
-        texField.delegate = self
-    }
-    
     private func updateSettingData() {
         let texts:[String:String] = [
             "ipAdress": ipAdressTextField.text ?? "",
             "portNumber": portNumberTextField.text ?? "",
             "uuid": uuidTextField.text ?? "",
-            "beaconUUID1": beaconUUID1TextField.text ?? "",
-            "beaconUUID2": beaconUUID2TextField.text ?? "",
-            "beaconUUID3": beaconUUID3TextField.text ?? "",
-            "beaconUUID4": beaconUUID4TextField.text ?? "",
-            "beaconUUID5": beaconUUID5TextField.text ?? ""
+            "beaconUUID1": beaconUUIDTextFields[0].text ?? "",
+            "beaconUUID2": beaconUUIDTextFields[1].text ?? "",
+            "beaconUUID3": beaconUUIDTextFields[2].text ?? "",
+            "beaconUUID4": beaconUUIDTextFields[3].text ?? "",
+            "beaconUUID5": beaconUUIDTextFields[4].text ?? ""
         ]
         presenter.updateTextsUserDefault(texts:texts)
     
@@ -118,16 +106,16 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
     }
     
     private func beaconUuidValidate(){
-        if ((beaconUUID1TextField.text?.description ?? "").count != 8) {
-            beaconUUID1TextField.becomeFirstResponder()
-        } else if ((beaconUUID2TextField.text?.description ?? "").count  != 4){
-            beaconUUID2TextField.becomeFirstResponder()
-        } else if ((beaconUUID3TextField.text?.description ?? "").count  != 4){
-            beaconUUID3TextField.becomeFirstResponder()
-        } else if ((beaconUUID4TextField.text?.description ?? "").count  != 4){
-            beaconUUID4TextField.becomeFirstResponder()
-        } else if ((beaconUUID5TextField.text?.description ?? "").count  != 12){
-            beaconUUID5TextField.becomeFirstResponder()
+        if ((beaconUUIDTextFields[0].text?.description ?? "").count != 8) {
+            beaconUUIDTextFields[0].becomeFirstResponder()
+        } else if ((beaconUUIDTextFields[1].text?.description ?? "").count  != 4){
+            beaconUUIDTextFields[1].becomeFirstResponder()
+        } else if ((beaconUUIDTextFields[2].text?.description ?? "").count  != 4){
+            beaconUUIDTextFields[2].becomeFirstResponder()
+        } else if ((beaconUUIDTextFields[3].text?.description ?? "").count  != 4){
+            beaconUUIDTextFields[3].becomeFirstResponder()
+        } else if ((beaconUUIDTextFields[4].text?.description ?? "").count  != 12){
+            beaconUUIDTextFields[4].becomeFirstResponder()
         } else {
             updateSettingData()
             self.view.endEditing(true)
@@ -137,14 +125,24 @@ public class CommandDataSettingViewController : UIViewController, UITextFieldDel
 
 extension CommandDataSettingViewController: CommandDataSettingPresenterDelegate {}
 
-// Processing of Scroll view
-protocol ContentScrollable {
-    var scrollView: UIScrollView! { get }
-    func configureObserver()
-    func removeObserver()
+extension CommandDataSettingViewController: UITextFieldDelegate {
+    private func setTextFieldSetting(texField:UITextField, text:String) {
+        texField.text = String(text)
+        texField.delegate = self
+    }
 }
 
-extension ContentScrollable where Self: UIViewController {
+extension CommandDataSettingViewController: ContentScrollable{
+    override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureObserver()
+    }
+    
+    override public func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeObserver()
+    }
+    
     func configureObserver() {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { notification in
             self.keyboardWillShow(notification)
@@ -167,47 +165,5 @@ extension ContentScrollable where Self: UIViewController {
     func keyboardWillHide(_ notification: Notification) {
         scrollView.contentInset = .zero
         scrollView.scrollIndicatorInsets = .zero
-    }
-}
-
-extension UIScrollView {
-    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.next?.touchesBegan(touches, with: event)
-    }
-}
-
-// Limit of Character input number
-private var maxLengths = [UITextField: Int]()
-extension UITextField {
-    
-    @IBInspectable var maxLength: Int {
-        get {
-            guard let length = maxLengths[self] else {
-                return Int.max
-            }
-            
-            return length
-        }
-        set {
-            maxLengths[self] = newValue
-            addTarget(self, action: #selector(limitLength), for: .editingChanged)
-        }
-    }
-    
-    @objc func limitLength(textField: UITextField) {
-        guard let prospectiveText = textField.text, prospectiveText.count > maxLength else {
-            return
-        }
-        
-        let selection = selectedTextRange
-        let maxCharIndex = prospectiveText.index(prospectiveText.startIndex, offsetBy: maxLength)
-        
-        #if swift(>=4.0)
-        text = String(prospectiveText[..<maxCharIndex])
-        #else
-        text = prospectiveText.substring(to: maxCharIndex)
-        #endif
-        
-        selectedTextRange = selection
     }
 }
