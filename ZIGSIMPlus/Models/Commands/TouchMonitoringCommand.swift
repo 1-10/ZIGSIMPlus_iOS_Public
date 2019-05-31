@@ -16,22 +16,20 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
     
     public func start(completion: ((String?) -> Void)?) {
         TouchDataStore.shared.callback = { (touches) in
-            
-            guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Label.touch],
-                let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Label.applePencil]
-                else {
-                    fatalError("AppSetting of the CommandData nil")
-            }
-            
-            let result = self.getTouchResult(from: touches, isTouchActive: isTouchActive, isApplePencilActive: isApplePencilActive)
+            let result = self.getTouchResult(from: touches)
             completion?(result)
         }
         
         TouchDataStore.shared.enable()
     }
     
-    private func getTouchResult(from touches:[UITouch], isTouchActive: Bool, isApplePencilActive: Bool) -> String {
-        
+    private func getTouchResult(from touches:[UITouch]) -> String {
+        guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Label.touch],
+            let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Label.applePencil]
+            else {
+                fatalError("AppSetting of the CommandData nil")
+        }
+
         var result = ""
         for touch in touches {
             var point = touch.location(in: touch.view!)
