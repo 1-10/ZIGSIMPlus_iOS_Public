@@ -84,6 +84,7 @@ final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
         beaconUUID += texts["beaconUUID5"]?.description ?? ""
         AppSettingModel.shared.beaconUUID = beaconUUID
         Defaults[.userBeaconUUID] = AppSettingModel.shared.beaconUUID
+        print("beaconuuid: \(AppSettingModel.shared.beaconUUID)")
     }
     
     func updateSegmentsUserDefault(segmentControls: Dictionary<String, Int>) {

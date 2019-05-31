@@ -1,5 +1,5 @@
 //
-//  UIScroll.swift
+//  UIScrollViewExtension.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/31.

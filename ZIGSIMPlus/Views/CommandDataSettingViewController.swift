@@ -25,7 +25,7 @@ public class CommandDataSettingViewController : UIViewController {
     @IBOutlet weak var messageRateSeg: UISegmentedControl!
     @IBOutlet weak var uuidTextField: UITextField!
     @IBOutlet weak var compassAngleSeg: UISegmentedControl!
-    @IBOutlet var beaconUUIDTextFields: [UITextField]!
+    @IBOutlet var beaconUUIDTextFilds: [UITextField]!
     
     var presenter: CommandDataSettingPresenterProtocol!
     
@@ -36,12 +36,11 @@ public class CommandDataSettingViewController : UIViewController {
         setTextFieldSetting(texField: ipAdressTextField, text: userDefaultTexts["ipAdress"]?.description ?? "")
         setTextFieldSetting(texField: portNumberTextField, text: userDefaultTexts["portNumber"]?.description ?? "")
         setTextFieldSetting(texField: uuidTextField, text: userDefaultTexts["uuid"]?.description ?? "")
-        for i in 0 ..< beaconUUIDTextFields.count {
-            var beaconId = "beaconUUID"
-            beaconId = beaconId + String(i + 1)
-            setTextFieldSetting(texField: beaconUUIDTextFields[i], text: userDefaultTexts[beaconId]?.description ?? "")
+        for  beaconUUIDTextFild in beaconUUIDTextFilds {
+            let beaconUUID = "beaconUUID" + String(beaconUUIDTextFild.tag)
+            setTextFieldSetting(texField: beaconUUIDTextFild, text: userDefaultTexts[beaconUUID]?.description ?? "")
         }
- 
+        
         let userDefaultSegments = presenter.getUserDefaultSegments()
         dataDestinationSeg.selectedSegmentIndex = userDefaultSegments["userDataDestination"] ?? 0
         protocoloSeg.selectedSegmentIndex = userDefaultSegments["userProtocol"] ?? 0
@@ -56,23 +55,7 @@ public class CommandDataSettingViewController : UIViewController {
         beaconUuidValidate()
     }
     
-    @IBAction func changeDataDestination(_ sender: Any) {
-        updateSettingData()
-    }
-    
-    @IBAction func changeProtocol(_ sender: Any) {
-        updateSettingData()
-    }
-    
-    @IBAction func changeMessageFormat(_ sender: Any) {
-        updateSettingData()
-    }
-    
-    @IBAction func changeMessageRate(_ sender: Any) {
-        updateSettingData()
-    }
-    
-    @IBAction func changeCompassAngle(_ sender: Any) {
+    @IBAction func changeSettingData(_ sender: UISegmentedControl) {
         updateSettingData()
     }
     
@@ -83,16 +66,16 @@ public class CommandDataSettingViewController : UIViewController {
     }
     
     private func updateSettingData() {
-        let texts:[String:String] = [
+        var texts:[String:String] = [
             "ipAdress": ipAdressTextField.text ?? "",
             "portNumber": portNumberTextField.text ?? "",
             "uuid": uuidTextField.text ?? "",
-            "beaconUUID1": beaconUUIDTextFields[0].text ?? "",
-            "beaconUUID2": beaconUUIDTextFields[1].text ?? "",
-            "beaconUUID3": beaconUUIDTextFields[2].text ?? "",
-            "beaconUUID4": beaconUUIDTextFields[3].text ?? "",
-            "beaconUUID5": beaconUUIDTextFields[4].text ?? ""
         ]
+        
+        for beaconUUIDTextFild in beaconUUIDTextFilds {
+            let beaconUUID = "beaconUUID" + String(beaconUUIDTextFild.tag)
+            texts[beaconUUID] = beaconUUIDTextFild.text ?? ""
+        }
         presenter.updateTextsUserDefault(texts:texts)
     
         let segmentControls:[String:Int] = [
@@ -106,17 +89,21 @@ public class CommandDataSettingViewController : UIViewController {
     }
     
     private func beaconUuidValidate(){
-        if ((beaconUUIDTextFields[0].text?.description ?? "").count != 8) {
-            beaconUUIDTextFields[0].becomeFirstResponder()
-        } else if ((beaconUUIDTextFields[1].text?.description ?? "").count  != 4){
-            beaconUUIDTextFields[1].becomeFirstResponder()
-        } else if ((beaconUUIDTextFields[2].text?.description ?? "").count  != 4){
-            beaconUUIDTextFields[2].becomeFirstResponder()
-        } else if ((beaconUUIDTextFields[3].text?.description ?? "").count  != 4){
-            beaconUUIDTextFields[3].becomeFirstResponder()
-        } else if ((beaconUUIDTextFields[4].text?.description ?? "").count  != 12){
-            beaconUUIDTextFields[4].becomeFirstResponder()
-        } else {
+        
+        let validataNumbers = [8,4,4,4,12]
+        var updateUUID = false
+        for beaconUUIDTextFild in beaconUUIDTextFilds {
+            let beaconUUID = beaconUUIDTextFild.tag
+            if 1 <= beaconUUID && beaconUUID <= 5 && (beaconUUIDTextFild.text?.description ?? "").count != validataNumbers[beaconUUID - 1] {
+                updateUUID = false
+                beaconUUIDTextFild.becomeFirstResponder()
+                break
+            } else {
+                updateUUID = true
+            }
+        }
+        
+        if updateUUID == true {
             updateSettingData()
             self.view.endEditing(true)
         }
