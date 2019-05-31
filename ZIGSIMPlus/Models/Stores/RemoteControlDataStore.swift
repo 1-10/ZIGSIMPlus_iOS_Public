@@ -84,6 +84,14 @@ public class RemoteControlDataStore: NSObject {
         MPRemoteCommandCenter.shared().togglePlayPauseCommand.removeTarget(self, action: #selector(onTogglePlayPause(_:)))
 
     }
+
+    func isAvailable() -> Bool {
+        // MPRemoteControlCenter is supported on iOS 7.1+
+        if #available(iOS 7.1, *) {
+            return true
+        }
+        return false
+    }
 }
 
 extension RemoteControlDataStore : Store {
