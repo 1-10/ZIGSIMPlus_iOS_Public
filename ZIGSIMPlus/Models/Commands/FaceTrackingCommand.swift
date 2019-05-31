@@ -27,7 +27,7 @@ public final class FaceTrackingCommand: AutoUpdatedCommand {
     }
 
     public func stop(completion: ((String?) -> Void)?) {
-        ArkitDataStore.shared.stopDeviceTracking()
+        ArkitDataStore.shared.stopFaceTracking()
         completion?(nil)
     }
 }
