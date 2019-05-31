@@ -19,7 +19,7 @@ public final class ArkitCommand: AutoUpdatedCommand {
         ArkitDataStore.shared.deviceTrackingCallback = { (pos, rot, featurePoints) in
             completion?("""
                 arkit:position:(\(String(format: "%.5f, %.5f, %.5f", pos.x, pos.y, pos.z)))
-                arkit:rotation:(\(String(format: "%.5f, %.5f, %.5f", rot.x, rot.y, rot.z)))
+                arkit:rotation:(\(String(format: "%.3f, %.3f, %.3f, %.3f", rot.x, rot.y, rot.z, rot.w)))
                 arkit:featurePoints: \(featurePoints.count)
                 """)
         }
