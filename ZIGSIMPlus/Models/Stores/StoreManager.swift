@@ -26,18 +26,20 @@ class StoreManager {
     static let shared = StoreManager()
     private init() {}
     
-    func send() {
+    public func send() {
         let data: Data
         if AppSettingModel.shared.transportFormat == .OSC {
-            data = getOSC()
+            let osc = getOSC()
+            data = osc.data
         }
         else {
-            data = getJSON()
+            let json = getJSON()
+            data = convertJSONToData(json)
         }
         NetworkAdapter.shared.send(data)
     }
     
-    private func getOSC() -> Data {
+    public func getOSC() -> OSCBundle {
         let bundle = OSCBundle()
         let device = Device()
 
@@ -62,12 +64,12 @@ class StoreManager {
 
         // TODO: Add timetag
 
-        return bundle.data
+        return bundle
     }
 
-    private func getJSON() -> Data {
+    public func getJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
-        
+
         data.merge(LocationDataStore.shared.toJSON()) { $1 }
         data.merge(TouchDataStore.shared.toJSON()) { $1 }
         data.merge(ArkitDataStore.shared.toJSON()) { $1 }
@@ -76,7 +78,7 @@ class StoreManager {
 
         let device = Device()
         
-        return toJSON([
+        return [
             "device": [
                 "name": device.description,
                 "uuid": AppSettingModel.shared.deviceUUID,
@@ -87,10 +89,10 @@ class StoreManager {
             ] as AnyObject,
             "timestamp": Utils.getTimestamp() as AnyObject,
             "sensordata": data as AnyObject
-        ])
+        ]
     }
     
-    private func toJSON(_ dic: Dictionary<String, AnyObject>)-> Data {
+    private func convertJSONToData(_ dic: Dictionary<String, AnyObject>)-> Data {
         let jsonData = try! JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions(rawValue: 0))
         return jsonData
     }
