@@ -28,17 +28,20 @@ class StoreManagerTests: XCTestCase {
     // Test if JSON includes data from Stores
     func test_getJSON_keys() {
         let labelsAndKeys: [Label:String] = [
-            .gps: "gps", // LocationDataStore
-            .touch: "touches", // TouchDataStore
+            .pressure: "pressure", // AltimeterDataStore
             .arkit: "arkit", // ArkitDataStore
-            .remoteControl: "remoteControl", // RemoteControlDataStore
+            .micLevel: "miclevel", // AudioLevelDataStore
+            .gps: "gps", // LocationDataStore
             .acceleration: "accel", // MiscDataStore
+            .proximity: "proximitymonitor", // ProximityDataStore
+            .remoteControl: "remoteControl", // RemoteControlDataStore
+            .touch: "touches", // TouchDataStore
         ]
 
         labelsAndKeys.forEach { (label, key) in
             AppSettingModel.shared.isActiveByCommandData[label] = true
             let json = StoreManager.shared.getJSON()
-            XCTAssert(json["sensordata"][key].exists())
+            XCTAssert(json["sensordata"][key].exists(), "Sensordata for \(label) is stored as  \(key)")
             AppSettingModel.shared.isActiveByCommandData[label] = false
         }
     }

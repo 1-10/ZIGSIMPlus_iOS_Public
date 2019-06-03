@@ -57,11 +57,14 @@ class StoreManager {
         ))
 
         // Add data from stores
-        bundle.elements += LocationDataStore.shared.toOSC()
-        bundle.elements += TouchDataStore.shared.toOSC()
+        bundle.elements += AltimeterDataStore.shared.toOSC()
         bundle.elements += ArkitDataStore.shared.toOSC()
-        bundle.elements += RemoteControlDataStore.shared.toOSC()
+        bundle.elements += AudioLevelDataStore.shared.toOSC()
+        bundle.elements += LocationDataStore.shared.toOSC()
         bundle.elements += MiscDataStore.shared.toOSC()
+        bundle.elements += ProximityDataStore.shared.toOSC()
+        bundle.elements += RemoteControlDataStore.shared.toOSC()
+        bundle.elements += TouchDataStore.shared.toOSC()
 
         // TODO: Add timetag
 
@@ -72,11 +75,14 @@ class StoreManager {
         var data = JSON()
 
         do {
-            try data.merge(with: LocationDataStore.shared.toJSON())
-            try data.merge(with: TouchDataStore.shared.toJSON())
+            try data.merge(with: AltimeterDataStore.shared.toJSON())
             try data.merge(with: ArkitDataStore.shared.toJSON())
-            try data.merge(with: RemoteControlDataStore.shared.toJSON())
+            try data.merge(with: AudioLevelDataStore.shared.toJSON())
+            try data.merge(with: LocationDataStore.shared.toJSON())
             try data.merge(with: MiscDataStore.shared.toJSON())
+            try data.merge(with: ProximityDataStore.shared.toJSON())
+            try data.merge(with: RemoteControlDataStore.shared.toJSON())
+            try data.merge(with: TouchDataStore.shared.toJSON())
         } catch {
             print(">> JSON convert error")
         }
