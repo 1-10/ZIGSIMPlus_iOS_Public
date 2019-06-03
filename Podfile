@@ -15,10 +15,8 @@ target 'ZIGSIMPlus' do
     inherit! :search_paths
     # Pods for testing
   end
+end
 
-  target 'ZIGSIMPlusUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+target 'ZIGSIMPlusUITests' do
+  pod 'DeviceKit', '~> 1.3'
 end
