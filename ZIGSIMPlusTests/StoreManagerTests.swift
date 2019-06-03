@@ -10,24 +10,36 @@ import XCTest
 @testable import ZIGSIMPlus
 
 class StoreManagerTests: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func test_getJSON() {
+    // Test if JSON includes device data
+    func test_getJSON_device() {
         let json = StoreManager.shared.getJSON()
-        let device = json["device"] as! [String:AnyObject]
+        XCTAssert(json["device"].exists())
 
-        XCTAssertEqual(device["name"] as? String, "iPhone X")
-        XCTAssertEqual(device["uuid"] as? String, AppSettingModel.shared.deviceUUID)
-        XCTAssertEqual(device["os"] as? String, "ios")
-        XCTAssertEqual(device["osversion"] as? String, "12.2")
-        XCTAssertEqual(device["displaywidth"] as? Int, 1125)
-        XCTAssertEqual(device["displayheight"] as? Int, 2436)
+        // Test device info
+        let device = json["device"]
+        XCTAssert(device["name"].type == .string)
+        XCTAssertEqual(device["uuid"].string, AppSettingModel.shared.deviceUUID)
+        XCTAssertEqual(device["os"].string, "ios")
+        XCTAssert(device["osversion"].type == .string)
+        XCTAssert(device["displaywidth"].type == .number)
+        XCTAssert(device["displayheight"].type == .number)
+    }
+
+    // Test if JSON includes data from Stores
+    func test_getJSON_keys() {
+        let labelsAndKeys: [Label:String] = [
+            .gps: "gps", // LocationDataStore
+            .touch: "touches", // TouchDataStore
+            .arkit: "arkit", // ArkitDataStore
+            .remoteControl: "remoteControl", // RemoteControlDataStore
+            .acceleration: "accel", // MiscDataStore
+        ]
+
+        labelsAndKeys.forEach { (label, key) in
+            AppSettingModel.shared.isActiveByCommandData[label] = true
+            let json = StoreManager.shared.getJSON()
+            XCTAssert(json["sensordata"][key].exists())
+            AppSettingModel.shared.isActiveByCommandData[label] = false
+        }
     }
 }
