@@ -20,15 +20,12 @@ protocol CommandDataSelectionPresenterDelegate: AnyObject {
 final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol {
     private weak var view: CommandDataSelectionPresenterDelegate!
     private var mediator: CommandAndCommandDataMediator
-    private var commandDatasToSelect: [CommandDataToSelect]
+    private var commandDatasToSelect: [CommandDataToSelect] = []
     
     init(view: CommandDataSelectionPresenterDelegate, mediator: CommandAndCommandDataMediator) {
         self.view = view
         self.mediator = mediator
-        commandDatasToSelect = [CommandDataToSelect]()
-        for label in CommandDataLabels {
-            commandDatasToSelect.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(commandDataLabel: label)))
-        }
+        updateCommandData()
     }
     
     var numberOfCommandDataToSelect: Int {
@@ -46,7 +43,13 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
         }
         AppSettingModel.shared.isActiveByCommandData[label]?.toggle()
 
-        // Update commands availability
+        // We need to update commandData because "command.isAvailable" may change by selection
+        // e.g. When user enables "ARKit", "Face Tracking" must be disabled
+        updateCommandData()
+    }
+
+    // Update commands availability
+    private func updateCommandData() {
         commandDatasToSelect = [CommandDataToSelect]()
         for label in CommandDataLabels {
             commandDatasToSelect.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(commandDataLabel: label)))
