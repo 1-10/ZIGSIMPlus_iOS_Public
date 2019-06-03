@@ -8,11 +8,12 @@
 
 import Foundation
 import SwiftOSC
+import SwiftyJSON
 import DeviceKit
 
 protocol Store {
     func toOSC() -> [OSCMessage]
-    func toJSON() -> [String:AnyObject]
+    func toJSON() throws -> JSON
 }
 
 /// StoreManager creates OSC / JSON data and send it over TCP / UDP.
@@ -34,7 +35,7 @@ class StoreManager {
         }
         else {
             let json = getJSON()
-            data = convertJSONToData(json)
+            data = try! json.rawData()
         }
         NetworkAdapter.shared.send(data)
     }
@@ -67,18 +68,22 @@ class StoreManager {
         return bundle
     }
 
-    public func getJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
+    public func getJSON() -> JSON {
+        var data = JSON()
 
-        data.merge(LocationDataStore.shared.toJSON()) { $1 }
-        data.merge(TouchDataStore.shared.toJSON()) { $1 }
-        data.merge(ArkitDataStore.shared.toJSON()) { $1 }
-        data.merge(RemoteControlDataStore.shared.toJSON()) { $1 }
-        data.merge(MiscDataStore.shared.toJSON()) { $1 }
+        do {
+            try data.merge(with: LocationDataStore.shared.toJSON())
+            try data.merge(with: TouchDataStore.shared.toJSON())
+            try data.merge(with: ArkitDataStore.shared.toJSON())
+            try data.merge(with: RemoteControlDataStore.shared.toJSON())
+            try data.merge(with: MiscDataStore.shared.toJSON())
+        } catch {
+            print(">> JSON convert error")
+        }
 
         let device = Device()
         
-        return [
+        return JSON([
             "device": [
                 "name": device.description,
                 "uuid": AppSettingModel.shared.deviceUUID,
@@ -86,14 +91,9 @@ class StoreManager {
                 "osversion": device.systemVersion,
                 "displaywidth": Int(Utils.screenWidth),
                 "displayheight": Int(Utils.screenHeight),
-            ] as AnyObject,
-            "timestamp": Utils.getTimestamp() as AnyObject,
-            "sensordata": data as AnyObject
-        ]
-    }
-    
-    private func convertJSONToData(_ dic: Dictionary<String, AnyObject>)-> Data {
-        let jsonData = try! JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions(rawValue: 0))
-        return jsonData
+            ],
+            "timestamp": Utils.getTimestamp(),
+            "sensordata": data
+        ])
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import MediaPlayer
 import SwiftOSC
+import SwiftyJSON
 
 public class RemoteControlDataStore: NSObject {
     // Singleton instance
@@ -120,8 +121,8 @@ extension RemoteControlDataStore : Store {
         return messages
     }
 
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
+    func toJSON() throws -> JSON {
+        var data = JSON()
 
         // Detect changes
         let volumeUp = lastVolume < volume
@@ -131,15 +132,13 @@ extension RemoteControlDataStore : Store {
         lastIsPlaying = isPlaying
 
         if AppSettingModel.shared.isActiveByCommandData[Label.remoteControl]! {
-            data.merge([
-                "remoteControl": [
-                    "playpause": playPauseChanged,
-                    "volumeup": volumeUp,
-                    "volumedown": volumeDown,
-                    "isPlaying": isPlaying,
-                    "volume": volume
-                    ] as AnyObject
-            ]) { $1 }
+            data["remoteControl"] = JSON([
+                "playpause": playPauseChanged,
+                "volumeup": volumeUp,
+                "volumedown": volumeDown,
+                "isPlaying": isPlaying,
+                "volume": volume
+            ])
         }
 
         return data

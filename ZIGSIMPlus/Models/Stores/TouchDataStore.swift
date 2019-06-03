@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SwiftOSC
+import SwiftyJSON
 
 /// Data store for touch data.
 public class TouchDataStore {
@@ -130,18 +131,14 @@ extension TouchDataStore : Store {
         return messages
     }
     
-    func toJSON() -> [String:AnyObject] {
+    func toJSON() throws -> JSON {
         guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Label.touch],
             let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Label.applePencil]
             else {
                 fatalError("AppSetting of the CommandData nil")
         }
-        
-        if !isTouchActive && !isApplePencilActive {
-            return [:]
-        }
-        
-        var data = [String:AnyObject]()
+        var data = JSON()
+
         if isTouchActive {
             let touchData: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
                 var point = touch.location(in: touch.view!)
@@ -158,7 +155,7 @@ extension TouchDataStore : Store {
                 
                 return obj
             }
-            data.merge(["touches": touchData as AnyObject]) { $1 }
+            data["touches"] = JSON(touchData)
         }
         
         if isApplePencilActive {
@@ -166,14 +163,15 @@ extension TouchDataStore : Store {
                 var point = touch.location(in: touch.view!)
                 point = Utils.remapToScreenCoord(point)
                 
-                return ["x": point.x,
-                        "y": point.y,
-                        "altitude": touch.altitudeAngle,
-                        "azimuth": touch.azimuthAngle(in: touch.view!),
-                        "force": touch.force
-                        ]
+                return [
+                    "x": point.x,
+                    "y": point.y,
+                    "altitude": touch.altitudeAngle,
+                    "azimuth": touch.azimuthAngle(in: touch.view!),
+                    "force": touch.force
+                ]
             }
-            data.merge(["pencil": pencilData as AnyObject]) { $1 }
+            data["pencil"] = JSON(pencilData)
         }
         
         return data

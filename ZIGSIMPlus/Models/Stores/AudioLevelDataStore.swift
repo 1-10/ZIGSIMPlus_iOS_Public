@@ -9,6 +9,7 @@
 import Foundation
 import AudioToolbox
 import SwiftOSC
+import SwiftyJSON
 
 func AudioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
                                inAQ: AudioQueueRef,
@@ -141,16 +142,14 @@ extension AudioLevelDataStore : Store {
         return data
     }
     
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
+    func toJSON() -> JSON {
+        var data = JSON()
         
         if AppSettingModel.shared.isActiveByCommandData[Label.micLevel]! {
-            data.merge([
-                "miclevel": [
-                    "average": averageLevel,
-                    "max": maxLevel
-                    ] as AnyObject
-            ]) { $1 }
+            data["miclevel"] = [
+                "average": averageLevel,
+                "max": maxLevel
+            ]
         }
         
         return data

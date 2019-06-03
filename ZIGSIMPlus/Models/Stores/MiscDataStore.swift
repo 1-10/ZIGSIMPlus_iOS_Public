@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreMotion
 import SwiftOSC
+import SwiftyJSON
 
 /// Data store for tiny data. e.g.) Motion, Battery, etc.
 public class MiscDataStore {
@@ -75,52 +76,44 @@ extension MiscDataStore : Store {
         return messages
     }
     
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
+    func toJSON() throws -> JSON {
+        var data = JSON()
 
         if AppSettingModel.shared.isActiveByCommandData[Label.battery]! {
-            data.merge(["battery": battery as AnyObject]) { $1 }
+            data["battery"] = JSON(battery)
         }
         
         if AppSettingModel.shared.isActiveByCommandData[Label.acceleration]! {
-            data.merge([
-                "accel": [
-                    "x": accel.x,
-                    "y": accel.y,
-                    "z": accel.z
-                    ] as AnyObject
-            ]) { $1 }
+            data["accel"] = [
+                "x": accel.x,
+                "y": accel.y,
+                "z": accel.z
+            ]
         }
         
         if AppSettingModel.shared.isActiveByCommandData[Label.gravity]! {
-            data.merge([
-                "gravity": [
-                    "x": gravity.x,
-                    "y": gravity.y,
-                    "z": gravity.z
-                    ] as AnyObject
-            ]) { $1 }
+            data["gravity"] = [
+                "x": gravity.x,
+                "y": gravity.y,
+                "z": gravity.z
+            ]
         }
         
         if AppSettingModel.shared.isActiveByCommandData[Label.gyro]! {
-            data.merge([
-                "gyro": [
-                    "x": gyro.x,
-                    "y": gyro.y,
-                    "z": gyro.z
-                    ] as AnyObject
-            ]) { $1 }
+            data["gyro"] = [
+                "x": gyro.x,
+                "y": gyro.y,
+                "z": gyro.z
+            ]
         }
         
         if AppSettingModel.shared.isActiveByCommandData[Label.quaternion]! {
-            data.merge([
-                "quaternion": [
-                    "x": quaternion.x,
-                    "y": quaternion.y,
-                    "z": quaternion.z,
-                    "w": quaternion.w
-                    ] as AnyObject
-            ]) { $1 }
+            data["quaternion"] = [
+                "x": quaternion.x,
+                "y": quaternion.y,
+                "z": quaternion.z,
+                "w": quaternion.w
+            ]
         }
         
         return data
