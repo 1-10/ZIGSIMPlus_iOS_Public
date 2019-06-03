@@ -20,21 +20,21 @@ protocol CommandDataSelectionPresenterDelegate: AnyObject {
 final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol {
     private weak var view: CommandDataSelectionPresenterDelegate!
     private var mediator: CommandAndCommandDataMediator
-    private var commandDatasToSelect: [CommandDataToSelect] = []
+    private var commandDataToSelectArray: [CommandDataToSelect] = []
     
     init(view: CommandDataSelectionPresenterDelegate, mediator: CommandAndCommandDataMediator) {
         self.view = view
         self.mediator = mediator
-        updateCommandData()
+        updateCommandDataToSelectArray()
     }
     
     var numberOfCommandDataToSelect: Int {
-        return commandDatasToSelect.count
+        return commandDataToSelectArray.count
     }
     
     func getCommandDataToSelect(forRow row: Int) -> CommandDataToSelect {
-        guard row < commandDatasToSelect.count else { fatalError("CommandData nil") }
-        return commandDatasToSelect[row]
+        guard row < commandDataToSelectArray.count else { fatalError("CommandData nil") }
+        return commandDataToSelectArray[row]
     }
     
     func didSelectRow(atLabel labelString: String) {
@@ -45,14 +45,14 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
 
         // We need to update commandData because "command.isAvailable" may change by selection
         // e.g. When user enables "ARKit", "Face Tracking" must be disabled
-        updateCommandData()
+        updateCommandDataToSelectArray()
     }
 
-    // Update commands availability
-    private func updateCommandData() {
-        commandDatasToSelect = [CommandDataToSelect]()
+    // Update all CommandDataToSelect
+    private func updateCommandDataToSelectArray() {
+        commandDataToSelectArray = [CommandDataToSelect]()
         for label in CommandDataLabels {
-            commandDatasToSelect.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(commandDataLabel: label)))
+            commandDataToSelectArray.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(commandDataLabel: label)))
         }
     }
 }
