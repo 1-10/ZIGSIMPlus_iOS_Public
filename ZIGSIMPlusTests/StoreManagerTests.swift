@@ -7,9 +7,65 @@
 //
 
 import XCTest
+import SwiftOSC
 @testable import ZIGSIMPlus
 
 class StoreManagerTests: XCTestCase {
+    // Test if OSC includes device data
+    func test_getOSC_device() {
+        let osc = StoreManager.shared.getOSC()
+        XCTAssert(type(of: osc) == OSCBundle.self, "getOSC returns OSCBundle")
+
+        // Find diviceinfo message in bundle
+        for element in osc.elements {
+            let message = element as! OSCMessage
+            let addr = message.address.string
+
+            if !addr.contains("/deviceinfo") {
+                let args = message.arguments
+                XCTAssert(type(of: args[0]!) == String.self, "args[0] is device name")
+                XCTAssertEqual(args[1]! as! String, AppSettingModel.shared.deviceUUID, "args[1] is device uuid")
+                XCTAssertEqual(args[2]! as! String, "ios", "args[2] is ios/android")
+                XCTAssert(type(of: args[3]!) == String.self, "args[3] is system version")
+                XCTAssert(type(of: args[4]!) == Int.self, "args[4] is screen width")
+                XCTAssert(type(of: args[5]!) == Int.self, "args[5] is screen height")
+                break
+            }
+        }
+    }
+
+    // Test if OSC includes data from Stores
+    func test_getOSC_keys() {
+        let labelsAndKeys: [Label:String] = [
+            .pressure: "pressure", // AltimeterDataStore
+            .arkit: "arkit", // ArkitDataStore
+            .micLevel: "miclevel", // AudioLevelDataStore
+            .gps: "gps", // LocationDataStore
+            .acceleration: "accel", // MiscDataStore
+            .proximity: "proximitymonitor", // ProximityDataStore
+            .remoteControl: "remotecontrol", // RemoteControlDataStore
+
+            // TouchDataStore data is not sent until the device is touched
+            // .touch: "touch01", // TouchDataStore
+        ]
+
+        labelsAndKeys.forEach { (label, key) in
+            AppSettingModel.shared.isActiveByCommandData[label] = true
+            let osc = StoreManager.shared.getOSC()
+
+            // Find relevant message in OSC bundle
+            let msg = osc.elements.first { element in
+                let message = element as! OSCMessage
+                let addr = message.address.string
+                return addr.contains(key)
+            }
+
+            XCTAssert(msg != nil, "Sensordata for \(label) is sent to \(key)")
+
+            AppSettingModel.shared.isActiveByCommandData[label] = false
+        }
+    }
+
     // Test if JSON includes device data
     func test_getJSON_device() {
         let json = StoreManager.shared.getJSON()
@@ -41,7 +97,7 @@ class StoreManagerTests: XCTestCase {
         labelsAndKeys.forEach { (label, key) in
             AppSettingModel.shared.isActiveByCommandData[label] = true
             let json = StoreManager.shared.getJSON()
-            XCTAssert(json["sensordata"][key].exists(), "Sensordata for \(label) is stored as  \(key)")
+            XCTAssert(json["sensordata"][key].exists(), "Sensordata for \(label) is stored as \(key)")
             AppSettingModel.shared.isActiveByCommandData[label] = false
         }
     }
