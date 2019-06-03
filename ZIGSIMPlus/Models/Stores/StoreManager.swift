@@ -56,8 +56,9 @@ class StoreManager {
         // Add data from stores
         bundle.elements += LocationDataStore.shared.toOSC()
         bundle.elements += TouchDataStore.shared.toOSC()
-        bundle.elements += MiscDataStore.shared.toOSC()
+        bundle.elements += ArkitDataStore.shared.toOSC()
         bundle.elements += RemoteControlDataStore.shared.toOSC()
+        bundle.elements += MiscDataStore.shared.toOSC()
 
         // TODO: Add timetag
 
@@ -69,8 +70,9 @@ class StoreManager {
         
         data.merge(LocationDataStore.shared.toJSON()) { $1 }
         data.merge(TouchDataStore.shared.toJSON()) { $1 }
-        data.merge(MiscDataStore.shared.toJSON()) { $1 }
+        data.merge(ArkitDataStore.shared.toJSON()) { $1 }
         data.merge(RemoteControlDataStore.shared.toJSON()) { $1 }
+        data.merge(MiscDataStore.shared.toJSON()) { $1 }
 
         let device = Device()
         
