@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // Inject dependency here
@@ -26,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else if type(of: viewController) == CommandDataOutputViewController.self {
                 let vc = viewController as! CommandDataOutputViewController
                 vc.presenter = CommandDataOutputPresenter(view: vc, mediator: mediator)
+            } else if type(of: viewController) == CommandDataSettingViewController.self {
+                let vc = viewController as! CommandDataSettingViewController
+                vc.presenter = CommandDataSettingPresenter(view: vc)
             } else {
                 print("else")
             }
