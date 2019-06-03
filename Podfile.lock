@@ -2,12 +2,14 @@ PODS:
   - DeviceKit (1.13.0)
   - SwiftOSC (1.2.4)
   - SwiftSocket (2.0.2)
+  - SwiftyJSON (4.3.0)
   - SwiftyUserDefaults (4.0.0)
 
 DEPENDENCIES:
   - DeviceKit (~> 1.3)
   - SwiftOSC (~> 1.2)
   - SwiftSocket
+  - SwiftyJSON (~> 4.0)
   - SwiftyUserDefaults (~> 4.0)
 
 SPEC REPOS:
@@ -15,14 +17,16 @@ SPEC REPOS:
     - DeviceKit
     - SwiftOSC
     - SwiftSocket
+    - SwiftyJSON
     - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
   DeviceKit: 5a4accdb2918ce0b69e62dc3bef6e4d2cc06e2e4
   SwiftOSC: 6003d35ecb3e906361b9d0d43f75845e0f2562c2
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   SwiftyUserDefaults: 6a1951df1daa19337862b677dd9a4b9bd4c288cd
 
-PODFILE CHECKSUM: 54f262210312537a38358aadfa7da6e3ed3f631e
+PODFILE CHECKSUM: 51781e49939ef49cdf45d79b1776d4adf1f3719f
 
 COCOAPODS: 1.6.2

@@ -10,6 +10,7 @@ target 'ZIGSIMPlus' do
   pod 'SwiftSocket'
   pod 'SwiftOSC', '~> 1.2'
   pod 'SwiftyUserDefaults', '~> 4.0'
+  pod 'SwiftyJSON', '~> 4.0'
 
   target 'ZIGSIMPlusTests' do
     inherit! :search_paths
@@ -19,4 +20,5 @@ end
 
 target 'ZIGSIMPlusUITests' do
   pod 'DeviceKit', '~> 1.3'
+  pod 'SwiftyJSON', '~> 4.0'
 end
