@@ -57,7 +57,7 @@ public class AppSettingModel {
     var faceup: Int = 1 // 1.0 is faceup
     var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
     var messageInterval: TimeInterval {
-        var convertMessageRatePerSecond = 0
+        var convertMessageRatePerSecond = 60 // default
         if messageRatePerSecond == 0 {
             convertMessageRatePerSecond = 1
         } else if messageRatePerSecond == 1 {
