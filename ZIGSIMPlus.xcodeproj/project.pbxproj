@@ -14,6 +14,10 @@
 		02364621229825B900171F73 /* NdiMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02364620229825B900171F73 /* NdiMonitoringCommand.swift */; };
 		023BB10622965B490094363B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10522965B490094363B /* Utils.swift */; };
 		023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */; };
+		02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */; };
+		02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5322A4F9140071E9D2 /* StringExtension.swift */; };
+		02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */; };
+		02621F5922A4F9250071E9D2 /* CommandDataSettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5822A4F9250071E9D2 /* CommandDataSettingPresenter.swift */; };
 		0274B66122A0FCF7005D7266 /* RemoteControlCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274B66022A0FCF7005D7266 /* RemoteControlCommand.swift */; };
 		0274B66322A0FD00005D7266 /* RemoteControlDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274B66222A0FD00005D7266 /* RemoteControlDataStore.swift */; };
 		02A0358D229CD53C00E7399E /* AltimeterMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0358C229CD53C00E7399E /* AltimeterMonitoringCommand.swift */; };
@@ -36,7 +40,6 @@
 		515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */; };
 		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
 		63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */; };
-		63E57859229697E800C6340C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E57858229697E800C6340C /* StringExtension.swift */; };
 		63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E5785A2296991400C6340C /* StringExtensionTests.swift */; };
 		7C92CDE0A0952FD97D6D8271 /* Pods_ZIGSIMPlusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
@@ -99,6 +102,10 @@
 		02364620229825B900171F73 /* NdiMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NdiMonitoringCommand.swift; sourceTree = "<group>"; };
 		023BB10522965B490094363B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconMonitoringCommand.swift; sourceTree = "<group>"; };
+		02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		02621F5322A4F9140071E9D2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
+		02621F5822A4F9250071E9D2 /* CommandDataSettingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDataSettingPresenter.swift; sourceTree = "<group>"; };
 		0274B66022A0FCF7005D7266 /* RemoteControlCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlCommand.swift; sourceTree = "<group>"; };
 		0274B66222A0FD00005D7266 /* RemoteControlDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlDataStore.swift; sourceTree = "<group>"; };
 		02A0358C229CD53C00E7399E /* AltimeterMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterMonitoringCommand.swift; sourceTree = "<group>"; };
@@ -123,7 +130,6 @@
 		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		634B8D92228565F00043607D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndCommandDataMediator.swift; sourceTree = "<group>"; };
-		63E57858229697E800C6340C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		63E5785A2296991400C6340C /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		902EB9C6227BE68D008F1650 /* ZIGSIMPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIGSIMPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +255,16 @@
 			path = Bindings;
 			sourceTree = "<group>";
 		};
+		02621F5122A4F9140071E9D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */,
+				02621F5322A4F9140071E9D2 /* StringExtension.swift */,
+				02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		02A8FA822296B62D001FB3DD /* Stores */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,14 +333,6 @@
 			path = Commands;
 			sourceTree = "<group>";
 		};
-		63E57857229697CF00C6340C /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				63E57858229697E800C6340C /* StringExtension.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		902EB9BD227BE68D008F1650 = {
 			isa = PBXGroup;
 			children = (
@@ -355,10 +363,10 @@
 				902EB9F7227BECC7008F1650 /* Views */,
 				902EB9F8227BECDD008F1650 /* Presenters */,
 				902EB9FB227BF0DB008F1650 /* Entities */,
-				63E57857229697CF00C6340C /* Utils */,
 				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				902EB9D0227BE68F008F1650 /* Assets.xcassets */,
 				902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */,
+				02621F5122A4F9140071E9D2 /* Extensions */,
 				0236461F2298257500171F73 /* ZIGSIMPlus-Bridging-Header.h */,
 				902EB9D5227BE68F008F1650 /* Info.plist */,
 			);
@@ -397,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */,
+				02621F5822A4F9250071E9D2 /* CommandDataSettingPresenter.swift */,
 				9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */,
 			);
 			path = Presenters;
@@ -671,16 +680,17 @@
 				902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */,
 				02A03598229CD56E00E7399E /* AudioLevelDataStore.swift in Sources */,
+				02621F5922A4F9250071E9D2 /* CommandDataSettingPresenter.swift in Sources */,
 				0236461B2298253900171F73 /* NDI.swift in Sources */,
 				023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */,
 				023BB10622965B490094363B /* Utils.swift in Sources */,
-				63E57859229697E800C6340C /* StringExtension.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */,
 				0274B66122A0FCF7005D7266 /* RemoteControlCommand.swift in Sources */,
 				02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
 				02A0358D229CD53C00E7399E /* AltimeterMonitoringCommand.swift in Sources */,
+				02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */,
 				B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
 				02F0DBF3229FC2EA00D45E56 /* ArkitDataStore.swift in Sources */,
@@ -692,9 +702,11 @@
 				B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */,
 				0274B66322A0FD00005D7266 /* RemoteControlDataStore.swift in Sources */,
 				02A03590229CD54D00E7399E /* MicLevelMonitoringCommand.swift in Sources */,
+				02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */,
 				02A03593229CD55A00E7399E /* ProximityMonitoringCommand.swift in Sources */,
 				0236461E2298253900171F73 /* NDIAdapter.mm in Sources */,
 				02A8FA892296B62D001FB3DD /* LocationDataStore.swift in Sources */,
+				02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
