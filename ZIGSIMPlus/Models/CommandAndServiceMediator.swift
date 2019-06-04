@@ -116,25 +116,6 @@ public class CommandAndServiceMediator {
         }
     }
 
-//    public func getCommandOutputOrder(of command: Command) -> Int {
-//        switch command {
-//        case is MotionMonitoringCommand: return 1
-//        case is TouchMonitoringCommand: return 2
-//        case is CompassMonitoringCommand: return 3
-//        case is AltimeterMonitoringCommand: return 4
-//        case is GpsMonitoringCommand: return 5
-//        case is BeaconMonitoringCommand: return 11
-//        case is ProximityMonitoringCommand: return 12
-//        case is MicLevelMonitoringCommand: return 13
-//        case is BatteryMonitoringCommand: return 15
-//        case is ArkitCommand: return 16
-//        case is FaceTrackingCommand: return 18
-//        case is RemoteControlCommand: return 22
-//        case is NdiMonitoringCommand: return 23
-//        default: fatalError("Unexpected Command")
-//        }
-//    }
-
     public func isActive(_ label: Label) -> Bool {
         guard let b = AppSettingModel.shared.isActiveByCommandData[label] else {
             fatalError("AppSetting for Command \"\(label)\" is nil")

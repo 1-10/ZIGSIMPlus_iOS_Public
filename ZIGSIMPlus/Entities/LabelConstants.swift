@@ -28,22 +28,23 @@ public enum Label: String {
     case applePencil = "Apple Pencil"
 }
 
+// NOTE: The order of commands in CommandSelectionView follows this list
 public let CommandDataLabels = [
     Label.acceleration,
     Label.gravity,
     Label.gyro,
     Label.quaternion,
-    Label.touch,
     Label.compass,
     Label.pressure,
     Label.gps,
+    Label.touch,
     Label.beacon,
     Label.proximity,
     Label.micLevel,
-    Label.battery,
-    Label.arkit,
-    Label.faceTracking,
     Label.remoteControl,
     Label.ndi,
+    Label.arkit,
+    Label.faceTracking,
+    Label.battery,
     Label.applePencil
 ]
