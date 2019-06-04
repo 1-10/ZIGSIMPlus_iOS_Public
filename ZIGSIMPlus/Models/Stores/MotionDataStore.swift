@@ -16,16 +16,55 @@ public class MotionDataStore {
     static let shared = MotionDataStore()
 
     // MARK: - Instance Properties
-
+    let motionManager = CMMotionManager()
     var accel: CMAcceleration = CMAcceleration()
     var gravity: CMAcceleration = CMAcceleration()
     var gyro: CMRotationRate = CMRotationRate()
     var quaternion: CMQuaternion = CMQuaternion()
+    var isError: Bool = false
+
+    func isAvailable() -> Bool {
+        return motionManager.isDeviceMotionAvailable
+    }
+
+    func start() {
+        if !motionManager.isDeviceMotionAvailable {
+            isError = true
+            return
+        }
+
+        motionManager.startDeviceMotionUpdates(to: OperationQueue.current!) { (deviceMotion, error) in
+            guard error == nil,
+                let motion = deviceMotion else {
+                    self.isError = true
+                    return
+            }
+
+            // Save data
+            self.accel = motion.userAcceleration
+            self.gravity = motion.gravity
+            self.gyro = motion.rotationRate
+            self.quaternion = motion.attitude.quaternion
+            self.isError = false
+        }
+    }
+
+    func stop() {
+        if !motionManager.isDeviceMotionAvailable {
+            motionManager.stopDeviceMotionUpdates()
+        }
+    }
 }
 
 extension MotionDataStore : Store {
     func toLog() -> [String] {
         var log = [String]()
+
+        if isError {
+            return [
+                "motion unavailable"
+            ]
+        }
 
         if AppSettingModel.shared.isActiveByCommandData[Label.acceleration]! {
             log += [
