@@ -45,7 +45,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
         
         for command in mediator.commands {
             if mediator.isActive(command: command) {
-                command.start(completion: nil)
+                command.start()
             }
         }
 
@@ -75,9 +75,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
         for command in mediator.commands {
             if mediator.isActive(command: command) && command is ManualUpdatedCommand {
                 let c = command as! ManualUpdatedCommand
-                c.monitor { (result) in
-//                    self.storeResult(result, of: command)
-                }
+                c.monitor()
             }
         }
 
@@ -95,7 +93,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
         
         for command in mediator.commands {
             if mediator.isActive(command: command) {
-                command.stop(completion: nil)
+                command.stop()
             }
         }
         StoreManager.shared.send()
@@ -109,11 +107,6 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
     }
     
     private func updateOutput() {
-//        var output = ""
-//
-//        for (_, value) in resultByCommand.sorted(by: <) {
-//            output += (value.count > 0 ? value + "\n" : "")
-//        }
         view.updateOutput(with: StoreManager.shared.getLog())
     }
     

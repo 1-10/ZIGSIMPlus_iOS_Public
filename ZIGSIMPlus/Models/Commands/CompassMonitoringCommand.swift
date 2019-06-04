@@ -14,12 +14,11 @@ public final class CompassMonitoringCommand: AutoUpdatedCommand {
         return LocationDataStore.shared.isLocationAvailable()
     }
 
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         LocationDataStore.shared.startCompass()
     }
 
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         LocationDataStore.shared.stopCompass()
-        completion?(nil)
     }
 }

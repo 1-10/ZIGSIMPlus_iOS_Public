@@ -13,12 +13,11 @@ public final class MicLevelMonitoringCommand: AutoUpdatedCommand {
         return true
     }
     
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         AudioLevelDataStore.shared.start()
     }
     
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         AudioLevelDataStore.shared.stop()
-        completion?(nil)
     }
 }

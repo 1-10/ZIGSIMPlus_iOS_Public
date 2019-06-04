@@ -14,12 +14,11 @@ public final class GpsMonitoringCommand: AutoUpdatedCommand {
         return LocationDataStore.shared.isLocationAvailable()
     }
 
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         LocationDataStore.shared.startGps()
     }
 
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         LocationDataStore.shared.stopGps()
-        completion?(nil)
     }
 }

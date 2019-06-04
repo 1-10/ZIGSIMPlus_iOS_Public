@@ -14,12 +14,11 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
         return true
     }
     
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         TouchDataStore.shared.enable()
     }
     
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         TouchDataStore.shared.disable()
-        completion?(nil)
     }
 }

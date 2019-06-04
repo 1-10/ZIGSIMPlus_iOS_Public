@@ -13,13 +13,12 @@ public final class ProximityMonitoringCommand: AutoUpdatedCommand {
         return true
     }
 
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         ProximityDataStore.shared.start()
     }
     
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         ProximityDataStore.shared.stop()
-        completion?(nil)
     }
     
 }

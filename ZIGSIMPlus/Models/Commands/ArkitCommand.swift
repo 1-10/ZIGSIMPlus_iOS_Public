@@ -14,12 +14,11 @@ public final class ArkitCommand: AutoUpdatedCommand {
         return ArkitDataStore.shared.isDeviceTrackingAvailable()
     }
 
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         ArkitDataStore.shared.startDeviceTracking()
     }
 
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         ArkitDataStore.shared.stopDeviceTracking()
-        completion?(nil)
     }
 }

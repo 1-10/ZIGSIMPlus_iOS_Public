@@ -14,12 +14,11 @@ public final class FaceTrackingCommand: AutoUpdatedCommand {
         return ArkitDataStore.shared.isFaceTrackingAvailable()
     }
 
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         ArkitDataStore.shared.startFaceTracking()
     }
 
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         ArkitDataStore.shared.stopFaceTracking()
-        completion?(nil)
     }
 }

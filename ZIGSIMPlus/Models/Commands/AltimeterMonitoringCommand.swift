@@ -18,13 +18,12 @@ public final class AltimeterMonitoringCommand: AutoUpdatedCommand {
         }
     }
     
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         AltimeterDataStore.shared.startAltimeter()
     }
     
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         AltimeterDataStore.shared.stopAltimeter()
-        completion?(nil)
     }
 }
 

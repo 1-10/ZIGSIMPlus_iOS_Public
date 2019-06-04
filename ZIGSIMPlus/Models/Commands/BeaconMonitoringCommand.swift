@@ -13,12 +13,11 @@ public final class BeaconMonitoringCommand: AutoUpdatedCommand {
         return LocationDataStore.shared.isLocationAvailable()
     }
 
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         LocationDataStore.shared.startBeacons()
     }
 
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         LocationDataStore.shared.stopBeacons()
-        completion?(nil)
     }
 }

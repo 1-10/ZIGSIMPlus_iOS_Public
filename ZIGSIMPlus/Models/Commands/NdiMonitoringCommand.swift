@@ -16,12 +16,11 @@ public final class NdiMonitoringCommand: AutoUpdatedCommand {
         return true
     }
 
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         NDIDataStore.shared.start()
     }
     
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         NDIDataStore.shared.stop()
-        completion?(nil)
     }
 }

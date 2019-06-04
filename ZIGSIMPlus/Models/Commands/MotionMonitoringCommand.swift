@@ -13,12 +13,11 @@ public final class MotionMonitoringCommand: AutoUpdatedCommand {
         return MotionDataStore.shared.isAvailable()
     }
     
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         MotionDataStore.shared.start()
     }
 
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         MotionDataStore.shared.stop()
-        completion?(nil)
     }
 }

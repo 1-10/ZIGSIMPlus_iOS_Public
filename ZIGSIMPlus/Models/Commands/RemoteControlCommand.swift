@@ -13,12 +13,11 @@ public final class RemoteControlCommand: AutoUpdatedCommand {
         return RemoteControlDataStore.shared.isAvailable()
     }
 
-    public func start(completion: ((String?) -> Void)?) {
+    public func start() {
         RemoteControlDataStore.shared.start()
     }
 
-    public func stop(completion: ((String?) -> Void)?) {
+    public func stop() {
         RemoteControlDataStore.shared.stop()
-        completion?(nil)
     }
 }
