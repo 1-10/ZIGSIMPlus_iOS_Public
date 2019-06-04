@@ -14,14 +14,14 @@ public final class BatteryMonitoringCommand: ManualUpdatedCommand {
     }
     
     public func start() {
-        MiscDataStore.shared.startBattery()
+        BatteryDataStore.shared.startBattery()
     }
     
     public func stop() {
-        MiscDataStore.shared.stopBattery()
+        BatteryDataStore.shared.stopBattery()
     }
 
     public func monitor() {
-        MiscDataStore.shared.updateBattery()
+        BatteryDataStore.shared.updateBattery()
     }
 }

@@ -31,7 +31,7 @@
 		02A0359B229CD6F800E7399E /* CommandDataSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0359A229CD6F800E7399E /* CommandDataSettingViewController.swift */; };
 		02A8FA882296B62D001FB3DD /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA832296B62D001FB3DD /* TouchDataStore.swift */; };
 		02A8FA892296B62D001FB3DD /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA842296B62D001FB3DD /* LocationDataStore.swift */; };
-		02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA862296B62D001FB3DD /* MiscDataStore.swift */; };
+		02A8FA8B2296B62D001FB3DD /* BatteryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA862296B62D001FB3DD /* BatteryDataStore.swift */; };
 		02A8FA8C2296B62D001FB3DD /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA872296B62D001FB3DD /* StoreManager.swift */; };
 		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
 		02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */; };
@@ -121,7 +121,7 @@
 		02A0359A229CD6F800E7399E /* CommandDataSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDataSettingViewController.swift; sourceTree = "<group>"; };
 		02A8FA832296B62D001FB3DD /* TouchDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
 		02A8FA842296B62D001FB3DD /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
-		02A8FA862296B62D001FB3DD /* MiscDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscDataStore.swift; sourceTree = "<group>"; };
+		02A8FA862296B62D001FB3DD /* BatteryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryDataStore.swift; sourceTree = "<group>"; };
 		02A8FA872296B62D001FB3DD /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMonitoringCommand.swift; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 				02A8FA842296B62D001FB3DD /* LocationDataStore.swift */,
 				0274B66222A0FD00005D7266 /* RemoteControlDataStore.swift */,
 				0212CDAE22A6219E00A83C16 /* MotionDataStore.swift */,
-				02A8FA862296B62D001FB3DD /* MiscDataStore.swift */,
+				02A8FA862296B62D001FB3DD /* BatteryDataStore.swift */,
 				02A03594229CD56D00E7399E /* AltimeterDataStore.swift */,
 				02A03595229CD56E00E7399E /* AudioLevelDataStore.swift */,
 				02A03596229CD56E00E7399E /* ProximityDataStore.swift */,
@@ -677,7 +677,7 @@
 				02364621229825B900171F73 /* NdiMonitoringCommand.swift in Sources */,
 				0236461D2298253900171F73 /* NDI.cpp in Sources */,
 				02A8FA8C2296B62D001FB3DD /* StoreManager.swift in Sources */,
-				02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */,
+				02A8FA8B2296B62D001FB3DD /* BatteryDataStore.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */,
 				02A8FA882296B62D001FB3DD /* TouchDataStore.swift in Sources */,
 				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,

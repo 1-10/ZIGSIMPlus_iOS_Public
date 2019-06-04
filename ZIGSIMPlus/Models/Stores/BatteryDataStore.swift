@@ -1,5 +1,5 @@
 //
-//  MiscDataStore.swift
+//  BatteryDataStore.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/05/23.
@@ -8,13 +8,12 @@
 
 import Foundation
 import UIKit
-import CoreMotion
 import SwiftOSC
 
-/// Data store for tiny data. e.g.) Motion, Battery, etc.
-public class MiscDataStore {
+/// Data store for battery
+public class BatteryDataStore {
     // Singleton instance
-    static let shared = MiscDataStore()
+    static let shared = BatteryDataStore()
     private init() {}
     
     // MARK: - Instance Properties
@@ -40,7 +39,7 @@ public class MiscDataStore {
     }
 }
 
-extension MiscDataStore : Store {
+extension BatteryDataStore : Store {
     func toLog() -> [String] {
         var log = [String]()
 
