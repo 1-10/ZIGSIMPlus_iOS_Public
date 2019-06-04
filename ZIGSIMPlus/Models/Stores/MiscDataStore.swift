@@ -20,6 +20,24 @@ public class MiscDataStore {
     // MARK: - Instance Properties
     
     var battery: Float = 0.0
+    var isBatteryError: Bool = false
+
+    func startBattery() {
+        UIDevice.current.isBatteryMonitoringEnabled = true
+    }
+
+    func stopBattery() {
+        UIDevice.current.isBatteryMonitoringEnabled = false
+    }
+
+    func updateBattery() {
+        if UIDevice.current.batteryLevel == -1 {
+            isBatteryError = true
+        } else {
+            isBatteryError = false
+            battery = UIDevice.current.batteryLevel
+        }
+    }
 }
 
 extension MiscDataStore : Store {
@@ -27,8 +45,14 @@ extension MiscDataStore : Store {
         var log = [String]()
 
         if AppSettingModel.shared.isActiveByCommandData[Label.battery]! {
-            log.append("battery:\(battery)")
+            if isBatteryError {
+                log.append("battery level unknown")
+            }
+            else {
+                log.append("battery:\(battery)")
+            }
         }
+
         return log
     }
 
