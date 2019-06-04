@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0212CDAF22A6219E00A83C16 /* MotionDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0212CDAE22A6219E00A83C16 /* MotionDataStore.swift */; };
 		0236461B2298253900171F73 /* NDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* NDI.swift */; };
 		0236461C2298253900171F73 /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 023644BF2298253800171F73 /* libndi_ios.a */; };
 		0236461D2298253900171F73 /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 023644C32298253800171F73 /* NDI.cpp */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.release.xcconfig"; sourceTree = "<group>"; };
+		0212CDAE22A6219E00A83C16 /* MotionDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDataStore.swift; sourceTree = "<group>"; };
 		023644AE2298253800171F73 /* NDI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDI.swift; sourceTree = "<group>"; };
 		023644B12298253800171F73 /* Processing.NDI.compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.compat.h; sourceTree = "<group>"; };
 		023644B22298253800171F73 /* Processing.NDI.utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.utilities.h; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				02A8FA832296B62D001FB3DD /* TouchDataStore.swift */,
 				02A8FA842296B62D001FB3DD /* LocationDataStore.swift */,
 				0274B66222A0FD00005D7266 /* RemoteControlDataStore.swift */,
+				0212CDAE22A6219E00A83C16 /* MotionDataStore.swift */,
 				02A8FA862296B62D001FB3DD /* MiscDataStore.swift */,
 				02A03594229CD56D00E7399E /* AltimeterDataStore.swift */,
 				02A03595229CD56E00E7399E /* AudioLevelDataStore.swift */,
@@ -701,6 +704,7 @@
 				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
 				B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */,
 				0274B66322A0FD00005D7266 /* RemoteControlDataStore.swift in Sources */,
+				0212CDAF22A6219E00A83C16 /* MotionDataStore.swift in Sources */,
 				02A03590229CD54D00E7399E /* MicLevelMonitoringCommand.swift in Sources */,
 				02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */,
 				02A03593229CD55A00E7399E /* ProximityMonitoringCommand.swift in Sources */,

@@ -27,10 +27,10 @@ public final class MotionMonitoringCommand: AutoUpdatedCommand {
                 }
                 
                 // Save data to Store
-                MiscDataStore.shared.accel = motion.userAcceleration
-                MiscDataStore.shared.gravity = motion.gravity
-                MiscDataStore.shared.gyro = motion.rotationRate
-                MiscDataStore.shared.quaternion = motion.attitude.quaternion
+                MotionDataStore.shared.accel = motion.userAcceleration
+                MotionDataStore.shared.gravity = motion.gravity
+                MotionDataStore.shared.gyro = motion.rotationRate
+                MotionDataStore.shared.quaternion = motion.attitude.quaternion
             }
         } else {
             completion?("motion unavailable")

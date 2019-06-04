@@ -45,6 +45,7 @@ class StoreManager {
         log += AudioLevelDataStore.shared.toLog()
         log += LocationDataStore.shared.toLog()
         log += MiscDataStore.shared.toLog()
+        log += MotionDataStore.shared.toLog()
         log += ProximityDataStore.shared.toLog()
         log += RemoteControlDataStore.shared.toLog()
         log += TouchDataStore.shared.toLog()
