@@ -51,7 +51,7 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
     // Update all CommandDataToSelect
     private func updateCommandDataToSelectArray() {
         commandDataToSelectArray = [CommandDataToSelect]()
-        for label in CommandDataLabels {
+        for label in Label.allCases {
             commandDataToSelectArray.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(label)))
         }
     }

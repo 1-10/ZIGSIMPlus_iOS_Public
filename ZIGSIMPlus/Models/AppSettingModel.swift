@@ -26,7 +26,7 @@ enum TransportFormat: Int {
 
 public class AppSettingModel {
     private init() {
-        for label in CommandDataLabels {
+        for label in Label.allCases {
             isActiveByCommandData[label] = false
         }
         

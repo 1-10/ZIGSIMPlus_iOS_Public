@@ -38,7 +38,7 @@ public class CommandAndServiceMediator {
     }
 
     public func startActiveCommands() {
-        for label in CommandDataLabels {
+        for label in Label.allCases {
             if isActive(label) {
                 startCommand(label)
             }
@@ -47,12 +47,11 @@ public class CommandAndServiceMediator {
 
     /// Update manual commands
     public func monitorManualCommands() {
-        print(">> monitorManualCommands")
         BatteryService.shared.updateBattery()
     }
 
     public func stopActiveCommands() {
-        for label in CommandDataLabels {
+        for label in Label.allCases {
             if isActive(label) {
                 stopCommand(label)
             }

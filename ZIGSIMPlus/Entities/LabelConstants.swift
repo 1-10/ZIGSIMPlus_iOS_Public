@@ -8,43 +8,23 @@
 
 import Foundation
 
-public enum Label: String {
+// NOTE: the order of cases affects selection view
+public enum Label: String, CaseIterable {
     case acceleration = "Acceleration"
     case gravity = "Gravity"
     case gyro = "Gyro"
     case quaternion = "Quaternion"
-    case touch = "Touch"
     case compass = "Compass"
     case pressure = "Pressure"
     case gps = "Gps"
+    case touch = "Touch"
     case beacon = "Beacon"
     case proximity = "Proximity"
     case micLevel = "MIC LEVEL"
-    case battery = "Battery"
-    case arkit = "ARKit"
-    case faceTracking = "Face Tracking"
     case remoteControl = "Remote Control"
     case ndi = "NDI"
+    case arkit = "ARKit"
+    case faceTracking = "Face Tracking"
+    case battery = "Battery"
     case applePencil = "Apple Pencil"
 }
-
-// NOTE: The order of commands in CommandSelectionView follows this list
-public let CommandDataLabels = [
-    Label.acceleration,
-    Label.gravity,
-    Label.gyro,
-    Label.quaternion,
-    Label.compass,
-    Label.pressure,
-    Label.gps,
-    Label.touch,
-    Label.beacon,
-    Label.proximity,
-    Label.micLevel,
-    Label.remoteControl,
-    Label.ndi,
-    Label.arkit,
-    Label.faceTracking,
-    Label.battery,
-    Label.applePencil
-]
