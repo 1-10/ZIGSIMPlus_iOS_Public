@@ -153,15 +153,17 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DeviceKit-framework/DeviceKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DeviceKit-framework/DeviceKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

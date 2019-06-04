@@ -1,4 +1,4 @@
-framework module Pods_ZIGSIMPlusUITests {
+module Pods_ZIGSIMPlusUITests {
   umbrella header "Pods-ZIGSIMPlusUITests-umbrella.h"
 
   export *

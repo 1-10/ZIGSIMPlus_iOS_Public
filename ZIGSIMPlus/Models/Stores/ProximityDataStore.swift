@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SwiftOSC
+import SwiftyJSON
 
 public class ProximityDataStore {
     // Singleton instance
@@ -66,15 +67,11 @@ extension ProximityDataStore : Store {
         return data
     }
     
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
+    func toJSON() throws -> JSON {
+        var data = JSON()
         
         if AppSettingModel.shared.isActiveByCommandData[Label.proximity]! {
-            data.merge([
-                "proximitymonitor": [
-                    "proximitymonitor": proximity
-                    ] as AnyObject
-            ]) { $1 }
+            data["proximitymonitor"] = JSON(proximity)
         }
         
         return data

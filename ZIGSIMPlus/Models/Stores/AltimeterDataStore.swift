@@ -9,6 +9,7 @@
 import Foundation
 import CoreMotion
 import SwiftOSC
+import SwiftyJSON
 
 public class AltimeterDataStore{
     // Singleton instance
@@ -85,16 +86,14 @@ extension AltimeterDataStore : Store {
         return messages
     }
     
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
+    func toJSON() -> JSON {
+        var data = JSON()
         
         if AppSettingModel.shared.isActiveByCommandData[Label.pressure]! {
-            data.merge([
-                "pressure": [
-                    "pressure": pressureData,
-                    "altitude": altitudeData
-                    ] as AnyObject
-            ]) { $1 }
+            data["pressure"] = [
+                "pressure": pressureData,
+                "altitude": altitudeData
+            ]
         }
         
         return data
