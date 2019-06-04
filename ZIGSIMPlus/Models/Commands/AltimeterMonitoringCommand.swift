@@ -11,11 +11,7 @@ import CoreMotion
 
 public final class AltimeterMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        if #available(iOS 8.0, *) {
-            return true
-        } else {
-            return false
-        }
+        return AltimeterDataStore.shared.isAvailable()
     }
     
     public func start() {

@@ -10,7 +10,7 @@ import UIKit
 
 public final class BatteryMonitoringCommand: ManualUpdatedCommand {
     public func isAvailable() -> Bool {
-        return true
+        return BatteryDataStore.shared.isAvailable()
     }
     
     public func start() {

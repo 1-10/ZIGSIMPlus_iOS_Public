@@ -10,7 +10,7 @@ import Foundation
 
 public final class ProximityMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return true
+        return ProximityDataStore.shared.isAvailable()
     }
 
     public func start() {

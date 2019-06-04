@@ -11,9 +11,8 @@ import CoreMotion
 import UIKit
 
 public final class NdiMonitoringCommand: AutoUpdatedCommand {
-    // TODO: This should be updated
     public func isAvailable() -> Bool {
-        return true
+        return NDIDataStore.isAvailable()
     }
 
     public func start() {

@@ -23,6 +23,11 @@ public class ProximityDataStore {
     }
     
     // MARK: - Public methods
+
+    func isAvailable() {
+        return true
+    }
+
     public func start() {
         UIDevice.current.isProximityMonitoringEnabled = true
         NotificationCenter.default.addObserver(self,

@@ -26,7 +26,11 @@ public class TouchDataStore {
     }
     
     // MARK: - Public methods
-    
+
+    func isAvailable() {
+        return true
+    }
+
     func enable() {
         isEnabled = true
     }

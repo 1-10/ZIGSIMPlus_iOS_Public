@@ -11,7 +11,7 @@ import UIKit
 
 public final class TouchMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return true
+        return TouchDataStore.shared.isAvailable()
     }
     
     public func start() {

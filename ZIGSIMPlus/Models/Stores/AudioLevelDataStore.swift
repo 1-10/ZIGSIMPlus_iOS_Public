@@ -57,6 +57,11 @@ class AudioLevelDataStore {
     }
     
     // MARK: - Public methods
+
+    func isAvailable() {
+        return true
+    }
+
     public func start() {
         let fps = Double(AppSettingModel.shared.messageRatePerSecond)
         

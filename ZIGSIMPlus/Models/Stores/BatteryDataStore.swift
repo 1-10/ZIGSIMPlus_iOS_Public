@@ -21,6 +21,10 @@ public class BatteryDataStore {
     var battery: Float = 0.0
     var isBatteryError: Bool = false
 
+    func isAvailable() -> Bool {
+        return true
+    }
+
     func startBattery() {
         UIDevice.current.isBatteryMonitoringEnabled = true
     }

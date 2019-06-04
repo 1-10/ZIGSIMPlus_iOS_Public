@@ -44,6 +44,15 @@ public class AltimeterDataStore{
     }
     
     // MARK: - Public methods
+
+    func isAvailable() {
+        if #available(iOS 8.0, *) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     func startAltimeter() {
         if #available(iOS 8.0, *) {
             if CMAltimeter.isRelativeAltitudeAvailable() {
