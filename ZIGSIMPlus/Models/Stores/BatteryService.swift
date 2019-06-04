@@ -47,7 +47,7 @@ extension BatteryService : Service {
     func toLog() -> [String] {
         var log = [String]()
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.battery]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.battery]! {
             if isBatteryError {
                 log.append("battery level unknown")
             }
@@ -63,7 +63,7 @@ extension BatteryService : Service {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
         
-        if AppSettingModel.shared.isActiveByCommandData[Label.battery]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.battery]! {
             messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/battery"), battery))
         }
 
@@ -73,7 +73,7 @@ extension BatteryService : Service {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.battery]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.battery]! {
             data.merge(["battery": battery as AnyObject]) { $1 }
         }
 

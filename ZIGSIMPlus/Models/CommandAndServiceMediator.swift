@@ -10,8 +10,8 @@ import Foundation
 
 public class CommandAndServiceMediator {
 
-    func isAvailable(_ commandLabel: Label) -> Bool {
-        switch commandLabel {
+    func isAvailable(_ command: Command) -> Bool {
+        switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             return MotionService.shared.isAvailable()
         case .touch, .applePencil:
@@ -38,9 +38,9 @@ public class CommandAndServiceMediator {
     }
 
     public func startActiveCommands() {
-        for label in Label.allCases {
-            if isActive(label) {
-                startCommand(label)
+        for command in Command.allCases {
+            if isActive(command) {
+                startCommand(command)
             }
         }
     }
@@ -51,14 +51,14 @@ public class CommandAndServiceMediator {
     }
 
     public func stopActiveCommands() {
-        for label in Label.allCases {
-            if isActive(label) {
-                stopCommand(label)
+        for command in Command.allCases {
+            if isActive(command) {
+                stopCommand(command)
             }
         }
     }
 
-    private func startCommand(_ command: Label) {
+    private func startCommand(_ command: Command) {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             MotionService.shared.start()
@@ -89,7 +89,7 @@ public class CommandAndServiceMediator {
         }
     }
 
-    private func stopCommand(_ command: Label) {
+    private func stopCommand(_ command: Command) {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             MotionService.shared.stop()
@@ -120,9 +120,9 @@ public class CommandAndServiceMediator {
         }
     }
 
-    private func isActive(_ label: Label) -> Bool {
-        guard let b = AppSettingModel.shared.isActiveByCommandData[label] else {
-            fatalError("AppSetting for Command \"\(label)\" is nil")
+    private func isActive(_ command: Command) -> Bool {
+        guard let b = AppSettingModel.shared.isActiveByCommandData[command] else {
+            fatalError("AppSetting for Command \"\(command)\" is nil")
         }
         return b
     }

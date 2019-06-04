@@ -82,7 +82,7 @@ extension AltimeterService : Service {
     func toLog() -> [String] {
         var log = [String]()
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.pressure]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.pressure]! {
             log += [
                 "pressure:pressure:\(pressureData)",
                 "pressure:altitude:\(altitudeData)",
@@ -96,7 +96,7 @@ extension AltimeterService : Service {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
         
-        if AppSettingModel.shared.isActiveByCommandData[Label.pressure]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.pressure]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/pressure"),
                 pressureData,
@@ -110,7 +110,7 @@ extension AltimeterService : Service {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
         
-        if AppSettingModel.shared.isActiveByCommandData[Label.pressure]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.pressure]! {
             data.merge([
                 "pressure": [
                     "pressure": pressureData,

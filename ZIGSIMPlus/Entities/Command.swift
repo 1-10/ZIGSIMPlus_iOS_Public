@@ -1,5 +1,5 @@
 //
-//  LabelConstants.swift
+//  Command.swift
 //  ZIGSIMPlus
 //
 //  Created by Nozomu Kuwae on 5/10/19.
@@ -9,7 +9,7 @@
 import Foundation
 
 // NOTE: the order of cases affects selection view
-public enum Label: String, CaseIterable {
+public enum Command: String, CaseIterable {
     case acceleration = "Acceleration"
     case gravity = "Gravity"
     case gyro = "Gyro"

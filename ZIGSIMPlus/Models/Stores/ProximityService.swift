@@ -48,7 +48,7 @@ extension ProximityService : Service {
     func toLog() -> [String] {
         var log = [String]()
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.proximity]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.proximity]! {
             log += [
                 "proximitymonitor:proximitymonitor:\(proximity)"
             ]
@@ -61,7 +61,7 @@ extension ProximityService : Service {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
         
-        if AppSettingModel.shared.isActiveByCommandData[Label.proximity]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.proximity]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/proximitymonitor"), proximity))
         }
         
@@ -71,7 +71,7 @@ extension ProximityService : Service {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
         
-        if AppSettingModel.shared.isActiveByCommandData[Label.proximity]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.proximity]! {
             data.merge([
                 "proximitymonitor": [
                     "proximitymonitor": proximity

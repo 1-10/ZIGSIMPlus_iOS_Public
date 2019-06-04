@@ -38,7 +38,7 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
     }
     
     func didSelectRow(atLabel labelString: String) {
-        guard let label = Label(rawValue: labelString) else {
+        guard let label = Command(rawValue: labelString) else {
             fatalError("Invalid CommandData selected: \(labelString)")
         }
         AppSettingModel.shared.isActiveByCommandData[label]?.toggle()
@@ -51,7 +51,7 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
     // Update all CommandDataToSelect
     private func updateCommandDataToSelectArray() {
         commandDataToSelectArray = [CommandDataToSelect]()
-        for label in Label.allCases {
+        for label in Command.allCases {
             commandDataToSelectArray.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(label)))
         }
     }

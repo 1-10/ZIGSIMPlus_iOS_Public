@@ -98,7 +98,7 @@ extension RemoteControlService : Service {
     func toLog() -> [String] {
         var log = [String]()
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.remoteControl]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.remoteControl]! {
             log += [
                 "remotecontrol:playpause \(isPlaying)",
                 "remotecontrol:volume \(volume)"
@@ -119,7 +119,7 @@ extension RemoteControlService : Service {
         lastVolume = volume
         lastIsPlaying = isPlaying
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.remoteControl]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.remoteControl]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/remotecontrol"),
                 playPauseChanged,
@@ -143,7 +143,7 @@ extension RemoteControlService : Service {
         lastVolume = volume
         lastIsPlaying = isPlaying
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.remoteControl]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.remoteControl]! {
             data.merge([
                 "remoteControl": [
                     "playpause": playPauseChanged,

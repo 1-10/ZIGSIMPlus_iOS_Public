@@ -66,7 +66,7 @@ extension MotionService : Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.acceleration]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.acceleration]! {
             log += [
                 "accel:x:\(accel.x)",
                 "accel:y:\(accel.y)",
@@ -74,7 +74,7 @@ extension MotionService : Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.gravity]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.gravity]! {
             log += [
                 "gravity:x:\(gravity.x)",
                 "gravity:y:\(gravity.y)",
@@ -82,7 +82,7 @@ extension MotionService : Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.gyro]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.gyro]! {
             log += [
                 "gyro:x:\(gyro.x)",
                 "gyro:y:\(gyro.y)",
@@ -90,7 +90,7 @@ extension MotionService : Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.quaternion]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.quaternion]! {
             log += [
                 "quaternion:x:\(quaternion.x)",
                 "quaternion:y:\(quaternion.y)",
@@ -106,7 +106,7 @@ extension MotionService : Service {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.acceleration]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.acceleration]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/accel"),
                 accel.x,
@@ -115,7 +115,7 @@ extension MotionService : Service {
             ))
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.gravity]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.gravity]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/gravity"),
                 gravity.x,
@@ -124,7 +124,7 @@ extension MotionService : Service {
             ))
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.gyro]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.gyro]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/gyro"),
                 gyro.x,
@@ -133,7 +133,7 @@ extension MotionService : Service {
             ))
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.quaternion]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.quaternion]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/quaternion"),
                 quaternion.x,
@@ -149,7 +149,7 @@ extension MotionService : Service {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.acceleration]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.acceleration]! {
             data.merge([
                 "accel": [
                     "x": accel.x,
@@ -159,7 +159,7 @@ extension MotionService : Service {
             ]) { $1 }
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.gravity]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.gravity]! {
             data.merge([
                 "gravity": [
                     "x": gravity.x,
@@ -169,7 +169,7 @@ extension MotionService : Service {
             ]) { $1 }
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.gyro]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.gyro]! {
             data.merge([
                 "gyro": [
                     "x": gyro.x,
@@ -179,7 +179,7 @@ extension MotionService : Service {
             ]) { $1 }
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.quaternion]! {
+        if AppSettingModel.shared.isActiveByCommandData[Command.quaternion]! {
             data.merge([
                 "quaternion": [
                     "x": quaternion.x,
