@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public final class TouchMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
@@ -15,38 +16,55 @@ public final class TouchMonitoringCommand: AutoUpdatedCommand {
     
     public func start(completion: ((String?) -> Void)?) {
         TouchDataStore.shared.callback = { (touches) in
-            var stringMsg = ""
-            
-            for touch in touches {
-                var point = touch.location(in: touch.view!)
-                point = Utils.remapToScreenCoord(point)
+            let result = self.getTouchResult(from: touches)
+            completion?(result)
+        }
+        
+        TouchDataStore.shared.enable()
+    }
+    
+    private func getTouchResult(from touches:[UITouch]) -> String {
+        guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Label.touch],
+            let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Label.applePencil]
+            else {
+                fatalError("AppSetting of the CommandData nil")
+        }
 
+        var result = ""
+        for touch in touches {
+            var point = touch.location(in: touch.view!)
+            point = Utils.remapToScreenCoord(point)
+            
+            if isTouchActive {
                 // Position
-                stringMsg += """
-                touch:x:\(point.x)
-                touch:y:\(point.y)
-                
-                """
+                result.appendLines("""
+                    touch:x:\(point.x)
+                    touch:y:\(point.y)
+                    """)
                 
                 // touch radius
                 if #available(iOS 8.0, *) {
-                    stringMsg += "touch:radius:\(touch.majorRadius)\n"
-                } else {
-                    // Fallback on earlier versions
+                    result.appendLines("touch:radius:\(touch.majorRadius)")
                 }
                 
                 // 3d touch
                 if #available(iOS 9.0, *) {
-                    stringMsg += "touch:force:\(touch.force)\n"
-                } else {
-                    // Fallback on earlier versions
+                    result.appendLines("touch:force:\(touch.force)")
                 }
             }
             
-            completion?(stringMsg)
+            if isApplePencilActive && touch.type == .pencil {
+                result.appendLines("""
+                    pencil:touch:x:\(point.x)
+                    pencil:touch:y:\(point.y)
+                    pencil:altitude:\(touch.altitudeAngle)
+                    pencil:azimuth:\(touch.azimuthAngle(in: touch.view!))
+                    pencil:force:\(touch.force)
+                    """)
+            }
         }
         
-        TouchDataStore.shared.enable()
+        return result
     }
     
     public func stop(completion: ((String?) -> Void)?) {

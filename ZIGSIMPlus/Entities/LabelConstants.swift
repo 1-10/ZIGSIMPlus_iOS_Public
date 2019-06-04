@@ -21,9 +21,12 @@ public enum Label: String {
     case proximity = "Proximity"
     case micLevel = "MIC LEVEL"
     case battery = "Battery"
+    case arkit = "ARKit"
+    case faceTracking = "Face Tracking"
     case remoteControl = "Remote Control"
     case ndi = "NDI"
     case nfc = "NFC READER"
+    case applePencil = "Apple Pencil"
 }
 
 public let CommandDataLabels = [
@@ -39,7 +42,10 @@ public let CommandDataLabels = [
     Label.proximity,
     Label.micLevel,
     Label.battery,
+    Label.arkit,
+    Label.faceTracking,
     Label.remoteControl,
     Label.ndi,
-    Label.nfc
+    Label.nfc,
+    Label.applePencil
 ]

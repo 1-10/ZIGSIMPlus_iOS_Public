@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import SwiftOSC
+import SwiftyJSON
 
 /// Data store for commands which depend on LocationManager.
 /// e.g.) GPS, iBeacon, etc.
@@ -207,15 +208,15 @@ extension LocationDataStore : Store {
         return data
     }
     
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
+    func toJSON() -> JSON {
+        var data = JSON()
 
         if AppSettingModel.shared.isActiveByCommandData[Label.gps]! {
-            data.merge(["gps": [latitudeData, longitudeData] as AnyObject]) { $1 }
+            data["gps"] = JSON([latitudeData, longitudeData])
         }
         
         if AppSettingModel.shared.isActiveByCommandData[Label.compass]! {
-            data.merge(["compass": compassData as AnyObject]) { $1 }
+            data["compass"] = JSON(compassData)
         }
         
         if AppSettingModel.shared.isActiveByCommandData[Label.beacon]! {
@@ -227,7 +228,7 @@ extension LocationDataStore : Store {
                     "rssi": beacon.rssi
                 ]
             }
-            data.merge(["beacons": objs as AnyObject]) { $1 }
+            data["beacons"] = JSON(objs)
         }
 
         return data

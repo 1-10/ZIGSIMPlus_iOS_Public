@@ -27,6 +27,18 @@ extension CommandDataSelectionViewController: UITableViewDelegate {
             cell.accessoryType = (cell.accessoryType == .checkmark ? .none : .checkmark)
         }
     }
+
+    // Disallow selecting unavailable command
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            let ip = tableView.indexPath(for: cell)!
+            let commandDataToSelect = presenter.getCommandDataToSelect(forRow: ip.row)
+            if !commandDataToSelect.isAvailable {
+                return nil
+            }
+        }
+        return indexPath
+    }
 }
 
 extension CommandDataSelectionViewController: UITableViewDataSource {

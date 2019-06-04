@@ -8,11 +8,12 @@
 
 import Foundation
 import SwiftOSC
+import SwiftyJSON
 import DeviceKit
 
 protocol Store {
     func toOSC() -> [OSCMessage]
-    func toJSON() -> [String:AnyObject]
+    func toJSON() throws -> JSON
 }
 
 /// StoreManager creates OSC / JSON data and send it over TCP / UDP.
@@ -26,18 +27,20 @@ class StoreManager {
     static let shared = StoreManager()
     private init() {}
     
-    func send() {
+    public func send() {
         let data: Data
         if AppSettingModel.shared.transportFormat == .OSC {
-            data = getOSC()
+            let osc = getOSC()
+            data = osc.data
         }
         else {
-            data = getJSON()
+            let json = getJSON()
+            data = try! json.rawData()
         }
         NetworkAdapter.shared.send(data)
     }
     
-    private func getOSC() -> Data {
+    public func getOSC() -> OSCBundle {
         let bundle = OSCBundle()
         let device = Device()
 
@@ -54,27 +57,39 @@ class StoreManager {
         ))
 
         // Add data from stores
+        bundle.elements += AltimeterDataStore.shared.toOSC()
+        bundle.elements += ArkitDataStore.shared.toOSC()
+        bundle.elements += AudioLevelDataStore.shared.toOSC()
         bundle.elements += LocationDataStore.shared.toOSC()
-        bundle.elements += TouchDataStore.shared.toOSC()
         bundle.elements += MiscDataStore.shared.toOSC()
+        bundle.elements += ProximityDataStore.shared.toOSC()
         bundle.elements += RemoteControlDataStore.shared.toOSC()
+        bundle.elements += TouchDataStore.shared.toOSC()
 
         // TODO: Add timetag
 
-        return bundle.data
+        return bundle
     }
 
-    private func getJSON() -> Data {
-        var data = [String:AnyObject]()
-        
-        data.merge(LocationDataStore.shared.toJSON()) { $1 }
-        data.merge(TouchDataStore.shared.toJSON()) { $1 }
-        data.merge(MiscDataStore.shared.toJSON()) { $1 }
-        data.merge(RemoteControlDataStore.shared.toJSON()) { $1 }
+    public func getJSON() -> JSON {
+        var data = JSON()
+
+        do {
+            try data.merge(with: AltimeterDataStore.shared.toJSON())
+            try data.merge(with: ArkitDataStore.shared.toJSON())
+            try data.merge(with: AudioLevelDataStore.shared.toJSON())
+            try data.merge(with: LocationDataStore.shared.toJSON())
+            try data.merge(with: MiscDataStore.shared.toJSON())
+            try data.merge(with: ProximityDataStore.shared.toJSON())
+            try data.merge(with: RemoteControlDataStore.shared.toJSON())
+            try data.merge(with: TouchDataStore.shared.toJSON())
+        } catch {
+            print(">> JSON convert error")
+        }
 
         let device = Device()
         
-        return toJSON([
+        return JSON([
             "device": [
                 "name": device.description,
                 "uuid": AppSettingModel.shared.deviceUUID,
@@ -82,14 +97,9 @@ class StoreManager {
                 "osversion": device.systemVersion,
                 "displaywidth": Int(Utils.screenWidth),
                 "displayheight": Int(Utils.screenHeight),
-            ] as AnyObject,
-            "timestamp": Utils.getTimestamp() as AnyObject,
-            "sensordata": data as AnyObject
+            ],
+            "timestamp": Utils.getTimestamp(),
+            "sensordata": data
         ])
-    }
-    
-    private func toJSON(_ dic: Dictionary<String, AnyObject>)-> Data {
-        let jsonData = try! JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions(rawValue: 0))
-        return jsonData
     }
 }
