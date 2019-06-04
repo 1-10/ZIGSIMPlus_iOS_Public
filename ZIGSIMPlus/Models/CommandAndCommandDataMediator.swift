@@ -20,7 +20,8 @@ public class CommandAndCommandDataMediator {
         ProximityMonitoringCommand(),
         MicLevelMonitoringCommand(),
         RemoteControlCommand(),
-        NdiMonitoringCommand()
+        NdiMonitoringCommand(),
+        DepthMonitoringCommand()
     ]
     
     public func isAvailable(commandDataLabel: Label) -> Bool {
@@ -51,6 +52,8 @@ public class CommandAndCommandDataMediator {
             return getCommand(by: RemoteControlCommand.self)
         case .ndi:
             return getCommand(by: NdiMonitoringCommand.self)
+        case .depth:
+            return getCommand(by: DepthMonitoringCommand.self)
         }
     }
     
@@ -96,6 +99,8 @@ public class CommandAndCommandDataMediator {
             return isCommandDataActive(Label.micLevel)
         case is RemoteControlCommand:
             return isCommandDataActive(Label.remoteControl)
+        case is DepthMonitoringCommand:
+            return isCommandDataActive(Label.depth)
         default:
             fatalError("Unexpected Command")
         }
@@ -114,6 +119,7 @@ public class CommandAndCommandDataMediator {
         case is BatteryMonitoringCommand: return 15
         case is RemoteControlCommand: return 22
         case is NdiMonitoringCommand: return 23
+        case is DepthMonitoringCommand: return 25
         default: fatalError("Unexpected Command")
         }
     }

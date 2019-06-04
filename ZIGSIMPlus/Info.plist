@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSMicrophoneUsageDescription</key>
-	<string></string>
+	<string>Send microphone sound via NDI</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Beacons</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -47,8 +47,6 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Send camera image via NDI</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Send microphone sound via NDI</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Beacons</string>
 </dict>

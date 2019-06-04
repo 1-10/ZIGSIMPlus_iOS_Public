@@ -24,6 +24,7 @@ public enum Label: String {
     case remoteControl = "Remote Control"
     case ndi = "NDI"
     case applePencil = "Apple Pencil"
+    case depth = "DEPTH"
 }
 
 public let CommandDataLabels = [
@@ -41,5 +42,6 @@ public let CommandDataLabels = [
     Label.battery,
     Label.remoteControl,
     Label.ndi,
-    Label.applePencil
+    Label.applePencil,
+    Label.depth
 ]

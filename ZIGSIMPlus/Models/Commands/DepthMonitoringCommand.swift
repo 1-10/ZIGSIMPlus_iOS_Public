@@ -1,8 +1,8 @@
 //
-//  NdiMonitoringCommand.swift
+//  DepthMonitoringCommand.swift
 //  ZIGSIMPlus
 //
-//  Created by Takayosi Amagi on 2019/05/15.
+//  Created by YoneyamaShunpei on 2019/06/03.
 //  Copyright © 2019 Nozomu Kuwae. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import CoreMotion
 import UIKit
 
-public final class NdiMonitoringCommand: ImageCommand {
+public final class DepthMonitoringCommand: ImageCommand {
     let ndi = NDI()
     
     // TODO: This should be updated
@@ -19,9 +19,9 @@ public final class NdiMonitoringCommand: ImageCommand {
     }
     
     public func startImage(callback: ((UIImage) -> Void)?) {
-        ndi.start(type: "normal", callback: callback)
+        ndi.start(type: "depth", callback: callback)
     }
-
+    
     public func start(completion: ((String?) -> Void)?) {
         assertionFailure("NdiMonitoringCommand.start must not be called")
     }
