@@ -10,24 +10,18 @@ import Foundation
 import CoreMotion
 import UIKit
 
-public final class NdiMonitoringCommand: ImageCommand {
-    let ndi = NDI()
-    
+public final class NdiMonitoringCommand: AutoUpdatedCommand {
     // TODO: This should be updated
     public func isAvailable() -> Bool {
         return true
     }
-    
-    public func startImage(callback: ((UIImage) -> Void)?) {
-        ndi.start(callback: callback)
-    }
 
     public func start(completion: ((String?) -> Void)?) {
-        assertionFailure("NdiMonitoringCommand.start must not be called")
+        NDIDataStore.shared.start()
     }
     
     public func stop(completion: ((String?) -> Void)?) {
-        ndi.stop()
+        NDIDataStore.shared.stop()
         completion?(nil)
     }
 }

@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0212CDAF22A6219E00A83C16 /* MotionDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0212CDAE22A6219E00A83C16 /* MotionDataStore.swift */; };
-		0236461B2298253900171F73 /* NDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* NDI.swift */; };
+		0212CDB322A6356500A83C16 /* NDIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0212CDB222A6356500A83C16 /* NDIViewController.swift */; };
+		0236461B2298253900171F73 /* NDIDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* NDIDataStore.swift */; };
 		0236461C2298253900171F73 /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 023644BF2298253800171F73 /* libndi_ios.a */; };
 		0236461D2298253900171F73 /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 023644C32298253800171F73 /* NDI.cpp */; };
 		0236461E2298253900171F73 /* NDIAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 023644C42298253800171F73 /* NDIAdapter.mm */; };
@@ -81,7 +82,8 @@
 /* Begin PBXFileReference section */
 		00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.release.xcconfig"; sourceTree = "<group>"; };
 		0212CDAE22A6219E00A83C16 /* MotionDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDataStore.swift; sourceTree = "<group>"; };
-		023644AE2298253800171F73 /* NDI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDI.swift; sourceTree = "<group>"; };
+		0212CDB222A6356500A83C16 /* NDIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDIViewController.swift; sourceTree = "<group>"; };
+		023644AE2298253800171F73 /* NDIDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDIDataStore.swift; sourceTree = "<group>"; };
 		023644B12298253800171F73 /* Processing.NDI.compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.compat.h; sourceTree = "<group>"; };
 		023644B22298253800171F73 /* Processing.NDI.utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.utilities.h; sourceTree = "<group>"; };
 		023644B32298253800171F73 /* Processing.NDI.Recv.ex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Recv.ex.h; sourceTree = "<group>"; };
@@ -202,7 +204,8 @@
 		023644AD2298253800171F73 /* NDI */ = {
 			isa = PBXGroup;
 			children = (
-				023644AE2298253800171F73 /* NDI.swift */,
+				023644AE2298253800171F73 /* NDIDataStore.swift */,
+				0212CDB222A6356500A83C16 /* NDIViewController.swift */,
 				023644AF2298253800171F73 /* SDK */,
 				023644C02298253800171F73 /* Bindings */,
 			);
@@ -684,7 +687,7 @@
 				9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */,
 				02A03598229CD56E00E7399E /* AudioLevelDataStore.swift in Sources */,
 				02621F5922A4F9250071E9D2 /* CommandDataSettingPresenter.swift in Sources */,
-				0236461B2298253900171F73 /* NDI.swift in Sources */,
+				0236461B2298253900171F73 /* NDIDataStore.swift in Sources */,
 				023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */,
 				023BB10622965B490094363B /* Utils.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
@@ -708,6 +711,7 @@
 				02A03590229CD54D00E7399E /* MicLevelMonitoringCommand.swift in Sources */,
 				02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */,
 				02A03593229CD55A00E7399E /* ProximityMonitoringCommand.swift in Sources */,
+				0212CDB322A6356500A83C16 /* NDIViewController.swift in Sources */,
 				0236461E2298253900171F73 /* NDIAdapter.mm in Sources */,
 				02A8FA892296B62D001FB3DD /* LocationDataStore.swift in Sources */,
 				02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */,

@@ -21,7 +21,3 @@ public protocol ManualUpdatedCommand: Command {
 
 public protocol AutoUpdatedCommand: Command {
 }
-
-public protocol ImageCommand: AutoUpdatedCommand {
-    func startImage(callback: ((UIImage) -> Void)?)
-}

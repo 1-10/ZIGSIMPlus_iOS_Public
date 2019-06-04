@@ -45,14 +45,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
         
         for command in mediator.commands {
             if mediator.isActive(command: command) {
-                switch command {
-                case let c as ImageCommand:
-                    c.startImage { (image) in
-                        self.updateImagePreview(with: image)
-                    }
-                default:
-                    command.start(completion: nil)
-                }
+                command.start(completion: nil)
             }
         }
 
