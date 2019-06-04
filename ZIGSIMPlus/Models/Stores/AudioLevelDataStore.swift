@@ -37,25 +37,11 @@ class AudioLevelDataStore {
         mBitsPerChannel: 16,
         mReserved: 0
     )
-    var averageLevel: Float
-    var maxLevel: Float
+    var averageLevel: Float = 0.0
+    var maxLevel: Float = 0.0
     var callbackAudio: (([Float]) -> Void)?
-    
-    private init() {
-        averageLevel = 0.0
-        maxLevel = 0.0
-    }
-    
-    private func update() {
-        print("ave:\(averageLevel) max:\(maxLevel)")
-        var level = [Float(0.0),Float(0.0)]
-        level[0] = self.maxLevel
-        level[1] = self.averageLevel
-        callbackAudio?(level)
-    }
-    
-    @objc func detectVolume(timer: Timer)
-    {
+
+    @objc func detectVolume(timer: Timer) {
         // Get level
         var levelMeter = AudioQueueLevelMeterState()
         var propertySize = UInt32(MemoryLayout<AudioQueueLevelMeterState>.size)
@@ -68,11 +54,11 @@ class AudioLevelDataStore {
         
         averageLevel = levelMeter.mAveragePower
         maxLevel = levelMeter.mPeakPower
-        update()
     }
     
     // MARK: - Public methods
-    public func start(fps:Double) {
+    public func start() {
+        let fps = Double(AppSettingModel.shared.messageRatePerSecond)
         
         // Set data format
         var dataFormat = AudioStreamBasicDescription(
@@ -114,8 +100,7 @@ class AudioLevelDataStore {
         self.timer?.fire()
     }
     
-    public func stop()
-    {
+    public func stop() {
         // Finish observation
         self.timer.invalidate()
         self.timer = nil
