@@ -79,8 +79,8 @@ public class TouchService {
     }
     
     private func getTouchResult(from touches:[UITouch]) -> [String] {
-        guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Command.touch],
-            let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Command.applePencil]
+        guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
+            let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
             else {
                 fatalError("AppSetting of the CommandData nil")
         }
@@ -130,8 +130,8 @@ extension TouchService : Service {
     }
 
     func toOSC() -> [OSCMessage] {
-        guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Command.touch],
-            let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Command.applePencil]
+        guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
+            let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
             else {
                 fatalError("AppSetting of the CommandData nil")
         }
@@ -173,8 +173,8 @@ extension TouchService : Service {
     }
     
     func toJSON() -> [String:AnyObject] {
-        guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Command.touch],
-            let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Command.applePencil]
+        guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
+            let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
             else {
                 fatalError("AppSetting of the CommandData nil")
         }

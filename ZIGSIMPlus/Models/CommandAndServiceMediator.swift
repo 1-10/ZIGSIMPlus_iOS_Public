@@ -121,7 +121,7 @@ public class CommandAndServiceMediator {
     }
 
     private func isActive(_ command: Command) -> Bool {
-        guard let b = AppSettingModel.shared.isActiveByCommandData[command] else {
+        guard let b = AppSettingModel.shared.isActiveByCommand[command] else {
             fatalError("AppSetting for Command \"\(command)\" is nil")
         }
         return b

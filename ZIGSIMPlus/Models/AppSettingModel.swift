@@ -26,8 +26,8 @@ enum TransportFormat: Int {
 
 public class AppSettingModel {
     private init() {
-        for label in Command.allCases {
-            isActiveByCommandData[label] = false
+        for command in Command.allCases {
+            isActiveByCommand[command] = false
         }
         
         address = Defaults[.userIpAdress]?.description ?? ""
@@ -42,7 +42,7 @@ public class AppSettingModel {
     }
     
     static let shared = AppSettingModel()
-    var isActiveByCommandData: Dictionary<Command, Bool> = [:]
+    var isActiveByCommand: Dictionary<Command, Bool> = [:]
     
     // app default value & variable used in app
     var dataDestination: DataDestination = .OTHER_APP

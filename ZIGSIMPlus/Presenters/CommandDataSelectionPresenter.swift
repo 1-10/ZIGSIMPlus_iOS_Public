@@ -38,10 +38,10 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
     }
     
     func didSelectRow(atLabel labelString: String) {
-        guard let label = Command(rawValue: labelString) else {
-            fatalError("Invalid CommandData selected: \(labelString)")
+        guard let command = Command(rawValue: labelString) else {
+            fatalError("Invalid Command selected: \(labelString)")
         }
-        AppSettingModel.shared.isActiveByCommandData[label]?.toggle()
+        AppSettingModel.shared.isActiveByCommand[command]?.toggle()
 
         // We need to update commandData because "command.isAvailable" may change by selection
         // e.g. When user enables "ARKit", "Face Tracking" must be disabled
@@ -51,8 +51,8 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
     // Update all CommandDataToSelect
     private func updateCommandDataToSelectArray() {
         commandDataToSelectArray = [CommandDataToSelect]()
-        for label in Command.allCases {
-            commandDataToSelectArray.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(label)))
+        for command in Command.allCases {
+            commandDataToSelectArray.append(CommandDataToSelect(labelString: command.rawValue, isAvailable: mediator.isAvailable(command)))
         }
     }
 }

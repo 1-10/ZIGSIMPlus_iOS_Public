@@ -169,21 +169,21 @@ extension LocationService : Service {
         }
 
 
-        if AppSettingModel.shared.isActiveByCommandData[Command.gps]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
             log += [
                 "compass:latitude:\(latitudeData)",
                 "compass:longitude:\(longitudeData)"
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Command.compass]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
             log += [
                 "compass:compass:\(compassData)",
                 "compass:faceup:\(AppSettingModel.shared.compassAngle)"
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommandData[Command.beacon]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
             log += beacons.enumerated().map { (i, b) in
                 return "Beacon \(i): uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)\n"
             }
@@ -196,15 +196,15 @@ extension LocationService : Service {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
 
-        if AppSettingModel.shared.isActiveByCommandData[Command.gps]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/gps"), latitudeData, longitudeData))
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[Command.compass]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData))
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[Command.beacon]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
             data += beacons.enumerated().map { (i, beacon)  in
                 return OSCMessage(
                     OSCAddressPattern("/\(deviceUUID)/beacon\(i)"),
@@ -222,15 +222,15 @@ extension LocationService : Service {
     func toJSON() -> [String:AnyObject] {
         var data = [String:AnyObject]()
 
-        if AppSettingModel.shared.isActiveByCommandData[Command.gps]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
             data.merge(["gps": [latitudeData, longitudeData] as AnyObject]) { $1 }
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[Command.compass]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
             data.merge(["compass": compassData as AnyObject]) { $1 }
         }
         
-        if AppSettingModel.shared.isActiveByCommandData[Command.beacon]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
             let objs = beacons.map { beacon in
                 return [
                     "uuid": beacon.proximityUUID.uuidString,
