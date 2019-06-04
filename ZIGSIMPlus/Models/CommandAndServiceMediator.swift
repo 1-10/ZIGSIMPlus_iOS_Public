@@ -10,7 +10,10 @@ import Foundation
 
 public class CommandAndServiceMediator {
 
-    func isAvailable(_ command: Command) -> Bool {
+    // MARK: - Public methods
+
+    /// Returns if the service for given command is available
+    public func isAvailable(_ command: Command) -> Bool {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             return MotionService.shared.isAvailable()
@@ -45,9 +48,11 @@ public class CommandAndServiceMediator {
         }
     }
 
-    /// Update manual commands
+    /// Call update methods for active commands
     public func monitorManualCommands() {
-        BatteryService.shared.updateBattery()
+        if isActive(.battery) {
+            BatteryService.shared.updateBattery()
+        }
     }
 
     public func stopActiveCommands() {
@@ -57,6 +62,8 @@ public class CommandAndServiceMediator {
             }
         }
     }
+
+    // MARK: - Private methods
 
     private func startCommand(_ command: Command) {
         switch command {

@@ -16,7 +16,8 @@ protocol Service {
     func toJSON() -> [String:AnyObject]
 }
 
-/// StoreManager creates OSC / JSON data and send it over TCP / UDP.
+/// ServiceManager creates OSC / JSON data and send it over TCP / UDP.
+/// It also creates single string for output view.
 ///
 /// This class does following things:
 /// - Fetch data from services

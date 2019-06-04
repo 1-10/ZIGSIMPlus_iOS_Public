@@ -8,7 +8,8 @@
 
 import Foundation
 
-// NOTE: the order of cases affects selection view
+/// Command is a constant label corresponds to features.
+/// NOTE: the order of cases affects selection view.
 public enum Command: String, CaseIterable {
     case acceleration = "Acceleration"
     case gravity = "Gravity"
