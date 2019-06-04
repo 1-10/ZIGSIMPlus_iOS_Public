@@ -1,5 +1,5 @@
 //
-//  CommandDataSettingViewPresenter.swift
+//  CommandSettingViewPresenter.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/23.
@@ -14,7 +14,7 @@ protocol ContentScrollable {
     func removeObserver()
 }
 
-public class CommandDataSettingViewController : UIViewController {
+public class CommandSettingViewController : UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var dataDestinationSeg: UISegmentedControl!
@@ -27,7 +27,7 @@ public class CommandDataSettingViewController : UIViewController {
     @IBOutlet weak var compassAngleSeg: UISegmentedControl!
     @IBOutlet var beaconUUIDTextFilds: [UITextField]!
     
-    var presenter: CommandDataSettingPresenterProtocol!
+    var presenter: CommandSettingPresenterProtocol!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -110,16 +110,16 @@ public class CommandDataSettingViewController : UIViewController {
     }
 }
 
-extension CommandDataSettingViewController: CommandDataSettingPresenterDelegate {}
+extension CommandSettingViewController: CommandSettingPresenterDelegate {}
 
-extension CommandDataSettingViewController: UITextFieldDelegate {
+extension CommandSettingViewController: UITextFieldDelegate {
     private func setTextFieldSetting(texField:UITextField, text:String) {
         texField.text = String(text)
         texField.delegate = self
     }
 }
 
-extension CommandDataSettingViewController: ContentScrollable{
+extension CommandSettingViewController: ContentScrollable{
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureObserver()

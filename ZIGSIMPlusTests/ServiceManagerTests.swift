@@ -1,5 +1,5 @@
 //
-//  StoreManagerTests.swift
+//  ServiceManagerTests.swift
 //  ZIGSIMPlusTests
 //
 //  Created by Takayosi Amagi on 2019/06/03.
@@ -10,10 +10,10 @@ import XCTest
 import SwiftOSC
 @testable import ZIGSIMPlus
 
-class StoreManagerTests: XCTestCase {
+class ServiceManagerTests: XCTestCase {
     // Test if OSC includes device data
     func test_getOSC_device() {
-        let osc = StoreManager.shared.getOSC()
+        let osc = ServiceManager.shared.getOSC()
         XCTAssert(type(of: osc) == OSCBundle.self, "getOSC returns OSCBundle")
 
         // Find diviceinfo message in bundle
@@ -36,7 +36,7 @@ class StoreManagerTests: XCTestCase {
 
     // Test if OSC includes data from Stores
     func test_getOSC_keys() {
-        let labelsAndKeys: [Label:String] = [
+        let commandsAndKeys: [Command:String] = [
             .pressure: "pressure", // AltimeterDataStore
             .arkit: "arkit", // ArkitDataStore
             .micLevel: "miclevel", // AudioLevelDataStore
@@ -49,9 +49,9 @@ class StoreManagerTests: XCTestCase {
             // .touch: "touch01", // TouchDataStore
         ]
 
-        labelsAndKeys.forEach { (label, key) in
-            AppSettingModel.shared.isActiveByCommandData[label] = true
-            let osc = StoreManager.shared.getOSC()
+        commandsAndKeys.forEach { (command, key) in
+            AppSettingModel.shared.isActiveByCommand[command] = true
+            let osc = ServiceManager.shared.getOSC()
 
             // Find relevant message in OSC bundle
             let msg = osc.elements.first { element in
@@ -60,15 +60,15 @@ class StoreManagerTests: XCTestCase {
                 return addr.contains(key)
             }
 
-            XCTAssert(msg != nil, "Sensordata for \(label) is sent to \(key)")
+            XCTAssert(msg != nil, "Sensordata for \(command) is sent to \(key)")
 
-            AppSettingModel.shared.isActiveByCommandData[label] = false
+            AppSettingModel.shared.isActiveByCommand[command] = false
         }
     }
 
     // Test if JSON includes device data
     func test_getJSON_device() {
-        let json = StoreManager.shared.getJSON()
+        let json = ServiceManager.shared.getJSON()
         XCTAssert(json["device"].exists())
 
         // Test device info
@@ -83,7 +83,7 @@ class StoreManagerTests: XCTestCase {
 
     // Test if JSON includes data from Stores
     func test_getJSON_keys() {
-        let labelsAndKeys: [Label:String] = [
+        let commandsAndKeys: [Command:String] = [
             .pressure: "pressure", // AltimeterDataStore
             .arkit: "arkit", // ArkitDataStore
             .micLevel: "miclevel", // AudioLevelDataStore
@@ -94,11 +94,11 @@ class StoreManagerTests: XCTestCase {
             .touch: "touches", // TouchDataStore
         ]
 
-        labelsAndKeys.forEach { (label, key) in
-            AppSettingModel.shared.isActiveByCommandData[label] = true
-            let json = StoreManager.shared.getJSON()
-            XCTAssert(json["sensordata"][key].exists(), "Sensordata for \(label) is stored as \(key)")
-            AppSettingModel.shared.isActiveByCommandData[label] = false
+        commandsAndKeys.forEach { (command, key) in
+            AppSettingModel.shared.isActiveByCommand[command] = true
+            let json = ServiceManager.shared.getJSON()
+            XCTAssert(json["sensordata"][key].exists(), "Sensordata for \(command) is stored as \(key)")
+            AppSettingModel.shared.isActiveByCommand[command] = false
         }
     }
 }

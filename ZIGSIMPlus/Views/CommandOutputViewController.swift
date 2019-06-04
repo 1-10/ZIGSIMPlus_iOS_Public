@@ -1,5 +1,5 @@
 //
-//  CommandDataOutputViewController.swift
+//  CommandOutputViewController.swift
 //  ZIGSIMPlus
 //
 //  Created by Nozomu Kuwae on 5/10/19.
@@ -9,12 +9,10 @@
 import UIKit
 import MediaPlayer
 
-class CommandDataOutputViewController: UIViewController {
+class CommandOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var arkitView: UIView!
 
-    var presenter: CommandDataOutputPresenterProtocol!
+    var presenter: CommandOutputPresenterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,36 +33,24 @@ class CommandDataOutputViewController: UIViewController {
     // MARK: - Touch Events
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        TouchDataStore.shared.addTouches(touches)
+        TouchService.shared.addTouches(touches)
     }   
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        TouchDataStore.shared.updateTouches(touches)
+        TouchService.shared.updateTouches(touches)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        TouchDataStore.shared.removeTouches(touches)
+        TouchService.shared.removeTouches(touches)
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
-        TouchDataStore.shared.removeAllTouches()
+        TouchService.shared.removeAllTouches()
     }
 }
 
-extension CommandDataOutputViewController: CommandDataOutputPresenterDelegate {
+extension CommandOutputViewController: CommandOutputPresenterDelegate {
     func updateOutput(with output: String) {
         textField.text = output
-    }
-
-    func updateImagePreview(with image: UIImage) {
-        imageView.image = image
-    }
-
-    func setImageViewActive(_ active: Bool) {
-        imageView.isHidden = !active
-    }
-
-    func setSceneViewActive(_ active: Bool) {
-        arkitView.isHidden = !active
     }
 }

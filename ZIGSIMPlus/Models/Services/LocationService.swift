@@ -1,5 +1,5 @@
 //
-//  LocationDataStore.swift
+//  LocationService.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/05/22.
@@ -13,10 +13,10 @@ import SwiftyJSON
 
 /// Data store for commands which depend on LocationManager.
 /// e.g.) GPS, iBeacon, etc.
-public class LocationDataStore: NSObject {
+public class LocationService: NSObject {
 
     /// Singleton instance
-    static let shared = LocationDataStore()
+    static let shared = LocationService()
 
     // MARK: - Instance Properties
 
@@ -43,7 +43,7 @@ public class LocationDataStore: NSObject {
 
         // Init compass
         locationManager.headingFilter = kCLHeadingFilterNone
-        
+
         // Init beacons
         let appSetting = AppSettingModel.shared
         let uuid = UUID(uuidString: appSetting.beaconUUID)!
@@ -102,7 +102,7 @@ public class LocationDataStore: NSObject {
             locationManager.stopUpdatingHeading()
         }
     }
-    
+
     func isLocationAvailable() -> Bool {
         if #available(iOS 8.0, *) {
             if CLLocationManager.locationServicesEnabled() {
@@ -111,38 +111,18 @@ public class LocationDataStore: NSObject {
         }
         return false
     }
-
-    // MARK: - Private methods
-
-    private func updateCompassData() {
-        print("compassData:\(self.compassData)")
-        compassCallback?(self.compassData)
-    }
-
-    private func updateGpsData() {
-        print("gpsData:latitudeData:\(self.latitudeData)")
-        print("gpsData:longitudeData:\(self.longitudeData)")
-        gpsCallback?([latitudeData, longitudeData])
-    }
-
-    private func updateBeaconsData() {
-        print("beacons:\(beacons.count)")
-        beaconsCallback?(beacons)
-    }
 }
 
 // MARK: - CLLocationManagerDelegate methods
 
-extension LocationDataStore: CLLocationManagerDelegate {
+extension LocationService: CLLocationManagerDelegate {
     public final func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.latitudeData = (locations.last?.coordinate.latitude)!
         self.longitudeData = (locations.last?.coordinate.longitude)!
-        updateGpsData()
     }
 
     public func locationManager(_ manager:CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         self.compassData = newHeading.magneticHeading
-        updateCompassData()
     }
 
     // Called when the device started monitoring
@@ -169,7 +149,6 @@ extension LocationDataStore: CLLocationManagerDelegate {
                 print("Updated iBeacon: uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)")
             }
         }
-        updateBeaconsData()
     }
 
     // Called when the user authorized monitorin location data
@@ -180,20 +159,53 @@ extension LocationDataStore: CLLocationManagerDelegate {
     }
 }
 
-extension LocationDataStore : Store {
+extension LocationService : Service {
+    func toLog() -> [String] {
+        var log = [String]()
+
+        var stringMsg = ""
+
+        for (i, b) in beacons.enumerated() {
+            stringMsg += "Beacon \(i): uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)\n"
+        }
+
+
+        if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
+            log += [
+                "compass:latitude:\(latitudeData)",
+                "compass:longitude:\(longitudeData)"
+            ]
+        }
+
+        if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
+            log += [
+                "compass:compass:\(compassData)",
+                "compass:faceup:\(AppSettingModel.shared.compassAngle)"
+            ]
+        }
+
+        if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
+            log += beacons.enumerated().map { (i, b) in
+                return "Beacon \(i): uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)\n"
+            }
+        }
+
+        return log
+    }
+
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.gps]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/gps"), latitudeData, longitudeData))
         }
-        
-        if AppSettingModel.shared.isActiveByCommandData[Label.compass]! {
+
+        if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData))
         }
-        
-        if AppSettingModel.shared.isActiveByCommandData[Label.beacon]! {
+
+        if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
             data += beacons.enumerated().map { (i, beacon)  in
                 return OSCMessage(
                     OSCAddressPattern("/\(deviceUUID)/beacon\(i)"),
@@ -207,19 +219,19 @@ extension LocationDataStore : Store {
 
         return data
     }
-    
+
     func toJSON() -> JSON {
         var data = JSON()
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.gps]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
             data["gps"] = JSON([latitudeData, longitudeData])
         }
-        
-        if AppSettingModel.shared.isActiveByCommandData[Label.compass]! {
+
+        if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
             data["compass"] = JSON(compassData)
         }
-        
-        if AppSettingModel.shared.isActiveByCommandData[Label.beacon]! {
+
+        if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
             let objs = beacons.map { beacon in
                 return [
                     "uuid": beacon.proximityUUID.uuidString,
