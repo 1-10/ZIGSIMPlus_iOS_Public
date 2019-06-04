@@ -37,24 +37,14 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             userInfo: nil,
             repeats: true)
 
-        for label in CommandDataLabels {
-            if mediator.isActive(label) {
-                mediator.startCommand(label)
-            }
-        }
-
+        mediator.startActiveCommands()
         ServiceManager.shared.send()
         updateOutput()
     }
 
     // MARK: Monitor commands
     @objc private func monitorCommands() {
-        for label in CommandDataLabels {
-            if mediator.isActive(label) && mediator.isManual(label) {
-                mediator.update(label)
-            }
-        }
-
+        mediator.monitorManualCommands()
         ServiceManager.shared.send()
         updateOutput()
     }
@@ -67,11 +57,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             t.invalidate()
         }
 
-        for label in CommandDataLabels {
-            if mediator.isActive(label) {
-                mediator.stopCommand(label)
-            }
-        }
+        mediator.stopActiveCommands()
         ServiceManager.shared.send()
     }
     

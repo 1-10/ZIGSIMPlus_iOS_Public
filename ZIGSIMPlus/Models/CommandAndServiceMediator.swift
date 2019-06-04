@@ -10,7 +10,7 @@ import Foundation
 
 public class CommandAndServiceMediator {
 
-    public func isAvailable(_ commandLabel: Label) -> Bool {
+    func isAvailable(_ commandLabel: Label) -> Bool {
         switch commandLabel {
         case .acceleration, .gravity, .gyro, .quaternion:
             return MotionService.shared.isAvailable()
@@ -37,7 +37,29 @@ public class CommandAndServiceMediator {
         }
     }
 
-    public func startCommand(_ command: Label) {
+    public func startActiveCommands() {
+        for label in CommandDataLabels {
+            if isActive(label) {
+                startCommand(label)
+            }
+        }
+    }
+
+    /// Update manual commands
+    public func monitorManualCommands() {
+        print(">> monitorManualCommands")
+        BatteryService.shared.updateBattery()
+    }
+
+    public func stopActiveCommands() {
+        for label in CommandDataLabels {
+            if isActive(label) {
+                stopCommand(label)
+            }
+        }
+    }
+
+    private func startCommand(_ command: Label) {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             MotionService.shared.start()
@@ -68,7 +90,7 @@ public class CommandAndServiceMediator {
         }
     }
 
-    public func stopCommand(_ command: Label) {
+    private func stopCommand(_ command: Label) {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             MotionService.shared.stop()
@@ -99,24 +121,7 @@ public class CommandAndServiceMediator {
         }
     }
 
-    public func isManual(_ label: Label) -> Bool {
-        switch label {
-        case .battery: return true
-        default: return false
-        }
-    }
-
-    public func update(_ command: Label) {
-        switch command {
-        case .battery:
-            BatteryService.shared.updateBattery()
-        default:
-            // TODO: provide more typesafe way if possible
-            assertionFailure("Command \"\(command)\" must not be updated manually")
-        }
-    }
-
-    public func isActive(_ label: Label) -> Bool {
+    private func isActive(_ label: Label) -> Bool {
         guard let b = AppSettingModel.shared.isActiveByCommandData[label] else {
             fatalError("AppSetting for Command \"\(label)\" is nil")
         }
