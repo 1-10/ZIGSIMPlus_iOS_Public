@@ -11,22 +11,24 @@ import SwiftOSC
 import SwiftyJSON
 import DeviceKit
 
-protocol Store {
+protocol Service {
+    func toLog() -> [String]
     func toOSC() -> [OSCMessage]
     func toJSON() throws -> JSON
 }
 
-/// StoreManager creates OSC / JSON data and send it over TCP / UDP.
+/// ServiceManager creates OSC / JSON data and send it over TCP / UDP.
+/// It also creates single string for output view.
 ///
 /// This class does following things:
-/// - Fetch data from stores
+/// - Fetch data from services
 /// - Merge them into single OSC / JSON data
 /// - Add device data to it
 /// - Send it over network with NetworkAdapter
-class StoreManager {
-    static let shared = StoreManager()
+class ServiceManager {
+    static let shared = ServiceManager()
     private init() {}
-    
+
     public func send() {
         let data: Data
         if AppSettingModel.shared.transportFormat == .OSC {
@@ -39,7 +41,21 @@ class StoreManager {
         }
         NetworkAdapter.shared.send(data)
     }
-    
+
+    public func getLog() -> String {
+        var log = [String]()
+        log += AltimeterService.shared.toLog()
+        log += ArkitService.shared.toLog()
+        log += AudioLevelService.shared.toLog()
+        log += LocationService.shared.toLog()
+        log += BatteryService.shared.toLog()
+        log += MotionService.shared.toLog()
+        log += ProximityService.shared.toLog()
+        log += RemoteControlService.shared.toLog()
+        log += TouchService.shared.toLog()
+        return log.joined(separator: "\n")
+    }
+
     public func getOSC() -> OSCBundle {
         let bundle = OSCBundle()
         let device = Device()
@@ -57,14 +73,15 @@ class StoreManager {
         ))
 
         // Add data from stores
-        bundle.elements += AltimeterDataStore.shared.toOSC()
-        bundle.elements += ArkitDataStore.shared.toOSC()
-        bundle.elements += AudioLevelDataStore.shared.toOSC()
-        bundle.elements += LocationDataStore.shared.toOSC()
-        bundle.elements += MiscDataStore.shared.toOSC()
-        bundle.elements += ProximityDataStore.shared.toOSC()
-        bundle.elements += RemoteControlDataStore.shared.toOSC()
-        bundle.elements += TouchDataStore.shared.toOSC()
+        bundle.elements += AltimeterService.shared.toOSC()
+        bundle.elements += ArkitService.shared.toOSC()
+        bundle.elements += AudioLevelService.shared.toOSC()
+        bundle.elements += LocationService.shared.toOSC()
+        bundle.elements += MotionService.shared.toOSC()
+        bundle.elements += BatteryService.shared.toOSC()
+        bundle.elements += ProximityService.shared.toOSC()
+        bundle.elements += RemoteControlService.shared.toOSC()
+        bundle.elements += TouchService.shared.toOSC()
 
         // TODO: Add timetag
 
@@ -75,20 +92,21 @@ class StoreManager {
         var data = JSON()
 
         do {
-            try data.merge(with: AltimeterDataStore.shared.toJSON())
-            try data.merge(with: ArkitDataStore.shared.toJSON())
-            try data.merge(with: AudioLevelDataStore.shared.toJSON())
-            try data.merge(with: LocationDataStore.shared.toJSON())
-            try data.merge(with: MiscDataStore.shared.toJSON())
-            try data.merge(with: ProximityDataStore.shared.toJSON())
-            try data.merge(with: RemoteControlDataStore.shared.toJSON())
-            try data.merge(with: TouchDataStore.shared.toJSON())
+            try data.merge(with: AltimeterService.shared.toJSON())
+            try data.merge(with: ArkitService.shared.toJSON())
+            try data.merge(with: AudioLevelService.shared.toJSON())
+            try data.merge(with: LocationService.shared.toJSON())
+            try data.merge(with: MotionService.shared.toJSON())
+            try data.merge(with: BatteryService.shared.toJSON())
+            try data.merge(with: ProximityService.shared.toJSON())
+            try data.merge(with: RemoteControlService.shared.toJSON())
+            try data.merge(with: TouchService.shared.toJSON())
         } catch {
             print(">> JSON convert error")
         }
 
         let device = Device()
-        
+
         return JSON([
             "device": [
                 "name": device.description,

@@ -1,5 +1,5 @@
 //
-//  AudioLevelDataStore.swift
+//  AudioLevelService.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/21.
@@ -18,10 +18,10 @@ func AudioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
                                inNumberPacketDescriptions: UInt32,
                                inPacketDescs: UnsafePointer<AudioStreamPacketDescription>?) {}
 
-class AudioLevelDataStore {
+class AudioLevelService {
     // Singleton instance
-    static let shared = AudioLevelDataStore()
-    
+    static let shared = AudioLevelService()
+
     // MARK: - Instance Properties
     var queue: AudioQueueRef!
     var timer: Timer!
@@ -38,43 +38,34 @@ class AudioLevelDataStore {
         mBitsPerChannel: 16,
         mReserved: 0
     )
-    var averageLevel: Float
-    var maxLevel: Float
+    var averageLevel: Float = 0.0
+    var maxLevel: Float = 0.0
     var callbackAudio: (([Float]) -> Void)?
-    
-    private init() {
-        averageLevel = 0.0
-        maxLevel = 0.0
-    }
-    
-    private func update() {
-        print("ave:\(averageLevel) max:\(maxLevel)")
-        var level = [Float(0.0),Float(0.0)]
-        level[0] = self.maxLevel
-        level[1] = self.averageLevel
-        callbackAudio?(level)
-    }
-    
-    @objc func detectVolume(timer: Timer)
-    {
+
+    @objc func detectVolume(timer: Timer) {
         // Get level
         var levelMeter = AudioQueueLevelMeterState()
         var propertySize = UInt32(MemoryLayout<AudioQueueLevelMeterState>.size)
-        
+
         AudioQueueGetProperty(
             self.queue,
             kAudioQueueProperty_CurrentLevelMeterDB,
             &levelMeter,
             &propertySize)
-        
+
         averageLevel = levelMeter.mAveragePower
         maxLevel = levelMeter.mPeakPower
-        update()
     }
-    
+
     // MARK: - Public methods
-    public func start(fps:Double) {
-        
+
+    func isAvailable() -> Bool {
+        return true
+    }
+
+    public func start() {
+        let fps = Double(AppSettingModel.shared.messageRatePerSecond)
+
         // Set data format
         var dataFormat = AudioStreamBasicDescription(
             mSampleRate: 44100.0,
@@ -86,7 +77,7 @@ class AudioLevelDataStore {
             mChannelsPerFrame: 1,
             mBitsPerChannel: 16,
             mReserved: 0)
-        
+
         // Observe input level
         var audioQueue: AudioQueueRef? = nil
         var error = noErr
@@ -98,25 +89,24 @@ class AudioLevelDataStore {
                            CFRunLoopMode.commonModes.rawValue,
                            0,
                            &audioQueue)
-        
+
         if error == noErr {
             self.queue = audioQueue
         }
         AudioQueueStart(self.queue, nil)
-        
+
         // Enable level meter
         var enabledLevelMeter: UInt32 = 1
         AudioQueueSetProperty(self.queue, kAudioQueueProperty_EnableLevelMetering, &enabledLevelMeter, UInt32(MemoryLayout<UInt32>.size))
         self.timer = Timer.scheduledTimer(timeInterval: 1.0 / fps,
                                           target: self,
-                                          selector: #selector(AudioLevelDataStore.detectVolume(timer:)),
+                                          selector: #selector(AudioLevelService.detectVolume(timer:)),
                                           userInfo: nil,
                                           repeats: true)
         self.timer?.fire()
     }
-    
-    public func stop()
-    {
+
+    public func stop() {
         // Finish observation
         self.timer.invalidate()
         self.timer = nil
@@ -126,33 +116,45 @@ class AudioLevelDataStore {
     }
 }
 
-extension AudioLevelDataStore : Store {
+extension AudioLevelService : Service {
+    func toLog() -> [String] {
+        var log = [String]()
+
+        if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
+            log += [
+                "miclevel:max\(maxLevel)",
+                "miclevel:average\(averageLevel)",
+            ]
+        }
+
+        return log
+    }
+
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
-        
-        if AppSettingModel.shared.isActiveByCommandData[Label.micLevel]! {
+
+        if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
             data.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/miclevel"),
                 averageLevel,
                 maxLevel
             ))
         }
-        
+
         return data
     }
-    
+
     func toJSON() -> JSON {
         var data = JSON()
-        
-        if AppSettingModel.shared.isActiveByCommandData[Label.micLevel]! {
+
+        if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
             data["miclevel"] = [
                 "average": averageLevel,
                 "max": maxLevel
             ]
         }
-        
+
         return data
     }
 }
-

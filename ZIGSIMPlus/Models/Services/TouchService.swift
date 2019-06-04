@@ -1,5 +1,5 @@
 //
-//  TouchDataStore.swift
+//  TouchService.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/05/21.
@@ -12,43 +12,44 @@ import SwiftOSC
 import SwiftyJSON
 
 /// Data store for touch data.
-public class TouchDataStore {
+public class TouchService {
     // Singleton instance
-    static let shared = TouchDataStore()
-    
+    static let shared = TouchService()
+
     // MARK: - Instance Properties
-    
+
     var isEnabled: Bool
     var touchPoints: [UITouch]
-    var callback: (([UITouch]) -> Void)?
 
     private init() {
         isEnabled = false
         touchPoints = [UITouch]()
-        callback = nil
     }
-    
+
     // MARK: - Public methods
-    
+
+    func isAvailable() -> Bool {
+        return true
+    }
+
     func enable() {
         isEnabled = true
     }
-    
+
     func disable() {
         isEnabled = false
         touchPoints.removeAll() // Reset data
     }
-    
+
     func addTouches(_ touches: Set<UITouch>) {
         if !isEnabled { return }
-        
+
         touchPoints.append(contentsOf: touches)
-        update()
     }
-    
+
     func removeTouches(_ touchesToRemove: Set<UITouch>) {
         if !isEnabled { return }
-        
+
         for touchToRemove in touchesToRemove {
             for (i, t) in touchPoints.enumerated() {
                 if t == touchToRemove {
@@ -57,9 +58,8 @@ public class TouchDataStore {
                 }
             }
         }
-        update()
     }
-    
+
     func updateTouches(_ touchesToUpdate: Set<UITouch>) {
         if !isEnabled { return }
 
@@ -71,37 +71,79 @@ public class TouchDataStore {
                 }
             }
         }
-        update()
     }
 
     func removeAllTouches() {
         if !isEnabled { return }
-        
+
         touchPoints.removeAll()
-        update()
     }
-    
-    private func update() {
-        print("touchpoint:\(touchPoints.count)")
-        callback?(touchPoints)
+
+    private func getTouchResult(from touches:[UITouch]) -> [String] {
+        guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
+            let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
+            else {
+                fatalError("AppSetting for the command is nil")
+        }
+
+        var result = [String]()
+
+        for touch in touches {
+            var point = touch.location(in: touch.view!)
+            point = Utils.remapToScreenCoord(point)
+
+            if isTouchActive {
+                // Position
+                result += [
+                    "touch:x:\(point.x)",
+                    "touch:y:\(point.y)"
+                ]
+
+                // touch radius
+                if #available(iOS 8.0, *) {
+                    result.append("touch:radius:\(touch.majorRadius)")
+                }
+
+                // 3d touch
+                if #available(iOS 9.0, *) {
+                    result.append("touch:force:\(touch.force)")
+                }
+            }
+
+            if isApplePencilActive && touch.type == .pencil {
+                result += [
+                    "pencil:touch:x:\(point.x)",
+                    "pencil:touch:y:\(point.y)",
+                    "pencil:altitude:\(touch.altitudeAngle)",
+                    "pencil:azimuth:\(touch.azimuthAngle(in: touch.view!))",
+                    "pencil:force:\(touch.force)",
+                ]
+            }
+        }
+
+        return result
     }
 }
 
-extension TouchDataStore : Store {
+extension TouchService : Service {
+    func toLog() -> [String] {
+        return getTouchResult(from: touchPoints)
+    }
+
     func toOSC() -> [OSCMessage] {
-        guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Label.touch],
-            let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Label.applePencil]
+        guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
+            let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
             else {
-                fatalError("AppSetting of the CommandData nil")
+                fatalError("AppSetting for the command is nil")
         }
-        
+
         if !isTouchActive && !isApplePencilActive {
             return []
         }
-        
+
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
-            
+
         for (i, touch) in touchPoints.enumerated() {
             var point = touch.location(in: touch.view!)
             point = Utils.remapToScreenCoord(point)
@@ -118,7 +160,7 @@ extension TouchDataStore : Store {
                     messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touchforce\(i)"), Float(touch.force)))
                 }
             }
-            
+
             if isApplePencilActive && touch.type == .pencil {
                 messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/penciltouch\(i)1"), Float(point.x)))
                 messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/penciltouch\(i)2"), Float(point.y)))
@@ -127,15 +169,15 @@ extension TouchDataStore : Store {
                 messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilforce\(i)"), Float(touch.force)))
             }
         }
-        
+
         return messages
     }
-    
+
     func toJSON() throws -> JSON {
-        guard let isTouchActive = AppSettingModel.shared.isActiveByCommandData[Label.touch],
-            let isApplePencilActive = AppSettingModel.shared.isActiveByCommandData[Label.applePencil]
+        guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
+            let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
             else {
-                fatalError("AppSetting of the CommandData nil")
+                fatalError("AppSetting for the command is nil")
         }
         var data = JSON()
 
@@ -145,24 +187,24 @@ extension TouchDataStore : Store {
                 point = Utils.remapToScreenCoord(point)
 
                 var obj = ["x": point.x, "y": point.y]
-                
+
                 if #available(iOS 8.0, *) {
                     obj["radius"] = touch.majorRadius
                 }
                 if #available(iOS 9.0, *) {
                     obj["force"] = touch.force
                 }
-                
+
                 return obj
             }
             data["touches"] = JSON(touchData)
         }
-        
+
         if isApplePencilActive {
             let pencilData: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
                 var point = touch.location(in: touch.view!)
                 point = Utils.remapToScreenCoord(point)
-                
+
                 return [
                     "x": point.x,
                     "y": point.y,
@@ -173,7 +215,7 @@ extension TouchDataStore : Store {
             }
             data["pencil"] = JSON(pencilData)
         }
-        
+
         return data
     }
 }

@@ -1,5 +1,5 @@
 //
-//  RemoteControlDataStore.swift
+//  RemoteControlService.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/05/30.
@@ -11,9 +11,9 @@ import MediaPlayer
 import SwiftOSC
 import SwiftyJSON
 
-public class RemoteControlDataStore: NSObject {
+public class RemoteControlService: NSObject {
     // Singleton instance
-    static let shared = RemoteControlDataStore()
+    static let shared = RemoteControlService()
 
     // MARK: - Instance Properties
     let audioEngine = AVAudioEngine()
@@ -95,7 +95,20 @@ public class RemoteControlDataStore: NSObject {
     }
 }
 
-extension RemoteControlDataStore : Store {
+extension RemoteControlService : Service {
+    func toLog() -> [String] {
+        var log = [String]()
+
+        if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
+            log += [
+                "remotecontrol:playpause \(isPlaying)",
+                "remotecontrol:volume \(volume)"
+            ]
+        }
+
+        return log
+    }
+
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
@@ -107,7 +120,7 @@ extension RemoteControlDataStore : Store {
         lastVolume = volume
         lastIsPlaying = isPlaying
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.remoteControl]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/remotecontrol"),
                 playPauseChanged,
@@ -131,7 +144,7 @@ extension RemoteControlDataStore : Store {
         lastVolume = volume
         lastIsPlaying = isPlaying
 
-        if AppSettingModel.shared.isActiveByCommandData[Label.remoteControl]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
             data["remoteControl"] = JSON([
                 "playpause": playPauseChanged,
                 "volumeup": volumeUp,

@@ -1,5 +1,5 @@
 //
-//  ProximityDataStore.swift
+//  ProximityService.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/22.
@@ -11,29 +11,24 @@ import UIKit
 import SwiftOSC
 import SwiftyJSON
 
-public class ProximityDataStore {
+public class ProximityService {
     // Singleton instance
-    static let shared = ProximityDataStore()
-    
+    static let shared = ProximityService()
+
     // MARK: - Instance Properties
-    var proximity:Bool
+    var proximity: Bool = false
     var callbackProximity: ((Bool) -> Void)?
-    
-    private init() {
-        self.proximity = false
-    }
-    
-    private func update() {
-        print("proximitymonitor:proximitymonitor:\(self.proximity)")
-        callbackProximity?(self.proximity)
-    }
-    
+
     @objc func proximitySensorStateDidChange() {
         self.proximity = UIDevice.current.proximityState
-        update()
     }
-    
+
     // MARK: - Public methods
+
+    func isAvailable() -> Bool {
+        return true
+    }
+
     public func start() {
         UIDevice.current.isProximityMonitoringEnabled = true
         NotificationCenter.default.addObserver(self,
@@ -41,40 +36,46 @@ public class ProximityDataStore {
                                                name: UIDevice.proximityStateDidChangeNotification,
                                                object: nil)
     }
-    
-    public func initialDisplay() {
-        update()
-    }
-    
+
     public func stop() {
         UIDevice.current.isProximityMonitoringEnabled = false
         NotificationCenter.default.removeObserver(self,
                                                   name: UIDevice.proximityStateDidChangeNotification,
                                                   object: nil)
     }
-    
 }
 
-extension ProximityDataStore : Store {
+extension ProximityService : Service {
+    func toLog() -> [String] {
+        var log = [String]()
+
+        if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
+            log += [
+                "proximitymonitor:proximitymonitor:\(proximity)"
+            ]
+        }
+
+        return log
+    }
+
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
-        
-        if AppSettingModel.shared.isActiveByCommandData[Label.proximity]! {
+
+        if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/proximitymonitor"), proximity))
         }
-        
+
         return data
     }
-    
+
     func toJSON() throws -> JSON {
         var data = JSON()
-        
-        if AppSettingModel.shared.isActiveByCommandData[Label.proximity]! {
+
+        if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
             data["proximitymonitor"] = JSON(proximity)
         }
-        
+
         return data
     }
 }
-
