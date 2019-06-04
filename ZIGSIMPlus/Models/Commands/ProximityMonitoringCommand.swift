@@ -15,7 +15,6 @@ public final class ProximityMonitoringCommand: AutoUpdatedCommand {
 
     public func start(completion: ((String?) -> Void)?) {
         ProximityDataStore.shared.start()
-        ProximityDataStore.shared.initialDisplay()
     }
     
     public func stop(completion: ((String?) -> Void)?) {

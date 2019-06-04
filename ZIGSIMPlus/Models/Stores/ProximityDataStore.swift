@@ -15,21 +15,11 @@ public class ProximityDataStore {
     static let shared = ProximityDataStore()
     
     // MARK: - Instance Properties
-    var proximity:Bool
+    var proximity: Bool = false
     var callbackProximity: ((Bool) -> Void)?
-    
-    private init() {
-        self.proximity = false
-    }
-    
-    private func update() {
-        print("proximitymonitor:proximitymonitor:\(self.proximity)")
-        callbackProximity?(self.proximity)
-    }
-    
+
     @objc func proximitySensorStateDidChange() {
         self.proximity = UIDevice.current.proximityState
-        update()
     }
     
     // MARK: - Public methods
@@ -41,17 +31,12 @@ public class ProximityDataStore {
                                                object: nil)
     }
     
-    public func initialDisplay() {
-        update()
-    }
-    
     public func stop() {
         UIDevice.current.isProximityMonitoringEnabled = false
         NotificationCenter.default.removeObserver(self,
                                                   name: UIDevice.proximityStateDidChangeNotification,
                                                   object: nil)
     }
-    
 }
 
 extension ProximityDataStore : Store {
