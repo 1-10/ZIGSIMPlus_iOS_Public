@@ -242,7 +242,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		02A8FA822296B62D001FB3DD /* Stores */ = {
+		02A8FA822296B62D001FB3DD /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				02A8FA832296B62D001FB3DD /* TouchService.swift */,
@@ -255,7 +255,7 @@
 				02A03596229CD56E00E7399E /* ProximityService.swift */,
 				02A8FA872296B62D001FB3DD /* ServiceManager.swift */,
 			);
-			path = Stores;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		02F0DBEF229FBB1700D45E56 /* ARKit */ = {
@@ -384,7 +384,7 @@
 				02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */,
 				023BB10522965B490094363B /* Utils.swift */,
-				02A8FA822296B62D001FB3DD /* Stores */,
+				02A8FA822296B62D001FB3DD /* Services */,
 			);
 			path = Models;
 			sourceTree = "<group>";
