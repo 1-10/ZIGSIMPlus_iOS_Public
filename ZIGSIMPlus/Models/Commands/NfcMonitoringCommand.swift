@@ -11,16 +11,15 @@ import CoreNFC
 
 public final class NfcMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        <#code#>
+        return NfcDataStore.shared.isAvailable()
     }
     
     public func start(completion: ((String?) -> Void)?) {
-        <#code#>
+        NfcDataStore.shared.callback = completion
+        NfcDataStore.shared.start()
     }
     
     public func stop(completion: ((String?) -> Void)?) {
-        <#code#>
+        NfcDataStore.shared.stop()
     }
-    
-    
 }
