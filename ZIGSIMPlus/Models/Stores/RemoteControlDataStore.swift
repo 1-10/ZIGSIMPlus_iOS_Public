@@ -95,6 +95,19 @@ public class RemoteControlDataStore: NSObject {
 }
 
 extension RemoteControlDataStore : Store {
+    func toLog() -> [String] {
+        var log = [String]()
+
+        if AppSettingModel.shared.isActiveByCommandData[Label.remoteControl]! {
+            log += [
+                "remotecontrol:playpause \(isPlaying)",
+                "remotecontrol:volume \(volume)"
+            ]
+        }
+
+        return log
+    }
+
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()

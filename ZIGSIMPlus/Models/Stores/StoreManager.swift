@@ -11,6 +11,7 @@ import SwiftOSC
 import DeviceKit
 
 protocol Store {
+    func toLog() -> [String]
     func toOSC() -> [OSCMessage]
     func toJSON() -> [String:AnyObject]
 }
@@ -35,6 +36,19 @@ class StoreManager {
             data = getJSON()
         }
         NetworkAdapter.shared.send(data)
+    }
+
+    public func getLog() -> String {
+        var log = [String]()
+        log += AltimeterDataStore.shared.toLog()
+        log += ArkitDataStore.shared.toLog()
+        log += AudioLevelDataStore.shared.toLog()
+        log += LocationDataStore.shared.toLog()
+        log += MiscDataStore.shared.toLog()
+        log += ProximityDataStore.shared.toLog()
+        log += RemoteControlDataStore.shared.toLog()
+        log += TouchDataStore.shared.toLog()
+        return log.joined(separator: "\n")
     }
     
     private func getOSC() -> Data {

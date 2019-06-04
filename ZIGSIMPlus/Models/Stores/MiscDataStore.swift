@@ -27,6 +27,49 @@ public class MiscDataStore {
 }
 
 extension MiscDataStore : Store {
+    func toLog() -> [String] {
+        var log = [String]()
+
+        if AppSettingModel.shared.isActiveByCommandData[Label.battery]! {
+            log.append("battery:\(battery)")
+        }
+
+        if AppSettingModel.shared.isActiveByCommandData[Label.acceleration]! {
+            log += [
+                "accel:x:\(accel.x)",
+                "accel:y:\(accel.y)",
+                "accel:z:\(accel.z)",
+            ]
+        }
+
+        if AppSettingModel.shared.isActiveByCommandData[Label.gravity]! {
+            log += [
+                "gravity:x:\(gravity.x)",
+                "gravity:y:\(gravity.y)",
+                "gravity:z:\(gravity.z)",
+            ]
+        }
+
+        if AppSettingModel.shared.isActiveByCommandData[Label.gyro]! {
+            log += [
+                "gyro:x:\(gyro.x)",
+                "gyro:y:\(gyro.y)",
+                "gyro:z:\(gyro.z)",
+            ]
+        }
+
+        if AppSettingModel.shared.isActiveByCommandData[Label.quaternion]! {
+            log += [
+                "quaternion:x:\(quaternion.x)",
+                "quaternion:y:\(quaternion.y)",
+                "quaternion:z:\(quaternion.z)",
+                "quaternion:w:\(quaternion.w)",
+            ]
+        }
+
+        return log
+    }
+
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()

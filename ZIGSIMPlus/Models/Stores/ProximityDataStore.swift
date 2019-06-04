@@ -55,6 +55,18 @@ public class ProximityDataStore {
 }
 
 extension ProximityDataStore : Store {
+    func toLog() -> [String] {
+        var log = [String]()
+
+        if AppSettingModel.shared.isActiveByCommandData[Label.proximity]! {
+            log += [
+                "proximitymonitor:proximitymonitor:\(proximity)"
+            ]
+        }
+
+        return log
+    }
+
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()

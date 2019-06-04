@@ -70,6 +70,19 @@ public class AltimeterDataStore{
 }
 
 extension AltimeterDataStore : Store {
+    func toLog() -> [String] {
+        var log = [String]()
+
+        if AppSettingModel.shared.isActiveByCommandData[Label.pressure]! {
+            log += [
+                "pressure:pressure:\(pressureData)",
+                "pressure:altitude:\(altitudeData)",
+            ]
+        }
+
+        return log
+    }
+
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()

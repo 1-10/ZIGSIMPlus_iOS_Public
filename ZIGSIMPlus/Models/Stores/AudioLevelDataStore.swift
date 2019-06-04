@@ -126,6 +126,19 @@ class AudioLevelDataStore {
 }
 
 extension AudioLevelDataStore : Store {
+    func toLog() -> [String] {
+        var log = [String]()
+
+        if AppSettingModel.shared.isActiveByCommandData[Label.micLevel]! {
+            log += [
+                "miclevel:max\(maxLevel)",
+                "miclevel:average\(averageLevel)",
+            ]
+        }
+
+        return log
+    }
+
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
