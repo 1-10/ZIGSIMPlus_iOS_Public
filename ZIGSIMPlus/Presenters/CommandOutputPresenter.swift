@@ -1,5 +1,5 @@
 //
-//  CommandDataOutputPresenter.swift
+//  CommandOutputPresenter.swift
 //  ZIGSIMPlus
 //
 //  Created by Nozomu Kuwae on 5/10/19.
@@ -9,21 +9,21 @@
 import Foundation
 import UIKit
 
-protocol CommandDataOutputPresenterProtocol {
+protocol CommandOutputPresenterProtocol {
     func startCommands()
     func stopCommands()
 }
 
-protocol CommandDataOutputPresenterDelegate: AnyObject {
+protocol CommandOutputPresenterDelegate: AnyObject {
     func updateOutput(with output: String)
 }
 
-final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
-    private weak var view: CommandDataOutputPresenterDelegate!
+final class CommandOutputPresenter: CommandOutputPresenterProtocol {
+    private weak var view: CommandOutputPresenterDelegate!
     private var mediator: CommandAndServiceMediator
     private var updatingTimer: Timer?
     
-    init(view: CommandDataOutputPresenterDelegate, mediator: CommandAndServiceMediator) {
+    init(view: CommandOutputPresenterDelegate, mediator: CommandAndServiceMediator) {
         self.view = view
         self.mediator = mediator
     }

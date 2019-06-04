@@ -82,7 +82,7 @@ public class TouchService {
         guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
             let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
             else {
-                fatalError("AppSetting of the CommandData nil")
+                fatalError("AppSetting for the command is nil")
         }
 
         var result = [String]()
@@ -133,7 +133,7 @@ extension TouchService : Service {
         guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
             let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
             else {
-                fatalError("AppSetting of the CommandData nil")
+                fatalError("AppSetting for the command is nil")
         }
         
         if !isTouchActive && !isApplePencilActive {
@@ -176,7 +176,7 @@ extension TouchService : Service {
         guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
             let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
             else {
-                fatalError("AppSetting of the CommandData nil")
+                fatalError("AppSetting for the command is nil")
         }
         
         if !isTouchActive && !isApplePencilActive {

@@ -1,5 +1,5 @@
 //
-//  CommandDataSettingPresenter.swift
+//  CommandSettingPresenter.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/28.
@@ -9,19 +9,19 @@
 import Foundation
 import SwiftyUserDefaults
 
-protocol CommandDataSettingPresenterProtocol {
+protocol CommandSettingPresenterProtocol {
     func getUserDefaultTexts() -> Dictionary<String,String>
     func getUserDefaultSegments() -> Dictionary<String,Int>
     func updateTextsUserDefault(texts: Dictionary<String, String>)
     func updateSegmentsUserDefault(segmentControls: Dictionary<String, Int>)
 }
 
-protocol CommandDataSettingPresenterDelegate: AnyObject {}
+protocol CommandSettingPresenterDelegate: AnyObject {}
 
-final class CommandDataSettingPresenter: CommandDataSettingPresenterProtocol {
-    private weak var view: CommandDataSettingPresenterDelegate!
+final class CommandSettingPresenter: CommandSettingPresenterProtocol {
+    private weak var view: CommandSettingPresenterDelegate!
     
-    init(view: CommandDataSettingPresenterDelegate) {
+    init(view: CommandSettingPresenterDelegate) {
         self.view = view
     }
     

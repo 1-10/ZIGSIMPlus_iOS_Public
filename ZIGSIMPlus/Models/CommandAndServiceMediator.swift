@@ -1,5 +1,5 @@
 //
-//  CommandAndCommandDataMediator.swift
+//  CommandAndServiceMediator.swift
 //  ZIGSIMPlus
 //
 //  Created by Nozomu Kuwae on 2019/05/21.
