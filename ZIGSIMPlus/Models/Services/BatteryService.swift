@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 import SwiftOSC
+import SwiftyJSON
 
 /// Data store for battery
 public class BatteryService {
     // Singleton instance
     static let shared = BatteryService()
-    private init() {}
-    
+
     // MARK: - Instance Properties
-    
+
     var battery: Float = 0.0
     var isBatteryError: Bool = false
 
@@ -62,19 +62,19 @@ extension BatteryService : Service {
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
-        
+
         if AppSettingModel.shared.isActiveByCommand[Command.battery]! {
             messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/battery"), battery))
         }
 
         return messages
     }
-    
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
+
+    func toJSON() throws -> JSON {
+        var data = JSON()
 
         if AppSettingModel.shared.isActiveByCommand[Command.battery]! {
-            data.merge(["battery": battery as AnyObject]) { $1 }
+            data["battery"] = JSON(battery)
         }
 
         return data

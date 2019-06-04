@@ -9,6 +9,7 @@
 import Foundation
 import AudioToolbox
 import SwiftOSC
+import SwiftyJSON
 
 func AudioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
                                inAQ: AudioQueueRef,
@@ -20,7 +21,7 @@ func AudioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
 class AudioLevelService {
     // Singleton instance
     static let shared = AudioLevelService()
-    
+
     // MARK: - Instance Properties
     var queue: AudioQueueRef!
     var timer: Timer!
@@ -45,17 +46,17 @@ class AudioLevelService {
         // Get level
         var levelMeter = AudioQueueLevelMeterState()
         var propertySize = UInt32(MemoryLayout<AudioQueueLevelMeterState>.size)
-        
+
         AudioQueueGetProperty(
             self.queue,
             kAudioQueueProperty_CurrentLevelMeterDB,
             &levelMeter,
             &propertySize)
-        
+
         averageLevel = levelMeter.mAveragePower
         maxLevel = levelMeter.mPeakPower
     }
-    
+
     // MARK: - Public methods
 
     func isAvailable() -> Bool {
@@ -64,7 +65,7 @@ class AudioLevelService {
 
     public func start() {
         let fps = Double(AppSettingModel.shared.messageRatePerSecond)
-        
+
         // Set data format
         var dataFormat = AudioStreamBasicDescription(
             mSampleRate: 44100.0,
@@ -76,7 +77,7 @@ class AudioLevelService {
             mChannelsPerFrame: 1,
             mBitsPerChannel: 16,
             mReserved: 0)
-        
+
         // Observe input level
         var audioQueue: AudioQueueRef? = nil
         var error = noErr
@@ -88,12 +89,12 @@ class AudioLevelService {
                            CFRunLoopMode.commonModes.rawValue,
                            0,
                            &audioQueue)
-        
+
         if error == noErr {
             self.queue = audioQueue
         }
         AudioQueueStart(self.queue, nil)
-        
+
         // Enable level meter
         var enabledLevelMeter: UInt32 = 1
         AudioQueueSetProperty(self.queue, kAudioQueueProperty_EnableLevelMetering, &enabledLevelMeter, UInt32(MemoryLayout<UInt32>.size))
@@ -104,7 +105,7 @@ class AudioLevelService {
                                           repeats: true)
         self.timer?.fire()
     }
-    
+
     public func stop() {
         // Finish observation
         self.timer.invalidate()
@@ -132,7 +133,7 @@ extension AudioLevelService : Service {
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
-        
+
         if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
             data.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/miclevel"),
@@ -140,23 +141,20 @@ extension AudioLevelService : Service {
                 maxLevel
             ))
         }
-        
+
         return data
     }
-    
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
-        
+
+    func toJSON() -> JSON {
+        var data = JSON()
+
         if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
-            data.merge([
-                "miclevel": [
-                    "average": averageLevel,
-                    "max": maxLevel
-                    ] as AnyObject
-            ]) { $1 }
+            data["miclevel"] = [
+                "average": averageLevel,
+                "max": maxLevel
+            ]
         }
-        
+
         return data
     }
 }
-

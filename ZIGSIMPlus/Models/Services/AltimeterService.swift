@@ -9,18 +9,19 @@
 import Foundation
 import CoreMotion
 import SwiftOSC
+import SwiftyJSON
 
 public class AltimeterService {
     // Singleton instance
     static let shared = AltimeterService()
-    
+
     // MARK: - Instance Properties
     var altimeter: AnyObject!
     var isWorking: Bool
     var pressureData: Double
     var altitudeData: Double
     var callbackAltimeter: (([Double]) -> Void)?
-    
+
     private init() {
         isWorking = false
         pressureData = 0.0
@@ -31,9 +32,9 @@ public class AltimeterService {
         } else {
             altimeter = false as AnyObject
         }
-        
+
     }
-    
+
     private func updateAltimeterData() {
         print("pressure:pressure: \(self.pressureData)")
         print("pressure:altitude: \(self.altitudeData)")
@@ -42,7 +43,7 @@ public class AltimeterService {
         altimeterData[1] = self.altitudeData
         callbackAltimeter?(altimeterData)
     }
-    
+
     // MARK: - Public methods
 
     func isAvailable() -> Bool {
@@ -69,7 +70,7 @@ public class AltimeterService {
             // Fallback on earlier versions
         }
     }
-    
+
     func stopAltimeter() {
         if isWorking {
             isWorking = false
@@ -95,7 +96,7 @@ extension AltimeterService : Service {
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
-        
+
         if AppSettingModel.shared.isActiveByCommand[Command.pressure]! {
             messages.append(OSCMessage(
                 OSCAddressPattern("/\(deviceUUID)/pressure"),
@@ -103,22 +104,20 @@ extension AltimeterService : Service {
                 altitudeData
             ))
         }
-        
+
         return messages
     }
-    
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
-        
+
+    func toJSON() -> JSON {
+        var data = JSON()
+
         if AppSettingModel.shared.isActiveByCommand[Command.pressure]! {
-            data.merge([
-                "pressure": [
-                    "pressure": pressureData,
-                    "altitude": altitudeData
-                    ] as AnyObject
-            ]) { $1 }
+            data["pressure"] = [
+                "pressure": pressureData,
+                "altitude": altitudeData
+            ]
         }
-        
+
         return data
     }
 }

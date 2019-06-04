@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import SwiftOSC
+import SwiftyJSON
 
 /// Data store for commands which depend on LocationManager.
 /// e.g.) GPS, iBeacon, etc.
@@ -42,7 +43,7 @@ public class LocationService: NSObject {
 
         // Init compass
         locationManager.headingFilter = kCLHeadingFilterNone
-        
+
         // Init beacons
         let appSetting = AppSettingModel.shared
         let uuid = UUID(uuidString: appSetting.beaconUUID)!
@@ -101,7 +102,7 @@ public class LocationService: NSObject {
             locationManager.stopUpdatingHeading()
         }
     }
-    
+
     func isLocationAvailable() -> Bool {
         if #available(iOS 8.0, *) {
             if CLLocationManager.locationServicesEnabled() {
@@ -199,11 +200,11 @@ extension LocationService : Service {
         if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/gps"), latitudeData, longitudeData))
         }
-        
+
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData))
         }
-        
+
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
             data += beacons.enumerated().map { (i, beacon)  in
                 return OSCMessage(
@@ -218,18 +219,18 @@ extension LocationService : Service {
 
         return data
     }
-    
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
+
+    func toJSON() -> JSON {
+        var data = JSON()
 
         if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
-            data.merge(["gps": [latitudeData, longitudeData] as AnyObject]) { $1 }
+            data["gps"] = JSON([latitudeData, longitudeData])
         }
-        
+
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
-            data.merge(["compass": compassData as AnyObject]) { $1 }
+            data["compass"] = JSON(compassData)
         }
-        
+
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
             let objs = beacons.map { beacon in
                 return [
@@ -239,7 +240,7 @@ extension LocationService : Service {
                     "rssi": beacon.rssi
                 ]
             }
-            data.merge(["beacons": objs as AnyObject]) { $1 }
+            data["beacons"] = JSON(objs)
         }
 
         return data

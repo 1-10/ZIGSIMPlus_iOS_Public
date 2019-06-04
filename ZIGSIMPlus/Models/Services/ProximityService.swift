@@ -9,11 +9,12 @@
 import Foundation
 import UIKit
 import SwiftOSC
+import SwiftyJSON
 
 public class ProximityService {
     // Singleton instance
     static let shared = ProximityService()
-    
+
     // MARK: - Instance Properties
     var proximity: Bool = false
     var callbackProximity: ((Bool) -> Void)?
@@ -21,7 +22,7 @@ public class ProximityService {
     @objc func proximitySensorStateDidChange() {
         self.proximity = UIDevice.current.proximityState
     }
-    
+
     // MARK: - Public methods
 
     func isAvailable() -> Bool {
@@ -35,7 +36,7 @@ public class ProximityService {
                                                name: UIDevice.proximityStateDidChangeNotification,
                                                object: nil)
     }
-    
+
     public func stop() {
         UIDevice.current.isProximityMonitoringEnabled = false
         NotificationCenter.default.removeObserver(self,
@@ -60,26 +61,21 @@ extension ProximityService : Service {
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
-        
+
         if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
             data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/proximitymonitor"), proximity))
         }
-        
+
         return data
     }
-    
-    func toJSON() -> [String:AnyObject] {
-        var data = [String:AnyObject]()
-        
+
+    func toJSON() throws -> JSON {
+        var data = JSON()
+
         if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
-            data.merge([
-                "proximitymonitor": [
-                    "proximitymonitor": proximity
-                    ] as AnyObject
-            ]) { $1 }
+            data["proximitymonitor"] = JSON(proximity)
         }
-        
+
         return data
     }
 }
-
