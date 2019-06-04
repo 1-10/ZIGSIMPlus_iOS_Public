@@ -10,14 +10,14 @@ import Foundation
 
 public final class MicLevelMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return AudioLevelDataStore.shared.isAvailable()
+        return AudioLevelService.shared.isAvailable()
     }
     
     public func start() {
-        AudioLevelDataStore.shared.start()
+        AudioLevelService.shared.start()
     }
     
     public func stop() {
-        AudioLevelDataStore.shared.stop()
+        AudioLevelService.shared.stop()
     }
 }

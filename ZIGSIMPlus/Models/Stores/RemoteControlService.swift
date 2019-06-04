@@ -1,5 +1,5 @@
 //
-//  RemoteControlDataStore.swift
+//  RemoteControlService.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/05/30.
@@ -10,9 +10,9 @@ import Foundation
 import MediaPlayer
 import SwiftOSC
 
-public class RemoteControlDataStore: NSObject {
+public class RemoteControlService: NSObject {
     // Singleton instance
-    static let shared = RemoteControlDataStore()
+    static let shared = RemoteControlService()
 
     // MARK: - Instance Properties
     let audioEngine = AVAudioEngine()
@@ -94,7 +94,7 @@ public class RemoteControlDataStore: NSObject {
     }
 }
 
-extension RemoteControlDataStore : Store {
+extension RemoteControlService : Service {
     func toLog() -> [String] {
         var log = [String]()
 

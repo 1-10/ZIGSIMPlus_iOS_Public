@@ -1,5 +1,5 @@
 //
-//  AltimeterDataStore.swift
+//  AltimeterService.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/22.
@@ -10,9 +10,9 @@ import Foundation
 import CoreMotion
 import SwiftOSC
 
-public class AltimeterDataStore{
+public class AltimeterService {
     // Singleton instance
-    static let shared = AltimeterDataStore()
+    static let shared = AltimeterService()
     
     // MARK: - Instance Properties
     var altimeter: AnyObject!
@@ -45,7 +45,7 @@ public class AltimeterDataStore{
     
     // MARK: - Public methods
 
-    func isAvailable() {
+    func isAvailable() -> Bool {
         if #available(iOS 8.0, *) {
             return true
         } else {
@@ -78,7 +78,7 @@ public class AltimeterDataStore{
     }
 }
 
-extension AltimeterDataStore : Store {
+extension AltimeterService : Service {
     func toLog() -> [String] {
         var log = [String]()
 

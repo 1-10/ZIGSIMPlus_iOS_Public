@@ -12,14 +12,14 @@ import UIKit
 
 public final class NdiMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return NDIDataStore.isAvailable()
+        return NDIService.isAvailable()
     }
 
     public func start() {
-        NDIDataStore.shared.start()
+        NDIService.shared.start()
     }
     
     public func stop() {
-        NDIDataStore.shared.stop()
+        NDIService.shared.stop()
     }
 }

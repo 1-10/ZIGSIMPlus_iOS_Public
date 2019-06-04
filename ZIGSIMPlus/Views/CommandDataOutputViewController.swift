@@ -35,19 +35,19 @@ class CommandDataOutputViewController: UIViewController {
     // MARK: - Touch Events
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        TouchDataStore.shared.addTouches(touches)
+        TouchService.shared.addTouches(touches)
     }   
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        TouchDataStore.shared.updateTouches(touches)
+        TouchService.shared.updateTouches(touches)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        TouchDataStore.shared.removeTouches(touches)
+        TouchService.shared.removeTouches(touches)
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
-        TouchDataStore.shared.removeAllTouches()
+        TouchService.shared.removeAllTouches()
     }
 }
 

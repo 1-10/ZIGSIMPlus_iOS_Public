@@ -1,5 +1,5 @@
 //
-//  LocationDataStore.swift
+//  LocationService.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/05/22.
@@ -12,10 +12,10 @@ import SwiftOSC
 
 /// Data store for commands which depend on LocationManager.
 /// e.g.) GPS, iBeacon, etc.
-public class LocationDataStore: NSObject {
+public class LocationService: NSObject {
 
     /// Singleton instance
-    static let shared = LocationDataStore()
+    static let shared = LocationService()
 
     // MARK: - Instance Properties
 
@@ -114,7 +114,7 @@ public class LocationDataStore: NSObject {
 
 // MARK: - CLLocationManagerDelegate methods
 
-extension LocationDataStore: CLLocationManagerDelegate {
+extension LocationService: CLLocationManagerDelegate {
     public final func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.latitudeData = (locations.last?.coordinate.latitude)!
         self.longitudeData = (locations.last?.coordinate.longitude)!
@@ -158,7 +158,7 @@ extension LocationDataStore: CLLocationManagerDelegate {
     }
 }
 
-extension LocationDataStore : Store {
+extension LocationService : Service {
     func toLog() -> [String] {
         var log = [String]()
 

@@ -11,14 +11,14 @@ import SceneKit
 
 public final class ArkitCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return ArkitDataStore.shared.isDeviceTrackingAvailable()
+        return ArkitService.shared.isDeviceTrackingAvailable()
     }
 
     public func start() {
-        ArkitDataStore.shared.startDeviceTracking()
+        ArkitService.shared.startDeviceTracking()
     }
 
     public func stop() {
-        ArkitDataStore.shared.stopDeviceTracking()
+        ArkitService.shared.stopDeviceTracking()
     }
 }

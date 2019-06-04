@@ -11,14 +11,14 @@ import UIKit
 
 public final class TouchMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return TouchDataStore.shared.isAvailable()
+        return TouchService.shared.isAvailable()
     }
     
     public func start() {
-        TouchDataStore.shared.enable()
+        TouchService.shared.enable()
     }
     
     public func stop() {
-        TouchDataStore.shared.disable()
+        TouchService.shared.disable()
     }
 }

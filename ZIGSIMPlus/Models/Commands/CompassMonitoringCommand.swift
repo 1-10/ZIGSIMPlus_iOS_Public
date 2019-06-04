@@ -11,14 +11,14 @@ import CoreLocation
 
 public final class CompassMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return LocationDataStore.shared.isLocationAvailable()
+        return LocationService.shared.isLocationAvailable()
     }
 
     public func start() {
-        LocationDataStore.shared.startCompass()
+        LocationService.shared.startCompass()
     }
 
     public func stop() {
-        LocationDataStore.shared.stopCompass()
+        LocationService.shared.stopCompass()
     }
 }

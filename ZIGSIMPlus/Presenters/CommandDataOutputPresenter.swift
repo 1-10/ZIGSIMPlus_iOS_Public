@@ -49,7 +49,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             }
         }
 
-        StoreManager.shared.send()
+        ServiceManager.shared.send()
         updateOutput()
     }
     
@@ -79,7 +79,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             }
         }
 
-        StoreManager.shared.send()
+        ServiceManager.shared.send()
         updateOutput()
     }
     
@@ -96,7 +96,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
                 command.stop()
             }
         }
-        StoreManager.shared.send()
+        ServiceManager.shared.send()
     }
     
     
@@ -107,7 +107,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
     }
     
     private func updateOutput() {
-        view.updateOutput(with: StoreManager.shared.getLog())
+        view.updateOutput(with: ServiceManager.shared.getLog())
     }
     
     private func updateImagePreview(with image: UIImage) {

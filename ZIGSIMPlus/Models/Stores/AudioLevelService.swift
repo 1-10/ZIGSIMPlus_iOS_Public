@@ -1,5 +1,5 @@
 //
-//  AudioLevelDataStore.swift
+//  AudioLevelService.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/21.
@@ -17,9 +17,9 @@ func AudioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
                                inNumberPacketDescriptions: UInt32,
                                inPacketDescs: UnsafePointer<AudioStreamPacketDescription>?) {}
 
-class AudioLevelDataStore {
+class AudioLevelService {
     // Singleton instance
-    static let shared = AudioLevelDataStore()
+    static let shared = AudioLevelService()
     
     // MARK: - Instance Properties
     var queue: AudioQueueRef!
@@ -58,7 +58,7 @@ class AudioLevelDataStore {
     
     // MARK: - Public methods
 
-    func isAvailable() {
+    func isAvailable() -> Bool {
         return true
     }
 
@@ -99,7 +99,7 @@ class AudioLevelDataStore {
         AudioQueueSetProperty(self.queue, kAudioQueueProperty_EnableLevelMetering, &enabledLevelMeter, UInt32(MemoryLayout<UInt32>.size))
         self.timer = Timer.scheduledTimer(timeInterval: 1.0 / fps,
                                           target: self,
-                                          selector: #selector(AudioLevelDataStore.detectVolume(timer:)),
+                                          selector: #selector(AudioLevelService.detectVolume(timer:)),
                                           userInfo: nil,
                                           repeats: true)
         self.timer?.fire()
@@ -115,7 +115,7 @@ class AudioLevelDataStore {
     }
 }
 
-extension AudioLevelDataStore : Store {
+extension AudioLevelService : Service {
     func toLog() -> [String] {
         var log = [String]()
 

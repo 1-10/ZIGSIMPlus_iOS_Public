@@ -1,5 +1,5 @@
 //
-//  TouchDataStore.swift
+//  TouchService.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/05/21.
@@ -11,9 +11,9 @@ import UIKit
 import SwiftOSC
 
 /// Data store for touch data.
-public class TouchDataStore {
+public class TouchService {
     // Singleton instance
-    static let shared = TouchDataStore()
+    static let shared = TouchService()
     
     // MARK: - Instance Properties
     
@@ -27,7 +27,7 @@ public class TouchDataStore {
     
     // MARK: - Public methods
 
-    func isAvailable() {
+    func isAvailable() -> Bool {
         return true
     }
 
@@ -124,7 +124,7 @@ public class TouchDataStore {
     }
 }
 
-extension TouchDataStore : Store {
+extension TouchService : Service {
     func toLog() -> [String] {
         return getTouchResult(from: touchPoints)
     }

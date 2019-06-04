@@ -1,5 +1,5 @@
 //
-//  ProximityDataStore.swift
+//  ProximityService.swift
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/05/22.
@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 import SwiftOSC
 
-public class ProximityDataStore {
+public class ProximityService {
     // Singleton instance
-    static let shared = ProximityDataStore()
+    static let shared = ProximityService()
     
     // MARK: - Instance Properties
     var proximity: Bool = false
@@ -24,7 +24,7 @@ public class ProximityDataStore {
     
     // MARK: - Public methods
 
-    func isAvailable() {
+    func isAvailable() -> Bool {
         return true
     }
 
@@ -44,7 +44,7 @@ public class ProximityDataStore {
     }
 }
 
-extension ProximityDataStore : Store {
+extension ProximityService : Service {
     func toLog() -> [String] {
         var log = [String]()
 

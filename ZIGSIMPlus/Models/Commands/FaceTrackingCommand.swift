@@ -11,14 +11,14 @@ import SceneKit
 
 public final class FaceTrackingCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return ArkitDataStore.shared.isFaceTrackingAvailable()
+        return ArkitService.shared.isFaceTrackingAvailable()
     }
 
     public func start() {
-        ArkitDataStore.shared.startFaceTracking()
+        ArkitService.shared.startFaceTracking()
     }
 
     public func stop() {
-        ArkitDataStore.shared.stopFaceTracking()
+        ArkitService.shared.stopFaceTracking()
     }
 }

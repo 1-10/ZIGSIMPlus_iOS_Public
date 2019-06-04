@@ -10,14 +10,14 @@ import Foundation
 
 public final class BeaconMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return LocationDataStore.shared.isLocationAvailable()
+        return LocationService.shared.isLocationAvailable()
     }
 
     public func start() {
-        LocationDataStore.shared.startBeacons()
+        LocationService.shared.startBeacons()
     }
 
     public func stop() {
-        LocationDataStore.shared.stopBeacons()
+        LocationService.shared.stopBeacons()
     }
 }

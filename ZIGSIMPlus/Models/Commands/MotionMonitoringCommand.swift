@@ -10,14 +10,14 @@ import Foundation
 
 public final class MotionMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return MotionDataStore.shared.isAvailable()
+        return MotionService.shared.isAvailable()
     }
     
     public func start() {
-        MotionDataStore.shared.start()
+        MotionService.shared.start()
     }
 
     public func stop() {
-        MotionDataStore.shared.stop()
+        MotionService.shared.stop()
     }
 }

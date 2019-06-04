@@ -1,5 +1,5 @@
 //
-//  MotionDataStore.swift
+//  MotionDataService.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/06/04.
@@ -11,9 +11,9 @@ import UIKit
 import CoreMotion
 import SwiftOSC
 
-public class MotionDataStore {
+public class MotionService {
     // Singleton instance
-    static let shared = MotionDataStore()
+    static let shared = MotionService()
 
     // MARK: - Instance Properties
     let motionManager = CMMotionManager()
@@ -56,7 +56,7 @@ public class MotionDataStore {
     }
 }
 
-extension MotionDataStore : Store {
+extension MotionService : Service {
     func toLog() -> [String] {
         var log = [String]()
 

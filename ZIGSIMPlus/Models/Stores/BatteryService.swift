@@ -1,5 +1,5 @@
 //
-//  BatteryDataStore.swift
+//  BatteryService.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/05/23.
@@ -11,9 +11,9 @@ import UIKit
 import SwiftOSC
 
 /// Data store for battery
-public class BatteryDataStore {
+public class BatteryService {
     // Singleton instance
-    static let shared = BatteryDataStore()
+    static let shared = BatteryService()
     private init() {}
     
     // MARK: - Instance Properties
@@ -43,7 +43,7 @@ public class BatteryDataStore {
     }
 }
 
-extension BatteryDataStore : Store {
+extension BatteryService : Service {
     func toLog() -> [String] {
         var log = [String]()
 

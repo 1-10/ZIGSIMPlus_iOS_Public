@@ -11,14 +11,14 @@ import CoreLocation
 
 public final class GpsMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return LocationDataStore.shared.isLocationAvailable()
+        return LocationService.shared.isLocationAvailable()
     }
 
     public func start() {
-        LocationDataStore.shared.startGps()
+        LocationService.shared.startGps()
     }
 
     public func stop() {
-        LocationDataStore.shared.stopGps()
+        LocationService.shared.stopGps()
     }
 }

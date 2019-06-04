@@ -10,7 +10,7 @@ import Foundation
 import SwiftOSC
 import DeviceKit
 
-protocol Store {
+protocol Service {
     func toLog() -> [String]
     func toOSC() -> [OSCMessage]
     func toJSON() -> [String:AnyObject]
@@ -19,12 +19,12 @@ protocol Store {
 /// StoreManager creates OSC / JSON data and send it over TCP / UDP.
 ///
 /// This class does following things:
-/// - Fetch data from stores
+/// - Fetch data from services
 /// - Merge them into single OSC / JSON data
 /// - Add device data to it
 /// - Send it over network with NetworkAdapter
-class StoreManager {
-    static let shared = StoreManager()
+class ServiceManager {
+    static let shared = ServiceManager()
     private init() {}
     
     func send() {
@@ -40,15 +40,15 @@ class StoreManager {
 
     public func getLog() -> String {
         var log = [String]()
-        log += AltimeterDataStore.shared.toLog()
-        log += ArkitDataStore.shared.toLog()
-        log += AudioLevelDataStore.shared.toLog()
-        log += LocationDataStore.shared.toLog()
-        log += BatteryDataStore.shared.toLog()
-        log += MotionDataStore.shared.toLog()
-        log += ProximityDataStore.shared.toLog()
-        log += RemoteControlDataStore.shared.toLog()
-        log += TouchDataStore.shared.toLog()
+        log += AltimeterService.shared.toLog()
+        log += ArkitService.shared.toLog()
+        log += AudioLevelService.shared.toLog()
+        log += LocationService.shared.toLog()
+        log += BatteryService.shared.toLog()
+        log += MotionService.shared.toLog()
+        log += ProximityService.shared.toLog()
+        log += RemoteControlService.shared.toLog()
+        log += TouchService.shared.toLog()
         return log.joined(separator: "\n")
     }
     
@@ -69,11 +69,11 @@ class StoreManager {
         ))
 
         // Add data from stores
-        bundle.elements += LocationDataStore.shared.toOSC()
-        bundle.elements += TouchDataStore.shared.toOSC()
-        bundle.elements += ArkitDataStore.shared.toOSC()
-        bundle.elements += RemoteControlDataStore.shared.toOSC()
-        bundle.elements += BatteryDataStore.shared.toOSC()
+        bundle.elements += LocationService.shared.toOSC()
+        bundle.elements += TouchService.shared.toOSC()
+        bundle.elements += ArkitService.shared.toOSC()
+        bundle.elements += RemoteControlService.shared.toOSC()
+        bundle.elements += BatteryService.shared.toOSC()
 
         // TODO: Add timetag
 
@@ -83,11 +83,11 @@ class StoreManager {
     private func getJSON() -> Data {
         var data = [String:AnyObject]()
         
-        data.merge(LocationDataStore.shared.toJSON()) { $1 }
-        data.merge(TouchDataStore.shared.toJSON()) { $1 }
-        data.merge(ArkitDataStore.shared.toJSON()) { $1 }
-        data.merge(RemoteControlDataStore.shared.toJSON()) { $1 }
-        data.merge(BatteryDataStore.shared.toJSON()) { $1 }
+        data.merge(LocationService.shared.toJSON()) { $1 }
+        data.merge(TouchService.shared.toJSON()) { $1 }
+        data.merge(ArkitService.shared.toJSON()) { $1 }
+        data.merge(RemoteControlService.shared.toJSON()) { $1 }
+        data.merge(BatteryService.shared.toJSON()) { $1 }
 
         let device = Device()
         

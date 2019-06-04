@@ -11,15 +11,15 @@ import CoreMotion
 
 public final class AltimeterMonitoringCommand: AutoUpdatedCommand {
     public func isAvailable() -> Bool {
-        return AltimeterDataStore.shared.isAvailable()
+        return AltimeterService.shared.isAvailable()
     }
     
     public func start() {
-        AltimeterDataStore.shared.startAltimeter()
+        AltimeterService.shared.startAltimeter()
     }
     
     public func stop() {
-        AltimeterDataStore.shared.stopAltimeter()
+        AltimeterService.shared.stopAltimeter()
     }
 }
 
