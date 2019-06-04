@@ -14,12 +14,6 @@ public final class RemoteControlCommand: AutoUpdatedCommand {
     }
 
     public func start(completion: ((String?) -> Void)?) {
-        RemoteControlDataStore.shared.callback = { (isPlaying, volume) in
-            completion?("""
-                remotecontrol:playpause \(isPlaying)
-                remotecontrol:volume \(volume)
-            """)
-        }
         RemoteControlDataStore.shared.start()
     }
 
@@ -27,5 +21,4 @@ public final class RemoteControlCommand: AutoUpdatedCommand {
         RemoteControlDataStore.shared.stop()
         completion?(nil)
     }
-
 }

@@ -15,12 +15,6 @@ public final class MicLevelMonitoringCommand: AutoUpdatedCommand {
     
     public func start(completion: ((String?) -> Void)?) {
         AudioLevelDataStore.shared.start(fps: Double(AppSettingModel.shared.messageRatePerSecond))
-        AudioLevelDataStore.shared.callbackAudio = { level in
-            completion?("""
-                miclevel:max\(level[0])
-                miclevel:average\(level[1])
-                """)
-        }
     }
     
     public func stop(completion: ((String?) -> Void)?) {

@@ -51,9 +51,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
                         self.updateImagePreview(with: image)
                     }
                 default:
-                    command.start { (result) in
-                        self.storeResult(result, of: command)
-                    }
+                    command.start(completion: nil)
                 }
             }
         }
@@ -85,7 +83,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             if mediator.isActive(command: command) && command is ManualUpdatedCommand {
                 let c = command as! ManualUpdatedCommand
                 c.monitor { (result) in
-                    self.storeResult(result, of: command)
+//                    self.storeResult(result, of: command)
                 }
             }
         }
@@ -118,12 +116,12 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
     }
     
     private func updateOutput() {
-        var output = ""
-        
-        for (_, value) in resultByCommand.sorted(by: <) {
-            output += (value.count > 0 ? value + "\n" : "")
-        }
-        view.updateOutput(with: output)
+//        var output = ""
+//
+//        for (_, value) in resultByCommand.sorted(by: <) {
+//            output += (value.count > 0 ? value + "\n" : "")
+//        }
+        view.updateOutput(with: StoreManager.shared.getLog())
     }
     
     private func updateImagePreview(with image: UIImage) {

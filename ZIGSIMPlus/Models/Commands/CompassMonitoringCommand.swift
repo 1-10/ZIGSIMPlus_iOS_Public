@@ -16,13 +16,6 @@ public final class CompassMonitoringCommand: AutoUpdatedCommand {
 
     public func start(completion: ((String?) -> Void)?) {
         LocationDataStore.shared.startCompass()
-        LocationDataStore.shared.compassCallback = { (compassData) in
-            let appSetting = AppSettingModel.shared
-            completion?("""
-                compass:compass:\(compassData)
-                compass:faceup:\(appSetting.compassAngle)
-                """)
-        }
     }
 
     public func stop(completion: ((String?) -> Void)?) {

@@ -15,20 +15,17 @@ public final class BatteryMonitoringCommand: ManualUpdatedCommand {
     
     public func start(completion: ((String?) -> Void)?) {
         UIDevice.current.isBatteryMonitoringEnabled = true
-        monitor(completion: completion)
     }
     
     public func stop(completion: ((String?) -> Void)?) {
         UIDevice.current.isBatteryMonitoringEnabled = false
-        completion?(nil)
     }
 
     public func monitor(completion: ((String?) -> Void)?) {
         if UIDevice.current.batteryLevel != -1 {
             MiscDataStore.shared.battery = UIDevice.current.batteryLevel
-            completion?("battery:level:\(UIDevice.current.batteryLevel)")
         } else {
-            completion?("battery level unknown")
+//            completion?("battery level unknown")
         }
     }
 }

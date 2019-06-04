@@ -20,12 +20,6 @@ public final class AltimeterMonitoringCommand: AutoUpdatedCommand {
     
     public func start(completion: ((String?) -> Void)?) {
         AltimeterDataStore.shared.startAltimeter()
-        AltimeterDataStore.shared.callbackAltimeter = { (altimeterData) in
-            completion?("""
-                pressure:pressure:\(altimeterData[0])
-                pressure:altitude:\(altimeterData[1])
-                """)
-        }
     }
     
     public func stop(completion: ((String?) -> Void)?) {
