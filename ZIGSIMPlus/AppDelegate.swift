@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Inject dependency here
         let tabBarController = window?.rootViewController as! UITabBarController
-        let mediator = CommandAndCommandDataMediator()
+        let mediator = CommandAndServiceMediator()
         for viewController in tabBarController.viewControllers! {
             if type(of: viewController) == CommandDataSelectionViewController.self {
                 let vc = viewController as! CommandDataSelectionViewController

@@ -23,18 +23,16 @@ protocol CommandDataOutputPresenterDelegate: AnyObject {
 
 final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
     private weak var view: CommandDataOutputPresenterDelegate!
-    private var mediator: CommandAndCommandDataMediator
-    private var resultByCommand: Dictionary<Int, String> = [:]
+    private var mediator: CommandAndServiceMediator
     private var updatingTimer: Timer?
     
-    init(view: CommandDataOutputPresenterDelegate, mediator: CommandAndCommandDataMediator) {
+    init(view: CommandDataOutputPresenterDelegate, mediator: CommandAndServiceMediator) {
         self.view = view
         self.mediator = mediator
     }
     
     // MARK: Start commands
     func startCommands() {
-        initializeResults()
         initializeView()
         updatingTimer = Timer.scheduledTimer(
             timeInterval: AppSettingModel.shared.messageInterval,
@@ -42,21 +40,15 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
             selector: #selector(self.monitorCommands),
             userInfo: nil,
             repeats: true)
-        
-        for command in mediator.commands {
-            if mediator.isActive(command: command) {
-                command.start()
+
+        for label in CommandDataLabels {
+            if mediator.isActive(label) {
+                mediator.startCommand(label)
             }
         }
 
         ServiceManager.shared.send()
         updateOutput()
-    }
-    
-    private func initializeResults() {
-        for (key, _) in resultByCommand {
-            resultByCommand[key] = ""
-        }
     }
 
     private func initializeView() {
@@ -72,10 +64,9 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
 
     // MARK: Monitor commands
     @objc private func monitorCommands() {
-        for command in mediator.commands {
-            if mediator.isActive(command: command) && command is ManualUpdatedCommand {
-                let c = command as! ManualUpdatedCommand
-                c.monitor()
+        for label in CommandDataLabels {
+            if mediator.isActive(label) && mediator.isManual(label) {
+                mediator.update(label)
             }
         }
 
@@ -90,10 +81,10 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
         if t.isValid {
             t.invalidate()
         }
-        
-        for command in mediator.commands {
-            if mediator.isActive(command: command) {
-                command.stop()
+
+        for label in CommandDataLabels {
+            if mediator.isActive(label) {
+                mediator.stopCommand(label)
             }
         }
         ServiceManager.shared.send()
@@ -101,11 +92,7 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
     
     
     // MARK: Methods used in multiple timings
-    private func storeResult(_ result: String?, of command: Command) {
-        guard let r = result else { return }
-        self.resultByCommand[self.mediator.getCommandOutputOrder(of: command)] = r
-    }
-    
+
     private func updateOutput() {
         view.updateOutput(with: ServiceManager.shared.getLog())
     }

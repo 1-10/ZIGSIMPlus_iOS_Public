@@ -19,10 +19,10 @@ protocol CommandDataSelectionPresenterDelegate: AnyObject {
 
 final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol {
     private weak var view: CommandDataSelectionPresenterDelegate!
-    private var mediator: CommandAndCommandDataMediator
+    private var mediator: CommandAndServiceMediator
     private var commandDataToSelectArray: [CommandDataToSelect] = []
     
-    init(view: CommandDataSelectionPresenterDelegate, mediator: CommandAndCommandDataMediator) {
+    init(view: CommandDataSelectionPresenterDelegate, mediator: CommandAndServiceMediator) {
         self.view = view
         self.mediator = mediator
         updateCommandDataToSelectArray()
@@ -52,7 +52,7 @@ final class CommandDataSelectionPresenter: CommandDataSelectionPresenterProtocol
     private func updateCommandDataToSelectArray() {
         commandDataToSelectArray = [CommandDataToSelect]()
         for label in CommandDataLabels {
-            commandDataToSelectArray.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(commandDataLabel: label)))
+            commandDataToSelectArray.append(CommandDataToSelect(labelString: label.rawValue, isAvailable: mediator.isAvailable(label)))
         }
     }
 }
