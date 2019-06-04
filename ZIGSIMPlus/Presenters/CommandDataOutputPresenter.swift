@@ -16,9 +16,6 @@ protocol CommandDataOutputPresenterProtocol {
 
 protocol CommandDataOutputPresenterDelegate: AnyObject {
     func updateOutput(with output: String)
-    func updateImagePreview(with image: UIImage)
-    func setImageViewActive(_ active: Bool)
-    func setSceneViewActive(_ active: Bool)
 }
 
 final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
@@ -33,7 +30,6 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
     
     // MARK: Start commands
     func startCommands() {
-        initializeView()
         updatingTimer = Timer.scheduledTimer(
             timeInterval: AppSettingModel.shared.messageInterval,
             target: self,
@@ -49,17 +45,6 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
 
         ServiceManager.shared.send()
         updateOutput()
-    }
-
-    private func initializeView() {
-        let isImageViewActive = AppSettingModel.shared.isActiveByCommandData[Label.ndi]!
-        view.setImageViewActive(isImageViewActive)
-
-        let isSceneViewActive = (
-            AppSettingModel.shared.isActiveByCommandData[Label.arkit]! ||
-            AppSettingModel.shared.isActiveByCommandData[Label.faceTracking]!
-        )
-        view.setSceneViewActive(isSceneViewActive)
     }
 
     // MARK: Monitor commands
@@ -95,9 +80,5 @@ final class CommandDataOutputPresenter: CommandDataOutputPresenterProtocol {
 
     private func updateOutput() {
         view.updateOutput(with: ServiceManager.shared.getLog())
-    }
-    
-    private func updateImagePreview(with image: UIImage) {
-        view.updateImagePreview(with: image)
     }
 }

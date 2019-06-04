@@ -490,8 +490,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Output" id="ZJH-dY-5eg"/>
                     <connections>
-                        <outlet property="arkitView" destination="3j9-Fj-S3j" id="YAo-wY-ifM"/>
-                        <outlet property="imageView" destination="QnG-HF-yg8" id="VZF-CZ-vFg"/>
                         <outlet property="textField" destination="w9T-O2-Ptu" id="SBs-k4-5Vg"/>
                     </connections>
                 </viewController>
@@ -531,7 +529,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="382" height="769"/>
                             </arscnView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="chi-3Q-oa2" secondAttribute="bottom" id="Ntf-pq-ytb"/>
                             <constraint firstItem="chi-3Q-oa2" firstAttribute="top" secondItem="daY-ty-aJ3" secondAttribute="top" id="blV-PY-Q1G"/>
@@ -561,7 +559,8 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="f91-X3-cSY"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="Ot6-0d-tuq" id="AvE-0R-uzb"/>

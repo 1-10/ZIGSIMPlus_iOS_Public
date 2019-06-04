@@ -11,8 +11,6 @@ import MediaPlayer
 
 class CommandDataOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var arkitView: UIView!
 
     var presenter: CommandDataOutputPresenterProtocol!
 
@@ -54,17 +52,5 @@ class CommandDataOutputViewController: UIViewController {
 extension CommandDataOutputViewController: CommandDataOutputPresenterDelegate {
     func updateOutput(with output: String) {
         textField.text = output
-    }
-
-    func updateImagePreview(with image: UIImage) {
-        imageView.image = image
-    }
-
-    func setImageViewActive(_ active: Bool) {
-        imageView.isHidden = !active
-    }
-
-    func setSceneViewActive(_ active: Bool) {
-        arkitView.isHidden = !active
     }
 }
