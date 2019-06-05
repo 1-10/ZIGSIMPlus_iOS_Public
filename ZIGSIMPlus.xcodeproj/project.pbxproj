@@ -33,8 +33,7 @@
 		02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */; };
 		36E36AC1EC5984082F26816B /* libPods-ZIGSIMPlusUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */; };
 		515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */; };
-		63575D4922A0CE6300BC1868 /* NfcMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63575D4822A0CE6300BC1868 /* NfcMonitoringCommand.swift */; };
-		638345F422A6832700370600 /* NfcDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638345F322A6832700370600 /* NfcDataStore.swift */; };
+		638345F422A6832700370600 /* NfcService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638345F322A6832700370600 /* NfcService.swift */; };
 		63C02A2C2293D97700551E2F /* CommandAndServiceMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */; };
 		63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E5785A2296991400C6340C /* StringExtensionTests.swift */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
@@ -113,8 +112,7 @@
 		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZIGSIMPlus.entitlements; sourceTree = "<group>"; };
-		63575D4822A0CE6300BC1868 /* NfcMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NfcMonitoringCommand.swift; sourceTree = "<group>"; };
-		638345F322A6832700370600 /* NfcDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcDataStore.swift; sourceTree = "<group>"; };
+		638345F322A6832700370600 /* NfcService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcService.swift; sourceTree = "<group>"; };
 		63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndServiceMediator.swift; sourceTree = "<group>"; };
 		63E5785A2296991400C6340C /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -302,7 +300,7 @@
 		638345F222A6830600370600 /* NFC */ = {
 			isa = PBXGroup;
 			children = (
-				638345F322A6832700370600 /* NfcDataStore.swift */,
+				638345F322A6832700370600 /* NfcService.swift */,
 			);
 			path = NFC;
 			sourceTree = "<group>";
@@ -654,7 +652,7 @@
 				902EB9FA227BED1B008F1650 /* CommandSelectionPresenter.swift in Sources */,
 				02A8FA882296B62D001FB3DD /* TouchService.swift in Sources */,
 				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,
-				638345F422A6832700370600 /* NfcDataStore.swift in Sources */,
+				638345F422A6832700370600 /* NfcService.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
 				02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */,
