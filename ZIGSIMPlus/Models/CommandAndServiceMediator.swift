@@ -37,6 +37,8 @@ public class CommandAndServiceMediator {
             return RemoteControlService.shared.isAvailable()
         case .ndi:
             return NDIService.shared.isAvailable()
+        case .nfc:
+            return NfcService.shared.isAvailable()
         }
     }
 
@@ -93,6 +95,8 @@ public class CommandAndServiceMediator {
             RemoteControlService.shared.start()
         case .ndi:
             NDIService.shared.start()
+        case .nfc:
+            NfcService.shared.start()
         }
     }
 
@@ -124,6 +128,8 @@ public class CommandAndServiceMediator {
             RemoteControlService.shared.stop()
         case .ndi:
             NDIService.shared.stop()
+        case .nfc:
+            NfcService.shared.stop()
         }
     }
 
