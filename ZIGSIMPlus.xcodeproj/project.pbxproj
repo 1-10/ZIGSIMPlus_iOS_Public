@@ -366,8 +366,8 @@
 			isa = PBXGroup;
 			children = (
 				902EB9F9227BED1B008F1650 /* CommandSelectionPresenter.swift */,
-				02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */,
 				9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */,
+				02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
