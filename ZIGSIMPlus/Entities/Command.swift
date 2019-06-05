@@ -26,6 +26,7 @@ public enum Command: String, CaseIterable {
     case ndi = "NDI"
     case arkit = "ARKit"
     case faceTracking = "Face Tracking"
+    case imageDetection = "IMAGE DETECTION"
     case battery = "Battery"
     case applePencil = "Apple Pencil"
 }

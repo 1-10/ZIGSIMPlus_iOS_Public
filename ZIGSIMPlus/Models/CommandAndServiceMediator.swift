@@ -36,7 +36,9 @@ public class CommandAndServiceMediator {
         case .remoteControl:
             return RemoteControlService.shared.isAvailable()
         case .ndi:
-            return NDIService.shared.isAvailable()
+            return NDIService.shared.isNDIAvailable()
+        case .imageDetection:
+            return NDIService.shared.isImageDetectionAvailable()
         }
     }
 
@@ -91,7 +93,7 @@ public class CommandAndServiceMediator {
             ArkitService.shared.startFaceTracking()
         case .remoteControl:
             RemoteControlService.shared.start()
-        case .ndi:
+        case .ndi, .imageDetection:
             NDIService.shared.start()
         }
     }
@@ -122,7 +124,7 @@ public class CommandAndServiceMediator {
             ArkitService.shared.stopFaceTracking()
         case .remoteControl:
             RemoteControlService.shared.stop()
-        case .ndi:
+        case .ndi, .imageDetection:
             NDIService.shared.stop()
         }
     }
