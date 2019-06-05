@@ -58,7 +58,6 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
         }
 
         mediator.stopActiveCommands()
-        ServiceManager.shared.send()
     }
     
     
