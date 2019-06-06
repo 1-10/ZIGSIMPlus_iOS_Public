@@ -24,6 +24,13 @@ enum TransportFormat: Int {
     case OSC = 1
 }
 
+enum RatePerSecond: Int {
+    case one = 1
+    case ten = 10
+    case thirty = 30
+    case sixty = 60
+}
+
 public class AppSettingModel {
     private init() {
         for command in Command.allCases {
@@ -37,7 +44,7 @@ public class AppSettingModel {
         dataDestination = DataDestination(rawValue: Defaults[.userDataDestination] ?? 0)!
         transportProtocol = TransportProtocol(rawValue: Defaults[.userProtocol] ?? 0)!
         transportFormat = TransportFormat(rawValue: Defaults[.userMessageFormat] ?? 0)!
-        messageRatePerSecond = Defaults[.userMessageRatePerSecond] ?? 0
+        messageRatePerSecondSegment = Defaults[.userMessageRatePerSecond] ?? 0
         faceup = Defaults[.userCompassAngle] ?? 0
     }
     
@@ -52,22 +59,25 @@ public class AppSettingModel {
     var port: Int32 = 3333
     var transportFormat: TransportFormat = .OSC
     // var transportFormat: TransportFormat = .JSON
-    var messageRatePerSecond: Int = 3
+    var messageRatePerSecondSegment: Int = 3
     var deviceUUID: String = Utils.randomStringWithLength(16)
     var faceup: Int = 1 // 1.0 is faceup
     var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
-    var messageInterval: TimeInterval {
-        var convertMessageRatePerSecond = 60 // default
-        if messageRatePerSecond == 0 {
-            convertMessageRatePerSecond = 1
-        } else if messageRatePerSecond == 1 {
-            convertMessageRatePerSecond = 10
-        } else if messageRatePerSecond == 2 {
-            convertMessageRatePerSecond = 30
-        } else if messageRatePerSecond == 3 {
-            convertMessageRatePerSecond = 60
+    var messageRatePerSecond: RatePerSecond {
+        if messageRatePerSecondSegment == 0 {
+            return .one
+        } else if messageRatePerSecondSegment == 1 {
+            return .ten
+        } else if messageRatePerSecondSegment == 2 {
+            return .thirty
+        } else if messageRatePerSecondSegment == 3 {
+            return .sixty
+        } else {
+            fatalError("Unexpected message rate")
         }
-        return 1.0 / Double(convertMessageRatePerSecond)
+    }
+    var messageInterval: TimeInterval {
+        return 1.0 / Double(messageRatePerSecond.rawValue)
     }
     var compassAngle: Double {
         return Double(faceup)
