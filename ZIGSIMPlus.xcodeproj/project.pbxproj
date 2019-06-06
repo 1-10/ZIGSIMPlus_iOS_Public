@@ -33,6 +33,9 @@
 		02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */; };
 		36E36AC1EC5984082F26816B /* libPods-ZIGSIMPlusUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */; };
 		515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */; };
+		638345F422A6832700370600 /* NFCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638345F322A6832700370600 /* NFCService.swift */; };
+		63A6192B22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */; };
+		63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A6192C22A79EDF00B015DE /* CoreNFC.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		63C02A2C2293D97700551E2F /* CommandAndServiceMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */; };
 		63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E5785A2296991400C6340C /* StringExtensionTests.swift */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
@@ -110,6 +113,10 @@
 		02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitService.swift; sourceTree = "<group>"; };
 		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
+		63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZIGSIMPlus.entitlements; sourceTree = "<group>"; };
+		638345F322A6832700370600 /* NFCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCService.swift; sourceTree = "<group>"; };
+		63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTypeNameFormatExtension.swift; sourceTree = "<group>"; };
+		63A6192C22A79EDF00B015DE /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
 		63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndServiceMediator.swift; sourceTree = "<group>"; };
 		63E5785A2296991400C6340C /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */,
 				FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */,
 				0236461C2298253900171F73 /* libndi_ios.a in Frameworks */,
 			);
@@ -171,6 +179,7 @@
 			children = (
 				02F0DBEF229FBB1700D45E56 /* ARKit */,
 				023644AD2298253800171F73 /* NDI */,
+				638345F222A6830600370600 /* NFC */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -272,6 +281,7 @@
 		3047AA928C608382EC8AFA33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63A6192C22A79EDF00B015DE /* CoreNFC.framework */,
 				023642CD2298253500171F73 /* Private */,
 				4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */,
 				D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */,
@@ -291,6 +301,15 @@
 				9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		638345F222A6830600370600 /* NFC */ = {
+			isa = PBXGroup;
+			children = (
+				638345F322A6832700370600 /* NFCService.swift */,
+				63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */,
+			);
+			path = NFC;
 			sourceTree = "<group>";
 		};
 		902EB9BD227BE68D008F1650 = {
@@ -318,6 +337,7 @@
 		902EB9C8227BE68D008F1650 /* ZIGSIMPlus */ = {
 			isa = PBXGroup;
 			children = (
+				63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */,
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
 				9092E4C7227D85890019F1C1 /* Models */,
 				902EB9F7227BECC7008F1650 /* Views */,
@@ -464,6 +484,11 @@
 				TargetAttributes = {
 					902EB9C5227BE68D008F1650 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 1;
+							};
+						};
 					};
 					902EB9D9227BE68F008F1650 = {
 						CreatedOnToolsVersion = 10.1;
@@ -630,10 +655,12 @@
 				02A03597229CD56E00E7399E /* AltimeterService.swift in Sources */,
 				0236461D2298253900171F73 /* NDI.cpp in Sources */,
 				02A8FA8C2296B62D001FB3DD /* ServiceManager.swift in Sources */,
+				63A6192B22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift in Sources */,
 				02A8FA8B2296B62D001FB3DD /* BatteryService.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandSelectionPresenter.swift in Sources */,
 				02A8FA882296B62D001FB3DD /* TouchService.swift in Sources */,
 				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,
+				638345F422A6832700370600 /* NFCService.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
 				02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */,
@@ -832,6 +859,8 @@
 			baseConfigurationReference = 60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				HEADER_SEARCH_PATHS = (
@@ -854,8 +883,9 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus-Explicit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -867,6 +897,8 @@
 			baseConfigurationReference = 9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				HEADER_SEARCH_PATHS = (
@@ -889,8 +921,9 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus-Explicit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

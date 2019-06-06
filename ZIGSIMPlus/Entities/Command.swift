@@ -24,6 +24,7 @@ public enum Command: String, CaseIterable {
     case micLevel = "MIC LEVEL"
     case remoteControl = "Remote Control"
     case ndi = "NDI"
+    case nfc = "NFC READER"
     case arkit = "ARKit"
     case faceTracking = "Face Tracking"
     case battery = "Battery"
