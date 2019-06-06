@@ -31,6 +31,27 @@ enum RatePerSecond: Int {
     case sixty = 60
 }
 
+enum ImageDetectorType: Int {
+    case face = 1
+    case qrCode = 2
+    case rectangle = 3
+    case text = 4
+}
+
+enum ImageDetectorAccuracy: Int {
+    case low = 1
+    case high = 2
+}
+
+enum ImageDatectorNumberOfAngles: Int {
+    case one = 1
+    case three = 3
+    case five = 5
+    case seven = 7
+    case nine = 9
+    case eleven = 11
+}
+
 public class AppSettingModel {
     private init() {
         for command in Command.allCases {
@@ -54,11 +75,9 @@ public class AppSettingModel {
     // app default value & variable used in app
     var dataDestination: DataDestination = .OTHER_APP
     var transportProtocol: TransportProtocol = .UDP
-    // var transportProtocol: TransportProtocol = .TCP
     var address: String = "172.17.1.20"
     var port: Int32 = 3333
     var transportFormat: TransportFormat = .OSC
-    // var transportFormat: TransportFormat = .JSON
     var messageRatePerSecondSegment: Int = 3
     var deviceUUID: String = Utils.randomStringWithLength(16)
     var faceup: Int = 1 // 1.0 is faceup
@@ -82,6 +101,12 @@ public class AppSettingModel {
     var compassAngle: Double {
         return Double(faceup)
     }
+    var imageDetectorType: ImageDetectorType = .face
+    var imageDetectorAccuracy: ImageDetectorAccuracy = .high
+    var imageDetectorTracks: Bool = false
+    var imageDetectorNumberOfAngles: ImageDatectorNumberOfAngles = .one
+    var imageDetectorDetectEyeBlink: Bool = true
+    var imageDetectorDetectSmile: Bool = true
 }
 
 // user default value
