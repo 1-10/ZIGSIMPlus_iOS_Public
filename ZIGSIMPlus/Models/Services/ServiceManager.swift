@@ -53,6 +53,7 @@ class ServiceManager {
         log += ProximityService.shared.toLog()
         log += RemoteControlService.shared.toLog()
         log += TouchService.shared.toLog()
+        log += NDIService.shared.toLog()
         return log.joined(separator: "\n")
     }
 
@@ -82,6 +83,7 @@ class ServiceManager {
         bundle.elements += ProximityService.shared.toOSC()
         bundle.elements += RemoteControlService.shared.toOSC()
         bundle.elements += TouchService.shared.toOSC()
+        bundle.elements += NDIService.shared.toOSC()
 
         // TODO: Add timetag
 
@@ -101,6 +103,7 @@ class ServiceManager {
             try data.merge(with: ProximityService.shared.toJSON())
             try data.merge(with: RemoteControlService.shared.toJSON())
             try data.merge(with: TouchService.shared.toJSON())
+            try data.merge(with: NDIService.shared.toJSON())
         } catch {
             print(">> JSON convert error")
         }
