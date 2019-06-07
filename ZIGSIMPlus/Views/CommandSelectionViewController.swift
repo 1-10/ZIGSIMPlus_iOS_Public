@@ -13,9 +13,28 @@ typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButtonLabel: UIButton!
-    
     var presenter: CommandSelectionPresenterProtocol!
-
+    let commandsLavel:[Int: Command] = [
+        0: Command.acceleration,
+        1: Command.gravity,
+        2: Command.gyro,
+        3: Command.quaternion,
+        4: Command.compass,
+        5: Command.pressure,
+        6: Command.gps,
+        7: Command.touch,
+        8: Command.beacon,
+        9: Command.proximity,
+        10: Command.micLevel,
+        11: Command.remoteControl,
+        12: Command.ndi,
+        13: Command.nfc,
+        14: Command.arkit,
+        15: Command.faceTracking,
+        16: Command.battery,
+        17: Command.applePencil
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         backButtonLabel.isHidden = true
@@ -30,16 +49,6 @@ final class CommandSelectionViewController: UIViewController {
 
 extension CommandSelectionViewController: UITableViewDelegate {
     
-    /*
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-            presenter.didSelectRow(atLabel: (cell.textLabel?.text)!)
-            cell.accessoryType = (cell.accessoryType == .checkmark ? .none : .checkmark)
-        }
-    }
-    */
-
     // Disallow selecting unavailable command
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let cell = tableView.cellForRow(at: indexPath) {
@@ -59,37 +68,38 @@ extension CommandSelectionViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        /*
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommandCell", for: indexPath)
-        let CommandToSelect = presenter.getCommandToSelect(forRow: indexPath.row)
-        cell.textLabel!.text = CommandToSelect.labelString
-        cell.isUserInteractionEnabled = CommandToSelect.isAvailable
-        return cell
-        */
-        let Commands = presenter.getCommandToSelect(forRow: indexPath.row)
-        let CommandToSelect = presenter.getCommandToSelect(forRow: indexPath.row)
+
+        let CommandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
+        
         cell.isUserInteractionEnabled = CommandToSelect.isAvailable
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.commandLabel.text = CommandToSelect.labelString
         cell.commandOnOff.tag = indexPath.row
-        cell.commandOnOff.setOn(false, animated: false)
-        cell.commandSelectionPresenter = presenter
+        cell.commandSelectionPresenter = self.presenter
         cell.tableview = self.tableView
         cell.viewController = self
+        cell.commandsLabel = self.commandsLavel
         cell.backButtonLabel = self.backButtonLabel
         cell.settingButton.isHidden = false
         
-        if Commands.labelString == Command.acceleration.rawValue ||
-           Commands.labelString == Command.gravity.rawValue ||
-           Commands.labelString == Command.gyro.rawValue ||
-           Commands.labelString == Command.quaternion.rawValue ||
-           Commands.labelString == Command.pressure.rawValue ||
-           Commands.labelString == Command.gps.rawValue ||
-           Commands.labelString == Command.touch.rawValue ||
-           Commands.labelString == Command.proximity.rawValue ||
-           Commands.labelString == Command.micLevel.rawValue ||
-           Commands.labelString == Command.remoteControl.rawValue {
+        if CommandToSelect.labelString == Command.acceleration.rawValue ||
+           CommandToSelect.labelString == Command.gravity.rawValue ||
+           CommandToSelect.labelString == Command.gyro.rawValue ||
+           CommandToSelect.labelString == Command.quaternion.rawValue ||
+           CommandToSelect.labelString == Command.pressure.rawValue ||
+           CommandToSelect.labelString == Command.gps.rawValue ||
+           CommandToSelect.labelString == Command.touch.rawValue ||
+           CommandToSelect.labelString == Command.proximity.rawValue ||
+           CommandToSelect.labelString == Command.micLevel.rawValue ||
+           CommandToSelect.labelString == Command.remoteControl.rawValue {
            cell.settingButton.isHidden = true
+        }
+        
+        if AppSettingModel.shared.isActiveByCommand[commandsLavel[indexPath.row]!] == true {
+            cell.commandOnOff.isOn = true
+        } else {
+            cell.commandOnOff.isOn = false
         }
         
         return cell

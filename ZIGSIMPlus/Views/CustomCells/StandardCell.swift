@@ -20,49 +20,19 @@ public class StandardCell: UITableViewCell {
     var tableview: UITableView!
     var viewController: UIViewController!
     var backButtonLabel: UIButton!
-    let commands:[Int: Command] = [
-        0: Command.acceleration,
-        1: Command.gravity,
-        2: Command.gyro,
-        3: Command.quaternion,
-        4: Command.compass,
-        5: Command.pressure,
-        6: Command.gps,
-        7: Command.touch,
-        8: Command.beacon,
-        9: Command.proximity,
-        10: Command.micLevel,
-        11: Command.remoteControl,
-        12: Command.ndi,
-        13: Command.arkit,
-        14: Command.faceTracking,
-        15: Command.battery,
-        16: Command.applePencil
-    ]
+    var commandsLabel:[Int: Command]!
     
     @IBAction func commandOnOffAction(_ sender: UISwitch) {
-        print("ok")
-        print("tag: \(sender.tag)")
-        print("command:\(commands[sender.tag]!.rawValue)")
-        commandSelectionPresenter.didSelectRow(atLabel: commands[sender.tag]!.rawValue)
+        commandSelectionPresenter.didSelectRow(atLabel: commandsLabel[sender.tag]!.rawValue)
     }
     
     @IBAction func settingButtonAction(_ sender: UIButton) {
-        print("ok1")
         tableview.isHidden = true
         backButtonLabel.isHidden = false
-        /*
-        let children = viewController.children[0] as! CommandDetaileViewController
-        children.segment.isHidden = false
-        children.segmentLabel.isHidden = false
-         */
-        //        let parentVC = self.parent as! CommandSelectionViewController
-        //        parentVC.tableView.isHidden = false
-        //viewController.performSegue(withIdentifier: "detaileView", sender: "ok")
     }
     
     @IBAction func modalButtonAction(_ sender: UIButton) {
-        print("ok2")
+        
     }
     
     
