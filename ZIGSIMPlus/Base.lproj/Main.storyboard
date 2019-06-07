@@ -692,7 +692,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cik-8I-sUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2008" y="-658"/>
+            <point key="canvasLocation" x="2222" y="-1053"/>
         </scene>
         <!--Compass Detaile View Controller-->
         <scene sceneID="Hrq-jq-rVM">
@@ -714,7 +714,7 @@
                                     <segment title="FACEUP"/>
                                 </segments>
                                 <connections>
-                                    <action selector="segmentAction:" destination="N5t-e7-jiG" eventType="valueChanged" id="AiE-TW-phF"/>
+                                    <action selector="segmentAction:" destination="Jzc-s8-yin" eventType="valueChanged" id="iMV-Sh-Zau"/>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMPASS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Dc-po-N6T">
@@ -736,10 +736,14 @@
                             <constraint firstItem="IU8-dN-Yg4" firstAttribute="centerX" secondItem="D5H-kW-1XH" secondAttribute="centerX" id="bni-1h-Ax4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="segment" destination="IU8-dN-Yg4" id="X1r-b9-Qae"/>
+                        <outlet property="segmentLabel" destination="7Dc-po-N6T" id="Qb7-Ts-0of"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSJ-hT-FQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2036" y="-104"/>
+            <point key="canvasLocation" x="2249" y="-513"/>
         </scene>
     </scenes>
 </document>
