@@ -18,8 +18,9 @@ public class TouchService {
 
     // MARK: - Instance Properties
 
-    var isEnabled: Bool
-    var touchPoints: [UITouch]
+    private var isEnabled: Bool
+    private var touchPoints: [UITouch]
+    private var touchArea: CGRect = CGRect.zero
 
     private init() {
         isEnabled = false
@@ -79,6 +80,10 @@ public class TouchService {
         touchPoints.removeAll()
     }
 
+    func setTouchArea(rect: CGRect) {
+        touchArea = rect
+    }
+
     private func getTouchResult(from touches:[UITouch]) -> [String] {
         guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
             let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
@@ -90,7 +95,7 @@ public class TouchService {
 
         for touch in touches {
             var point = touch.location(in: touch.view!)
-            point = Utils.remapToScreenCoord(point)
+            point = remapToScreenCoord(point)
 
             if isTouchActive {
                 // Position
@@ -123,6 +128,16 @@ public class TouchService {
 
         return result
     }
+
+    // Remap values to range [-1, 1]
+    private func remapToScreenCoord(_ pos: CGPoint) -> CGPoint {
+        let x = (pos.x - touchArea.minX) / touchArea.width
+        let y = (pos.y - touchArea.minY) / touchArea.height
+        return CGPoint(
+            x: min(max(x, 0.0), 1.0) * 2.0 - 1.0,
+            y: min(max(y, 0.0), 1.0) * 2.0 - 1.0
+        )
+    }
 }
 
 extension TouchService : Service {
@@ -146,7 +161,7 @@ extension TouchService : Service {
 
         for (i, touch) in touchPoints.enumerated() {
             var point = touch.location(in: touch.view!)
-            point = Utils.remapToScreenCoord(point)
+            point = remapToScreenCoord(point)
 
             if isTouchActive {
                 // Position
@@ -184,7 +199,7 @@ extension TouchService : Service {
         if isTouchActive {
             let touchData: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
                 var point = touch.location(in: touch.view!)
-                point = Utils.remapToScreenCoord(point)
+                point = remapToScreenCoord(point)
 
                 var obj = ["x": point.x, "y": point.y]
 
@@ -203,7 +218,7 @@ extension TouchService : Service {
         if isApplePencilActive {
             let pencilData: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
                 var point = touch.location(in: touch.view!)
-                point = Utils.remapToScreenCoord(point)
+                point = remapToScreenCoord(point)
 
                 return [
                     "x": point.x,

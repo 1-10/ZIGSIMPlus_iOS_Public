@@ -11,6 +11,7 @@ import MediaPlayer
 
 class CommandOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
+    @IBOutlet weak var touchArea: UIView!
 
     var presenter: CommandOutputPresenterProtocol!
 
@@ -22,8 +23,13 @@ class CommandOutputViewController: UIViewController {
         // Dummy volume view to disable default system volume hooks
         let volumeView = MPVolumeView(frame: CGRect(x: -100, y: -100, width: 0, height: 0))
         view.addSubview(volumeView)
-        
         presenter.startCommands()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        // Set area for touch points.
+        // This has to be done after auto layout.
+        TouchService.shared.setTouchArea(rect: touchArea.bounds)
     }
 
     override func viewDidDisappear(_ animated: Bool) {

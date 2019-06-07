@@ -470,18 +470,21 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFr-by-ckd" userLabel="Touch Area">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFr-by-ckd" userLabel="Touch Area">
+                                <rect key="frame" x="16" y="44" width="382" height="769"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="w9T-O2-Ptu" firstAttribute="leading" secondItem="wNG-or-TOh" secondAttribute="leading" constant="16" id="4kM-Wz-6he"/>
+                            <constraint firstItem="VFr-by-ckd" firstAttribute="leading" secondItem="wNG-or-TOh" secondAttribute="leading" constant="16" id="AzF-iW-5IK"/>
+                            <constraint firstItem="VFr-by-ckd" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="BR2-iH-vbf"/>
                             <constraint firstItem="QnG-HF-yg8" firstAttribute="leading" secondItem="wNG-or-TOh" secondAttribute="leading" constant="16" id="MWN-kY-KmV"/>
+                            <constraint firstItem="VFr-by-ckd" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" id="Twj-MF-agV"/>
                             <constraint firstItem="QnG-HF-yg8" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="W3Y-hN-XCI"/>
                             <constraint firstItem="w9T-O2-Ptu" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" id="cb3-hL-JhH"/>
                             <constraint firstItem="w9T-O2-Ptu" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="dET-yb-enz"/>
+                            <constraint firstItem="wNG-or-TOh" firstAttribute="trailing" secondItem="VFr-by-ckd" secondAttribute="trailing" constant="16" id="qoH-lr-QDv"/>
                             <constraint firstItem="wNG-or-TOh" firstAttribute="trailing" secondItem="QnG-HF-yg8" secondAttribute="trailing" constant="16" id="rt4-cR-bFh"/>
                             <constraint firstItem="wNG-or-TOh" firstAttribute="trailing" secondItem="w9T-O2-Ptu" secondAttribute="trailing" constant="16" id="w3E-bs-oOu"/>
                             <constraint firstItem="QnG-HF-yg8" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" id="wEm-aa-Mk3"/>
@@ -491,11 +494,12 @@
                     <tabBarItem key="tabBarItem" tag="2" title="Output" id="ZJH-dY-5eg"/>
                     <connections>
                         <outlet property="textField" destination="w9T-O2-Ptu" id="SBs-k4-5Vg"/>
+                        <outlet property="touchArea" destination="VFr-by-ckd" id="xXl-zN-frG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTa-iw-AJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1075" y="913"/>
+            <point key="canvasLocation" x="1073.913043478261" y="912.72321428571422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4iF-GW-zpL">
