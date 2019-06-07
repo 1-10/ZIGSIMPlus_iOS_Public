@@ -550,6 +550,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Output" id="ZJH-dY-5eg"/>
                     <connections>
+                        <outlet property="settingsTable" destination="pRt-3u-oEi" id="HZQ-Jq-U9s"/>
                         <outlet property="textField" destination="w9T-O2-Ptu" id="SBs-k4-5Vg"/>
                         <outlet property="touchArea" destination="VFr-by-ckd" id="xXl-zN-frG"/>
                     </connections>

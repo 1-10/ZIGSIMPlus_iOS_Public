@@ -13,6 +13,7 @@ class CommandOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var touchArea: UIView!
 
+    @IBOutlet weak var settingsTable: UITableView!
     var settings: [String:String] = [:]
 
     var presenter: CommandOutputPresenterProtocol!
@@ -64,6 +65,7 @@ extension CommandOutputViewController: CommandOutputPresenterDelegate {
 
     func updateSettings(with newSettings: [String : String]) {
         settings = newSettings
+        settingsTable.reloadData()
     }
 }
 
