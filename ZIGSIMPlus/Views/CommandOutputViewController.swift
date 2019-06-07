@@ -67,27 +67,7 @@ extension CommandOutputViewController: CommandOutputPresenterDelegate {
     }
 }
 
-extension CommandOutputViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let cell = tableView.cellForRow(at: indexPath) {
-//            tableView.deselectRow(at: indexPath, animated: true)
-//            presenter.didSelectRow(atLabel: (cell.textLabel?.text)!)
-//            cell.accessoryType = (cell.accessoryType == .checkmark ? .none : .checkmark)
-//        }
-//    }
-
-    // Disallow selecting unavailable command
-//    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        if let cell = tableView.cellForRow(at: indexPath) {
-//            let ip = tableView.indexPath(for: cell)!
-//            let CommandToSelect = presenter.getCommandToSelect(forRow: ip.row)
-//            if !CommandToSelect.isAvailable {
-//                return nil
-//            }
-//        }
-//        return indexPath
-//    }
-}
+extension CommandOutputViewController: UITableViewDelegate {}
 
 extension CommandOutputViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,11 +77,12 @@ extension CommandOutputViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
 
-        let key = [String](settings.keys)[indexPath.row]
-        let value = settings[key]
+        if let c = cell as? CommandOutputViewSettingsTableCell {
+            let key = [String](settings.keys)[indexPath.row]
+            let value = settings[key]
+            c.setKeyValue(key, value)
+        }
 
-        cell.textLabel!.text = key + ":" + value!
-//        cell.isUserInteractionEnabled = CommandToSelect.isAvailable
         return cell
     }
 }

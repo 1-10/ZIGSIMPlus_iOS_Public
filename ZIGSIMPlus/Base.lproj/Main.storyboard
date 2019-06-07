@@ -459,20 +459,53 @@
                                     <segue destination="DBP-kb-Ioh" kind="embed" id="GEr-8N-jeF"/>
                                 </connections>
                             </containerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pRt-3u-oEi" userLabel="Settings Table">
-                                <rect key="frame" x="16" y="44" width="382" height="200"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pRt-3u-oEi" userLabel="Settings Table">
+                                <rect key="frame" x="16" y="52" width="382" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="EX4-pP-biJ"/>
+                                    <constraint firstAttribute="height" constant="150" id="EX4-pP-biJ"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" id="hIK-hM-KsR" userLabel="SettingCell">
-                                        <rect key="frame" x="0.0" y="28" width="382" height="40"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" id="hIK-hM-KsR" userLabel="SettingCell" customClass="CommandOutputViewSettingsTableCell" customModule="ZIGSIMPlus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="382" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hIK-hM-KsR" id="HKm-9W-xZe">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="39.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74Q-2M-xNe" userLabel="SettingKey">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="20"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="NhB-lG-oNC"/>
+                                                        <constraint firstAttribute="height" constant="20" id="kr2-rH-8Da"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kds-WB-sXb" userLabel="SettingValue">
+                                                    <rect key="frame" x="158" y="0.0" width="224" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="9S5-TK-1jh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Kds-WB-sXb" secondAttribute="trailing" id="ElP-De-zPx"/>
+                                                <constraint firstItem="Kds-WB-sXb" firstAttribute="top" secondItem="HKm-9W-xZe" secondAttribute="top" id="J8I-6i-g3B"/>
+                                                <constraint firstItem="74Q-2M-xNe" firstAttribute="leading" secondItem="HKm-9W-xZe" secondAttribute="leading" id="Ojc-cj-EDH"/>
+                                                <constraint firstItem="74Q-2M-xNe" firstAttribute="top" secondItem="HKm-9W-xZe" secondAttribute="top" id="bPu-3B-07o"/>
+                                                <constraint firstItem="Kds-WB-sXb" firstAttribute="leading" secondItem="74Q-2M-xNe" secondAttribute="trailing" constant="8" id="uk5-hE-rn3"/>
+                                                <constraint firstItem="74Q-2M-xNe" firstAttribute="leading" secondItem="HKm-9W-xZe" secondAttribute="leading" id="uzL-TW-ilO"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="settingKeyLabel" destination="74Q-2M-xNe" id="5t6-i0-CPp"/>
+                                            <outlet property="settingValueLabel" destination="Kds-WB-sXb" id="F1x-AO-bkM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -481,7 +514,7 @@
                                 </connections>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-O2-Ptu">
-                                <rect key="frame" x="16" y="244" width="382" height="569"/>
+                                <rect key="frame" x="16" y="202" width="382" height="611"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -503,7 +536,7 @@
                             <constraint firstItem="VFr-by-ckd" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="BR2-iH-vbf"/>
                             <constraint firstItem="QnG-HF-yg8" firstAttribute="leading" secondItem="wNG-or-TOh" secondAttribute="leading" constant="16" id="MWN-kY-KmV"/>
                             <constraint firstItem="VFr-by-ckd" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" id="Twj-MF-agV"/>
-                            <constraint firstItem="pRt-3u-oEi" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" id="V3Z-9S-xZ0"/>
+                            <constraint firstItem="pRt-3u-oEi" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" constant="8" id="V3Z-9S-xZ0"/>
                             <constraint firstItem="QnG-HF-yg8" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="W3Y-hN-XCI"/>
                             <constraint firstItem="w9T-O2-Ptu" firstAttribute="top" secondItem="pRt-3u-oEi" secondAttribute="bottom" id="Zl1-Td-v4b"/>
                             <constraint firstItem="w9T-O2-Ptu" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="dET-yb-enz"/>
