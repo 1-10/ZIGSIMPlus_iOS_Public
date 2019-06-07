@@ -459,8 +459,29 @@
                                     <segue destination="DBP-kb-Ioh" kind="embed" id="GEr-8N-jeF"/>
                                 </connections>
                             </containerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pRt-3u-oEi" userLabel="Settings Table">
+                                <rect key="frame" x="16" y="44" width="382" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="EX4-pP-biJ"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" id="hIK-hM-KsR" userLabel="SettingCell">
+                                        <rect key="frame" x="0.0" y="28" width="382" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hIK-hM-KsR" id="HKm-9W-xZe">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="39.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="AD7-px-bC2" id="R4t-2t-eVZ"/>
+                                    <outlet property="delegate" destination="AD7-px-bC2" id="8eQ-W4-eH2"/>
+                                </connections>
+                            </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-O2-Ptu">
-                                <rect key="frame" x="16" y="44" width="382" height="769"/>
+                                <rect key="frame" x="16" y="244" width="382" height="569"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -476,14 +497,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="wNG-or-TOh" firstAttribute="trailing" secondItem="pRt-3u-oEi" secondAttribute="trailing" constant="16" id="1Ac-Qa-hwQ"/>
                             <constraint firstItem="w9T-O2-Ptu" firstAttribute="leading" secondItem="wNG-or-TOh" secondAttribute="leading" constant="16" id="4kM-Wz-6he"/>
                             <constraint firstItem="VFr-by-ckd" firstAttribute="leading" secondItem="wNG-or-TOh" secondAttribute="leading" constant="16" id="AzF-iW-5IK"/>
                             <constraint firstItem="VFr-by-ckd" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="BR2-iH-vbf"/>
                             <constraint firstItem="QnG-HF-yg8" firstAttribute="leading" secondItem="wNG-or-TOh" secondAttribute="leading" constant="16" id="MWN-kY-KmV"/>
                             <constraint firstItem="VFr-by-ckd" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" id="Twj-MF-agV"/>
+                            <constraint firstItem="pRt-3u-oEi" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" id="V3Z-9S-xZ0"/>
                             <constraint firstItem="QnG-HF-yg8" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="W3Y-hN-XCI"/>
-                            <constraint firstItem="w9T-O2-Ptu" firstAttribute="top" secondItem="wNG-or-TOh" secondAttribute="top" id="cb3-hL-JhH"/>
+                            <constraint firstItem="w9T-O2-Ptu" firstAttribute="top" secondItem="pRt-3u-oEi" secondAttribute="bottom" id="Zl1-Td-v4b"/>
                             <constraint firstItem="w9T-O2-Ptu" firstAttribute="bottom" secondItem="wNG-or-TOh" secondAttribute="bottom" id="dET-yb-enz"/>
+                            <constraint firstItem="pRt-3u-oEi" firstAttribute="leading" secondItem="wNG-or-TOh" secondAttribute="leading" constant="16" id="nmw-Mg-E1r"/>
                             <constraint firstItem="wNG-or-TOh" firstAttribute="trailing" secondItem="VFr-by-ckd" secondAttribute="trailing" constant="16" id="qoH-lr-QDv"/>
                             <constraint firstItem="wNG-or-TOh" firstAttribute="trailing" secondItem="QnG-HF-yg8" secondAttribute="trailing" constant="16" id="rt4-cR-bFh"/>
                             <constraint firstItem="wNG-or-TOh" firstAttribute="trailing" secondItem="w9T-O2-Ptu" secondAttribute="trailing" constant="16" id="w3E-bs-oOu"/>

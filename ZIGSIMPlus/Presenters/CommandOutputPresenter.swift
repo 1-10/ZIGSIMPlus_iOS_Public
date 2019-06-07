@@ -16,6 +16,7 @@ protocol CommandOutputPresenterProtocol {
 
 protocol CommandOutputPresenterDelegate: AnyObject {
     func updateOutput(with output: String)
+    func updateSettings(with settings: [String:String])
 }
 
 final class CommandOutputPresenter: CommandOutputPresenterProtocol {
@@ -40,6 +41,9 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
         mediator.startActiveCommands()
         ServiceManager.shared.send()
         updateOutput()
+
+        let settings = AppSettingModel.shared.getSettingsForOutput()
+        view.updateSettings(with: settings)
     }
 
     // MARK: Monitor commands
