@@ -53,10 +53,10 @@
             <connections>
                 <outlet property="commandLabel" destination="Mgt-VT-WPX" id="jLs-bB-s63"/>
                 <outlet property="commandOnOff" destination="BVu-z1-Bz9" id="IFX-3F-uqV"/>
+                <outlet property="detaileButton" destination="0QB-qM-gp6" id="VVM-w2-7xd"/>
                 <outlet property="modalButton" destination="Yaz-2Y-K3N" id="gi6-hP-tIO"/>
-                <outlet property="settingButton" destination="0QB-qM-gp6" id="qU0-0k-e59"/>
             </connections>
-            <point key="canvasLocation" x="-475" y="-55"/>
+            <point key="canvasLocation" x="-632" y="-52"/>
         </tableViewCell>
     </objects>
 </document>

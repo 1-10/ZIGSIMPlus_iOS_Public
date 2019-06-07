@@ -12,7 +12,6 @@ import MediaPlayer
 class CommandOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
     
-
     var presenter: CommandOutputPresenterProtocol!
 
     override func viewDidLoad() {

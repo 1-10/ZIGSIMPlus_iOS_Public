@@ -10,40 +10,53 @@ import UIKit
 
 typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
+let commandsLavel:[Int: Command] = [
+    0: Command.acceleration,
+    1: Command.gravity,
+    2: Command.gyro,
+    3: Command.quaternion,
+    4: Command.compass,
+    5: Command.pressure,
+    6: Command.gps,
+    7: Command.touch,
+    8: Command.beacon,
+    9: Command.proximity,
+    10: Command.micLevel,
+    11: Command.remoteControl,
+    12: Command.ndi,
+    13: Command.nfc,
+    14: Command.arkit,
+    15: Command.faceTracking,
+    16: Command.battery,
+    17: Command.applePencil
+]
+
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var backButtonLabel: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var modalLabel: UILabel!
+    @IBOutlet weak var modalButton: UIButton!
+    @IBOutlet weak var ndiDetaileView: UIView!
+    @IBOutlet weak var compassDetaileView: UIView!
+    
     var presenter: CommandSelectionPresenterProtocol!
-    let commandsLavel:[Int: Command] = [
-        0: Command.acceleration,
-        1: Command.gravity,
-        2: Command.gyro,
-        3: Command.quaternion,
-        4: Command.compass,
-        5: Command.pressure,
-        6: Command.gps,
-        7: Command.touch,
-        8: Command.beacon,
-        9: Command.proximity,
-        10: Command.micLevel,
-        11: Command.remoteControl,
-        12: Command.ndi,
-        13: Command.nfc,
-        14: Command.arkit,
-        15: Command.faceTracking,
-        16: Command.battery,
-        17: Command.applePencil
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButtonLabel.isHidden = true
+        backButton.isHidden = true
+        modalLabel.isHidden = true
+        modalButton.isHidden = true
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
     }
     
-    @IBAction func backButon(_ sender: UIButton) {
-        tableView.isHidden = false
-        backButtonLabel.isHidden = true
+    @IBAction func actionButton(_ sender: UIButton) {
+        if sender.restorationIdentifier! == "modalButton" {
+            modalLabel.isHidden = true
+            modalButton.isHidden = true
+        } else if sender.restorationIdentifier! == "backButton" {
+            tableView.isHidden = false
+            backButton.isHidden = true
+        }
     }
 }
 
@@ -72,17 +85,25 @@ extension CommandSelectionViewController: UITableViewDataSource {
         let CommandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
         
+        // Set cells action & style
         cell.isUserInteractionEnabled = CommandToSelect.isAvailable
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        
+        // Set cells variable
+        cell.commandsLabel = commandsLavel
         cell.commandLabel.text = CommandToSelect.labelString
         cell.commandOnOff.tag = indexPath.row
+        cell.viewController = self
         cell.commandSelectionPresenter = self.presenter
         cell.tableview = self.tableView
-        cell.viewController = self
-        cell.commandsLabel = self.commandsLavel
-        cell.backButtonLabel = self.backButtonLabel
-        cell.settingButton.isHidden = false
+        cell.ndiDetaileView = self.ndiDetaileView
+        cell.compassDetaileView = self.compassDetaileView
+        cell.modalParentLabel = self.modalLabel
+        cell.modalParentButton = self.modalButton
+        cell.backButtonLabel = self.backButton
         
+        // Set cells detaile button to visible or invisible
+        cell.detaileButton.isHidden = false
         if CommandToSelect.labelString == Command.acceleration.rawValue ||
            CommandToSelect.labelString == Command.gravity.rawValue ||
            CommandToSelect.labelString == Command.gyro.rawValue ||
@@ -93,9 +114,10 @@ extension CommandSelectionViewController: UITableViewDataSource {
            CommandToSelect.labelString == Command.proximity.rawValue ||
            CommandToSelect.labelString == Command.micLevel.rawValue ||
            CommandToSelect.labelString == Command.remoteControl.rawValue {
-           cell.settingButton.isHidden = true
+           cell.detaileButton.isHidden = true
         }
         
+        // Make an ajustment table view screen
         if AppSettingModel.shared.isActiveByCommand[commandsLavel[indexPath.row]!] == true {
             cell.commandOnOff.isOn = true
         } else {
@@ -103,7 +125,6 @@ extension CommandSelectionViewController: UITableViewDataSource {
         }
         
         return cell
-        
     }
 }
 

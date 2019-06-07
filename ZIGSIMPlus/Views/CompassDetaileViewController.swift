@@ -1,15 +1,16 @@
 //
-//  CommandDetaileViewController.swift
+//  CompassDetaileViewController.swift
 //  ZIGSIMPlus
 //
-//  Created by YoneyamaShunpei on 2019/06/06.
+//  Created by YoneyamaShunpei on 2019/06/07.
 //  Copyright © 2019 Nozomu Kuwae. All rights reserved.
 //
 
 import Foundation
+
 import UIKit
 
-public class CommandDetaileViewController : UIViewController {
+public class CompassDetaileViewController : UIViewController {
     
     @IBOutlet weak var segmentLabel: UILabel!
     @IBOutlet weak var segment: UISegmentedControl!
@@ -19,11 +20,6 @@ public class CommandDetaileViewController : UIViewController {
     }
     
     @IBAction func segmentAction(_ sender: UISegmentedControl) {
-        
+
     }
-    
-//    @IBAction func back(_ sender: UIButton) {
-//        let parentVC = self.parent as! CommandSelectionViewController
-//        parentVC.tableView.isHidden = false
-//    }
 }

@@ -13,11 +13,16 @@ public class StandardCell: UITableViewCell {
    
     @IBOutlet weak var commandOnOff: UISwitch!
     @IBOutlet weak var commandLabel: UILabel!
-    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var detaileButton: UIButton!
     @IBOutlet weak var modalButton: UIButton!
+    
     
     var commandSelectionPresenter: CommandSelectionPresenterProtocol!
     var tableview: UITableView!
+    var ndiDetaileView: UIView!
+    var compassDetaileView: UIView!
+    var modalParentLabel: UILabel!
+    var modalParentButton: UIButton!
     var viewController: UIViewController!
     var backButtonLabel: UIButton!
     var commandsLabel:[Int: Command]!
@@ -27,13 +32,21 @@ public class StandardCell: UITableViewCell {
     }
     
     @IBAction func settingButtonAction(_ sender: UIButton) {
-        tableview.isHidden = true
         backButtonLabel.isHidden = false
+        tableview.isHidden = true
+        ndiDetaileView.isHidden = true
+        compassDetaileView.isHidden = true
+
+        if commandOnOff.tag == 4 {
+            compassDetaileView.isHidden = false
+        } else if commandOnOff.tag == 12 {
+            ndiDetaileView.isHidden = false
+        }
     }
     
     @IBAction func modalButtonAction(_ sender: UIButton) {
-        
+        modalParentButton.isHidden = false
+        modalParentLabel.isHidden = false
     }
-    
     
 }
