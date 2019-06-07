@@ -460,10 +460,10 @@
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pRt-3u-oEi" userLabel="Settings Table">
-                                <rect key="frame" x="16" y="52" width="382" height="150"/>
+                                <rect key="frame" x="16" y="52" width="382" height="180"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="EX4-pP-biJ"/>
+                                    <constraint firstAttribute="height" constant="180" id="EX4-pP-biJ"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" id="hIK-hM-KsR" userLabel="SettingCell" customClass="CommandOutputViewSettingsTableCell" customModule="ZIGSIMPlus" customModuleProvider="target">
@@ -514,7 +514,7 @@
                                 </connections>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w9T-O2-Ptu">
-                                <rect key="frame" x="16" y="202" width="382" height="611"/>
+                                <rect key="frame" x="16" y="232" width="382" height="581"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>

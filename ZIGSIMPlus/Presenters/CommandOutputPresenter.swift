@@ -16,7 +16,7 @@ protocol CommandOutputPresenterProtocol {
 
 protocol CommandOutputPresenterDelegate: AnyObject {
     func updateOutput(with output: String)
-    func updateSettings(with settings: [String:String])
+    func updateSettings(with settings: [(String, String)])
 }
 
 final class CommandOutputPresenter: CommandOutputPresenterProtocol {

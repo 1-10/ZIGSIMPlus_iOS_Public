@@ -14,7 +14,7 @@ class CommandOutputViewController: UIViewController {
     @IBOutlet weak var touchArea: UIView!
 
     @IBOutlet weak var settingsTable: UITableView!
-    var settings: [String:String] = [:]
+    var settings: [(String, String)] = []
 
     var presenter: CommandOutputPresenterProtocol!
 
@@ -63,7 +63,7 @@ extension CommandOutputViewController: CommandOutputPresenterDelegate {
         textField.text = output
     }
 
-    func updateSettings(with newSettings: [String : String]) {
+    func updateSettings(with newSettings: [(String, String)]) {
         settings = newSettings
         settingsTable.reloadData()
     }
@@ -80,9 +80,8 @@ extension CommandOutputViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
 
         if let c = cell as? CommandOutputViewSettingsTableCell {
-            let key = [String](settings.keys)[indexPath.row]
-            let value = settings[key]
-            c.setKeyValue(key, value)
+            let kv = settings[indexPath.row]
+            c.setKeyValue(kv.0, kv.1)
         }
 
         return cell

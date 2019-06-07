@@ -73,16 +73,18 @@ public class AppSettingModel {
         return Double(faceup)
     }
 
-    public func getSettingsForOutput() -> [String:String] {
+    public func getSettingsForOutput() -> [(String, String)] {
+        let dst = dataDestination == .OTHER_APP ? "OTHER APP" : "LOCAL FILE"
         let prot = transportProtocol == .TCP ? "TCP" : "UDP"
         let format = transportFormat == .OSC ? "OSC" : "JSON"
 
         return [
-            "PROTOCOL": prot,
-            "IP ADDRESS": address,
-            "PORT": String(port),
-            "MESSAGE FORMAT": format,
-            "DEVICE UUID": deviceUUID,
+            ("DATA DESTINATION", dst),
+            ("PROTOCOL", prot),
+            ("IP ADDRESS", address),
+            ("PORT", String(port)),
+            ("MESSAGE FORMAT", format),
+            ("DEVICE UUID", deviceUUID),
         ]
     }
 }
