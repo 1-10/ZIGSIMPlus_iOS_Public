@@ -13,19 +13,19 @@ public class StandardCell: UITableViewCell {
    
     @IBOutlet weak var commandOnOff: UISwitch!
     @IBOutlet weak var commandLabel: UILabel!
-    @IBOutlet weak var detaileButton: UIButton!
+    @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var modalButton: UIButton!
     
     var commandSelectionPresenter: CommandSelectionPresenterProtocol!
     var viewController: UIViewController!
     
     @IBAction func commandOnOffAction(_ sender: UISwitch) {
-        commandSelectionPresenter.didSelectRow(atLabel: commandsNumber[sender.tag]!.rawValue)
+        commandSelectionPresenter.didSelectRow(atLabel: Command.allCases[sender.tag].rawValue)
     }
     
-    @IBAction func settingButtonAction(_ sender: UIButton) {
+    @IBAction func detailButtonAction(_ sender: UIButton) {
         let parent = viewController as! CommandSelectionViewController
-        parent.showDetaile(commandNo: commandOnOff.tag)
+        parent.showDetail(commandNo: commandOnOff.tag)
     }
     
     @IBAction func modalButtonAction(_ sender: UIButton) {

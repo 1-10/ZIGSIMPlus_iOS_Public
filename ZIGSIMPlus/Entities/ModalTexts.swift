@@ -8,23 +8,23 @@
 
 import Foundation
 
-let modalTexts:[Int: String] = [
-    0: "test0\naccelerationです。",
-    1: "test1\ngravityです。",
-    2: "test2\ngyroです。",
-    3: "test3\nquaternionです。",
-    4: "test4\ncompassです。",
-    5: "test5\npressureです。",
-    6: "test6\ngpsです。",
-    7: "test7\ntouchです。",
-    8: "test8\nbeaconです。",
-    9: "test9\nproximityです。",
-    10: "test10\nmicLevelです。",
-    11: "test11\nremoteControlです。",
-    12: "test12\nndiです。",
-    13: "test13\nnfcです。",
-    14: "test14\narkitです。",
-    15: "test15\nfaceTrackingです。",
-    16: "test16\nbatteryです。",
-    17: "test17\napplePencilです。"
+let modalTexts:[Command: String] = [
+    .acceleration : "test0\naccelerationです。",
+    .gravity : "test1\ngravityです。",
+    .gyro : "test2\ngyroです。",
+    .quaternion : "test3\nquaternionです。",
+    .compass : "test4\ncompassです。",
+    .pressure: "test5\npressureです。",
+    .gps : "test6\ngpsです。",
+    .touch : "test7\ntouchです。",
+    .beacon : "test8\nbeaconです。",
+    .proximity : "test9\nproximityです。",
+    .micLevel : "test10\nmicLevelです。",
+    .remoteControl : "test11\nremoteControlです。",
+    .ndi : "test12\nndiです。",
+    .nfc : "test13\nnfcです。",
+    .arkit : "test14\narkitです。",
+    .faceTracking : "test15\nfaceTrackingです。",
+    .battery : "test16\nbatteryです。",
+    .applePencil : "test17\napplePencilです。"
 ]

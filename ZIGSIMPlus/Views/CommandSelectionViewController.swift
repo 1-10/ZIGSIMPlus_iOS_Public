@@ -15,8 +15,8 @@ final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var modalLabel: UILabel!
     @IBOutlet weak var modalButton: UIButton!
-    @IBOutlet weak var ndiDetaileView: UIView!
-    @IBOutlet weak var compassDetaileView: UIView!
+    @IBOutlet weak var ndiDetailView: UIView!
+    @IBOutlet weak var compassDetailView: UIView!
     
     var presenter: CommandSelectionPresenterProtocol!
     
@@ -28,25 +28,27 @@ final class CommandSelectionViewController: UIViewController {
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
     }
     
+    
     @IBAction func actionButton(_ sender: UIButton) {
-        if sender.restorationIdentifier! == "modalButton" {
+        if sender.tag == 0 { // sender.tag == 0 is "modalButton"
             modalLabel.isHidden = true
             modalButton.isHidden = true
-        } else if sender.restorationIdentifier! == "backButton" {
+        } else if sender.tag == 1 { // sender.tag == 1 is "backButton"
             tableView.isHidden = false
             backButton.isHidden = true
         }
     }
     
-    func showDetaile(commandNo: Int) {
+    func showDetail(commandNo: Int) {
         backButton.isHidden = false
         tableView.isHidden = true
-        ndiDetaileView.isHidden = true
-        compassDetaileView.isHidden = true
-        if commandNo == 4 {
-            compassDetaileView.isHidden = false
-        } else if commandNo == 12 {
-            ndiDetaileView.isHidden = false
+        ndiDetailView.isHidden = true
+        compassDetailView.isHidden = true
+        let command = Command.allCases[commandNo]
+        if command == .compass {
+            compassDetailView.isHidden = false
+        } else if command == .ndi {
+            ndiDetailView.isHidden = false
         }
     }
     
@@ -54,7 +56,8 @@ final class CommandSelectionViewController: UIViewController {
         modalLabel.isHidden = false
         modalButton.isHidden = false
         modalLabel.numberOfLines = 10
-        modalLabel.text = modalTexts[commandNo]
+        let command = Command.allCases[commandNo]
+        modalLabel.text = modalTexts[command]
     }
 }
 
@@ -83,19 +86,19 @@ extension CommandSelectionViewController: UITableViewDataSource {
         let CommandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
         
-        // Set cells action & style
+        // Set cell's action & style
         cell.isUserInteractionEnabled = CommandToSelect.isAvailable
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
-        // Set cells variable
+        // Set cell's variable
         cell.commandLabel.text = CommandToSelect.labelString
         cell.commandLabel.tag = indexPath.row
         cell.commandOnOff.tag = indexPath.row
         cell.viewController = self
         cell.commandSelectionPresenter = self.presenter
         
-        // Set cells detaile button to visible or invisible
-        cell.detaileButton.isHidden = false
+        // Set cell's detail button to visible or invisible
+        cell.detailButton.isHidden = false
         if CommandToSelect.labelString == Command.acceleration.rawValue ||
            CommandToSelect.labelString == Command.gravity.rawValue ||
            CommandToSelect.labelString == Command.gyro.rawValue ||
@@ -106,11 +109,11 @@ extension CommandSelectionViewController: UITableViewDataSource {
            CommandToSelect.labelString == Command.proximity.rawValue ||
            CommandToSelect.labelString == Command.micLevel.rawValue ||
            CommandToSelect.labelString == Command.remoteControl.rawValue {
-           cell.detaileButton.isHidden = true
+           cell.detailButton.isHidden = true
         }
-        
-        // Make an ajustment table view screen
-        if AppSettingModel.shared.isActiveByCommand[commandsNumber[indexPath.row]!] == true {
+
+        // Make an adjustment table view screen
+        if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] == true {
             cell.commandOnOff.isOn = true
         } else {
             cell.commandOnOff.isOn = false

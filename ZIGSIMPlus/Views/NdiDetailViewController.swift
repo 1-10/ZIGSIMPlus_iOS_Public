@@ -1,16 +1,15 @@
 //
-//  CompassDetaileViewController.swift
+//  NdiDetailViewController.swift
 //  ZIGSIMPlus
 //
-//  Created by YoneyamaShunpei on 2019/06/07.
+//  Created by YoneyamaShunpei on 2019/06/06.
 //  Copyright © 2019 Nozomu Kuwae. All rights reserved.
 //
 
 import Foundation
-
 import UIKit
 
-public class CompassDetaileViewController : UIViewController {
+public class NdiDetailViewController : UIViewController {
     
     @IBOutlet weak var segmentLabel: UILabel!
     @IBOutlet weak var segment: UISegmentedControl!
@@ -20,6 +19,6 @@ public class CompassDetaileViewController : UIViewController {
     }
     
     @IBAction func segmentAction(_ sender: UISegmentedControl) {
-
+        
     }
 }
