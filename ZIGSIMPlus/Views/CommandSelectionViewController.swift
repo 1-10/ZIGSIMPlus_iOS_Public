@@ -86,8 +86,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         let CommandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
         
-        // Set cell's action & style
-        cell.isUserInteractionEnabled = CommandToSelect.isAvailable
+        // Set cell's tap action style
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         // Set cell's variable
