@@ -53,6 +53,7 @@
 		B3C6588722A9022600B4358B /* StandardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C6588622A9022600B4358B /* StandardCell.xib */; };
 		B3C6588922A9028500B4358B /* StandardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6588822A9028500B4358B /* StandardCell.swift */; };
 		B3C6588B22A911B300B4358B /* NdiDetaileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6588A22A911B300B4358B /* NdiDetaileViewController.swift */; };
+		B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFE5B722ADF436009664C0 /* ModalTexts.swift */; };
 		FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +148,7 @@
 		B3C6588622A9022600B4358B /* StandardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardCell.xib; sourceTree = "<group>"; };
 		B3C6588822A9028500B4358B /* StandardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCell.swift; sourceTree = "<group>"; };
 		B3C6588A22A911B300B4358B /* NdiDetaileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdiDetaileViewController.swift; sourceTree = "<group>"; };
+		B3CFE5B722ADF436009664C0 /* ModalTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTexts.swift; sourceTree = "<group>"; };
 		BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZIGSIMPlusUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -407,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				9092E4CB227EBF4D0019F1C1 /* Command.swift */,
+				B3CFE5B722ADF436009664C0 /* ModalTexts.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				638345F422A6832700370600 /* NFCService.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
 				B3979A7922AA834F0097F5FC /* CompassDetaileViewController.swift in Sources */,
+				B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
 				02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */,
 				02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */,

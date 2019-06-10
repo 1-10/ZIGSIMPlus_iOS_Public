@@ -10,27 +10,6 @@ import UIKit
 
 typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
-let commandsLavel:[Int: Command] = [
-    0: Command.acceleration,
-    1: Command.gravity,
-    2: Command.gyro,
-    3: Command.quaternion,
-    4: Command.compass,
-    5: Command.pressure,
-    6: Command.gps,
-    7: Command.touch,
-    8: Command.beacon,
-    9: Command.proximity,
-    10: Command.micLevel,
-    11: Command.remoteControl,
-    12: Command.ndi,
-    13: Command.nfc,
-    14: Command.arkit,
-    15: Command.faceTracking,
-    16: Command.battery,
-    17: Command.applePencil
-]
-
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
@@ -57,6 +36,25 @@ final class CommandSelectionViewController: UIViewController {
             tableView.isHidden = false
             backButton.isHidden = true
         }
+    }
+    
+    func showDetaile(commandNo: Int) {
+        backButton.isHidden = false
+        tableView.isHidden = true
+        ndiDetaileView.isHidden = true
+        compassDetaileView.isHidden = true
+        if commandNo == 4 {
+            compassDetaileView.isHidden = false
+        } else if commandNo == 12 {
+            ndiDetaileView.isHidden = false
+        }
+    }
+    
+    func showModal(commandNo: Int) {
+        modalLabel.isHidden = false
+        modalButton.isHidden = false
+        modalLabel.numberOfLines = 10
+        modalLabel.text = modalTexts[commandNo]
     }
 }
 
@@ -90,17 +88,11 @@ extension CommandSelectionViewController: UITableViewDataSource {
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         // Set cells variable
-        cell.commandsLabel = commandsLavel
         cell.commandLabel.text = CommandToSelect.labelString
+        cell.commandLabel.tag = indexPath.row
         cell.commandOnOff.tag = indexPath.row
         cell.viewController = self
         cell.commandSelectionPresenter = self.presenter
-        cell.tableview = self.tableView
-        cell.ndiDetaileView = self.ndiDetaileView
-        cell.compassDetaileView = self.compassDetaileView
-        cell.modalParentLabel = self.modalLabel
-        cell.modalParentButton = self.modalButton
-        cell.backButtonLabel = self.backButton
         
         // Set cells detaile button to visible or invisible
         cell.detaileButton.isHidden = false
@@ -118,7 +110,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         }
         
         // Make an ajustment table view screen
-        if AppSettingModel.shared.isActiveByCommand[commandsLavel[indexPath.row]!] == true {
+        if AppSettingModel.shared.isActiveByCommand[commandsNumber[indexPath.row]!] == true {
             cell.commandOnOff.isOn = true
         } else {
             cell.commandOnOff.isOn = false
