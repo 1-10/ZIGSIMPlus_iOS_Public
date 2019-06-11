@@ -1,0 +1,6 @@
+framework module DeviceKit {
+  umbrella header "DeviceKit-framework-umbrella.h"
+
+  export *
+  module * { export * }
+}

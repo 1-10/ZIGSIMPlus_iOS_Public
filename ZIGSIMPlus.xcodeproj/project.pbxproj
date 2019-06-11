@@ -7,42 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0236461B2298253900171F73 /* NDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* NDI.swift */; };
+		0212CDAF22A6219E00A83C16 /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0212CDAE22A6219E00A83C16 /* MotionService.swift */; };
+		0212CDB322A6356500A83C16 /* NDIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0212CDB222A6356500A83C16 /* NDIViewController.swift */; };
+		0236461B2298253900171F73 /* NDIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* NDIService.swift */; };
 		0236461C2298253900171F73 /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 023644BF2298253800171F73 /* libndi_ios.a */; };
 		0236461D2298253900171F73 /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 023644C32298253800171F73 /* NDI.cpp */; };
 		0236461E2298253900171F73 /* NDIAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 023644C42298253800171F73 /* NDIAdapter.mm */; };
-		02364621229825B900171F73 /* NdiMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02364620229825B900171F73 /* NdiMonitoringCommand.swift */; };
 		023BB10622965B490094363B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10522965B490094363B /* Utils.swift */; };
-		023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */; };
-		02A0358D229CD53C00E7399E /* AltimeterMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0358C229CD53C00E7399E /* AltimeterMonitoringCommand.swift */; };
-		02A03590229CD54D00E7399E /* MicLevelMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0358E229CD54D00E7399E /* MicLevelMonitoringCommand.swift */; };
-		02A03593229CD55A00E7399E /* ProximityMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03592229CD55A00E7399E /* ProximityMonitoringCommand.swift */; };
-		02A03597229CD56E00E7399E /* AltimeterDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03594229CD56D00E7399E /* AltimeterDataStore.swift */; };
-		02A03598229CD56E00E7399E /* AudioLevelDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03595229CD56E00E7399E /* AudioLevelDataStore.swift */; };
-		02A03599229CD56E00E7399E /* ProximityDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03596229CD56E00E7399E /* ProximityDataStore.swift */; };
-		02A0359B229CD6F800E7399E /* CommandDataSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0359A229CD6F800E7399E /* CommandDataSettingViewController.swift */; };
-		02A8FA882296B62D001FB3DD /* TouchDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA832296B62D001FB3DD /* TouchDataStore.swift */; };
-		02A8FA892296B62D001FB3DD /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA842296B62D001FB3DD /* LocationDataStore.swift */; };
-		02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA862296B62D001FB3DD /* MiscDataStore.swift */; };
-		02A8FA8C2296B62D001FB3DD /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA872296B62D001FB3DD /* StoreManager.swift */; };
+		02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */; };
+		02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5322A4F9140071E9D2 /* StringExtension.swift */; };
+		02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */; };
+		02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */; };
+		0274B66322A0FD00005D7266 /* RemoteControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274B66222A0FD00005D7266 /* RemoteControlService.swift */; };
+		0281B29722A6791500ED97D9 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */; };
+		02A03597229CD56E00E7399E /* AltimeterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03594229CD56D00E7399E /* AltimeterService.swift */; };
+		02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03595229CD56E00E7399E /* AudioLevelService.swift */; };
+		02A03599229CD56E00E7399E /* ProximityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03596229CD56E00E7399E /* ProximityService.swift */; };
+		02A0359B229CD6F800E7399E /* CommandSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0359A229CD6F800E7399E /* CommandSettingViewController.swift */; };
+		02A8FA882296B62D001FB3DD /* TouchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA832296B62D001FB3DD /* TouchService.swift */; };
+		02A8FA892296B62D001FB3DD /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA842296B62D001FB3DD /* LocationService.swift */; };
+		02A8FA8B2296B62D001FB3DD /* BatteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA862296B62D001FB3DD /* BatteryService.swift */; };
+		02A8FA8C2296B62D001FB3DD /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA872296B62D001FB3DD /* ServiceManager.swift */; };
 		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
-		02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */; };
-		02F0DBE8229E203C00D45E56 /* RemoteControlCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBE7229E203C00D45E56 /* RemoteControlCommand.swift */; };
-		02F0DBEA229F774800D45E56 /* RemoteControlDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBE9229F774800D45E56 /* RemoteControlDataStore.swift */; };
+		02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */; };
+		02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */; };
+		36E36AC1EC5984082F26816B /* libPods-ZIGSIMPlusUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */; };
 		515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */; };
-		634B8D93228565F00043607D /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B8D92228565F00043607D /* Command.swift */; };
-		63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */; };
-		63E57859229697E800C6340C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E57858229697E800C6340C /* StringExtension.swift */; };
+		638345F422A6832700370600 /* NFCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638345F322A6832700370600 /* NFCService.swift */; };
+		63A6192B22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */; };
+		63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A6192C22A79EDF00B015DE /* CoreNFC.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		63C02A2C2293D97700551E2F /* CommandAndServiceMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */; };
 		63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E5785A2296991400C6340C /* StringExtensionTests.swift */; };
-		7C92CDE0A0952FD97D6D8271 /* Pods_ZIGSIMPlusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */; };
 		902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9C9227BE68D008F1650 /* AppDelegate.swift */; };
-		902EB9CC227BE68D008F1650 /* CommandDataSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */; };
+		902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */; };
 		902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9CD227BE68D008F1650 /* Main.storyboard */; };
 		902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9D0227BE68F008F1650 /* Assets.xcassets */; };
 		902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */; };
 		902EB9EA227BE68F008F1650 /* ZIGSIMPlusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9E9227BE68F008F1650 /* ZIGSIMPlusUITests.swift */; };
-		902EB9FA227BED1B008F1650 /* CommandDataSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */; };
+		902EB9FA227BED1B008F1650 /* CommandSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9F9227BED1B008F1650 /* CommandSelectionPresenter.swift */; };
 		903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903BA770227D6C2100A2C378 /* AppSettingModel.swift */; };
+<<<<<<< HEAD
 		9092E4CA227D8ADF0019F1C1 /* CommandDataOutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */; };
 		9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4CB227EBF4D0019F1C1 /* LabelConstants.swift */; };
 		9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */; };
@@ -54,6 +58,17 @@
 		B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */; };
 		B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */; };
 		B39E8BDE229D0A28002700FF /* CommandDataSettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E8BDD229D0A28002700FF /* CommandDataSettingPresenter.swift */; };
+=======
+		9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */; };
+		9092E4CC227EBF4D0019F1C1 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4CB227EBF4D0019F1C1 /* Command.swift */; };
+		9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */; };
+		B3979A7922AA834F0097F5FC /* CompassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */; };
+		B3C6588722A9022600B4358B /* StandardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C6588622A9022600B4358B /* StandardCell.xib */; };
+		B3C6588922A9028500B4358B /* StandardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6588822A9028500B4358B /* StandardCell.swift */; };
+		B3C6588B22A911B300B4358B /* NdiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6588A22A911B300B4358B /* NdiDetailViewController.swift */; };
+		B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFE5B722ADF436009664C0 /* ModalTexts.swift */; };
+		B3CFE5BA22AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */; };
+>>>>>>> master
 		FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +91,9 @@
 
 /* Begin PBXFileReference section */
 		00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.release.xcconfig"; sourceTree = "<group>"; };
-		023644AE2298253800171F73 /* NDI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDI.swift; sourceTree = "<group>"; };
+		0212CDAE22A6219E00A83C16 /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
+		0212CDB222A6356500A83C16 /* NDIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDIViewController.swift; sourceTree = "<group>"; };
+		023644AE2298253800171F73 /* NDIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDIService.swift; sourceTree = "<group>"; };
 		023644B12298253800171F73 /* Processing.NDI.compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.compat.h; sourceTree = "<group>"; };
 		023644B22298253800171F73 /* Processing.NDI.utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.utilities.h; sourceTree = "<group>"; };
 		023644B32298253800171F73 /* Processing.NDI.Recv.ex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Recv.ex.h; sourceTree = "<group>"; };
@@ -96,35 +113,36 @@
 		023644C32298253800171F73 /* NDI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NDI.cpp; sourceTree = "<group>"; };
 		023644C42298253800171F73 /* NDIAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NDIAdapter.mm; sourceTree = "<group>"; };
 		0236461F2298257500171F73 /* ZIGSIMPlus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZIGSIMPlus-Bridging-Header.h"; sourceTree = "<group>"; };
-		02364620229825B900171F73 /* NdiMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NdiMonitoringCommand.swift; sourceTree = "<group>"; };
 		023BB10522965B490094363B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		023BB10722965B5A0094363B /* BeaconMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconMonitoringCommand.swift; sourceTree = "<group>"; };
-		02A0358C229CD53C00E7399E /* AltimeterMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterMonitoringCommand.swift; sourceTree = "<group>"; };
-		02A0358E229CD54D00E7399E /* MicLevelMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicLevelMonitoringCommand.swift; sourceTree = "<group>"; };
-		02A03592229CD55A00E7399E /* ProximityMonitoringCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityMonitoringCommand.swift; sourceTree = "<group>"; };
-		02A03594229CD56D00E7399E /* AltimeterDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterDataStore.swift; sourceTree = "<group>"; };
-		02A03595229CD56E00E7399E /* AudioLevelDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLevelDataStore.swift; sourceTree = "<group>"; };
-		02A03596229CD56E00E7399E /* ProximityDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityDataStore.swift; sourceTree = "<group>"; };
-		02A0359A229CD6F800E7399E /* CommandDataSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDataSettingViewController.swift; sourceTree = "<group>"; };
-		02A8FA832296B62D001FB3DD /* TouchDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDataStore.swift; sourceTree = "<group>"; };
-		02A8FA842296B62D001FB3DD /* LocationDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataStore.swift; sourceTree = "<group>"; };
-		02A8FA862296B62D001FB3DD /* MiscDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscDataStore.swift; sourceTree = "<group>"; };
-		02A8FA872296B62D001FB3DD /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		02621F5322A4F9140071E9D2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
+		02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSettingPresenter.swift; sourceTree = "<group>"; };
+		0274B66222A0FD00005D7266 /* RemoteControlService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlService.swift; sourceTree = "<group>"; };
+		0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
+		02A03594229CD56D00E7399E /* AltimeterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterService.swift; sourceTree = "<group>"; };
+		02A03595229CD56E00E7399E /* AudioLevelService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLevelService.swift; sourceTree = "<group>"; };
+		02A03596229CD56E00E7399E /* ProximityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityService.swift; sourceTree = "<group>"; };
+		02A0359A229CD6F800E7399E /* CommandSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSettingViewController.swift; sourceTree = "<group>"; };
+		02A8FA832296B62D001FB3DD /* TouchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchService.swift; sourceTree = "<group>"; };
+		02A8FA842296B62D001FB3DD /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		02A8FA862296B62D001FB3DD /* BatteryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryService.swift; sourceTree = "<group>"; };
+		02A8FA872296B62D001FB3DD /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
-		02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMonitoringCommand.swift; sourceTree = "<group>"; };
-		02F0DBE7229E203C00D45E56 /* RemoteControlCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlCommand.swift; sourceTree = "<group>"; };
-		02F0DBE9229F774800D45E56 /* RemoteControlDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlDataStore.swift; sourceTree = "<group>"; };
-		0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitViewController.swift; sourceTree = "<group>"; };
+		02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitService.swift; sourceTree = "<group>"; };
 		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
-		634B8D92228565F00043607D /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndCommandDataMediator.swift; sourceTree = "<group>"; };
-		63E57858229697E800C6340C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZIGSIMPlus.entitlements; sourceTree = "<group>"; };
+		638345F322A6832700370600 /* NFCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCService.swift; sourceTree = "<group>"; };
+		63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTypeNameFormatExtension.swift; sourceTree = "<group>"; };
+		63A6192C22A79EDF00B015DE /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
+		63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndServiceMediator.swift; sourceTree = "<group>"; };
 		63E5785A2296991400C6340C /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		902EB9C6227BE68D008F1650 /* ZIGSIMPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIGSIMPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9C9227BE68D008F1650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSelectionViewController.swift; sourceTree = "<group>"; };
+		902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelectionViewController.swift; sourceTree = "<group>"; };
 		902EB9CE227BE68D008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		902EB9D0227BE68F008F1650 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902EB9D3227BE68F008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -134,23 +152,31 @@
 		902EB9E5227BE68F008F1650 /* ZIGSIMPlusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIGSIMPlusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9E9227BE68F008F1650 /* ZIGSIMPlusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGSIMPlusUITests.swift; sourceTree = "<group>"; };
 		902EB9EB227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSelectionPresenter.swift; sourceTree = "<group>"; };
+		902EB9F9227BED1B008F1650 /* CommandSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelectionPresenter.swift; sourceTree = "<group>"; };
 		903BA770227D6C2100A2C378 /* AppSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingModel.swift; sourceTree = "<group>"; };
-		9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataOutputViewController.swift; sourceTree = "<group>"; };
-		9092E4CB227EBF4D0019F1C1 /* LabelConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelConstants.swift; sourceTree = "<group>"; };
-		9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryMonitoringCommand.swift; sourceTree = "<group>"; };
-		9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataOutputPresenter.swift; sourceTree = "<group>"; };
-		9092E4D2227EE3890019F1C1 /* MotionMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionMonitoringCommand.swift; sourceTree = "<group>"; };
+		9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputViewController.swift; sourceTree = "<group>"; };
+		9092E4CB227EBF4D0019F1C1 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputPresenter.swift; sourceTree = "<group>"; };
 		9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.release.xcconfig"; sourceTree = "<group>"; };
 		9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.release.xcconfig"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		B3411B7E22A4D65F00669DDE /* DepthMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthMonitoringCommand.swift; sourceTree = "<group>"; };
 		B369380022A0DCB700AEA16F /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		B369380222A0E47A00AEA16F /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		B394C0B422950FDB00706BB3 /* GpsMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsMonitoringCommand.swift; sourceTree = "<group>"; };
 		B394C0B62295100500706BB3 /* CompassMonitoringCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassMonitoringCommand.swift; sourceTree = "<group>"; };
 		B39E8BDD229D0A28002700FF /* CommandDataSettingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSettingPresenter.swift; sourceTree = "<group>"; };
+=======
+		B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassDetailViewController.swift; sourceTree = "<group>"; };
+		B3C6588622A9022600B4358B /* StandardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardCell.xib; sourceTree = "<group>"; };
+		B3C6588822A9028500B4358B /* StandardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCell.swift; sourceTree = "<group>"; };
+		B3C6588A22A911B300B4358B /* NdiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdiDetailViewController.swift; sourceTree = "<group>"; };
+		B3CFE5B722ADF436009664C0 /* ModalTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTexts.swift; sourceTree = "<group>"; };
+		B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutputViewSettingsTableCell.swift; sourceTree = "<group>"; };
+>>>>>>> master
 		BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZIGSIMPlusUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */,
 				FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */,
 				0236461C2298253900171F73 /* libndi_ios.a in Frameworks */,
 			);
@@ -175,7 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C92CDE0A0952FD97D6D8271 /* Pods_ZIGSIMPlusUITests.framework in Frameworks */,
+				36E36AC1EC5984082F26816B /* libPods-ZIGSIMPlusUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +212,9 @@
 		023642CD2298253500171F73 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				02F0DBEF229FBB1700D45E56 /* ARKit */,
 				023644AD2298253800171F73 /* NDI */,
+				638345F222A6830600370600 /* NFC */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -193,7 +222,8 @@
 		023644AD2298253800171F73 /* NDI */ = {
 			isa = PBXGroup;
 			children = (
-				023644AE2298253800171F73 /* NDI.swift */,
+				023644AE2298253800171F73 /* NDIService.swift */,
+				0212CDB222A6356500A83C16 /* NDIViewController.swift */,
 				023644AF2298253800171F73 /* SDK */,
 				023644C02298253800171F73 /* Bindings */,
 			);
@@ -248,28 +278,49 @@
 			path = Bindings;
 			sourceTree = "<group>";
 		};
-		02A8FA822296B62D001FB3DD /* Stores */ = {
+		02621F5122A4F9140071E9D2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				02A8FA832296B62D001FB3DD /* TouchDataStore.swift */,
-				02A8FA842296B62D001FB3DD /* LocationDataStore.swift */,
-				02A8FA862296B62D001FB3DD /* MiscDataStore.swift */,
-				02A03594229CD56D00E7399E /* AltimeterDataStore.swift */,
-				02A03595229CD56E00E7399E /* AudioLevelDataStore.swift */,
-				02A03596229CD56E00E7399E /* ProximityDataStore.swift */,
-				02A8FA872296B62D001FB3DD /* StoreManager.swift */,
-				02F0DBE9229F774800D45E56 /* RemoteControlDataStore.swift */,
+				02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */,
+				02621F5322A4F9140071E9D2 /* StringExtension.swift */,
+				02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */,
 			);
-			path = Stores;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		02A8FA822296B62D001FB3DD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				02A8FA832296B62D001FB3DD /* TouchService.swift */,
+				02A8FA842296B62D001FB3DD /* LocationService.swift */,
+				0274B66222A0FD00005D7266 /* RemoteControlService.swift */,
+				0212CDAE22A6219E00A83C16 /* MotionService.swift */,
+				02A8FA862296B62D001FB3DD /* BatteryService.swift */,
+				02A03594229CD56D00E7399E /* AltimeterService.swift */,
+				02A03595229CD56E00E7399E /* AudioLevelService.swift */,
+				02A03596229CD56E00E7399E /* ProximityService.swift */,
+				02A8FA872296B62D001FB3DD /* ServiceManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		02F0DBEF229FBB1700D45E56 /* ARKit */ = {
+			isa = PBXGroup;
+			children = (
+				02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */,
+				02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */,
+			);
+			path = ARKit;
 			sourceTree = "<group>";
 		};
 		3047AA928C608382EC8AFA33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63A6192C22A79EDF00B015DE /* CoreNFC.framework */,
 				023642CD2298253500171F73 /* Private */,
 				4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */,
 				D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */,
-				0F015CAE858BF01D83A7A15B /* Pods_ZIGSIMPlusUITests.framework */,
+				F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -287,9 +338,10 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		634B8D94228566C30043607D /* Commands */ = {
+		638345F222A6830600370600 /* NFC */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				9092E4CE227EC9880019F1C1 /* BatteryMonitoringCommand.swift */,
 				02F0DBE7229E203C00D45E56 /* RemoteControlCommand.swift */,
 				02E7F84922939E25002B55F2 /* TouchMonitoringCommand.swift */,
@@ -304,6 +356,12 @@
 				B3411B7E22A4D65F00669DDE /* DepthMonitoringCommand.swift */,
 			);
 			path = Commands;
+=======
+				638345F322A6832700370600 /* NFCService.swift */,
+				63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */,
+			);
+			path = NFC;
+>>>>>>> master
 			sourceTree = "<group>";
 		};
 		902EB9BD227BE68D008F1650 = {
@@ -331,8 +389,7 @@
 		902EB9C8227BE68D008F1650 /* ZIGSIMPlus */ = {
 			isa = PBXGroup;
 			children = (
-				B36937FF22A0DC5D00AEA16F /* Extensions */,
-				B36937FE22A0DC5500AEA16F /* New Group */,
+				63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */,
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
 				9092E4C7227D85890019F1C1 /* Models */,
 				902EB9F7227BECC7008F1650 /* Views */,
@@ -341,6 +398,7 @@
 				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				902EB9D0227BE68F008F1650 /* Assets.xcassets */,
 				902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */,
+				02621F5122A4F9140071E9D2 /* Extensions */,
 				0236461F2298257500171F73 /* ZIGSIMPlus-Bridging-Header.h */,
 				902EB9D5227BE68F008F1650 /* Info.plist */,
 			);
@@ -351,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				63E5785A2296991400C6340C /* StringExtensionTests.swift */,
+				0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */,
 				902EB9E0227BE68F008F1650 /* Info.plist */,
 			);
 			path = ZIGSIMPlusTests;
@@ -368,9 +427,13 @@
 		902EB9F7227BECC7008F1650 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				902EB9CB227BE68D008F1650 /* CommandDataSelectionViewController.swift */,
-				9092E4C9227D8ADF0019F1C1 /* CommandDataOutputViewController.swift */,
-				02A0359A229CD6F800E7399E /* CommandDataSettingViewController.swift */,
+				B3C6588522A901D400B4358B /* CustomCells */,
+				902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */,
+				9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */,
+				B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */,
+				02A0359A229CD6F800E7399E /* CommandSettingViewController.swift */,
+				B3C6588A22A911B300B4358B /* NdiDetailViewController.swift */,
+				B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,9 +441,9 @@
 		902EB9F8227BECDD008F1650 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				902EB9F9227BED1B008F1650 /* CommandDataSelectionPresenter.swift */,
-				9092E4D0227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift */,
-				B39E8BDD229D0A28002700FF /* CommandDataSettingPresenter.swift */,
+				902EB9F9227BED1B008F1650 /* CommandSelectionPresenter.swift */,
+				9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */,
+				02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -388,7 +451,8 @@
 		902EB9FB227BF0DB008F1650 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				9092E4CB227EBF4D0019F1C1 /* LabelConstants.swift */,
+				9092E4CB227EBF4D0019F1C1 /* Command.swift */,
+				B3CFE5B722ADF436009664C0 /* ModalTexts.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -397,31 +461,21 @@
 			isa = PBXGroup;
 			children = (
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
-				634B8D92228565F00043607D /* Command.swift */,
 				02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */,
-				63C02A2B2293D97700551E2F /* CommandAndCommandDataMediator.swift */,
+				63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */,
 				023BB10522965B490094363B /* Utils.swift */,
-				02A8FA822296B62D001FB3DD /* Stores */,
-				634B8D94228566C30043607D /* Commands */,
+				02A8FA822296B62D001FB3DD /* Services */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		B36937FE22A0DC5500AEA16F /* New Group */ = {
+		B3C6588522A901D400B4358B /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				B3C6588622A9022600B4358B /* StandardCell.xib */,
+				B3C6588822A9028500B4358B /* StandardCell.swift */,
 			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		B36937FF22A0DC5D00AEA16F /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				B369380022A0DCB700AEA16F /* UITextFieldExtension.swift */,
-				63E57858229697E800C6340C /* StringExtension.swift */,
-				B369380222A0E47A00AEA16F /* UIScrollViewExtension.swift */,
-			);
-			path = Extensions;
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,6 +550,11 @@
 				TargetAttributes = {
 					902EB9C5227BE68D008F1650 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 1;
+							};
+						};
 					};
 					902EB9D9227BE68F008F1650 = {
 						CreatedOnToolsVersion = 10.1;
@@ -535,6 +594,7 @@
 				902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */,
 				902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */,
 				902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */,
+				B3C6588722A9022600B4358B /* StandardCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,9 +624,10 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework",
+				"${BUILT_PRODUCTS_DIR}/DeviceKit-framework/DeviceKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-framework/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -576,6 +637,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeviceKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOSC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,12 +718,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9092E4CF227EC9880019F1C1 /* BatteryMonitoringCommand.swift in Sources */,
-				02A0359B229CD6F800E7399E /* CommandDataSettingViewController.swift in Sources */,
-				02A03597229CD56E00E7399E /* AltimeterDataStore.swift in Sources */,
-				B369380122A0DCB700AEA16F /* UITextFieldExtension.swift in Sources */,
-				02364621229825B900171F73 /* NdiMonitoringCommand.swift in Sources */,
+				02A0359B229CD6F800E7399E /* CommandSettingViewController.swift in Sources */,
+				02A03597229CD56E00E7399E /* AltimeterService.swift in Sources */,
 				0236461D2298253900171F73 /* NDI.cpp in Sources */,
+<<<<<<< HEAD
 				02A8FA8C2296B62D001FB3DD /* StoreManager.swift in Sources */,
 				02A8FA8B2296B62D001FB3DD /* MiscDataStore.swift in Sources */,
 				02F0DBE8229E203C00D45E56 /* RemoteControlCommand.swift in Sources */,
@@ -676,25 +736,42 @@
 				02A03598229CD56E00E7399E /* AudioLevelDataStore.swift in Sources */,
 				0236461B2298253900171F73 /* NDI.swift in Sources */,
 				023BB10822965B5A0094363B /* BeaconMonitoringCommand.swift in Sources */,
+=======
+				02A8FA8C2296B62D001FB3DD /* ServiceManager.swift in Sources */,
+				63A6192B22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift in Sources */,
+				02A8FA8B2296B62D001FB3DD /* BatteryService.swift in Sources */,
+				902EB9FA227BED1B008F1650 /* CommandSelectionPresenter.swift in Sources */,
+				02A8FA882296B62D001FB3DD /* TouchService.swift in Sources */,
+				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,
+				638345F422A6832700370600 /* NFCService.swift in Sources */,
+				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
+				B3979A7922AA834F0097F5FC /* CompassDetailViewController.swift in Sources */,
+				B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */,
+				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
+				02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */,
+				02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */,
+				0236461B2298253900171F73 /* NDIService.swift in Sources */,
+>>>>>>> master
 				023BB10622965B490094363B /* Utils.swift in Sources */,
-				63E57859229697E800C6340C /* StringExtension.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
-				9092E4CC227EBF4D0019F1C1 /* LabelConstants.swift in Sources */,
-				02E7F84A22939E25002B55F2 /* TouchMonitoringCommand.swift in Sources */,
+				9092E4CC227EBF4D0019F1C1 /* Command.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
-				02A0358D229CD53C00E7399E /* AltimeterMonitoringCommand.swift in Sources */,
-				B394C0B522950FDB00706BB3 /* GpsMonitoringCommand.swift in Sources */,
-				9092E4D1227ECCFA0019F1C1 /* CommandDataOutputPresenter.swift in Sources */,
-				02A03599229CD56E00E7399E /* ProximityDataStore.swift in Sources */,
-				634B8D93228565F00043607D /* Command.swift in Sources */,
+				02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */,
+				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,
+				02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */,
+				02A03599229CD56E00E7399E /* ProximityService.swift in Sources */,
 				02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */,
-				63C02A2C2293D97700551E2F /* CommandAndCommandDataMediator.swift in Sources */,
-				02F0DBEA229F774800D45E56 /* RemoteControlDataStore.swift in Sources */,
-				B394C0B72295100500706BB3 /* CompassMonitoringCommand.swift in Sources */,
-				02A03590229CD54D00E7399E /* MicLevelMonitoringCommand.swift in Sources */,
-				02A03593229CD55A00E7399E /* ProximityMonitoringCommand.swift in Sources */,
+				63C02A2C2293D97700551E2F /* CommandAndServiceMediator.swift in Sources */,
+				0274B66322A0FD00005D7266 /* RemoteControlService.swift in Sources */,
+				0212CDAF22A6219E00A83C16 /* MotionService.swift in Sources */,
+				B3CFE5BA22AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift in Sources */,
+				02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */,
+				B3C6588922A9028500B4358B /* StandardCell.swift in Sources */,
+				0212CDB322A6356500A83C16 /* NDIViewController.swift in Sources */,
 				0236461E2298253900171F73 /* NDIAdapter.mm in Sources */,
-				02A8FA892296B62D001FB3DD /* LocationDataStore.swift in Sources */,
+				02A8FA892296B62D001FB3DD /* LocationService.swift in Sources */,
+				02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */,
+				B3C6588B22A911B300B4358B /* NdiDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +780,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */,
+				0281B29722A6791500ED97D9 /* ServiceManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,6 +948,8 @@
 			baseConfigurationReference = 60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				HEADER_SEARCH_PATHS = (
@@ -892,8 +972,9 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus-Explicit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -905,6 +986,8 @@
 			baseConfigurationReference = 9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				HEADER_SEARCH_PATHS = (
@@ -927,8 +1010,9 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus-Explicit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -26,8 +26,8 @@ enum TransportFormat: Int {
 
 public class AppSettingModel {
     private init() {
-        for label in CommandDataLabels {
-            isActiveByCommandData[label] = false
+        for command in Command.allCases {
+            isActiveByCommand[command] = false
         }
         
         address = Defaults[.userIpAdress]?.description ?? ""
@@ -42,7 +42,7 @@ public class AppSettingModel {
     }
     
     static let shared = AppSettingModel()
-    var isActiveByCommandData: Dictionary<Label, Bool> = [:]
+    var isActiveByCommand: Dictionary<Command, Bool> = [:]
     
     // app default value & variable used in app
     var dataDestination: DataDestination = .OTHER_APP
@@ -57,7 +57,7 @@ public class AppSettingModel {
     var faceup: Int = 1 // 1.0 is faceup
     var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
     var messageInterval: TimeInterval {
-        var convertMessageRatePerSecond = 0
+        var convertMessageRatePerSecond = 60 // default
         if messageRatePerSecond == 0 {
             convertMessageRatePerSecond = 1
         } else if messageRatePerSecond == 1 {
@@ -71,6 +71,21 @@ public class AppSettingModel {
     }
     var compassAngle: Double {
         return Double(faceup)
+    }
+
+    public func getSettingsForOutput() -> [(String, String)] {
+        let dst = dataDestination == .OTHER_APP ? "OTHER APP" : "LOCAL FILE"
+        let prot = transportProtocol == .TCP ? "TCP" : "UDP"
+        let format = transportFormat == .OSC ? "OSC" : "JSON"
+
+        return [
+            ("DATA DESTINATION", dst),
+            ("PROTOCOL", prot),
+            ("IP ADDRESS", address),
+            ("PORT", String(port)),
+            ("MESSAGE FORMAT", format),
+            ("DEVICE UUID", deviceUUID),
+        ]
     }
 }
 

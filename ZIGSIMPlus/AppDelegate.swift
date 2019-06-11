@@ -17,17 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Inject dependency here
         let tabBarController = window?.rootViewController as! UITabBarController
-        let mediator = CommandAndCommandDataMediator()
+        let mediator = CommandAndServiceMediator()
         for viewController in tabBarController.viewControllers! {
-            if type(of: viewController) == CommandDataSelectionViewController.self {
-                let vc = viewController as! CommandDataSelectionViewController
-                vc.presenter = CommandDataSelectionPresenter(view: vc, mediator: mediator)
-            } else if type(of: viewController) == CommandDataOutputViewController.self {
-                let vc = viewController as! CommandDataOutputViewController
-                vc.presenter = CommandDataOutputPresenter(view: vc, mediator: mediator)
-            } else if type(of: viewController) == CommandDataSettingViewController.self {
-                let vc = viewController as! CommandDataSettingViewController
-                vc.presenter = CommandDataSettingPresenter(view: vc)
+            if type(of: viewController) == CommandSelectionViewController.self {
+                let vc = viewController as! CommandSelectionViewController
+                vc.presenter = CommandSelectionPresenter(view: vc, mediator: mediator)
+            } else if type(of: viewController) == CommandOutputViewController.self {
+                let vc = viewController as! CommandOutputViewController
+                vc.presenter = CommandOutputPresenter(view: vc, mediator: mediator)
+            } else if type(of: viewController) == CommandSettingViewController.self {
+                let vc = viewController as! CommandSettingViewController
+                vc.presenter = CommandSettingPresenter(view: vc)
             } else {
                 print("else")
             }
