@@ -33,12 +33,16 @@ public class CommandAndServiceMediator {
             return ArkitService.shared.isDeviceTrackingAvailable()
         case .faceTracking:
             return ArkitService.shared.isFaceTrackingAvailable()
+        case .imageTracking:
+            return ArkitService.shared.isImageTrackingAvailable()
         case .remoteControl:
             return RemoteControlService.shared.isAvailable()
         case .ndi:
             return VideoCaptureService.shared.isNDIAvailable()
         case .imageDetection:
             return VideoCaptureService.shared.isImageDetectionAvailable()
+        case .nfc:
+            return NFCService.shared.isAvailable()
         }
     }
 
@@ -91,10 +95,14 @@ public class CommandAndServiceMediator {
             ArkitService.shared.startDeviceTracking()
         case .faceTracking:
             ArkitService.shared.startFaceTracking()
+        case .imageTracking:
+            ArkitService.shared.startImageTracking()
         case .remoteControl:
             RemoteControlService.shared.start()
         case .ndi, .imageDetection:
             VideoCaptureService.shared.start()
+        case .nfc:
+            NFCService.shared.start()
         }
     }
 
@@ -122,10 +130,14 @@ public class CommandAndServiceMediator {
             ArkitService.shared.stopDeviceTracking()
         case .faceTracking:
             ArkitService.shared.stopFaceTracking()
+        case .imageTracking:
+            ArkitService.shared.stopImageTracking()
         case .remoteControl:
             RemoteControlService.shared.stop()
         case .ndi, .imageDetection:
             VideoCaptureService.shared.stop()
+        case .nfc:
+            NFCService.shared.stop()
         }
     }
 

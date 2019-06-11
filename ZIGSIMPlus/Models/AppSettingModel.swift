@@ -107,6 +107,21 @@ public class AppSettingModel {
     var imageDetectorNumberOfAngles: ImageDatectorNumberOfAngles = .one
     var imageDetectorDetectEyeBlink: Bool = true
     var imageDetectorDetectSmile: Bool = true
+
+    public func getSettingsForOutput() -> [(String, String)] {
+        let dst = dataDestination == .OTHER_APP ? "OTHER APP" : "LOCAL FILE"
+        let prot = transportProtocol == .TCP ? "TCP" : "UDP"
+        let format = transportFormat == .OSC ? "OSC" : "JSON"
+
+        return [
+            ("DATA DESTINATION", dst),
+            ("PROTOCOL", prot),
+            ("IP ADDRESS", address),
+            ("PORT", String(port)),
+            ("MESSAGE FORMAT", format),
+            ("DEVICE UUID", deviceUUID),
+        ]
+    }
 }
 
 // user default value
