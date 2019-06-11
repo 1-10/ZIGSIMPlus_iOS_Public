@@ -42,7 +42,6 @@
 		902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */; };
 		902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9CD227BE68D008F1650 /* Main.storyboard */; };
 		902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9D0227BE68F008F1650 /* Assets.xcassets */; };
-		902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */; };
 		902EB9EA227BE68F008F1650 /* ZIGSIMPlusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9E9227BE68F008F1650 /* ZIGSIMPlusUITests.swift */; };
 		902EB9FA227BED1B008F1650 /* CommandSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902EB9F9227BED1B008F1650 /* CommandSelectionPresenter.swift */; };
 		903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903BA770227D6C2100A2C378 /* AppSettingModel.swift */; };
@@ -131,7 +130,6 @@
 		902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelectionViewController.swift; sourceTree = "<group>"; };
 		902EB9CE227BE68D008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		902EB9D0227BE68F008F1650 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		902EB9D3227BE68F008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		902EB9D5227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902EB9DA227BE68F008F1650 /* ZIGSIMPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIGSIMPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9E0227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -357,7 +355,6 @@
 				902EB9FB227BF0DB008F1650 /* Entities */,
 				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				902EB9D0227BE68F008F1650 /* Assets.xcassets */,
-				902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */,
 				02621F5122A4F9140071E9D2 /* Extensions */,
 				0236461F2298257500171F73 /* ZIGSIMPlus-Bridging-Header.h */,
 				902EB9D5227BE68F008F1650 /* Info.plist */,
@@ -551,7 +548,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902EB9D4227BE68F008F1650 /* LaunchScreen.storyboard in Resources */,
 				902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */,
 				902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */,
 				B3C6588722A9022600B4358B /* StandardCell.xib in Resources */,
@@ -759,14 +755,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		902EB9D2227BE68F008F1650 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				902EB9D3227BE68F008F1650 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -891,6 +879,7 @@
 			baseConfigurationReference = 60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -929,6 +918,7 @@
 			baseConfigurationReference = 9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
