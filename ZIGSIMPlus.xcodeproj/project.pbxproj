@@ -29,6 +29,7 @@
 		02A8FA8B2296B62D001FB3DD /* BatteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA862296B62D001FB3DD /* BatteryService.swift */; };
 		02A8FA8C2296B62D001FB3DD /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA872296B62D001FB3DD /* ServiceManager.swift */; };
 		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
+		02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CF468122A8D9A8006F93EF /* ArkitUtils.swift */; };
 		02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */; };
 		02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */; };
 		36E36AC1EC5984082F26816B /* libPods-ZIGSIMPlusUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */; };
@@ -114,6 +115,7 @@
 		02A8FA862296B62D001FB3DD /* BatteryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryService.swift; sourceTree = "<group>"; };
 		02A8FA872296B62D001FB3DD /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
+		02CF468122A8D9A8006F93EF /* ArkitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitUtils.swift; sourceTree = "<group>"; };
 		02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitViewController.swift; sourceTree = "<group>"; };
 		02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitService.swift; sourceTree = "<group>"; };
 		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,6 +286,7 @@
 			children = (
 				02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */,
 				02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */,
+				02CF468122A8D9A8006F93EF /* ArkitUtils.swift */,
 			);
 			path = ARKit;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,
 				02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */,
+				02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */,
 				02A03599229CD56E00E7399E /* ProximityService.swift in Sources */,
 				02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */,
 				63C02A2C2293D97700551E2F /* CommandAndServiceMediator.swift in Sources */,
