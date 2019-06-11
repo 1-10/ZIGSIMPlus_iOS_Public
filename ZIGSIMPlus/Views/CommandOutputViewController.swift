@@ -15,7 +15,7 @@ class CommandOutputViewController: UIViewController {
 
     @IBOutlet weak var settingsTable: UITableView!
     var settings: [(String, String)] = []
-
+    
     var presenter: CommandOutputPresenterProtocol!
 
     override func viewDidLoad() {
