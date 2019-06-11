@@ -72,6 +72,21 @@ public class AppSettingModel {
     var compassAngle: Double {
         return Double(faceup)
     }
+
+    public func getSettingsForOutput() -> [(String, String)] {
+        let dst = dataDestination == .OTHER_APP ? "OTHER APP" : "LOCAL FILE"
+        let prot = transportProtocol == .TCP ? "TCP" : "UDP"
+        let format = transportFormat == .OSC ? "OSC" : "JSON"
+
+        return [
+            ("DATA DESTINATION", dst),
+            ("PROTOCOL", prot),
+            ("IP ADDRESS", address),
+            ("PORT", String(port)),
+            ("MESSAGE FORMAT", format),
+            ("DEVICE UUID", deviceUUID),
+        ]
+    }
 }
 
 // user default value
