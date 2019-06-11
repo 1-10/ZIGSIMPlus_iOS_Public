@@ -36,9 +36,9 @@ public class CommandAndServiceMediator {
         case .remoteControl:
             return RemoteControlService.shared.isAvailable()
         case .ndi:
-            return NDIService.shared.isNDIAvailable()
+            return VideoCaptureService.shared.isNDIAvailable()
         case .imageDetection:
-            return NDIService.shared.isImageDetectionAvailable()
+            return VideoCaptureService.shared.isImageDetectionAvailable()
         }
     }
 
@@ -94,7 +94,7 @@ public class CommandAndServiceMediator {
         case .remoteControl:
             RemoteControlService.shared.start()
         case .ndi, .imageDetection:
-            NDIService.shared.start()
+            VideoCaptureService.shared.start()
         }
     }
 
@@ -125,7 +125,7 @@ public class CommandAndServiceMediator {
         case .remoteControl:
             RemoteControlService.shared.stop()
         case .ndi, .imageDetection:
-            NDIService.shared.stop()
+            VideoCaptureService.shared.stop()
         }
     }
 

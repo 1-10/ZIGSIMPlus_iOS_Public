@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0212CDAF22A6219E00A83C16 /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0212CDAE22A6219E00A83C16 /* MotionService.swift */; };
-		0212CDB322A6356500A83C16 /* NDIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0212CDB222A6356500A83C16 /* NDIViewController.swift */; };
-		0236461B2298253900171F73 /* NDIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* NDIService.swift */; };
+		0212CDB322A6356500A83C16 /* VideoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0212CDB222A6356500A83C16 /* VideoCaptureViewController.swift */; };
+		0236461B2298253900171F73 /* VideoCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* VideoCaptureService.swift */; };
 		0236461C2298253900171F73 /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 023644BF2298253800171F73 /* libndi_ios.a */; };
 		0236461D2298253900171F73 /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 023644C32298253800171F73 /* NDI.cpp */; };
 		0236461E2298253900171F73 /* NDIAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 023644C42298253800171F73 /* NDIAdapter.mm */; };
@@ -70,8 +70,8 @@
 /* Begin PBXFileReference section */
 		00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.release.xcconfig"; sourceTree = "<group>"; };
 		0212CDAE22A6219E00A83C16 /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
-		0212CDB222A6356500A83C16 /* NDIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDIViewController.swift; sourceTree = "<group>"; };
-		023644AE2298253800171F73 /* NDIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDIService.swift; sourceTree = "<group>"; };
+		0212CDB222A6356500A83C16 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureViewController.swift; sourceTree = "<group>"; };
+		023644AE2298253800171F73 /* VideoCaptureService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureService.swift; sourceTree = "<group>"; };
 		023644B12298253800171F73 /* Processing.NDI.compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.compat.h; sourceTree = "<group>"; };
 		023644B22298253800171F73 /* Processing.NDI.utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.utilities.h; sourceTree = "<group>"; };
 		023644B32298253800171F73 /* Processing.NDI.Recv.ex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.Recv.ex.h; sourceTree = "<group>"; };
@@ -172,21 +172,21 @@
 			isa = PBXGroup;
 			children = (
 				02F0DBEF229FBB1700D45E56 /* ARKit */,
-				023644AD2298253800171F73 /* NDI */,
+				023644AD2298253800171F73 /* VideoCapture */,
 			);
 			path = Private;
 			sourceTree = "<group>";
 		};
-		023644AD2298253800171F73 /* NDI */ = {
+		023644AD2298253800171F73 /* VideoCapture */ = {
 			isa = PBXGroup;
 			children = (
-				023644AE2298253800171F73 /* NDIService.swift */,
-				0212CDB222A6356500A83C16 /* NDIViewController.swift */,
+				023644AE2298253800171F73 /* VideoCaptureService.swift */,
+				0212CDB222A6356500A83C16 /* VideoCaptureViewController.swift */,
 				633A82CE22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift */,
 				023644AF2298253800171F73 /* SDK */,
 				023644C02298253800171F73 /* Bindings */,
 			);
-			path = NDI;
+			path = VideoCapture;
 			sourceTree = "<group>";
 		};
 		023644AF2298253800171F73 /* SDK */ = {
@@ -641,7 +641,7 @@
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
 				02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */,
 				02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */,
-				0236461B2298253900171F73 /* NDIService.swift in Sources */,
+				0236461B2298253900171F73 /* VideoCaptureService.swift in Sources */,
 				023BB10622965B490094363B /* Utils.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* Command.swift in Sources */,
@@ -656,7 +656,7 @@
 				0212CDAF22A6219E00A83C16 /* MotionService.swift in Sources */,
 				633A82CF22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift in Sources */,
 				02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */,
-				0212CDB322A6356500A83C16 /* NDIViewController.swift in Sources */,
+				0212CDB322A6356500A83C16 /* VideoCaptureViewController.swift in Sources */,
 				0236461E2298253900171F73 /* NDIAdapter.mm in Sources */,
 				02A8FA892296B62D001FB3DD /* LocationService.swift in Sources */,
 				02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */,
@@ -840,7 +840,7 @@
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Private/NDI/SDK/include\"",
+					"\"$(SRCROOT)/Private/VideoCapture/SDK/include\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftOSC/SwiftOSC.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftSocket/SwiftSocket.framework/Headers\"",
 				);
@@ -856,7 +856,7 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/vs/Win32",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/osx/x64",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
-					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
+					"$(PROJECT_DIR)/Private/VideoCapture/SDK/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -875,7 +875,7 @@
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Private/NDI/SDK/include\"",
+					"\"$(SRCROOT)/Private/VideoCapture/SDK/include\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftOSC/SwiftOSC.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftSocket/SwiftSocket.framework/Headers\"",
 				);
@@ -891,7 +891,7 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/vs/Win32",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/osx/x64",
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
-					"$(PROJECT_DIR)/Private/NDI/SDK/lib",
+					"$(PROJECT_DIR)/Private/VideoCapture/SDK/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
