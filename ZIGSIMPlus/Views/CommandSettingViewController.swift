@@ -47,7 +47,6 @@ public class CommandSettingViewController : UIViewController {
         messageFormatSeg.selectedSegmentIndex = userDefaultSegments["userMessageFormat"] ?? 0
         messageRateSeg.selectedSegmentIndex = userDefaultSegments["userMessageRatePerSecond"] ?? 0
         compassAngleSeg.selectedSegmentIndex = userDefaultSegments["userCompassAngle"] ?? 0
-        
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
