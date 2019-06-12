@@ -34,6 +34,7 @@
 		02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */; };
 		36E36AC1EC5984082F26816B /* libPods-ZIGSIMPlusUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */; };
 		515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */; };
+		634556A022B0FD5B0032E976 /* CommandSelectionPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6345569F22B0FD5B0032E976 /* CommandSelectionPresenterTests.swift */; };
 		638345F422A6832700370600 /* NFCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638345F322A6832700370600 /* NFCService.swift */; };
 		63A6192B22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */; };
 		63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A6192C22A79EDF00B015DE /* CoreNFC.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -120,6 +121,7 @@
 		02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitService.swift; sourceTree = "<group>"; };
 		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
+		6345569F22B0FD5B0032E976 /* CommandSelectionPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelectionPresenterTests.swift; sourceTree = "<group>"; };
 		63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZIGSIMPlus.entitlements; sourceTree = "<group>"; };
 		638345F322A6832700370600 /* NFCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCService.swift; sourceTree = "<group>"; };
 		63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTypeNameFormatExtension.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 			children = (
 				63E5785A2296991400C6340C /* StringExtensionTests.swift */,
 				0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */,
+				6345569F22B0FD5B0032E976 /* CommandSelectionPresenterTests.swift */,
 				902EB9E0227BE68F008F1650 /* Info.plist */,
 			);
 			path = ZIGSIMPlusTests;
@@ -722,6 +725,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634556A022B0FD5B0032E976 /* CommandSelectionPresenterTests.swift in Sources */,
 				63E5785B2296991400C6340C /* StringExtensionTests.swift in Sources */,
 				0281B29722A6791500ED97D9 /* ServiceManagerTests.swift in Sources */,
 			);
