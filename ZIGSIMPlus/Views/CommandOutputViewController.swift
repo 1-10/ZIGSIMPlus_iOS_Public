@@ -20,6 +20,7 @@ class CommandOutputViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.composeChildViewArchitecture()
     }
 
     override func viewWillAppear(_ animated: Bool) {
