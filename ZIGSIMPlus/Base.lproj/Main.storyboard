@@ -129,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="1074" y="133"/>
         </scene>
-        <!--Settings-->
+        <!--Command Setting View Controller-->
         <scene sceneID="jrZ-Q4-w0Y">
             <objects>
                 <viewController storyboardIdentifier="Settings" id="Pgz-Cs-Esf" customClass="CommandSettingViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
@@ -491,7 +491,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dW0-Db-RIC"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="CzP-po-LHm">
+                    <navigationItem key="navigationItem" id="CzP-po-LHm">
+                        <barButtonItem key="backBarButtonItem" title="Settings" id="lj0-da-4Xc"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="60R-8E-U5p">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="hMu-Yz-9ay">
                                 <rect key="frame" x="372" y="11" width="22" height="22"/>
