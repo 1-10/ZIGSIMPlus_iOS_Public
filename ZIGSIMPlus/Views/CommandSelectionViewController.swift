@@ -88,6 +88,8 @@ extension CommandSelectionViewController: UITableViewDataSource {
         
         // Set cell's tap action style
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
         
         // Set cell's variable
         cell.commandLabel.text = CommandToSelect.labelString
@@ -117,6 +119,9 @@ extension CommandSelectionViewController: UITableViewDataSource {
         } else {
             cell.commandOnOff.isOn = false
         }
+        
+        // Set cell's UI design
+        cell.initCell()
         
         return cell
     }

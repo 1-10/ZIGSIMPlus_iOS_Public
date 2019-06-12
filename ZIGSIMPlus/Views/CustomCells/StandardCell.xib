@@ -36,10 +36,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QB-qM-gp6">
-                        <rect key="frame" x="227" y="7" width="36" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QB-qM-gp6" customClass="DynamicButton" customModule="DynamicButton">
+                        <rect key="frame" x="227" y="12" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="36" id="z8b-9n-dZ8"/>
+                            <constraint firstAttribute="height" constant="20" id="bzb-Ny-LcW"/>
+                            <constraint firstAttribute="width" constant="20" id="z8b-9n-dZ8"/>
                         </constraints>
                         <state key="normal" title="Button"/>
                         <connections>
@@ -47,11 +48,15 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yaz-2Y-K3N">
-                        <rect key="frame" x="273" y="7" width="36" height="30"/>
+                        <rect key="frame" x="257" y="12" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="36" id="UmZ-ka-4Zl"/>
+                            <constraint firstAttribute="height" constant="20" id="EXX-Fh-iuk"/>
+                            <constraint firstAttribute="width" constant="20" id="UmZ-ka-4Zl"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="!">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
                         <connections>
                             <action selector="modalButtonAction:" destination="zEk-LR-64x" eventType="touchUpInside" id="7Aq-O1-Cs2"/>
                         </connections>
@@ -68,10 +73,12 @@
                     <constraint firstItem="Mgt-VT-WPX" firstAttribute="centerY" secondItem="FAl-RH-jED" secondAttribute="centerY" id="zI0-Ea-nJB"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.050951294600963593" green="0.047058552503585815" blue="0.047058872878551483" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <connections>
                 <outlet property="commandLabel" destination="Mgt-VT-WPX" id="jLs-bB-s63"/>
                 <outlet property="commandOnOff" destination="BVu-z1-Bz9" id="IFX-3F-uqV"/>
                 <outlet property="detailButton" destination="0QB-qM-gp6" id="yGC-7Z-vMd"/>
+                <outlet property="labelConstaint" destination="RWI-dj-rDs" id="aIC-Yz-1Bh"/>
                 <outlet property="modalButton" destination="Yaz-2Y-K3N" id="gi6-hP-tIO"/>
             </connections>
             <point key="canvasLocation" x="-1055" y="-87"/>
