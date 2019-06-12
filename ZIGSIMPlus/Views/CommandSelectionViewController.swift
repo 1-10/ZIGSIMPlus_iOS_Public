@@ -17,7 +17,8 @@ final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var modalButton: UIButton!
     @IBOutlet weak var ndiDetailView: UIView!
     @IBOutlet weak var compassDetailView: UIView!
-    
+    @IBOutlet weak var headerImageView: UIImageView!
+    var headerImage: UIImage!
     var presenter: CommandSelectionPresenterProtocol!
     
     override func viewDidLoad() {
@@ -25,9 +26,12 @@ final class CommandSelectionViewController: UIViewController {
         backButton.isHidden = true
         modalLabel.isHidden = true
         modalButton.isHidden = true
+        UITabBar.appearance().barTintColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
+        headerImage = UIImage(named: "headerLogo")
+        headerImageView.image = headerImage
+        
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
     }
-    
     
     @IBAction func actionButton(_ sender: UIButton) {
         if sender.tag == 0 { // sender.tag == 0 is "modalButton"
