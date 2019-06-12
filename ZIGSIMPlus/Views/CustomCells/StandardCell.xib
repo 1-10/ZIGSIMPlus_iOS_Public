@@ -28,16 +28,16 @@
                         </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgt-VT-WPX">
-                        <rect key="frame" x="87" y="11.5" width="130" height="21"/>
+                        <rect key="frame" x="82" y="11.5" width="130" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="N6z-t0-REn"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QB-qM-gp6" customClass="DynamicButton" customModule="DynamicButton">
-                        <rect key="frame" x="227" y="12" width="20" height="20"/>
+                        <rect key="frame" x="222" y="12" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="bzb-Ny-LcW"/>
                             <constraint firstAttribute="width" constant="20" id="z8b-9n-dZ8"/>
@@ -48,7 +48,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yaz-2Y-K3N">
-                        <rect key="frame" x="257" y="12" width="20" height="20"/>
+                        <rect key="frame" x="252" y="12" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="EXX-Fh-iuk"/>
                             <constraint firstAttribute="width" constant="20" id="UmZ-ka-4Zl"/>
@@ -64,7 +64,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="BVu-z1-Bz9" firstAttribute="centerY" secondItem="FAl-RH-jED" secondAttribute="centerY" id="5o3-di-T1e"/>
-                    <constraint firstItem="Mgt-VT-WPX" firstAttribute="leading" secondItem="BVu-z1-Bz9" secondAttribute="trailing" constant="20" id="Ohk-qn-oVq"/>
+                    <constraint firstItem="Mgt-VT-WPX" firstAttribute="leading" secondItem="BVu-z1-Bz9" secondAttribute="trailing" constant="15" id="Ohk-qn-oVq"/>
                     <constraint firstItem="0QB-qM-gp6" firstAttribute="leading" secondItem="Mgt-VT-WPX" secondAttribute="trailing" constant="10" id="RWI-dj-rDs"/>
                     <constraint firstItem="Yaz-2Y-K3N" firstAttribute="centerY" secondItem="FAl-RH-jED" secondAttribute="centerY" id="fVx-ye-iGQ"/>
                     <constraint firstItem="BVu-z1-Bz9" firstAttribute="leading" secondItem="FAl-RH-jED" secondAttribute="leading" constant="20" id="hB7-nb-Gx7"/>

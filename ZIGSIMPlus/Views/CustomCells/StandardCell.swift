@@ -42,7 +42,7 @@ public class StandardCell: UITableViewCell {
         commandOnOff.onTintColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
         commandOnOff.tintColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
         commandOnOff.backgroundColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
-        commandOnOff.layer.cornerRadius = commandOnOff.frame.size.height/2;
+        commandOnOff.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         // detail button
         detailButton.setStyle(.caretRight, animated: true)
         detailButton.strokeColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
