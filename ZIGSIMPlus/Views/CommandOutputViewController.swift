@@ -12,6 +12,7 @@ import MediaPlayer
 class CommandOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var touchArea: UIView!
+    @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var textPreview: UIView!
     @IBOutlet weak var imagePreview: UIView!
     private var isTextPreviewMode: Bool = true
@@ -23,6 +24,12 @@ class CommandOutputViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Initialize navigation bar
+        let titleImage = UIImage(named: "Logo")
+        let titleImageView = UIImageView(image: titleImage)
+        titleImageView.contentMode = .scaleAspectFit
+        navItem.titleView = titleImageView
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +51,7 @@ class CommandOutputViewController: UIViewController {
         presenter.stopCommands()
     }
 
-    @IBAction func togglePreviewMode(_ sender: UIBarButtonItem) {
+    @IBAction func togglePreviewMode(_ sender: Any) {
         isTextPreviewMode.toggle()
         updatePreviewMode()
     }

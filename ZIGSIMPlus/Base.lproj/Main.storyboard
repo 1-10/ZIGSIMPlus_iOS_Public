@@ -532,16 +532,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZN3-WS-ilm" userLabel="Navigation Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97592383623123169" green="0.97666221857070923" blue="0.97603815793991089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxG-02-qcR">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="hCY-OR-PJk"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Output" id="VV6-9l-hLZ">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="x0y-Yz-7FK">
+                                    <navigationItem id="VV6-9l-hLZ">
+                                        <nil key="title"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="eii-Jf-EcT">
                                             <connections>
-                                                <action selector="togglePreviewMode:" destination="AD7-px-bC2" id="c5h-I4-zN8"/>
+                                                <action selector="togglePreviewMode:" destination="AD7-px-bC2" id="A83-8w-02G"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -673,6 +679,7 @@
                     <tabBarItem key="tabBarItem" tag="2" title="Output" id="ZJH-dY-5eg"/>
                     <connections>
                         <outlet property="imagePreview" destination="KYL-1y-u8d" id="ajW-vl-Tor"/>
+                        <outlet property="navItem" destination="VV6-9l-hLZ" id="Hsu-sg-vug"/>
                         <outlet property="settingsTable" destination="pRt-3u-oEi" id="HZQ-Jq-U9s"/>
                         <outlet property="textField" destination="w9T-O2-Ptu" id="SBs-k4-5Vg"/>
                         <outlet property="textPreview" destination="G8A-YD-VSS" id="OfS-PA-b4l"/>
