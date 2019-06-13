@@ -538,7 +538,13 @@
                                     <constraint firstAttribute="height" constant="44" id="hCY-OR-PJk"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Output" id="VV6-9l-hLZ"/>
+                                    <navigationItem title="Output" id="VV6-9l-hLZ">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="x0y-Yz-7FK">
+                                            <connections>
+                                                <action selector="togglePreviewMode:" destination="AD7-px-bC2" id="c5h-I4-zN8"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KYL-1y-u8d" userLabel="Image Preview">
@@ -671,8 +677,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Output" id="ZJH-dY-5eg"/>
                     <connections>
+                        <outlet property="imagePreview" destination="KYL-1y-u8d" id="ajW-vl-Tor"/>
                         <outlet property="settingsTable" destination="pRt-3u-oEi" id="HZQ-Jq-U9s"/>
                         <outlet property="textField" destination="w9T-O2-Ptu" id="SBs-k4-5Vg"/>
+                        <outlet property="textPreview" destination="G8A-YD-VSS" id="OfS-PA-b4l"/>
                         <outlet property="touchArea" destination="VFr-by-ckd" id="xXl-zN-frG"/>
                     </connections>
                 </viewController>

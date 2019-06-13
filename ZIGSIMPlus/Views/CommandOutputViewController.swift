@@ -12,6 +12,9 @@ import MediaPlayer
 class CommandOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var touchArea: UIView!
+    @IBOutlet weak var textPreview: UIView!
+    @IBOutlet weak var imagePreview: UIView!
+    private var isTextPreviewMode: Bool = true
 
     @IBOutlet weak var settingsTable: UITableView!
     var settings: [(String, String)] = []
@@ -27,6 +30,8 @@ class CommandOutputViewController: UIViewController {
         let volumeView = MPVolumeView(frame: CGRect(x: -100, y: -100, width: 0, height: 0))
         view.addSubview(volumeView)
         presenter.startCommands()
+
+        updatePreviewMode()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -37,6 +42,16 @@ class CommandOutputViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         presenter.stopCommands()
+    }
+
+    @IBAction func togglePreviewMode(_ sender: UIBarButtonItem) {
+        isTextPreviewMode.toggle()
+        updatePreviewMode()
+    }
+
+    private func updatePreviewMode() {
+        textPreview.isHidden = !isTextPreviewMode
+        imagePreview.isHidden = isTextPreviewMode
     }
 
     // MARK: - Touch Events
