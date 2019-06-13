@@ -51,6 +51,21 @@ enum ImageDatectorNumberOfAngles: Int {
     case nine = 9
     case eleven = 11
 }
+    
+enum NdiType: Int {
+    case CAMERA = 0
+    case DEPTH = 1
+}
+
+enum NdiCameraType: Int {
+    case BACK = 0
+    case FRONT = 1
+}
+
+enum DepthType: Int {
+    case DEPTH = 0
+    case DISPARITY = 1
+}
 
 public class AppSettingModel {
     private init() {
@@ -67,6 +82,9 @@ public class AppSettingModel {
         transportFormat = TransportFormat(rawValue: Defaults[.userMessageFormat] ?? 0)!
         messageRatePerSecondSegment = Defaults[.userMessageRatePerSecond] ?? 0
         faceup = Defaults[.userCompassAngle] ?? 0
+        ndiType = NdiType(rawValue: Defaults[.userNdiType] ?? 0)!
+        ndiCameraType = NdiCameraType(rawValue: Defaults[.userNdiCameraType] ?? 0)!
+        depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
     }
     
     static let shared = AppSettingModel()
@@ -107,6 +125,9 @@ public class AppSettingModel {
     var imageDetectorNumberOfAngles: ImageDatectorNumberOfAngles = .one
     var imageDetectorDetectEyeBlink: Bool = true
     var imageDetectorDetectSmile: Bool = true
+    var ndiType: NdiType = .CAMERA
+    var ndiCameraType: NdiCameraType = .BACK
+    var depthType: DepthType = .DEPTH
 
     public func getSettingsForOutput() -> [(String, String)] {
         let dst = dataDestination == .OTHER_APP ? "OTHER APP" : "LOCAL FILE"
@@ -135,4 +156,7 @@ extension DefaultsKeys {
     static let userCompassAngle = DefaultsKey<Int?>("userCompassAngle", defaultValue: 1)
     static let userDeviceUUID = DefaultsKey<String?>("userDeviceUUID", defaultValue: Utils.randomStringWithLength(16))
     static let userBeaconUUID = DefaultsKey<String?>("userBeaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
+    static let userNdiType = DefaultsKey<Int?>("userNdiType", defaultValue: 0)
+    static let userNdiCameraType = DefaultsKey<Int?>("userNdiCameraType", defaultValue: 0)
+    static let userDepthType = DefaultsKey<Int?>("userDepthType", defaultValue: 0)
 }
