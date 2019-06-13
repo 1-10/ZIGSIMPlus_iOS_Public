@@ -142,6 +142,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Lu-iA-i5f" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="-27" width="374" height="788"/>
+
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA DESTINATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6H9-w6-jJY" userLabel="DATA DESTINATION">
                                                 <rect key="frame" x="95" y="24" width="184" height="21"/>
@@ -179,6 +180,7 @@
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xxD-lX-dtz" userLabel="Protocolo Seg">
                                                 <rect key="frame" x="126.66666666666666" y="118" width="121" height="29"/>
+
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="45z-n5-oH7"/>
                                                     <constraint firstAttribute="width" constant="121" id="XQ1-aX-kzk"/>
@@ -213,6 +215,7 @@
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORT NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkK-mo-Kqg">
                                                 <rect key="frame" x="127.66666666666666" y="221" width="119" height="21"/>
+
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -307,6 +310,7 @@
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEACON UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phG-uK-t20" userLabel="BEACON UUID">
                                                 <rect key="frame" x="130.66666666666666" y="549" width="113" height="21"/>
+
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -576,6 +580,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kds-WB-sXb" userLabel="SettingValue">
                                                     <rect key="frame" x="158" y="0.0" width="578" height="20"/>
+
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="9S5-TK-1jh"/>
                                                     </constraints>
@@ -733,41 +738,83 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PUh-m4-gGQ">
                                 <rect key="frame" x="87" y="353.66666666666669" width="200" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="0Zg-Ua-oKf"/>
-                                    <constraint firstAttribute="width" constant="200" id="Pxl-3e-PTd"/>
+                                    <constraint firstAttribute="width" constant="200" id="XDh-QB-cqD"/>
+                                    <constraint firstAttribute="height" constant="27" id="wkU-iP-vbR"/>
                                 </constraints>
                                 <segments>
                                     <segment title="CAMERA"/>
                                     <segment title="DEPTH"/>
                                 </segments>
                                 <connections>
-                                    <action selector="segmentAction:" destination="N5t-e7-jiG" eventType="valueChanged" id="jJh-9d-7YZ"/>
+                                    <action selector="segmentAction:" destination="N5t-e7-jiG" eventType="valueChanged" id="jcJ-n5-kX7"/>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NDI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcO-so-bRg">
                                 <rect key="frame" x="56" y="319" width="259" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="259" id="23c-Gd-OWh"/>
+                                    <constraint firstAttribute="height" constant="21" id="ONO-uE-rZR"/>
+                                </constraints>
+
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qbj-9B-LUs">
+                                <rect key="frame" x="87" y="402" width="200" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="8ND-Lj-ba6"/>
+                                    <constraint firstAttribute="width" constant="200" id="ZLV-IL-2Lx"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="OUTCAMERA"/>
+                                    <segment title="INCAMERA"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentAction:" destination="N5t-e7-jiG" eventType="valueChanged" id="oTr-7B-E3i"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qn5-8o-aWC">
+                                <rect key="frame" x="87" y="450" width="200" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="16n-XB-QAK"/>
+                                    <constraint firstAttribute="width" constant="200" id="Q6u-ZI-uYQ"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="DEPTH"/>
+                                    <segment title="DISPARITY"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentAction:" destination="N5t-e7-jiG" eventType="valueChanged" id="Het-8R-4lw"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="PUh-m4-gGQ" firstAttribute="centerX" secondItem="Lwe-EB-1sh" secondAttribute="centerX" id="3XA-dw-HCO"/>
                             <constraint firstItem="hcO-so-bRg" firstAttribute="leading" secondItem="wdt-lP-C8e" secondAttribute="leading" constant="56" id="FK6-iB-iFu"/>
-                            <constraint firstItem="PUh-m4-gGQ" firstAttribute="centerX" secondItem="Lwe-EB-1sh" secondAttribute="centerX" id="Xcl-8Y-CfX"/>
-                            <constraint firstItem="PUh-m4-gGQ" firstAttribute="centerY" secondItem="Lwe-EB-1sh" secondAttribute="centerY" constant="-18.833333333333485" id="eH8-xQ-J3l"/>
+                            <constraint firstItem="qbj-9B-LUs" firstAttribute="leading" secondItem="qn5-8o-aWC" secondAttribute="leading" id="Z1R-n0-sTV"/>
+                            <constraint firstItem="qn5-8o-aWC" firstAttribute="top" secondItem="qbj-9B-LUs" secondAttribute="bottom" constant="21" id="ZsP-w4-l63"/>
+                            <constraint firstItem="PUh-m4-gGQ" firstAttribute="leading" secondItem="qbj-9B-LUs" secondAttribute="leading" id="c69-Y0-ZoO"/>
+                            <constraint firstItem="PUh-m4-gGQ" firstAttribute="trailing" secondItem="qbj-9B-LUs" secondAttribute="trailing" id="c9r-7U-BeJ"/>
+                            <constraint firstItem="PUh-m4-gGQ" firstAttribute="top" secondItem="hcO-so-bRg" secondAttribute="bottom" constant="14" id="fXX-c3-kJ3"/>
+                            <constraint firstItem="qbj-9B-LUs" firstAttribute="trailing" secondItem="qn5-8o-aWC" secondAttribute="trailing" id="ncD-uG-w2Z"/>
+                            <constraint firstItem="qbj-9B-LUs" firstAttribute="top" secondItem="PUh-m4-gGQ" secondAttribute="bottom" constant="21" id="t0P-dM-5AV"/>
                             <constraint firstItem="hcO-so-bRg" firstAttribute="centerY" secondItem="Lwe-EB-1sh" secondAttribute="centerY" constant="-56.5" id="u3m-jE-BLk"/>
                             <constraint firstItem="wdt-lP-C8e" firstAttribute="trailing" secondItem="hcO-so-bRg" secondAttribute="trailing" constant="59" id="uA7-oT-QeK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wdt-lP-C8e"/>
                     </view>
                     <connections>
-                        <outlet property="segment" destination="PUh-m4-gGQ" id="d2U-Ty-r3l"/>
                         <outlet property="segmentLabel" destination="hcO-so-bRg" id="sta-pt-BvV"/>
+                        <outletCollection property="segments" destination="PUh-m4-gGQ" collectionClass="NSMutableArray" id="2UY-Rb-Jr3"/>
+                        <outletCollection property="segments" destination="qbj-9B-LUs" collectionClass="NSMutableArray" id="omS-Se-ciF"/>
+                        <outletCollection property="segments" destination="qn5-8o-aWC" collectionClass="NSMutableArray" id="h2v-Xb-qOy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cik-8I-sUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+
             <point key="canvasLocation" x="1965" y="133"/>
         </scene>
         <!--Compass Detail View Controller-->
