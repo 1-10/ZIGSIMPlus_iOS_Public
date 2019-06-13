@@ -26,11 +26,14 @@ final class CommandSelectionViewController: UIViewController {
         backButton.isHidden = true
         modalLabel.isHidden = true
         modalButton.isHidden = true
-        UITabBar.appearance().barTintColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
-        headerImage = UIImage(named: "headerLogo")
-        headerImageView.image = headerImage
         
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
+
+        // Set UI Design
+        headerImage = UIImage(named: "headerLogo")
+        headerImageView.image = headerImage
+        UITabBar.appearance().barTintColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
+        UITabBar.appearance().tintColor = UIColor(displayP3Red: 0, green: 153/255, blue: 102/255, alpha: 1.0)
     }
     
     @IBAction func actionButton(_ sender: UIButton) {

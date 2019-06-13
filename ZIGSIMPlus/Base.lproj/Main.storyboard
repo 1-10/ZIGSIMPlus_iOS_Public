@@ -125,7 +125,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" image="sensorLogo" id="NkG-Ez-t98">
-                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-20"/>
+                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="backButton" destination="1Cf-jk-ZOL" id="Fvf-uP-ldG"/>
@@ -503,7 +504,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dW0-Db-RIC"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="settingLogo" id="Mj7-0U-Ehy"/>
+                    <tabBarItem key="tabBarItem" title="" image="settingLogo" id="Mj7-0U-Ehy">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-20"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="compassAngleSeg" destination="thm-rP-1uQ" id="4fM-4y-abE"/>
                         <outlet property="dataDestinationSeg" destination="423-wr-2ya" id="WjA-NE-FAE"/>
@@ -576,7 +579,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kds-WB-sXb" userLabel="SettingValue">
-                                                    <rect key="frame" x="158" y="0.0" width="834" height="20"/>
+                                                    <rect key="frame" x="158" y="0.0" width="224" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="9S5-TK-1jh"/>
                                                     </constraints>
@@ -639,7 +642,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wNG-or-TOh"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" title="" image="startLogo" id="ZJH-dY-5eg"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="" image="startLogo" id="ZJH-dY-5eg">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-20"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="settingsTable" destination="pRt-3u-oEi" id="HZQ-Jq-U9s"/>
                         <outlet property="textField" destination="w9T-O2-Ptu" id="SBs-k4-5Vg"/>
