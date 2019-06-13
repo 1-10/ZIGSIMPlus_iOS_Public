@@ -15,6 +15,7 @@ class CommandOutputViewController: UIViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var textPreview: UIView!
     @IBOutlet weak var imagePreview: UIView!
+    @IBOutlet weak var togglePreviewModeButton: UIBarButtonItem!
     private var isTextPreviewMode: Bool = true
 
     @IBOutlet weak var settingsTable: UITableView!
@@ -59,6 +60,7 @@ class CommandOutputViewController: UIViewController {
     private func updatePreviewMode() {
         textPreview.isHidden = !isTextPreviewMode
         imagePreview.isHidden = isTextPreviewMode
+        togglePreviewModeButton.tintColor = isTextPreviewMode ? nil : UIColor.orange
     }
 
     // MARK: - Touch Events

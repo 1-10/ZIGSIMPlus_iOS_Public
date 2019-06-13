@@ -683,6 +683,7 @@
                         <outlet property="settingsTable" destination="pRt-3u-oEi" id="HZQ-Jq-U9s"/>
                         <outlet property="textField" destination="w9T-O2-Ptu" id="SBs-k4-5Vg"/>
                         <outlet property="textPreview" destination="G8A-YD-VSS" id="OfS-PA-b4l"/>
+                        <outlet property="togglePreviewModeButton" destination="eii-Jf-EcT" id="2bN-9v-LkV"/>
                         <outlet property="touchArea" destination="VFr-by-ckd" id="xXl-zN-frG"/>
                     </connections>
                 </viewController>
