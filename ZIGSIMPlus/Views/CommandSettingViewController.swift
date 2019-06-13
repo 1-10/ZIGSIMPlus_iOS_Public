@@ -47,7 +47,12 @@ public class CommandSettingViewController : UIViewController {
         messageFormatSeg.selectedSegmentIndex = userDefaultSegments["userMessageFormat"] ?? 0
         messageRateSeg.selectedSegmentIndex = userDefaultSegments["userMessageRatePerSecond"] ?? 0
         compassAngleSeg.selectedSegmentIndex = userDefaultSegments["userCompassAngle"] ?? 0
-        
+
+        // Initialize navigation bar
+        let titleImage = UIImage(named: "Logo")
+        let titleImageView = UIImageView(image: titleImage)
+        titleImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = titleImageView
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
