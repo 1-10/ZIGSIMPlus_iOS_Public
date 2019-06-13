@@ -18,6 +18,8 @@ final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var ndiDetailView: UIView!
     @IBOutlet weak var compassDetailView: UIView!
     @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var headerLabel: UILabel!
+    
     var headerImage: UIImage!
     var presenter: CommandSelectionPresenterProtocol!
     
@@ -30,8 +32,9 @@ final class CommandSelectionViewController: UIViewController {
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
 
         // Set UI Design
-        headerImage = UIImage(named: "headerLogo")
+        headerImage = UIImage(named: "Logo")
         headerImageView.image = headerImage
+        headerLabel.backgroundColor = UIColor(displayP3Red: 34/255, green: 34/255, blue: 34/255, alpha: 1.0)
         UITabBar.appearance().barTintColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
         UITabBar.appearance().tintColor = UIColor(displayP3Red: 0, green: 153/255, blue: 102/255, alpha: 1.0)
     }

@@ -20,6 +20,7 @@
 		02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */; };
 		0274B66322A0FD00005D7266 /* RemoteControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274B66222A0FD00005D7266 /* RemoteControlService.swift */; };
 		0281B29722A6791500ED97D9 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */; };
+		029C0B0822B0D5C3006C96BC /* CommandSettingTabNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */; };
 		02A03597229CD56E00E7399E /* AltimeterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03594229CD56D00E7399E /* AltimeterService.swift */; };
 		02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03595229CD56E00E7399E /* AudioLevelService.swift */; };
 		02A03599229CD56E00E7399E /* ProximityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03596229CD56E00E7399E /* ProximityService.swift */; };
@@ -49,7 +50,7 @@
 		9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */; };
 		9092E4CC227EBF4D0019F1C1 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4CB227EBF4D0019F1C1 /* Command.swift */; };
 		9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */; };
-		B34D1CB522B1F8D7008D4F51 /* UITabBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34D1CB422B1F8D7008D4F51 /* UITabBarExtension.swift */; };
+		B35E192D22B10DC90044AEB3 /* NdiDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E192C22B10DC90044AEB3 /* NdiDetailPresenter.swift */; };
 		B3979A7922AA834F0097F5FC /* CompassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */; };
 		B3C6588722A9022600B4358B /* StandardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C6588622A9022600B4358B /* StandardCell.xib */; };
 		B3C6588922A9028500B4358B /* StandardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6588822A9028500B4358B /* StandardCell.swift */; };
@@ -107,6 +108,7 @@
 		02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSettingPresenter.swift; sourceTree = "<group>"; };
 		0274B66222A0FD00005D7266 /* RemoteControlService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlService.swift; sourceTree = "<group>"; };
 		0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
+		029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSettingTabNavigationController.swift; sourceTree = "<group>"; };
 		02A03594229CD56D00E7399E /* AltimeterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterService.swift; sourceTree = "<group>"; };
 		02A03595229CD56E00E7399E /* AudioLevelService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLevelService.swift; sourceTree = "<group>"; };
 		02A03596229CD56E00E7399E /* ProximityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityService.swift; sourceTree = "<group>"; };
@@ -146,7 +148,7 @@
 		9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputPresenter.swift; sourceTree = "<group>"; };
 		9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.release.xcconfig"; sourceTree = "<group>"; };
 		9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.release.xcconfig"; sourceTree = "<group>"; };
-		B34D1CB422B1F8D7008D4F51 /* UITabBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarExtension.swift; sourceTree = "<group>"; };
+		B35E192C22B10DC90044AEB3 /* NdiDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdiDetailPresenter.swift; sourceTree = "<group>"; };
 		B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassDetailViewController.swift; sourceTree = "<group>"; };
 		B3C6588622A9022600B4358B /* StandardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardCell.xib; sourceTree = "<group>"; };
 		B3C6588822A9028500B4358B /* StandardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCell.swift; sourceTree = "<group>"; };
@@ -263,7 +265,6 @@
 				02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */,
 				02621F5322A4F9140071E9D2 /* StringExtension.swift */,
 				02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */,
-				B34D1CB422B1F8D7008D4F51 /* UITabBarExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -394,6 +395,7 @@
 				902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */,
 				9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */,
 				B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */,
+				029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */,
 				02A0359A229CD6F800E7399E /* CommandSettingViewController.swift */,
 				B3C6588A22A911B300B4358B /* NdiDetailViewController.swift */,
 				B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */,
@@ -407,6 +409,7 @@
 				902EB9F9227BED1B008F1650 /* CommandSelectionPresenter.swift */,
 				9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */,
 				02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */,
+				B35E192C22B10DC90044AEB3 /* NdiDetailPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -587,7 +590,6 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DeviceKit-framework/DeviceKit.framework",
-				"${BUILT_PRODUCTS_DIR}/DynamicButton/DynamicButton.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-framework/SwiftyJSON.framework",
@@ -598,7 +600,6 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeviceKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOSC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -697,11 +698,13 @@
 				B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
 				02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */,
+				B35E192D22B10DC90044AEB3 /* NdiDetailPresenter.swift in Sources */,
 				02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */,
 				0236461B2298253900171F73 /* NDIService.swift in Sources */,
 				023BB10622965B490094363B /* Utils.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* Command.swift in Sources */,
+				029C0B0822B0D5C3006C96BC /* CommandSettingTabNavigationController.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
 				02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,
@@ -717,7 +720,6 @@
 				B3C6588922A9028500B4358B /* StandardCell.swift in Sources */,
 				0212CDB322A6356500A83C16 /* NDIViewController.swift in Sources */,
 				0236461E2298253900171F73 /* NDIAdapter.mm in Sources */,
-				B34D1CB522B1F8D7008D4F51 /* UITabBarExtension.swift in Sources */,
 				02A8FA892296B62D001FB3DD /* LocationService.swift in Sources */,
 				02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */,
 				B3C6588B22A911B300B4358B /* NdiDetailViewController.swift in Sources */,

@@ -25,14 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else if type(of: viewController) == CommandOutputViewController.self {
                 let vc = viewController as! CommandOutputViewController
                 vc.presenter = CommandOutputPresenter(view: vc, mediator: mediator)
-            } else if type(of: viewController) == CommandSettingViewController.self {
-                let vc = viewController as! CommandSettingViewController
-                vc.presenter = CommandSettingPresenter(view: vc)
             } else {
                 print("else")
             }
         }
-
+    
         return true
     }
 
