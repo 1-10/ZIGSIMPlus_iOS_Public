@@ -12,14 +12,26 @@ import MediaPlayer
 class CommandOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var touchArea: UIView!
+    @IBOutlet weak var navItem: UINavigationItem!
+    @IBOutlet weak var textPreview: UIView!
+    @IBOutlet weak var imagePreview: UIView!
+    @IBOutlet weak var togglePreviewModeButton: UIBarButtonItem!
+    private var isTextPreviewMode: Bool = true
 
     @IBOutlet weak var settingsTable: UITableView!
     var settings: [(String, String)] = []
-    
+
     var presenter: CommandOutputPresenterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Initialize navigation bar
+        let titleImage = UIImage(named: "Logo")
+        let titleImageView = UIImageView(image: titleImage)
+        titleImageView.contentMode = .scaleAspectFit
+        navItem.titleView = titleImageView
+
         presenter.composeChildViewArchitecture()
     }
 
@@ -28,6 +40,13 @@ class CommandOutputViewController: UIViewController {
         let volumeView = MPVolumeView(frame: CGRect(x: -100, y: -100, width: 0, height: 0))
         view.addSubview(volumeView)
         presenter.startCommands()
+
+        // Update camera button state
+        let isCameraEnabled = presenter.isCameraEnabled()
+        togglePreviewModeButton.isEnabled = isCameraEnabled
+        isTextPreviewMode = isTextPreviewMode || !isCameraEnabled
+
+        updatePreviewMode()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -40,11 +59,22 @@ class CommandOutputViewController: UIViewController {
         presenter.stopCommands()
     }
 
+    @IBAction func togglePreviewMode(_ sender: Any) {
+        isTextPreviewMode.toggle()
+        updatePreviewMode()
+    }
+
+    private func updatePreviewMode() {
+        textPreview.isHidden = !isTextPreviewMode
+        imagePreview.isHidden = isTextPreviewMode
+        togglePreviewModeButton.tintColor = isTextPreviewMode ? nil : UIColor.orange
+    }
+
     // MARK: - Touch Events
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         TouchService.shared.addTouches(touches)
-    }   
+    }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         TouchService.shared.updateTouches(touches)

@@ -13,6 +13,7 @@ protocol CommandOutputPresenterProtocol {
     func composeChildViewArchitecture()
     func startCommands()
     func stopCommands()
+    func isCameraEnabled() -> Bool
 }
 
 protocol CommandOutputPresenterDelegate: AnyObject {
@@ -36,7 +37,7 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
         let factory = PresenterFactory()
         factory.createVideoCapturePresenter(parentView: view as! CommandOutputViewController)
     }
-    
+
     // MARK: Start commands
     func startCommands() {
         updatingTimer = Timer.scheduledTimer(
@@ -71,8 +72,11 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
 
         mediator.stopActiveCommands()
     }
-    
-    
+
+    func isCameraEnabled() -> Bool {
+        return AppSettingModel.shared.isCameraEnabled()
+    }
+
     // MARK: Methods used in multiple timings
 
     private func updateOutput() {
