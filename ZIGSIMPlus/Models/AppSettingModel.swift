@@ -144,11 +144,19 @@ public class AppSettingModel {
         ]
     }
 
-    public func isCameraEnabled() -> Bool {
-        return AppSettingModel.shared.isActiveByCommand[.arkit]! ||
-            AppSettingModel.shared.isActiveByCommand[.faceTracking]! ||
-            AppSettingModel.shared.isActiveByCommand[.imageTracking]! ||
-            AppSettingModel.shared.isActiveByCommand[.ndi]!
+    public func isCameraEnabled(except command: Command? = nil) -> Bool {
+        var isEnabled = false
+        if command != .arkit {
+            isEnabled = (isEnabled || isActiveByCommand[.arkit]!)
+        }
+        if command != .ndi {
+            isEnabled = (isEnabled || isActiveByCommand[.ndi]!)
+        }
+        if command != .imageDetection {
+            isEnabled = (isEnabled || isActiveByCommand[.imageDetection]!)
+        }
+        
+        return isEnabled
     }
 }
 
