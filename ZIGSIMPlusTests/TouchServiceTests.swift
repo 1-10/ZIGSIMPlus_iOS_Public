@@ -229,4 +229,90 @@ class TouchServiceTests: XCTestCase {
         json = try! TouchService.shared.toJSON()
         XCTAssertEqual(json["touches"].array!.count, 0, "TouchService resets touches when disabled")
     }
+
+    func test_toLog_empty() {
+        AppSettingModel.shared.isActiveByCommand[.touch] = false
+        let log = TouchService.shared.toLog()
+        XCTAssertEqual(log, [], "Empty log")
+    }
+
+    func test_toLog_notouch() {
+        AppSettingModel.shared.isActiveByCommand[.touch] = true
+        let log = TouchService.shared.toLog()
+        XCTAssertEqual(log, [], "Empty log")
+    }
+
+    func test_toLog() {
+        AppSettingModel.shared.isActiveByCommand[.touch] = true
+        TouchService.shared.enable()
+
+        let tWidth = 100
+        let tHeight = 100
+        TouchService.shared.setTouchArea(rect: CGRect(x: 0, y: 0, width: tWidth, height: tHeight))
+
+        var touches: [UITouchMock] = [
+            UITouchMock(12, 34, 0.1, 0.2),
+            UITouchMock(56, 78, 0.3, 0.4),
+        ]
+        TouchService.shared.addTouches(touches)
+
+        var log = TouchService.shared.toLog()
+        XCTAssertEqual(log.count, 8, "TouchService returns 4 logs per touch")
+
+        for (i, t) in touches.enumerated() {
+            let ii = i * 4
+            let x = Float(t._x) / Float(tWidth) * 2 - 1
+            let y = Float(t._y) / Float(tHeight) * 2 - 1
+
+            XCTAssertEqual(log[ii + 0], String(format: "touch:x:%.3f", x), "log[\(ii + 0)] is x position")
+            XCTAssertEqual(log[ii + 1], String(format: "touch:y:%.3f", y), "log[\(ii + 1)] is y position")
+            XCTAssertEqual(log[ii + 2], String(format: "touch:radius:%.3f", t._radius), "log[\(ii + 2)] is radius")
+            XCTAssertEqual(log[ii + 3], String(format: "touch:force:%.3f", t._force), "log[\(ii + 3)] is force")
+        }
+
+        // Test updateTouches
+        touches[0].update(23, 45, 0.5, 0.6)
+        touches[1].update(67, 89, 0.7, 0.8)
+        TouchService.shared.updateTouches(touches)
+
+        log = TouchService.shared.toLog()
+        XCTAssertEqual(log.count, 8, "TouchService returns 4 messages per touch")
+
+        for (i, t) in touches.enumerated() {
+            let ii = i * 4
+            let x = Float(t._x) / Float(tWidth) * 2 - 1
+            let y = Float(t._y) / Float(tHeight) * 2 - 1
+
+            XCTAssertEqual(log[ii + 0], String(format: "touch:x:%.3f", x), "log[\(ii + 0)] is x position")
+            XCTAssertEqual(log[ii + 1], String(format: "touch:y:%.3f", y), "log[\(ii + 1)] is y position")
+            XCTAssertEqual(log[ii + 2], String(format: "touch:radius:%.3f", t._radius), "log[\(ii + 2)] is radius")
+            XCTAssertEqual(log[ii + 3], String(format: "touch:force:%.3f", t._force), "log[\(ii + 3)] is force")
+        }
+
+        // Remove touches[1]
+        TouchService.shared.removeTouches([touches[1]])
+
+        log = TouchService.shared.toLog()
+        XCTAssertEqual(log.count, 4, "touches[1] is removed")
+        ({
+            let t = touches[0]
+            let x = Float(t._x) / Float(tWidth) * 2 - 1
+            let y = Float(t._y) / Float(tHeight) * 2 - 1
+
+            XCTAssertEqual(log[0], String(format: "touch:x:%.3f", x), "log[0] is x position")
+            XCTAssertEqual(log[1], String(format: "touch:y:%.3f", y), "log[1] is y position")
+            XCTAssertEqual(log[2], String(format: "touch:radius:%.3f", t._radius), "log[2] is radius")
+            XCTAssertEqual(log[3], String(format: "touch:force:%.3f", t._force), "log[3] is force")
+        })()
+
+        // Remove all touches
+        TouchService.shared.removeAllTouches()
+        log = TouchService.shared.toLog()
+        XCTAssertEqual(log.count, 0, "No messages returned afeter removeAllTouches")
+
+        TouchService.shared.addTouches(touches)  // add touches again
+        TouchService.shared.disable()
+        log = TouchService.shared.toLog()
+        XCTAssertEqual(log.count, 0, "TouchService resets touches when disabled")
+    }
 }

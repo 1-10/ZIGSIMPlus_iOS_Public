@@ -100,18 +100,18 @@ public class TouchService {
             if isTouchActive {
                 // Position
                 result += [
-                    "touch:x:\(point.x)",
-                    "touch:y:\(point.y)"
+                    String(format: "touch:x:%.3f", point.x),
+                    String(format: "touch:y:%.3f", point.y),
                 ]
 
                 // touch radius
                 if #available(iOS 8.0, *) {
-                    result.append("touch:radius:\(touch.majorRadius)")
+                    result.append(String(format: "touch:radius:%.3f", touch.majorRadius))
                 }
 
                 // 3d touch
                 if #available(iOS 9.0, *) {
-                    result.append("touch:force:\(touch.force)")
+                    result.append(String(format: "touch:force:%.3f", touch.force))
                 }
             }
 
