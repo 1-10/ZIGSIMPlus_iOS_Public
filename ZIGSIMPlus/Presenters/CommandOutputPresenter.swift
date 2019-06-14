@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol CommandOutputPresenterProtocol {
+    func composeChildViewArchitecture()
     func startCommands()
     func stopCommands()
     func isCameraEnabled() -> Bool
@@ -30,6 +31,13 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
         self.mediator = mediator
     }
     
+    // This cannnot be defined in AppDelegate, because subviews cannot be accessed from AppDelegate
+    // https://stackoverflow.com/questions/50780404/swift-how-to-reference-subview-from-appdelegate
+    func composeChildViewArchitecture() {
+        let factory = PresenterFactory()
+        factory.createVideoCapturePresenter(parentView: view as! CommandOutputViewController)
+    }
+
     // MARK: Start commands
     func startCommands() {
         updatingTimer = Timer.scheduledTimer(

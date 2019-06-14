@@ -1,0 +1,6 @@
+framework module SwiftyJSON {
+  umbrella header "SwiftyJSON-framework-umbrella.h"
+
+  export *
+  module * { export * }
+}

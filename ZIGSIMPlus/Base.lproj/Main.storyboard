@@ -740,10 +740,10 @@
             </objects>
             <point key="canvasLocation" x="1972" y="912"/>
         </scene>
-        <!--NDI View Controller-->
+        <!--Video Caputure View Controller-->
         <scene sceneID="fd2-zS-apR">
             <objects>
-                <viewController id="DBP-kb-Ioh" userLabel="NDI View Controller" customClass="NDIViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoCaptureViewID" id="DBP-kb-Ioh" userLabel="Video Caputure View Controller" customClass="VideoCaptureViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="60U-rD-l2P">
                         <rect key="frame" x="0.0" y="0.0" width="382" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

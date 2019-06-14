@@ -53,6 +53,7 @@ class ServiceManager {
         log += ProximityService.shared.toLog()
         log += RemoteControlService.shared.toLog()
         log += TouchService.shared.toLog()
+        log += VideoCaptureService.shared.toLog()
         log += NFCService.shared.toLog()
         return log.joined(separator: "\n")
     }
@@ -83,6 +84,7 @@ class ServiceManager {
         bundle.elements += ProximityService.shared.toOSC()
         bundle.elements += RemoteControlService.shared.toOSC()
         bundle.elements += TouchService.shared.toOSC()
+        bundle.elements += VideoCaptureService.shared.toOSC()
         bundle.elements += NFCService.shared.toOSC()
 
         // TODO: Add timetag
@@ -103,6 +105,7 @@ class ServiceManager {
             try data.merge(with: ProximityService.shared.toJSON())
             try data.merge(with: RemoteControlService.shared.toJSON())
             try data.merge(with: TouchService.shared.toJSON())
+            try data.merge(with: VideoCaptureService.shared.toJSON())
             try data.merge(with: NFCService.shared.toJSON())
         } catch {
             print(">> JSON convert error")

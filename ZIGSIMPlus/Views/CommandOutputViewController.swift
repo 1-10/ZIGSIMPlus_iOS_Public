@@ -20,7 +20,7 @@ class CommandOutputViewController: UIViewController {
 
     @IBOutlet weak var settingsTable: UITableView!
     var settings: [(String, String)] = []
-    
+
     var presenter: CommandOutputPresenterProtocol!
 
     override func viewDidLoad() {
@@ -31,6 +31,8 @@ class CommandOutputViewController: UIViewController {
         let titleImageView = UIImageView(image: titleImage)
         titleImageView.contentMode = .scaleAspectFit
         navItem.titleView = titleImageView
+
+        presenter.composeChildViewArchitecture()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +74,7 @@ class CommandOutputViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         TouchService.shared.addTouches(touches)
-    }   
+    }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         TouchService.shared.updateTouches(touches)
