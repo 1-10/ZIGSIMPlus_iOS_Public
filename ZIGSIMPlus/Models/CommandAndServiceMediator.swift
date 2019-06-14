@@ -12,7 +12,9 @@ public class CommandAndServiceMediator {
 
     // MARK: - Public methods
 
-    /// Returns if the service for given command is available
+    /// Returns if the service for given command is available.
+    ///
+    /// Simultaneous use of multiple commands accessing camera is not allowed.
     public func isAvailable(_ command: Command) -> Bool {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
@@ -30,7 +32,11 @@ public class CommandAndServiceMediator {
         case .micLevel:
             return AudioLevelService.shared.isAvailable()
         case .arkit:
-            return ArkitService.shared.isDeviceTrackingAvailable()
+            if isActive(.ndi) || isActive(.imageDetection) {
+                return false
+            } else {
+                return ArkitService.shared.isDeviceTrackingAvailable()
+            }
         case .faceTracking:
             return ArkitService.shared.isFaceTrackingAvailable()
         case .imageTracking:
@@ -38,9 +44,17 @@ public class CommandAndServiceMediator {
         case .remoteControl:
             return RemoteControlService.shared.isAvailable()
         case .ndi:
-            return VideoCaptureService.shared.isNDIAvailable()
+            if isActive(.arkit) || isActive(.imageDetection) {
+                return false
+            } else {
+                return VideoCaptureService.shared.isNDIAvailable()
+            }
         case .imageDetection:
-            return VideoCaptureService.shared.isImageDetectionAvailable()
+            if isActive(.arkit) || isActive(.ndi) {
+                return false
+            } else {
+                return VideoCaptureService.shared.isImageDetectionAvailable()
+            }
         case .nfc:
             return NFCService.shared.isAvailable()
         }
