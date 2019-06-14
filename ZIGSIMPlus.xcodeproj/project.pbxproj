@@ -30,6 +30,7 @@
 		02A8FA8B2296B62D001FB3DD /* BatteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA862296B62D001FB3DD /* BatteryService.swift */; };
 		02A8FA8C2296B62D001FB3DD /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA872296B62D001FB3DD /* ServiceManager.swift */; };
 		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
+		02CE3DE822B1FB3E00A2B7B8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 02CE3DE722B1FB3E00A2B7B8 /* Settings.bundle */; };
 		02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CF468122A8D9A8006F93EF /* ArkitUtils.swift */; };
 		02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */; };
 		02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */; };
@@ -121,6 +122,7 @@
 		02A8FA862296B62D001FB3DD /* BatteryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryService.swift; sourceTree = "<group>"; };
 		02A8FA872296B62D001FB3DD /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
+		02CE3DE722B1FB3E00A2B7B8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		02CF468122A8D9A8006F93EF /* ArkitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitUtils.swift; sourceTree = "<group>"; };
 		02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitViewController.swift; sourceTree = "<group>"; };
 		02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitService.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 		902EB9C8227BE68D008F1650 /* ZIGSIMPlus */ = {
 			isa = PBXGroup;
 			children = (
+				02CE3DE722B1FB3E00A2B7B8 /* Settings.bundle */,
 				63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */,
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
 				6345569B22B0E9150032E976 /* PresenterFactory.swift */,
@@ -465,6 +468,7 @@
 				902EB9C3227BE68D008F1650 /* Frameworks */,
 				902EB9C4227BE68D008F1650 /* Resources */,
 				0C08B6B7878D8F62CABB8B9B /* [CP] Embed Pods Frameworks */,
+				02CE3DE222B1F78400A2B7B8 /* LicensePlist */,
 			);
 			buildRules = (
 			);
@@ -566,6 +570,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02CE3DE822B1FB3E00A2B7B8 /* Settings.bundle in Resources */,
 				902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */,
 				902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */,
 				B3C6588722A9022600B4358B /* StandardCell.xib in Resources */,
@@ -589,6 +594,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		02CE3DE222B1F78400A2B7B8 /* LicensePlist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LicensePlist;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token a6b7222029fa5c23c25caf2619d8b3f743b5ddfc\nfi\n";
+		};
 		0C08B6B7878D8F62CABB8B9B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
