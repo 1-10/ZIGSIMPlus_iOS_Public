@@ -57,7 +57,7 @@ enum NdiType: Int {
     case DEPTH = 1
 }
 
-enum NdiCameraType: Int {
+enum NdiCameraPosition: Int {
     case BACK = 0
     case FRONT = 1
 }
@@ -83,7 +83,7 @@ public class AppSettingModel {
         messageRatePerSecondSegment = Defaults[.userMessageRatePerSecond] ?? 0
         faceup = Defaults[.userCompassAngle] ?? 0
         ndiType = NdiType(rawValue: Defaults[.userNdiType] ?? 0)!
-        ndiCameraType = NdiCameraType(rawValue: Defaults[.userNdiCameraType] ?? 0)!
+        ndiCameraPosition = NdiCameraPosition(rawValue: Defaults[.userNdiCameraType] ?? 0)!
         depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
     }
     
@@ -126,7 +126,7 @@ public class AppSettingModel {
     var imageDetectorDetectEyeBlink: Bool = true
     var imageDetectorDetectSmile: Bool = true
     var ndiType: NdiType = .CAMERA
-    var ndiCameraType: NdiCameraType = .BACK
+    var ndiCameraPosition: NdiCameraPosition = .BACK
     var depthType: DepthType = .DEPTH
 
     public func getSettingsForOutput() -> [(String, String)] {
