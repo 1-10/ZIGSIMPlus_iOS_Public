@@ -38,7 +38,9 @@ public class CommandAndServiceMediator {
         case .remoteControl:
             return RemoteControlService.shared.isAvailable()
         case .ndi:
-            return NDIService.shared.isAvailable()
+            return VideoCaptureService.shared.isNDIAvailable()
+        case .imageDetection:
+            return VideoCaptureService.shared.isImageDetectionAvailable()
         case .nfc:
             return NFCService.shared.isAvailable()
         }
@@ -97,8 +99,8 @@ public class CommandAndServiceMediator {
             ArkitService.shared.startImageTracking()
         case .remoteControl:
             RemoteControlService.shared.start()
-        case .ndi:
-            NDIService.shared.start()
+        case .ndi, .imageDetection:
+            VideoCaptureService.shared.start()
         case .nfc:
             NFCService.shared.start()
         }
@@ -132,8 +134,8 @@ public class CommandAndServiceMediator {
             ArkitService.shared.stopImageTracking()
         case .remoteControl:
             RemoteControlService.shared.stop()
-        case .ndi:
-            NDIService.shared.stop()
+        case .ndi, .imageDetection:
+            VideoCaptureService.shared.stop()
         case .nfc:
             NFCService.shared.stop()
         }

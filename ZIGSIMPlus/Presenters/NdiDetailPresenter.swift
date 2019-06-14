@@ -38,8 +38,8 @@ final class NdiDetailPresenter: NdiDetailPresenterProtocol {
     }
     
     func updateNdiCameraTypeUserDefault(selectIndex: Int) {
-        AppSettingModel.shared.ndiCameraType = NdiCameraType(rawValue: selectIndex)!
-        Defaults[.userNdiCameraType] = AppSettingModel.shared.ndiCameraType.rawValue
+        AppSettingModel.shared.ndiCameraPosition = NdiCameraPosition(rawValue: selectIndex)!
+        Defaults[.userNdiCameraType] = AppSettingModel.shared.ndiCameraPosition.rawValue
     }
     
     func updateDepthTypeUserDefault(selectIndex: Int) {

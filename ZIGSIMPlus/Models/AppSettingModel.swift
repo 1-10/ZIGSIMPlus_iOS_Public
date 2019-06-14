@@ -24,12 +24,40 @@ enum TransportFormat: Int {
     case OSC = 1
 }
 
+enum RatePerSecond: Int {
+    case one = 1
+    case ten = 10
+    case thirty = 30
+    case sixty = 60
+}
+
+enum ImageDetectorType: Int {
+    case face = 1
+    case qrCode = 2
+    case rectangle = 3
+    case text = 4
+}
+
+enum ImageDetectorAccuracy: Int {
+    case low = 1
+    case high = 2
+}
+
+enum ImageDatectorNumberOfAngles: Int {
+    case one = 1
+    case three = 3
+    case five = 5
+    case seven = 7
+    case nine = 9
+    case eleven = 11
+}
+    
 enum NdiType: Int {
     case CAMERA = 0
     case DEPTH = 1
 }
 
-enum NdiCameraType: Int {
+enum NdiCameraPosition: Int {
     case BACK = 0
     case FRONT = 1
 }
@@ -52,10 +80,10 @@ public class AppSettingModel {
         dataDestination = DataDestination(rawValue: Defaults[.userDataDestination] ?? 0)!
         transportProtocol = TransportProtocol(rawValue: Defaults[.userProtocol] ?? 0)!
         transportFormat = TransportFormat(rawValue: Defaults[.userMessageFormat] ?? 0)!
-        messageRatePerSecond = Defaults[.userMessageRatePerSecond] ?? 0
+        messageRatePerSecondSegment = Defaults[.userMessageRatePerSecond] ?? 0
         faceup = Defaults[.userCompassAngle] ?? 0
         ndiType = NdiType(rawValue: Defaults[.userNdiType] ?? 0)!
-        ndiCameraType = NdiCameraType(rawValue: Defaults[.userNdiCameraType] ?? 0)!
+        ndiCameraPosition = NdiCameraPosition(rawValue: Defaults[.userNdiCameraType] ?? 0)!
         depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
     }
     
@@ -65,33 +93,40 @@ public class AppSettingModel {
     // app default value & variable used in app
     var dataDestination: DataDestination = .OTHER_APP
     var transportProtocol: TransportProtocol = .UDP
-    // var transportProtocol: TransportProtocol = .TCP
     var address: String = "172.17.1.20"
     var port: Int32 = 3333
     var transportFormat: TransportFormat = .OSC
-    // var transportFormat: TransportFormat = .JSON
-    var messageRatePerSecond: Int = 3
+    var messageRatePerSecondSegment: Int = 3
     var deviceUUID: String = Utils.randomStringWithLength(16)
     var faceup: Int = 1 // 1.0 is faceup
     var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
-    var messageInterval: TimeInterval {
-        var convertMessageRatePerSecond = 60 // default
-        if messageRatePerSecond == 0 {
-            convertMessageRatePerSecond = 1
-        } else if messageRatePerSecond == 1 {
-            convertMessageRatePerSecond = 10
-        } else if messageRatePerSecond == 2 {
-            convertMessageRatePerSecond = 30
-        } else if messageRatePerSecond == 3 {
-            convertMessageRatePerSecond = 60
+    var messageRatePerSecond: RatePerSecond {
+        if messageRatePerSecondSegment == 0 {
+            return .one
+        } else if messageRatePerSecondSegment == 1 {
+            return .ten
+        } else if messageRatePerSecondSegment == 2 {
+            return .thirty
+        } else if messageRatePerSecondSegment == 3 {
+            return .sixty
+        } else {
+            fatalError("Unexpected message rate")
         }
-        return 1.0 / Double(convertMessageRatePerSecond)
+    }
+    var messageInterval: TimeInterval {
+        return 1.0 / Double(messageRatePerSecond.rawValue)
     }
     var compassAngle: Double {
         return Double(faceup)
     }
+    var imageDetectorType: ImageDetectorType = .face
+    var imageDetectorAccuracy: ImageDetectorAccuracy = .high
+    var imageDetectorTracks: Bool = false
+    var imageDetectorNumberOfAngles: ImageDatectorNumberOfAngles = .one
+    var imageDetectorDetectEyeBlink: Bool = true
+    var imageDetectorDetectSmile: Bool = true
     var ndiType: NdiType = .CAMERA
-    var ndiCameraType: NdiCameraType = .BACK
+    var ndiCameraPosition: NdiCameraPosition = .BACK
     var depthType: DepthType = .DEPTH
 
     public func getSettingsForOutput() -> [(String, String)] {
