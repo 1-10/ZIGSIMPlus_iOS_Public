@@ -32,7 +32,7 @@ public class CommandAndServiceMediator {
         case .micLevel:
             return AudioLevelService.shared.isAvailable()
         case .arkit:
-            if isActive(.ndi) || isActive(.imageDetection) {
+            if AppSettingModel.shared.isCameraEnabled(except: .arkit) {
                 return false
             } else {
                 return ArkitService.shared.isDeviceTrackingAvailable()
@@ -44,13 +44,13 @@ public class CommandAndServiceMediator {
         case .remoteControl:
             return RemoteControlService.shared.isAvailable()
         case .ndi:
-            if isActive(.arkit) || isActive(.imageDetection) {
+            if AppSettingModel.shared.isCameraEnabled(except: .ndi) {
                 return false
             } else {
                 return VideoCaptureService.shared.isNDIAvailable()
             }
         case .imageDetection:
-            if isActive(.arkit) || isActive(.ndi) {
+            if AppSettingModel.shared.isCameraEnabled(except: .imageDetection) {
                 return false
             } else {
                 return VideoCaptureService.shared.isImageDetectionAvailable()
