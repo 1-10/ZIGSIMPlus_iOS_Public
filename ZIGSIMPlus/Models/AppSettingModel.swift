@@ -108,6 +108,13 @@ public class AppSettingModel {
             ("DEVICE UUID", deviceUUID),
         ]
     }
+
+    public func isCameraEnabled() -> Bool {
+        return AppSettingModel.shared.isActiveByCommand[.arkit]! ||
+            AppSettingModel.shared.isActiveByCommand[.faceTracking]! ||
+            AppSettingModel.shared.isActiveByCommand[.imageTracking]! ||
+            AppSettingModel.shared.isActiveByCommand[.ndi]!
+    }
 }
 
 // user default value

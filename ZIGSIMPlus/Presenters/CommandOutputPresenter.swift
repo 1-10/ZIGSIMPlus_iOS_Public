@@ -12,6 +12,7 @@ import UIKit
 protocol CommandOutputPresenterProtocol {
     func startCommands()
     func stopCommands()
+    func isCameraEnabled() -> Bool
 }
 
 protocol CommandOutputPresenterDelegate: AnyObject {
@@ -63,8 +64,11 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
 
         mediator.stopActiveCommands()
     }
-    
-    
+
+    func isCameraEnabled() -> Bool {
+        return AppSettingModel.shared.isCameraEnabled()
+    }
+
     // MARK: Methods used in multiple timings
 
     private func updateOutput() {

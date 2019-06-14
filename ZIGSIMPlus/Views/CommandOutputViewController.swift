@@ -39,6 +39,11 @@ class CommandOutputViewController: UIViewController {
         view.addSubview(volumeView)
         presenter.startCommands()
 
+        // Update camera button state
+        let isCameraEnabled = presenter.isCameraEnabled()
+        togglePreviewModeButton.isEnabled = isCameraEnabled
+        isTextPreviewMode = isTextPreviewMode || !isCameraEnabled
+
         updatePreviewMode()
     }
 
