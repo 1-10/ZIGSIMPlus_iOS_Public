@@ -76,7 +76,7 @@ class TouchServiceTests: XCTestCase {
             UITouchMock(12, 34, 0.1, 0.2),
             UITouchMock(56, 78, 0.3, 0.4),
         ]
-        TouchService.shared.addTouches(Set<UITouch>(touches))
+        TouchService.shared.addTouches(touches)
 
         var osc = TouchService.shared.toOSC()
         XCTAssertEqual(osc.count, 8, "TouchService returns 4 messages per touch")
@@ -99,7 +99,7 @@ class TouchServiceTests: XCTestCase {
         // Test updateTouches
         touches[0].update(23, 45, 0.5, 0.6)
         touches[1].update(67, 89, 0.7, 0.8)
-        TouchService.shared.updateTouches(Set<UITouch>(touches))
+        TouchService.shared.updateTouches(touches)
 
         osc = TouchService.shared.toOSC()
         XCTAssertEqual(osc.count, 8, "TouchService returns 4 messages per touch")
@@ -120,7 +120,7 @@ class TouchServiceTests: XCTestCase {
         }
 
         // Remove touches[1]
-        TouchService.shared.removeTouches(Set<UITouch>([touches[1]]))
+        TouchService.shared.removeTouches([touches[1]])
 
         osc = TouchService.shared.toOSC()
         XCTAssertEqual(osc.count, 4, "touches[1] is removed")
@@ -143,7 +143,7 @@ class TouchServiceTests: XCTestCase {
         osc = TouchService.shared.toOSC()
         XCTAssertEqual(osc.count, 0, "No messages returned afeter removeAllTouches")
 
-        TouchService.shared.addTouches(Set<UITouch>(touches))  // add touches again
+        TouchService.shared.addTouches(touches)  // add touches again
         TouchService.shared.disable()
         osc = TouchService.shared.toOSC()
         XCTAssertEqual(osc.count, 0, "TouchService resets touches when disabled")
@@ -173,7 +173,7 @@ class TouchServiceTests: XCTestCase {
             UITouchMock(12, 34, 0.1, 0.2),
             UITouchMock(56, 78, 0.3, 0.4),
         ]
-        TouchService.shared.addTouches(Set<UITouch>(touches))
+        TouchService.shared.addTouches(touches)
 
         var json = try! TouchService.shared.toJSON()
         XCTAssertEqual(json["touches"].array!.count, 2, "2 touches returned")
@@ -190,7 +190,7 @@ class TouchServiceTests: XCTestCase {
         // Test updateTouches
         touches[0].update(23, 45, 0.5, 0.6)
         touches[1].update(67, 89, 0.7, 0.8)
-        TouchService.shared.updateTouches(Set<UITouch>(touches))
+        TouchService.shared.updateTouches(touches)
 
         json = try! TouchService.shared.toJSON()
         XCTAssertEqual(json["touches"].array!.count, 2, "2 touches returned")
@@ -205,7 +205,7 @@ class TouchServiceTests: XCTestCase {
         }
 
         // Remove touches[1]
-        TouchService.shared.removeTouches(Set<UITouch>([touches[1]]))
+        TouchService.shared.removeTouches([touches[1]])
 
         json = try! TouchService.shared.toJSON()
         XCTAssertEqual(json["touches"].array!.count, 1, "touches[1] is removed")
@@ -224,7 +224,7 @@ class TouchServiceTests: XCTestCase {
         json = try! TouchService.shared.toJSON()
         XCTAssertEqual(json["touches"].array!.count, 0, "No touches returned afeter removeAllTouches")
 
-        TouchService.shared.addTouches(Set<UITouch>(touches))  // add touches again
+        TouchService.shared.addTouches(touches) // add touches again
         TouchService.shared.disable()
         json = try! TouchService.shared.toJSON()
         XCTAssertEqual(json["touches"].array!.count, 0, "TouchService resets touches when disabled")

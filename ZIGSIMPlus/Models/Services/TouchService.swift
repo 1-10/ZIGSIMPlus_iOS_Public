@@ -42,13 +42,13 @@ public class TouchService {
         touchPoints.removeAll() // Reset data
     }
 
-    func addTouches(_ touches: Set<UITouch>) {
+    func addTouches(_ touches: [UITouch]) {
         if !isEnabled { return }
 
         touchPoints.append(contentsOf: touches)
     }
 
-    func removeTouches(_ touchesToRemove: Set<UITouch>) {
+    func removeTouches(_ touchesToRemove: [UITouch]) {
         if !isEnabled { return }
 
         for touchToRemove in touchesToRemove {
@@ -61,7 +61,7 @@ public class TouchService {
         }
     }
 
-    func updateTouches(_ touchesToUpdate: Set<UITouch>) {
+    func updateTouches(_ touchesToUpdate: [UITouch]) {
         if !isEnabled { return }
 
         for touchToUpdate in touchesToUpdate {
