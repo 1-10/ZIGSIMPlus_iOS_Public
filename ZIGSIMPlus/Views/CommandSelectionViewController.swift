@@ -65,7 +65,7 @@ final class CommandSelectionViewController: UIViewController {
         modalLabel.text = modalTexts[command]
     }
     
-    func adjustViewDesign() {
+    private func adjustViewDesign() {
         headerImage = UIImage(named: "Logo")
         headerImageView.image = headerImage
         headerLabel.backgroundColor = UIColor(displayP3Red: 34/255, green: 34/255, blue: 34/255, alpha: 1.0)
