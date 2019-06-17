@@ -145,18 +145,18 @@ public class AppSettingModel {
     }
 
     public func isCameraEnabled(except command: Command? = nil) -> Bool {
-        var isEnabled = false
+        var isCameraEnabled = false
         if command != .arkit {
-            isEnabled = (isEnabled || isActiveByCommand[.arkit]!)
+            isCameraEnabled = (isCameraEnabled || isActiveByCommand[.arkit]!)
         }
         if command != .ndi {
-            isEnabled = (isEnabled || isActiveByCommand[.ndi]!)
+            isCameraEnabled = (isCameraEnabled || isActiveByCommand[.ndi]!)
         }
         if command != .imageDetection {
-            isEnabled = (isEnabled || isActiveByCommand[.imageDetection]!)
+            isCameraEnabled = (isCameraEnabled || isActiveByCommand[.imageDetection]!)
         }
         
-        return isEnabled
+        return isCameraEnabled
     }
 }
 
