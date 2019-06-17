@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-let tabbarHeight = 80
+// This extension is added to adjust a TabBar heigth
+let tabbarHeight = 75
 extension UITabBar {
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         super.sizeThatFits(size)

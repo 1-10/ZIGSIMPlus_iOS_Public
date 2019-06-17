@@ -48,7 +48,7 @@
                                     <outlet property="delegate" destination="mba-MW-Syn" id="10U-4U-Fhl"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="En7-xV-9OJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="En7-xV-9OJ">
                                 <rect key="frame" x="0.0" y="-1" width="414" height="108"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -125,7 +125,7 @@
                         <viewLayoutGuide key="safeArea" id="XPd-KM-7cg"/>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" image="sensorLogo" id="q3R-r8-tFu">
-                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-20"/>
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
                     </tabBarItem>
                     <connections>
