@@ -150,6 +150,11 @@ public class AppSettingModel {
             AppSettingModel.shared.isActiveByCommand[.imageTracking]! ||
             AppSettingModel.shared.isActiveByCommand[.ndi]!
     }
+
+    public func isTouchEnabled() -> Bool {
+        return AppSettingModel.shared.isActiveByCommand[.touch]! ||
+            AppSettingModel.shared.isActiveByCommand[.applePencil]!
+    }
 }
 
 // user default value

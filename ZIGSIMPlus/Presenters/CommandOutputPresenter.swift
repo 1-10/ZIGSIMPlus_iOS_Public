@@ -14,6 +14,7 @@ protocol CommandOutputPresenterProtocol {
     func startCommands()
     func stopCommands()
     func isCameraEnabled() -> Bool
+    func isTouchEnabled() -> Bool
 }
 
 protocol CommandOutputPresenterDelegate: AnyObject {
@@ -75,6 +76,10 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
 
     func isCameraEnabled() -> Bool {
         return AppSettingModel.shared.isCameraEnabled()
+    }
+
+    func isTouchEnabled() -> Bool {
+        return AppSettingModel.shared.isTouchEnabled()
     }
 
     // MARK: Methods used in multiple timings
