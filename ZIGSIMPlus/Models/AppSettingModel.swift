@@ -51,7 +51,13 @@ enum ImageDatectorNumberOfAngles: Int {
     case nine = 9
     case eleven = 11
 }
-    
+
+enum ArkitTrackingType: Int {
+    case device = 0
+    case face = 1
+    case image = 2
+}
+
 enum NdiType: Int {
     case CAMERA = 0
     case DEPTH = 1
@@ -128,6 +134,7 @@ public class AppSettingModel {
     var ndiType: NdiType = .CAMERA
     var ndiCameraPosition: NdiCameraPosition = .BACK
     var depthType: DepthType = .DEPTH
+    var arkitTrackingType: ArkitTrackingType = .device
 
     public func getSettingsForOutput() -> [(String, String)] {
         let dst = dataDestination == .OTHER_APP ? "OTHER APP" : "LOCAL FILE"
@@ -146,8 +153,6 @@ public class AppSettingModel {
 
     public func isCameraEnabled() -> Bool {
         return AppSettingModel.shared.isActiveByCommand[.arkit]! ||
-            AppSettingModel.shared.isActiveByCommand[.faceTracking]! ||
-            AppSettingModel.shared.isActiveByCommand[.imageTracking]! ||
             AppSettingModel.shared.isActiveByCommand[.ndi]!
     }
 }
@@ -166,4 +171,5 @@ extension DefaultsKeys {
     static let userNdiType = DefaultsKey<Int?>("userNdiType", defaultValue: 0)
     static let userNdiCameraType = DefaultsKey<Int?>("userNdiCameraType", defaultValue: 0)
     static let userDepthType = DefaultsKey<Int?>("userDepthType", defaultValue: 0)
+    static let userArkitTrackingType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
 }

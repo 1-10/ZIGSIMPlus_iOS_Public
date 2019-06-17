@@ -30,11 +30,7 @@ public class CommandAndServiceMediator {
         case .micLevel:
             return AudioLevelService.shared.isAvailable()
         case .arkit:
-            return ArkitService.shared.isDeviceTrackingAvailable()
-        case .faceTracking:
-            return ArkitService.shared.isFaceTrackingAvailable()
-        case .imageTracking:
-            return ArkitService.shared.isImageTrackingAvailable()
+            return ArkitService.shared.isARKitAvailable()
         case .remoteControl:
             return RemoteControlService.shared.isAvailable()
         case .ndi:
@@ -92,11 +88,7 @@ public class CommandAndServiceMediator {
         case .micLevel:
             AudioLevelService.shared.start()
         case .arkit:
-            ArkitService.shared.startDeviceTracking()
-        case .faceTracking:
-            ArkitService.shared.startFaceTracking()
-        case .imageTracking:
-            ArkitService.shared.startImageTracking()
+            ArkitService.shared.start()
         case .remoteControl:
             RemoteControlService.shared.start()
         case .ndi, .imageDetection:
@@ -127,11 +119,7 @@ public class CommandAndServiceMediator {
         case .micLevel:
             AudioLevelService.shared.stop()
         case .arkit:
-            ArkitService.shared.stopDeviceTracking()
-        case .faceTracking:
-            ArkitService.shared.stopFaceTracking()
-        case .imageTracking:
-            ArkitService.shared.stopImageTracking()
+            ArkitService.shared.stop()
         case .remoteControl:
             RemoteControlService.shared.stop()
         case .ndi, .imageDetection:

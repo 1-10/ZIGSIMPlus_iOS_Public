@@ -242,5 +242,52 @@
             </objects>
             <point key="canvasLocation" x="1073.913043478261" y="132.58928571428572"/>
         </scene>
+        <!--ARKit Detail View Controller-->
+        <scene sceneID="G5W-6c-L9U">
+            <objects>
+                <viewController storyboardIdentifier="ARKitDetailView" id="AZf-oH-gaG" userLabel="ARKit Detail View Controller" customClass="CompassDetailViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z2I-bH-PBe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQH-tS-rRm" userLabel="Tracking Mode Block">
+                                <rect key="frame" x="57" y="416" width="300" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TRACKING MODE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpt-fk-ugw" userLabel="Tracking Mode Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1NX-Ls-ByG" userLabel="Tracking Mode Button">
+                                        <rect key="frame" x="55" y="28" width="188" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segments>
+                                            <segment title="DEVICE"/>
+                                            <segment title="FACE"/>
+                                            <segment title="MARKER"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentAction:" destination="AZf-oH-gaG" eventType="valueChanged" id="9Ph-nC-dO6"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="faE-79-5AM"/>
+                    </view>
+                    <connections>
+                        <outlet property="segment" destination="1NX-Ls-ByG" id="6k2-Nh-YVC"/>
+                        <outlet property="segmentLabel" destination="cpt-fk-ugw" id="xab-nJ-K3J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zK-fx-0HU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4492.753623188406" y="132.58928571428572"/>
+        </scene>
     </scenes>
 </document>
