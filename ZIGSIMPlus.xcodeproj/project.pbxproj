@@ -54,6 +54,9 @@
 		9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */; };
 		9092E4CC227EBF4D0019F1C1 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4CB227EBF4D0019F1C1 /* Command.swift */; };
 		9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */; };
+		B30188E222B3909E00CB549F /* CommandSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30188E122B3909E00CB549F /* CommandSelection.storyboard */; };
+		B30188E422B390C500CB549F /* CommandOutput.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30188E322B390C500CB549F /* CommandOutput.storyboard */; };
+		B30188E622B390E600CB549F /* CommandSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30188E522B390E600CB549F /* CommandSetting.storyboard */; };
 		B35E192D22B10DC90044AEB3 /* NdiDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E192C22B10DC90044AEB3 /* NdiDetailPresenter.swift */; };
 		B3979A7922AA834F0097F5FC /* CompassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */; };
 		B3C6588722A9022600B4358B /* StandardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C6588622A9022600B4358B /* StandardCell.xib */; };
@@ -156,6 +159,9 @@
 		9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputPresenter.swift; sourceTree = "<group>"; };
 		9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.release.xcconfig"; sourceTree = "<group>"; };
 		9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B30188E122B3909E00CB549F /* CommandSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandSelection.storyboard; sourceTree = "<group>"; };
+		B30188E322B390C500CB549F /* CommandOutput.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandOutput.storyboard; sourceTree = "<group>"; };
+		B30188E522B390E600CB549F /* CommandSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandSetting.storyboard; sourceTree = "<group>"; };
 		B35E192C22B10DC90044AEB3 /* NdiDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdiDetailPresenter.swift; sourceTree = "<group>"; };
 		B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassDetailViewController.swift; sourceTree = "<group>"; };
 		B3C6588622A9022600B4358B /* StandardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardCell.xib; sourceTree = "<group>"; };
@@ -372,7 +378,6 @@
 				902EB9F7227BECC7008F1650 /* Views */,
 				902EB9F8227BECDD008F1650 /* Presenters */,
 				902EB9FB227BF0DB008F1650 /* Entities */,
-				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				902EB9D0227BE68F008F1650 /* Assets.xcassets */,
 				02621F5122A4F9140071E9D2 /* Extensions */,
 				0236461F2298257500171F73 /* ZIGSIMPlus-Bridging-Header.h */,
@@ -411,6 +416,10 @@
 				02A0359A229CD6F800E7399E /* CommandSettingViewController.swift */,
 				B3C6588A22A911B300B4358B /* NdiDetailViewController.swift */,
 				B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */,
+				B30188E122B3909E00CB549F /* CommandSelection.storyboard */,
+				B30188E322B390C500CB549F /* CommandOutput.storyboard */,
+				902EB9CD227BE68D008F1650 /* Main.storyboard */,
+				B30188E522B390E600CB549F /* CommandSetting.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -571,8 +580,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				02CE3DE822B1FB3E00A2B7B8 /* Settings.bundle in Resources */,
+				B30188E422B390C500CB549F /* CommandOutput.storyboard in Resources */,
 				902EB9D1227BE68F008F1650 /* Assets.xcassets in Resources */,
 				902EB9CF227BE68D008F1650 /* Main.storyboard in Resources */,
+				B30188E222B3909E00CB549F /* CommandSelection.storyboard in Resources */,
+				B30188E622B390E600CB549F /* CommandSetting.storyboard in Resources */,
 				B3C6588722A9022600B4358B /* StandardCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
