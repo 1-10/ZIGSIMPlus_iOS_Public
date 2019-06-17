@@ -312,7 +312,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="sS3-j7-8iF" firstAttribute="top" secondItem="JbH-m2-OQN" secondAttribute="bottom" constant="8" id="8Xn-Va-o0k"/>
                                             <constraint firstItem="JbH-m2-OQN" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="8gr-9E-lsZ"/>
@@ -363,7 +363,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="dap-Xf-KgX" secondAttribute="bottom" constant="83" id="UXb-g7-hi5" userLabel="bottomMargin = Scroll View.bottom + 8"/>
                             <constraint firstItem="dap-Xf-KgX" firstAttribute="leading" secondItem="Qj2-o4-ZPx" secondAttribute="leadingMargin" id="ZlE-eV-727" userLabel="Scroll View.leading = leadingMargin - 20"/>
@@ -399,6 +399,13 @@
                         <outletCollection property="beaconUUIDTextFilds" destination="3DL-PK-Lpo" collectionClass="NSMutableArray" id="wYj-eq-E38"/>
                         <outletCollection property="beaconUUIDTextFilds" destination="hwG-eW-be1" collectionClass="NSMutableArray" id="J3i-ZO-Cs4"/>
                         <outletCollection property="beaconUUIDTextFilds" destination="Zpf-cd-jrt" collectionClass="NSMutableArray" id="JAB-OP-WxJ"/>
+                        <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZIR-2R-J7T"/>
+                        <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZDt-zW-C27"/>
+                        <outletCollection property="labels" destination="RMC-XZ-wNJ" collectionClass="NSMutableArray" id="cpB-dL-U04"/>
+                        <outletCollection property="labels" destination="4eK-AB-Aoh" collectionClass="NSMutableArray" id="3Gy-yZ-AlJ"/>
+                        <outletCollection property="labels" destination="mGa-SP-GhO" collectionClass="NSMutableArray" id="sfl-30-Umx"/>
+                        <outletCollection property="labels" destination="sS3-j7-8iF" collectionClass="NSMutableArray" id="yRs-SB-YOy"/>
+                        <outletCollection property="labels" destination="KNW-Ua-0gi" collectionClass="NSMutableArray" id="8s5-9T-VQl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDN-nW-80v" userLabel="First Responder" sceneMemberID="firstResponder"/>

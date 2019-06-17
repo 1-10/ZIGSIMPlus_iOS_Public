@@ -26,6 +26,7 @@ public class CommandSettingViewController : UIViewController {
     @IBOutlet weak var uuidTextField: UITextField!
     @IBOutlet weak var compassAngleSeg: UISegmentedControl!
     @IBOutlet var beaconUUIDTextFilds: [UITextField]!
+    @IBOutlet var labels: [UILabel]!
     
     var presenter: CommandSettingPresenterProtocol!
     
@@ -48,11 +49,43 @@ public class CommandSettingViewController : UIViewController {
         messageRateSeg.selectedSegmentIndex = userDefaultSegments["userMessageRatePerSecond"] ?? 0
         compassAngleSeg.selectedSegmentIndex = userDefaultSegments["userCompassAngle"] ?? 0
 
-        // Initialize navigation bar
+        initNavigationBar()
+        adjustViewDesign()
+    }
+    
+    private func initNavigationBar() {
         let titleImage = UIImage(named: "Logo")
         let titleImageView = UIImageView(image: titleImage)
         titleImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImageView
+    }
+    
+    private func adjustViewDesign() {
+        for label in labels {
+            label.textColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        }
+
+        adjustSegmentDesgin(segment: dataDestinationSeg)
+        adjustSegmentDesgin(segment: protocoloSeg)
+        adjustSegmentDesgin(segment: messageFormatSeg)
+        adjustSegmentDesgin(segment: messageRateSeg)
+        
+        adjustTextFieldDesign(textFiled: ipAdressTextField)
+        adjustTextFieldDesign(textFiled: portNumberTextField)
+        adjustTextFieldDesign(textFiled: uuidTextField)
+    }
+    
+    private func adjustSegmentDesgin(segment: UISegmentedControl) {
+        segment.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        segment.layer.backgroundColor = UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0).cgColor
+    }
+    
+    private func adjustTextFieldDesign(textFiled: UITextField) {
+        textFiled.textColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        textFiled.backgroundColor =  UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0)
+        textFiled.layer.borderWidth = 1.0
+        textFiled.layer.cornerRadius = 4.0
+        textFiled.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
