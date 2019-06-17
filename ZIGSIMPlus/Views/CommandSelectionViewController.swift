@@ -22,6 +22,12 @@ final class CommandSelectionViewController: UIViewController {
         modalLabel.isHidden = true
         modalButton.isHidden = true
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
+
+        // Initialize navigation bar
+        let titleImage = UIImage(named: "Logo")
+        let titleImageView = UIImageView(image: titleImage)
+        titleImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = titleImageView
     }
     
     
