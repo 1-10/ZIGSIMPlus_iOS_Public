@@ -42,10 +42,7 @@ public class MotionService {
             }
 
             // Save data
-            self.accel = motion.userAcceleration
-            self.gravity = motion.gravity
-            self.gyro = motion.rotationRate
-            self.quaternion = motion.attitude.quaternion
+            self.updateMotion(motion)
             self.isError = false
         }
     }
@@ -54,6 +51,13 @@ public class MotionService {
         if !motionManager.isDeviceMotionAvailable {
             motionManager.stopDeviceMotionUpdates()
         }
+    }
+
+    func updateMotion(_ motion: CMDeviceMotion) {
+        accel = motion.userAcceleration
+        gravity = motion.gravity
+        gyro = motion.rotationRate
+        quaternion = motion.attitude.quaternion
     }
 }
 

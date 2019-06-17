@@ -42,13 +42,13 @@ public class TouchService {
         touchPoints.removeAll() // Reset data
     }
 
-    func addTouches(_ touches: Set<UITouch>) {
+    func addTouches(_ touches: [UITouch]) {
         if !isEnabled { return }
 
         touchPoints.append(contentsOf: touches)
     }
 
-    func removeTouches(_ touchesToRemove: Set<UITouch>) {
+    func removeTouches(_ touchesToRemove: [UITouch]) {
         if !isEnabled { return }
 
         for touchToRemove in touchesToRemove {
@@ -61,7 +61,7 @@ public class TouchService {
         }
     }
 
-    func updateTouches(_ touchesToUpdate: Set<UITouch>) {
+    func updateTouches(_ touchesToUpdate: [UITouch]) {
         if !isEnabled { return }
 
         for touchToUpdate in touchesToUpdate {
@@ -100,18 +100,18 @@ public class TouchService {
             if isTouchActive {
                 // Position
                 result += [
-                    "touch:x:\(point.x)",
-                    "touch:y:\(point.y)"
+                    String(format: "touch:x:%.3f", point.x),
+                    String(format: "touch:y:%.3f", point.y),
                 ]
 
                 // touch radius
                 if #available(iOS 8.0, *) {
-                    result.append("touch:radius:\(touch.majorRadius)")
+                    result.append(String(format: "touch:radius:%.3f", touch.majorRadius))
                 }
 
                 // 3d touch
                 if #available(iOS 9.0, *) {
-                    result.append("touch:force:\(touch.force)")
+                    result.append(String(format: "touch:force:%.3f", touch.force))
                 }
             }
 
