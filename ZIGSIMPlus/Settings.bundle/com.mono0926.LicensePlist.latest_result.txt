@@ -1,0 +1,37 @@
+name: DeviceKit, nameSpecified: 
+body: Copyright (c) 2015 D…
+version: 1.13.0
+
+name: DeviceKit, nameSpecified: 
+body: Copyright (c) 2015 D…
+version: 1.13.0
+
+name: LicensePlist, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 2.5.0
+
+name: SwiftOSC, nameSpecified: 
+body: The MIT License (MIT…
+version: 1.2.4
+
+name: SwiftSocket, nameSpecified: 
+body: BSD 3-Clause License…
+version: 2.0.2
+
+name: SwiftyJSON, nameSpecified: 
+body: The MIT License (MIT…
+version: 4.3.0
+
+name: SwiftyJSON, nameSpecified: 
+body: The MIT License (MIT…
+version: 4.3.0
+
+name: SwiftyUserDefaults, nameSpecified: 
+body: The MIT License (MIT…
+version: 4.0.0
+
+add-version-numbers: false
+
+LicensePlist Version: 1.8.3

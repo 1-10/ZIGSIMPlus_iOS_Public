@@ -7,6 +7,7 @@ target 'ZIGSIMPlus' do
 
   # Pods for ZIGSIMPlus
   pod 'DeviceKit', '~> 1.3'
+  pod 'LicensePlist'
   pod 'SwiftSocket'
   pod 'SwiftOSC', '~> 1.2'
   pod 'SwiftyUserDefaults', '~> 4.0'
