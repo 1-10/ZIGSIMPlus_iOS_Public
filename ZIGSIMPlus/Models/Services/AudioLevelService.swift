@@ -64,7 +64,7 @@ class AudioLevelService {
     }
 
     public func start() {
-        let fps = Double(AppSettingModel.shared.messageRatePerSecond)
+        let fps = Double(AppSettingModel.shared.messageRatePerSecondSegment)
 
         // Set data format
         var dataFormat = AudioStreamBasicDescription(

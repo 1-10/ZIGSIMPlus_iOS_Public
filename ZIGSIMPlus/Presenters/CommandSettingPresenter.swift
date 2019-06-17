@@ -98,8 +98,8 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         AppSettingModel.shared.transportFormat = TransportFormat(rawValue: segmentControls["userMessageFormat"] ?? 0)!
         Defaults[.userMessageFormat] = AppSettingModel.shared.transportFormat.rawValue
 
-        AppSettingModel.shared.messageRatePerSecond = segmentControls["userMessageRatePerSecond"] ?? 0
-        Defaults[.userMessageRatePerSecond] = AppSettingModel.shared.messageRatePerSecond
+        AppSettingModel.shared.messageRatePerSecondSegment = segmentControls["userMessageRatePerSecond"] ?? 0
+        Defaults[.userMessageRatePerSecond] = AppSettingModel.shared.messageRatePerSecondSegment
         
         AppSettingModel.shared.faceup = segmentControls["userCompassAngle"] ?? 0
         Defaults[.userCompassAngle] = AppSettingModel.shared.faceup
