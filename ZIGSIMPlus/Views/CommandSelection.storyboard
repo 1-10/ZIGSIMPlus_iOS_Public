@@ -267,7 +267,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lmS-H9-ZEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2788" y="133"/>
+            <point key="canvasLocation" x="3697.1014492753625" y="132.92410714285714"/>
+        </scene>
+        <!--Command Selection Tab Navigation Controller-->
+        <scene sceneID="QHn-Se-LIv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Elv-3B-lGd" customClass="CommandSelectionTabNavigationController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="1" systemItem="featured" id="LwL-MH-432"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UNn-r3-19f">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ice-tq-8FF" kind="relationship" relationship="rootViewController" id="owi-sj-IyO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1hw-n6-xrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073.913043478261" y="132.58928571428572"/>
         </scene>
     </scenes>
 </document>
