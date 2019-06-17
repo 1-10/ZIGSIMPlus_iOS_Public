@@ -30,21 +30,11 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
             "ipAdress": "",
             "portNumber": "",
             "uuid": "",
-            "beaconUUID1": "",
-            "beaconUUID2": "",
-            "beaconUUID3": "",
-            "beaconUUID4": "",
-            "beaconUUID5": ""
         ]
 
         texts["ipAdress"] = Defaults[.userIpAdress]?.description ?? ""
         texts["portNumber"] = Defaults[.userPortNumber]?.description ?? ""
         texts["uuid"] = Defaults[.userDeviceUUID]?.description ?? ""
-        texts["beaconUUID1"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:0)
-        texts["beaconUUID2"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:1)
-        texts["beaconUUID3"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:2)
-        texts["beaconUUID4"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:3)
-        texts["beaconUUID5"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:4)
         return texts
     }
     
@@ -53,15 +43,13 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
             "userDataDestination": 0,
             "userProtocol": 0,
             "userMessageFormat": 0,
-            "userMessageRatePerSecond": 0,
-            "userCompassAngle": 0
+            "userMessageRatePerSecond": 0
         ]
         
         segments["userDataDestination"] = Defaults[.userDataDestination]
         segments["userProtocol"] = Defaults[.userProtocol]
         segments["userMessageFormat"] = Defaults[.userMessageFormat]
         segments["userMessageRatePerSecond"] = Defaults[.userMessageRatePerSecond]
-        segments["userCompassAngle"] = Defaults[.userCompassAngle]
         
         return segments
     }
@@ -73,18 +61,6 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         Defaults[.userPortNumber] = Int(AppSettingModel.shared.port)
         AppSettingModel.shared.deviceUUID = texts["uuid"]?.description ?? ""
         Defaults[.userDeviceUUID] = AppSettingModel.shared.deviceUUID
-        var beaconUUID = texts["beaconUUID1"]?.description ?? ""
-        beaconUUID += "-"
-        beaconUUID += texts["beaconUUID2"]?.description ?? ""
-        beaconUUID += "-"
-        beaconUUID += texts["beaconUUID3"]?.description ?? ""
-        beaconUUID += "-"
-        beaconUUID += texts["beaconUUID4"]?.description ?? ""
-        beaconUUID += "-"
-        beaconUUID += texts["beaconUUID5"]?.description ?? ""
-        AppSettingModel.shared.beaconUUID = beaconUUID
-        Defaults[.userBeaconUUID] = AppSettingModel.shared.beaconUUID
-        print("beaconuuid: \(AppSettingModel.shared.beaconUUID)")
     }
     
     func updateSegmentsUserDefault(segmentControls: Dictionary<String, Int>) {
@@ -100,8 +76,5 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
 
         AppSettingModel.shared.messageRatePerSecondSegment = segmentControls["userMessageRatePerSecond"] ?? 0
         Defaults[.userMessageRatePerSecond] = AppSettingModel.shared.messageRatePerSecondSegment
-        
-        AppSettingModel.shared.faceup = segmentControls["userCompassAngle"] ?? 0
-        Defaults[.userCompassAngle] = AppSettingModel.shared.faceup
     }
 }
