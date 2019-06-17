@@ -378,7 +378,6 @@
 				902EB9F7227BECC7008F1650 /* Views */,
 				902EB9F8227BECDD008F1650 /* Presenters */,
 				902EB9FB227BF0DB008F1650 /* Entities */,
-				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				902EB9D0227BE68F008F1650 /* Assets.xcassets */,
 				02621F5122A4F9140071E9D2 /* Extensions */,
 				0236461F2298257500171F73 /* ZIGSIMPlus-Bridging-Header.h */,
@@ -419,6 +418,7 @@
 				B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */,
 				B30188E122B3909E00CB549F /* CommandSelection.storyboard */,
 				B30188E322B390C500CB549F /* CommandOutput.storyboard */,
+				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				B30188E522B390E600CB549F /* CommandSetting.storyboard */,
 			);
 			path = Views;
