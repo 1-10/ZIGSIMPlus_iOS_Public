@@ -12,12 +12,15 @@ import SwiftyUserDefaults
 
 public class ArkitDetailViewController : UIViewController {
 
+    var presenter: CommandDetailSettingsPresenterProtocol!
+
     @IBOutlet weak var stackView: UIStackView!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+        presenter = CommandDetailSettingsPresenter()
 
-        let ds = AppSettingModel.shared.getCommandDetailSettings()
+        let ds = presenter.getCommandDetailSettings()
         guard let settings = ds[.arkit] else { return }
 
         // Render inputs for settings
@@ -44,20 +47,11 @@ public class ArkitDetailViewController : UIViewController {
     }
 
     @objc func segmentedAction(segmented: UISegmentedControl) {
-        let ds = AppSettingModel.shared.getCommandDetailSettings()
+        let ds = presenter.getCommandDetailSettings()
         guard let settings = ds[.arkit] else { return }
-        let setting = settings[segmented.tag]
+        guard case var .segmented(setting) = settings[segmented.tag] else { return }
 
-        let value = segmented.selectedSegmentIndex
-
-        switch setting {
-        case .segmented(let data):
-            switch data.key {
-            case .arkitTrackingType:
-                // TODO: Move UserDefault update to AppSettingModel?
-                AppSettingModel.shared.arkitTrackingType = ArkitTrackingType(rawValue: value)!
-                Defaults[.userArkitTrackingType] = value
-            }
-        }
+        setting.value = segmented.selectedSegmentIndex
+        presenter.updateSetting(setting: .segmented(setting))
     }
 }
