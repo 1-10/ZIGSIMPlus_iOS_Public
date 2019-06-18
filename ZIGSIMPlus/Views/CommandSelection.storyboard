@@ -256,7 +256,7 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="center" fixedFrame="YES" axis="vertical" distribution="equalCentering" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Sa6-tM-dua">
                                         <rect key="frame" x="37" y="379" width="300" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </stackView>
                                 </subviews>
                             </scrollView>

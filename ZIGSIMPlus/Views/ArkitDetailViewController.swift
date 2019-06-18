@@ -13,6 +13,7 @@ import SwiftyUserDefaults
 public class ArkitDetailViewController : UIViewController {
 
     var presenter: CommandDetailSettingsPresenterProtocol!
+    var command: Command!
 
     @IBOutlet weak var stackView: UIStackView!
 
@@ -21,7 +22,7 @@ public class ArkitDetailViewController : UIViewController {
         presenter = CommandDetailSettingsPresenter()
 
         let ds = presenter.getCommandDetailSettings()
-        guard let settings = ds[.arkit] else { return }
+        guard let settings = ds[command] else { return }
 
         // Render inputs for settings
         for (i, setting) in settings.enumerated() {
@@ -43,15 +44,15 @@ public class ArkitDetailViewController : UIViewController {
             }
         }
 
-        stackView.heightAnchor.constraint(equalToConstant: CGFloat(settings.count) * 60.0)
+        stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settings.count) * 60.0)
     }
 
     @objc func segmentedAction(segmented: UISegmentedControl) {
         let ds = presenter.getCommandDetailSettings()
-        guard let settings = ds[.arkit] else { return }
+        guard let settings = ds[command] else { return }
         guard case var .segmented(setting) = settings[segmented.tag] else { return }
 
-        setting.value = segmented.selectedSegmentIndex
+        setting.value = segmented.selectedSegmentIndex        
         presenter.updateSetting(setting: .segmented(setting))
     }
 }

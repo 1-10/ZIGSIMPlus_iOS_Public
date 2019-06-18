@@ -39,24 +39,23 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     func showDetail(commandNo: Int) {
+        let command = Command.allCases[commandNo]
+
         // Get detail view controller
-        let vc: UIViewController
-        switch Command.allCases[commandNo] {
-        case .compass:
-            vc = storyboard!.instantiateViewController(withIdentifier: "CompassDetailView")
-        case .ndi:
-            vc = storyboard!.instantiateViewController(withIdentifier: "NDIDetailView")
-        case .arkit:
-            vc = storyboard!.instantiateViewController(withIdentifier: "ARKitDetailView")
+        switch command {
+        case .compass, .ndi, .arkit:
+            let vc = storyboard!.instantiateViewController(withIdentifier: "ARKitDetailView") as! ArkitDetailViewController
+            vc.command = command
+
+            // Move to detail view
+            guard let navCtrl = navigationController else {
+                fatalError("CommandSelectionView must be embedded in NavigationController")
+            }
+            navCtrl.pushViewController(vc, animated: true)
+
         default:
             return // Do nothing if detail view for the command is not found
         }
-
-        // Move to detail view
-        guard let navCtrl = navigationController else {
-            fatalError("CommandSelectionView must be embedded in NavigationController")
-        }
-        navCtrl.pushViewController(vc, animated: true)
     }
     
     func showModal(commandNo: Int) {
