@@ -88,11 +88,14 @@ public class LocationService: NSObject {
     func startCompass() {
         if isLocationAvailable() {
             locationManager.requestAlwaysAuthorization()
-            if (AppSettingModel.shared.compassAngle == 0.0) {
+
+            switch AppSettingModel.shared.compassOrientation {
+            case .portrait:
                 locationManager.headingOrientation = .portrait
-            }  else if (AppSettingModel.shared.compassAngle == 1.0) {
+            case .faceup:
                 locationManager.headingOrientation = .faceUp
             }
+
             locationManager.startUpdatingHeading()
         }
     }
@@ -180,7 +183,7 @@ extension LocationService : Service {
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
             log += [
                 "compass:compass:\(compassData)",
-                "compass:faceup:\(AppSettingModel.shared.compassAngle)"
+                "compass:orientation:\(AppSettingModel.shared.compassOrientation == .faceup ? "faceup" : "portrait")"
             ]
         }
 

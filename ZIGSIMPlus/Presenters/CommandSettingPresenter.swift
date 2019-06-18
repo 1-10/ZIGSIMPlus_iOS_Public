@@ -54,14 +54,14 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
             "userProtocol": 0,
             "userMessageFormat": 0,
             "userMessageRatePerSecond": 0,
-            "userCompassAngle": 0
+            "userCompassOrientation": 0
         ]
         
         segments["userDataDestination"] = Defaults[.userDataDestination]
         segments["userProtocol"] = Defaults[.userProtocol]
         segments["userMessageFormat"] = Defaults[.userMessageFormat]
         segments["userMessageRatePerSecond"] = Defaults[.userMessageRatePerSecond]
-        segments["userCompassAngle"] = Defaults[.userCompassAngle]
+        segments["userCompassOrientation"] = Defaults[.userCompassOrientation]
         
         return segments
     }
@@ -101,7 +101,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         AppSettingModel.shared.messageRatePerSecondSegment = segmentControls["userMessageRatePerSecond"] ?? 0
         Defaults[.userMessageRatePerSecond] = AppSettingModel.shared.messageRatePerSecondSegment
         
-        AppSettingModel.shared.faceup = segmentControls["userCompassAngle"] ?? 0
-        Defaults[.userCompassAngle] = AppSettingModel.shared.faceup
+        AppSettingModel.shared.compassOrientation = CompassOrientation(rawValue: segmentControls["userCompassOrientation"] ?? 0)!
+        Defaults[.userCompassOrientation] = AppSettingModel.shared.compassOrientation.rawValue
     }
 }

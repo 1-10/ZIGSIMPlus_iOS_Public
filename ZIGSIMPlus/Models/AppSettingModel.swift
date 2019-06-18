@@ -73,6 +73,11 @@ enum DepthType: Int {
     case DISPARITY = 1
 }
 
+enum CompassOrientation: Int {
+    case portrait = 0
+    case faceup = 1
+}
+
 public class AppSettingModel {
     private init() {
         for command in Command.allCases {
@@ -87,7 +92,7 @@ public class AppSettingModel {
         transportProtocol = TransportProtocol(rawValue: Defaults[.userProtocol] ?? 0)!
         transportFormat = TransportFormat(rawValue: Defaults[.userMessageFormat] ?? 0)!
         messageRatePerSecondSegment = Defaults[.userMessageRatePerSecond] ?? 0
-        faceup = Defaults[.userCompassAngle] ?? 0
+        compassOrientation = CompassOrientation(rawValue: Defaults[.userCompassOrientation] ?? 0)!
         ndiType = NdiType(rawValue: Defaults[.userNdiType] ?? 0)!
         ndiCameraPosition = NdiCameraPosition(rawValue: Defaults[.userNdiCameraType] ?? 0)!
         depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
@@ -105,7 +110,7 @@ public class AppSettingModel {
     var transportFormat: TransportFormat = .OSC
     var messageRatePerSecondSegment: Int = 3
     var deviceUUID: String = Utils.randomStringWithLength(16)
-    var faceup: Int = 1 // 1.0 is faceup
+    var compassOrientation: CompassOrientation = .faceup
     var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
     var messageRatePerSecond: RatePerSecond {
         if messageRatePerSecondSegment == 0 {
@@ -122,9 +127,6 @@ public class AppSettingModel {
     }
     var messageInterval: TimeInterval {
         return 1.0 / Double(messageRatePerSecond.rawValue)
-    }
-    var compassAngle: Double {
-        return Double(faceup)
     }
     var imageDetectorType: ImageDetectorType = .face
     var imageDetectorAccuracy: ImageDetectorAccuracy = .high
@@ -166,7 +168,7 @@ extension DefaultsKeys {
     static let userPortNumber = DefaultsKey<Int?>("userPortNumber", defaultValue: 3333)
     static let userMessageFormat = DefaultsKey<Int?>("userMessageFormat", defaultValue: 1)
     static let userMessageRatePerSecond = DefaultsKey<Int?>("userMessageRatePerSecond", defaultValue: 3)
-    static let userCompassAngle = DefaultsKey<Int?>("userCompassAngle", defaultValue: 1)
+    static let userCompassOrientation = DefaultsKey<Int?>("userCompassOrientation", defaultValue: 1)
     static let userDeviceUUID = DefaultsKey<String?>("userDeviceUUID", defaultValue: Utils.randomStringWithLength(16))
     static let userBeaconUUID = DefaultsKey<String?>("userBeaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
     static let userNdiType = DefaultsKey<Int?>("userNdiType", defaultValue: 0)
