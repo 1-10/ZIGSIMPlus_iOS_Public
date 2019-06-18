@@ -24,7 +24,6 @@ public class CommandSettingViewController : UIViewController {
     @IBOutlet weak var messageFormatSeg: UISegmentedControl!
     @IBOutlet weak var messageRateSeg: UISegmentedControl!
     @IBOutlet weak var uuidTextField: UITextField!
-    @IBOutlet weak var compassAngleSeg: UISegmentedControl!
     @IBOutlet var beaconUUIDTextFilds: [UITextField]!
     
     var presenter: CommandSettingPresenterProtocol!
@@ -46,7 +45,6 @@ public class CommandSettingViewController : UIViewController {
         protocoloSeg.selectedSegmentIndex = userDefaultSegments["userProtocol"] ?? 0
         messageFormatSeg.selectedSegmentIndex = userDefaultSegments["userMessageFormat"] ?? 0
         messageRateSeg.selectedSegmentIndex = userDefaultSegments["userMessageRatePerSecond"] ?? 0
-        compassAngleSeg.selectedSegmentIndex = userDefaultSegments["userCompassAngle"] ?? 0
 
         // Initialize navigation bar
         let titleImage = UIImage(named: "Logo")
@@ -88,7 +86,6 @@ public class CommandSettingViewController : UIViewController {
             "userProtocol": protocoloSeg.selectedSegmentIndex,
             "userMessageFormat": messageFormatSeg.selectedSegmentIndex,
             "userMessageRatePerSecond": messageRateSeg.selectedSegmentIndex,
-            "userCompassAngle":compassAngleSeg.selectedSegmentIndex
         ]
         presenter.updateSegmentsUserDefault(segmentControls: segmentControls)
     }
