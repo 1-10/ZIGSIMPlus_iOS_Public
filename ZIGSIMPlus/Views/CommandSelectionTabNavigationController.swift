@@ -9,7 +9,7 @@
 import UIKit
 
 class CommandSelectionTabNavigationController: UINavigationController {
-    var mediator: CommandAndServiceMediator?
+    private var mediator: CommandAndServiceMediator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
