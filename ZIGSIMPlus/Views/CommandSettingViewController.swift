@@ -20,6 +20,7 @@ public class CommandSettingViewController : UIViewController {
     @IBOutlet var labels: [UILabel]!
     @IBOutlet var segments: [UISegmentedControl]!
     @IBOutlet var textFields: [UITextField]!
+    @IBOutlet weak var button: UIButton!
     
     var presenter: CommandSettingPresenterProtocol!
     
@@ -64,6 +65,9 @@ public class CommandSettingViewController : UIViewController {
         updateSettingData()
     }
     
+    @IBAction func actionButton(_ sender: UIButton) {
+    }
+    
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         print("should end editing!")
         updateSettingData()
@@ -82,12 +86,9 @@ public class CommandSettingViewController : UIViewController {
                 texts[.uuid] = textField.text ?? ""
             }
         }
-        
-        
         presenter.updateTextsUserDefault(texts:texts)
     
         var segmentControls:[segmentName:Int] = [:]
-        
         for segment in segments {
             if segment.tag == 0 {
                 segmentControls[.dataDestination] = segment.selectedSegmentIndex
@@ -99,7 +100,6 @@ public class CommandSettingViewController : UIViewController {
                 segmentControls[.messageRatePerSecond] = segment.selectedSegmentIndex
             }
         }
-        
         presenter.updateSegmentsUserDefault(segmentControls: segmentControls)
     }
     
@@ -108,6 +108,12 @@ public class CommandSettingViewController : UIViewController {
         let titleImageView = UIImageView(image: titleImage)
         titleImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImageView
+        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
+        //navigationController?.navigationBar.topItem?.titleView = titleImageView
+        
+        let backButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButtonItem
+        navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
     }
     
     private func adjustViewDesign() {
@@ -122,6 +128,8 @@ public class CommandSettingViewController : UIViewController {
         for textField in textFields {
             adjustTextFieldDesign(textField: textField)
         }
+        
+        adjustButtonDesign()
     }
     
     private func adjustLabelDesign(label: UILabel) {
@@ -131,6 +139,7 @@ public class CommandSettingViewController : UIViewController {
     private func adjustSegmentDesign(segment: UISegmentedControl) {
         segment.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
         segment.layer.backgroundColor = UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0).cgColor
+        segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .selected)
     }
     
     private func adjustTextFieldDesign(textField: UITextField) {
@@ -139,6 +148,15 @@ public class CommandSettingViewController : UIViewController {
         textField.layer.borderWidth = 1.0
         textField.layer.cornerRadius = 4.0
         textField.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
+    }
+    
+    private func adjustButtonDesign() {
+        button.setTitle(" Restore\nPurchase", for: .normal)
+        button.setTitleColor(UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0), for: .normal)
+        button.titleLabel?.numberOfLines = 2
+        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
     }
 }
 
