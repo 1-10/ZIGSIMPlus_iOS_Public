@@ -8,14 +8,15 @@
 
 import Foundation
 import UIKit
+import DynamicButton
 
 public class StandardCell: UITableViewCell {
    
     @IBOutlet weak var commandOnOff: UISwitch!
     @IBOutlet weak var commandLabel: UILabel!
-    @IBOutlet weak var detailButton: UIButton!
+    @IBOutlet weak var detailButton: DynamicButton!
     @IBOutlet weak var modalButton: UIButton!
-    
+    @IBOutlet weak var labelConstaint: NSLayoutConstraint!
     var commandSelectionPresenter: CommandSelectionPresenterProtocol!
     var viewController: UIViewController!
     
@@ -31,6 +32,25 @@ public class StandardCell: UITableViewCell {
     @IBAction func modalButtonAction(_ sender: UIButton) {
         let parent = viewController as! CommandSelectionViewController
         parent.showModal(commandNo: commandLabel.tag)
+    }
+    
+    func initCell() {
+        commandLabel.textColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+        commandOnOff.thumbTintColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+        commandOnOff.onTintColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+        commandOnOff.tintColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+        commandOnOff.backgroundColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
+        commandOnOff.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        detailButton.setStyle(.caretRight, animated: true)
+        detailButton.strokeColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+        modalButton.backgroundColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+        modalButton.layer.borderWidth = 2.0
+        modalButton.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
+        modalButton.layer.cornerRadius = 10.0
+        let screenWidth = UIScreen.main.bounds.size.width
+        let newConstant = screenWidth - 300 // "300" is a length other than this constant
+        labelConstaint.constant = newConstant
+
     }
     
 }

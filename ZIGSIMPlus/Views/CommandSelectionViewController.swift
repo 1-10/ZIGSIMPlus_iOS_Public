@@ -14,22 +14,17 @@ final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var modalLabel: UILabel!
     @IBOutlet weak var modalButton: UIButton!
-
     var presenter: CommandSelectionPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         modalLabel.isHidden = true
         modalButton.isHidden = true
+        
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
 
-        // Initialize navigation bar
-        let titleImage = UIImage(named: "Logo")
-        let titleImageView = UIImageView(image: titleImage)
-        titleImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = titleImageView
+        adjustViewDesign()
     }
-    
     
     @IBAction func actionButton(_ sender: UIButton) {
         if sender.tag == 0 { // sender.tag == 0 is "modalButton"
@@ -64,6 +59,17 @@ final class CommandSelectionViewController: UIViewController {
         let command = Command.allCases[commandNo]
         modalLabel.text = modalTexts[command]
     }
+    
+    private func adjustViewDesign() {
+        // Initialize navigation bar
+        let titleImage = UIImage(named: "Logo")
+        let titleImageView = UIImageView(image: titleImage)
+        titleImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = titleImageView
+
+        UITabBar.appearance().barTintColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
+        UITabBar.appearance().tintColor = UIColor(displayP3Red: 0, green: 153/255, blue: 102/255, alpha: 1.0)
+    }
 }
 
 extension CommandSelectionViewController: UITableViewDelegate {
@@ -93,6 +99,8 @@ extension CommandSelectionViewController: UITableViewDataSource {
         
         // Set cell's tap action style
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
         
         // Set cell's variable
         cell.commandLabel.text = CommandToSelect.labelString
@@ -122,6 +130,9 @@ extension CommandSelectionViewController: UITableViewDataSource {
         } else {
             cell.commandOnOff.isOn = false
         }
+        
+        // Set cell's UI design
+        cell.initCell()
         
         return cell
     }
