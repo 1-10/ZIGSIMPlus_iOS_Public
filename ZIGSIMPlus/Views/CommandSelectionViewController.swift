@@ -46,6 +46,8 @@ final class CommandSelectionViewController: UIViewController {
             vc = storyboard!.instantiateViewController(withIdentifier: "CompassDetailView")
         case .ndi:
             vc = storyboard!.instantiateViewController(withIdentifier: "NDIDetailView")
+        case .arkit:
+            vc = storyboard!.instantiateViewController(withIdentifier: "ARKitDetailView")
         default:
             return // Do nothing if detail view for the command is not found
         }

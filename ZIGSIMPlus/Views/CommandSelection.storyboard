@@ -245,7 +245,7 @@
         <!--ARKit Detail View Controller-->
         <scene sceneID="G5W-6c-L9U">
             <objects>
-                <viewController storyboardIdentifier="ARKitDetailView" id="AZf-oH-gaG" userLabel="ARKit Detail View Controller" customClass="CompassDetailViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ARKitDetailView" id="AZf-oH-gaG" userLabel="ARKit Detail View Controller" customClass="ArkitDetailViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z2I-bH-PBe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,7 +261,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1NX-Ls-ByG" userLabel="Tracking Mode Button">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1NX-Ls-ByG" userLabel="Tracking Mode Selector">
                                         <rect key="frame" x="55" y="28" width="188" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segments>
@@ -281,8 +281,7 @@
                         <viewLayoutGuide key="safeArea" id="faE-79-5AM"/>
                     </view>
                     <connections>
-                        <outlet property="segment" destination="1NX-Ls-ByG" id="6k2-Nh-YVC"/>
-                        <outlet property="segmentLabel" destination="cpt-fk-ugw" id="xab-nJ-K3J"/>
+                        <outlet property="trackingModeSelector" destination="1NX-Ls-ByG" id="KS9-Pc-JSj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zK-fx-0HU" userLabel="First Responder" sceneMemberID="firstResponder"/>

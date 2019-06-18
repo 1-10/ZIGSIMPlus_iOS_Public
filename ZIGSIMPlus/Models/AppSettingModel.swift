@@ -91,6 +91,7 @@ public class AppSettingModel {
         ndiType = NdiType(rawValue: Defaults[.userNdiType] ?? 0)!
         ndiCameraPosition = NdiCameraPosition(rawValue: Defaults[.userNdiCameraType] ?? 0)!
         depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
+        arkitTrackingType = ArkitTrackingType(rawValue: Defaults[.userArkitTrackingType] ?? 0)!
     }
     
     static let shared = AppSettingModel()

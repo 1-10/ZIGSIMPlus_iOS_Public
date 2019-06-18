@@ -23,6 +23,8 @@
 		02852E4422B7710F00801B6A /* TouchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02852E4322B7710F00801B6A /* TouchServiceTests.swift */; };
 		02852E4622B7711500801B6A /* MotionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02852E4522B7711500801B6A /* MotionServiceTests.swift */; };
 		02852E4822B777F800801B6A /* CommandSelectionTabNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02852E4722B777F800801B6A /* CommandSelectionTabNavigationController.swift */; };
+		02852E4A22B791C800801B6A /* ArkitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02852E4922B791C800801B6A /* ArkitDetailViewController.swift */; };
+		02852E4C22B7967100801B6A /* ArkitDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02852E4B22B7967100801B6A /* ArkitDetailPresenter.swift */; };
 		029C0B0822B0D5C3006C96BC /* CommandSettingTabNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */; };
 		02A03597229CD56E00E7399E /* AltimeterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03594229CD56D00E7399E /* AltimeterService.swift */; };
 		02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A03595229CD56E00E7399E /* AudioLevelService.swift */; };
@@ -121,6 +123,8 @@
 		02852E4322B7710F00801B6A /* TouchServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchServiceTests.swift; sourceTree = "<group>"; };
 		02852E4522B7711500801B6A /* MotionServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionServiceTests.swift; sourceTree = "<group>"; };
 		02852E4722B777F800801B6A /* CommandSelectionTabNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelectionTabNavigationController.swift; sourceTree = "<group>"; };
+		02852E4922B791C800801B6A /* ArkitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitDetailViewController.swift; sourceTree = "<group>"; };
+		02852E4B22B7967100801B6A /* ArkitDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitDetailPresenter.swift; sourceTree = "<group>"; };
 		029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSettingTabNavigationController.swift; sourceTree = "<group>"; };
 		02A03594229CD56D00E7399E /* AltimeterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltimeterService.swift; sourceTree = "<group>"; };
 		02A03595229CD56E00E7399E /* AudioLevelService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLevelService.swift; sourceTree = "<group>"; };
@@ -423,6 +427,7 @@
 				029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */,
 				02852E4722B777F800801B6A /* CommandSelectionTabNavigationController.swift */,
 				02A0359A229CD6F800E7399E /* CommandSettingViewController.swift */,
+				02852E4922B791C800801B6A /* ArkitDetailViewController.swift */,
 				B3C6588A22A911B300B4358B /* NdiDetailViewController.swift */,
 				B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */,
 				B30188E122B3909E00CB549F /* CommandSelection.storyboard */,
@@ -440,6 +445,7 @@
 				9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */,
 				02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */,
 				B35E192C22B10DC90044AEB3 /* NdiDetailPresenter.swift */,
+				02852E4B22B7967100801B6A /* ArkitDetailPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -747,6 +753,7 @@
 				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,
 				638345F422A6832700370600 /* NFCService.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
+				02852E4C22B7967100801B6A /* ArkitDetailPresenter.swift in Sources */,
 				6345569C22B0E9150032E976 /* PresenterFactory.swift in Sources */,
 				B3979A7922AA834F0097F5FC /* CompassDetailViewController.swift in Sources */,
 				B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */,
@@ -758,6 +765,7 @@
 				023BB10622965B490094363B /* Utils.swift in Sources */,
 				902EB9CA227BE68D008F1650 /* AppDelegate.swift in Sources */,
 				9092E4CC227EBF4D0019F1C1 /* Command.swift in Sources */,
+				02852E4A22B791C800801B6A /* ArkitDetailViewController.swift in Sources */,
 				029C0B0822B0D5C3006C96BC /* CommandSettingTabNavigationController.swift in Sources */,
 				903BA771227D6C2100A2C378 /* AppSettingModel.swift in Sources */,
 				02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */,
