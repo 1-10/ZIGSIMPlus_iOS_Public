@@ -143,12 +143,20 @@ public class AppSettingModel {
             ("DEVICE UUID", deviceUUID),
         ]
     }
-
-    public func isCameraEnabled() -> Bool {
-        return AppSettingModel.shared.isActiveByCommand[.arkit]! ||
-            AppSettingModel.shared.isActiveByCommand[.faceTracking]! ||
-            AppSettingModel.shared.isActiveByCommand[.imageTracking]! ||
-            AppSettingModel.shared.isActiveByCommand[.ndi]!
+    
+    public func isCameraUsed(exceptBy command: Command? = nil) -> Bool {
+        var isCameraUsed = false
+        if command != .arkit {
+            isCameraUsed = (isCameraUsed || isActiveByCommand[.arkit]!)
+        }
+        if command != .ndi {
+            isCameraUsed = (isCameraUsed || isActiveByCommand[.ndi]!)
+        }
+        if command != .imageDetection {
+            isCameraUsed = (isCameraUsed || isActiveByCommand[.imageDetection]!)
+        }
+        
+        return isCameraUsed
     }
 }
 
