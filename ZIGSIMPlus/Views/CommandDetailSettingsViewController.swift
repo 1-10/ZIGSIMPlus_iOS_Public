@@ -21,11 +21,11 @@ public class CommandDetailSettingsViewController : UIViewController {
         super.viewDidLoad()
         presenter = CommandDetailSettingsPresenter()
 
-        let ds = presenter.getCommandDetailSettings()
-        guard let settings = ds[command] else { return }
+        let settings = presenter.getCommandDetailSettings()
+        guard let settingsForCommand = settings[command] else { return }
 
         // Render inputs for settings
-        for (i, setting) in settings.enumerated() {
+        for setting in settingsForCommand {
             switch setting {
             case let data as Selector:
                 let label = UILabel()
@@ -33,27 +33,39 @@ public class CommandDetailSettingsViewController : UIViewController {
                 stackView.addArrangedSubview(label)
 
                 let selector = UISegmentedControl()
-                for (j, segment) in data.segments.enumerated() {
-                    selector.insertSegment(withTitle: segment, at: j, animated: true)
-                    selector.setWidth(CGFloat(data.width / data.segments.count), forSegmentAt: j)
+                for (i, segment) in data.segments.enumerated() {
+                    selector.insertSegment(withTitle: segment, at: i, animated: true)
+                    selector.setWidth(CGFloat(data.width / data.segments.count), forSegmentAt: i)
                 }
                 selector.selectedSegmentIndex = data.value
-                selector.tag = i
                 selector.addTarget(self, action: #selector(selectorAction(selector:)), for: .valueChanged)
+
+                // Use DetailSettingKey for selector identifier
+                selector.tag = data.key.rawValue
+
                 stackView.addArrangedSubview(selector)
             default:
                 break
             }
         }
 
-        stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settings.count) * 60.0)
+        stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settingsForCommand.count) * 60.0)
     }
 
     @objc func selectorAction(selector: UISegmentedControl) {
-        let ds = presenter.getCommandDetailSettings()
-        guard let settings = ds[command] else { return }
-        guard case var setting as Selector = settings[selector.tag] else { return }
+        // Get settings for current command
+        let settings = presenter.getCommandDetailSettings()
+        guard let settingsForCommand = settings[command] else { return }
 
+        // Find setting by DetailSettingKey
+        guard var setting = settingsForCommand.first(where: {
+            if let s = $0 as? Selector {
+                return s.key.rawValue == selector.tag
+            }
+            return false
+        }) as? Selector else { return }
+
+        // Pass updated setting to presenter
         setting.value = selector.selectedSegmentIndex
         presenter.updateSetting(setting: setting)
     }

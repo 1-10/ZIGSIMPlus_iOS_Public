@@ -17,15 +17,27 @@ public enum DetailSettingsKey: Int {
     case arkitTrackingType = 4
 }
 
+
+/// DetailSetting data represents each setting in CommandDetailSettings view.
+/// We only have Selector now, but you can support input types by adding a struct which implement DetailSetting.
 protocol DetailSetting {}
 
+/// Selector is used for settings with UISegmentedController
 public struct Selector: DetailSetting {
     var key: DetailSettingsKey
     var label: String
     var segments: [String]
-    var width: Int
+    var width: Int  // width of UISegmentController
     var value: Int
 }
+
+// For example, If you want to support settings with Float slider, use this:
+// public struct FloatInput: DetailSetting {
+//     var key: DetailSettingsKey
+//     var label: String
+//     var width: Int
+//     var value: Float
+// }
 
 protocol CommandDetailSettingsPresenterProtocol {
     func getCommandDetailSettings() -> [Command: [DetailSetting]]
@@ -34,6 +46,7 @@ protocol CommandDetailSettingsPresenterProtocol {
 
 final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtocol {
 
+    /// Detail settings for commands.
     public func getCommandDetailSettings() -> [Command: [DetailSetting]] {
         return [
             .ndi: [
