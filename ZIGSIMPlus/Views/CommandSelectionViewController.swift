@@ -12,20 +12,12 @@ typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var modalLabel: UILabel!
     @IBOutlet weak var modalButton: UIButton!
-    @IBOutlet weak var ndiDetailView: UIView!
-    @IBOutlet weak var compassDetailView: UIView!
-    @IBOutlet weak var headerImageView: UIImageView!
-    @IBOutlet weak var headerLabel: UILabel!
-    
-    var headerImage: UIImage!
     var presenter: CommandSelectionPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButton.isHidden = true
         modalLabel.isHidden = true
         modalButton.isHidden = true
         
@@ -38,23 +30,26 @@ final class CommandSelectionViewController: UIViewController {
         if sender.tag == 0 { // sender.tag == 0 is "modalButton"
             modalLabel.isHidden = true
             modalButton.isHidden = true
-        } else if sender.tag == 1 { // sender.tag == 1 is "backButton"
-            tableView.isHidden = false
-            backButton.isHidden = true
         }
     }
     
     func showDetail(commandNo: Int) {
-        backButton.isHidden = false
-        tableView.isHidden = true
-        ndiDetailView.isHidden = true
-        compassDetailView.isHidden = true
-        let command = Command.allCases[commandNo]
-        if command == .compass {
-            compassDetailView.isHidden = false
-        } else if command == .ndi {
-            ndiDetailView.isHidden = false
+        // Get detail view controller
+        let vc: UIViewController
+        switch Command.allCases[commandNo] {
+        case .compass:
+            vc = storyboard!.instantiateViewController(withIdentifier: "CompassDetailView")
+        case .ndi:
+            vc = storyboard!.instantiateViewController(withIdentifier: "NDIDetailView")
+        default:
+            return // Do nothing if detail view for the command is not found
         }
+
+        // Move to detail view
+        guard let navCtrl = navigationController else {
+            fatalError("CommandSelectionView must be embedded in NavigationController")
+        }
+        navCtrl.pushViewController(vc, animated: true)
     }
     
     func showModal(commandNo: Int) {
@@ -66,9 +61,12 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     private func adjustViewDesign() {
-        headerImage = UIImage(named: "Logo")
-        headerImageView.image = headerImage
-        headerLabel.backgroundColor = UIColor(displayP3Red: 34/255, green: 34/255, blue: 34/255, alpha: 1.0)
+        // Initialize navigation bar
+        let titleImage = UIImage(named: "Logo")
+        let titleImageView = UIImageView(image: titleImage)
+        titleImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = titleImageView
+
         UITabBar.appearance().barTintColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
         UITabBar.appearance().tintColor = UIColor(displayP3Red: 0, green: 153/255, blue: 102/255, alpha: 1.0)
     }
