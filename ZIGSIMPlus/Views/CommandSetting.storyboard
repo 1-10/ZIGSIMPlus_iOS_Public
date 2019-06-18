@@ -166,7 +166,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qx-FQ-b89">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qx-FQ-b89">
                                                 <rect key="frame" x="159" y="551" width="56" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="56" id="8OY-jL-hlA"/>
@@ -236,9 +236,16 @@
                     <navigationItem key="navigationItem" id="rYm-eR-kz0">
                         <barButtonItem key="backBarButtonItem" title="Settings" id="tx4-IJ-mIN"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="aI0-Rn-tLP">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="14Y-aK-2wB">
-                                <rect key="frame" x="372" y="11" width="22" height="22"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="14Y-aK-2wB">
+                                <rect key="frame" x="364" y="9.5" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="24"/>
+                                <size key="titleShadowOffset" width="-1" height="0.0"/>
+                                <state key="normal" title="!">
+                                    <color key="titleColor" red="0.13333570957183838" green="0.13332900404930115" blue="0.13333356380462646" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <segue destination="gwc-33-QSk" kind="show" identifier="TermsOfUse" id="BgD-Fb-Stj"/>
                                 </connections>
@@ -246,7 +253,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="button" destination="2qx-FQ-b89" id="R7o-8K-eqK"/>
+                        <outlet property="button" destination="2qx-FQ-b89" id="MSY-nj-15b"/>
+                        <outlet property="infoButton" destination="14Y-aK-2wB" id="Vqe-yw-iOf"/>
                         <outlet property="scrollView" destination="dap-Xf-KgX" id="PtE-fC-uVZ"/>
                         <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZIR-2R-J7T"/>
                         <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZDt-zW-C27"/>
@@ -267,12 +275,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDN-nW-80v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1971" y="1696"/>
+            <point key="canvasLocation" x="1969.5652173913045" y="1695.5357142857142"/>
         </scene>
-        <!--Terms of Use-->
+        <!--View Controller-->
         <scene sceneID="lId-WS-97T">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="gwc-33-QSk" customClass="TermsOfUseView" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="gwc-33-QSk" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XjP-kJ-gIC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -295,7 +303,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IjN-3h-d6I"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Terms of Use" id="0hh-kU-B1G"/>
+                    <navigationItem key="navigationItem" id="0hh-kU-B1G"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gA8-5O-xgt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

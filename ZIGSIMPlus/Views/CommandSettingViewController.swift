@@ -21,6 +21,7 @@ public class CommandSettingViewController : UIViewController {
     @IBOutlet var segments: [UISegmentedControl]!
     @IBOutlet var textFields: [UITextField]!
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
     
     var presenter: CommandSettingPresenterProtocol!
     
@@ -157,6 +158,11 @@ public class CommandSettingViewController : UIViewController {
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
+        
+        infoButton.layer.cornerRadius = 0.5 * infoButton.bounds.size.width
+        infoButton.layer.borderWidth = 1.0
+        infoButton.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
+        infoButton.backgroundColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
     }
 }
 
