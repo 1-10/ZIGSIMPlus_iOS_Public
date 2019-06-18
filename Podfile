@@ -12,6 +12,7 @@ target 'ZIGSIMPlus' do
   pod 'SwiftOSC', '~> 1.2'
   pod 'SwiftyUserDefaults', '~> 4.0'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'DynamicButton', '~> 6.2.0'
 
   target 'ZIGSIMPlusTests' do
     inherit! :search_paths

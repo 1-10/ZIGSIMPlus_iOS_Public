@@ -62,6 +62,7 @@
 		B30188E622B390E600CB549F /* CommandSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30188E522B390E600CB549F /* CommandSetting.storyboard */; };
 		B35E192D22B10DC90044AEB3 /* NdiDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E192C22B10DC90044AEB3 /* NdiDetailPresenter.swift */; };
 		B3979A7922AA834F0097F5FC /* CompassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */; };
+		B39DCDA222B7728C00D4E722 /* UITabBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39DCDA122B7728C00D4E722 /* UITabBarExtension.swift */; };
 		B3C6588722A9022600B4358B /* StandardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C6588622A9022600B4358B /* StandardCell.xib */; };
 		B3C6588922A9028500B4358B /* StandardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6588822A9028500B4358B /* StandardCell.swift */; };
 		B3C6588B22A911B300B4358B /* NdiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6588A22A911B300B4358B /* NdiDetailViewController.swift */; };
@@ -170,6 +171,7 @@
 		B30188E522B390E600CB549F /* CommandSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandSetting.storyboard; sourceTree = "<group>"; };
 		B35E192C22B10DC90044AEB3 /* NdiDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdiDetailPresenter.swift; sourceTree = "<group>"; };
 		B3979A7822AA834F0097F5FC /* CompassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassDetailViewController.swift; sourceTree = "<group>"; };
+		B39DCDA122B7728C00D4E722 /* UITabBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarExtension.swift; sourceTree = "<group>"; };
 		B3C6588622A9022600B4358B /* StandardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardCell.xib; sourceTree = "<group>"; };
 		B3C6588822A9028500B4358B /* StandardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCell.swift; sourceTree = "<group>"; };
 		B3C6588A22A911B300B4358B /* NdiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NdiDetailViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		02621F5122A4F9140071E9D2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B39DCDA122B7728C00D4E722 /* UITabBarExtension.swift */,
 				02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */,
 				02621F5322A4F9140071E9D2 /* StringExtension.swift */,
 				02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */,
@@ -643,6 +646,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DeviceKit-framework/DeviceKit.framework",
+				"${BUILT_PRODUCTS_DIR}/DynamicButton/DynamicButton.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-framework/SwiftyJSON.framework",
@@ -653,6 +657,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeviceKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOSC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -777,6 +782,7 @@
 				B3C6588922A9028500B4358B /* StandardCell.swift in Sources */,
 				0236461E2298253900171F73 /* NDIAdapter.mm in Sources */,
 				02A8FA892296B62D001FB3DD /* LocationService.swift in Sources */,
+				B39DCDA222B7728C00D4E722 /* UITabBarExtension.swift in Sources */,
 				02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */,
 				B3C6588B22A911B300B4358B /* NdiDetailViewController.swift in Sources */,
 			);
