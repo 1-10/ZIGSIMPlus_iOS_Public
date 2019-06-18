@@ -73,7 +73,12 @@ enum DepthType: Int {
     case DISPARITY = 1
 }
 
+public enum DetailSettingsKey: Int {
+    case arkitTrackingType = 0
+}
+
 public struct DetailSettingsSegmented {
+    var key: DetailSettingsKey
     var label: String
     var segments: [String]
     var width: Int
@@ -171,7 +176,7 @@ public class AppSettingModel {
     public func getCommandDetailSettings() -> [Command: [DetailSettingsData]] {
         return [
             .arkit: [
-                .segmented(DetailSettingsSegmented(label: "TRACKING TYPE", segments: ["DEVICE", "FACE", "MARKER"], width: 240, value: arkitTrackingType.rawValue))
+                .segmented(DetailSettingsSegmented(key: .arkitTrackingType, label: "TRACKING TYPE", segments: ["DEVICE", "FACE", "MARKER"], width: 240, value: arkitTrackingType.rawValue))
             ]
         ]
     }

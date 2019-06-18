@@ -8,19 +8,19 @@
 
 import Foundation
 import UIKit
+import SwiftyUserDefaults
 
 public class ArkitDetailViewController : UIViewController {
 
-    var presenter: ArkitDetailPresenterProtocol!
     @IBOutlet weak var stackView: UIStackView!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        presenter = ArkitDetailPresenter()
 
         let ds = AppSettingModel.shared.getCommandDetailSettings()
         guard let settings = ds[.arkit] else { return }
 
+        // Render inputs for settings
         for (i, setting) in settings.enumerated() {
             switch setting {
             case .segmented(let data):
@@ -44,8 +44,20 @@ public class ArkitDetailViewController : UIViewController {
     }
 
     @objc func segmentedAction(segmented: UISegmentedControl) {
-        if segmented.tag == 0 {
-            presenter.updateArkitTrackingTypeUserDefault(selectIndex: segmented.selectedSegmentIndex)
+        let ds = AppSettingModel.shared.getCommandDetailSettings()
+        guard let settings = ds[.arkit] else { return }
+        let setting = settings[segmented.tag]
+
+        let value = segmented.selectedSegmentIndex
+
+        switch setting {
+        case .segmented(let data):
+            switch data.key {
+            case .arkitTrackingType:
+                // TODO: Move UserDefault update to AppSettingModel?
+                AppSettingModel.shared.arkitTrackingType = ArkitTrackingType(rawValue: value)!
+                Defaults[.userArkitTrackingType] = value
+            }
         }
     }
 }
