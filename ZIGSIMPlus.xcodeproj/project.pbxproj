@@ -42,6 +42,7 @@
 		633A82CF22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A82CE22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift */; };
 		6345569A22B0CEF20032E976 /* VideoCapturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6345569922B0CEF20032E976 /* VideoCapturePresenter.swift */; };
 		6345569C22B0E9150032E976 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6345569B22B0E9150032E976 /* PresenterFactory.swift */; };
+		637E961D22B8DFAF0019E70F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637E961C22B8DFAF0019E70F /* StoreKit.framework */; };
 		638345F422A6832700370600 /* NFCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638345F322A6832700370600 /* NFCService.swift */; };
 		63A6192B22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */; };
 		63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A6192C22A79EDF00B015DE /* CoreNFC.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -141,6 +142,7 @@
 		6345569922B0CEF20032E976 /* VideoCapturePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapturePresenter.swift; sourceTree = "<group>"; };
 		6345569B22B0E9150032E976 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
 		63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZIGSIMPlus.entitlements; sourceTree = "<group>"; };
+		637E961C22B8DFAF0019E70F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		638345F322A6832700370600 /* NFCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCService.swift; sourceTree = "<group>"; };
 		63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTypeNameFormatExtension.swift; sourceTree = "<group>"; };
 		63A6192C22A79EDF00B015DE /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
@@ -188,6 +190,7 @@
 				63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */,
 				FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */,
 				0236461C2298253900171F73 /* libndi_ios.a in Frameworks */,
+				637E961D22B8DFAF0019E70F /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +323,7 @@
 		3047AA928C608382EC8AFA33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				637E961C22B8DFAF0019E70F /* StoreKit.framework */,
 				63A6192C22A79EDF00B015DE /* CoreNFC.framework */,
 				023642CD2298253500171F73 /* Private */,
 				4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */,
@@ -548,6 +552,9 @@
 					902EB9C5227BE68D008F1650 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.NearFieldCommunicationTagReading = {
 								enabled = 1;
 							};
