@@ -1,5 +1,5 @@
 //
-//  ArkitDetailViewController.swift
+//  CommandDetailSettingsViewController.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/06/17.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftyUserDefaults
 
-public class ArkitDetailViewController : UIViewController {
+public class CommandDetailSettingsViewController : UIViewController {
 
     var presenter: CommandDetailSettingsPresenterProtocol!
     var command: Command!

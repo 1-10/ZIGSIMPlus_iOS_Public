@@ -84,146 +84,6 @@
             </objects>
             <point key="canvasLocation" x="1984.057971014493" y="132.58928571428572"/>
         </scene>
-        <!--Ndi Detail View Controller-->
-        <scene sceneID="ze3-k7-anD">
-            <objects>
-                <viewController storyboardIdentifier="NDIDetailView" id="4ZP-Qh-0c7" customClass="NdiDetailViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZoW-GI-4qR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UpL-1E-BKa">
-                                <rect key="frame" x="107" y="416" width="200" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="61S-dj-bis"/>
-                                    <constraint firstAttribute="width" constant="200" id="8hj-98-bRx"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="CAMERA"/>
-                                    <segment title="DEPTH"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentAction:" destination="4ZP-Qh-0c7" eventType="valueChanged" id="aqR-2f-Nxs"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NDI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1R-sG-qrg">
-                                <rect key="frame" x="56" y="381" width="299" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="KRM-oX-TPp"/>
-                                    <constraint firstAttribute="width" constant="259" id="Svg-ph-eUY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5jh-yA-JMh">
-                                <rect key="frame" x="107" y="464" width="200" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Ipq-e9-r0v"/>
-                                    <constraint firstAttribute="height" constant="27" id="TmR-MI-2zw"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="OUTCAMERA"/>
-                                    <segment title="INCAMERA"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentAction:" destination="4ZP-Qh-0c7" eventType="valueChanged" id="Izq-5J-Jnl"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vc6-KD-PrF">
-                                <rect key="frame" x="107" y="512" width="200" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="b5N-71-jsd"/>
-                                    <constraint firstAttribute="width" constant="200" id="bb0-ZV-00L"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="DEPTH"/>
-                                    <segment title="DISPARITY"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentAction:" destination="4ZP-Qh-0c7" eventType="valueChanged" id="Fhe-CJ-DGd"/>
-                                </connections>
-                            </segmentedControl>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="UpL-1E-BKa" firstAttribute="centerX" secondItem="ZoW-GI-4qR" secondAttribute="centerX" id="ChO-YF-nWL"/>
-                            <constraint firstItem="iwj-9W-3Xt" firstAttribute="trailing" secondItem="R1R-sG-qrg" secondAttribute="trailing" constant="59" id="J7W-p4-i8W"/>
-                            <constraint firstItem="UpL-1E-BKa" firstAttribute="leading" secondItem="5jh-yA-JMh" secondAttribute="leading" id="R7v-26-DTg"/>
-                            <constraint firstItem="Vc6-KD-PrF" firstAttribute="top" secondItem="5jh-yA-JMh" secondAttribute="bottom" constant="21" id="SEf-gf-e6l"/>
-                            <constraint firstItem="5jh-yA-JMh" firstAttribute="top" secondItem="UpL-1E-BKa" secondAttribute="bottom" constant="21" id="WMS-TB-k6n"/>
-                            <constraint firstItem="R1R-sG-qrg" firstAttribute="leading" secondItem="iwj-9W-3Xt" secondAttribute="leading" constant="56" id="Ws3-vq-sbj"/>
-                            <constraint firstItem="5jh-yA-JMh" firstAttribute="trailing" secondItem="Vc6-KD-PrF" secondAttribute="trailing" id="cNl-Ja-N1d"/>
-                            <constraint firstItem="UpL-1E-BKa" firstAttribute="top" secondItem="R1R-sG-qrg" secondAttribute="bottom" constant="14" id="ckJ-dx-Odg"/>
-                            <constraint firstItem="R1R-sG-qrg" firstAttribute="centerY" secondItem="ZoW-GI-4qR" secondAttribute="centerY" constant="-56.5" id="ewj-rT-c7z"/>
-                            <constraint firstItem="UpL-1E-BKa" firstAttribute="trailing" secondItem="5jh-yA-JMh" secondAttribute="trailing" id="gZU-AE-Dbm"/>
-                            <constraint firstItem="5jh-yA-JMh" firstAttribute="leading" secondItem="Vc6-KD-PrF" secondAttribute="leading" id="jbz-ve-byK"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="iwj-9W-3Xt"/>
-                    </view>
-                    <connections>
-                        <outlet property="segmentLabel" destination="R1R-sG-qrg" id="wTl-MO-h3O"/>
-                        <outletCollection property="segments" destination="UpL-1E-BKa" collectionClass="NSMutableArray" id="6eS-Lx-YF1"/>
-                        <outletCollection property="segments" destination="5jh-yA-JMh" collectionClass="NSMutableArray" id="iUI-r3-zqh"/>
-                        <outletCollection property="segments" destination="Vc6-KD-PrF" collectionClass="NSMutableArray" id="A7e-b1-SY2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="921-xH-hU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2873.913043478261" y="132.92410714285714"/>
-        </scene>
-        <!--Compass Detail View Controller-->
-        <scene sceneID="FX7-oh-xVx">
-            <objects>
-                <viewController storyboardIdentifier="CompassDetailView" id="jVE-Va-ylx" customClass="CompassDetailViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="20U-eD-ylP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wwd-Hw-BFh">
-                                <rect key="frame" x="107" y="329.66666666666674" width="200" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="4x2-uh-cBD"/>
-                                    <constraint firstAttribute="height" constant="27" id="6dm-sc-Szj"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="b15-vY-Www"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="PORTRAIT"/>
-                                    <segment title="FACEUP"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentAction:" destination="jVE-Va-ylx" eventType="valueChanged" id="aV2-UU-p5i"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="COMPASS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bh-NI-JXJ">
-                                <rect key="frame" x="77" y="295" width="260" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="DHC-WC-jCb"/>
-                                    <constraint firstAttribute="height" constant="21" id="Snx-Y0-6uh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="0Bh-NI-JXJ" firstAttribute="centerX" secondItem="Wwd-Hw-BFh" secondAttribute="centerX" id="Awc-Ve-uOz"/>
-                            <constraint firstItem="0Bh-NI-JXJ" firstAttribute="centerY" secondItem="20U-eD-ylP" secondAttribute="centerY" constant="-106.83333333333326" id="IVH-Mg-kDV"/>
-                            <constraint firstItem="Wwd-Hw-BFh" firstAttribute="centerX" secondItem="20U-eD-ylP" secondAttribute="centerX" id="eUs-ak-zoM"/>
-                            <constraint firstItem="Wwd-Hw-BFh" firstAttribute="top" secondItem="0Bh-NI-JXJ" secondAttribute="bottom" constant="14" id="yVQ-WS-RKc"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Nqd-3m-0v1"/>
-                    </view>
-                    <connections>
-                        <outlet property="segment" destination="Wwd-Hw-BFh" id="fb6-c4-gNk"/>
-                        <outlet property="segmentLabel" destination="0Bh-NI-JXJ" id="4xD-NP-c1p"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lmS-H9-ZEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3697.1014492753625" y="132.92410714285714"/>
-        </scene>
         <!--Command Selection Tab Navigation Controller-->
         <scene sceneID="QHn-Se-LIv">
             <objects>
@@ -246,7 +106,7 @@
         <!--ARKit Detail View Controller-->
         <scene sceneID="G5W-6c-L9U">
             <objects>
-                <viewController storyboardIdentifier="ARKitDetailView" id="AZf-oH-gaG" userLabel="ARKit Detail View Controller" customClass="ArkitDetailViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ARKitDetailView" id="AZf-oH-gaG" userLabel="ARKit Detail View Controller" customClass="CommandDetailSettingsViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z2I-bH-PBe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zK-fx-0HU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4492.753623188406" y="132.58928571428572"/>
+            <point key="canvasLocation" x="2835" y="133"/>
         </scene>
     </scenes>
 </document>
