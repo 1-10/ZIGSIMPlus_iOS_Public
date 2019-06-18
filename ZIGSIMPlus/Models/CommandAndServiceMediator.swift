@@ -12,7 +12,9 @@ public class CommandAndServiceMediator {
 
     // MARK: - Public methods
 
-    /// Returns if the service for given command is available
+    /// Returns if the service for given command is available.
+    ///
+    /// Simultaneous use of multiple commands accessing camera is not allowed.
     public func isAvailable(_ command: Command) -> Bool {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
@@ -30,13 +32,25 @@ public class CommandAndServiceMediator {
         case .micLevel:
             return AudioLevelService.shared.isAvailable()
         case .arkit:
-            return ArkitService.shared.isARKitAvailable()
+            if isCameraAvailable(for: .arkit) {
+                return ArkitService.shared.isARKitAvailable()
+            } else {
+                return false
+            }
         case .remoteControl:
             return RemoteControlService.shared.isAvailable()
         case .ndi:
-            return VideoCaptureService.shared.isNDIAvailable()
+            if isCameraAvailable(for: .ndi) {
+                return VideoCaptureService.shared.isNDIAvailable()
+            } else {
+                return false
+            }
         case .imageDetection:
-            return VideoCaptureService.shared.isImageDetectionAvailable()
+            if isCameraAvailable(for: .imageDetection) {
+                return VideoCaptureService.shared.isImageDetectionAvailable()
+            } else {
+                return false
+            }
         case .nfc:
             return NFCService.shared.isAvailable()
         }
@@ -134,5 +148,11 @@ public class CommandAndServiceMediator {
             fatalError("AppSetting for Command \"\(command)\" is nil")
         }
         return b
+    }
+
+    private func isCameraAvailable(for command: Command) -> Bool {
+        // When camera is set to on by other command,
+        // user cannot use camera
+        return !AppSettingModel.shared.isCameraUsed(exceptBy: command)
     }
 }

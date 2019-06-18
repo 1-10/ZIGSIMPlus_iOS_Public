@@ -83,7 +83,7 @@ public class AppSettingModel {
         for command in Command.allCases {
             isActiveByCommand[command] = false
         }
-        
+
         address = Defaults[.userIpAdress]?.description ?? ""
         port = Int32(Defaults[.userPortNumber]?.description ?? "") ?? 0
         deviceUUID = Defaults[.userDeviceUUID]?.description ?? ""
@@ -98,10 +98,10 @@ public class AppSettingModel {
         depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
         arkitTrackingType = ArkitTrackingType(rawValue: Defaults[.userArkitTrackingType] ?? 0)!
     }
-    
+
     static let shared = AppSettingModel()
     var isActiveByCommand: Dictionary<Command, Bool> = [:]
-    
+
     // app default value & variable used in app
     var dataDestination: DataDestination = .OTHER_APP
     var transportProtocol: TransportProtocol = .UDP
@@ -154,9 +154,29 @@ public class AppSettingModel {
         ]
     }
 
+    public func isCameraUsed(exceptBy command: Command? = nil) -> Bool {
+        var isCameraUsed = false
+        if command != .arkit {
+            isCameraUsed = (isCameraUsed || isActiveByCommand[.arkit]!)
+        }
+        if command != .ndi {
+            isCameraUsed = (isCameraUsed || isActiveByCommand[.ndi]!)
+        }
+        if command != .imageDetection {
+            isCameraUsed = (isCameraUsed || isActiveByCommand[.imageDetection]!)
+        }
+
+        return isCameraUsed
+    }
+
     public func isCameraEnabled() -> Bool {
         return AppSettingModel.shared.isActiveByCommand[.arkit]! ||
             AppSettingModel.shared.isActiveByCommand[.ndi]!
+    }
+
+    public func isTouchEnabled() -> Bool {
+        return AppSettingModel.shared.isActiveByCommand[.touch]! ||
+            AppSettingModel.shared.isActiveByCommand[.applePencil]!
     }
 }
 

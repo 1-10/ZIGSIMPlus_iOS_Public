@@ -42,9 +42,9 @@ class CommandOutputViewController: UIViewController {
         presenter.startCommands()
 
         // Update camera button state
-        let isCameraEnabled = presenter.isCameraEnabled()
-        togglePreviewModeButton.isEnabled = isCameraEnabled
-        isTextPreviewMode = isTextPreviewMode || !isCameraEnabled
+        let isCameraUsed = presenter.isCameraUsed()
+        togglePreviewModeButton.isEnabled = isCameraUsed
+        isTextPreviewMode = isTextPreviewMode || !isCameraUsed
 
         updatePreviewMode()
     }
@@ -52,6 +52,7 @@ class CommandOutputViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         // Set area for touch points.
         // This has to be done after auto layout.
+        touchArea.isHidden = !presenter.isTouchEnabled()
         TouchService.shared.setTouchArea(rect: touchArea.bounds)
     }
 
