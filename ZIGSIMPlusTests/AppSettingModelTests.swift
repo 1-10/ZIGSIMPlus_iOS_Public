@@ -16,59 +16,59 @@ class AppSettingModelTests: XCTestCase {
     override func tearDown() {
     }
 
-    func testIsCameraEnabled_WithoutParameter_WhenAllCameraCommandsInactive() {
+    func testIsCameraUsed_WithoutParameter_WhenAllCameraCommandsInactive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = false
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
-        XCTAssertFalse(AppSettingModel.shared.isCameraEnabled())
+        XCTAssertFalse(AppSettingModel.shared.isCameraUsed())
     }
     
-    func testIsCameraEnabled_WithoutParameter_WhenArkitActive() {
+    func testIsCameraUsed_WithoutParameter_WhenArkitActive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = true
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
-        XCTAssertTrue(AppSettingModel.shared.isCameraEnabled())
+        XCTAssertTrue(AppSettingModel.shared.isCameraUsed())
     }
 
-    func testIsCameraEnabled_ExceptArkit_WhenAllCameraCommandsInactive() {
+    func testIsCameraUsed_ExceptArkit_WhenAllCameraCommandsInactive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = false
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
-        XCTAssertFalse(AppSettingModel.shared.isCameraEnabled(except: .arkit))
+        XCTAssertFalse(AppSettingModel.shared.isCameraUsed(exceptBy: .arkit))
     }
 
-    func testIsCameraEnabled_ExceptArkit_WhenNdiActive() {
+    func testIsCameraUsed_ExceptArkit_WhenNdiActive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = false
         AppSettingModel.shared.isActiveByCommand[.ndi] = true
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
-        XCTAssertTrue(AppSettingModel.shared.isCameraEnabled(except: .arkit))
+        XCTAssertTrue(AppSettingModel.shared.isCameraUsed(exceptBy: .arkit))
     }
  
-    func testIsCameraEnabled_ExceptNdi_WhenAllCameraCommandsInactive() {
+    func testIsCameraUsed_ExceptNdi_WhenAllCameraCommandsInactive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = false
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
-        XCTAssertFalse(AppSettingModel.shared.isCameraEnabled(except: .ndi))
+        XCTAssertFalse(AppSettingModel.shared.isCameraUsed(exceptBy: .ndi))
     }
     
-    func testIsCameraEnabled_ExceptNdi_WhenImageDetectionActive() {
+    func testIsCameraUsed_ExceptNdi_WhenImageDetectionActive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = false
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = true
-        XCTAssertTrue(AppSettingModel.shared.isCameraEnabled(except: .ndi))
+        XCTAssertTrue(AppSettingModel.shared.isCameraUsed(exceptBy: .ndi))
     }
     
-    func testIsCameraEnabled_ExceptImageDetection_WhenAllCameraCommandsInactive() {
+    func testIsCameraUsed_ExceptImageDetection_WhenAllCameraCommandsInactive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = false
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
-        XCTAssertFalse(AppSettingModel.shared.isCameraEnabled(except: .imageDetection))
+        XCTAssertFalse(AppSettingModel.shared.isCameraUsed(exceptBy: .imageDetection))
     }
     
-    func testIsCameraEnabled_ExceptImageDetection_WhenArkitActive() {
+    func testIsCameraUsed_ExceptImageDetection_WhenArkitActive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = true
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
-        XCTAssertTrue(AppSettingModel.shared.isCameraEnabled(except: .imageDetection))
+        XCTAssertTrue(AppSettingModel.shared.isCameraUsed(exceptBy: .imageDetection))
     }
 }

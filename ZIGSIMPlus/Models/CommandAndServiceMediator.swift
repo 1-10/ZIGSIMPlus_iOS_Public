@@ -32,10 +32,10 @@ public class CommandAndServiceMediator {
         case .micLevel:
             return AudioLevelService.shared.isAvailable()
         case .arkit:
-            if AppSettingModel.shared.isCameraEnabled(except: .arkit) {
-                return false
-            } else {
+            if isCameraAvailable(for: .arkit) {
                 return ArkitService.shared.isDeviceTrackingAvailable()
+            } else {
+                return false
             }
         case .faceTracking:
             return ArkitService.shared.isFaceTrackingAvailable()
@@ -44,16 +44,16 @@ public class CommandAndServiceMediator {
         case .remoteControl:
             return RemoteControlService.shared.isAvailable()
         case .ndi:
-            if AppSettingModel.shared.isCameraEnabled(except: .ndi) {
-                return false
-            } else {
+            if isCameraAvailable(for: .ndi) {
                 return VideoCaptureService.shared.isNDIAvailable()
+            } else {
+                return false
             }
         case .imageDetection:
-            if AppSettingModel.shared.isCameraEnabled(except: .imageDetection) {
-                return false
-            } else {
+            if isCameraAvailable(for: .imageDetection) {
                 return VideoCaptureService.shared.isImageDetectionAvailable()
+            } else {
+                return false
             }
         case .nfc:
             return NFCService.shared.isAvailable()
@@ -160,5 +160,11 @@ public class CommandAndServiceMediator {
             fatalError("AppSetting for Command \"\(command)\" is nil")
         }
         return b
+    }
+    
+    private func isCameraAvailable(for command: Command) -> Bool {
+        // When camera is set to on by other command,
+        // user cannot use camera
+        return !AppSettingModel.shared.isCameraUsed(exceptBy: command)
     }
 }

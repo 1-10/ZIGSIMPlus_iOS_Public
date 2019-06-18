@@ -42,9 +42,9 @@ class CommandOutputViewController: UIViewController {
         presenter.startCommands()
 
         // Update camera button state
-        let isCameraEnabled = presenter.isCameraEnabled()
-        togglePreviewModeButton.isEnabled = isCameraEnabled
-        isTextPreviewMode = isTextPreviewMode || !isCameraEnabled
+        let isCameraUsed = presenter.isCameraUsed()
+        togglePreviewModeButton.isEnabled = isCameraUsed
+        isTextPreviewMode = isTextPreviewMode || !isCameraUsed
 
         updatePreviewMode()
     }

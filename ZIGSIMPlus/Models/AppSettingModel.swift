@@ -143,20 +143,20 @@ public class AppSettingModel {
             ("DEVICE UUID", deviceUUID),
         ]
     }
-
-    public func isCameraEnabled(except command: Command? = nil) -> Bool {
-        var isCameraEnabled = false
+    
+    public func isCameraUsed(exceptBy command: Command? = nil) -> Bool {
+        var isCameraUsed = false
         if command != .arkit {
-            isCameraEnabled = (isCameraEnabled || isActiveByCommand[.arkit]!)
+            isCameraUsed = (isCameraUsed || isActiveByCommand[.arkit]!)
         }
         if command != .ndi {
-            isCameraEnabled = (isCameraEnabled || isActiveByCommand[.ndi]!)
+            isCameraUsed = (isCameraUsed || isActiveByCommand[.ndi]!)
         }
         if command != .imageDetection {
-            isCameraEnabled = (isCameraEnabled || isActiveByCommand[.imageDetection]!)
+            isCameraUsed = (isCameraUsed || isActiveByCommand[.imageDetection]!)
         }
         
-        return isCameraEnabled
+        return isCameraUsed
     }
 }
 
