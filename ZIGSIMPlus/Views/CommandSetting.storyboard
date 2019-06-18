@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dap-Xf-KgX">
-                                <rect key="frame" x="20" y="108" width="374" height="705"/>
+                                <rect key="frame" x="20" y="84" width="560" height="433"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-vs-ZAX" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="-27" width="374" height="788"/>
+                                        <rect key="frame" x="0.0" y="-27" width="560" height="788"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA DESTINATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2V-4u-ORS" userLabel="DATA DESTINATION">
-                                                <rect key="frame" x="95" y="24" width="184" height="21"/>
+                                                <rect key="frame" x="188" y="24" width="184" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="184" id="DGV-IJ-mk8"/>
                                                     <constraint firstAttribute="height" constant="21" id="QKm-Mm-fGG"/>
@@ -35,7 +35,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5H5-aJ-fv1" userLabel="Data Destination Seg">
-                                                <rect key="frame" x="85.5" y="53" width="203" height="29"/>
+                                                <rect key="frame" x="178.5" y="53" width="203" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="203" id="NwA-UX-4Lc"/>
                                                     <constraint firstAttribute="height" constant="28" id="fZt-Vs-hWx"/>
@@ -49,7 +49,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROTOCOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMC-XZ-wNJ">
-                                                <rect key="frame" x="134" y="89" width="106" height="21"/>
+                                                <rect key="frame" x="227" y="89" width="106" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="aqq-dW-P3q"/>
                                                     <constraint firstAttribute="width" constant="106" id="jJn-C1-AeN"/>
@@ -58,8 +58,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GPj-aK-iT9" userLabel="Protocolo Seg">
-                                                <rect key="frame" x="126.5" y="118" width="121" height="29"/>
+                                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GPj-aK-iT9" userLabel="Protocolo Seg">
+                                                <rect key="frame" x="219.5" y="118" width="121" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="121" id="QGv-Dw-K0T"/>
                                                     <constraint firstAttribute="height" constant="28" id="fD5-Op-wsY"/>
@@ -73,7 +73,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP ADDRESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eK-AB-Aoh" userLabel="IP ADDRESS">
-                                                <rect key="frame" x="134" y="154" width="106" height="21"/>
+                                                <rect key="frame" x="227" y="154" width="106" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="106" id="Ta7-Ox-yCI"/>
                                                     <constraint firstAttribute="height" constant="21" id="xTX-uS-gof"/>
@@ -83,7 +83,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.0.1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgy-NE-D0I" userLabel="Ip Adress Text Field">
-                                                <rect key="frame" x="107.5" y="183" width="159" height="30"/>
+                                                <rect key="frame" x="200.5" y="183" width="159" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="2IW-Bt-tCg"/>
                                                     <constraint firstAttribute="width" constant="159" id="mLn-uN-Klm"/>
@@ -93,13 +93,13 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORT NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-SP-GhO">
-                                                <rect key="frame" x="127.5" y="221" width="119" height="21"/>
+                                                <rect key="frame" x="220.5" y="221" width="119" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-m2-OQN" userLabel="PORT NUMBER">
-                                                <rect key="frame" x="107" y="250" width="160" height="30"/>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-m2-OQN" userLabel="PORT NUMBER">
+                                                <rect key="frame" x="200" y="250" width="160" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="PB1-7J-pqA"/>
                                                     <constraint firstAttribute="height" constant="30" id="dZ3-OM-gac"/>
@@ -109,13 +109,13 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE FORMAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-j7-8iF" userLabel="MESSAGE FORMAT">
-                                                <rect key="frame" x="112" y="288" width="150" height="21"/>
+                                                <rect key="frame" x="205" y="288" width="150" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-vs-Rkk" userLabel="Message Format Seg">
-                                                <rect key="frame" x="87" y="317" width="200" height="29"/>
+                                            <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-vs-Rkk" userLabel="Message Format Seg">
+                                                <rect key="frame" x="180" y="317" width="200" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="7fo-hI-lBq"/>
                                                     <constraint firstAttribute="height" constant="28" id="XUL-ci-4Dl"/>
@@ -129,13 +129,13 @@
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE RATE(PER SEC)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNW-Ua-0gi">
-                                                <rect key="frame" x="86" y="353" width="202" height="21"/>
+                                                <rect key="frame" x="179" y="353" width="202" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aew-3o-Evt" userLabel="Message Rate Seg">
-                                                <rect key="frame" x="87" y="382" width="200" height="29"/>
+                                            <segmentedControl opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aew-3o-Evt" userLabel="Message Rate Seg">
+                                                <rect key="frame" x="180" y="382" width="200" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="d5K-w1-Mna"/>
                                                     <constraint firstAttribute="height" constant="28" id="kR0-8O-qko"/>
@@ -151,13 +151,13 @@
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVICE UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LZ-QD-3aa" userLabel="DEVICE UUID">
-                                                <rect key="frame" x="135" y="418" width="104" height="21"/>
+                                                <rect key="frame" x="228" y="418" width="104" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0123456789abcdef" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM4-Na-6XE" userLabel="Uuid Text Field">
-                                                <rect key="frame" x="107" y="447" width="160" height="30"/>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0123456789abcdef" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM4-Na-6XE" userLabel="Uuid Text Field">
+                                                <rect key="frame" x="200" y="447" width="160" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="5ei-rw-knf"/>
                                                     <constraint firstAttribute="width" constant="160" id="6yF-iI-kRh"/>
@@ -232,14 +232,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dataDestinationSeg" destination="5H5-aJ-fv1" id="LSn-VE-PlC"/>
-                        <outlet property="ipAdressTextField" destination="cgy-NE-D0I" id="5hL-I6-V03"/>
-                        <outlet property="messageFormatSeg" destination="yGV-vs-Rkk" id="YWb-bu-w0L"/>
-                        <outlet property="messageRateSeg" destination="aew-3o-Evt" id="RId-tZ-lJR"/>
-                        <outlet property="portNumberTextField" destination="JbH-m2-OQN" id="oaq-0F-9Tp"/>
-                        <outlet property="protocoloSeg" destination="GPj-aK-iT9" id="eHZ-jR-GJp"/>
                         <outlet property="scrollView" destination="dap-Xf-KgX" id="PtE-fC-uVZ"/>
-                        <outlet property="uuidTextField" destination="oM4-Na-6XE" id="HPc-rK-r9n"/>
                         <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZIR-2R-J7T"/>
                         <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZDt-zW-C27"/>
                         <outletCollection property="labels" destination="RMC-XZ-wNJ" collectionClass="NSMutableArray" id="cpB-dL-U04"/>
@@ -248,6 +241,13 @@
                         <outletCollection property="labels" destination="sS3-j7-8iF" collectionClass="NSMutableArray" id="yRs-SB-YOy"/>
                         <outletCollection property="labels" destination="KNW-Ua-0gi" collectionClass="NSMutableArray" id="8s5-9T-VQl"/>
                         <outletCollection property="labels" destination="7LZ-QD-3aa" collectionClass="NSMutableArray" id="Dhv-eJ-hGv"/>
+                        <outletCollection property="segments" destination="5H5-aJ-fv1" collectionClass="NSMutableArray" id="Bbz-RA-hGy"/>
+                        <outletCollection property="segments" destination="GPj-aK-iT9" collectionClass="NSMutableArray" id="1Rp-ZW-6GH"/>
+                        <outletCollection property="segments" destination="yGV-vs-Rkk" collectionClass="NSMutableArray" id="fcc-Rn-Wo5"/>
+                        <outletCollection property="segments" destination="aew-3o-Evt" collectionClass="NSMutableArray" id="qB9-Ro-y0m"/>
+                        <outletCollection property="textFields" destination="cgy-NE-D0I" collectionClass="NSMutableArray" id="PQ3-1J-4Qb"/>
+                        <outletCollection property="textFields" destination="JbH-m2-OQN" collectionClass="NSMutableArray" id="PH1-p6-0wH"/>
+                        <outletCollection property="textFields" destination="oM4-Na-6XE" collectionClass="NSMutableArray" id="ieH-SE-JEF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDN-nW-80v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -263,7 +263,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wqG-KJ-mCC">
-                                <rect key="frame" x="20" y="88" width="374" height="774"/>
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

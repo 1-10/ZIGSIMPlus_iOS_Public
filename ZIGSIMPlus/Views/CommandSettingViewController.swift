@@ -17,14 +17,9 @@ protocol ContentScrollable {
 public class CommandSettingViewController : UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var dataDestinationSeg: UISegmentedControl!
-    @IBOutlet weak var protocoloSeg: UISegmentedControl!
-    @IBOutlet weak var ipAdressTextField: UITextField!
-    @IBOutlet weak var portNumberTextField: UITextField!
-    @IBOutlet weak var messageFormatSeg: UISegmentedControl!
-    @IBOutlet weak var messageRateSeg: UISegmentedControl!
-    @IBOutlet weak var uuidTextField: UITextField!
     @IBOutlet var labels: [UILabel]!
+    @IBOutlet var segments: [UISegmentedControl]!
+    @IBOutlet var textFields: [UITextField]!
     
     var presenter: CommandSettingPresenterProtocol!
     
@@ -32,53 +27,31 @@ public class CommandSettingViewController : UIViewController {
         super.viewDidLoad()
         
         let userDefaultTexts = presenter.getUserDefaultTexts()
-        setTextFieldSetting(texField: ipAdressTextField, text: userDefaultTexts["ipAdress"]?.description ?? "")
-        setTextFieldSetting(texField: portNumberTextField, text: userDefaultTexts["portNumber"]?.description ?? "")
-        setTextFieldSetting(texField: uuidTextField, text: userDefaultTexts["uuid"]?.description ?? "")
+        for textField in textFields {
+            if textField.tag == 0 {
+                setTextFieldSetting(texField: textField, text: userDefaultTexts[.ipAdress]?.description ?? "")
+            } else if textField.tag == 1 {
+                setTextFieldSetting(texField: textField, text: userDefaultTexts[.portNumber]?.description ?? "")
+            } else if textField.tag == 2 {
+                setTextFieldSetting(texField: textField, text: userDefaultTexts[.uuid]?.description ?? "")
+            }
+        }
         
         let userDefaultSegments = presenter.getUserDefaultSegments()
-        dataDestinationSeg.selectedSegmentIndex = userDefaultSegments["userDataDestination"] ?? 0
-        protocoloSeg.selectedSegmentIndex = userDefaultSegments["userProtocol"] ?? 0
-        messageFormatSeg.selectedSegmentIndex = userDefaultSegments["userMessageFormat"] ?? 0
-        messageRateSeg.selectedSegmentIndex = userDefaultSegments["userMessageRatePerSecond"] ?? 0
-
+        for segment in segments {
+            if segment.tag == 0 {
+                segment.selectedSegmentIndex = userDefaultSegments[.dataDestination] ?? 0
+            } else if segment.tag == 1 {
+                segment.selectedSegmentIndex = userDefaultSegments[.dataProtocol] ?? 0
+            } else if segment.tag == 2 {
+                segment.selectedSegmentIndex = userDefaultSegments[.messageFormat] ?? 0
+            } else if segment.tag == 3 {
+                segment.selectedSegmentIndex = userDefaultSegments[.messageRatePerSecond] ?? 0
+            }
+        }
+        
         initNavigationBar()
         adjustViewDesign()
-    }
-    
-    private func initNavigationBar() {
-        let titleImage = UIImage(named: "Logo")
-        let titleImageView = UIImageView(image: titleImage)
-        titleImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = titleImageView
-    }
-    
-    private func adjustViewDesign() {
-        for label in labels {
-            label.textColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
-        }
-
-        adjustSegmentDesgin(segment: dataDestinationSeg)
-        adjustSegmentDesgin(segment: protocoloSeg)
-        adjustSegmentDesgin(segment: messageFormatSeg)
-        adjustSegmentDesgin(segment: messageRateSeg)
-        
-        adjustTextFieldDesign(textFiled: ipAdressTextField)
-        adjustTextFieldDesign(textFiled: portNumberTextField)
-        adjustTextFieldDesign(textFiled: uuidTextField)
-    }
-    
-    private func adjustSegmentDesgin(segment: UISegmentedControl) {
-        segment.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
-        segment.layer.backgroundColor = UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0).cgColor
-    }
-    
-    private func adjustTextFieldDesign(textFiled: UITextField) {
-        textFiled.textColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
-        textFiled.backgroundColor =  UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0)
-        textFiled.layer.borderWidth = 1.0
-        textFiled.layer.cornerRadius = 4.0
-        textFiled.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -99,20 +72,73 @@ public class CommandSettingViewController : UIViewController {
     }
     
     private func updateSettingData() {
-        let texts:[String:String] = [
-            "ipAdress": ipAdressTextField.text ?? "",
-            "portNumber": portNumberTextField.text ?? "",
-            "uuid": uuidTextField.text ?? ""
-        ]
+        var texts:[textFieldName: String] = [:]
+        for textField in textFields {
+            if textField.tag == 0 {
+                texts[.ipAdress] = textField.text ?? ""
+            } else if textField.tag == 1 {
+                texts[.portNumber] = textField.text ?? ""
+            } else if textField.tag == 2 {
+                texts[.uuid] = textField.text ?? ""
+            }
+        }
+        
+        
         presenter.updateTextsUserDefault(texts:texts)
     
-        let segmentControls:[String:Int] = [
-            "userDataDestination": dataDestinationSeg.selectedSegmentIndex,
-            "userProtocol": protocoloSeg.selectedSegmentIndex,
-            "userMessageFormat": messageFormatSeg.selectedSegmentIndex,
-            "userMessageRatePerSecond": messageRateSeg.selectedSegmentIndex
-        ]
+        var segmentControls:[segmentName:Int] = [:]
+        
+        for segment in segments {
+            if segment.tag == 0 {
+                segmentControls[.dataDestination] = segment.selectedSegmentIndex
+            } else if segment.tag == 1 {
+                segmentControls[.dataProtocol] = segment.selectedSegmentIndex
+            } else if segment.tag == 2 {
+                segmentControls[.messageFormat] = segment.selectedSegmentIndex
+            } else if segment.tag == 3 {
+                segmentControls[.messageRatePerSecond] = segment.selectedSegmentIndex
+            }
+        }
+        
         presenter.updateSegmentsUserDefault(segmentControls: segmentControls)
+    }
+    
+    private func initNavigationBar() {
+        let titleImage = UIImage(named: "Logo")
+        let titleImageView = UIImageView(image: titleImage)
+        titleImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = titleImageView
+    }
+    
+    private func adjustViewDesign() {
+        for label in labels {
+            adjustLabelDesign(label: label)
+        }
+        
+        for segment in segments {
+            adjustSegmentDesign(segment: segment)
+        }
+        
+        for textField in textFields {
+            adjustTextFieldDesign(textField: textField)
+        }
+    }
+    
+    private func adjustLabelDesign(label: UILabel) {
+        label.textColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+    }
+    
+    private func adjustSegmentDesign(segment: UISegmentedControl) {
+        segment.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        segment.layer.backgroundColor = UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0).cgColor
+    }
+    
+    private func adjustTextFieldDesign(textField: UITextField) {
+        textField.textColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        textField.backgroundColor =  UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0)
+        textField.layer.borderWidth = 1.0
+        textField.layer.cornerRadius = 4.0
+        textField.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
     }
 }
 
