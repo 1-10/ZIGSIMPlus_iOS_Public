@@ -158,6 +158,11 @@ public class AppSettingModel {
         
         return isCameraUsed
     }
+
+    public func isTouchEnabled() -> Bool {
+        return AppSettingModel.shared.isActiveByCommand[.touch]! ||
+            AppSettingModel.shared.isActiveByCommand[.applePencil]!
+    }
 }
 
 // user default value
