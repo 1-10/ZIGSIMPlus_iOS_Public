@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 // This extension is added to adjust a TabBar heigth on iPhoneX
+// cf. https://stackoverflow.com/questions/47054707/how-to-correct-tab-bar-height-issue-on-iphone-x
 let tabbarHeight = 75
 extension UITabBar {
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
