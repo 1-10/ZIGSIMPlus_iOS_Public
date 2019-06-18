@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Elv-3B-lGd">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -27,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="goZ-L1-qFi" id="wUj-gM-C37">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -78,6 +78,7 @@
                         <outlet property="modalButton" destination="T50-Qp-xCo" id="52j-SA-wfh"/>
                         <outlet property="modalLabel" destination="669-eJ-DXG" id="Ph9-2r-pUC"/>
                         <outlet property="tableView" destination="q1v-xf-VxM" id="Hls-9j-mZI"/>
+                        <segue destination="AZf-oH-gaG" kind="show" id="Qdd-GU-cOV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1H-Fx-fMO" sceneMemberID="firstResponder"/>
@@ -103,22 +104,36 @@
             </objects>
             <point key="canvasLocation" x="1073.913043478261" y="132.58928571428572"/>
         </scene>
-        <!--ARKit Detail View Controller-->
+        <!--Command Detail Settings View Controller-->
         <scene sceneID="G5W-6c-L9U">
             <objects>
-                <viewController storyboardIdentifier="ARKitDetailView" id="AZf-oH-gaG" userLabel="ARKit Detail View Controller" customClass="CommandDetailSettingsViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommandDetailSettingsView" id="AZf-oH-gaG" customClass="CommandDetailSettingsViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z2I-bH-PBe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6T2-bf-ILw">
-                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6T2-bf-ILw">
+                                <rect key="frame" x="20" y="0.0" width="374" height="774"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="center" fixedFrame="YES" axis="vertical" distribution="equalCentering" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Sa6-tM-dua">
-                                        <rect key="frame" x="37" y="379" width="300" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPX-Ov-leg" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="774"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="center" fixedFrame="YES" axis="vertical" distribution="equalCentering" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Sa6-tM-dua">
+                                                <rect key="frame" x="-1" y="358" width="374" height="60"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pPX-Ov-leg" secondAttribute="trailing" id="Ph0-5x-KW9"/>
+                                    <constraint firstAttribute="bottom" secondItem="pPX-Ov-leg" secondAttribute="bottom" id="Wkl-9S-F8R"/>
+                                    <constraint firstItem="pPX-Ov-leg" firstAttribute="width" secondItem="6T2-bf-ILw" secondAttribute="width" id="YGT-7n-IhM"/>
+                                    <constraint firstItem="pPX-Ov-leg" firstAttribute="height" secondItem="6T2-bf-ILw" secondAttribute="height" id="b8o-bf-ufL"/>
+                                    <constraint firstItem="pPX-Ov-leg" firstAttribute="top" secondItem="6T2-bf-ILw" secondAttribute="top" id="cBj-Uy-rcI"/>
+                                    <constraint firstItem="pPX-Ov-leg" firstAttribute="leading" secondItem="6T2-bf-ILw" secondAttribute="leading" id="lEE-ao-eLb"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -136,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zK-fx-0HU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2835" y="133"/>
+            <point key="canvasLocation" x="2834.7826086956525" y="132.58928571428572"/>
         </scene>
     </scenes>
 </document>
