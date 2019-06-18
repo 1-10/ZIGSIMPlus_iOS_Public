@@ -13,7 +13,7 @@ protocol CommandOutputPresenterProtocol {
     func composeChildViewArchitecture()
     func startCommands()
     func stopCommands()
-    func isCameraEnabled() -> Bool
+    func isCameraUsed() -> Bool
     func isTouchEnabled() -> Bool
 }
 
@@ -74,8 +74,8 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
         mediator.stopActiveCommands()
     }
 
-    func isCameraEnabled() -> Bool {
-        return AppSettingModel.shared.isCameraEnabled()
+    func isCameraUsed() -> Bool {
+        return AppSettingModel.shared.isCameraUsed()
     }
 
     func isTouchEnabled() -> Bool {
