@@ -27,32 +27,34 @@ public class CommandDetailSettingsViewController : UIViewController {
         // Render inputs for settings
         for (i, setting) in settings.enumerated() {
             switch setting {
-            case .segmented(let data):
+            case let data as Selector:
                 let label = UILabel()
                 label.text = data.label
                 stackView.addArrangedSubview(label)
 
-                let segmented = UISegmentedControl()
+                let selector = UISegmentedControl()
                 for (j, segment) in data.segments.enumerated() {
-                    segmented.insertSegment(withTitle: segment, at: j, animated: true)
-                    segmented.setWidth(CGFloat(data.width / data.segments.count), forSegmentAt: j)
+                    selector.insertSegment(withTitle: segment, at: j, animated: true)
+                    selector.setWidth(CGFloat(data.width / data.segments.count), forSegmentAt: j)
                 }
-                segmented.selectedSegmentIndex = data.value
-                segmented.tag = i
-                segmented.addTarget(self, action: #selector(segmentedAction(segmented:)), for: .valueChanged)
-                stackView.addArrangedSubview(segmented)
+                selector.selectedSegmentIndex = data.value
+                selector.tag = i
+                selector.addTarget(self, action: #selector(selectorAction(selector:)), for: .valueChanged)
+                stackView.addArrangedSubview(selector)
+            default:
+                break
             }
         }
 
         stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settings.count) * 60.0)
     }
 
-    @objc func segmentedAction(segmented: UISegmentedControl) {
+    @objc func selectorAction(selector: UISegmentedControl) {
         let ds = presenter.getCommandDetailSettings()
         guard let settings = ds[command] else { return }
-        guard case var .segmented(setting) = settings[segmented.tag] else { return }
+        guard case var setting as Selector = settings[selector.tag] else { return }
 
-        setting.value = segmented.selectedSegmentIndex        
-        presenter.updateSetting(setting: .segmented(setting))
+        setting.value = selector.selectedSegmentIndex
+        presenter.updateSetting(setting: setting)
     }
 }

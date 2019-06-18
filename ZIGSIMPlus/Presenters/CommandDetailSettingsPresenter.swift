@@ -17,7 +17,9 @@ public enum DetailSettingsKey: Int {
     case arkitTrackingType = 4
 }
 
-public struct DetailSettingsSegmented {
+protocol DetailSetting {}
+
+public struct Selector: DetailSetting {
     var key: DetailSettingsKey
     var label: String
     var segments: [String]
@@ -25,36 +27,32 @@ public struct DetailSettingsSegmented {
     var value: Int
 }
 
-public enum DetailSettingsData {
-    case segmented(DetailSettingsSegmented)
-}
-
 protocol CommandDetailSettingsPresenterProtocol {
-    func getCommandDetailSettings() -> [Command: [DetailSettingsData]]
-    func updateSetting(setting: DetailSettingsData)
+    func getCommandDetailSettings() -> [Command: [DetailSetting]]
+    func updateSetting(setting: DetailSetting)
 }
 
 final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtocol {
 
-    public func getCommandDetailSettings() -> [Command: [DetailSettingsData]] {
+    public func getCommandDetailSettings() -> [Command: [DetailSetting]] {
         return [
             .ndi: [
-                .segmented(DetailSettingsSegmented(key: .ndiType, label: "IMAGE TYPE", segments: ["CAMERA", "DEPTH"], width: 240, value: AppSettingModel.shared.ndiType.rawValue)),
-                .segmented(DetailSettingsSegmented(key: .ndiCamera, label: "CAMERA", segments: ["REAR", "FRONT"], width: 240, value: AppSettingModel.shared.ndiCameraPosition.rawValue)),
-                .segmented(DetailSettingsSegmented(key: .ndiDepthType, label: "DEPTH TYPE", segments: ["DEPTH", "DISPARITY"], width: 240, value: AppSettingModel.shared.ndiCameraPosition.rawValue)),
+                Selector(key: .ndiType, label: "IMAGE TYPE", segments: ["CAMERA", "DEPTH"], width: 240, value: AppSettingModel.shared.ndiType.rawValue),
+                Selector(key: .ndiCamera, label: "CAMERA", segments: ["REAR", "FRONT"], width: 240, value: AppSettingModel.shared.ndiCameraPosition.rawValue),
+                Selector(key: .ndiDepthType, label: "DEPTH TYPE", segments: ["DEPTH", "DISPARITY"], width: 240, value: AppSettingModel.shared.ndiCameraPosition.rawValue),
             ],
             .compass: [
-                .segmented(DetailSettingsSegmented(key: .compassOrientation, label: "ORIENTATION", segments: ["PORTRAIT", "FACEUP"], width: 240, value: AppSettingModel.shared.compassOrientation.rawValue)),
+                Selector(key: .compassOrientation, label: "ORIENTATION", segments: ["PORTRAIT", "FACEUP"], width: 240, value: AppSettingModel.shared.compassOrientation.rawValue),
             ],
             .arkit: [
-                .segmented(DetailSettingsSegmented(key: .arkitTrackingType, label: "TRACKING TYPE", segments: ["DEVICE", "FACE", "MARKER"], width: 240, value: AppSettingModel.shared.arkitTrackingType.rawValue)),
+                Selector(key: .arkitTrackingType, label: "TRACKING TYPE", segments: ["DEVICE", "FACE", "MARKER"], width: 240, value: AppSettingModel.shared.arkitTrackingType.rawValue),
             ],
         ]
     }
 
-    public func updateSetting(setting: DetailSettingsData) {
+    public func updateSetting(setting: DetailSetting) {
         switch setting {
-        case .segmented(let data):
+        case let data as Selector:
             switch data.key {
             case .ndiType:
                 AppSettingModel.shared.ndiType = NdiType(rawValue: data.value)!
@@ -69,10 +67,11 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 AppSettingModel.shared.compassOrientation = CompassOrientation(rawValue: data.value)!
                 Defaults[.userCompassOrientation] = data.value
             case .arkitTrackingType:
-                // TODO: Move UserDefault update to AppSettingModel?
                 AppSettingModel.shared.arkitTrackingType = ArkitTrackingType(rawValue: data.value)!
                 Defaults[.userArkitTrackingType] = data.value
             }
+        default:
+            break
         }
     }
 }
