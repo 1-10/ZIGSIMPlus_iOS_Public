@@ -51,7 +51,13 @@ enum ImageDatectorNumberOfAngles: Int {
     case nine = 9
     case eleven = 11
 }
-    
+
+enum ArkitTrackingType: Int {
+    case device = 0
+    case face = 1
+    case image = 2
+}
+
 enum NdiType: Int {
     case CAMERA = 0
     case DEPTH = 1
@@ -67,12 +73,17 @@ enum DepthType: Int {
     case DISPARITY = 1
 }
 
+enum CompassOrientation: Int {
+    case portrait = 0
+    case faceup = 1
+}
+
 public class AppSettingModel {
     private init() {
         for command in Command.allCases {
             isActiveByCommand[command] = false
         }
-        
+
         address = Defaults[.userIpAdress]?.description ?? ""
         port = Int32(Defaults[.userPortNumber]?.description ?? "") ?? 0
         deviceUUID = Defaults[.userDeviceUUID]?.description ?? ""
@@ -81,15 +92,16 @@ public class AppSettingModel {
         transportProtocol = TransportProtocol(rawValue: Defaults[.userProtocol] ?? 0)!
         transportFormat = TransportFormat(rawValue: Defaults[.userMessageFormat] ?? 0)!
         messageRatePerSecondSegment = Defaults[.userMessageRatePerSecond] ?? 0
-        faceup = Defaults[.userCompassAngle] ?? 0
+        compassOrientation = CompassOrientation(rawValue: Defaults[.userCompassOrientation] ?? 0)!
         ndiType = NdiType(rawValue: Defaults[.userNdiType] ?? 0)!
         ndiCameraPosition = NdiCameraPosition(rawValue: Defaults[.userNdiCameraType] ?? 0)!
         depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
+        arkitTrackingType = ArkitTrackingType(rawValue: Defaults[.userArkitTrackingType] ?? 0)!
     }
-    
+
     static let shared = AppSettingModel()
     var isActiveByCommand: Dictionary<Command, Bool> = [:]
-    
+
     // app default value & variable used in app
     var dataDestination: DataDestination = .OTHER_APP
     var transportProtocol: TransportProtocol = .UDP
@@ -98,7 +110,7 @@ public class AppSettingModel {
     var transportFormat: TransportFormat = .OSC
     var messageRatePerSecondSegment: Int = 3
     var deviceUUID: String = Utils.randomStringWithLength(16)
-    var faceup: Int = 1 // 1.0 is faceup
+    var compassOrientation: CompassOrientation = .faceup
     var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
     var messageRatePerSecond: RatePerSecond {
         if messageRatePerSecondSegment == 0 {
@@ -116,9 +128,6 @@ public class AppSettingModel {
     var messageInterval: TimeInterval {
         return 1.0 / Double(messageRatePerSecond.rawValue)
     }
-    var compassAngle: Double {
-        return Double(faceup)
-    }
     var imageDetectorType: ImageDetectorType = .face
     var imageDetectorAccuracy: ImageDetectorAccuracy = .high
     var imageDetectorTracks: Bool = false
@@ -128,6 +137,7 @@ public class AppSettingModel {
     var ndiType: NdiType = .CAMERA
     var ndiCameraPosition: NdiCameraPosition = .BACK
     var depthType: DepthType = .DEPTH
+    var arkitTrackingType: ArkitTrackingType = .device
 
     public func getSettingsForOutput() -> [(String, String)] {
         let dst = dataDestination == .OTHER_APP ? "OTHER APP" : "LOCAL FILE"
@@ -143,7 +153,7 @@ public class AppSettingModel {
             ("DEVICE UUID", deviceUUID),
         ]
     }
-    
+
     public func isCameraUsed(exceptBy command: Command? = nil) -> Bool {
         var isCameraUsed = false
         if command != .arkit {
@@ -155,7 +165,7 @@ public class AppSettingModel {
         if command != .imageDetection {
             isCameraUsed = (isCameraUsed || isActiveByCommand[.imageDetection]!)
         }
-        
+
         return isCameraUsed
     }
 
@@ -173,10 +183,11 @@ extension DefaultsKeys {
     static let userPortNumber = DefaultsKey<Int?>("userPortNumber", defaultValue: 3333)
     static let userMessageFormat = DefaultsKey<Int?>("userMessageFormat", defaultValue: 1)
     static let userMessageRatePerSecond = DefaultsKey<Int?>("userMessageRatePerSecond", defaultValue: 3)
-    static let userCompassAngle = DefaultsKey<Int?>("userCompassAngle", defaultValue: 1)
+    static let userCompassOrientation = DefaultsKey<Int?>("userCompassOrientation", defaultValue: 1)
     static let userDeviceUUID = DefaultsKey<String?>("userDeviceUUID", defaultValue: Utils.randomStringWithLength(16))
     static let userBeaconUUID = DefaultsKey<String?>("userBeaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
     static let userNdiType = DefaultsKey<Int?>("userNdiType", defaultValue: 0)
     static let userNdiCameraType = DefaultsKey<Int?>("userNdiCameraType", defaultValue: 0)
     static let userDepthType = DefaultsKey<Int?>("userDepthType", defaultValue: 0)
+    static let userArkitTrackingType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
 }

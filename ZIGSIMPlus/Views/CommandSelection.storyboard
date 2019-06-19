@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -83,145 +84,54 @@
             </objects>
             <point key="canvasLocation" x="1984.057971014493" y="132.58928571428572"/>
         </scene>
-        <!--Ndi Detail View Controller-->
-        <scene sceneID="Gu9-1H-v2m">
-            <objects>
-                <viewController storyboardIdentifier="NDIDetailView" id="P5b-ep-tdJ" customClass="NdiDetailViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3FJ-4F-yYG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vhv-dW-kI5">
-                                <rect key="frame" x="107" y="416" width="200" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="aMV-Fh-mip"/>
-                                    <constraint firstAttribute="height" constant="27" id="pcs-Kb-Obp"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="CAMERA"/>
-                                    <segment title="DEPTH"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentAction:" destination="P5b-ep-tdJ" eventType="valueChanged" id="N23-zJ-M7e"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NDI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sg6-3q-Mgi">
-                                <rect key="frame" x="56" y="381" width="299" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="259" id="HXT-xK-iqI"/>
-                                    <constraint firstAttribute="height" constant="21" id="HfN-YO-4e2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="V6L-XS-oSR">
-                                <rect key="frame" x="107" y="464" width="200" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="gel-4w-ppG"/>
-                                    <constraint firstAttribute="height" constant="27" id="ntt-W8-GyU"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="OUTCAMERA"/>
-                                    <segment title="INCAMERA"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentAction:" destination="P5b-ep-tdJ" eventType="valueChanged" id="ozv-VW-FYo"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="j6e-Ee-Byc">
-                                <rect key="frame" x="107" y="512" width="200" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="ArA-Ub-Z2b"/>
-                                    <constraint firstAttribute="width" constant="200" id="Tdu-0p-9YC"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="DEPTH"/>
-                                    <segment title="DISPARITY"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentAction:" destination="P5b-ep-tdJ" eventType="valueChanged" id="dFd-WG-YoA"/>
-                                </connections>
-                            </segmentedControl>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="vhv-dW-kI5" firstAttribute="leading" secondItem="V6L-XS-oSR" secondAttribute="leading" id="8TE-uu-7em"/>
-                            <constraint firstItem="vhv-dW-kI5" firstAttribute="centerX" secondItem="3FJ-4F-yYG" secondAttribute="centerX" id="90N-OG-T8J"/>
-                            <constraint firstItem="V6L-XS-oSR" firstAttribute="top" secondItem="vhv-dW-kI5" secondAttribute="bottom" constant="21" id="KSA-Sf-D2G"/>
-                            <constraint firstItem="vhv-dW-kI5" firstAttribute="top" secondItem="Sg6-3q-Mgi" secondAttribute="bottom" constant="14" id="Lsg-dR-fTg"/>
-                            <constraint firstItem="V6L-XS-oSR" firstAttribute="trailing" secondItem="j6e-Ee-Byc" secondAttribute="trailing" id="Q6D-ez-FBt"/>
-                            <constraint firstItem="Sg6-3q-Mgi" firstAttribute="centerY" secondItem="3FJ-4F-yYG" secondAttribute="centerY" constant="-56.5" id="ch9-Tq-SI9"/>
-                            <constraint firstItem="j6e-Ee-Byc" firstAttribute="top" secondItem="V6L-XS-oSR" secondAttribute="bottom" constant="21" id="iid-Jn-8yM"/>
-                            <constraint firstItem="vhv-dW-kI5" firstAttribute="trailing" secondItem="V6L-XS-oSR" secondAttribute="trailing" id="nJr-c2-HIa"/>
-                            <constraint firstItem="V6L-XS-oSR" firstAttribute="leading" secondItem="j6e-Ee-Byc" secondAttribute="leading" id="uta-Ry-lUP"/>
-                            <constraint firstItem="Sg6-3q-Mgi" firstAttribute="leading" secondItem="6Cv-S5-wJW" secondAttribute="leading" constant="56" id="yJK-mL-XSQ"/>
-                            <constraint firstItem="6Cv-S5-wJW" firstAttribute="trailing" secondItem="Sg6-3q-Mgi" secondAttribute="trailing" constant="59" id="yqh-qe-bm3"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Cv-S5-wJW"/>
-                    </view>
-                    <connections>
-                        <outlet property="segmentLabel" destination="Sg6-3q-Mgi" id="cmc-80-PiT"/>
-                        <outletCollection property="segments" destination="vhv-dW-kI5" collectionClass="NSMutableArray" id="q0G-j6-fwU"/>
-                        <outletCollection property="segments" destination="V6L-XS-oSR" collectionClass="NSMutableArray" id="P6b-RS-mv8"/>
-                        <outletCollection property="segments" destination="j6e-Ee-Byc" collectionClass="NSMutableArray" id="H0s-MW-cZl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jyv-Qk-e7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2873.913043478261" y="132.58928571428572"/>
-        </scene>
-        <!--Compass Detail View Controller-->
+        <!--Command Detail Settings View Controller-->
         <scene sceneID="Dtf-fQ-5Lf">
             <objects>
-                <viewController storyboardIdentifier="CompassDetailView" id="qUZ-kx-Ls0" customClass="CompassDetailViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommandDetailSettingsView" id="qUZ-kx-Ls0" userLabel="Command Detail Settings View Controller" customClass="CommandDetailSettingsViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="On0-6i-BIT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XO1-gb-APZ">
-                                <rect key="frame" x="107" y="329.66666666666674" width="200" height="28"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efX-P7-3iD">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUJ-xO-ehS" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="818"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vZt-4U-F9u">
+                                                <rect key="frame" x="8" y="379" width="358" height="60"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="DKO-Fv-1mE"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="KTa-M9-dTN"/>
-                                    <constraint firstAttribute="height" constant="27" id="k7X-7l-Sk5"/>
+                                    <constraint firstItem="mUJ-xO-ehS" firstAttribute="height" secondItem="efX-P7-3iD" secondAttribute="height" id="1Be-df-0dh"/>
+                                    <constraint firstAttribute="trailing" secondItem="mUJ-xO-ehS" secondAttribute="trailing" id="5aD-Hh-C10"/>
+                                    <constraint firstAttribute="bottom" secondItem="mUJ-xO-ehS" secondAttribute="bottom" id="Fvb-h7-pWr"/>
+                                    <constraint firstItem="mUJ-xO-ehS" firstAttribute="leading" secondItem="efX-P7-3iD" secondAttribute="leading" id="LpD-Wz-MQZ"/>
+                                    <constraint firstItem="mUJ-xO-ehS" firstAttribute="width" secondItem="efX-P7-3iD" secondAttribute="width" id="Pz0-K3-W6K"/>
+                                    <constraint firstItem="mUJ-xO-ehS" firstAttribute="top" secondItem="efX-P7-3iD" secondAttribute="top" id="lqE-de-N97"/>
                                 </constraints>
-                                <segments>
-                                    <segment title="PORTRAIT"/>
-                                    <segment title="FACEUP"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentAction:" destination="qUZ-kx-Ls0" eventType="valueChanged" id="HOC-a5-tDE"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="COMPASS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaQ-CE-4dj">
-                                <rect key="frame" x="77" y="295" width="260" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="Svn-dW-rKx"/>
-                                    <constraint firstAttribute="height" constant="21" id="fRh-Ph-doi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="BaQ-CE-4dj" firstAttribute="centerX" secondItem="XO1-gb-APZ" secondAttribute="centerX" id="8Mc-1p-bSA"/>
-                            <constraint firstItem="XO1-gb-APZ" firstAttribute="top" secondItem="BaQ-CE-4dj" secondAttribute="bottom" constant="14" id="o6f-Q6-r9W"/>
-                            <constraint firstItem="XO1-gb-APZ" firstAttribute="centerX" secondItem="On0-6i-BIT" secondAttribute="centerX" id="rDk-LX-bQA"/>
-                            <constraint firstItem="BaQ-CE-4dj" firstAttribute="centerY" secondItem="On0-6i-BIT" secondAttribute="centerY" constant="-106.83333333333326" id="sXQ-d8-Zx9"/>
+                            <constraint firstItem="efX-P7-3iD" firstAttribute="top" secondItem="biG-Fr-7pz" secondAttribute="top" id="4tX-dA-R6p"/>
+                            <constraint firstItem="efX-P7-3iD" firstAttribute="bottom" secondItem="biG-Fr-7pz" secondAttribute="bottom" id="epX-84-CAm"/>
+                            <constraint firstItem="efX-P7-3iD" firstAttribute="leading" secondItem="biG-Fr-7pz" secondAttribute="leading" constant="20" id="gFX-87-w2y"/>
+                            <constraint firstItem="biG-Fr-7pz" firstAttribute="trailing" secondItem="efX-P7-3iD" secondAttribute="trailing" constant="20" id="rRQ-lf-wVv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="biG-Fr-7pz"/>
                     </view>
                     <connections>
-                        <outlet property="segment" destination="XO1-gb-APZ" id="quR-2I-51f"/>
-                        <outlet property="segmentLabel" destination="BaQ-CE-4dj" id="6gT-C1-tio"/>
+                        <outlet property="stackView" destination="vZt-4U-F9u" id="QZP-KY-CBL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7X-Hf-Ff2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3697.1014492753625" y="132.58928571428572"/>
+            <point key="canvasLocation" x="2842.0289855072465" y="132.58928571428572"/>
         </scene>
         <!--Command Selection Tab Navigation Controller-->
         <scene sceneID="HMt-Mt-5eU">

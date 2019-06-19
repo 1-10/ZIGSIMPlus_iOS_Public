@@ -24,7 +24,6 @@ let modalTexts:[Command: String] = [
     .ndi : "test12\nndiです。",
     .nfc : "test13\nnfcです。",
     .arkit : "test14\narkitです。",
-    .faceTracking : "test15\nfaceTrackingです。",
     .battery : "test16\nbatteryです。",
     .applePencil : "test17\napplePencilです。"
 ]
