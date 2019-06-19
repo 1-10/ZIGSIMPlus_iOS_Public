@@ -73,15 +73,19 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
     }
 
     func didGetTransactionResult(_ transaction: SKPaymentTransaction) {
-        SKPaymentQueue.default().finishTransaction(transaction)
+        // Do not finishTransaction here, or unit test fails when transactionState == .inpurchase
+        // Call finishTransaction for specified transactionState
         
         switch transaction.transactionState {
         case .purchased:
+            SKPaymentQueue.default().finishTransaction(transaction)
             storePurchasedState()
             completion?(.purchased, nil)
         case .failed:
+            SKPaymentQueue.default().finishTransaction(transaction)
             completion?(.failed, transaction.error)
         case .restored:
+            SKPaymentQueue.default().finishTransaction(transaction)
             storePurchasedState()
             completion?(.restored, nil)
         default:
