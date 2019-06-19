@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SwiftyUserDefaults
 
 public class CommandDetailSettingsViewController : UIViewController {
 

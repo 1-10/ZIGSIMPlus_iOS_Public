@@ -169,11 +169,6 @@ public class AppSettingModel {
         return isCameraUsed
     }
 
-    public func isCameraEnabled() -> Bool {
-        return AppSettingModel.shared.isActiveByCommand[.arkit]! ||
-            AppSettingModel.shared.isActiveByCommand[.ndi]!
-    }
-
     public func isTouchEnabled() -> Bool {
         return AppSettingModel.shared.isActiveByCommand[.touch]! ||
             AppSettingModel.shared.isActiveByCommand[.applePencil]!
