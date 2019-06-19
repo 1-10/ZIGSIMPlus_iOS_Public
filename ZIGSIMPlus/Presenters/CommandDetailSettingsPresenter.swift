@@ -29,6 +29,14 @@ public struct Selector: DetailSetting {
     var segments: [String]
     var width: Int  // width of UISegmentController
     var value: Int
+
+    init (_ key: DetailSettingsKey, _ label: String, _ segments: [String], _ width: Int, _ value: Int) {
+        self.key = key
+        self.label = label
+        self.segments = segments
+        self.width = width
+        self.value = value
+    }
 }
 
 // For example, If you want to support settings with Float slider, use this:
@@ -46,19 +54,21 @@ protocol CommandDetailSettingsPresenterProtocol {
 
 final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtocol {
 
-    /// Detail settings for commands.
+    // Get data to generate detail settings view dinamically
     public func getCommandDetailSettings() -> [Command: [DetailSetting]] {
+        let app = AppSettingModel.shared
+
         return [
             .ndi: [
-                Selector(key: .ndiType, label: "IMAGE TYPE", segments: ["CAMERA", "DEPTH"], width: 240, value: AppSettingModel.shared.ndiType.rawValue),
-                Selector(key: .ndiCamera, label: "CAMERA", segments: ["REAR", "FRONT"], width: 240, value: AppSettingModel.shared.ndiCameraPosition.rawValue),
-                Selector(key: .ndiDepthType, label: "DEPTH TYPE", segments: ["DEPTH", "DISPARITY"], width: 240, value: AppSettingModel.shared.depthType.rawValue),
+                Selector(.ndiType, "IMAGE TYPE", ["CAMERA", "DEPTH"], 240, app.ndiType.rawValue),
+                Selector(.ndiCamera, "CAMERA", ["REAR", "FRONT"], 240, app.ndiCameraPosition.rawValue),
+                Selector(.ndiDepthType, "DEPTH TYPE", ["DEPTH", "DISPARITY"], 240, app.depthType.rawValue),
             ],
             .compass: [
-                Selector(key: .compassOrientation, label: "ORIENTATION", segments: ["PORTRAIT", "FACEUP"], width: 240, value: AppSettingModel.shared.compassOrientation.rawValue),
+                Selector(.compassOrientation, "ORIENTATION", ["PORTRAIT", "FACEUP"], 240, app.compassOrientation.rawValue),
             ],
             .arkit: [
-                Selector(key: .arkitTrackingType, label: "TRACKING TYPE", segments: ["DEVICE", "FACE", "MARKER"], width: 240, value: AppSettingModel.shared.arkitTrackingType.rawValue),
+                Selector(.arkitTrackingType, "TRACKING TYPE", ["DEVICE", "FACE", "MARKER"], 240, app.arkitTrackingType.rawValue),
             ],
         ]
     }
