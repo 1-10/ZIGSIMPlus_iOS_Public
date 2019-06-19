@@ -52,7 +52,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             .ndi: [
                 Selector(key: .ndiType, label: "IMAGE TYPE", segments: ["CAMERA", "DEPTH"], width: 240, value: AppSettingModel.shared.ndiType.rawValue),
                 Selector(key: .ndiCamera, label: "CAMERA", segments: ["REAR", "FRONT"], width: 240, value: AppSettingModel.shared.ndiCameraPosition.rawValue),
-                Selector(key: .ndiDepthType, label: "DEPTH TYPE", segments: ["DEPTH", "DISPARITY"], width: 240, value: AppSettingModel.shared.ndiCameraPosition.rawValue),
+                Selector(key: .ndiDepthType, label: "DEPTH TYPE", segments: ["DEPTH", "DISPARITY"], width: 240, value: AppSettingModel.shared.depthType.rawValue),
             ],
             .compass: [
                 Selector(key: .compassOrientation, label: "ORIENTATION", segments: ["PORTRAIT", "FACEUP"], width: 240, value: AppSettingModel.shared.compassOrientation.rawValue),
