@@ -7,27 +7,101 @@
 //
 
 import XCTest
+import StoreKit
+@testable import ZIGSIMPlus
 
 class InAppPurchaseFacadeTests: XCTestCase {
-
+    private let purchaseFacade = InAppPurchaseFacade()
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        UserDefaults.standard.removeObject(forKey: "com.OneToTen.ZIGSIMPlusExplicit.PremiumFeatures")
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        UserDefaults.standard.removeObject(forKey: "com.OneToTen.ZIGSIMPlusExplicit.PremiumFeatures")
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testDidGetTransactionResult_WhenSuccessful() {
+        let testCases = [
+            (SKPaymentTransactionState.purchased, InAppPurchaseFacade.TransactionResult.purchased),
+            (SKPaymentTransactionState.restored, InAppPurchaseFacade.TransactionResult.restored)
+        ]
+        
+        for testCase in testCases {
+            setUp()
+            XCTAssertFalse(purchaseFacade.isPurchased())
+            
+            let exp = expectation(description: "Purchase premium features successful")
+            purchaseFacade.completion = { (result, error) in
+                XCTAssertEqual(result, testCase.1)
+                XCTAssertNil(error)
+                XCTAssertTrue(self.purchaseFacade.isPurchased())
+                exp.fulfill()
+                self.tearDown()
+            }
+            
+            let transactionMock = PaymentTransactionMock()
+            transactionMock.transactionState = testCase.0
+            purchaseFacade.didGetTransactionResult(transactionMock)
+            
+            wait(for: [exp], timeout: 5.0)
         }
     }
+    
+    func testtDidGetTransactionResult_WhenFailed() {
+        XCTAssertFalse(purchaseFacade.isPurchased())
+        
+        let exp = expectation(description: "Purchase premium features failed")
+        purchaseFacade.completion = { (result, error) in
+            XCTAssertEqual(result, .failed)
+            XCTAssertFalse(self.purchaseFacade.isPurchased())
+            exp.fulfill()
+        }
+        
+        let transactionMock = PaymentTransactionMock()
+        transactionMock.transactionState = .failed
+        purchaseFacade.didGetTransactionResult(transactionMock)
+        
+        wait(for: [exp], timeout: 5.0)
+    }
+    
+    func testDidGetTransactionResult_WhenInProcess() {
+        let testCases = [
+            SKPaymentTransactionState.deferred,
+            SKPaymentTransactionState.purchasing
+        ]
+        
+        for testCase in testCases {
+            setUp()
+            XCTAssertFalse(purchaseFacade.isPurchased())
+            
+            let exp = expectation(description: "Purchase premium features in process")
+            exp.isInverted = true
+            
+            purchaseFacade.completion = { (result, error) in
+                print("result: \(result)")
+                exp.fulfill()
+            }
+            
+            let transactionMock = PaymentTransactionMock()
+            transactionMock.transactionState = testCase
+            purchaseFacade.didGetTransactionResult(transactionMock)
+            
+            wait(for: [exp], timeout: 5.0)
+            tearDown()
+        }
+    }
+}
 
+class PaymentTransactionMock: SKPaymentTransaction {
+    var _transactionState: SKPaymentTransactionState = .deferred
+    
+    override var transactionState: SKPaymentTransactionState {
+        get {
+            return _transactionState
+        }
+        set {
+            _transactionState = newValue
+        }
+    }
 }
