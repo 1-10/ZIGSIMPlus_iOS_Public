@@ -16,7 +16,7 @@ class InAppPurchaseFacade: NSObject {
         case failed
     }
     
-    private var completion: ((TransactionResult, Error?) -> Void)?
+    var completion: ((TransactionResult, Error?) -> Void)?
     
     override init() {
         super.init()
@@ -62,23 +62,30 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
-            case .purchased:
-                SKPaymentQueue.default().finishTransaction(transaction)
-                storePurchasedState()
-                completion?(.purchased, nil)
-                return
-            case .failed:
-                SKPaymentQueue.default().finishTransaction(transaction)
-                completion?(.failed, transaction.error)
-                return
-            case .restored:
-                SKPaymentQueue.default().finishTransaction(transaction)
-                storePurchasedState()
-                completion?(.restored, nil)
+            case .purchased, .failed, .restored:
+                didGetTransactionResult(transaction)
                 return
             default:
+                // Do nothing
                 break
             }
+        }
+    }
+
+    func didGetTransactionResult(_ transaction: SKPaymentTransaction) {
+        SKPaymentQueue.default().finishTransaction(transaction)
+        
+        switch transaction.transactionState {
+        case .purchased:
+            storePurchasedState()
+            completion?(.purchased, nil)
+        case .failed:
+            completion?(.failed, transaction.error)
+        case .restored:
+            storePurchasedState()
+            completion?(.restored, nil)
+        default:
+            break
         }
     }
 }
