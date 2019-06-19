@@ -21,7 +21,6 @@ public class CommandSettingViewController : UIViewController {
     @IBOutlet var segments: [UISegmentedControl]!
     @IBOutlet var textFields: [UITextField]!
     @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var infoButton: UIButton!
     
     var presenter: CommandSettingPresenterProtocol!
     
@@ -110,11 +109,16 @@ public class CommandSettingViewController : UIViewController {
         titleImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImageView
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
-        //navigationController?.navigationBar.topItem?.titleView = titleImageView
         
         let backButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButtonItem
         navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        
+        let infoButton: UIButton = navigationItem.rightBarButtonItem?.customView as! UIButton
+        infoButton.layer.cornerRadius = 0.5 * infoButton.bounds.size.width
+        infoButton.layer.borderWidth = 1.0
+        infoButton.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
+        infoButton.backgroundColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
     }
     
     private func adjustViewDesign() {
@@ -158,11 +162,6 @@ public class CommandSettingViewController : UIViewController {
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
-        
-        infoButton.layer.cornerRadius = 0.5 * infoButton.bounds.size.width
-        infoButton.layer.borderWidth = 1.0
-        infoButton.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
-        infoButton.backgroundColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
     }
 }
 

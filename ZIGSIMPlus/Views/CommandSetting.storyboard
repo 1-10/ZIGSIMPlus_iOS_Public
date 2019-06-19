@@ -166,7 +166,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qx-FQ-b89">
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qx-FQ-b89">
                                                 <rect key="frame" x="159" y="551" width="56" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="56" id="8OY-jL-hlA"/>
@@ -237,7 +237,7 @@
                         <barButtonItem key="backBarButtonItem" title="Settings" id="tx4-IJ-mIN"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="aI0-Rn-tLP">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="14Y-aK-2wB">
-                                <rect key="frame" x="364" y="9.5" width="20" height="20"/>
+                                <rect key="frame" x="374" y="12" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
@@ -253,8 +253,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="button" destination="2qx-FQ-b89" id="MSY-nj-15b"/>
-                        <outlet property="infoButton" destination="14Y-aK-2wB" id="Vqe-yw-iOf"/>
+                        <outlet property="button" destination="2qx-FQ-b89" id="UZN-h7-aWO"/>
                         <outlet property="scrollView" destination="dap-Xf-KgX" id="PtE-fC-uVZ"/>
                         <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZIR-2R-J7T"/>
                         <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZDt-zW-C27"/>
@@ -307,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gA8-5O-xgt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2787" y="1696"/>
+            <point key="canvasLocation" x="2916" y="1696"/>
         </scene>
         <!--Settings Tab-->
         <scene sceneID="elS-xR-Lyv">
