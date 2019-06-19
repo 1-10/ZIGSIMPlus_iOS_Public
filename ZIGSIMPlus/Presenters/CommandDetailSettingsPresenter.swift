@@ -22,8 +22,8 @@ public enum DetailSettingsKey: Int {
 /// We only have Selector now, but you can support input types by adding a struct which implement DetailSetting.
 protocol DetailSetting {}
 
-/// Selector is used for settings with UISegmentedController
-public struct Selector: DetailSetting {
+/// Segmented is used for settings with UISegmentedController
+public struct Segmented: DetailSetting {
     var key: DetailSettingsKey
     var label: String
     var segments: [String]
@@ -60,22 +60,22 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
 
         return [
             .ndi: [
-                Selector(.ndiType, "IMAGE TYPE", ["CAMERA", "DEPTH"], 240, app.ndiType.rawValue),
-                Selector(.ndiCamera, "CAMERA", ["REAR", "FRONT"], 240, app.ndiCameraPosition.rawValue),
-                Selector(.ndiDepthType, "DEPTH TYPE", ["DEPTH", "DISPARITY"], 240, app.depthType.rawValue),
+                Segmented(.ndiType, "IMAGE TYPE", ["CAMERA", "DEPTH"], 240, app.ndiType.rawValue),
+                Segmented(.ndiCamera, "CAMERA", ["REAR", "FRONT"], 240, app.ndiCameraPosition.rawValue),
+                Segmented(.ndiDepthType, "DEPTH TYPE", ["DEPTH", "DISPARITY"], 240, app.depthType.rawValue),
             ],
             .compass: [
-                Selector(.compassOrientation, "ORIENTATION", ["PORTRAIT", "FACEUP"], 240, app.compassOrientation.rawValue),
+                Segmented(.compassOrientation, "ORIENTATION", ["PORTRAIT", "FACEUP"], 240, app.compassOrientation.rawValue),
             ],
             .arkit: [
-                Selector(.arkitTrackingType, "TRACKING TYPE", ["DEVICE", "FACE", "MARKER"], 240, app.arkitTrackingType.rawValue),
+                Segmented(.arkitTrackingType, "TRACKING TYPE", ["DEVICE", "FACE", "MARKER"], 240, app.arkitTrackingType.rawValue),
             ],
         ]
     }
 
     public func updateSetting(setting: DetailSetting) {
         switch setting {
-        case let data as Selector:
+        case let data as Segmented:
             switch data.key {
             case .ndiType:
                 AppSettingModel.shared.ndiType = NdiType(rawValue: data.value)!
