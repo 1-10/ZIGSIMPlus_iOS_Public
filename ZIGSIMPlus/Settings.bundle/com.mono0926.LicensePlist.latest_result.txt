@@ -6,6 +6,10 @@ name: DeviceKit, nameSpecified:
 body: Copyright (c) 2015 D…
 version: 1.13.0
 
+name: DynamicButton, nameSpecified: 
+body: The MIT License (MIT…
+version: 6.2.0
+
 name: LicensePlist, nameSpecified: 
 body: MIT License
 

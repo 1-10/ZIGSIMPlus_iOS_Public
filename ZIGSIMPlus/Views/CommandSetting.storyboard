@@ -21,8 +21,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dap-Xf-KgX">
                                 <rect key="frame" x="20" y="108" width="374" height="705"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-vs-ZAX" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="-27" width="374" height="788"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-vs-ZAX" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="761"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA DESTINATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2V-4u-ORS" userLabel="DATA DESTINATION">
                                                 <rect key="frame" x="95" y="24" width="184" height="21"/>
@@ -166,34 +166,14 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMPASS ANGLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odm-xL-A1P" userLabel="COMPASS ANGLE">
-                                                <rect key="frame" x="117" y="485" width="140" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hqJ-Wb-Nee" userLabel="Compass Angle Seg">
-                                                <rect key="frame" x="87" y="514" width="200" height="28"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="MIe-dw-OUa"/>
-                                                    <constraint firstAttribute="height" constant="27" id="gkJ-MK-1Bw"/>
-                                                </constraints>
-                                                <segments>
-                                                    <segment title="PORTRAIT"/>
-                                                    <segment title="FACEUP"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="kC3-QN-YU4"/>
-                                                </connections>
-                                            </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEACON UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6p-b0-ie2" userLabel="BEACON UUID">
-                                                <rect key="frame" x="130.5" y="549" width="113" height="21"/>
+                                                <rect key="frame" x="130.5" y="485" width="113" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGd-6A-Iz7" userLabel="BeaconUUIDView">
-                                                <rect key="frame" x="27" y="578" width="320" height="80"/>
+                                                <rect key="frame" x="27" y="514" width="320" height="80"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vM-D1-lod">
                                                         <rect key="frame" x="10" y="0.0" width="300" height="35"/>
@@ -317,24 +297,21 @@
                                             <constraint firstItem="sS3-j7-8iF" firstAttribute="top" secondItem="JbH-m2-OQN" secondAttribute="bottom" constant="8" id="8Xn-Va-o0k"/>
                                             <constraint firstItem="JbH-m2-OQN" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="8gr-9E-lsZ"/>
                                             <constraint firstItem="7LZ-QD-3aa" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="90Y-hL-3Po"/>
-                                            <constraint firstItem="Odm-xL-A1P" firstAttribute="top" secondItem="oM4-Na-6XE" secondAttribute="bottom" constant="8" id="95C-nB-0Gx"/>
                                             <constraint firstItem="yGV-vs-Rkk" firstAttribute="top" secondItem="sS3-j7-8iF" secondAttribute="bottom" constant="8" id="Cxn-WE-Bxw"/>
                                             <constraint firstItem="PGd-6A-Iz7" firstAttribute="top" secondItem="s6p-b0-ie2" secondAttribute="bottom" constant="8" id="Dcj-1J-ysK"/>
-                                            <constraint firstItem="hqJ-Wb-Nee" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="FbJ-L2-MYS"/>
                                             <constraint firstItem="yGV-vs-Rkk" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="Ffj-qp-1vt"/>
                                             <constraint firstItem="RMC-XZ-wNJ" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="JvV-Ga-I1H"/>
                                             <constraint firstItem="GPj-aK-iT9" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="Nmh-vK-kf1"/>
                                             <constraint firstItem="cgy-NE-D0I" firstAttribute="top" secondItem="4eK-AB-Aoh" secondAttribute="bottom" constant="8" id="Rw0-e9-LZY"/>
                                             <constraint firstItem="v2V-4u-ORS" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="UNM-BI-SIn"/>
                                             <constraint firstItem="KNW-Ua-0gi" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="Xls-tS-cWl"/>
-                                            <constraint firstItem="Odm-xL-A1P" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="Xyb-BR-iCs"/>
                                             <constraint firstItem="7LZ-QD-3aa" firstAttribute="top" secondItem="aew-3o-Evt" secondAttribute="bottom" constant="8" id="aXY-g0-naW"/>
-                                            <constraint firstItem="s6p-b0-ie2" firstAttribute="top" secondItem="hqJ-Wb-Nee" secondAttribute="bottom" constant="8" id="bUB-vO-B4o"/>
                                             <constraint firstItem="s6p-b0-ie2" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="cMh-RI-IOu"/>
                                             <constraint firstItem="cgy-NE-D0I" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="ch5-9K-Voa"/>
                                             <constraint firstItem="JbH-m2-OQN" firstAttribute="top" secondItem="mGa-SP-GhO" secondAttribute="bottom" constant="8" id="dUZ-yT-Gbp"/>
                                             <constraint firstItem="KNW-Ua-0gi" firstAttribute="top" secondItem="yGV-vs-Rkk" secondAttribute="bottom" constant="8" id="dcE-qr-OKP"/>
                                             <constraint firstItem="5H5-aJ-fv1" firstAttribute="top" secondItem="v2V-4u-ORS" secondAttribute="bottom" constant="8" id="eLg-O1-Fbv"/>
+                                            <constraint firstItem="s6p-b0-ie2" firstAttribute="top" secondItem="oM4-Na-6XE" secondAttribute="bottom" constant="8" id="eqa-EI-COQ"/>
                                             <constraint firstItem="sS3-j7-8iF" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="ffQ-nG-Ofq"/>
                                             <constraint firstItem="GPj-aK-iT9" firstAttribute="top" secondItem="RMC-XZ-wNJ" secondAttribute="bottom" constant="8" id="fiP-qA-r3q"/>
                                             <constraint firstItem="PGd-6A-Iz7" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="hkE-CW-6mC"/>
@@ -349,7 +326,6 @@
                                             <constraint firstItem="v2V-4u-ORS" firstAttribute="top" secondItem="FAR-vs-ZAX" secondAttribute="topMargin" constant="16" id="tAA-Tt-ltE"/>
                                             <constraint firstItem="RMC-XZ-wNJ" firstAttribute="top" secondItem="5H5-aJ-fv1" secondAttribute="bottom" constant="8" id="v2I-d5-ivS"/>
                                             <constraint firstItem="oM4-Na-6XE" firstAttribute="top" secondItem="7LZ-QD-3aa" secondAttribute="bottom" constant="8" id="wLm-8e-abq"/>
-                                            <constraint firstItem="hqJ-Wb-Nee" firstAttribute="top" secondItem="Odm-xL-A1P" secondAttribute="bottom" constant="8" id="xey-Vl-auO"/>
                                             <constraint firstItem="4eK-AB-Aoh" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="ycB-Dl-1Vj"/>
                                         </constraints>
                                     </view>
@@ -385,7 +361,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="compassAngleSeg" destination="hqJ-Wb-Nee" id="FjK-Qa-Hqx"/>
                         <outlet property="dataDestinationSeg" destination="5H5-aJ-fv1" id="LSn-VE-PlC"/>
                         <outlet property="ipAdressTextField" destination="cgy-NE-D0I" id="5hL-I6-V03"/>
                         <outlet property="messageFormatSeg" destination="yGV-vs-Rkk" id="YWb-bu-w0L"/>
@@ -440,7 +415,9 @@
         <scene sceneID="elS-xR-Lyv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TJ1-zZ-jkp" userLabel="Settings Tab" customClass="CommandSettingTabNavigationController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="YWq-Vb-LFK"/>
+                    <tabBarItem key="tabBarItem" title="" image="settingLogo" id="YWq-Vb-LFK">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NUb-1x-Jr2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -456,4 +433,7 @@
             <point key="canvasLocation" x="1074" y="1696"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settingLogo" width="36" height="45"/>
+    </resources>
 </document>

@@ -154,6 +154,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/DeviceKit-framework/DeviceKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DynamicButton/DynamicButton.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON-framework/SwiftyJSON.framework"
@@ -161,6 +162,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/DeviceKit-framework/DeviceKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DynamicButton/DynamicButton.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON-framework/SwiftyJSON.framework"
