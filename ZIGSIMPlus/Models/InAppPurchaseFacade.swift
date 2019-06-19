@@ -1,5 +1,5 @@
 //
-//  InAppPurchaseAdapter.swift
+//  InAppPurchaseFacade.swift
 //  ZIGSIMPlus
 //
 //  Created by Nozomu Kuwae on 2019/06/18.
