@@ -44,6 +44,7 @@
 		6345569C22B0E9150032E976 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6345569B22B0E9150032E976 /* PresenterFactory.swift */; };
 		637E961D22B8DFAF0019E70F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637E961C22B8DFAF0019E70F /* StoreKit.framework */; };
 		637E961F22B8FF5C0019E70F /* InAppPurchaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E961E22B8FF5C0019E70F /* InAppPurchaseFacade.swift */; };
+		637E962322BA00C40019E70F /* InAppPurchaseFacadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E962222BA00C40019E70F /* InAppPurchaseFacadeTests.swift */; };
 		638345F422A6832700370600 /* NFCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638345F322A6832700370600 /* NFCService.swift */; };
 		63A6192B22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */; };
 		63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A6192C22A79EDF00B015DE /* CoreNFC.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -145,6 +146,7 @@
 		63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZIGSIMPlus.entitlements; sourceTree = "<group>"; };
 		637E961C22B8DFAF0019E70F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		637E961E22B8FF5C0019E70F /* InAppPurchaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseFacade.swift; sourceTree = "<group>"; };
+		637E962222BA00C40019E70F /* InAppPurchaseFacadeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseFacadeTests.swift; sourceTree = "<group>"; };
 		638345F322A6832700370600 /* NFCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCService.swift; sourceTree = "<group>"; };
 		63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTypeNameFormatExtension.swift; sourceTree = "<group>"; };
 		63A6192C22A79EDF00B015DE /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
@@ -406,6 +408,7 @@
 				02852E4322B7710F00801B6A /* TouchServiceTests.swift */,
 				0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */,
 				6326759322B3B1DA009A26B8 /* AppSettingModelTests.swift */,
+				637E962222BA00C40019E70F /* InAppPurchaseFacadeTests.swift */,
 				902EB9E0227BE68F008F1650 /* Info.plist */,
 			);
 			path = ZIGSIMPlusTests;
@@ -802,6 +805,7 @@
 				02852E4422B7710F00801B6A /* TouchServiceTests.swift in Sources */,
 				0281B29722A6791500ED97D9 /* ServiceManagerTests.swift in Sources */,
 				6326759422B3B1DA009A26B8 /* AppSettingModelTests.swift in Sources */,
+				637E962322BA00C40019E70F /* InAppPurchaseFacadeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
