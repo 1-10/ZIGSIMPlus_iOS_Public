@@ -146,13 +146,13 @@ public class CommandSettingViewController : UIViewController {
 
     private func adjustSegmentDesign(segment: UISegmentedControl) {
         segment.tintColor = Theme.main
-        segment.layer.backgroundColor = Theme.dark.cgColor
+        segment.layer.backgroundColor = Theme.black.cgColor
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : Theme.white], for: .selected)
     }
 
     private func adjustTextFieldDesign(textField: UITextField) {
         textField.textColor = Theme.main
-        textField.backgroundColor = Theme.dark
+        textField.backgroundColor = Theme.black
         textField.layer.borderWidth = 1.0
         textField.layer.cornerRadius = 4.0
         textField.layer.borderColor = Theme.main.cgColor
