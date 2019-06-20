@@ -11,9 +11,10 @@ import StoreKit
 
 class InAppPurchaseFacade: NSObject {
     enum TransactionResult {
-        case purchased
-        case restored
-        case failed
+        case purchaseSuccessful
+        case purchaseFailed
+        case restoreSuccessful
+        case restoreFailed
     }
     
     var completion: ((TransactionResult, Error?) -> Void)?
@@ -33,6 +34,8 @@ class InAppPurchaseFacade: NSObject {
             SKPaymentQueue.default().add(paymentRequest)
         } else {
             print("User can't make payments")
+            
+            completion?(.purchaseFailed, nil)
         }
     }
 
@@ -60,9 +63,12 @@ class InAppPurchaseFacade: NSObject {
 
 extension InAppPurchaseFacade: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        // Dealing only one transaction is assumed
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased, .failed, .restored:
+                SKPaymentQueue.default().finishTransaction(transaction)
                 didGetTransactionResult(transaction)
                 return
             default:
@@ -71,23 +77,23 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
             }
         }
     }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        // When restore fails, there is no transaction in queue
+        // So don't need to finish transaction
+        completion?(.restoreFailed, error)
+    }
 
     func didGetTransactionResult(_ transaction: SKPaymentTransaction) {
-        // Do not finishTransaction here, or unit test fails when transactionState == .inpurchase
-        // Call finishTransaction for specified transactionState
-        
         switch transaction.transactionState {
         case .purchased:
-            SKPaymentQueue.default().finishTransaction(transaction)
             storePurchasedState()
-            completion?(.purchased, nil)
+            completion?(.purchaseSuccessful, nil)
         case .failed:
-            SKPaymentQueue.default().finishTransaction(transaction)
-            completion?(.failed, transaction.error)
+            completion?(.purchaseFailed, transaction.error)
         case .restored:
-            SKPaymentQueue.default().finishTransaction(transaction)
             storePurchasedState()
-            completion?(.restored, nil)
+            completion?(.restoreSuccessful, nil)
         default:
             break
         }

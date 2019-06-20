@@ -23,8 +23,8 @@ class InAppPurchaseFacadeTests: XCTestCase {
     
     func testDidGetTransactionResult_WhenSuccessful() {
         let testCases = [
-            (SKPaymentTransactionState.purchased, InAppPurchaseFacade.TransactionResult.purchased),
-            (SKPaymentTransactionState.restored, InAppPurchaseFacade.TransactionResult.restored)
+            (SKPaymentTransactionState.purchased, InAppPurchaseFacade.TransactionResult.purchaseSuccessful),
+            (SKPaymentTransactionState.restored, InAppPurchaseFacade.TransactionResult.restoreSuccessful)
         ]
         
         for testCase in testCases {
@@ -53,7 +53,7 @@ class InAppPurchaseFacadeTests: XCTestCase {
         
         let exp = expectation(description: "Purchase premium features failed")
         purchaseFacade.completion = { (result, error) in
-            XCTAssertEqual(result, .failed)
+            XCTAssertEqual(result, .purchaseFailed)
             XCTAssertFalse(self.purchaseFacade.isPurchased())
             exp.fulfill()
         }
