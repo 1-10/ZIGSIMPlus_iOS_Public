@@ -170,6 +170,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="imagePreview" destination="Brn-Ft-Y9K" id="dRO-c9-B2N"/>
+                        <outlet property="navBar" destination="jIb-V7-pjq" id="aPw-Y8-P44"/>
                         <outlet property="navItem" destination="eW9-hN-vXk" id="CHd-d3-JQH"/>
                         <outlet property="settingsTable" destination="NJT-rt-tEm" id="fBA-Ur-x13"/>
                         <outlet property="textField" destination="CBn-hW-Fni" id="mER-6l-Pna"/>

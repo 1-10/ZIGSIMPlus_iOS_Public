@@ -388,6 +388,7 @@
 				63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */,
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
 				6345569B22B0E9150032E976 /* PresenterFactory.swift */,
+				023BB10522965B490094363B /* Utils.swift */,
 				9092E4C7227D85890019F1C1 /* Models */,
 				902EB9F7227BECC7008F1650 /* Views */,
 				902EB9F8227BECDD008F1650 /* Presenters */,
@@ -468,7 +469,6 @@
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */,
-				023BB10522965B490094363B /* Utils.swift */,
 				02A8FA822296B62D001FB3DD /* Services */,
 			);
 			path = Models;
