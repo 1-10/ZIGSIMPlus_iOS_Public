@@ -48,17 +48,24 @@ class Utils {
 
         let titleImage = UIImage(named: "Logo")
         let titleImageView = UIImageView(image: titleImage)
-        let scale = bounds.height / titleImage!.size.height
 
+        // Get dimension to render image
+        let scale = bounds.height / titleImage!.size.height
         let imageWidth = titleImage!.size.width * scale
         let imageHeight = titleImage!.size.height * scale
 
+        // Set image frame to the center of the navBar
         titleImageView.frame = CGRect(
             x: center.x - imageWidth / 2,
             y: center.y - bounds.height / 2 - imageHeight,
             width: imageWidth,
             height: imageHeight
         )
-        navBar.addSubview(titleImageView)
+
+        // Add wrapper to prevent automatic image resizing
+        let wrapper = UIView(frame: bounds)
+        wrapper.addSubview(titleImageView)
+
+        navBar.topItem!.titleView = wrapper
     }
 }
