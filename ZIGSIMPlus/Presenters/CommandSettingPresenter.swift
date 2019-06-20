@@ -9,11 +9,24 @@
 import Foundation
 import SwiftyUserDefaults
 
+public enum textFieldName {
+    case ipAdress
+    case portNumber
+    case uuid
+}
+
+public enum segmentName {
+    case dataDestination
+    case dataProtocol
+    case messageFormat
+    case messageRatePerSecond
+}
+
 protocol CommandSettingPresenterProtocol {
-    func getUserDefaultTexts() -> Dictionary<String,String>
-    func getUserDefaultSegments() -> Dictionary<String,Int>
-    func updateTextsUserDefault(texts: Dictionary<String, String>)
-    func updateSegmentsUserDefault(segmentControls: Dictionary<String, Int>)
+    func getUserDefaultTexts() -> Dictionary<textFieldName,String>
+    func getUserDefaultSegments() -> Dictionary<segmentName,Int>
+    func updateTextsUserDefault(texts: Dictionary<textFieldName, String>)
+    func updateSegmentsUserDefault(segmentControls: Dictionary<segmentName, Int>)
 }
 
 protocol CommandSettingPresenterDelegate: AnyObject {}
@@ -25,78 +38,41 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         self.view = view
     }
     
-    func getUserDefaultTexts() -> Dictionary<String,String> {
-        var texts:[String: String] = [
-            "ipAdress": "",
-            "portNumber": "",
-            "uuid": "",
-            "beaconUUID1": "",
-            "beaconUUID2": "",
-            "beaconUUID3": "",
-            "beaconUUID4": "",
-            "beaconUUID5": ""
-        ]
-
-        texts["ipAdress"] = Defaults[.userIpAdress]?.description ?? ""
-        texts["portNumber"] = Defaults[.userPortNumber]?.description ?? ""
-        texts["uuid"] = Defaults[.userDeviceUUID]?.description ?? ""
-        texts["beaconUUID1"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:0)
-        texts["beaconUUID2"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:1)
-        texts["beaconUUID3"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:2)
-        texts["beaconUUID4"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:3)
-        texts["beaconUUID5"] = Utils.separateBeaconUuid(uuid: Defaults[.userBeaconUUID]?.description ?? "", position:4)
+    func getUserDefaultTexts() -> Dictionary<textFieldName,String> {
+        var texts:[textFieldName: String] = [:]
+        texts[.ipAdress] = Defaults[.userIpAdress]?.description ?? ""
+        texts[.portNumber] = Defaults[.userPortNumber]?.description ?? ""
+        texts[.uuid] = Defaults[.userDeviceUUID]?.description ?? ""
         return texts
     }
     
-    func getUserDefaultSegments() -> Dictionary<String,Int> {
-        var segments:[String:Int] = [
-            "userDataDestination": 0,
-            "userProtocol": 0,
-            "userMessageFormat": 0,
-            "userMessageRatePerSecond": 0,
-        ]
-        
-        segments["userDataDestination"] = Defaults[.userDataDestination]
-        segments["userProtocol"] = Defaults[.userProtocol]
-        segments["userMessageFormat"] = Defaults[.userMessageFormat]
-        segments["userMessageRatePerSecond"] = Defaults[.userMessageRatePerSecond]
+    func getUserDefaultSegments() -> Dictionary<segmentName,Int> {
+        var segments:[segmentName:Int] = [:]
+        segments[.dataDestination] = Defaults[.userDataDestination]
+        segments[.dataProtocol] = Defaults[.userProtocol]
+        segments[.messageFormat] = Defaults[.userMessageFormat]
+        segments[.messageRatePerSecond] = Defaults[.userMessageRatePerSecond]
 
         return segments
     }
     
-    func updateTextsUserDefault(texts: Dictionary<String, String>) {
-        AppSettingModel.shared.address = texts["ipAdress"]?.description ?? ""
+    func updateTextsUserDefault(texts: Dictionary<textFieldName, String>) {
+        AppSettingModel.shared.address = texts[.ipAdress]?.description ?? ""
         Defaults[.userIpAdress] = AppSettingModel.shared.address
-        AppSettingModel.shared.port = Int32(texts["portNumber"]?.description ?? "") ?? 0
+        AppSettingModel.shared.port = Int32(texts[.portNumber]?.description ?? "") ?? 0
         Defaults[.userPortNumber] = Int(AppSettingModel.shared.port)
-        AppSettingModel.shared.deviceUUID = texts["uuid"]?.description ?? ""
+        AppSettingModel.shared.deviceUUID = texts[.uuid]?.description ?? ""
         Defaults[.userDeviceUUID] = AppSettingModel.shared.deviceUUID
-        var beaconUUID = texts["beaconUUID1"]?.description ?? ""
-        beaconUUID += "-"
-        beaconUUID += texts["beaconUUID2"]?.description ?? ""
-        beaconUUID += "-"
-        beaconUUID += texts["beaconUUID3"]?.description ?? ""
-        beaconUUID += "-"
-        beaconUUID += texts["beaconUUID4"]?.description ?? ""
-        beaconUUID += "-"
-        beaconUUID += texts["beaconUUID5"]?.description ?? ""
-        AppSettingModel.shared.beaconUUID = beaconUUID
-        Defaults[.userBeaconUUID] = AppSettingModel.shared.beaconUUID
-        print("beaconuuid: \(AppSettingModel.shared.beaconUUID)")
     }
     
-    func updateSegmentsUserDefault(segmentControls: Dictionary<String, Int>) {
-
-        AppSettingModel.shared.dataDestination = DataDestination(rawValue: segmentControls["userDataDestination"] ?? 0)!
+    func updateSegmentsUserDefault(segmentControls: Dictionary<segmentName, Int>) {
+        AppSettingModel.shared.dataDestination = DataDestination(rawValue: segmentControls[.dataDestination] ?? 0)!
         Defaults[.userDataDestination] = AppSettingModel.shared.dataDestination.rawValue
-
-        AppSettingModel.shared.transportProtocol = TransportProtocol(rawValue: segmentControls["userProtocol"] ?? 0)!
+        AppSettingModel.shared.transportProtocol = TransportProtocol(rawValue: segmentControls[.dataProtocol] ?? 0)!
         Defaults[.userProtocol] = AppSettingModel.shared.transportProtocol.rawValue
-
-        AppSettingModel.shared.transportFormat = TransportFormat(rawValue: segmentControls["userMessageFormat"] ?? 0)!
+        AppSettingModel.shared.transportFormat = TransportFormat(rawValue: segmentControls[.messageFormat] ?? 0)!
         Defaults[.userMessageFormat] = AppSettingModel.shared.transportFormat.rawValue
-
-        AppSettingModel.shared.messageRatePerSecondSegment = segmentControls["userMessageRatePerSecond"] ?? 0
+        AppSettingModel.shared.messageRatePerSecondSegment = segmentControls[.messageRatePerSecond] ?? 0
         Defaults[.userMessageRatePerSecond] = AppSettingModel.shared.messageRatePerSecondSegment
     }
 }
