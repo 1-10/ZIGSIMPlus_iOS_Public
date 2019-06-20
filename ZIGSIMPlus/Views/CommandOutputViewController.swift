@@ -12,8 +12,6 @@ import MediaPlayer
 class CommandOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var touchArea: UIView!
-    @IBOutlet weak var navItem: UINavigationItem!
-    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var textPreview: UIView!
     @IBOutlet weak var imagePreview: UIView!
     @IBOutlet weak var togglePreviewModeButton: UIBarButtonItem!
@@ -28,9 +26,11 @@ class CommandOutputViewController: UIViewController {
         super.viewDidLoad()
 
         // Initialize navigation bar
-        Utils.setTitleImage(navBar)
+        let navBar = navigationController!.navigationBar
         navBar.barTintColor = Theme.dark
-        
+        navBar.tintColor = Theme.main
+        Utils.setTitleImage(navBar)
+
         presenter.composeChildViewArchitecture()
     }
 
