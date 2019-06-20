@@ -18,6 +18,7 @@
 		02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5322A4F9140071E9D2 /* StringExtension.swift */; };
 		02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */; };
 		02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */; };
+		026A3C3222BB656C0016DEF6 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A3C3122BB656C0016DEF6 /* UIColorExtension.swift */; };
 		0274B66322A0FD00005D7266 /* RemoteControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274B66222A0FD00005D7266 /* RemoteControlService.swift */; };
 		0281B29722A6791500ED97D9 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */; };
 		02852E4422B7710F00801B6A /* TouchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02852E4322B7710F00801B6A /* TouchServiceTests.swift */; };
@@ -118,6 +119,7 @@
 		02621F5322A4F9140071E9D2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSettingPresenter.swift; sourceTree = "<group>"; };
+		026A3C3122BB656C0016DEF6 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		0274B66222A0FD00005D7266 /* RemoteControlService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlService.swift; sourceTree = "<group>"; };
 		0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
 		02852E4322B7710F00801B6A /* TouchServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchServiceTests.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */,
 				02621F5322A4F9140071E9D2 /* StringExtension.swift */,
 				02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */,
+				026A3C3122BB656C0016DEF6 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,
 				02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */,
+				026A3C3222BB656C0016DEF6 /* UIColorExtension.swift in Sources */,
 				02DF072D22BB36D300F3ABE2 /* Theme.swift in Sources */,
 				02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */,
 				02852E4822B777F800801B6A /* CommandSelectionTabNavigationController.swift in Sources */,
