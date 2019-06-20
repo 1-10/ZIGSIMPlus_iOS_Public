@@ -52,6 +52,7 @@ class CommandOutputViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         // Set area for touch points.
         // This has to be done after auto layout.
+        touchArea.isHidden = !presenter.isTouchEnabled()
         TouchService.shared.setTouchArea(rect: touchArea.bounds)
     }
 

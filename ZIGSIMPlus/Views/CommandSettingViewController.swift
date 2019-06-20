@@ -21,7 +21,6 @@ public class CommandSettingViewController : UIViewController {
     @IBOutlet var segments: [UISegmentedControl]!
     @IBOutlet var textFields: [UITextField]!
     @IBOutlet weak var button: UIButton!
-    
     var presenter: CommandSettingPresenterProtocol!
     
     override public func viewDidLoad() {
@@ -39,6 +38,7 @@ public class CommandSettingViewController : UIViewController {
         }
         
         let userDefaultSegments = presenter.getUserDefaultSegments()
+
         for segment in segments {
             if segment.tag == 0 {
                 segment.selectedSegmentIndex = userDefaultSegments[.dataDestination] ?? 0
@@ -53,6 +53,7 @@ public class CommandSettingViewController : UIViewController {
         
         initNavigationBar()
         adjustViewDesign()
+
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -65,6 +66,7 @@ public class CommandSettingViewController : UIViewController {
         updateSettingData()
     }
     
+    // Please modify this method, when you add the processing of Restore Purchase.
     @IBAction func actionButton(_ sender: UIButton) {
     }
     
@@ -100,6 +102,7 @@ public class CommandSettingViewController : UIViewController {
                 segmentControls[.messageRatePerSecond] = segment.selectedSegmentIndex
             }
         }
+
         presenter.updateSegmentsUserDefault(segmentControls: segmentControls)
     }
     

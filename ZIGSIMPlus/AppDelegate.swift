@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = window?.rootViewController as! UITabBarController
         let mediator = CommandAndServiceMediator()
         for viewController in tabBarController.viewControllers! {
-            if type(of: viewController) == CommandSelectionViewController.self {
-                let vc = viewController as! CommandSelectionViewController
-                vc.presenter = CommandSelectionPresenter(view: vc, mediator: mediator)
+            if type(of: viewController) == CommandSelectionTabNavigationController.self {
+                let vc = viewController as! CommandSelectionTabNavigationController
+                vc.setMediator(mediator)
             } else if type(of: viewController) == CommandOutputViewController.self {
                 let vc = viewController as! CommandOutputViewController
                 vc.presenter = CommandOutputPresenter(view: vc, mediator: mediator)

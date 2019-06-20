@@ -52,6 +52,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         segments[.dataProtocol] = Defaults[.userProtocol]
         segments[.messageFormat] = Defaults[.userMessageFormat]
         segments[.messageRatePerSecond] = Defaults[.userMessageRatePerSecond]
+
         return segments
     }
     
