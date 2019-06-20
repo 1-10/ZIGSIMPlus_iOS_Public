@@ -22,10 +22,10 @@
                                 <rect key="frame" x="20" y="108" width="374" height="705"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-vs-ZAX" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="761"/>
+                                        <rect key="frame" x="0.0" y="-27" width="374" height="788"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA DESTINATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2V-4u-ORS" userLabel="DATA DESTINATION">
-                                                <rect key="frame" x="95" y="24" width="184" height="21"/>
+                                                <rect key="frame" x="95" y="53" width="184" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="184" id="DGV-IJ-mk8"/>
                                                     <constraint firstAttribute="height" constant="21" id="QKm-Mm-fGG"/>
@@ -35,9 +35,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5H5-aJ-fv1" userLabel="Data Destination Seg">
-                                                <rect key="frame" x="85.5" y="53" width="203" height="29"/>
+                                                <rect key="frame" x="62" y="82" width="250" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="203" id="NwA-UX-4Lc"/>
+                                                    <constraint firstAttribute="width" constant="250" id="NwA-UX-4Lc"/>
                                                     <constraint firstAttribute="height" constant="28" id="fZt-Vs-hWx"/>
                                                 </constraints>
                                                 <segments>
@@ -48,8 +48,8 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="aNp-hd-ezq"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROTOCOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMC-XZ-wNJ">
-                                                <rect key="frame" x="134" y="89" width="106" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROTOCOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMC-XZ-wNJ">
+                                                <rect key="frame" x="134" y="118" width="106" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="aqq-dW-P3q"/>
                                                     <constraint firstAttribute="width" constant="106" id="jJn-C1-AeN"/>
@@ -58,10 +58,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GPj-aK-iT9" userLabel="Protocolo Seg">
-                                                <rect key="frame" x="126.5" y="118" width="121" height="29"/>
+                                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GPj-aK-iT9" userLabel="Protocolo Seg">
+                                                <rect key="frame" x="62" y="147" width="250" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="121" id="QGv-Dw-K0T"/>
+                                                    <constraint firstAttribute="width" constant="250" id="QGv-Dw-K0T"/>
                                                     <constraint firstAttribute="height" constant="28" id="fD5-Op-wsY"/>
                                                 </constraints>
                                                 <segments>
@@ -72,8 +72,8 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="qin-UG-LSx"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP ADDRESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eK-AB-Aoh" userLabel="IP ADDRESS">
-                                                <rect key="frame" x="134" y="154" width="106" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP ADDRESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eK-AB-Aoh" userLabel="IP ADDRESS">
+                                                <rect key="frame" x="134" y="183" width="106" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="106" id="Ta7-Ox-yCI"/>
                                                     <constraint firstAttribute="height" constant="21" id="xTX-uS-gof"/>
@@ -83,41 +83,41 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.0.1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgy-NE-D0I" userLabel="Ip Adress Text Field">
-                                                <rect key="frame" x="107.5" y="183" width="159" height="30"/>
+                                                <rect key="frame" x="62" y="212" width="250" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="2IW-Bt-tCg"/>
-                                                    <constraint firstAttribute="width" constant="159" id="mLn-uN-Klm"/>
+                                                    <constraint firstAttribute="width" constant="250" id="mLn-uN-Klm"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORT NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-SP-GhO">
-                                                <rect key="frame" x="127.5" y="221" width="119" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORT NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-SP-GhO">
+                                                <rect key="frame" x="127.5" y="250" width="119" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-m2-OQN" userLabel="PORT NUMBER">
-                                                <rect key="frame" x="107" y="250" width="160" height="30"/>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-m2-OQN" userLabel="PORT NUMBER">
+                                                <rect key="frame" x="62" y="279" width="250" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="160" id="PB1-7J-pqA"/>
+                                                    <constraint firstAttribute="width" constant="250" id="PB1-7J-pqA"/>
                                                     <constraint firstAttribute="height" constant="30" id="dZ3-OM-gac"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE FORMAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-j7-8iF" userLabel="MESSAGE FORMAT">
-                                                <rect key="frame" x="112" y="288" width="150" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE FORMAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-j7-8iF" userLabel="MESSAGE FORMAT">
+                                                <rect key="frame" x="112" y="317" width="150" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-vs-Rkk" userLabel="Message Format Seg">
-                                                <rect key="frame" x="87" y="317" width="200" height="29"/>
+                                            <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-vs-Rkk" userLabel="Message Format Seg">
+                                                <rect key="frame" x="62" y="346" width="250" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="7fo-hI-lBq"/>
+                                                    <constraint firstAttribute="width" constant="250" id="7fo-hI-lBq"/>
                                                     <constraint firstAttribute="height" constant="28" id="XUL-ci-4Dl"/>
                                                 </constraints>
                                                 <segments>
@@ -128,16 +128,16 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="63j-jC-z8N"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE RATE(PER SEC)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNW-Ua-0gi">
-                                                <rect key="frame" x="86" y="353" width="202" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE RATE(PER SEC)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNW-Ua-0gi">
+                                                <rect key="frame" x="86" y="382" width="202" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aew-3o-Evt" userLabel="Message Rate Seg">
-                                                <rect key="frame" x="87" y="382" width="200" height="29"/>
+                                            <segmentedControl opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aew-3o-Evt" userLabel="Message Rate Seg">
+                                                <rect key="frame" x="62" y="411" width="250" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="d5K-w1-Mna"/>
+                                                    <constraint firstAttribute="width" constant="250" id="d5K-w1-Mna"/>
                                                     <constraint firstAttribute="height" constant="28" id="kR0-8O-qko"/>
                                                 </constraints>
                                                 <segments>
@@ -150,180 +150,65 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="0px-jW-xEL"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVICE UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LZ-QD-3aa" userLabel="DEVICE UUID">
-                                                <rect key="frame" x="135" y="418" width="104" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVICE UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LZ-QD-3aa" userLabel="DEVICE UUID">
+                                                <rect key="frame" x="135" y="447" width="104" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0123456789abcdef" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM4-Na-6XE" userLabel="Uuid Text Field">
-                                                <rect key="frame" x="107" y="447" width="160" height="30"/>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0123456789abcdef" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM4-Na-6XE" userLabel="Uuid Text Field">
+                                                <rect key="frame" x="62" y="476" width="250" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="5ei-rw-knf"/>
-                                                    <constraint firstAttribute="width" constant="160" id="6yF-iI-kRh"/>
+                                                    <constraint firstAttribute="width" constant="250" id="6yF-iI-kRh"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEACON UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6p-b0-ie2" userLabel="BEACON UUID">
-                                                <rect key="frame" x="130.5" y="485" width="113" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGd-6A-Iz7" userLabel="BeaconUUIDView">
-                                                <rect key="frame" x="27" y="514" width="320" height="80"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vM-D1-lod">
-                                                        <rect key="frame" x="10" y="0.0" width="300" height="35"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2C945544" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BQw-oU-3IC" userLabel="Beaconuuid1 Text Field">
-                                                                <rect key="frame" x="10" y="2.5" width="120" height="30"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="VzL-1c-JEq"/>
-                                                                    <constraint firstAttribute="height" constant="30" id="ti0-rQ-H3o"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                        <integer key="value" value="8"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </textField>
-                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5155" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13X-oq-Slc" userLabel="Beaconuuid2 Text Field">
-                                                                <rect key="frame" x="135" y="2.5" width="75" height="30"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="GZx-kH-Cpf"/>
-                                                                    <constraint firstAttribute="height" constant="30" id="bEL-cF-XHG"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                        <integer key="value" value="4"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </textField>
-                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4EBC" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-PK-Lpo" userLabel="Beaconuuid3 Text Field">
-                                                                <rect key="frame" x="217" y="2.5" width="75" height="30"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="30" id="Zfn-e0-Pif"/>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="uNi-pE-09b"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                        <integer key="value" value="4"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </textField>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstItem="13X-oq-Slc" firstAttribute="baseline" secondItem="3DL-PK-Lpo" secondAttribute="baseline" id="0oU-fv-IJK"/>
-                                                            <constraint firstItem="BQw-oU-3IC" firstAttribute="leading" secondItem="0vM-D1-lod" secondAttribute="leading" constant="10" id="AjM-ih-vN4"/>
-                                                            <constraint firstAttribute="width" constant="300" id="OnJ-Z3-a1s"/>
-                                                            <constraint firstItem="BQw-oU-3IC" firstAttribute="baseline" secondItem="13X-oq-Slc" secondAttribute="baseline" id="W5m-L3-0LP"/>
-                                                            <constraint firstItem="13X-oq-Slc" firstAttribute="leading" secondItem="BQw-oU-3IC" secondAttribute="trailing" constant="5" id="avh-s0-Zwd"/>
-                                                            <constraint firstItem="3DL-PK-Lpo" firstAttribute="trailing" secondItem="0vM-D1-lod" secondAttribute="trailingMargin" id="lo3-Gw-lMD"/>
-                                                            <constraint firstItem="BQw-oU-3IC" firstAttribute="centerY" secondItem="0vM-D1-lod" secondAttribute="centerY" id="lpl-Xl-W0F"/>
-                                                            <constraint firstAttribute="height" constant="35" id="sfR-tI-hiT"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDP-FX-G5b">
-                                                        <rect key="frame" x="10" y="38" width="300" height="35"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="8CF2" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hwG-eW-be1" userLabel="Beaconuuid4 Text Field">
-                                                                <rect key="frame" x="10" y="2.5" width="75" height="30"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="30" id="0vT-Vg-ueu"/>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="WcH-q2-YRg"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                        <integer key="value" value="4"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </textField>
-                                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3413FD6DA446" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zpf-cd-jrt" userLabel="Beaconuuid5 Text Field">
-                                                                <rect key="frame" x="90" y="2.5" width="130" height="30"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="30" id="Dhb-1d-5ED"/>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="LdG-bm-Gr9"/>
-                                                                </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                        <integer key="value" value="12"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </textField>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="6xt-OZ-aBx"/>
-                                                            <constraint firstAttribute="width" constant="300" id="Dqt-7B-i7d"/>
-                                                            <constraint firstItem="hwG-eW-be1" firstAttribute="centerY" secondItem="tDP-FX-G5b" secondAttribute="centerY" id="HQz-gn-4UQ"/>
-                                                            <constraint firstItem="hwG-eW-be1" firstAttribute="leading" secondItem="tDP-FX-G5b" secondAttribute="leading" constant="10" id="R9I-Wu-PXi"/>
-                                                            <constraint firstItem="Zpf-cd-jrt" firstAttribute="leading" secondItem="hwG-eW-be1" secondAttribute="trailing" constant="5" id="d2X-O7-RbQ"/>
-                                                            <constraint firstItem="Zpf-cd-jrt" firstAttribute="centerY" secondItem="tDP-FX-G5b" secondAttribute="centerY" id="dGX-88-ZxP"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qx-FQ-b89">
+                                                <rect key="frame" x="159" y="551" width="56" height="56"/>
                                                 <constraints>
-                                                    <constraint firstItem="0vM-D1-lod" firstAttribute="top" secondItem="PGd-6A-Iz7" secondAttribute="top" id="F1v-Xu-bSs"/>
-                                                    <constraint firstAttribute="height" constant="80" id="PnS-NU-7xm"/>
-                                                    <constraint firstItem="tDP-FX-G5b" firstAttribute="centerX" secondItem="PGd-6A-Iz7" secondAttribute="centerX" id="gAc-3r-Rhg"/>
-                                                    <constraint firstAttribute="width" constant="320" id="m1n-P3-TOS"/>
-                                                    <constraint firstItem="0vM-D1-lod" firstAttribute="centerX" secondItem="PGd-6A-Iz7" secondAttribute="centerX" id="wKa-sy-sZe"/>
-                                                    <constraint firstItem="tDP-FX-G5b" firstAttribute="top" secondItem="0vM-D1-lod" secondAttribute="bottom" constant="3" id="xJ8-Jg-JEu"/>
+                                                    <constraint firstAttribute="width" constant="56" id="8OY-jL-hlA"/>
+                                                    <constraint firstAttribute="height" constant="56" id="pJg-58-LLn"/>
                                                 </constraints>
-                                            </view>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="actionButton:" destination="M4O-L3-dJK" eventType="touchUpInside" id="atx-7n-bgO"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="sS3-j7-8iF" firstAttribute="top" secondItem="JbH-m2-OQN" secondAttribute="bottom" constant="8" id="8Xn-Va-o0k"/>
                                             <constraint firstItem="JbH-m2-OQN" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="8gr-9E-lsZ"/>
                                             <constraint firstItem="7LZ-QD-3aa" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="90Y-hL-3Po"/>
                                             <constraint firstItem="yGV-vs-Rkk" firstAttribute="top" secondItem="sS3-j7-8iF" secondAttribute="bottom" constant="8" id="Cxn-WE-Bxw"/>
-                                            <constraint firstItem="PGd-6A-Iz7" firstAttribute="top" secondItem="s6p-b0-ie2" secondAttribute="bottom" constant="8" id="Dcj-1J-ysK"/>
                                             <constraint firstItem="yGV-vs-Rkk" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="Ffj-qp-1vt"/>
+                                            <constraint firstItem="2qx-FQ-b89" firstAttribute="top" secondItem="oM4-Na-6XE" secondAttribute="bottom" constant="45" id="IVh-O4-Rt6"/>
                                             <constraint firstItem="RMC-XZ-wNJ" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="JvV-Ga-I1H"/>
                                             <constraint firstItem="GPj-aK-iT9" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="Nmh-vK-kf1"/>
                                             <constraint firstItem="cgy-NE-D0I" firstAttribute="top" secondItem="4eK-AB-Aoh" secondAttribute="bottom" constant="8" id="Rw0-e9-LZY"/>
+                                            <constraint firstItem="2qx-FQ-b89" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="S66-wJ-0yo"/>
                                             <constraint firstItem="v2V-4u-ORS" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="UNM-BI-SIn"/>
                                             <constraint firstItem="KNW-Ua-0gi" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="Xls-tS-cWl"/>
                                             <constraint firstItem="7LZ-QD-3aa" firstAttribute="top" secondItem="aew-3o-Evt" secondAttribute="bottom" constant="8" id="aXY-g0-naW"/>
-                                            <constraint firstItem="s6p-b0-ie2" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="cMh-RI-IOu"/>
                                             <constraint firstItem="cgy-NE-D0I" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="ch5-9K-Voa"/>
                                             <constraint firstItem="JbH-m2-OQN" firstAttribute="top" secondItem="mGa-SP-GhO" secondAttribute="bottom" constant="8" id="dUZ-yT-Gbp"/>
                                             <constraint firstItem="KNW-Ua-0gi" firstAttribute="top" secondItem="yGV-vs-Rkk" secondAttribute="bottom" constant="8" id="dcE-qr-OKP"/>
                                             <constraint firstItem="5H5-aJ-fv1" firstAttribute="top" secondItem="v2V-4u-ORS" secondAttribute="bottom" constant="8" id="eLg-O1-Fbv"/>
-                                            <constraint firstItem="s6p-b0-ie2" firstAttribute="top" secondItem="oM4-Na-6XE" secondAttribute="bottom" constant="8" id="eqa-EI-COQ"/>
                                             <constraint firstItem="sS3-j7-8iF" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="ffQ-nG-Ofq"/>
                                             <constraint firstItem="GPj-aK-iT9" firstAttribute="top" secondItem="RMC-XZ-wNJ" secondAttribute="bottom" constant="8" id="fiP-qA-r3q"/>
-                                            <constraint firstItem="PGd-6A-Iz7" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="hkE-CW-6mC"/>
                                             <constraint firstItem="mGa-SP-GhO" firstAttribute="top" secondItem="cgy-NE-D0I" secondAttribute="bottom" constant="8" id="i4Y-i3-dHC"/>
                                             <constraint firstItem="mGa-SP-GhO" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="iXp-m5-VgW"/>
                                             <constraint firstItem="5H5-aJ-fv1" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="l5T-3g-XFs"/>
                                             <constraint firstItem="aew-3o-Evt" firstAttribute="top" secondItem="KNW-Ua-0gi" secondAttribute="bottom" constant="8" id="l7z-TO-bA3"/>
-                                            <constraint firstAttribute="height" constant="761" id="lSY-Vg-aGD"/>
+                                            <constraint firstAttribute="height" constant="788" id="lSY-Vg-aGD"/>
                                             <constraint firstItem="aew-3o-Evt" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="mBh-yj-YDs"/>
                                             <constraint firstItem="4eK-AB-Aoh" firstAttribute="top" secondItem="GPj-aK-iT9" secondAttribute="bottom" constant="8" id="p3m-Rz-gTi"/>
                                             <constraint firstItem="oM4-Na-6XE" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="p8Y-PX-3Vw"/>
-                                            <constraint firstItem="v2V-4u-ORS" firstAttribute="top" secondItem="FAR-vs-ZAX" secondAttribute="topMargin" constant="16" id="tAA-Tt-ltE"/>
+                                            <constraint firstItem="v2V-4u-ORS" firstAttribute="top" secondItem="FAR-vs-ZAX" secondAttribute="topMargin" constant="45" id="tAA-Tt-ltE"/>
                                             <constraint firstItem="RMC-XZ-wNJ" firstAttribute="top" secondItem="5H5-aJ-fv1" secondAttribute="bottom" constant="8" id="v2I-d5-ivS"/>
                                             <constraint firstItem="oM4-Na-6XE" firstAttribute="top" secondItem="7LZ-QD-3aa" secondAttribute="bottom" constant="8" id="wLm-8e-abq"/>
                                             <constraint firstItem="4eK-AB-Aoh" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="ycB-Dl-1Vj"/>
@@ -333,13 +218,13 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FAR-vs-ZAX" secondAttribute="trailing" id="0xk-lV-s0C" userLabel="trailing = Content View.trailing"/>
                                     <constraint firstItem="FAR-vs-ZAX" firstAttribute="leading" secondItem="dap-Xf-KgX" secondAttribute="leading" id="eSn-wi-dtv" userLabel="Content View.leading = leading"/>
-                                    <constraint firstAttribute="bottom" secondItem="FAR-vs-ZAX" secondAttribute="bottom" id="hu2-8A-2I2" userLabel="bottom = Content View.bottom"/>
+                                    <constraint firstAttribute="bottom" secondItem="FAR-vs-ZAX" secondAttribute="bottom" constant="-56" id="hu2-8A-2I2" userLabel="bottom = Content View.bottom"/>
                                     <constraint firstItem="FAR-vs-ZAX" firstAttribute="centerX" secondItem="dap-Xf-KgX" secondAttribute="centerX" id="kxP-AD-6UQ"/>
-                                    <constraint firstItem="FAR-vs-ZAX" firstAttribute="top" secondItem="dap-Xf-KgX" secondAttribute="top" id="vIH-C6-Pio" userLabel="Content View.top = top"/>
+                                    <constraint firstItem="FAR-vs-ZAX" firstAttribute="top" secondItem="dap-Xf-KgX" secondAttribute="top" constant="-27" id="vIH-C6-Pio" userLabel="Content View.top = top"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="dap-Xf-KgX" secondAttribute="bottom" constant="83" id="UXb-g7-hi5" userLabel="bottomMargin = Scroll View.bottom + 8"/>
                             <constraint firstItem="dap-Xf-KgX" firstAttribute="leading" secondItem="Qj2-o4-ZPx" secondAttribute="leadingMargin" id="ZlE-eV-727" userLabel="Scroll View.leading = leadingMargin - 20"/>
@@ -351,36 +236,47 @@
                     <navigationItem key="navigationItem" id="rYm-eR-kz0">
                         <barButtonItem key="backBarButtonItem" title="Settings" id="tx4-IJ-mIN"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="aI0-Rn-tLP">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="14Y-aK-2wB">
-                                <rect key="frame" x="372" y="11" width="22" height="22"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="14Y-aK-2wB">
+                                <rect key="frame" x="374" y="12" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="24"/>
+                                <size key="titleShadowOffset" width="-1" height="0.0"/>
+                                <state key="normal" title="!">
+                                    <color key="titleColor" red="0.13333570957183838" green="0.13332900404930115" blue="0.13333356380462646" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
-                                    <segue destination="gwc-33-QSk" kind="show" id="BgD-Fb-Stj"/>
+                                    <segue destination="gwc-33-QSk" kind="show" identifier="TermsOfUse" id="BgD-Fb-Stj"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dataDestinationSeg" destination="5H5-aJ-fv1" id="LSn-VE-PlC"/>
-                        <outlet property="ipAdressTextField" destination="cgy-NE-D0I" id="5hL-I6-V03"/>
-                        <outlet property="messageFormatSeg" destination="yGV-vs-Rkk" id="YWb-bu-w0L"/>
-                        <outlet property="messageRateSeg" destination="aew-3o-Evt" id="RId-tZ-lJR"/>
-                        <outlet property="portNumberTextField" destination="JbH-m2-OQN" id="oaq-0F-9Tp"/>
-                        <outlet property="protocoloSeg" destination="GPj-aK-iT9" id="eHZ-jR-GJp"/>
+                        <outlet property="button" destination="2qx-FQ-b89" id="UZN-h7-aWO"/>
                         <outlet property="scrollView" destination="dap-Xf-KgX" id="PtE-fC-uVZ"/>
-                        <outlet property="uuidTextField" destination="oM4-Na-6XE" id="HPc-rK-r9n"/>
-                        <outletCollection property="beaconUUIDTextFilds" destination="BQw-oU-3IC" collectionClass="NSMutableArray" id="GvX-UO-8eZ"/>
-                        <outletCollection property="beaconUUIDTextFilds" destination="13X-oq-Slc" collectionClass="NSMutableArray" id="RI7-JJ-0qL"/>
-                        <outletCollection property="beaconUUIDTextFilds" destination="3DL-PK-Lpo" collectionClass="NSMutableArray" id="wYj-eq-E38"/>
-                        <outletCollection property="beaconUUIDTextFilds" destination="hwG-eW-be1" collectionClass="NSMutableArray" id="J3i-ZO-Cs4"/>
-                        <outletCollection property="beaconUUIDTextFilds" destination="Zpf-cd-jrt" collectionClass="NSMutableArray" id="JAB-OP-WxJ"/>
+                        <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZIR-2R-J7T"/>
+                        <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZDt-zW-C27"/>
+                        <outletCollection property="labels" destination="RMC-XZ-wNJ" collectionClass="NSMutableArray" id="cpB-dL-U04"/>
+                        <outletCollection property="labels" destination="4eK-AB-Aoh" collectionClass="NSMutableArray" id="3Gy-yZ-AlJ"/>
+                        <outletCollection property="labels" destination="mGa-SP-GhO" collectionClass="NSMutableArray" id="sfl-30-Umx"/>
+                        <outletCollection property="labels" destination="sS3-j7-8iF" collectionClass="NSMutableArray" id="yRs-SB-YOy"/>
+                        <outletCollection property="labels" destination="KNW-Ua-0gi" collectionClass="NSMutableArray" id="8s5-9T-VQl"/>
+                        <outletCollection property="labels" destination="7LZ-QD-3aa" collectionClass="NSMutableArray" id="Dhv-eJ-hGv"/>
+                        <outletCollection property="segments" destination="5H5-aJ-fv1" collectionClass="NSMutableArray" id="Bbz-RA-hGy"/>
+                        <outletCollection property="segments" destination="GPj-aK-iT9" collectionClass="NSMutableArray" id="1Rp-ZW-6GH"/>
+                        <outletCollection property="segments" destination="yGV-vs-Rkk" collectionClass="NSMutableArray" id="fcc-Rn-Wo5"/>
+                        <outletCollection property="segments" destination="aew-3o-Evt" collectionClass="NSMutableArray" id="qB9-Ro-y0m"/>
+                        <outletCollection property="textFields" destination="cgy-NE-D0I" collectionClass="NSMutableArray" id="PQ3-1J-4Qb"/>
+                        <outletCollection property="textFields" destination="JbH-m2-OQN" collectionClass="NSMutableArray" id="PH1-p6-0wH"/>
+                        <outletCollection property="textFields" destination="oM4-Na-6XE" collectionClass="NSMutableArray" id="ieH-SE-JEF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDN-nW-80v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1971" y="1696"/>
+            <point key="canvasLocation" x="1969.5652173913045" y="1695.5357142857142"/>
         </scene>
-        <!--Terms of Use-->
+        <!--View Controller-->
         <scene sceneID="lId-WS-97T">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="gwc-33-QSk" sceneMemberID="viewController">
@@ -390,13 +286,14 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wqG-KJ-mCC">
                                 <rect key="frame" x="20" y="88" width="374" height="774"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="0.013537379913032055" green="0.63507968187332153" blue="0.39604336023330688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wqG-KJ-mCC" firstAttribute="leading" secondItem="IjN-3h-d6I" secondAttribute="leading" constant="20" id="35I-iL-cZI"/>
                             <constraint firstItem="wqG-KJ-mCC" firstAttribute="bottom" secondItem="IjN-3h-d6I" secondAttribute="bottom" id="9fQ-1T-clD"/>
@@ -405,11 +302,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IjN-3h-d6I"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Terms of Use" id="0hh-kU-B1G"/>
+                    <navigationItem key="navigationItem" id="0hh-kU-B1G"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gA8-5O-xgt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2787" y="1696"/>
+            <point key="canvasLocation" x="2916" y="1696"/>
         </scene>
         <!--Settings Tab-->
         <scene sceneID="elS-xR-Lyv">
