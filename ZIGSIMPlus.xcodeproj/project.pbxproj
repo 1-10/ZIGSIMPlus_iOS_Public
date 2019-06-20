@@ -437,9 +437,9 @@
 				02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */,
 				02852E4722B777F800801B6A /* CommandSelectionTabNavigationController.swift */,
 				02A0359A229CD6F800E7399E /* CommandSettingViewController.swift */,
+				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				B30188E122B3909E00CB549F /* CommandSelection.storyboard */,
 				B30188E322B390C500CB549F /* CommandOutput.storyboard */,
-				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				B30188E522B390E600CB549F /* CommandSetting.storyboard */,
 			);
 			path = Views;

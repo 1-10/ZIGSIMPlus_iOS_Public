@@ -66,8 +66,8 @@ public class CommandSettingViewController : UIViewController {
         updateSettingData()
     }
     
-    // Please modify this method, when you add the processing of Restore Purchase.
-    @IBAction func actionButton(_ sender: UIButton) {
+    @IBAction func restorePurchasePressed(_ sender: UIButton) {
+        presenter.restorePurchase()
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
@@ -168,7 +168,14 @@ public class CommandSettingViewController : UIViewController {
     }
 }
 
-extension CommandSettingViewController: CommandSettingPresenterDelegate {}
+extension CommandSettingViewController: CommandSettingPresenterDelegate {
+    func showRestorePurchaseResult(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Close", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
 
 extension CommandSettingViewController: UITextFieldDelegate {
     private func setTextFieldSetting(texField:UITextField, text:String) {

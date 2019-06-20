@@ -27,9 +27,12 @@ protocol CommandSettingPresenterProtocol {
     func getUserDefaultSegments() -> Dictionary<segmentName,Int>
     func updateTextsUserDefault(texts: Dictionary<textFieldName, String>)
     func updateSegmentsUserDefault(segmentControls: Dictionary<segmentName, Int>)
+    func restorePurchase()
 }
 
-protocol CommandSettingPresenterDelegate: AnyObject {}
+protocol CommandSettingPresenterDelegate: AnyObject {
+    func showRestorePurchaseResult(title: String?, message: String?)
+}
 
 final class CommandSettingPresenter: CommandSettingPresenterProtocol {
     private weak var view: CommandSettingPresenterDelegate!
@@ -74,5 +77,30 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         Defaults[.userMessageFormat] = AppSettingModel.shared.transportFormat.rawValue
         AppSettingModel.shared.messageRatePerSecondSegment = segmentControls[.messageRatePerSecond] ?? 0
         Defaults[.userMessageRatePerSecond] = AppSettingModel.shared.messageRatePerSecondSegment
+    }
+    
+    func restorePurchase() {
+        let purchaseFacade = InAppPurchaseFacade()
+        purchaseFacade.restorePurchase { (result, error) in
+            var title = ""
+            var message = ""
+            
+            if result == .restoreSuccessful {
+                title = "Purchase Restored"
+                message = """
+                Thank you for using ZIG SIM.
+                Enjoy!
+                """
+            } else {
+                title = "Restore Failed"
+                if let error = error {
+                    message = "There was a problem in purchase restore:\n" + error.localizedDescription
+                } else {
+                    message = "There was a problem in purchase restore."
+                }
+            }
+            
+            self.view.showRestorePurchaseResult(title: title, message: message)
+        }
     }
 }

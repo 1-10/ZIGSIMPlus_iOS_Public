@@ -15,17 +15,17 @@
             <objects>
                 <viewController storyboardIdentifier="Settings" id="M4O-L3-dJK" customClass="CommandSettingViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qj2-o4-ZPx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dap-Xf-KgX">
-                                <rect key="frame" x="20" y="108" width="374" height="705"/>
+                                <rect key="frame" x="20" y="84" width="560" height="433"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-vs-ZAX" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="-27" width="374" height="788"/>
+                                        <rect key="frame" x="0.0" y="-27" width="560" height="788"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA DESTINATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2V-4u-ORS" userLabel="DATA DESTINATION">
-                                                <rect key="frame" x="95" y="53" width="184" height="21"/>
+                                                <rect key="frame" x="188" y="53" width="184" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="184" id="DGV-IJ-mk8"/>
                                                     <constraint firstAttribute="height" constant="21" id="QKm-Mm-fGG"/>
@@ -35,7 +35,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5H5-aJ-fv1" userLabel="Data Destination Seg">
-                                                <rect key="frame" x="62" y="82" width="250" height="29"/>
+                                                <rect key="frame" x="155" y="82" width="250" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="NwA-UX-4Lc"/>
                                                     <constraint firstAttribute="height" constant="28" id="fZt-Vs-hWx"/>
@@ -49,7 +49,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROTOCOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMC-XZ-wNJ">
-                                                <rect key="frame" x="134" y="118" width="106" height="21"/>
+                                                <rect key="frame" x="227" y="118" width="106" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="aqq-dW-P3q"/>
                                                     <constraint firstAttribute="width" constant="106" id="jJn-C1-AeN"/>
@@ -59,7 +59,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GPj-aK-iT9" userLabel="Protocolo Seg">
-                                                <rect key="frame" x="62" y="147" width="250" height="29"/>
+                                                <rect key="frame" x="155" y="147" width="250" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="QGv-Dw-K0T"/>
                                                     <constraint firstAttribute="height" constant="28" id="fD5-Op-wsY"/>
@@ -73,7 +73,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP ADDRESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eK-AB-Aoh" userLabel="IP ADDRESS">
-                                                <rect key="frame" x="134" y="183" width="106" height="21"/>
+                                                <rect key="frame" x="227" y="183" width="106" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="106" id="Ta7-Ox-yCI"/>
                                                     <constraint firstAttribute="height" constant="21" id="xTX-uS-gof"/>
@@ -83,7 +83,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.0.1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgy-NE-D0I" userLabel="Ip Adress Text Field">
-                                                <rect key="frame" x="62" y="212" width="250" height="30"/>
+                                                <rect key="frame" x="155" y="212" width="250" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="2IW-Bt-tCg"/>
                                                     <constraint firstAttribute="width" constant="250" id="mLn-uN-Klm"/>
@@ -93,13 +93,13 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORT NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-SP-GhO">
-                                                <rect key="frame" x="127.5" y="250" width="119" height="21"/>
+                                                <rect key="frame" x="220.5" y="250" width="119" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-m2-OQN" userLabel="PORT NUMBER">
-                                                <rect key="frame" x="62" y="279" width="250" height="30"/>
+                                                <rect key="frame" x="155" y="279" width="250" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="PB1-7J-pqA"/>
                                                     <constraint firstAttribute="height" constant="30" id="dZ3-OM-gac"/>
@@ -109,13 +109,13 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE FORMAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-j7-8iF" userLabel="MESSAGE FORMAT">
-                                                <rect key="frame" x="112" y="317" width="150" height="21"/>
+                                                <rect key="frame" x="205" y="317" width="150" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-vs-Rkk" userLabel="Message Format Seg">
-                                                <rect key="frame" x="62" y="346" width="250" height="29"/>
+                                                <rect key="frame" x="155" y="346" width="250" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="7fo-hI-lBq"/>
                                                     <constraint firstAttribute="height" constant="28" id="XUL-ci-4Dl"/>
@@ -129,13 +129,13 @@
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE RATE(PER SEC)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNW-Ua-0gi">
-                                                <rect key="frame" x="86" y="382" width="202" height="21"/>
+                                                <rect key="frame" x="179" y="382" width="202" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aew-3o-Evt" userLabel="Message Rate Seg">
-                                                <rect key="frame" x="62" y="411" width="250" height="29"/>
+                                                <rect key="frame" x="155" y="411" width="250" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="d5K-w1-Mna"/>
                                                     <constraint firstAttribute="height" constant="28" id="kR0-8O-qko"/>
@@ -151,13 +151,13 @@
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVICE UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LZ-QD-3aa" userLabel="DEVICE UUID">
-                                                <rect key="frame" x="135" y="447" width="104" height="21"/>
+                                                <rect key="frame" x="228" y="447" width="104" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0123456789abcdef" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM4-Na-6XE" userLabel="Uuid Text Field">
-                                                <rect key="frame" x="62" y="476" width="250" height="30"/>
+                                                <rect key="frame" x="155" y="476" width="250" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="5ei-rw-knf"/>
                                                     <constraint firstAttribute="width" constant="250" id="6yF-iI-kRh"/>
@@ -167,7 +167,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qx-FQ-b89">
-                                                <rect key="frame" x="159" y="551" width="56" height="56"/>
+                                                <rect key="frame" x="252" y="551" width="56" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="56" id="8OY-jL-hlA"/>
                                                     <constraint firstAttribute="height" constant="56" id="pJg-58-LLn"/>
@@ -175,7 +175,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
-                                                    <action selector="actionButton:" destination="M4O-L3-dJK" eventType="touchUpInside" id="atx-7n-bgO"/>
+                                                    <action selector="restorePurchasePressed:" destination="M4O-L3-dJK" eventType="touchUpInside" id="atx-7n-bgO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -237,7 +237,7 @@
                         <barButtonItem key="backBarButtonItem" title="Settings" id="tx4-IJ-mIN"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="aI0-Rn-tLP">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="14Y-aK-2wB">
-                                <rect key="frame" x="374" y="12" width="20" height="20"/>
+                                <rect key="frame" x="560" y="15" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
@@ -317,7 +317,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NUb-1x-Jr2">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="600" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
