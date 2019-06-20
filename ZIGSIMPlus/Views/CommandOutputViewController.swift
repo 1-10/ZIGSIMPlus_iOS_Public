@@ -68,7 +68,7 @@ class CommandOutputViewController: UIViewController {
     private func updatePreviewMode() {
         textPreview.isHidden = !isTextPreviewMode
         imagePreview.isHidden = isTextPreviewMode
-        togglePreviewModeButton.tintColor = isTextPreviewMode ? nil : Theme.negative
+        togglePreviewModeButton.tintColor = isTextPreviewMode ? nil : Theme.warn
     }
 
     // MARK: - Touch Events

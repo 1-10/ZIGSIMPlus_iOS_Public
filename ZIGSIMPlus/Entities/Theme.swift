@@ -14,6 +14,6 @@ struct Theme {
     static let gray = UIColor(0x6B6B6B)
     static let white = UIColor(0xFFFFFF)
     static let black = UIColor(0x000000)
-    static let negative = UIColor(0xFFDD66)
+    static let warn = UIColor(0xFFDD66)
     static let error = UIColor(0xFF4466)
 }
