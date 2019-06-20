@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+let mainColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+
 public class CommandDetailSettingsViewController : UIViewController {
 
     var presenter: CommandDetailSettingsPresenterProtocol!
@@ -29,6 +31,7 @@ public class CommandDetailSettingsViewController : UIViewController {
             case let data as Segmented:
                 let label = UILabel()
                 label.text = data.label
+                label.textColor = mainColor
                 stackView.addArrangedSubview(label)
 
                 let segmented = UISegmentedControl()
@@ -38,6 +41,7 @@ public class CommandDetailSettingsViewController : UIViewController {
                 }
                 segmented.selectedSegmentIndex = data.value
                 segmented.addTarget(self, action: #selector(segmentedAction(segmented:)), for: .valueChanged)
+                segmented.tintColor = mainColor
 
                 // Use DetailSettingKey for identifier
                 segmented.tag = data.key.rawValue
