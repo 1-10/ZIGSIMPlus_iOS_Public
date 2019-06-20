@@ -28,7 +28,7 @@ public class CommandDetailSettingsViewController : UIViewController {
         // Render inputs for settings
         for setting in settingsForCommand {
             switch setting {
-            case let data as Segmented:
+            case let data as SegmentedInt:
                 let label = UILabel()
                 label.text = data.label
                 label.textColor = mainColor
@@ -62,11 +62,11 @@ public class CommandDetailSettingsViewController : UIViewController {
 
         // Find setting by DetailSettingKey
         guard var setting = settingsForCommand.first(where: {
-            if let s = $0 as? Segmented {
+            if let s = $0 as? SegmentedInt {
                 return s.key.rawValue == segmented.tag
             }
             return false
-        }) as? Segmented else { return }
+        }) as? SegmentedInt else { return }
 
         // Pass updated setting to presenter
         setting.value = segmented.selectedSegmentIndex
