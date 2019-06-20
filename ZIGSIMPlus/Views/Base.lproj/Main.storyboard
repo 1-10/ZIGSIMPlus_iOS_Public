@@ -14,10 +14,11 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="IOA-8y-vNV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VqU-cz-sGq">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="VqU-cz-sGq">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.26349890232086182" green="0.59066706895828247" blue="0.41566404700279236" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="YzJ-Tb-l82" kind="relationship" relationship="viewControllers" id="rhq-Bc-lPy"/>
