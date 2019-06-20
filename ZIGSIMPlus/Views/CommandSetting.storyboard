@@ -235,19 +235,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="rYm-eR-kz0">
                         <barButtonItem key="backBarButtonItem" title="Settings" id="tx4-IJ-mIN"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="aI0-Rn-tLP">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="14Y-aK-2wB">
-                                <rect key="frame" x="374" y="12" width="20" height="20"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="EDP-J4-sDn">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Ahx-BX-Vgc">
+                                <rect key="frame" x="372" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="24"/>
-                                <size key="titleShadowOffset" width="-1" height="0.0"/>
-                                <state key="normal" title="!">
-                                    <color key="titleColor" red="0.13333570957183838" green="0.13332900404930115" blue="0.13333356380462646" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
                                 <connections>
-                                    <segue destination="gwc-33-QSk" kind="show" identifier="TermsOfUse" id="BgD-Fb-Stj"/>
+                                    <segue destination="gwc-33-QSk" kind="show" id="VVf-3P-l9r"/>
                                 </connections>
                             </button>
                         </barButtonItem>
