@@ -126,4 +126,12 @@ class ServiceManager {
             "sensordata": data
         ])
     }
+
+    public func getErrorLog() -> String {
+        var log = [String]()
+
+        log.append(NetworkAdapter.shared.getErrorLog() ?? "")
+
+        return log.joined(separator: "\n")
+    }
 }

@@ -91,8 +91,22 @@ class CommandOutputViewController: UIViewController {
 }
 
 extension CommandOutputViewController: CommandOutputPresenterDelegate {
-    func updateOutput(with output: String) {
-        textField.text = output
+    func updateOutput(with log: String, errorLog: String) {
+        let output = errorLog == "" ? log : "\(errorLog)\n\n\(log)"
+        let attributedString = NSMutableAttributedString(string: output)
+
+        let green = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+
+        // Set attributes for normal logs
+        let allRange = NSRange(location: 0, length: output.count)
+        attributedString.setAttributes(textField.typingAttributes, range: allRange)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: green, range: allRange)
+
+        // Add attribute for error logs
+        let errorRange = NSRange(location: 0, length: errorLog.count)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: errorRange)
+
+        textField.attributedText = attributedString
     }
 
     func updateSettings(with newSettings: [(String, String)]) {

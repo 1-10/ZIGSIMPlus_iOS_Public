@@ -18,7 +18,7 @@ protocol CommandOutputPresenterProtocol {
 }
 
 protocol CommandOutputPresenterDelegate: AnyObject {
-    func updateOutput(with output: String)
+    func updateOutput(with log: String, errorLog: String)
     func updateSettings(with settings: [(String, String)])
 }
 
@@ -85,6 +85,6 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
     // MARK: Methods used in multiple timings
 
     private func updateOutput() {
-        view.updateOutput(with: ServiceManager.shared.getLog())
+        view.updateOutput(with: ServiceManager.shared.getLog(), errorLog: ServiceManager.shared.getErrorLog())
     }
 }
