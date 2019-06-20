@@ -18,6 +18,11 @@ final class CommandSelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if !presenter.isPremiumFeaturePurchased {
+            
+        }
+        
         modalLabel.isHidden = true
         modalButton.isHidden = true
         

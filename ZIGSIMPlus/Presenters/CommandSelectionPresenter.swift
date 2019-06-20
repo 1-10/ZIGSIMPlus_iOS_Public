@@ -9,6 +9,7 @@
 import Foundation
 
 protocol CommandSelectionPresenterProtocol {
+    var isPremiumFeaturePurchased: Bool { get }
     var numberOfCommandToSelect: Int { get }
     func getCommandToSelect(forRow row: Int) -> CommandToSelect
     func didSelectRow(atLabel labelString: String)
@@ -21,11 +22,16 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     private weak var view: CommandSelectionPresenterDelegate!
     private var mediator: CommandAndServiceMediator
     private var CommandToSelectArray: [CommandToSelect] = []
+    private let purchaceFacade: InAppPurchaseFacade = InAppPurchaseFacade()
     
     init(view: CommandSelectionPresenterDelegate, mediator: CommandAndServiceMediator) {
         self.view = view
         self.mediator = mediator
         updateCommandToSelectArray()
+    }
+    
+    var isPremiumFeaturePurchased: Bool {
+        return purchaceFacade.isPurchased()
     }
     
     var numberOfCommandToSelect: Int {
