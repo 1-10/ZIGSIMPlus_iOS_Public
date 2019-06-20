@@ -25,8 +25,6 @@ class CommandSelectionTabNavigationController: UINavigationController {
                 vc.presenter = CommandSelectionPresenter(view: vc, mediator: mediator!)
             }
         }
-        UITabBar.appearance().barTintColor = Theme.dark
-        UITabBar.appearance().tintColor = Theme.darkGreen
     }
 
     func setMediator(_ mediator: CommandAndServiceMediator) {
