@@ -36,16 +36,16 @@ public class StandardCell: UITableViewCell {
 
     func initCell() {
         commandLabel.textColor = Theme.main
-        commandOnOff.thumbTintColor = Theme.lightGray
+        commandOnOff.thumbTintColor = Theme.gray
         commandOnOff.onTintColor = Theme.main
         commandOnOff.tintColor = Theme.main
-        commandOnOff.backgroundColor = Theme.dark
+        commandOnOff.backgroundColor = Theme.black
         commandOnOff.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         detailButton.setStyle(.caretRight, animated: true)
         detailButton.strokeColor = Theme.main
-        modalButton.backgroundColor = Theme.lightGray
+        modalButton.backgroundColor = Theme.gray
         modalButton.layer.borderWidth = 2.0
-        modalButton.layer.borderColor = Theme.lightGray.cgColor
+        modalButton.layer.borderColor = Theme.gray.cgColor
         modalButton.layer.cornerRadius = 10.0
         let screenWidth = UIScreen.main.bounds.size.width
         let newConstant = screenWidth - 300 // "300" is a length other than this constant

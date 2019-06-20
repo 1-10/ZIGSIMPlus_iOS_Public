@@ -102,7 +102,7 @@ extension CommandOutputViewController: CommandOutputPresenterDelegate {
 
         // Add attribute for error logs
         let errorRange = NSRange(location: 0, length: errorLog.count)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: Theme.red, range: errorRange)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: Theme.error, range: errorRange)
 
         textField.attributedText = attributedString
     }

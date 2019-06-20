@@ -66,8 +66,8 @@ final class CommandSelectionViewController: UIViewController {
         let titleImageView = UIImageView(image: titleImage)
         titleImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImageView
-        navigationController?.navigationBar.barTintColor = Theme.gray
-        navigationController?.navigationBar.tintColor = Theme.accent
+        navigationController?.navigationBar.barTintColor = Theme.dark
+        navigationController?.navigationBar.tintColor = Theme.negative
     }
 }
 

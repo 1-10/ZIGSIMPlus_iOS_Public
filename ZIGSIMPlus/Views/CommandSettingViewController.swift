@@ -111,17 +111,17 @@ public class CommandSettingViewController : UIViewController {
         let titleImageView = UIImageView(image: titleImage)
         titleImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImageView
-        navigationController?.navigationBar.barTintColor = Theme.gray
+        navigationController?.navigationBar.barTintColor = Theme.dark
 
         let backButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButtonItem
-        navigationController?.navigationBar.tintColor = Theme.accent
+        navigationController?.navigationBar.tintColor = Theme.main
 
         let infoButton: UIButton = navigationItem.rightBarButtonItem?.customView as! UIButton
         infoButton.layer.cornerRadius = 0.5 * infoButton.bounds.size.width
         infoButton.layer.borderWidth = 1.0
-        infoButton.layer.borderColor = Theme.lightGray.cgColor
-        infoButton.backgroundColor = Theme.lightGray
+        infoButton.layer.borderColor = Theme.gray.cgColor
+        infoButton.backgroundColor = Theme.gray
     }
 
     private func adjustViewDesign() {
@@ -141,30 +141,30 @@ public class CommandSettingViewController : UIViewController {
     }
 
     private func adjustLabelDesign(label: UILabel) {
-        label.textColor = Theme.accent
+        label.textColor = Theme.main
     }
 
     private func adjustSegmentDesign(segment: UISegmentedControl) {
-        segment.tintColor = Theme.accent
+        segment.tintColor = Theme.main
         segment.layer.backgroundColor = Theme.dark.cgColor
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : Theme.white], for: .selected)
     }
 
     private func adjustTextFieldDesign(textField: UITextField) {
-        textField.textColor = Theme.accent
+        textField.textColor = Theme.main
         textField.backgroundColor = Theme.dark
         textField.layer.borderWidth = 1.0
         textField.layer.cornerRadius = 4.0
-        textField.layer.borderColor = Theme.accent.cgColor
+        textField.layer.borderColor = Theme.main.cgColor
     }
 
     private func adjustButtonDesign() {
         button.setTitle(" Restore\nPurchase", for: .normal)
-        button.setTitleColor(Theme.accent, for: .normal)
+        button.setTitleColor(Theme.main, for: .normal)
         button.titleLabel?.numberOfLines = 2
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
         button.layer.borderWidth = 1.0
-        button.layer.borderColor = Theme.accent.cgColor
+        button.layer.borderColor = Theme.main.cgColor
     }
 }
 
