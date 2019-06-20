@@ -35,6 +35,7 @@
 		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
 		02CE3DE822B1FB3E00A2B7B8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 02CE3DE722B1FB3E00A2B7B8 /* Settings.bundle */; };
 		02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CF468122A8D9A8006F93EF /* ArkitUtils.swift */; };
+		02DF072D22BB36D300F3ABE2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF072C22BB36D300F3ABE2 /* Theme.swift */; };
 		02E9AE1C22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1B22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift */; };
 		02E9AE1E22B8FF490070A380 /* CommandDetailSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */; };
 		02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */; };
@@ -134,6 +135,7 @@
 		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		02CE3DE722B1FB3E00A2B7B8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		02CF468122A8D9A8006F93EF /* ArkitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitUtils.swift; sourceTree = "<group>"; };
+		02DF072C22BB36D300F3ABE2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		02E9AE1B22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsPresenter.swift; sourceTree = "<group>"; };
 		02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsViewController.swift; sourceTree = "<group>"; };
 		02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitViewController.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			children = (
 				9092E4CB227EBF4D0019F1C1 /* Command.swift */,
 				B3CFE5B722ADF436009664C0 /* ModalTexts.swift */,
+				02DF072C22BB36D300F3ABE2 /* Theme.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,
 				02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */,
+				02DF072D22BB36D300F3ABE2 /* Theme.swift in Sources */,
 				02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */,
 				02852E4822B777F800801B6A /* CommandSelectionTabNavigationController.swift in Sources */,
 				6345569A22B0CEF20032E976 /* VideoCapturePresenter.swift in Sources */,
