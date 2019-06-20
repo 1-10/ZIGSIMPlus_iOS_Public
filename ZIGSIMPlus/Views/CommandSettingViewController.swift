@@ -17,98 +17,154 @@ protocol ContentScrollable {
 public class CommandSettingViewController : UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var dataDestinationSeg: UISegmentedControl!
-    @IBOutlet weak var protocoloSeg: UISegmentedControl!
-    @IBOutlet weak var ipAdressTextField: UITextField!
-    @IBOutlet weak var portNumberTextField: UITextField!
-    @IBOutlet weak var messageFormatSeg: UISegmentedControl!
-    @IBOutlet weak var messageRateSeg: UISegmentedControl!
-    @IBOutlet weak var uuidTextField: UITextField!
-    @IBOutlet var beaconUUIDTextFilds: [UITextField]!
-    
+    @IBOutlet var labels: [UILabel]!
+    @IBOutlet var segments: [UISegmentedControl]!
+    @IBOutlet var textFields: [UITextField]!
+    @IBOutlet weak var button: UIButton!
     var presenter: CommandSettingPresenterProtocol!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         
         let userDefaultTexts = presenter.getUserDefaultTexts()
-        setTextFieldSetting(texField: ipAdressTextField, text: userDefaultTexts["ipAdress"]?.description ?? "")
-        setTextFieldSetting(texField: portNumberTextField, text: userDefaultTexts["portNumber"]?.description ?? "")
-        setTextFieldSetting(texField: uuidTextField, text: userDefaultTexts["uuid"]?.description ?? "")
-        for  beaconUUIDTextFild in beaconUUIDTextFilds {
-            let beaconUUID = "beaconUUID" + String(beaconUUIDTextFild.tag)
-            setTextFieldSetting(texField: beaconUUIDTextFild, text: userDefaultTexts[beaconUUID]?.description ?? "")
+        for textField in textFields {
+            if textField.tag == 0 {
+                setTextFieldSetting(texField: textField, text: userDefaultTexts[.ipAdress]?.description ?? "")
+            } else if textField.tag == 1 {
+                setTextFieldSetting(texField: textField, text: userDefaultTexts[.portNumber]?.description ?? "")
+            } else if textField.tag == 2 {
+                setTextFieldSetting(texField: textField, text: userDefaultTexts[.uuid]?.description ?? "")
+            }
         }
         
         let userDefaultSegments = presenter.getUserDefaultSegments()
-        dataDestinationSeg.selectedSegmentIndex = userDefaultSegments["userDataDestination"] ?? 0
-        protocoloSeg.selectedSegmentIndex = userDefaultSegments["userProtocol"] ?? 0
-        messageFormatSeg.selectedSegmentIndex = userDefaultSegments["userMessageFormat"] ?? 0
-        messageRateSeg.selectedSegmentIndex = userDefaultSegments["userMessageRatePerSecond"] ?? 0
 
-        // Initialize navigation bar
-        let titleImage = UIImage(named: "Logo")
-        let titleImageView = UIImageView(image: titleImage)
-        titleImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = titleImageView
+        for segment in segments {
+            if segment.tag == 0 {
+                segment.selectedSegmentIndex = userDefaultSegments[.dataDestination] ?? 0
+            } else if segment.tag == 1 {
+                segment.selectedSegmentIndex = userDefaultSegments[.dataProtocol] ?? 0
+            } else if segment.tag == 2 {
+                segment.selectedSegmentIndex = userDefaultSegments[.messageFormat] ?? 0
+            } else if segment.tag == 3 {
+                segment.selectedSegmentIndex = userDefaultSegments[.messageRatePerSecond] ?? 0
+            }
+        }
+        
+        initNavigationBar()
+        adjustViewDesign()
+
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touch screen!")
-        beaconUuidValidate()
+        updateSettingData()
+        self.view.endEditing(true)
     }
     
     @IBAction func changeSettingData(_ sender: UISegmentedControl) {
         updateSettingData()
     }
     
+    // Please modify this method, when you add the processing of Restore Purchase.
+    @IBAction func actionButton(_ sender: UIButton) {
+    }
+    
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         print("should end editing!")
-        beaconUuidValidate()
+        updateSettingData()
+        self.view.endEditing(true)
         return true
     }
     
     private func updateSettingData() {
-        var texts:[String:String] = [
-            "ipAdress": ipAdressTextField.text ?? "",
-            "portNumber": portNumberTextField.text ?? "",
-            "uuid": uuidTextField.text ?? "",
-        ]
-        
-        for beaconUUIDTextFild in beaconUUIDTextFilds {
-            let beaconUUID = "beaconUUID" + String(beaconUUIDTextFild.tag)
-            texts[beaconUUID] = beaconUUIDTextFild.text ?? ""
+        var texts:[textFieldName: String] = [:]
+        for textField in textFields {
+            if textField.tag == 0 {
+                texts[.ipAdress] = textField.text ?? ""
+            } else if textField.tag == 1 {
+                texts[.portNumber] = textField.text ?? ""
+            } else if textField.tag == 2 {
+                texts[.uuid] = textField.text ?? ""
+            }
         }
         presenter.updateTextsUserDefault(texts:texts)
     
-        let segmentControls:[String:Int] = [
-            "userDataDestination": dataDestinationSeg.selectedSegmentIndex,
-            "userProtocol": protocoloSeg.selectedSegmentIndex,
-            "userMessageFormat": messageFormatSeg.selectedSegmentIndex,
-            "userMessageRatePerSecond": messageRateSeg.selectedSegmentIndex,
-        ]
+        var segmentControls:[segmentName:Int] = [:]
+        for segment in segments {
+            if segment.tag == 0 {
+                segmentControls[.dataDestination] = segment.selectedSegmentIndex
+            } else if segment.tag == 1 {
+                segmentControls[.dataProtocol] = segment.selectedSegmentIndex
+            } else if segment.tag == 2 {
+                segmentControls[.messageFormat] = segment.selectedSegmentIndex
+            } else if segment.tag == 3 {
+                segmentControls[.messageRatePerSecond] = segment.selectedSegmentIndex
+            }
+        }
+
         presenter.updateSegmentsUserDefault(segmentControls: segmentControls)
     }
     
-    private func beaconUuidValidate(){
+    private func initNavigationBar() {
+        let titleImage = UIImage(named: "Logo")
+        let titleImageView = UIImageView(image: titleImage)
+        titleImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = titleImageView
+        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
         
-        let validataNumbers = [8,4,4,4,12]
-        var updateUUID = false
-        for beaconUUIDTextFild in beaconUUIDTextFilds {
-            let beaconUUID = beaconUUIDTextFild.tag
-            if 1 <= beaconUUID && beaconUUID <= 5 && (beaconUUIDTextFild.text?.description ?? "").count != validataNumbers[beaconUUID - 1] {
-                updateUUID = false
-                beaconUUIDTextFild.becomeFirstResponder()
-                break
-            } else {
-                updateUUID = true
-            }
+        let backButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButtonItem
+        navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        
+        let infoButton: UIButton = navigationItem.rightBarButtonItem?.customView as! UIButton
+        infoButton.layer.cornerRadius = 0.5 * infoButton.bounds.size.width
+        infoButton.layer.borderWidth = 1.0
+        infoButton.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
+        infoButton.backgroundColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+    }
+    
+    private func adjustViewDesign() {
+        for label in labels {
+            adjustLabelDesign(label: label)
         }
         
-        if updateUUID == true {
-            updateSettingData()
-            self.view.endEditing(true)
+        for segment in segments {
+            adjustSegmentDesign(segment: segment)
         }
+        
+        for textField in textFields {
+            adjustTextFieldDesign(textField: textField)
+        }
+        
+        adjustButtonDesign()
+    }
+    
+    private func adjustLabelDesign(label: UILabel) {
+        label.textColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+    }
+    
+    private func adjustSegmentDesign(segment: UISegmentedControl) {
+        segment.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        segment.layer.backgroundColor = UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0).cgColor
+        segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .selected)
+    }
+    
+    private func adjustTextFieldDesign(textField: UITextField) {
+        textField.textColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        textField.backgroundColor =  UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0)
+        textField.layer.borderWidth = 1.0
+        textField.layer.cornerRadius = 4.0
+        textField.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
+    }
+    
+    private func adjustButtonDesign() {
+        button.setTitle(" Restore\nPurchase", for: .normal)
+        button.setTitleColor(UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0), for: .normal)
+        button.titleLabel?.numberOfLines = 2
+        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
     }
 }
 

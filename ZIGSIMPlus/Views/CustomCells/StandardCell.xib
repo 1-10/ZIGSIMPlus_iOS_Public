@@ -28,16 +28,16 @@
                         </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgt-VT-WPX">
-                        <rect key="frame" x="82" y="11.5" width="130" height="21"/>
+                        <rect key="frame" x="82" y="11.5" width="160" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="N6z-t0-REn"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="N6z-t0-REn"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QB-qM-gp6" customClass="DynamicButton" customModule="DynamicButton">
-                        <rect key="frame" x="222" y="12" width="20" height="20"/>
+                        <rect key="frame" x="252" y="12" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="bzb-Ny-LcW"/>
                             <constraint firstAttribute="width" constant="20" id="z8b-9n-dZ8"/>
@@ -48,7 +48,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yaz-2Y-K3N">
-                        <rect key="frame" x="252" y="12" width="20" height="20"/>
+                        <rect key="frame" x="282" y="12" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="EXX-Fh-iuk"/>
                             <constraint firstAttribute="width" constant="20" id="UmZ-ka-4Zl"/>
@@ -81,7 +81,7 @@
                 <outlet property="labelConstaint" destination="RWI-dj-rDs" id="aIC-Yz-1Bh"/>
                 <outlet property="modalButton" destination="Yaz-2Y-K3N" id="gi6-hP-tIO"/>
             </connections>
-            <point key="canvasLocation" x="-1055" y="-87"/>
+            <point key="canvasLocation" x="-723" y="-14"/>
         </tableViewCell>
     </objects>
 </document>
