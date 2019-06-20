@@ -20,7 +20,7 @@ public class CommandSettingViewController : UIViewController {
     @IBOutlet var labels: [UILabel]!
     @IBOutlet var segments: [UISegmentedControl]!
     @IBOutlet var textFields: [UITextField]!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var restorePurchaseButton: UIButton!
     var presenter: CommandSettingPresenterProtocol!
     
     override public func viewDidLoad() {
@@ -67,6 +67,7 @@ public class CommandSettingViewController : UIViewController {
     }
     
     @IBAction func restorePurchasePressed(_ sender: UIButton) {
+        restorePurchaseButton.isEnabled = false
         presenter.restorePurchase()
     }
     
@@ -159,19 +160,21 @@ public class CommandSettingViewController : UIViewController {
     }
     
     private func adjustButtonDesign() {
-        button.setTitle(" Restore\nPurchase", for: .normal)
-        button.setTitleColor(UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0), for: .normal)
-        button.titleLabel?.numberOfLines = 2
-        button.layer.cornerRadius = 0.5 * button.bounds.size.width
-        button.layer.borderWidth = 1.0
-        button.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
+        restorePurchaseButton.setTitle(" Restore\nPurchase", for: .normal)
+        restorePurchaseButton.setTitleColor(UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0), for: .normal)
+        restorePurchaseButton.titleLabel?.numberOfLines = 2
+        restorePurchaseButton.layer.cornerRadius = 0.5 * restorePurchaseButton.bounds.size.width
+        restorePurchaseButton.layer.borderWidth = 1.0
+        restorePurchaseButton.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
     }
 }
 
 extension CommandSettingViewController: CommandSettingPresenterDelegate {
     func showRestorePurchaseResult(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Close", style: .default, handler: nil)
+        let action = UIAlertAction(title: "Close", style: .default) { _ in
+            self.restorePurchaseButton.isEnabled = true
+        }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
