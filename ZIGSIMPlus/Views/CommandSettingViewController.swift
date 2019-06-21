@@ -7,6 +7,7 @@
 //
 import Foundation
 import UIKit
+import SVProgressHUD
 
 protocol ContentScrollable {
     var scrollView: UIScrollView! { get }
@@ -68,6 +69,7 @@ public class CommandSettingViewController : UIViewController {
     
     @IBAction func restorePurchasePressed(_ sender: UIButton) {
         restorePurchaseButton.isEnabled = false
+        SVProgressHUD.show()
         presenter.restorePurchase()
     }
     
@@ -171,6 +173,8 @@ public class CommandSettingViewController : UIViewController {
 
 extension CommandSettingViewController: CommandSettingPresenterDelegate {
     func showRestorePurchaseResult(title: String?, message: String?) {
+        SVProgressHUD.dismiss()
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Close", style: .default) { _ in
             self.restorePurchaseButton.isEnabled = true
