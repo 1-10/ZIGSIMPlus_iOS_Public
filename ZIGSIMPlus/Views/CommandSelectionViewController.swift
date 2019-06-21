@@ -25,17 +25,22 @@ final class CommandSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if !presenter.isPremiumFeaturePurchased {
-            lockPremiumFeature()
-        } else {
-            unlockPremiumFeature()
-        }
-        
         isHiddenInformationModal(isHedden: true)
         
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
 
         adjustNavigationDesign()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Check here to switch lock/unlock after restore
+        if presenter.isPremiumFeaturePurchased {
+            unlockPremiumFeature()
+        } else {
+            lockPremiumFeature()
+        }
     }
     
     @IBAction func actionButton(_ sender: UIButton) {
