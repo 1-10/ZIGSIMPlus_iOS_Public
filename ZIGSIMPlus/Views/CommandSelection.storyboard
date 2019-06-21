@@ -161,13 +161,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="jmw-WX-nyq"/>
                     <connections>
-                        <outlet property="billibgModalView" destination="36u-eh-Ibr" id="dxJ-eY-1tX"/>
-                        <outlet property="billingCheckModal" destination="Yag-8G-7P5" id="pLA-c6-44u"/>
-                        <outlet property="billingKeyButton" destination="TS3-fm-ViJ" id="Jyd-em-Y2q"/>
-                        <outlet property="billingOverLayLabel" destination="Omw-lC-Jla" id="mYT-U0-bKa"/>
+                        <outlet property="lockPremiumFeatureLabel" destination="Omw-lC-Jla" id="mYT-U0-bKa"/>
                         <outlet property="modalButton" destination="cdn-5h-TUK" id="bHp-zN-998"/>
                         <outlet property="modalLabel" destination="ApI-DY-17E" id="PXf-cX-W9Z"/>
                         <outlet property="tableView" destination="brz-QX-Ylr" id="nT9-aH-cVc"/>
+                        <outlet property="unlockPremiumFeatureButton" destination="TS3-fm-ViJ" id="Jyd-em-Y2q"/>
+                        <outlet property="unlockPremiumFeatureModalLabel" destination="Yag-8G-7P5" id="pLA-c6-44u"/>
+                        <outlet property="unlockPremiumFeatureModalView" destination="36u-eh-Ibr" id="dxJ-eY-1tX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ar9-It-yWL" sceneMemberID="firstResponder"/>

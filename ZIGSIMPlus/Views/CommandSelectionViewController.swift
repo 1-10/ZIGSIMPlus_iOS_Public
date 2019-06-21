@@ -14,10 +14,10 @@ final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var modalLabel: UILabel!
     @IBOutlet weak var modalButton: UIButton!
-    @IBOutlet weak var billingOverLayLabel: UILabel!
-    @IBOutlet weak var billingKeyButton: UIButton!
-    @IBOutlet weak var billibgModalView: UIView!
-    @IBOutlet weak var billingCheckModal: UILabel!
+    @IBOutlet weak var lockPremiumFeatureLabel: UILabel!
+    @IBOutlet weak var unlockPremiumFeatureButton: UIButton!
+    @IBOutlet weak var unlockPremiumFeatureModalView: UIView!
+    @IBOutlet weak var unlockPremiumFeatureModalLabel: UILabel!
     
     var presenter: CommandSelectionPresenterProtocol!
     
@@ -25,9 +25,9 @@ final class CommandSelectionViewController: UIViewController {
         super.viewDidLoad()
 
         if !presenter.isPremiumFeaturePurchased {
-            setBilling()
+            lockPremiumFeature()
         } else {
-            isHiddenBilling(isHidden:true)
+            setPremiumFeatureIsHidden(true)
         }
         
         isHiddenInformationModal(isHedden: true)
@@ -41,13 +41,13 @@ final class CommandSelectionViewController: UIViewController {
         print("sender.tag: \(sender.tag)")
         if sender.tag == 0 { // "sender.tag == 0" is the back button of information modal
             isHiddenInformationModal(isHedden: true)
-        } else if sender.tag == 1 { // "sender.tag == 1" is the key button of billing modal
-            billibgModalView.isHidden = false
+        } else if sender.tag == 1 { // "sender.tag == 1" is the unlock button
+            unlockPremiumFeatureModalView.isHidden = false
             tableView.isUserInteractionEnabled = false
-        } else if sender.tag == 2 { // "sender.tag == 2" is the back button of billing modal
-            billibgModalView.isHidden = true
+        } else if sender.tag == 2 { // "sender.tag == 2" is the back button of unlock modal
+            unlockPremiumFeatureModalView.isHidden = true
             tableView.isUserInteractionEnabled = true
-        } else if sender.tag == 3 { // "sender.tag == 3" is the purchase button of billing modal
+        } else if sender.tag == 3 { // "sender.tag == 3" is the purchase button of unlock modal
             
         }
     }
@@ -93,54 +93,54 @@ final class CommandSelectionViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
     }
     
-    private func setBilling() {
-        isHiddenBilling(isHidden:false)
-        adjustBillingOverLay()
-        adjustBillingKeyButton()
-        adjustBillingModal()
+    private func lockPremiumFeature() {
+        setPremiumFeatureIsHidden(false)
+        adjustLockPremiumFeatureLabel()
+        adjustUnlockPremiumFeatureButton()
+        adjustUnlockPremiumFeatureModalLabel()
     }
     
-    private func isHiddenBilling(isHidden:Bool){
-        billingOverLayLabel.isHidden = isHidden
-        billingKeyButton.isHidden = isHidden
-        billibgModalView.isHidden = isHidden
-        billingCheckModal.isHidden = isHidden
+    private func setPremiumFeatureIsHidden(_ isHidden: Bool) {
+        lockPremiumFeatureLabel.isHidden = isHidden
+        unlockPremiumFeatureButton.isHidden = isHidden
+        unlockPremiumFeatureModalView.isHidden = isHidden
+        unlockPremiumFeatureModalLabel.isHidden = isHidden
     }
     
-    private func adjustBillingOverLay() {
-        billingOverLayLabel.frame = CGRect(x:0,y:0,width: UIScreen.main.bounds.size.width, height: 44 * 5)
-        billingOverLayLabel.backgroundColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 0.46)
+    private func adjustLockPremiumFeatureLabel() {
+        lockPremiumFeatureLabel.frame = CGRect(x:0,y:0,width: UIScreen.main.bounds.size.width, height: 44 * 5)
+        lockPremiumFeatureLabel.backgroundColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 0.46)
     }
     
-    private func adjustBillingKeyButton() {
+    private func adjustUnlockPremiumFeatureButton() {
         let billingImage = UIImage(named: "key")
-        billingKeyButton.tintColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7)
-        billingKeyButton.setImage(billingImage, for: .normal)
-        billingKeyButton.frame = CGRect(x: (billingOverLayLabel.frame.size.width - billingKeyButton.frame.size.width ) / 2,
-                                        y: (billingOverLayLabel.frame.size.height - billingKeyButton.frame.size.height ) / 2,
-                                        width: billingKeyButton.frame.size.width ,
-                                        height: billingKeyButton.frame.size.height)
+        unlockPremiumFeatureButton.tintColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7)
+        unlockPremiumFeatureButton.setImage(billingImage, for: .normal)
+        unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width ) / 2,
+                                        y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height ) / 2,
+                                        width: unlockPremiumFeatureButton.frame.size.width ,
+                                        height: unlockPremiumFeatureButton.frame.size.height)
     }
     
-    private func adjustBillingModal() {
-        billingCheckModal.layer.cornerRadius = 10
-        billingCheckModal.layer.borderWidth = 1.0
-        billingCheckModal.layer.masksToBounds = true
-        billingCheckModal.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
+    private func adjustUnlockPremiumFeatureModalLabel() {
+        unlockPremiumFeatureModalLabel.layer.cornerRadius = 10
+        unlockPremiumFeatureModalLabel.layer.borderWidth = 1.0
+        unlockPremiumFeatureModalLabel.layer.masksToBounds = true
+        unlockPremiumFeatureModalLabel.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
         
-        adjustBillingModalLine(x: 0,
-                               y: billingCheckModal.frame.size.height - 44,
-                               width: billingCheckModal.frame.size.width,
+        adjustUnlockPremiumFeatureModalLine(x: 0,
+                               y: unlockPremiumFeatureModalLabel.frame.size.height - 44,
+                               width: unlockPremiumFeatureModalLabel.frame.size.width,
                                height: 1)
-        adjustBillingModalLine(x: billingCheckModal.frame.size.width / 2,
-                               y: billingCheckModal.frame.size.height - 44,
+        adjustUnlockPremiumFeatureModalLine(x: unlockPremiumFeatureModalLabel.frame.size.width / 2,
+                               y: unlockPremiumFeatureModalLabel.frame.size.height - 44,
                                width: 1,
-                               height: billingCheckModal.frame.size.height - 44)
+                               height: unlockPremiumFeatureModalLabel.frame.size.height - 44)
         
-        billibgModalView.isHidden = true
+        unlockPremiumFeatureModalView.isHidden = true
     }
     
-    private func adjustBillingModalLine(x:CGFloat, y:CGFloat, width:CGFloat, height:CGFloat) {
+    private func adjustUnlockPremiumFeatureModalLine(x:CGFloat, y:CGFloat, width:CGFloat, height:CGFloat) {
         let upperLayer = CALayer()
         upperLayer.frame = CGRect(
             x: x,
@@ -149,7 +149,7 @@ final class CommandSelectionViewController: UIViewController {
             height: height
         )
         upperLayer.backgroundColor = UIColor(displayP3Red: 63/255, green: 63/255, blue: 63/255, alpha: 1.0).cgColor
-        billingCheckModal.layer.addSublayer(upperLayer)
+        unlockPremiumFeatureModalLabel.layer.addSublayer(upperLayer)
     }
 }
 
@@ -168,11 +168,11 @@ extension CommandSelectionViewController: UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        billingOverLayLabel.frame = CGRect(x: 0, y: (-1) * scrollView.contentOffset.y, width: billingOverLayLabel.frame.size.width , height: billingOverLayLabel.frame.size.height)
-        billingKeyButton.frame = CGRect(x: (billingOverLayLabel.frame.size.width - billingKeyButton.frame.size.width ) / 2,
-                                        y: (billingOverLayLabel.frame.size.height - billingKeyButton.frame.size.height ) / 2 - scrollView.contentOffset.y,
-                                        width: billingKeyButton.frame.size.width ,
-                                        height: billingKeyButton.frame.size.height)
+        lockPremiumFeatureLabel.frame = CGRect(x: 0, y: (-1) * scrollView.contentOffset.y, width: lockPremiumFeatureLabel.frame.size.width , height: lockPremiumFeatureLabel.frame.size.height)
+        unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width ) / 2,
+                                        y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height ) / 2 - scrollView.contentOffset.y,
+                                        width: unlockPremiumFeatureButton.frame.size.width ,
+                                        height: unlockPremiumFeatureButton.frame.size.height)
     }
 }
 
