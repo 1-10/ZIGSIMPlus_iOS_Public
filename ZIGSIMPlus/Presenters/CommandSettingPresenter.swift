@@ -82,16 +82,23 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
     func restorePurchase() {
         let purchaseFacade = InAppPurchaseFacade()
         purchaseFacade.restorePurchase { (result, error) in
+            
+            print("got result from presenter")
+            
             var title = ""
             var message = ""
             
             if result == .restoreSuccessful {
+                print("got result from presenter restoreSuccessful")
+                
                 title = "Purchase Restored"
                 message = """
                 Thank you for using ZIG SIM.
                 Enjoy!
                 """
             } else {
+                print("got result from presenter else")
+                
                 title = "Restore Failed"
                 if let error = error {
                     message = "There was a problem in purchase restore:\n" + error.localizedDescription
