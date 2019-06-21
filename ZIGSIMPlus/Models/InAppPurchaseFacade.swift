@@ -22,8 +22,8 @@ class InAppPurchaseFacade: NSObject {
     
     func purchase(completion: ((TransactionResult, Error?) -> Void)?) {
         self.completion = completion
-        SKPaymentQueue.default().add(self)
         if SKPaymentQueue.canMakePayments() {
+            SKPaymentQueue.default().add(self)
             print("User can make payments")
             
             let paymentRequest = SKMutablePayment()
@@ -80,6 +80,7 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
             switch transaction.transactionState {
             case .purchased, .failed:
                 SKPaymentQueue.default().finishTransaction(transaction)
+                SKPaymentQueue.default().remove(self)
                 didGetTransactionResult(transaction)
                 return
             case .restored:
@@ -98,6 +99,7 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
         // When restore fails, there is no transaction in queue
         print("restoreCompletedTransactionsFailedWithError")
+        SKPaymentQueue.default().remove(self)
         completion?(.restoreFailed, error)
     }
     
@@ -113,6 +115,7 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
         // Dealing only one transaction is assumed
         for transaction in queue.transactions {
             SKPaymentQueue.default().finishTransaction(transaction)
+            SKPaymentQueue.default().remove(self)
             didGetTransactionResult(transaction)
             return
         }
@@ -120,6 +123,7 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
         // When restore fails, there is no transaction in queue
         if let completion = completion {
             print("completion not nil")
+            SKPaymentQueue.default().remove(self)
             completion(.restoreFailed, nil)
         } else {
             print("completion nil")

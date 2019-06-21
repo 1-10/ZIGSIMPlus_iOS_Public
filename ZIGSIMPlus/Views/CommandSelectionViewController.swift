@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
@@ -27,7 +28,7 @@ final class CommandSelectionViewController: UIViewController {
         if !presenter.isPremiumFeaturePurchased {
             lockPremiumFeature()
         } else {
-            setPremiumFeatureIsHidden(true)
+            unlockPremiumFeature()
         }
         
         isHiddenInformationModal(isHedden: true)
@@ -48,7 +49,10 @@ final class CommandSelectionViewController: UIViewController {
             unlockPremiumFeatureModalView.isHidden = true
             tableView.isUserInteractionEnabled = true
         } else if sender.tag == 3 { // "sender.tag == 3" is the purchase button of unlock modal
-            
+            unlockPremiumFeatureModalView.isHidden = true
+            tableView.isUserInteractionEnabled = false
+            SVProgressHUD.show()
+            presenter.purchase()
         }
     }
     
@@ -98,6 +102,10 @@ final class CommandSelectionViewController: UIViewController {
         adjustLockPremiumFeatureLabel()
         adjustUnlockPremiumFeatureButton()
         adjustUnlockPremiumFeatureModalLabel()
+    }
+    
+    private func unlockPremiumFeature() {
+        setPremiumFeatureIsHidden(true)
     }
     
     private func setPremiumFeatureIsHidden(_ isHidden: Bool) {
@@ -228,4 +236,17 @@ extension CommandSelectionViewController: UITableViewDataSource {
 }
 
 extension CommandSelectionViewController: CommandSelectionPresenterDelegate {
+    func showPurchaseResult(isSuccessful: Bool, title: String?, message: String?) {
+        SVProgressHUD.dismiss()
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Close", style: .default) { _ in
+            if isSuccessful {
+                self.unlockPremiumFeature()
+            }
+            self.tableView.isUserInteractionEnabled = true
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
 }

@@ -83,13 +83,13 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         let purchaseFacade = InAppPurchaseFacade()
         purchaseFacade.restorePurchase { (result, error) in
             
-            print("got result from presenter")
+            print("got result in presenter")
             
             var title = ""
             var message = ""
             
             if result == .restoreSuccessful {
-                print("got result from presenter restoreSuccessful")
+                print("got result in presenter restoreSuccessful")
                 
                 title = "Purchase Restored"
                 message = """
@@ -97,7 +97,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
                 Enjoy!
                 """
             } else {
-                print("got result from presenter else")
+                print("got result in presenter else")
                 
                 title = "Restore Failed"
                 if let error = error {

@@ -13,16 +13,18 @@ protocol CommandSelectionPresenterProtocol {
     var numberOfCommandToSelect: Int { get }
     func getCommandToSelect(forRow row: Int) -> CommandToSelect
     func didSelectRow(atLabel labelString: String)
+    func purchase()
 }
 
 protocol CommandSelectionPresenterDelegate: AnyObject {
+    func showPurchaseResult(isSuccessful: Bool, title: String?, message: String?)
 }
 
 final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     private weak var view: CommandSelectionPresenterDelegate!
     private var mediator: CommandAndServiceMediator
     private var CommandToSelectArray: [CommandToSelect] = []
-    private let purchaceFacade: InAppPurchaseFacade = InAppPurchaseFacade()
+    private let purchaseFacade: InAppPurchaseFacade = InAppPurchaseFacade()
     
     init(view: CommandSelectionPresenterDelegate, mediator: CommandAndServiceMediator) {
         self.view = view
@@ -31,7 +33,7 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     }
     
     var isPremiumFeaturePurchased: Bool {
-        return purchaceFacade.isPurchased()
+        return purchaseFacade.isPurchased()
     }
     
     var numberOfCommandToSelect: Int {
@@ -52,6 +54,39 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
         // We need to update Command because "command.isAvailable" may change by selection
         // e.g. When user enables "ARKit", "Face Tracking" must be disabled
         updateCommandToSelectArray()
+    }
+    
+    func purchase() {
+        purchaseFacade.purchase { (result, error) in
+            
+            print("got result in presenter")
+            
+            var title = ""
+            var message = ""
+            var isSuccessful = false
+            
+            if result == .purchaseSuccessful {
+                print("got result in presenter purchaseSuccessful")
+                
+                isSuccessful = true
+                title = "Purchase Successful"
+                message = """
+                Thank you for purchasing.
+                Enjoy!
+                """
+            } else {
+                print("got result in presenter else")
+                
+                title = "Purchase Failed"
+                if let error = error {
+                    message = "There was a problem in purchase:\n" + error.localizedDescription
+                } else {
+                    message = "There was a problem in purchase."
+                }
+            }
+            
+            self.view.showPurchaseResult(isSuccessful: isSuccessful, title: title, message: message)
+        }
     }
 
     // Update all CommandToSelect
