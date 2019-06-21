@@ -96,19 +96,16 @@ extension CommandSelectionViewController: UITableViewDataSource {
         let CommandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
         
-        // Set cell's tap action style
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
         
-        // Set cell's variable
         cell.commandLabel.text = CommandToSelect.labelString
         cell.commandLabel.tag = indexPath.row
         cell.commandOnOff.tag = indexPath.row
         cell.viewController = self
         cell.commandSelectionPresenter = self.presenter
         
-        // Set cell's detail button to visible or invisible
         cell.detailButton.isHidden = false
         if CommandToSelect.labelString == Command.acceleration.rawValue ||
            CommandToSelect.labelString == Command.gravity.rawValue ||
@@ -123,14 +120,12 @@ extension CommandSelectionViewController: UITableViewDataSource {
            cell.detailButton.isHidden = true
         }
 
-        // Make an adjustment table view screen
         if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] == true {
             cell.commandOnOff.isOn = true
         } else {
             cell.commandOnOff.isOn = false
         }
         
-        // Set cell's UI design
         cell.initCell()
         
         return cell
