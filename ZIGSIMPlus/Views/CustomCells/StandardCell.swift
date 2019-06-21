@@ -35,14 +35,12 @@ public class StandardCell: UITableViewCell {
     }
     
     func initCell() {
-        commandLabel.textColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
         commandOnOff.thumbTintColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
         commandOnOff.onTintColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
         commandOnOff.tintColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
         commandOnOff.backgroundColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
         commandOnOff.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         detailButton.setStyle(.caretRight, animated: true)
-        detailButton.strokeColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
         modalButton.backgroundColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
         modalButton.layer.borderWidth = 2.0
         modalButton.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor

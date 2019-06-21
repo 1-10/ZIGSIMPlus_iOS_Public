@@ -126,9 +126,28 @@ extension CommandSelectionViewController: UITableViewDataSource {
             cell.commandOnOff.isOn = false
         }
         
+        let mediator = CommandAndServiceMediator()
+        if mediator.isAvailable(Command.allCases[indexPath.row]){
+            setAvailability(cell:cell, isAvailability: true)
+        } else {
+            setAvailability(cell:cell, isAvailability: false)
+        }
+
         cell.initCell()
         
         return cell
+    }
+    
+    func setAvailability(cell:StandardCell ,isAvailability: Bool) {
+        cell.commandOnOff.isEnabled = isAvailability
+        cell.detailButton.isEnabled = isAvailability
+        if isAvailability {
+            cell.commandLabel.textColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+            cell.detailButton.strokeColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+        } else {
+            cell.commandLabel.textColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+            cell.detailButton.strokeColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+        }
     }
 }
 
