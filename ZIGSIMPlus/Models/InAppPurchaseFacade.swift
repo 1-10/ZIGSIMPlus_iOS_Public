@@ -20,20 +20,13 @@ class InAppPurchaseFacade: NSObject {
     static let shared: InAppPurchaseFacade = InAppPurchaseFacade()
     private override init () { super.init() }
     var completion: ((TransactionResult, Error?) -> Void)?
-    let timeoutForRestore: Double = 10.0
     
     func purchase(completion: ((TransactionResult, Error?) -> Void)?) {
         self.completion = completion
         if SKPaymentQueue.canMakePayments() {
-            SKPaymentQueue.default().add(self)
-            print("User can make payments")
-            
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productId
-            SKPaymentQueue.default().add(paymentRequest)
         } else {
-            print("User can't make payments")
-            
             completion?(.purchaseFailed, nil)
         }
     }
@@ -41,17 +34,15 @@ class InAppPurchaseFacade: NSObject {
     func restorePurchase(completion: ((TransactionResult, Error?) -> Void)?) {
         print("restorePurchase")
         self.completion = completion
-        SKPaymentQueue.default().add(self)
-        SKPaymentQueue.default().restoreCompletedTransactions()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + timeoutForRestore) {
-            print("timeout")
-            for transaction in SKPaymentQueue.default().transactions {
-                print("clear unfinished transaction")
-                SKPaymentQueue.default().finishTransaction(transaction)
-            }
+        // Is this necessary???
+        if SKPaymentQueue.canMakePayments() {
+            print("User can make payments")
             
-            SKPaymentQueue.default().remove(self)
+            SKPaymentQueue.default().restoreCompletedTransactions()
+        } else {
+            print("User can't make payments")
+            
             completion?(.restoreFailed, nil)
         }
     }
@@ -80,13 +71,12 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
         // Dealing only one transaction is assumed
         for transaction in transactions {
             switch transaction.transactionState {
-            case .purchased, .failed:
+            case .purchased, .failed, .restored:
                 SKPaymentQueue.default().finishTransaction(transaction)
-                SKPaymentQueue.default().remove(self)
                 didGetTransactionResult(transaction)
                 return
-            case .restored:
-                print("restored")
+//            case .restored:
+//                print("restored")
             case .purchasing:
                 print("purchasing")
             case .deferred:
@@ -99,12 +89,14 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-        // When restore fails, there is no transaction in queue
-        print("restoreCompletedTransactionsFailedWithError")
-        SKPaymentQueue.default().remove(self)
+        // This delegate method is necessary, because updatedTransactions is not called
+        // when restore failed.
+        
+        // When restore failed, there is no transaction in queue
         completion?(.restoreFailed, error)
     }
     
+    // Is this necessary???
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         // This delegate method will be called in the following cases:
         // 1) When restore completed successfully
@@ -117,24 +109,15 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
         // Dealing only one transaction is assumed
         for transaction in queue.transactions {
             SKPaymentQueue.default().finishTransaction(transaction)
-            SKPaymentQueue.default().remove(self)
             didGetTransactionResult(transaction)
             return
         }
 
-        // When restore fails, there is no transaction in queue
-        if let completion = completion {
-            print("completion not nil")
-            SKPaymentQueue.default().remove(self)
-            completion(.restoreFailed, nil)
-        } else {
-            print("completion nil")
-        }
+        // When restore failed, there is no transaction in queue
+        completion?(.restoreFailed, nil)
     }
 
     func didGetTransactionResult(_ transaction: SKPaymentTransaction) {
-        print("didGetTransactionResult")
-        
         switch transaction.transactionState {
         case .purchased:
             storePurchasedState()
@@ -147,5 +130,7 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
         default:
             break
         }
+        
+        completion = nil
     }
 }
