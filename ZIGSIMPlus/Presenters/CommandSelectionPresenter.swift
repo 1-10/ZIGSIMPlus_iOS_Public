@@ -24,7 +24,6 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     private weak var view: CommandSelectionPresenterDelegate!
     private var mediator: CommandAndServiceMediator
     private var CommandToSelectArray: [CommandToSelect] = []
-    private let purchaseFacade: InAppPurchaseFacade = InAppPurchaseFacade()
     
     init(view: CommandSelectionPresenterDelegate, mediator: CommandAndServiceMediator) {
         self.view = view
@@ -33,7 +32,7 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     }
     
     var isPremiumFeaturePurchased: Bool {
-        return purchaseFacade.isPurchased()
+        return InAppPurchaseFacade.shared.isPurchased()
     }
     
     var numberOfCommandToSelect: Int {
@@ -57,17 +56,12 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     }
     
     func purchase() {
-        purchaseFacade.purchase { (result, error) in
-            
-            print("got result in presenter")
-            
+        InAppPurchaseFacade.shared.purchase { (result, error) in
             var title = ""
             var message = ""
             var isSuccessful = false
             
             if result == .purchaseSuccessful {
-                print("got result in presenter purchaseSuccessful")
-                
                 isSuccessful = true
                 title = "Purchase Successful"
                 message = """
@@ -75,8 +69,6 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
                 Enjoy!
                 """
             } else {
-                print("got result in presenter else")
-                
                 title = "Purchase Failed"
                 if let error = error {
                     message = "There was a problem in purchase:\n" + error.localizedDescription

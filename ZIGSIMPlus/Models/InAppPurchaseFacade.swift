@@ -17,6 +17,8 @@ class InAppPurchaseFacade: NSObject {
         case restoreFailed
     }
     
+    static let shared: InAppPurchaseFacade = InAppPurchaseFacade()
+    private override init () { super.init() }
     var completion: ((TransactionResult, Error?) -> Void)?
     let timeoutForRestore: Double = 10.0
     
