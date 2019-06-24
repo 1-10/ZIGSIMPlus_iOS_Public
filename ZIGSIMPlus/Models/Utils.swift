@@ -41,4 +41,22 @@ class Utils {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter.string(from: Date())
     }
+    
+    static func checkSettingText(text: UITextField, settingTextType: SettingTextType) -> Bool {
+        switch settingTextType {
+        case .IP_ADDRESS:
+            return Utils.checkText(original: text.text ?? "0", structuredBy: "1234567890.")
+        case .PORT_NUMBER:
+            return Utils.checkText(original: text.text ?? "0", structuredBy: "1234567890")
+        case .DEVICE_UUID:
+            return Utils.checkText(original: text.text ?? "0", structuredBy: "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        }
+    }
+    
+    private static func checkText(original: String, structuredBy chars: String) -> Bool {
+        let characterSet = NSMutableCharacterSet()
+        characterSet.addCharacters(in: chars)
+        return original.trimmingCharacters(in: characterSet as CharacterSet).count <= 0
+    }
+
 }

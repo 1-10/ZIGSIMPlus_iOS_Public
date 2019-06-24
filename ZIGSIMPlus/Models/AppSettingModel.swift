@@ -78,6 +78,12 @@ enum CompassOrientation: Int {
     case faceup = 1
 }
 
+enum SettingTextType {
+    case IP_ADDRESS
+    case PORT_NUMBER
+    case DEVICE_UUID
+}
+
 public class AppSettingModel {
     private init() {
         for command in Command.allCases {
