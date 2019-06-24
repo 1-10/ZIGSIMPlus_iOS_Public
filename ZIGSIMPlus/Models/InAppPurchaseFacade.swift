@@ -27,23 +27,19 @@ class InAppPurchaseFacade: NSObject {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productId
         } else {
-            completion?(.purchaseFailed, nil)
+            executeCompletionHandler(result: .purchaseFailed, error: nil)
         }
     }
 
     func restorePurchase(completion: ((TransactionResult, Error?) -> Void)?) {
-        print("restorePurchase")
         self.completion = completion
         
-        // Is this necessary???
+        // This "canMakePayments" is necessary.
+        // See: https://stackoverflow.com/questions/28734890/restore-inapp-purchase-using-swift-ios
         if SKPaymentQueue.canMakePayments() {
-            print("User can make payments")
-            
             SKPaymentQueue.default().restoreCompletedTransactions()
         } else {
-            print("User can't make payments")
-            
-            completion?(.restoreFailed, nil)
+            executeCompletionHandler(result: .restoreFailed, error: nil)
         }
     }
     
@@ -71,19 +67,21 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
         // Dealing only one transaction is assumed
         for transaction in transactions {
             switch transaction.transactionState {
-            case .purchased, .failed, .restored:
+            case .purchased, .failed:
                 SKPaymentQueue.default().finishTransaction(transaction)
                 didGetTransactionResult(transaction)
                 return
-//            case .restored:
-//                print("restored")
-            case .purchasing:
-                print("purchasing")
-            case .deferred:
-                print("deferred")
-//            default:
-//                // Do nothing for .restored, .purchasing, .deferred
-//                break
+            case .restored:
+                // TODO: Check Product ID
+                
+                // Deal with .restored here, not in "paymentQueueRestoreCompletedTransactionsFinished"
+                // See: https://stackoverflow.com/questions/14309427/paymentqueuerestorecompletedtransactionsfinished-vs-updatedtransactions
+                SKPaymentQueue.default().finishTransaction(transaction)
+                didGetTransactionResult(transaction)
+                return
+            default:
+                // Do nothing for .purchasing, .deferred
+                break
             }
         }
     }
@@ -92,45 +90,27 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
         // This delegate method is necessary, because updatedTransactions is not called
         // when restore failed.
         
-        // When restore failed, there is no transaction in queue
-        completion?(.restoreFailed, error)
-    }
-    
-    // Is this necessary???
-    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        // This delegate method will be called in the following cases:
-        // 1) When restore completed successfully
-        // 2) When restore failed
-        // In case 1), updatedTransactions is also called.
-        // In case 2), restoreCompletedTransactionsFailedWithError or this method is called.
-
-        print("paymentQueueRestoreCompletedTransactionsFinished")
-
-        // Dealing only one transaction is assumed
-        for transaction in queue.transactions {
-            SKPaymentQueue.default().finishTransaction(transaction)
-            didGetTransactionResult(transaction)
-            return
-        }
-
-        // When restore failed, there is no transaction in queue
-        completion?(.restoreFailed, nil)
+        // When restore failed, there is no transaction to finish in queue
+        executeCompletionHandler(result: .restoreFailed, error: error)
     }
 
     func didGetTransactionResult(_ transaction: SKPaymentTransaction) {
         switch transaction.transactionState {
         case .purchased:
             storePurchasedState()
-            completion?(.purchaseSuccessful, nil)
+            executeCompletionHandler(result: .purchaseSuccessful, error: nil)
         case .failed:
-            completion?(.purchaseFailed, transaction.error)
+            executeCompletionHandler(result: .purchaseFailed, error: transaction.error)
         case .restored:
             storePurchasedState()
-            completion?(.restoreSuccessful, nil)
+            executeCompletionHandler(result: .restoreSuccessful, error: nil)
         default:
             break
         }
-        
+    }
+    
+    private func executeCompletionHandler(result: TransactionResult, error: Error?) {
+        completion?(result, nil)
         completion = nil
     }
 }
