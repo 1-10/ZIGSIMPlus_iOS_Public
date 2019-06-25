@@ -128,9 +128,9 @@ extension CommandSelectionViewController: UITableViewDataSource {
         
         let mediator = CommandAndServiceMediator()
         if mediator.isAvailable(Command.allCases[indexPath.row]){
-            setAvailability(cell:cell, isAvailability: true)
+            setAvailability(cell:cell, true)
         } else {
-            setAvailability(cell:cell, isAvailability: false)
+            setAvailability(cell:cell, false)
         }
 
         cell.initCell()
@@ -138,10 +138,10 @@ extension CommandSelectionViewController: UITableViewDataSource {
         return cell
     }
     
-    func setAvailability(cell:StandardCell ,isAvailability: Bool) {
-        cell.commandOnOff.isEnabled = isAvailability
-        cell.detailButton.isEnabled = isAvailability
-        if isAvailability {
+    func setAvailability(cell: StandardCell, _ isAvailable: Bool) {
+        cell.commandOnOff.isEnabled = isAvailable
+        cell.detailButton.isEnabled = isAvailable
+        if isAvailable {
             cell.commandLabel.textColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
             cell.detailButton.strokeColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
         } else {
