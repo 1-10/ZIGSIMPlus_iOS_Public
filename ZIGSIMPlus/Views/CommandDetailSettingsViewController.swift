@@ -79,6 +79,10 @@ public class CommandDetailSettingsViewController : UIViewController {
         stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settingsForCommand.count) * 60.0)
     }
 
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
     @objc func segmentedAction(segmented: UISegmentedControl) {
         // Get settings for current command
         let settings = presenter.getCommandDetailSettings()
