@@ -29,7 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("else")
             }
         }
-        
+
+        // Setup tab bar styles
+        UITabBar.appearance().barTintColor = Theme.dark
+        UITabBar.appearance().tintColor = Theme.main
+
         return true
     }
 

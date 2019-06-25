@@ -15,17 +15,17 @@ protocol ContentScrollable {
 }
 
 public class CommandSettingViewController : UIViewController {
-    
+
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var labels: [UILabel]!
     @IBOutlet var segments: [UISegmentedControl]!
     @IBOutlet var textFields: [UITextField]!
     @IBOutlet weak var button: UIButton!
     var presenter: CommandSettingPresenterProtocol!
-    
+
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let userDefaultTexts = presenter.getUserDefaultTexts()
         for textField in textFields {
             if textField.tag == 0 {
@@ -36,7 +36,7 @@ public class CommandSettingViewController : UIViewController {
                 setTextFieldSetting(texField: textField, text: userDefaultTexts[.uuid]?.description ?? "")
             }
         }
-        
+
         let userDefaultSegments = presenter.getUserDefaultSegments()
 
         for segment in segments {
@@ -50,33 +50,33 @@ public class CommandSettingViewController : UIViewController {
                 segment.selectedSegmentIndex = userDefaultSegments[.messageRatePerSecond] ?? 0
             }
         }
-        
+
         initNavigationBar()
         adjustViewDesign()
 
     }
-    
+
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touch screen!")
         updateSettingData()
         self.view.endEditing(true)
     }
-    
+
     @IBAction func changeSettingData(_ sender: UISegmentedControl) {
         updateSettingData()
     }
-    
+
     // Please modify this method, when you add the processing of Restore Purchase.
     @IBAction func actionButton(_ sender: UIButton) {
     }
-    
+
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         print("should end editing!")
         updateSettingData()
         self.view.endEditing(true)
         return true
     }
-    
+
     private func updateSettingData() {
         var texts:[textFieldName: String] = [:]
         for textField in textFields {
@@ -89,7 +89,7 @@ public class CommandSettingViewController : UIViewController {
             }
         }
         presenter.updateTextsUserDefault(texts:texts)
-    
+
         var segmentControls:[segmentName:Int] = [:]
         for segment in segments {
             if segment.tag == 0 {
@@ -105,66 +105,66 @@ public class CommandSettingViewController : UIViewController {
 
         presenter.updateSegmentsUserDefault(segmentControls: segmentControls)
     }
-    
+
     private func initNavigationBar() {
         let titleImage = UIImage(named: "Logo")
         let titleImageView = UIImageView(image: titleImage)
         titleImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImageView
-        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
-        
+        navigationController?.navigationBar.barTintColor = Theme.dark
+
         let backButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButtonItem
-        navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
-        
+        navigationController?.navigationBar.tintColor = Theme.main
+
         let infoButton: UIButton = navigationItem.rightBarButtonItem?.customView as! UIButton
         infoButton.layer.cornerRadius = 0.5 * infoButton.bounds.size.width
         infoButton.layer.borderWidth = 1.0
-        infoButton.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
-        infoButton.backgroundColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+        infoButton.layer.borderColor = Theme.gray.cgColor
+        infoButton.backgroundColor = Theme.gray
     }
-    
+
     private func adjustViewDesign() {
         for label in labels {
             adjustLabelDesign(label: label)
         }
-        
+
         for segment in segments {
             adjustSegmentDesign(segment: segment)
         }
-        
+
         for textField in textFields {
             adjustTextFieldDesign(textField: textField)
         }
-        
+
         adjustButtonDesign()
     }
-    
+
     private func adjustLabelDesign(label: UILabel) {
-        label.textColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        label.textColor = Theme.main
     }
-    
+
     private func adjustSegmentDesign(segment: UISegmentedControl) {
-        segment.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
-        segment.layer.backgroundColor = UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0).cgColor
-        segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .selected)
+        segment.tintColor = Theme.main
+        segment.layer.backgroundColor = Theme.black.cgColor
+        segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : Theme.white], for: .selected)
     }
-    
+
     private func adjustTextFieldDesign(textField: UITextField) {
-        textField.textColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
-        textField.backgroundColor =  UIColor(displayP3Red: 13/255, green: 13/255, blue: 13/255, alpha: 1.0)
+        textField.textColor = Theme.main
+        textField.backgroundColor = Theme.black
         textField.layer.borderWidth = 1.0
         textField.layer.cornerRadius = 4.0
-        textField.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
+        textField.layer.borderColor = Theme.main.cgColor
     }
-    
+
     private func adjustButtonDesign() {
         button.setTitle(" Restore\nPurchase", for: .normal)
-        button.setTitleColor(UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0), for: .normal)
+        button.setTitleColor(Theme.main, for: .normal)
         button.titleLabel?.numberOfLines = 2
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
         button.layer.borderWidth = 1.0
-        button.layer.borderColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0).cgColor
+        button.layer.borderColor = Theme.main.cgColor
     }
 }
 
@@ -182,12 +182,12 @@ extension CommandSettingViewController: ContentScrollable{
         super.viewWillAppear(animated)
         configureObserver()
     }
-    
+
     override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeObserver()
     }
-    
+
     func configureObserver() {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { notification in
             self.keyboardWillShow(notification)
@@ -196,17 +196,17 @@ extension CommandSettingViewController: ContentScrollable{
             self.keyboardWillHide(notification)
         }
     }
-    
+
     func removeObserver() {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
         scrollView.contentInset.bottom = keyboardSize
     }
-    
+
     func keyboardWillHide(_ notification: Notification) {
         scrollView.contentInset = .zero
         scrollView.scrollIndicatorInsets = .zero
