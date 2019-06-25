@@ -101,21 +101,55 @@ public class CommandDetailSettingsViewController : UIViewController {
         presenter.updateSetting(setting: setting)
     }
 
-    @objc func textInputAction(input: UITextField) {
+    @objc func uuidInputAction(input: UITextField) {
+        // Format input
+        guard var text = input.text else { return }
+        text = text.uppercased()
+
+        // Insert hyphens
+        [8, 13, 18, 23].forEach { i in
+            if text.count > i {
+                let idx = text.index(text.startIndex, offsetBy: i)
+                if text[idx] != "-" {
+                    text.insert("-", at: idx)
+                }
+            }
+        }
+
+        // Limit length
+        if text.count > 36 {
+            let idx = text.index(text.startIndex, offsetBy: 36)
+            text = String(text[..<idx])
+        }
+
+        input.text = text
+
+        // Validate input
+        let re = try! NSRegularExpression(pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}")
+        let isValid = re.matches(in: text, options: [], range: .init(location: 0, length: text.count)).count != 0
+
+        if isValid {
+            input.layer.borderColor = Theme.main.cgColor
+        }
+        else {
+            input.layer.borderColor = Theme.error.cgColor
+            return
+        }
+
         // Get settings for current command
         let settings = presenter.getCommandDetailSettings()
         guard let settingsForCommand = settings[command] else { return }
 
         // Find setting by DetailSettingKey
         guard var setting = settingsForCommand.first(where: {
-            if let s = $0 as? TextInput {
+            if let s = $0 as? UUIDInput {
                 return s.key.rawValue == input.tag
             }
             return false
-        }) as? TextInput else { return }
+        }) as? UUIDInput else { return }
 
         // Pass updated setting to presenter
-        setting.value = input.text ?? ""
+        setting.value = text
         presenter.updateSetting(setting: setting)
     }
 }
