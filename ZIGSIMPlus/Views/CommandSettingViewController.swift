@@ -113,18 +113,6 @@ public class CommandSettingViewController : UIViewController {
     }
 
     private func adjustViewDesign() {
-        for label in labels {
-            adjustLabelDesign(label: label)
-        }
-
-        adjustButtonDesign()
-    }
-
-    private func adjustLabelDesign(label: UILabel) {
-        label.textColor = Theme.main
-    }
-
-    private func adjustButtonDesign() {
         button.setTitle(" Restore\nPurchase", for: .normal)
         button.setTitleColor(Theme.main, for: .normal)
         button.titleLabel?.numberOfLines = 2

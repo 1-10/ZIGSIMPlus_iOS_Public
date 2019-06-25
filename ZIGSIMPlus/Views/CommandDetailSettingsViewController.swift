@@ -27,9 +27,8 @@ public class CommandDetailSettingsViewController : UIViewController {
         for setting in settingsForCommand {
             switch setting {
             case let data as Segmented:
-                let label = UILabel()
+                let label = ZIGLabel()
                 label.text = data.label
-                label.textColor = Theme.main
                 stackView.addArrangedSubview(label)
 
                 let segmented = ZIGSegmentedControl()
@@ -46,9 +45,8 @@ public class CommandDetailSettingsViewController : UIViewController {
                 stackView.addArrangedSubview(segmented)
 
             case let data as UUIDInput:
-                let label = UILabel()
+                let label = ZIGLabel()
                 label.text = data.label
-                label.textColor = Theme.main
                 stackView.addArrangedSubview(label)
 
                 let input = ZIGTextField()

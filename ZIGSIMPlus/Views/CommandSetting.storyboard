@@ -24,7 +24,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-vs-ZAX" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="-27" width="374" height="788"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA DESTINATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2V-4u-ORS" userLabel="DATA DESTINATION">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA DESTINATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2V-4u-ORS" userLabel="DATA DESTINATION" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="95" y="53" width="184" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="184" id="DGV-IJ-mk8"/>
@@ -48,7 +48,7 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="aNp-hd-ezq"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROTOCOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMC-XZ-wNJ">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROTOCOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMC-XZ-wNJ" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="134" y="118" width="106" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="aqq-dW-P3q"/>
@@ -72,7 +72,7 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="qin-UG-LSx"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP ADDRESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eK-AB-Aoh" userLabel="IP ADDRESS">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP ADDRESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eK-AB-Aoh" userLabel="IP ADDRESS" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="134" y="183" width="106" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="106" id="Ta7-Ox-yCI"/>
@@ -92,7 +92,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORT NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-SP-GhO">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORT NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-SP-GhO" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="127.5" y="250" width="119" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -108,7 +108,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE FORMAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-j7-8iF" userLabel="MESSAGE FORMAT">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE FORMAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-j7-8iF" userLabel="MESSAGE FORMAT" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="112" y="317" width="150" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -128,7 +128,7 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="63j-jC-z8N"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE RATE(PER SEC)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNW-Ua-0gi">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE RATE(PER SEC)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNW-Ua-0gi" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="86" y="382" width="202" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -150,7 +150,7 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="0px-jW-xEL"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVICE UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LZ-QD-3aa" userLabel="DEVICE UUID">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVICE UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LZ-QD-3aa" userLabel="DEVICE UUID" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="135" y="447" width="104" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
