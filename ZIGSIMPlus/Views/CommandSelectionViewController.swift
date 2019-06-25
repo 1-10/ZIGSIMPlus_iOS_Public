@@ -12,25 +12,13 @@ typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var modalLabel: UILabel!
-    @IBOutlet weak var modalButton: UIButton!
     var presenter: CommandSelectionPresenterProtocol!
-    
+    var alert: UIAlertController = UIAlertController() // dummy
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        modalLabel.isHidden = true
-        modalButton.isHidden = true
-        
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
-
         adjustViewDesign()
-    }
-    
-    @IBAction func actionButton(_ sender: UIButton) {
-        if sender.tag == 0 { // sender.tag == 0 is "modalButton"
-            modalLabel.isHidden = true
-            modalButton.isHidden = true
-        }
     }
     
     func showDetail(commandNo: Int) {
@@ -52,13 +40,27 @@ final class CommandSelectionViewController: UIViewController {
             return // Do nothing if detail view for the command is not found
         }
     }
-    
+
     func showModal(commandNo: Int) {
-        modalLabel.isHidden = false
-        modalButton.isHidden = false
-        modalLabel.numberOfLines = 10
         let command = Command.allCases[commandNo]
-        modalLabel.text = modalTexts[command]
+
+        let title = "TITLE"
+        let msg = modalTexts[command]
+
+        alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
+            UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+
+        present(alert, animated: true, completion: {
+            self.alert.view.superview?.isUserInteractionEnabled = true
+            self.alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.hideAlert)))
+        })
+    }
+
+    @objc private func hideAlert() {
+        alert.dismiss(animated: true, completion: nil)
     }
     
     private func adjustViewDesign() {
