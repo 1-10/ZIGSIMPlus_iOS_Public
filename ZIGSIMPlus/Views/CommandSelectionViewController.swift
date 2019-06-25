@@ -44,8 +44,9 @@ final class CommandSelectionViewController: UIViewController {
     func showModal(commandNo: Int) {
         let command = Command.allCases[commandNo]
 
-        let title = "TITLE"
-        let msg = modalTexts[command]
+        guard let (title, msg) = modalTexts[command] else {
+            fatalError("Invalid command: \(command)")
+        }
 
         alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
