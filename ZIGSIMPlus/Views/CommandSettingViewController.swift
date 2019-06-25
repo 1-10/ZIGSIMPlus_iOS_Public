@@ -117,21 +117,11 @@ public class CommandSettingViewController : UIViewController {
             adjustLabelDesign(label: label)
         }
 
-        for segment in segments {
-            adjustSegmentDesign(segment: segment)
-        }
-
         adjustButtonDesign()
     }
 
     private func adjustLabelDesign(label: UILabel) {
         label.textColor = Theme.main
-    }
-
-    private func adjustSegmentDesign(segment: UISegmentedControl) {
-        segment.tintColor = Theme.main
-        segment.layer.backgroundColor = Theme.black.cgColor
-        segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : Theme.white], for: .selected)
     }
 
     private func adjustButtonDesign() {

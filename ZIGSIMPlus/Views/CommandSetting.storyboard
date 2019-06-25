@@ -34,7 +34,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5H5-aJ-fv1" userLabel="Data Destination Seg">
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5H5-aJ-fv1" userLabel="Data Destination Seg" customClass="ZIGSegmentedControl" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="62" y="82" width="250" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="NwA-UX-4Lc"/>
@@ -58,7 +58,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GPj-aK-iT9" userLabel="Protocolo Seg">
+                                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GPj-aK-iT9" userLabel="Protocolo Seg" customClass="ZIGSegmentedControl" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="62" y="147" width="250" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="QGv-Dw-K0T"/>
@@ -114,7 +114,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-vs-Rkk" userLabel="Message Format Seg">
+                                            <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-vs-Rkk" userLabel="Message Format Seg" customClass="ZIGSegmentedControl" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="62" y="346" width="250" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="7fo-hI-lBq"/>
@@ -134,7 +134,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aew-3o-Evt" userLabel="Message Rate Seg">
+                                            <segmentedControl opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aew-3o-Evt" userLabel="Message Rate Seg" customClass="ZIGSegmentedControl" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="62" y="411" width="250" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="d5K-w1-Mna"/>

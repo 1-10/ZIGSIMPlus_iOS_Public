@@ -32,14 +32,13 @@ public class CommandDetailSettingsViewController : UIViewController {
                 label.textColor = Theme.main
                 stackView.addArrangedSubview(label)
 
-                let segmented = UISegmentedControl()
+                let segmented = ZIGSegmentedControl()
                 for (i, segment) in data.segments.enumerated() {
                     segmented.insertSegment(withTitle: segment, at: i, animated: true)
                     segmented.setWidth(CGFloat(data.width / data.segments.count), forSegmentAt: i)
                 }
                 segmented.selectedSegmentIndex = data.value
                 segmented.addTarget(self, action: #selector(segmentedAction(segmented:)), for: .valueChanged)
-                segmented.tintColor = Theme.main
 
                 // Use DetailSettingKey for identifier
                 segmented.tag = data.key.rawValue

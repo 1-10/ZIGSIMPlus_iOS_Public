@@ -39,6 +39,7 @@
 		02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CF468122A8D9A8006F93EF /* ArkitUtils.swift */; };
 		02DF072D22BB36D300F3ABE2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF072C22BB36D300F3ABE2 /* Theme.swift */; };
 		02E49E9C22C202D700987C1A /* ZIGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E49E9B22C202D700987C1A /* ZIGTextField.swift */; };
+		02E49E9E22C2096D00987C1A /* ZIGSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */; };
 		02E9AE1C22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1B22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift */; };
 		02E9AE1E22B8FF490070A380 /* CommandDetailSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */; };
 		02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */; };
@@ -142,6 +143,7 @@
 		02CF468122A8D9A8006F93EF /* ArkitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitUtils.swift; sourceTree = "<group>"; };
 		02DF072C22BB36D300F3ABE2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		02E49E9B22C202D700987C1A /* ZIGTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGTextField.swift; sourceTree = "<group>"; };
+		02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGSegmentedControl.swift; sourceTree = "<group>"; };
 		02E9AE1B22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsPresenter.swift; sourceTree = "<group>"; };
 		02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsViewController.swift; sourceTree = "<group>"; };
 		02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitViewController.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */,
 				9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */,
 				02E49E9B22C202D700987C1A /* ZIGTextField.swift */,
+				02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */,
 				B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */,
 				029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */,
 				026A3C3322BB831F0016DEF6 /* CommandOutputTabNavigationController.swift */,
@@ -801,6 +804,7 @@
 				02A8FA892296B62D001FB3DD /* LocationService.swift in Sources */,
 				B39DCDA222B7728C00D4E722 /* UITabBarExtension.swift in Sources */,
 				02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */,
+				02E49E9E22C2096D00987C1A /* ZIGSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
