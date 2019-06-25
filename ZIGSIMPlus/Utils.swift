@@ -41,4 +41,31 @@ class Utils {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter.string(from: Date())
     }
+
+    static func setTitleImage(_ navBar: UINavigationBar) {
+        let bounds = navBar.bounds
+        let center = navBar.center
+
+        let titleImage = UIImage(named: "Logo")
+        let titleImageView = UIImageView(image: titleImage)
+
+        // Get dimension to render image
+        let scale = bounds.height / titleImage!.size.height
+        let imageWidth = titleImage!.size.width * scale
+        let imageHeight = titleImage!.size.height * scale
+
+        // Set image frame to the center of the navBar
+        titleImageView.frame = CGRect(
+            x: center.x - imageWidth / 2,
+            y: center.y - bounds.height / 2 - imageHeight,
+            width: imageWidth,
+            height: imageHeight
+        )
+
+        // Add wrapper to prevent automatic image resizing
+        let wrapper = UIView(frame: bounds)
+        wrapper.addSubview(titleImageView)
+
+        navBar.topItem!.titleView = wrapper
+    }
 }

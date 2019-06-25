@@ -66,7 +66,7 @@ final class CommandSelectionViewController: UIViewController {
 
         // Get detail view controller
         switch command {
-        case .compass, .ndi, .arkit:
+        case .compass, .ndi, .arkit, .imageDetection:
             let vc = storyboard!.instantiateViewController(withIdentifier: "CommandDetailSettingsView") as! CommandDetailSettingsViewController
             vc.command = command
 
@@ -94,14 +94,11 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     private func adjustNavigationDesign() {
-        let titleImage = UIImage(named: "Logo")
-        let titleImageView = UIImageView(image: titleImage)
-        titleImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = titleImageView
-        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
-        navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        Utils.setTitleImage(navigationController!.navigationBar)
+        navigationController?.navigationBar.barTintColor = Theme.dark
+        navigationController?.navigationBar.tintColor = Theme.main
     }
-    
+
     private func lockPremiumFeature() {
         setPremiumFeatureIsHidden(false)
         adjustLockPremiumFeatureLabel()
@@ -202,7 +199,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         // Set cell's tap action style
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
+        tableView.backgroundColor = Theme.dark
         
         // Set cell's variable
         cell.commandLabel.text = CommandToSelect.labelString

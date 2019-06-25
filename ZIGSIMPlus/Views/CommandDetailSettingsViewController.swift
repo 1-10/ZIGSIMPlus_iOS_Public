@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-let mainColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
-
 public class CommandDetailSettingsViewController : UIViewController {
 
     var presenter: CommandDetailSettingsPresenterProtocol!
@@ -31,7 +29,7 @@ public class CommandDetailSettingsViewController : UIViewController {
             case let data as Segmented:
                 let label = UILabel()
                 label.text = data.label
-                label.textColor = mainColor
+                label.textColor = Theme.main
                 stackView.addArrangedSubview(label)
 
                 let segmented = UISegmentedControl()
@@ -39,9 +37,15 @@ public class CommandDetailSettingsViewController : UIViewController {
                     segmented.insertSegment(withTitle: segment, at: i, animated: true)
                     segmented.setWidth(CGFloat(data.width / data.segments.count), forSegmentAt: i)
                 }
-                segmented.selectedSegmentIndex = data.value
+                
+                if let dataInt = data as? SegmentedInt {
+                    segmented.selectedSegmentIndex = dataInt.value
+                } else if let dataBool = data as? SegmentedBool {
+                    segmented.selectedSegmentIndex = (dataBool.value ? 0 : 1)
+                }
+                
                 segmented.addTarget(self, action: #selector(segmentedAction(segmented:)), for: .valueChanged)
-                segmented.tintColor = mainColor
+                segmented.tintColor = Theme.main
 
                 // Use DetailSettingKey for identifier
                 segmented.tag = data.key.rawValue
@@ -61,15 +65,20 @@ public class CommandDetailSettingsViewController : UIViewController {
         guard let settingsForCommand = settings[command] else { return }
 
         // Find setting by DetailSettingKey
-        guard var setting = settingsForCommand.first(where: {
+        guard let setting: DetailSetting = settingsForCommand.first(where: {
             if let s = $0 as? Segmented {
                 return s.key.rawValue == segmented.tag
             }
             return false
-        }) as? Segmented else { return }
+        }) else { return }
 
         // Pass updated setting to presenter
-        setting.value = segmented.selectedSegmentIndex
-        presenter.updateSetting(setting: setting)
+        if var segmentedInt = setting as? SegmentedInt {
+            segmentedInt.value = segmented.selectedSegmentIndex
+            presenter.updateSetting(setting: segmentedInt)
+        } else if var segmentedBool = setting as? SegmentedBool {
+            segmentedBool.value = (segmented.selectedSegmentIndex == 0 ? true : false)
+            presenter.updateSetting(setting: segmentedBool)
+        }
     }
 }
