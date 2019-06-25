@@ -68,4 +68,9 @@ class Utils {
 
         navBar.topItem!.titleView = wrapper
     }
+
+    static func isValidBeaconUUID(_ text: String) -> Bool {
+        let re = try! NSRegularExpression(pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}")
+        return re.matches(in: text, options: [], range: .init(location: 0, length: text.count)).count != 0
+    }
 }

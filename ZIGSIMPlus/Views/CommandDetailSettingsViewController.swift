@@ -125,16 +125,11 @@ public class CommandDetailSettingsViewController : UIViewController {
         input.text = text
 
         // Validate input
-        let re = try! NSRegularExpression(pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}")
-        let isValid = re.matches(in: text, options: [], range: .init(location: 0, length: text.count)).count != 0
-
-        if isValid {
-            input.layer.borderColor = Theme.main.cgColor
-        }
-        else {
+        if !Utils.isValidBeaconUUID(text) {
             input.layer.borderColor = Theme.error.cgColor
             return
         }
+        input.layer.borderColor = Theme.main.cgColor
 
         // Get settings for current command
         let settings = presenter.getCommandDetailSettings()

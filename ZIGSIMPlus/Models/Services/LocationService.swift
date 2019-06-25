@@ -45,9 +45,10 @@ public class LocationService: NSObject {
         locationManager.headingFilter = kCLHeadingFilterNone
 
         // Init beacons
+        // TODO: Refactor AppSettingModel to return default values if invalid stored values are invalid
         let appSetting = AppSettingModel.shared
-        let uuid = UUID(uuidString: appSetting.beaconUUID)!
-        let deviceUUID =  appSetting.deviceUUID
+        let uuid = UUID(uuidString: appSetting.beaconUUID) ?? UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B570000")!
+        let deviceUUID = appSetting.deviceUUID
         beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: "\(deviceUUID) region")
 
         super.init()
