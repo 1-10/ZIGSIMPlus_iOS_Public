@@ -66,6 +66,7 @@ class InAppPurchaseFacade: NSObject {
 
 extension InAppPurchaseFacade: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print("didReceive")
         productRequest?.delegate = nil
         
         if response.products.count > 0 {
@@ -78,6 +79,7 @@ extension InAppPurchaseFacade: SKProductsRequestDelegate {
     }
     
     func request(_ request: SKRequest, didFailWithError error: Error) {
+        print("didFailWithError")
         productRequest?.delegate = nil
         executeCompletionHandler(result: .purchaseFailed, error: error)
     }
@@ -95,12 +97,9 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
                 
                 SKPaymentQueue.default().finishTransaction(transaction)
 
-                // In case that other purchase is contrained, skip it.
+                // In case that other purchase is contained, skip it.
                 if transaction.payment.productIdentifier == productId {
                     didGetTransactionResult(transaction)
-                    
-                    // Dealing only one transaction success is assumed
-                    return
                 }
             case .failed:
                 SKPaymentQueue.default().finishTransaction(transaction)
@@ -115,8 +114,11 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
         // This delegate method is necessary, because updatedTransactions is not called
         // when restore failed.
+        print("restoreCompletedTransactionsFailedWithError")
         
-        // When restore failed, there is no transaction to finish in queue
+        for transaction in queue.transactions {
+            SKPaymentQueue.default().finishTransaction(transaction)
+        }
         executeCompletionHandler(result: .restoreFailed, error: error)
     }
 
