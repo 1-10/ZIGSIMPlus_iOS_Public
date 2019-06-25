@@ -52,15 +52,8 @@ public class CommandDetailSettingsViewController : UIViewController {
                 label.textColor = Theme.main
                 stackView.addArrangedSubview(label)
 
-                let input = UITextField()
+                let input = ZIGTextField()
                 input.text = data.value
-
-                input.textColor = Theme.main
-                input.backgroundColor = Theme.black
-                input.layer.borderColor = Theme.main.cgColor
-                input.layer.borderWidth = 1
-                input.layer.cornerRadius = 4
-                input.borderStyle = .roundedRect
                 input.addConstraint(NSLayoutConstraint(item: input, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(data.width)))
 
                 input.addTarget(self, action: #selector(uuidInputAction(input:)), for: .allEditingEvents)
