@@ -85,17 +85,17 @@ public class CommandDetailSettingsViewController : UIViewController {
                 segmented.isEnabled = false
             }
             
-            let getedSegmented = getSegmented(segmented: DetailSettingsKey.ndiCamera.rawValue)
+            let segmentedForNdiCamera = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)
             if !VideoCaptureService.shared.isDepthFrontCameraAvailable() && 1 == segmented.selectedSegmentIndex {
-                getedSegmented?.selectedSegmentIndex = 0
-                getedSegmented?.isEnabled = false
+                segmentedForNdiCamera?.selectedSegmentIndex = 0
+                segmentedForNdiCamera?.isEnabled = false
             } else {
-                getedSegmented?.isEnabled = true
+                segmentedForNdiCamera?.isEnabled = true
             }
         case .ndiCamera:
             if !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
-                let getedSegmented = getSegmented(segmented: DetailSettingsKey.ndiType.rawValue)
-                if getedSegmented?.selectedSegmentIndex == 1 {
+                let segmentedForNdiType = getSegmented(tagNo: DetailSettingsKey.ndiType.rawValue)
+                if segmentedForNdiType?.selectedSegmentIndex == 1 {
                     segmented.selectedSegmentIndex = 0
                     segmented.isEnabled = false
                 } else {
@@ -112,16 +112,16 @@ public class CommandDetailSettingsViewController : UIViewController {
         
     }
     
-    private func getSegmented(segmented:Int) -> UISegmentedControl? {
-        var segment: UISegmentedControl?
+    private func getSegmented(tagNo :Int) -> UISegmentedControl? {
+        var segmented: UISegmentedControl?
         for stackView in stackView.arrangedSubviews {
             if UISegmentedControl.self == type(of: stackView) {
-                if stackView.tag == segmented {
-                  segment = stackView as? UISegmentedControl
+                if stackView.tag ==  tagNo {
+                  segmented = stackView as? UISegmentedControl
                   break
                 }
             }
         }
-        return segment
+        return segmented
     }
 }

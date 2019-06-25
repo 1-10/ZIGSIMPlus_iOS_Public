@@ -128,9 +128,9 @@ extension CommandSelectionViewController: UITableViewDataSource {
         
         let mediator = CommandAndServiceMediator()
         if mediator.isAvailable(Command.allCases[indexPath.row]){
-            setAvailability(cell:cell, true)
+            setAvailable(true, forCell:cell)
         } else {
-            setAvailability(cell:cell, false)
+            setAvailable(false, forCell:cell)
         }
 
         cell.initCell()
@@ -138,7 +138,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         return cell
     }
     
-    func setAvailability(cell: StandardCell, _ isAvailable: Bool) {
+    func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell) {
         cell.commandOnOff.isEnabled = isAvailable
         cell.detailButton.isEnabled = isAvailable
         if isAvailable {
