@@ -323,6 +323,16 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		02E49EA122C20F1100987C1A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				02E49E9B22C202D700987C1A /* ZIGTextField.swift */,
+				02E49E9F22C20DA200987C1A /* ZIGLabel.swift */,
+				02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		02F0DBEF229FBB1700D45E56 /* ARKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,9 +447,7 @@
 				B3C6588522A901D400B4358B /* CustomCells */,
 				902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */,
 				9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */,
-				02E49E9B22C202D700987C1A /* ZIGTextField.swift */,
-				02E49E9F22C20DA200987C1A /* ZIGLabel.swift */,
-				02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */,
+				02E49EA122C20F1100987C1A /* Components */,
 				B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */,
 				029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */,
 				026A3C3322BB831F0016DEF6 /* CommandOutputTabNavigationController.swift */,
