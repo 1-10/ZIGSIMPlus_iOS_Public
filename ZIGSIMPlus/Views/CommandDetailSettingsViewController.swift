@@ -46,7 +46,7 @@ public class CommandDetailSettingsViewController : UIViewController {
 
                 stackView.addArrangedSubview(segmented)
 
-            case let data as TextInput:
+            case let data as UUIDInput:
                 let label = UILabel()
                 label.text = data.label
                 label.textColor = Theme.main
@@ -54,7 +54,6 @@ public class CommandDetailSettingsViewController : UIViewController {
 
                 let input = UITextField()
                 input.text = data.value
-                input.addTarget(self, action: #selector(textInputAction(input:)), for: .editingChanged)
 
                 input.textColor = Theme.main
                 input.backgroundColor = Theme.black
@@ -63,6 +62,9 @@ public class CommandDetailSettingsViewController : UIViewController {
                 input.layer.cornerRadius = 4
                 input.borderStyle = .roundedRect
                 input.addConstraint(NSLayoutConstraint(item: input, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(data.width)))
+
+                input.addTarget(self, action: #selector(uuidInputAction(input:)), for: .allEditingEvents)
+                input.autocapitalizationType = .allCharacters
 
                 // Use DetailSettingKey for identifier
                 input.tag = data.key.rawValue

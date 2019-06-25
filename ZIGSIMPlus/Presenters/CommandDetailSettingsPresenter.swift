@@ -48,7 +48,7 @@ public struct Segmented: DetailSetting {
 //     var value: Float
 // }
 
-public struct TextInput: DetailSetting {
+public struct UUIDInput: DetailSetting {
     var key: DetailSettingsKey
     var label: String
     var width: Int
@@ -86,7 +86,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 Segmented(.arkitTrackingType, "TRACKING TYPE", ["DEVICE", "FACE", "MARKER"], 240, app.arkitTrackingType.rawValue),
             ],
             .beacon: [
-                TextInput(.beaconUUID, "BEACON UUID", 270, app.beaconUUID),
+                UUIDInput(.beaconUUID, "BEACON UUID", 270, app.beaconUUID),
             ],
         ]
     }
@@ -113,7 +113,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             default:
                 break
             }
-        case let data as TextInput:
+        case let data as UUIDInput:
             switch data.key {
             case .beaconUUID:
                 AppSettingModel.shared.beaconUUID = data.value
