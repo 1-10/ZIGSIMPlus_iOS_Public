@@ -31,7 +31,7 @@ protocol CommandSettingPresenterProtocol {
 }
 
 protocol CommandSettingPresenterDelegate: AnyObject {
-    func showRestorePurchaseResult(title: String?, message: String?)
+    func showRestorePurchaseResult(isSuccessful: Bool, title: String?, message: String?)
 }
 
 final class CommandSettingPresenter: CommandSettingPresenterProtocol {
@@ -83,8 +83,10 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         InAppPurchaseFacade.shared.restorePurchase { (result, error) in
             var title = ""
             var message = ""
+            var isSuccessful = false
             
             if result == .restoreSuccessful {
+                isSuccessful = true
                 title = "Purchase Restored"
                 message = """
                 Thank you for using ZIG SIM.
@@ -99,7 +101,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
                 }
             }
             
-            self.view.showRestorePurchaseResult(title: title, message: message)
+            self.view.showRestorePurchaseResult(isSuccessful: isSuccessful, title: title, message: message)
         }
     }
 }
