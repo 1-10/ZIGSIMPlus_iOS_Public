@@ -38,7 +38,7 @@ final class CommandSelectionViewController: UIViewController {
 
         // Get detail view controller
         switch command {
-        case .compass, .ndi, .arkit:
+        case .compass, .ndi, .arkit, .imageDetection:
             let vc = storyboard!.instantiateViewController(withIdentifier: "CommandDetailSettingsView") as! CommandDetailSettingsViewController
             vc.command = command
 
