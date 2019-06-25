@@ -92,26 +92,10 @@ public class CommandDetailSettingsViewController : UIViewController {
     }
 
     @objc func uuidInputAction(input: UITextField) {
+        var text = input.text ?? ""
+
         // Format input
-        guard var text = input.text else { return }
-        text = text.uppercased()
-
-        // Insert hyphens
-        [8, 13, 18, 23].forEach { i in
-            if text.count > i {
-                let idx = text.index(text.startIndex, offsetBy: i)
-                if text[idx] != "-" {
-                    text.insert("-", at: idx)
-                }
-            }
-        }
-
-        // Limit length
-        if text.count > 36 {
-            let idx = text.index(text.startIndex, offsetBy: 36)
-            text = String(text[..<idx])
-        }
-
+        text = Utils.formatBeaconUUID(text)
         input.text = text
 
         // Validate input

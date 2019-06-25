@@ -69,8 +69,30 @@ class Utils {
         navBar.topItem!.titleView = wrapper
     }
 
-    static func isValidBeaconUUID(_ text: String) -> Bool {
+    static func isValidBeaconUUID(_ uuid: String) -> Bool {
         let re = try! NSRegularExpression(pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}")
-        return re.matches(in: text, options: [], range: .init(location: 0, length: text.count)).count != 0
+        return re.matches(in: uuid, options: [], range: .init(location: 0, length: uuid.count)).count != 0
+    }
+
+    static func formatBeaconUUID(_ _uuid: String) -> String {
+        var uuid = _uuid.uppercased()
+
+        // Insert hyphens
+        [8, 13, 18, 23].forEach { i in
+            if uuid.count > i {
+                let idx = uuid.index(uuid.startIndex, offsetBy: i)
+                if uuid[idx] != "-" {
+                    uuid.insert("-", at: idx)
+                }
+            }
+        }
+
+        // Limit length
+        if uuid.count > 36 {
+            let idx = uuid.index(uuid.startIndex, offsetBy: 36)
+            uuid = String(uuid[..<idx])
+        }
+
+        return uuid
     }
 }
