@@ -127,11 +127,13 @@ class ServiceManager {
         ])
     }
 
-    public func getErrorLog() -> String {
+    public func getErrorLog() -> String? {
         var log = [String]()
 
-        log.append(NetworkAdapter.shared.getErrorLog() ?? "")
+        if let l = NetworkAdapter.shared.getErrorLog() {
+            log.append(l)
+        }
 
-        return log.joined(separator: "\n")
+        return log.count == 0 ? nil : log.joined(separator: "\n")
     }
 }
