@@ -44,7 +44,7 @@ final class CommandSelectionViewController: UIViewController {
     func showModal(commandNo: Int) {
         let command = Command.allCases[commandNo]
 
-        guard let (title, msg) = modalTexts[command] else {
+        guard let (title: title, body: msg) = modalTexts[command] else {
             fatalError("Invalid command: \(command)")
         }
 

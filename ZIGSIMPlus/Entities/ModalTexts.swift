@@ -9,7 +9,7 @@
 import Foundation
 
 // Title and Body for help modal
-let modalTexts:[Command: (String, String)] = [
+let modalTexts:[Command: (title: String, body: String)] = [
     .acceleration : ("Acceleration", "test0\naccelerationです。"),
     .gravity : ("Gravity", "test1\ngravityです。"),
     .gyro : ("Gyro", "test2\ngyroです。"),
