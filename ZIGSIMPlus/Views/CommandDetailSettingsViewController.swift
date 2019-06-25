@@ -46,24 +46,8 @@ public class CommandDetailSettingsViewController : UIViewController {
                 // Use DetailSettingKey for identifier
                 segmented.tag = data.key.rawValue
                 
-                // We added this processing because check depth availability, set ndi type and depth type segment
-                if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-                    if DetailSettingsKey.ndiType == data.key {
-                        segmented.selectedSegmentIndex = 0 // 0 is color. (This color is what enum variable of VideoCaptureService.swift)
-                        segmented.isEnabled = false
-                    } else if DetailSettingsKey.ndiDepthType == data.key {
-                        segmented.isEnabled = false
-                    }
-                }
-                // We added this processing because check front camera availability on depth , set camera type segment
-                if !VideoCaptureService.shared.isDepthFrontCameraAvailable() && DetailSettingsKey.ndiCamera == data.key {
-                    let segment = getSegment(tagNo: DetailSettingsKey.ndiType.rawValue)
-                    if segment?.selectedSegmentIndex == 1 { // 1 is depth. (This front is what CameraType variable of VideoCaptureService.swift)
-                        segmented.selectedSegmentIndex = 0  // 0 is front.
-                        segmented.isEnabled = false
-                    }
-                }
-
+                setSegmentedAvailability(key: data.key, segmented)
+                
                 stackView.addArrangedSubview(segmented)
             default:
                 break
@@ -86,27 +70,53 @@ public class CommandDetailSettingsViewController : UIViewController {
             return false
         }) as? Segmented else { return }
 
-        // We added this processing because let rear camera used when device can not use the front camere on Depth
-        if DetailSettingsKey.ndiType == setting.key {
-            let segment = getSegment(tagNo: DetailSettingsKey.ndiCamera.rawValue)
-            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() && 1 == segmented.selectedSegmentIndex {
-                segment?.selectedSegmentIndex = 0 // 0 is front.
-                segment?.isEnabled = false
-            } else {
-                segment?.isEnabled = true
-            }
-        }
+        setSegmentedAvailability(key: setting.key, segmented)
         
         // Pass updated setting to presenter
         setting.value = segmented.selectedSegmentIndex
         presenter.updateSetting(setting: setting)
     }
     
-    private func getSegment(tagNo:Int) -> UISegmentedControl? {
+    private func setSegmentedAvailability(key: DetailSettingsKey, _ segmented: UISegmentedControl) {
+        switch key {
+        case .ndiType:
+            if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+                segmented.selectedSegmentIndex = 0
+                segmented.isEnabled = false
+            }
+            
+            let getedSegmented = getSegmented(segmented: DetailSettingsKey.ndiCamera.rawValue)
+            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() && 1 == segmented.selectedSegmentIndex {
+                getedSegmented?.selectedSegmentIndex = 0
+                getedSegmented?.isEnabled = false
+            } else {
+                getedSegmented?.isEnabled = true
+            }
+        case .ndiCamera:
+            if !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
+                let getedSegmented = getSegmented(segmented: DetailSettingsKey.ndiType.rawValue)
+                if getedSegmented?.selectedSegmentIndex == 1 {
+                    segmented.selectedSegmentIndex = 0
+                    segmented.isEnabled = false
+                } else {
+                    segmented.isEnabled = true
+                }
+            }
+        case .ndiDepthType:
+            if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+                segmented.isEnabled = false
+            }
+        default :
+            return
+        }
+        
+    }
+    
+    private func getSegmented(segmented:Int) -> UISegmentedControl? {
         var segment: UISegmentedControl?
         for stackView in stackView.arrangedSubviews {
             if UISegmentedControl.self == type(of: stackView) {
-                if stackView.tag == tagNo {
+                if stackView.tag == segmented {
                   segment = stackView as? UISegmentedControl
                   break
                 }
