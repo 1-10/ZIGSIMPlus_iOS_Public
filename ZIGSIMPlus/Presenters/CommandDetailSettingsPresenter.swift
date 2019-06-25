@@ -15,6 +15,7 @@ public enum DetailSettingsKey: Int {
     case ndiDepthType = 2
     case compassOrientation = 3
     case arkitTrackingType = 4
+    case beaconUUID = 5
 }
 
 
@@ -47,6 +48,20 @@ public struct Segmented: DetailSetting {
 //     var value: Float
 // }
 
+public struct TextInput: DetailSetting {
+    var key: DetailSettingsKey
+    var label: String
+    var width: Int
+    var value: String
+
+    init (_ key: DetailSettingsKey, _ label: String, _ width: Int, _ value: String) {
+        self.key = key
+        self.label = label
+        self.width = width
+        self.value = value
+    }
+}
+
 protocol CommandDetailSettingsPresenterProtocol {
     func getCommandDetailSettings() -> [Command: [DetailSetting]]
     func updateSetting(setting: DetailSetting)
@@ -70,6 +85,9 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             .arkit: [
                 Segmented(.arkitTrackingType, "TRACKING TYPE", ["DEVICE", "FACE", "MARKER"], 240, app.arkitTrackingType.rawValue),
             ],
+            .beacon: [
+                TextInput(.beaconUUID, "BEACON UUID", 270, app.beaconUUID),
+            ],
         ]
     }
 
@@ -92,6 +110,16 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             case .arkitTrackingType:
                 AppSettingModel.shared.arkitTrackingType = ArkitTrackingType(rawValue: data.value)!
                 Defaults[.userArkitTrackingType] = data.value
+            default:
+                break
+            }
+        case let data as TextInput:
+            switch data.key {
+            case .beaconUUID:
+                AppSettingModel.shared.beaconUUID = data.value
+                Defaults[.userBeaconUUID] = data.value
+            default:
+                break
             }
         default:
             break
