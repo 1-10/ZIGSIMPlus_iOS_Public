@@ -20,13 +20,16 @@ class InAppPurchaseFacade: NSObject {
     static let shared: InAppPurchaseFacade = InAppPurchaseFacade()
     private override init () { super.init() }
     var completion: ((TransactionResult, Error?) -> Void)?
+    var productRequest: SKProductsRequest?
     
     func purchase(completion: ((TransactionResult, Error?) -> Void)?) {
         self.completion = completion
         if SKPaymentQueue.canMakePayments() {
-            let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productId
-            SKPaymentQueue.default().add(paymentRequest)
+            // Query the App Store for product information before starting purchase
+            // See: https://developer.apple.com/library/archive/technotes/tn2387/_index.html
+            productRequest = SKProductsRequest(productIdentifiers: Set([productId]))
+            productRequest?.delegate = self
+            productRequest?.start()
         } else {
             executeCompletionHandler(result: .purchaseFailed, error: nil)
         }
@@ -58,6 +61,25 @@ class InAppPurchaseFacade: NSObject {
         }
         
         return id
+    }
+}
+
+extension InAppPurchaseFacade: SKProductsRequestDelegate {
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        productRequest?.delegate = nil
+        
+        if response.products.count > 0 {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productId
+            SKPaymentQueue.default().add(paymentRequest)
+        } else {
+            executeCompletionHandler(result: .purchaseFailed, error: nil)
+        }
+    }
+    
+    func request(_ request: SKRequest, didFailWithError error: Error) {
+        productRequest?.delegate = nil
+        executeCompletionHandler(result: .purchaseFailed, error: error)
     }
 }
 
@@ -114,7 +136,7 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
     }
     
     private func executeCompletionHandler(result: TransactionResult, error: Error?) {
-        completion?(result, nil)
+        completion?(result, error)
         completion = nil
     }
 }
