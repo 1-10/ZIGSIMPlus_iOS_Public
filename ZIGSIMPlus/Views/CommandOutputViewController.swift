@@ -90,20 +90,25 @@ class CommandOutputViewController: UIViewController {
 }
 
 extension CommandOutputViewController: CommandOutputPresenterDelegate {
-    func updateOutput(with log: String, errorLog: String) {
-        let output = errorLog == "" ? log : "\(errorLog)\n\n\(log)"
-        let attributedString = NSMutableAttributedString(string: output)
+    func updateOutput(with log: String, errorLog: String?) {
+        if errorLog == nil {
+            textField.text = log
+        }
+        else {
+            let output = "\(errorLog!)\n\n\(log)"
+            let attributedString = NSMutableAttributedString(string: output)
 
-        // Set attributes for normal logs
-        let allRange = NSRange(location: 0, length: output.count)
-        attributedString.setAttributes(textField.typingAttributes, range: allRange)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: Theme.main, range: allRange)
+            // Set attributes for normal logs
+            let allRange = NSRange(location: 0, length: output.count)
+            attributedString.setAttributes(textField.typingAttributes, range: allRange)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: Theme.main, range: allRange)
 
-        // Add attribute for error logs
-        let errorRange = NSRange(location: 0, length: errorLog.count)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: Theme.error, range: errorRange)
+            // Add attribute for error logs
+            let errorRange = NSRange(location: 0, length: errorLog!.count)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: Theme.error, range: errorRange)
 
-        textField.attributedText = attributedString
+            textField.attributedText = attributedString
+        }
     }
 
     func updateSettings(with newSettings: [(String, String)]) {
