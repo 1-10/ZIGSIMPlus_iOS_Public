@@ -11,7 +11,7 @@ import StoreKit
 @testable import ZIGSIMPlus
 
 class InAppPurchaseFacadeTests: XCTestCase {
-    private let purchaseFacade = InAppPurchaseFacade()
+    private let purchaseFacade = InAppPurchaseFacade.shared
     
     override func setUp() {
         UserDefaults.standard.removeObject(forKey: "com.OneToTen.ZIGSIMPlusExplicit.PremiumFeatures")
@@ -44,7 +44,7 @@ class InAppPurchaseFacadeTests: XCTestCase {
             transactionMock.transactionState = testCase.0
             purchaseFacade.didGetTransactionResult(transactionMock)
             
-            wait(for: [exp], timeout: 5.0)
+            wait(for: [exp], timeout: 3.0)
         }
     }
     
@@ -62,7 +62,7 @@ class InAppPurchaseFacadeTests: XCTestCase {
         transactionMock.transactionState = .failed
         purchaseFacade.didGetTransactionResult(transactionMock)
         
-        wait(for: [exp], timeout: 5.0)
+        wait(for: [exp], timeout: 3.0)
     }
     
     func testDidGetTransactionResult_WhenInProcess() {
@@ -87,7 +87,7 @@ class InAppPurchaseFacadeTests: XCTestCase {
             transactionMock.transactionState = testCase
             purchaseFacade.didGetTransactionResult(transactionMock)
             
-            wait(for: [exp], timeout: 5.0)
+            wait(for: [exp], timeout: 3.0)
             tearDown()
         }
     }
