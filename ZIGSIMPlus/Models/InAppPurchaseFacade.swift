@@ -26,6 +26,7 @@ class InAppPurchaseFacade: NSObject {
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productId
+            SKPaymentQueue.default().add(paymentRequest)
         } else {
             executeCompletionHandler(result: .purchaseFailed, error: nil)
         }
@@ -64,21 +65,24 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("updatedTransactions")
         
-        // Dealing only one transaction is assumed
         for transaction in transactions {
             switch transaction.transactionState {
-            case .purchased, .failed:
-                SKPaymentQueue.default().finishTransaction(transaction)
-                didGetTransactionResult(transaction)
-                return
-            case .restored:
-                // TODO: Check Product ID
-                
+            case .purchased, .restored:
                 // Deal with .restored here, not in "paymentQueueRestoreCompletedTransactionsFinished"
                 // See: https://stackoverflow.com/questions/14309427/paymentqueuerestorecompletedtransactionsfinished-vs-updatedtransactions
+                
+                SKPaymentQueue.default().finishTransaction(transaction)
+
+                // In case that other purchase is contrained, skip it.
+                if transaction.payment.productIdentifier == productId {
+                    didGetTransactionResult(transaction)
+                    
+                    // Dealing only one transaction success is assumed
+                    return
+                }
+            case .failed:
                 SKPaymentQueue.default().finishTransaction(transaction)
                 didGetTransactionResult(transaction)
-                return
             default:
                 // Do nothing for .purchasing, .deferred
                 break
