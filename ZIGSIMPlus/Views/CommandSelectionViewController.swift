@@ -62,12 +62,9 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     private func adjustViewDesign() {
-        let titleImage = UIImage(named: "Logo")
-        let titleImageView = UIImageView(image: titleImage)
-        titleImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = titleImageView
+        Utils.setTitleImage(navigationController!.navigationBar)
         navigationController?.navigationBar.barTintColor = Theme.dark
-        navigationController?.navigationBar.tintColor = Theme.warn
+        navigationController?.navigationBar.tintColor = Theme.main
     }
 }
 

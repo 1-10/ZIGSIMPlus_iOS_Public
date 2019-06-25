@@ -107,21 +107,9 @@ public class CommandSettingViewController : UIViewController {
     }
 
     private func initNavigationBar() {
-        let titleImage = UIImage(named: "Logo")
-        let titleImageView = UIImageView(image: titleImage)
-        titleImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = titleImageView
+        Utils.setTitleImage(navigationController!.navigationBar)
         navigationController?.navigationBar.barTintColor = Theme.dark
-
-        let backButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backButtonItem
         navigationController?.navigationBar.tintColor = Theme.main
-
-        let infoButton: UIButton = navigationItem.rightBarButtonItem?.customView as! UIButton
-        infoButton.layer.cornerRadius = 0.5 * infoButton.bounds.size.width
-        infoButton.layer.borderWidth = 1.0
-        infoButton.layer.borderColor = Theme.gray.cgColor
-        infoButton.backgroundColor = Theme.gray
     }
 
     private func adjustViewDesign() {
