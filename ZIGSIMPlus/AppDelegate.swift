@@ -22,14 +22,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if type(of: viewController) == CommandSelectionTabNavigationController.self {
                 let vc = viewController as! CommandSelectionTabNavigationController
                 vc.setMediator(mediator)
-            } else if type(of: viewController) == CommandOutputViewController.self {
-                let vc = viewController as! CommandOutputViewController
-                vc.presenter = CommandOutputPresenter(view: vc, mediator: mediator)
+            } else if type(of: viewController) == CommandOutputTabNavigationController.self {
+                let vc = viewController as! CommandOutputTabNavigationController
+                vc.setMediator(mediator)
             } else {
                 print("else")
             }
         }
-        
+
+        // Setup tab bar styles
+        UITabBar.appearance().barTintColor = Theme.dark
+        UITabBar.appearance().tintColor = Theme.main
+
         return true
     }
 

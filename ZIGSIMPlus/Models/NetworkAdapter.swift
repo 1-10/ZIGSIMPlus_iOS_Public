@@ -17,6 +17,8 @@ public class NetworkAdapter {
 
     var tcpClient: TCPClient = TCPClient(address: AppSettingModel.shared.address, port: AppSettingModel.shared.port)
     var udpClient: UDPClient = UDPClient(address: AppSettingModel.shared.address, port: AppSettingModel.shared.port)
+
+    var error: Error?
     
     /// Send data over TCP / UDP automatically
     func send(_ data: Data){
@@ -25,6 +27,24 @@ public class NetworkAdapter {
             sendTCP(data)
         case .UDP:
             sendUDP(data)
+        }
+    }
+
+    /// Get error description to show in output view
+    func getErrorLog() -> String? {
+        if error == nil { return nil }
+
+        switch error! {
+        case SocketError.queryFailed:
+            return "Socket Error: Host \(AppSettingModel.shared.address) not found"
+        case SocketError.connectionClosed:
+            return "Socket Error: Connection is closed"
+        case SocketError.connectionTimeout:
+            return "Socket Error: Connection timed out"
+        case SocketError.unknownError:
+            return "Socket Error: Unknown socket error"
+        default:
+            return "Socket Error: Unknown error"
         }
     }
 
@@ -41,9 +61,9 @@ public class NetworkAdapter {
         if tcpClient.fd == nil {
             switch tcpClient.connect(timeout: 1) {
             case .success:
-                print(">> TCP connection succeeded")
-            case .failure(let error):
-                print(">> TCP connection failed: \(error.localizedDescription)")
+                break
+            case .failure(let e):
+                error = e
                 return
             }
         }
@@ -51,9 +71,9 @@ public class NetworkAdapter {
         // Send data
         switch tcpClient.send(data: data) {
         case .success:
-            print(">> TCP sending data succeeded")
-        case .failure(let error):
-            showError(error)
+            error = nil
+        case .failure(let e):
+            error = e
         }
     }
 
@@ -68,24 +88,9 @@ public class NetworkAdapter {
 
         switch udpClient.send(data: data) {
         case .success:
-            print(">> UDP sending data succeeded")
-        case .failure(let error):
-            showError(error)
-        }
-    }
-
-    private func showError(_ error: Error) {
-        switch error {
-        case SocketError.queryFailed:
-            print(">> Socket Error: Host \(AppSettingModel.shared.address) not found")
-        case SocketError.connectionClosed:
-            print(">> Socket Error: Connection is closed")
-        case SocketError.connectionTimeout:
-            print(">> Socket Error: Connection timed out")
-        case SocketError.unknownError:
-            print(">> Socket Error: Unknown socket error")
-        default:
-            print(">> Socket Error: Unknown error")
+            error = nil
+        case .failure(let e):
+            error = e
         }
     }
 }
