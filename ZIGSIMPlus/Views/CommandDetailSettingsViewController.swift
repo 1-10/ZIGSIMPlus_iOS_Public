@@ -47,7 +47,9 @@ public class CommandDetailSettingsViewController : UIViewController {
 
                 // Use DetailSettingKey for identifier
                 segmented.tag = data.key.rawValue
-
+                
+                setSegmentedAvailablity(settingKey: data.key, segmented)
+                
                 stackView.addArrangedSubview(segmented)
 
             case let data as UUIDInput:
@@ -91,9 +93,11 @@ public class CommandDetailSettingsViewController : UIViewController {
             }
             return false
         }) else { return }
-
+        
+        
         // Pass updated setting to presenter
         if var segmentedInt = setting as? SegmentedInt {
+            setSegmentedAvailablity(settingKey: segmentedInt.key, segmented)
             segmentedInt.value = segmented.selectedSegmentIndex
             presenter.updateSetting(setting: segmentedInt)
         } else if var segmentedBool = setting as? SegmentedBool {
@@ -127,9 +131,59 @@ public class CommandDetailSettingsViewController : UIViewController {
             }
             return false
         }) as? UUIDInput else { return }
-
+        
         // Pass updated setting to presenter
         setting.value = text
         presenter.updateSetting(setting: setting)
+    }
+    
+    private func setSegmentedAvailablity(settingKey: DetailSettingsKey, _ segmented: UISegmentedControl) {
+        switch settingKey {
+        case .ndiType:
+            if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+                segmented.selectedSegmentIndex = 0
+                segmented.isEnabled = false
+            }
+            
+            let segmentedForNdiCamera = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)
+            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() && 1 == segmented.selectedSegmentIndex {
+                segmentedForNdiCamera?.selectedSegmentIndex = 0
+                AppSettingModel.shared.ndiCameraPosition = .BACK
+                segmentedForNdiCamera?.isEnabled = false
+            } else {
+                segmentedForNdiCamera?.isEnabled = true
+            }
+        case .ndiCamera:
+            if !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
+                let segmentedForNdiType = getSegmented(tagNo: DetailSettingsKey.ndiType.rawValue)
+                if segmentedForNdiType?.selectedSegmentIndex == 1 {
+                    segmented.selectedSegmentIndex = 0
+                    AppSettingModel.shared.ndiCameraPosition = .BACK
+                    segmented.isEnabled = false
+                } else {
+                    segmented.isEnabled = true
+                }
+            }
+        case .ndiDepthType:
+            if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+                segmented.isEnabled = false
+            }
+        default :
+            return
+        }
+        
+    }
+    
+    private func getSegmented(tagNo :Int) -> UISegmentedControl? {
+        var segmented: UISegmentedControl?
+        for stackView in stackView.arrangedSubviews {
+            if ZIGSegmentedControl.self == type(of: stackView) {
+                if stackView.tag ==  tagNo {
+                  segmented = stackView as? UISegmentedControl
+                  break
+                }
+            }
+        }
+        return segmented
     }
 }

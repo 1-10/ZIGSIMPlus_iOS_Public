@@ -200,19 +200,16 @@ extension CommandSelectionViewController: UITableViewDataSource {
         let CommandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
         
-        // Set cell's tap action style
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableView.separatorStyle = .none
         tableView.backgroundColor = Theme.dark
         
-        // Set cell's variable
         cell.commandLabel.text = CommandToSelect.labelString
         cell.commandLabel.tag = indexPath.row
         cell.commandOnOff.tag = indexPath.row
         cell.viewController = self
         cell.commandSelectionPresenter = self.presenter
         
-        // Set cell's detail button to visible or invisible
         cell.detailButton.isHidden = false
         if CommandToSelect.labelString == Command.acceleration.rawValue ||
            CommandToSelect.labelString == Command.gravity.rawValue ||
@@ -227,17 +224,34 @@ extension CommandSelectionViewController: UITableViewDataSource {
            cell.detailButton.isHidden = true
         }
 
-        // Make an adjustment table view screen
         if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] == true {
             cell.commandOnOff.isOn = true
         } else {
             cell.commandOnOff.isOn = false
         }
         
-        // Set cell's UI design
+        let mediator = CommandAndServiceMediator()
+        if mediator.isAvailable(Command.allCases[indexPath.row]){
+            setAvailable(true, forCell:cell)
+        } else {
+            setAvailable(false, forCell:cell)
+        }
+
         cell.initCell()
         
         return cell
+    }
+    
+    func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell) {
+        cell.commandOnOff.isEnabled = isAvailable
+        cell.detailButton.isEnabled = isAvailable
+        if isAvailable {
+            cell.commandLabel.textColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+            cell.detailButton.strokeColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+        } else {
+            cell.commandLabel.textColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+            cell.detailButton.strokeColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+        }
     }
 }
 
