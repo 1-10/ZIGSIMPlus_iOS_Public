@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kJu-BG-fx6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ty0-7b-m25">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,34 +15,11 @@
             <objects>
                 <viewController id="kJu-BG-fx6" customClass="CommandOutputViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rzi-as-0za">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GLu-sj-z8E" userLabel="Navigation Bar Background">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIb-V7-pjq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="o9C-aJ-f7k"/>
-                                </constraints>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem id="eW9-hN-vXk">
-                                        <nil key="title"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="w6M-4J-ckp">
-                                            <color key="tintColor" red="0.27908620239999998" green="0.62241619829999995" blue="0.41565775869999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <connections>
-                                                <action selector="togglePreviewMode:" destination="kJu-BG-fx6" id="uUi-Cw-qSf"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Brn-Ft-Y9K" userLabel="Image Preview">
-                                <rect key="frame" x="16" y="88" width="382" height="774"/>
+                                <rect key="frame" x="16" y="0.0" width="382" height="774"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U4Y-xh-Hc1" userLabel="ARKit Container">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="774"/>
@@ -62,7 +39,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cx-cv-Pdz" userLabel="Text Preview">
-                                <rect key="frame" x="16" y="88" width="382" height="774"/>
+                                <rect key="frame" x="16" y="0.0" width="382" height="774"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NJT-rt-tEm" userLabel="Settings Table">
                                         <rect key="frame" x="0.0" y="16" width="382" height="180"/>
@@ -142,45 +119,45 @@
                                 </constraints>
                             </view>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Lr-c8-Zoo" userLabel="Touch Area">
-                                <rect key="frame" x="16" y="88" width="382" height="774"/>
+                                <rect key="frame" x="16" y="0.0" width="382" height="774"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9cx-cv-Pdz" firstAttribute="top" secondItem="jIb-V7-pjq" secondAttribute="bottom" id="1Xd-nB-8Cm"/>
                             <constraint firstItem="vA6-8N-iQN" firstAttribute="trailing" secondItem="Brn-Ft-Y9K" secondAttribute="trailing" constant="16" id="2hT-H3-6Zz"/>
                             <constraint firstItem="vA6-8N-iQN" firstAttribute="trailing" secondItem="9cx-cv-Pdz" secondAttribute="trailing" constant="16" id="7te-ee-fZg"/>
                             <constraint firstItem="9cx-cv-Pdz" firstAttribute="bottom" secondItem="vA6-8N-iQN" secondAttribute="bottom" id="DwU-Xn-LLW"/>
-                            <constraint firstItem="jIb-V7-pjq" firstAttribute="trailing" secondItem="vA6-8N-iQN" secondAttribute="trailing" id="ExW-NU-aAe"/>
-                            <constraint firstItem="jIb-V7-pjq" firstAttribute="leading" secondItem="vA6-8N-iQN" secondAttribute="leading" id="FHV-gJ-Yqm"/>
                             <constraint firstItem="9cx-cv-Pdz" firstAttribute="leading" secondItem="vA6-8N-iQN" secondAttribute="leading" constant="16" id="KqE-5f-bQW"/>
-                            <constraint firstItem="jIb-V7-pjq" firstAttribute="top" secondItem="vA6-8N-iQN" secondAttribute="top" id="LAn-yj-1pt"/>
+                            <constraint firstItem="9cx-cv-Pdz" firstAttribute="top" secondItem="vA6-8N-iQN" secondAttribute="top" id="Pdd-j2-eFa"/>
                             <constraint firstItem="5Lr-c8-Zoo" firstAttribute="leading" secondItem="vA6-8N-iQN" secondAttribute="leading" constant="16" id="QOY-ge-Bp6"/>
+                            <constraint firstItem="5Lr-c8-Zoo" firstAttribute="top" secondItem="vA6-8N-iQN" secondAttribute="top" id="YAs-9J-XVf"/>
                             <constraint firstItem="vA6-8N-iQN" firstAttribute="trailing" secondItem="5Lr-c8-Zoo" secondAttribute="trailing" constant="16" id="Z3x-dP-lgF"/>
                             <constraint firstItem="5Lr-c8-Zoo" firstAttribute="bottom" secondItem="vA6-8N-iQN" secondAttribute="bottom" id="bPH-My-b0s"/>
-                            <constraint firstItem="Brn-Ft-Y9K" firstAttribute="top" secondItem="jIb-V7-pjq" secondAttribute="bottom" id="gaX-a4-u8Z"/>
-                            <constraint firstItem="5Lr-c8-Zoo" firstAttribute="top" secondItem="jIb-V7-pjq" secondAttribute="bottom" id="jFW-8j-FNi"/>
+                            <constraint firstItem="Brn-Ft-Y9K" firstAttribute="top" secondItem="vA6-8N-iQN" secondAttribute="top" id="fyb-8D-xhS"/>
                             <constraint firstItem="Brn-Ft-Y9K" firstAttribute="leading" secondItem="vA6-8N-iQN" secondAttribute="leading" constant="16" id="psS-oo-Vb7"/>
                             <constraint firstItem="Brn-Ft-Y9K" firstAttribute="bottom" secondItem="vA6-8N-iQN" secondAttribute="bottom" id="tfA-uc-jRq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vA6-8N-iQN"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" title="" image="startLogo" id="tYO-uc-I8C">
-                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="p9c-5V-Ew6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="ADH-cr-MCQ">
+                            <connections>
+                                <action selector="togglePreviewMode:" destination="kJu-BG-fx6" id="u6d-B5-uBk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imagePreview" destination="Brn-Ft-Y9K" id="dRO-c9-B2N"/>
-                        <outlet property="navItem" destination="eW9-hN-vXk" id="CHd-d3-JQH"/>
                         <outlet property="settingsTable" destination="NJT-rt-tEm" id="fBA-Ur-x13"/>
                         <outlet property="textField" destination="CBn-hW-Fni" id="mER-6l-Pna"/>
                         <outlet property="textPreview" destination="9cx-cv-Pdz" id="ZMo-Y2-2N2"/>
-                        <outlet property="togglePreviewModeButton" destination="w6M-4J-ckp" id="rGf-9u-Dxx"/>
+                        <outlet property="togglePreviewModeButton" destination="ADH-cr-MCQ" id="Hps-Zi-Uwh"/>
                         <outlet property="touchArea" destination="5Lr-c8-Zoo" id="4cZ-MA-e38"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tdb-Du-nKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073.913043478261" y="912.72321428571422"/>
+            <point key="canvasLocation" x="1984.057971014493" y="912.72321428571422"/>
         </scene>
         <!--Arkit View Controller-->
         <scene sceneID="x1w-kP-nNj">
@@ -209,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftr-v7-5EN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1972" y="912"/>
+            <point key="canvasLocation" x="2881.1594202898555" y="911.38392857142856"/>
         </scene>
         <!--Video Caputure View Controller-->
         <scene sceneID="i6z-IX-h4n">
@@ -233,7 +210,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdN-UZ-5xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2793" y="913"/>
+            <point key="canvasLocation" x="3702.898550724638" y="912.72321428571422"/>
+        </scene>
+        <!--Command Output Tab Navigation Controller-->
+        <scene sceneID="dNT-fz-jmp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ty0-7b-m25" customClass="CommandOutputTabNavigationController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="2" title="" image="startLogo" id="tYO-uc-I8C">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="EqS-Xo-8Hx">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kJu-BG-fx6" kind="relationship" relationship="rootViewController" id="chd-f1-oZH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UFk-8i-Old" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073.913043478261" y="912.72321428571422"/>
         </scene>
     </scenes>
     <resources>

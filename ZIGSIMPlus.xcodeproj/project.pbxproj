@@ -18,6 +18,8 @@
 		02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5322A4F9140071E9D2 /* StringExtension.swift */; };
 		02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */; };
 		02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */; };
+		026A3C3222BB656C0016DEF6 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A3C3122BB656C0016DEF6 /* UIColorExtension.swift */; };
+		026A3C3422BB831F0016DEF6 /* CommandOutputTabNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A3C3322BB831F0016DEF6 /* CommandOutputTabNavigationController.swift */; };
 		0274B66322A0FD00005D7266 /* RemoteControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274B66222A0FD00005D7266 /* RemoteControlService.swift */; };
 		0281B29722A6791500ED97D9 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */; };
 		02852E4422B7710F00801B6A /* TouchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02852E4322B7710F00801B6A /* TouchServiceTests.swift */; };
@@ -35,6 +37,10 @@
 		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
 		02CE3DE822B1FB3E00A2B7B8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 02CE3DE722B1FB3E00A2B7B8 /* Settings.bundle */; };
 		02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CF468122A8D9A8006F93EF /* ArkitUtils.swift */; };
+		02DF072D22BB36D300F3ABE2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF072C22BB36D300F3ABE2 /* Theme.swift */; };
+		02E49E9C22C202D700987C1A /* ZIGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E49E9B22C202D700987C1A /* ZIGTextField.swift */; };
+		02E49E9E22C2096D00987C1A /* ZIGSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */; };
+		02E49EA022C20DA200987C1A /* ZIGLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E49E9F22C20DA200987C1A /* ZIGLabel.swift */; };
 		02E9AE1C22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1B22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift */; };
 		02E9AE1E22B8FF490070A380 /* CommandDetailSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */; };
 		02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */; };
@@ -117,6 +123,8 @@
 		02621F5322A4F9140071E9D2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSettingPresenter.swift; sourceTree = "<group>"; };
+		026A3C3122BB656C0016DEF6 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		026A3C3322BB831F0016DEF6 /* CommandOutputTabNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputTabNavigationController.swift; sourceTree = "<group>"; };
 		0274B66222A0FD00005D7266 /* RemoteControlService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlService.swift; sourceTree = "<group>"; };
 		0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
 		02852E4322B7710F00801B6A /* TouchServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchServiceTests.swift; sourceTree = "<group>"; };
@@ -134,6 +142,10 @@
 		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		02CE3DE722B1FB3E00A2B7B8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		02CF468122A8D9A8006F93EF /* ArkitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitUtils.swift; sourceTree = "<group>"; };
+		02DF072C22BB36D300F3ABE2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		02E49E9B22C202D700987C1A /* ZIGTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGTextField.swift; sourceTree = "<group>"; };
+		02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGSegmentedControl.swift; sourceTree = "<group>"; };
+		02E49E9F22C20DA200987C1A /* ZIGLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGLabel.swift; sourceTree = "<group>"; };
 		02E9AE1B22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsPresenter.swift; sourceTree = "<group>"; };
 		02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsViewController.swift; sourceTree = "<group>"; };
 		02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +302,7 @@
 				02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */,
 				02621F5322A4F9140071E9D2 /* StringExtension.swift */,
 				02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */,
+				026A3C3122BB656C0016DEF6 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -308,6 +321,16 @@
 				02A8FA872296B62D001FB3DD /* ServiceManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		02E49EA122C20F1100987C1A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				02E49E9B22C202D700987C1A /* ZIGTextField.swift */,
+				02E49E9F22C20DA200987C1A /* ZIGLabel.swift */,
+				02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		02F0DBEF229FBB1700D45E56 /* ARKit */ = {
@@ -383,6 +406,7 @@
 				63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */,
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
 				6345569B22B0E9150032E976 /* PresenterFactory.swift */,
+				023BB10522965B490094363B /* Utils.swift */,
 				9092E4C7227D85890019F1C1 /* Models */,
 				902EB9F7227BECC7008F1650 /* Views */,
 				902EB9F8227BECDD008F1650 /* Presenters */,
@@ -423,8 +447,10 @@
 				B3C6588522A901D400B4358B /* CustomCells */,
 				902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */,
 				9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */,
+				02E49EA122C20F1100987C1A /* Components */,
 				B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */,
 				029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */,
+				026A3C3322BB831F0016DEF6 /* CommandOutputTabNavigationController.swift */,
 				02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */,
 				02852E4722B777F800801B6A /* CommandSelectionTabNavigationController.swift */,
 				02A0359A229CD6F800E7399E /* CommandSettingViewController.swift */,
@@ -452,6 +478,7 @@
 			children = (
 				9092E4CB227EBF4D0019F1C1 /* Command.swift */,
 				B3CFE5B722ADF436009664C0 /* ModalTexts.swift */,
+				02DF072C22BB36D300F3ABE2 /* Theme.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -462,7 +489,6 @@
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */,
-				023BB10522965B490094363B /* Utils.swift */,
 				02A8FA822296B62D001FB3DD /* Services */,
 			);
 			path = Models;
@@ -752,10 +778,12 @@
 				02A8FA882296B62D001FB3DD /* TouchService.swift in Sources */,
 				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,
 				638345F422A6832700370600 /* NFCService.swift in Sources */,
+				026A3C3422BB831F0016DEF6 /* CommandOutputTabNavigationController.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
 				6345569C22B0E9150032E976 /* PresenterFactory.swift in Sources */,
 				B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
+				02E49E9C22C202D700987C1A /* ZIGTextField.swift in Sources */,
 				02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */,
 				02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */,
 				0236461B2298253900171F73 /* VideoCaptureService.swift in Sources */,
@@ -768,6 +796,9 @@
 				02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,
 				02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */,
+				02E49EA022C20DA200987C1A /* ZIGLabel.swift in Sources */,
+				026A3C3222BB656C0016DEF6 /* UIColorExtension.swift in Sources */,
+				02DF072D22BB36D300F3ABE2 /* Theme.swift in Sources */,
 				02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */,
 				02852E4822B777F800801B6A /* CommandSelectionTabNavigationController.swift in Sources */,
 				6345569A22B0CEF20032E976 /* VideoCapturePresenter.swift in Sources */,
@@ -785,6 +816,7 @@
 				02A8FA892296B62D001FB3DD /* LocationService.swift in Sources */,
 				B39DCDA222B7728C00D4E722 /* UITabBarExtension.swift in Sources */,
 				02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */,
+				02E49E9E22C2096D00987C1A /* ZIGSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

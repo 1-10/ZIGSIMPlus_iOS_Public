@@ -12,25 +12,13 @@ typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var modalLabel: UILabel!
-    @IBOutlet weak var modalButton: UIButton!
     var presenter: CommandSelectionPresenterProtocol!
-    
+    var alert: UIAlertController = UIAlertController() // dummy
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        modalLabel.isHidden = true
-        modalButton.isHidden = true
-        
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
-
         adjustViewDesign()
-    }
-    
-    @IBAction func actionButton(_ sender: UIButton) {
-        if sender.tag == 0 { // sender.tag == 0 is "modalButton"
-            modalLabel.isHidden = true
-            modalButton.isHidden = true
-        }
     }
     
     func showDetail(commandNo: Int) {
@@ -38,7 +26,7 @@ final class CommandSelectionViewController: UIViewController {
 
         // Get detail view controller
         switch command {
-        case .compass, .ndi, .arkit:
+        case .compass, .ndi, .arkit, .beacon, .imageDetection:
             let vc = storyboard!.instantiateViewController(withIdentifier: "CommandDetailSettingsView") as! CommandDetailSettingsViewController
             vc.command = command
 
@@ -52,22 +40,34 @@ final class CommandSelectionViewController: UIViewController {
             return // Do nothing if detail view for the command is not found
         }
     }
-    
+
     func showModal(commandNo: Int) {
-        modalLabel.isHidden = false
-        modalButton.isHidden = false
-        modalLabel.numberOfLines = 10
         let command = Command.allCases[commandNo]
-        modalLabel.text = modalTexts[command]
+
+        guard let (title: title, body: msg) = modalTexts[command] else {
+            fatalError("Invalid command: \(command)")
+        }
+
+        alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
+            UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+
+        present(alert, animated: true, completion: {
+            self.alert.view.superview?.isUserInteractionEnabled = true
+            self.alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.hideAlert)))
+        })
+    }
+
+    @objc private func hideAlert() {
+        alert.dismiss(animated: true, completion: nil)
     }
     
     private func adjustViewDesign() {
-        let titleImage = UIImage(named: "Logo")
-        let titleImageView = UIImageView(image: titleImage)
-        titleImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = titleImageView
-        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
-        navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 1.0)
+        Utils.setTitleImage(navigationController!.navigationBar)
+        navigationController?.navigationBar.barTintColor = Theme.dark
+        navigationController?.navigationBar.tintColor = Theme.main
     }
 }
 
@@ -98,7 +98,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
+        tableView.backgroundColor = Theme.dark
         
         cell.commandLabel.text = CommandToSelect.labelString
         cell.commandLabel.tag = indexPath.row

@@ -12,7 +12,6 @@ import MediaPlayer
 class CommandOutputViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var touchArea: UIView!
-    @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var textPreview: UIView!
     @IBOutlet weak var imagePreview: UIView!
     @IBOutlet weak var togglePreviewModeButton: UIBarButtonItem!
@@ -27,10 +26,10 @@ class CommandOutputViewController: UIViewController {
         super.viewDidLoad()
 
         // Initialize navigation bar
-        let titleImage = UIImage(named: "Logo")
-        let titleImageView = UIImageView(image: titleImage)
-        titleImageView.contentMode = .scaleAspectFit
-        navItem.titleView = titleImageView
+        let navBar = navigationController!.navigationBar
+        navBar.barTintColor = Theme.dark
+        navBar.tintColor = Theme.main
+        Utils.setTitleImage(navBar)
 
         presenter.composeChildViewArchitecture()
     }
@@ -68,7 +67,7 @@ class CommandOutputViewController: UIViewController {
     private func updatePreviewMode() {
         textPreview.isHidden = !isTextPreviewMode
         imagePreview.isHidden = isTextPreviewMode
-        togglePreviewModeButton.tintColor = isTextPreviewMode ? nil : UIColor.orange
+        togglePreviewModeButton.tintColor = isTextPreviewMode ? nil : Theme.warn
     }
 
     // MARK: - Touch Events
@@ -91,8 +90,25 @@ class CommandOutputViewController: UIViewController {
 }
 
 extension CommandOutputViewController: CommandOutputPresenterDelegate {
-    func updateOutput(with output: String) {
-        textField.text = output
+    func updateOutput(with log: String, errorLog: String?) {
+        if errorLog == nil {
+            textField.text = log
+        }
+        else {
+            let output = "\(errorLog!)\n\n\(log)"
+            let attributedString = NSMutableAttributedString(string: output)
+
+            // Set attributes for normal logs
+            let allRange = NSRange(location: 0, length: output.count)
+            attributedString.setAttributes(textField.typingAttributes, range: allRange)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: Theme.main, range: allRange)
+
+            // Add attribute for error logs
+            let errorRange = NSRange(location: 0, length: errorLog!.count)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: Theme.error, range: errorRange)
+
+            textField.attributedText = attributedString
+        }
     }
 
     func updateSettings(with newSettings: [(String, String)]) {

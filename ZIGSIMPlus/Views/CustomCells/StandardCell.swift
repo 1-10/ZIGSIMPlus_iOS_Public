@@ -11,7 +11,7 @@ import UIKit
 import DynamicButton
 
 public class StandardCell: UITableViewCell {
-   
+
     @IBOutlet weak var commandOnOff: UISwitch!
     @IBOutlet weak var commandLabel: UILabel!
     @IBOutlet weak var detailButton: DynamicButton!
@@ -19,36 +19,36 @@ public class StandardCell: UITableViewCell {
     @IBOutlet weak var labelConstaint: NSLayoutConstraint!
     var commandSelectionPresenter: CommandSelectionPresenterProtocol!
     var viewController: UIViewController!
-    
+
     @IBAction func commandOnOffAction(_ sender: UISwitch) {
         commandSelectionPresenter.didSelectRow(atLabel: Command.allCases[sender.tag].rawValue)
     }
-    
+
     @IBAction func detailButtonAction(_ sender: UIButton) {
         let parent = viewController as! CommandSelectionViewController
         parent.showDetail(commandNo: commandOnOff.tag)
     }
-    
+
     @IBAction func modalButtonAction(_ sender: UIButton) {
         let parent = viewController as! CommandSelectionViewController
         parent.showModal(commandNo: commandLabel.tag)
     }
-    
+
     func initCell() {
-        commandOnOff.thumbTintColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
-        commandOnOff.onTintColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
-        commandOnOff.tintColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
-        commandOnOff.backgroundColor = UIColor(displayP3Red: 13/255, green: 12/255, blue: 12/255, alpha: 1.0)
+        commandLabel.textColor = Theme.main
+        commandOnOff.thumbTintColor = Theme.gray
+        commandOnOff.onTintColor = Theme.main
+        commandOnOff.tintColor = Theme.main
+        commandOnOff.backgroundColor = Theme.black
         commandOnOff.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         detailButton.setStyle(.caretRight, animated: true)
-        modalButton.backgroundColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+        detailButton.strokeColor = Theme.main
+        modalButton.backgroundColor = Theme.gray
         modalButton.layer.borderWidth = 2.0
-        modalButton.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
+        modalButton.layer.borderColor = Theme.gray.cgColor
         modalButton.layer.cornerRadius = 10.0
         let screenWidth = UIScreen.main.bounds.size.width
         let newConstant = screenWidth - 300 // "300" is a length other than this constant
         labelConstaint.constant = newConstant
-
     }
-    
 }
