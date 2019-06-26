@@ -8,22 +8,23 @@
 
 import Foundation
 
-let modalTexts:[Command: String] = [
-    .acceleration : "test0\naccelerationです。",
-    .gravity : "test1\ngravityです。",
-    .gyro : "test2\ngyroです。",
-    .quaternion : "test3\nquaternionです。",
-    .compass : "test4\ncompassです。",
-    .pressure: "test5\npressureです。",
-    .gps : "test6\ngpsです。",
-    .touch : "test7\ntouchです。",
-    .beacon : "test8\nbeaconです。",
-    .proximity : "test9\nproximityです。",
-    .micLevel : "test10\nmicLevelです。",
-    .remoteControl : "test11\nremoteControlです。",
-    .ndi : "test12\nndiです。",
-    .nfc : "test13\nnfcです。",
-    .arkit : "test14\narkitです。",
-    .battery : "test16\nbatteryです。",
-    .applePencil : "test17\napplePencilです。"
+// Title and Body for help modal
+let modalTexts:[Command: (title: String, body: String)] = [
+    .acceleration : ("Acceleration", "test0\naccelerationです。"),
+    .gravity : ("Gravity", "test1\ngravityです。"),
+    .gyro : ("Gyro", "test2\ngyroです。"),
+    .quaternion : ("Quaternion", "test3\nquaternionです。"),
+    .compass : ("Compass", "test4\ncompassです。"),
+    .pressure: ("Pressure", "test5\npressureです。"),
+    .gps : ("GPS", "test6\ngpsです。"),
+    .touch : ("Touch", "test7\ntouchです。"),
+    .beacon : ("Beacon", "test8\nbeaconです。"),
+    .proximity : ("Proximity", "test9\nproximityです。"),
+    .micLevel : ("Mic Level", "test10\nmicLevelです。"),
+    .remoteControl : ("Remote Control", "test11\nremoteControlです。"),
+    .ndi : ("NDI™", "test12\nndiです。"),
+    .nfc : ("NFC", "test13\nnfcです。"),
+    .arkit : ("ARKit", "test14\narkitです。"),
+    .battery : ("Battery", "test16\nbatteryです。"),
+    .applePencil : ("Apple Pencil", "test17\napplePencilです。"),
 ]

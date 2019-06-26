@@ -48,10 +48,9 @@ public class AltimeterService {
 
     func isAvailable() -> Bool {
         if #available(iOS 8.0, *) {
-            return true
-        } else {
-            return false
+            return CMAltimeter.isRelativeAltitudeAvailable()
         }
+        return false
     }
 
     func startAltimeter() {
