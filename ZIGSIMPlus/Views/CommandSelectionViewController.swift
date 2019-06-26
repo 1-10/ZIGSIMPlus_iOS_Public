@@ -13,8 +13,6 @@ typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var modalLabel: UILabel!
-    @IBOutlet weak var modalButton: UIButton!
     @IBOutlet weak var lockPremiumFeatureLabel: UILabel!
     @IBOutlet weak var unlockPremiumFeatureButton: UIButton!
     @IBOutlet weak var unlockPremiumFeatureModalView: UIView!
@@ -25,11 +23,7 @@ final class CommandSelectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        isHiddenInformationModal(isHedden: true)
-        
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
-
         adjustNavigationDesign()
     }
     
@@ -46,9 +40,7 @@ final class CommandSelectionViewController: UIViewController {
     
     @IBAction func actionButton(_ sender: UIButton) {
         print("sender.tag: \(sender.tag)")
-        if sender.tag == 0 { // "sender.tag == 0" is the back button of information modal
-            isHiddenInformationModal(isHedden: true)
-        } else if sender.tag == 1 { // "sender.tag == 1" is the unlock button
+        if sender.tag == 1 { // "sender.tag == 1" is the unlock button
             unlockPremiumFeatureModalView.isHidden = false
             tableView.isUserInteractionEnabled = false
         } else if sender.tag == 2 { // "sender.tag == 2" is the back button of unlock modal
@@ -83,8 +75,6 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     public func showModal(commandNo: Int) {
-        isHiddenInformationModal(isHedden: false)
-        modalLabel.numberOfLines = 10
         let command = Command.allCases[commandNo]
 
         guard let (title: title, body: msg) = modalTexts[command] else {
@@ -105,11 +95,6 @@ final class CommandSelectionViewController: UIViewController {
 
     @objc private func hideAlert() {
         alert.dismiss(animated: true, completion: nil)
-    }
-    
-    private func isHiddenInformationModal(isHedden:Bool) {
-        modalLabel.isHidden = isHedden
-        modalButton.isHidden = isHedden
     }
     
     private func adjustNavigationDesign() {
