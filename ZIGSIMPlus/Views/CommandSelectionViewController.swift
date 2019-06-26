@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import MarkdownKit
 
 typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
@@ -81,11 +82,17 @@ final class CommandSelectionViewController: UIViewController {
             fatalError("Invalid command: \(command)")
         }
 
-        alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
             UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
         }))
         alert.addAction(UIAlertAction(title: "OK", style: .default))
+
+        // Convert msg string to attributed text
+        let markdownParser = MarkdownParser()
+        let aText = NSMutableAttributedString(attributedString: markdownParser.parse(msg))
+
+        alert.setValue(aText, forKey: "attributedMessage")
 
         present(alert, animated: true, completion: {
             self.alert.view.superview?.isUserInteractionEnabled = true
