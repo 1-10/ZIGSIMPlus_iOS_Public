@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh
+${BUILT_PRODUCTS_DIR}/DeviceKit-framework/DeviceKit.framework
+${BUILT_PRODUCTS_DIR}/DynamicButton/DynamicButton.framework
+${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework
+${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON-framework/SwiftyJSON.framework
+${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework

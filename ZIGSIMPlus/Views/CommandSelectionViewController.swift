@@ -7,21 +7,54 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lockPremiumFeatureLabel: UILabel!
+    @IBOutlet weak var unlockPremiumFeatureButton: UIButton!
+    @IBOutlet weak var unlockPremiumFeatureModalView: UIView!
+    @IBOutlet weak var unlockPremiumFeatureModalLabel: UILabel!
+    
     var presenter: CommandSelectionPresenterProtocol!
     var alert: UIAlertController = UIAlertController() // dummy
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
-        adjustViewDesign()
+        adjustNavigationDesign()
     }
     
-    func showDetail(commandNo: Int) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Check here to switch lock/unlock after restore
+        if presenter.isPremiumFeaturePurchased {
+            unlockPremiumFeature()
+        } else {
+            lockPremiumFeature()
+        }
+    }
+    
+    @IBAction func actionButton(_ sender: UIButton) {
+        print("sender.tag: \(sender.tag)")
+        if sender.tag == 1 { // "sender.tag == 1" is the unlock button
+            unlockPremiumFeatureModalView.isHidden = false
+            tableView.isUserInteractionEnabled = false
+        } else if sender.tag == 2 { // "sender.tag == 2" is the back button of unlock modal
+            unlockPremiumFeatureModalView.isHidden = true
+            tableView.isUserInteractionEnabled = true
+        } else if sender.tag == 3 { // "sender.tag == 3" is the purchase button of unlock modal
+            unlockPremiumFeatureModalView.isHidden = true
+            tableView.isUserInteractionEnabled = false
+            SVProgressHUD.show()
+            presenter.purchase()
+        }
+    }
+    
+    public func showDetail(commandNo: Int) {
         let command = Command.allCases[commandNo]
 
         // Get detail view controller
@@ -40,8 +73,8 @@ final class CommandSelectionViewController: UIViewController {
             return // Do nothing if detail view for the command is not found
         }
     }
-
-    func showModal(commandNo: Int) {
+    
+    public func showModal(commandNo: Int) {
         let command = Command.allCases[commandNo]
 
         guard let (title: title, body: msg) = modalTexts[command] else {
@@ -64,10 +97,73 @@ final class CommandSelectionViewController: UIViewController {
         alert.dismiss(animated: true, completion: nil)
     }
     
-    private func adjustViewDesign() {
+    private func adjustNavigationDesign() {
         Utils.setTitleImage(navigationController!.navigationBar)
         navigationController?.navigationBar.barTintColor = Theme.dark
         navigationController?.navigationBar.tintColor = Theme.main
+    }
+
+    private func lockPremiumFeature() {
+        setPremiumFeatureIsHidden(false)
+        adjustLockPremiumFeatureLabel()
+        adjustUnlockPremiumFeatureButton()
+        adjustUnlockPremiumFeatureModalLabel()
+    }
+    
+    private func unlockPremiumFeature() {
+        setPremiumFeatureIsHidden(true)
+    }
+    
+    private func setPremiumFeatureIsHidden(_ isHidden: Bool) {
+        lockPremiumFeatureLabel.isHidden = isHidden
+        unlockPremiumFeatureButton.isHidden = isHidden
+        unlockPremiumFeatureModalView.isHidden = isHidden
+        unlockPremiumFeatureModalLabel.isHidden = isHidden
+    }
+    
+    private func adjustLockPremiumFeatureLabel() {
+        lockPremiumFeatureLabel.frame = CGRect(x:0,y:0,width: UIScreen.main.bounds.size.width, height: 44 * 5)
+        lockPremiumFeatureLabel.backgroundColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 0.46)
+    }
+    
+    private func adjustUnlockPremiumFeatureButton() {
+        let billingImage = UIImage(named: "key")
+        unlockPremiumFeatureButton.tintColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7)
+        unlockPremiumFeatureButton.setImage(billingImage, for: .normal)
+        unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width ) / 2,
+                                        y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height ) / 2,
+                                        width: unlockPremiumFeatureButton.frame.size.width ,
+                                        height: unlockPremiumFeatureButton.frame.size.height)
+    }
+    
+    private func adjustUnlockPremiumFeatureModalLabel() {
+        unlockPremiumFeatureModalLabel.layer.cornerRadius = 10
+        unlockPremiumFeatureModalLabel.layer.borderWidth = 1.0
+        unlockPremiumFeatureModalLabel.layer.masksToBounds = true
+        unlockPremiumFeatureModalLabel.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
+        
+        adjustUnlockPremiumFeatureModalLine(x: 0,
+                               y: unlockPremiumFeatureModalLabel.frame.size.height - 44,
+                               width: unlockPremiumFeatureModalLabel.frame.size.width,
+                               height: 1)
+        adjustUnlockPremiumFeatureModalLine(x: unlockPremiumFeatureModalLabel.frame.size.width / 2,
+                               y: unlockPremiumFeatureModalLabel.frame.size.height - 44,
+                               width: 1,
+                               height: unlockPremiumFeatureModalLabel.frame.size.height - 44)
+        
+        unlockPremiumFeatureModalView.isHidden = true
+    }
+    
+    private func adjustUnlockPremiumFeatureModalLine(x:CGFloat, y:CGFloat, width:CGFloat, height:CGFloat) {
+        let upperLayer = CALayer()
+        upperLayer.frame = CGRect(
+            x: x,
+            y: y,
+            width: width,
+            height: height
+        )
+        upperLayer.backgroundColor = UIColor(displayP3Red: 63/255, green: 63/255, blue: 63/255, alpha: 1.0).cgColor
+        unlockPremiumFeatureModalLabel.layer.addSublayer(upperLayer)
     }
 }
 
@@ -83,6 +179,14 @@ extension CommandSelectionViewController: UITableViewDelegate {
             }
         }
         return indexPath
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        lockPremiumFeatureLabel.frame = CGRect(x: 0, y: (-1) * scrollView.contentOffset.y, width: lockPremiumFeatureLabel.frame.size.width , height: lockPremiumFeatureLabel.frame.size.height)
+        unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width ) / 2,
+                                        y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height ) / 2 - scrollView.contentOffset.y,
+                                        width: unlockPremiumFeatureButton.frame.size.width ,
+                                        height: unlockPremiumFeatureButton.frame.size.height)
     }
 }
 
@@ -152,4 +256,17 @@ extension CommandSelectionViewController: UITableViewDataSource {
 }
 
 extension CommandSelectionViewController: CommandSelectionPresenterDelegate {
+    func showPurchaseResult(isSuccessful: Bool, title: String?, message: String?) {
+        SVProgressHUD.dismiss()
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Close", style: .default) { _ in
+            if isSuccessful {
+                self.unlockPremiumFeature()
+            }
+            self.tableView.isUserInteractionEnabled = true
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
