@@ -48,7 +48,7 @@ public class CommandDetailSettingsViewController : UIViewController {
                 // Use DetailSettingKey for identifier
                 segmented.tag = data.key.rawValue
                 
-                setSegmentedAvailability(key: data.key, segmented)
+                setSegmentedAvailablity(settingKey: data.key, segmented)
                 
                 stackView.addArrangedSubview(segmented)
 
@@ -97,7 +97,7 @@ public class CommandDetailSettingsViewController : UIViewController {
         
         // Pass updated setting to presenter
         if var segmentedInt = setting as? SegmentedInt {
-            setSegmentedAvailability(key: segmentedInt.key, segmented)
+            setSegmentedAvailablity(settingKey: segmentedInt.key, segmented)
             segmentedInt.value = segmented.selectedSegmentIndex
             presenter.updateSetting(setting: segmentedInt)
         } else if var segmentedBool = setting as? SegmentedBool {
@@ -137,8 +137,8 @@ public class CommandDetailSettingsViewController : UIViewController {
         presenter.updateSetting(setting: setting)
     }
     
-    private func setSegmentedAvailability(key: DetailSettingsKey, _ segmented: UISegmentedControl) {
-        switch key {
+    private func setSegmentedAvailablity(settingKey: DetailSettingsKey, _ segmented: UISegmentedControl) {
+        switch settingKey {
         case .ndiType:
             if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
                 segmented.selectedSegmentIndex = 0
