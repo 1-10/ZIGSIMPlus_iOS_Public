@@ -18,6 +18,8 @@
 		02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5322A4F9140071E9D2 /* StringExtension.swift */; };
 		02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */; };
 		02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */; };
+		026A3C3222BB656C0016DEF6 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A3C3122BB656C0016DEF6 /* UIColorExtension.swift */; };
+		026A3C3422BB831F0016DEF6 /* CommandOutputTabNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A3C3322BB831F0016DEF6 /* CommandOutputTabNavigationController.swift */; };
 		0274B66322A0FD00005D7266 /* RemoteControlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274B66222A0FD00005D7266 /* RemoteControlService.swift */; };
 		0281B29722A6791500ED97D9 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */; };
 		02852E4422B7710F00801B6A /* TouchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02852E4322B7710F00801B6A /* TouchServiceTests.swift */; };
@@ -35,6 +37,10 @@
 		02A8FA8E2296B6DA001FB3DD /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */; };
 		02CE3DE822B1FB3E00A2B7B8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 02CE3DE722B1FB3E00A2B7B8 /* Settings.bundle */; };
 		02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CF468122A8D9A8006F93EF /* ArkitUtils.swift */; };
+		02DF072D22BB36D300F3ABE2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF072C22BB36D300F3ABE2 /* Theme.swift */; };
+		02E49E9C22C202D700987C1A /* ZIGTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E49E9B22C202D700987C1A /* ZIGTextField.swift */; };
+		02E49E9E22C2096D00987C1A /* ZIGSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */; };
+		02E49EA022C20DA200987C1A /* ZIGLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E49E9F22C20DA200987C1A /* ZIGLabel.swift */; };
 		02E9AE1C22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1B22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift */; };
 		02E9AE1E22B8FF490070A380 /* CommandDetailSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */; };
 		02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */; };
@@ -45,6 +51,9 @@
 		633A82CF22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A82CE22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift */; };
 		6345569A22B0CEF20032E976 /* VideoCapturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6345569922B0CEF20032E976 /* VideoCapturePresenter.swift */; };
 		6345569C22B0E9150032E976 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6345569B22B0E9150032E976 /* PresenterFactory.swift */; };
+		637E961D22B8DFAF0019E70F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637E961C22B8DFAF0019E70F /* StoreKit.framework */; };
+		637E961F22B8FF5C0019E70F /* InAppPurchaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E961E22B8FF5C0019E70F /* InAppPurchaseFacade.swift */; };
+		637E962322BA00C40019E70F /* InAppPurchaseFacadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E962222BA00C40019E70F /* InAppPurchaseFacadeTests.swift */; };
 		638345F422A6832700370600 /* NFCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638345F322A6832700370600 /* NFCService.swift */; };
 		63A6192B22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */; };
 		63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A6192C22A79EDF00B015DE /* CoreNFC.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -117,6 +126,8 @@
 		02621F5322A4F9140071E9D2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		02621F5822A4F9250071E9D2 /* CommandSettingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSettingPresenter.swift; sourceTree = "<group>"; };
+		026A3C3122BB656C0016DEF6 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		026A3C3322BB831F0016DEF6 /* CommandOutputTabNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputTabNavigationController.swift; sourceTree = "<group>"; };
 		0274B66222A0FD00005D7266 /* RemoteControlService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlService.swift; sourceTree = "<group>"; };
 		0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
 		02852E4322B7710F00801B6A /* TouchServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchServiceTests.swift; sourceTree = "<group>"; };
@@ -134,6 +145,10 @@
 		02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		02CE3DE722B1FB3E00A2B7B8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		02CF468122A8D9A8006F93EF /* ArkitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitUtils.swift; sourceTree = "<group>"; };
+		02DF072C22BB36D300F3ABE2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		02E49E9B22C202D700987C1A /* ZIGTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGTextField.swift; sourceTree = "<group>"; };
+		02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGSegmentedControl.swift; sourceTree = "<group>"; };
+		02E49E9F22C20DA200987C1A /* ZIGLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGLabel.swift; sourceTree = "<group>"; };
 		02E9AE1B22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsPresenter.swift; sourceTree = "<group>"; };
 		02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsViewController.swift; sourceTree = "<group>"; };
 		02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +160,9 @@
 		6345569922B0CEF20032E976 /* VideoCapturePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapturePresenter.swift; sourceTree = "<group>"; };
 		6345569B22B0E9150032E976 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
 		63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZIGSIMPlus.entitlements; sourceTree = "<group>"; };
+		637E961C22B8DFAF0019E70F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		637E961E22B8FF5C0019E70F /* InAppPurchaseFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseFacade.swift; sourceTree = "<group>"; };
+		637E962222BA00C40019E70F /* InAppPurchaseFacadeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseFacadeTests.swift; sourceTree = "<group>"; };
 		638345F322A6832700370600 /* NFCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCService.swift; sourceTree = "<group>"; };
 		63A6192A22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTypeNameFormatExtension.swift; sourceTree = "<group>"; };
 		63A6192C22A79EDF00B015DE /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
@@ -190,6 +208,7 @@
 				63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */,
 				FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */,
 				0236461C2298253900171F73 /* libndi_ios.a in Frameworks */,
+				637E961D22B8DFAF0019E70F /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +309,7 @@
 				02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */,
 				02621F5322A4F9140071E9D2 /* StringExtension.swift */,
 				02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */,
+				026A3C3122BB656C0016DEF6 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -310,6 +330,16 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		02E49EA122C20F1100987C1A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				02E49E9B22C202D700987C1A /* ZIGTextField.swift */,
+				02E49E9F22C20DA200987C1A /* ZIGLabel.swift */,
+				02E49E9D22C2096D00987C1A /* ZIGSegmentedControl.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		02F0DBEF229FBB1700D45E56 /* ARKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +353,7 @@
 		3047AA928C608382EC8AFA33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				637E961C22B8DFAF0019E70F /* StoreKit.framework */,
 				63A6192C22A79EDF00B015DE /* CoreNFC.framework */,
 				023642CD2298253500171F73 /* Private */,
 				4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */,
@@ -383,6 +414,7 @@
 				63575D45229FEBB400BC1868 /* ZIGSIMPlus.entitlements */,
 				902EB9C9227BE68D008F1650 /* AppDelegate.swift */,
 				6345569B22B0E9150032E976 /* PresenterFactory.swift */,
+				023BB10522965B490094363B /* Utils.swift */,
 				9092E4C7227D85890019F1C1 /* Models */,
 				902EB9F7227BECC7008F1650 /* Views */,
 				902EB9F8227BECDD008F1650 /* Presenters */,
@@ -403,6 +435,7 @@
 				02852E4322B7710F00801B6A /* TouchServiceTests.swift */,
 				0281B29622A6791500ED97D9 /* ServiceManagerTests.swift */,
 				6326759322B3B1DA009A26B8 /* AppSettingModelTests.swift */,
+				637E962222BA00C40019E70F /* InAppPurchaseFacadeTests.swift */,
 				902EB9E0227BE68F008F1650 /* Info.plist */,
 			);
 			path = ZIGSIMPlusTests;
@@ -423,14 +456,16 @@
 				B3C6588522A901D400B4358B /* CustomCells */,
 				902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */,
 				9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */,
+				02E49EA122C20F1100987C1A /* Components */,
 				B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */,
 				029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */,
+				026A3C3322BB831F0016DEF6 /* CommandOutputTabNavigationController.swift */,
 				02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */,
 				02852E4722B777F800801B6A /* CommandSelectionTabNavigationController.swift */,
 				02A0359A229CD6F800E7399E /* CommandSettingViewController.swift */,
+				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				B30188E122B3909E00CB549F /* CommandSelection.storyboard */,
 				B30188E322B390C500CB549F /* CommandOutput.storyboard */,
-				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				B30188E522B390E600CB549F /* CommandSetting.storyboard */,
 			);
 			path = Views;
@@ -452,6 +487,7 @@
 			children = (
 				9092E4CB227EBF4D0019F1C1 /* Command.swift */,
 				B3CFE5B722ADF436009664C0 /* ModalTexts.swift */,
+				02DF072C22BB36D300F3ABE2 /* Theme.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -462,7 +498,7 @@
 				903BA770227D6C2100A2C378 /* AppSettingModel.swift */,
 				02A8FA8D2296B6DA001FB3DD /* NetworkAdapter.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */,
-				023BB10522965B490094363B /* Utils.swift */,
+				637E961E22B8FF5C0019E70F /* InAppPurchaseFacade.swift */,
 				02A8FA822296B62D001FB3DD /* Services */,
 			);
 			path = Models;
@@ -551,6 +587,9 @@
 					902EB9C5227BE68D008F1650 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.NearFieldCommunicationTagReading = {
 								enabled = 1;
 							};
@@ -642,26 +681,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DeviceKit-framework/DeviceKit.framework",
-				"${BUILT_PRODUCTS_DIR}/DynamicButton/DynamicButton.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftOSC/SwiftOSC.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-framework/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeviceKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicButton.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOSC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -752,10 +776,12 @@
 				02A8FA882296B62D001FB3DD /* TouchService.swift in Sources */,
 				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,
 				638345F422A6832700370600 /* NFCService.swift in Sources */,
+				026A3C3422BB831F0016DEF6 /* CommandOutputTabNavigationController.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
 				6345569C22B0E9150032E976 /* PresenterFactory.swift in Sources */,
 				B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,
+				02E49E9C22C202D700987C1A /* ZIGTextField.swift in Sources */,
 				02A03598229CD56E00E7399E /* AudioLevelService.swift in Sources */,
 				02621F5922A4F9250071E9D2 /* CommandSettingPresenter.swift in Sources */,
 				0236461B2298253900171F73 /* VideoCaptureService.swift in Sources */,
@@ -768,6 +794,9 @@
 				02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,
 				02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */,
+				02E49EA022C20DA200987C1A /* ZIGLabel.swift in Sources */,
+				026A3C3222BB656C0016DEF6 /* UIColorExtension.swift in Sources */,
+				02DF072D22BB36D300F3ABE2 /* Theme.swift in Sources */,
 				02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */,
 				02852E4822B777F800801B6A /* CommandSelectionTabNavigationController.swift in Sources */,
 				6345569A22B0CEF20032E976 /* VideoCapturePresenter.swift in Sources */,
@@ -777,6 +806,7 @@
 				0274B66322A0FD00005D7266 /* RemoteControlService.swift in Sources */,
 				0212CDAF22A6219E00A83C16 /* MotionService.swift in Sources */,
 				633A82CF22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift in Sources */,
+				637E961F22B8FF5C0019E70F /* InAppPurchaseFacade.swift in Sources */,
 				0212CDB322A6356500A83C16 /* VideoCaptureViewController.swift in Sources */,
 				B3CFE5BA22AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift in Sources */,
 				02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */,
@@ -785,6 +815,7 @@
 				02A8FA892296B62D001FB3DD /* LocationService.swift in Sources */,
 				B39DCDA222B7728C00D4E722 /* UITabBarExtension.swift in Sources */,
 				02621F5722A4F9140071E9D2 /* UIScrollViewExtension.swift in Sources */,
+				02E49E9E22C2096D00987C1A /* ZIGSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,6 +828,7 @@
 				02852E4422B7710F00801B6A /* TouchServiceTests.swift in Sources */,
 				0281B29722A6791500ED97D9 /* ServiceManagerTests.swift in Sources */,
 				6326759422B3B1DA009A26B8 /* AppSettingModelTests.swift in Sources */,
+				637E962322BA00C40019E70F /* InAppPurchaseFacadeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,24 +32,33 @@ enum RatePerSecond: Int {
 }
 
 enum ImageDetectorType: Int {
-    case face = 1
-    case qrCode = 2
-    case rectangle = 3
-    case text = 4
+    case face = 0
+    case qrCode = 1
+    case rectangle = 2
+    case text = 3
 }
 
 enum ImageDetectorAccuracy: Int {
-    case low = 1
-    case high = 2
+    case low = 0
+    case high = 1
 }
 
-enum ImageDatectorNumberOfAngles: Int {
+enum ImageDetectorNumberOfAngles: Int {
     case one = 1
     case three = 3
     case five = 5
     case seven = 7
     case nine = 9
     case eleven = 11
+}
+
+enum ImageDetectorNumberOfAnglesForSegment: Int {
+    case one = 0
+    case three = 1
+    case five = 2
+    case seven = 3
+    case nine = 4
+    case eleven = 5
 }
 
 enum ArkitTrackingType: Int {
@@ -137,9 +146,9 @@ public class AppSettingModel {
     var imageDetectorType: ImageDetectorType = .face
     var imageDetectorAccuracy: ImageDetectorAccuracy = .high
     var imageDetectorTracks: Bool = false
-    var imageDetectorNumberOfAngles: ImageDatectorNumberOfAngles = .one
-    var imageDetectorDetectEyeBlink: Bool = true
-    var imageDetectorDetectSmile: Bool = true
+    var imageDetectorNumberOfAnglesForSegment: ImageDetectorNumberOfAnglesForSegment = .one
+    var imageDetectorDetectsEyeBlink: Bool = true
+    var imageDetectorDetectsSmile: Bool = true
     var ndiType: NdiType = .CAMERA
     var ndiCameraPosition: NdiCameraPosition = .BACK
     var depthType: DepthType = .DEPTH
@@ -179,6 +188,23 @@ public class AppSettingModel {
         return AppSettingModel.shared.isActiveByCommand[.touch]! ||
             AppSettingModel.shared.isActiveByCommand[.applePencil]!
     }
+    
+    var imageDetectorNumberOfAngles: ImageDetectorNumberOfAngles {
+        switch imageDetectorNumberOfAnglesForSegment {
+        case .one:
+            return .one
+        case .three:
+            return .three
+        case .five:
+            return .five
+        case .seven:
+            return .seven
+        case .nine:
+            return .nine
+        case .eleven:
+            return .eleven
+        }
+    }
 }
 
 // user default value
@@ -196,4 +222,10 @@ extension DefaultsKeys {
     static let userNdiCameraType = DefaultsKey<Int?>("userNdiCameraType", defaultValue: 0)
     static let userDepthType = DefaultsKey<Int?>("userDepthType", defaultValue: 0)
     static let userArkitTrackingType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
+    static let userImageDetectorType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
+    static let userImageDetectorAccuracy = DefaultsKey<Int?>("userImageDetectorAccuracy", defaultValue: 0)
+    static let userImageDetectorTracks = DefaultsKey<Bool?>("userImageDetectorTracks", defaultValue: true)
+    static let userImageDetectorNumberOfAnglesForSegment = DefaultsKey<Int?>("userImageDetectorNumberOfAnglesForSegment", defaultValue: 0)
+    static let userImageDetectorDetectsEyeBlink = DefaultsKey<Bool?>("userImageDetectorDetectsEyeBlink", defaultValue: true)
+    static let userImageDetectorDetectsSmile = DefaultsKey<Bool?>("userImageDetectorDetectsSmile", defaultValue: true)
 }

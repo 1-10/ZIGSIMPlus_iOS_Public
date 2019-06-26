@@ -51,5 +51,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>ProductIDForPremiumFeatures</key>
+	<string>com.OneToTen.ZIGSIMPlusExplicit.PremiumFeatures</string>
 </dict>
 </plist>

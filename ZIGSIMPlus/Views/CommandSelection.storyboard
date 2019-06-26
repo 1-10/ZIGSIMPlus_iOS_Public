@@ -37,47 +37,109 @@
                                     <outlet property="delegate" destination="mba-MW-Syn" id="10U-4U-Fhl"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApI-DY-17E">
-                                <rect key="frame" x="102" y="299" width="210" height="210"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="ojn-aV-OXE"/>
-                                    <constraint firstAttribute="width" constant="210" id="zsC-bH-eau"/>
-                                </constraints>
+                            <label opaque="NO" alpha="0.46000000000000002" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omw-lC-Jla">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="212"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.11630727640000001" green="1" blue="0.55855442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="modalButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdn-5h-TUK">
-                                <rect key="frame" x="282" y="299" width="30" height="30"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TS3-fm-ViJ">
+                                <rect key="frame" x="184" y="80" width="46" height="65"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="bwe-UT-5Ug"/>
-                                    <constraint firstAttribute="width" constant="30" id="uc5-nz-2Qg"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="BO3-mZ-hf2"/>
+                                    <constraint firstAttribute="height" constant="65" id="dVb-GI-phg"/>
+                                    <constraint firstAttribute="width" constant="46" id="hEc-Y4-Gk5"/>
                                 </constraints>
-                                <state key="normal" title="×"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="actionButton:" destination="mba-MW-Syn" eventType="touchUpInside" id="4Wd-Wq-eGz"/>
+                                    <action selector="actionButton:" destination="mba-MW-Syn" eventType="touchUpInside" id="m6H-9a-W55"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36u-eh-Ibr">
+                                <rect key="frame" x="87" y="339" width="240" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yag-8G-7P5">
+                                        <rect key="frame" x="-10" y="-5" width="260" height="140"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="WDv-Qx-2Jv"/>
+                                            <constraint firstAttribute="width" constant="260" id="X7S-ED-opo"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">有料機能です。
+
+機能の解放には350円必要です。
+
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUt-RR-0Ks">
+                                        <rect key="frame" x="-10" y="89" width="136" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="pNj-fU-aCz"/>
+                                            <constraint firstAttribute="width" constant="136" id="qeW-Vj-3ew"/>
+                                        </constraints>
+                                        <state key="normal" title="戻る"/>
+                                        <connections>
+                                            <action selector="actionButton:" destination="mba-MW-Syn" eventType="touchUpInside" id="y5O-ni-rxi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTT-0L-p0y">
+                                        <rect key="frame" x="125" y="89" width="135" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="IRs-U0-dfd"/>
+                                            <constraint firstAttribute="width" constant="135" id="Qhs-nO-qYl"/>
+                                        </constraints>
+                                        <state key="normal" title="購入する"/>
+                                        <connections>
+                                            <action selector="actionButton:" destination="mba-MW-Syn" eventType="touchUpInside" id="Iis-mx-Yvu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fUt-RR-0Ks" firstAttribute="leading" secondItem="Yag-8G-7P5" secondAttribute="leading" id="CLh-3f-JRV"/>
+                                    <constraint firstItem="Yag-8G-7P5" firstAttribute="leading" secondItem="36u-eh-Ibr" secondAttribute="leading" constant="-10" id="Dci-Gx-gey"/>
+                                    <constraint firstItem="fUt-RR-0Ks" firstAttribute="baseline" secondItem="HTT-0L-p0y" secondAttribute="baseline" id="E3v-Io-DPj"/>
+                                    <constraint firstItem="Yag-8G-7P5" firstAttribute="top" secondItem="36u-eh-Ibr" secondAttribute="top" constant="-5" id="J8R-U3-hkL"/>
+                                    <constraint firstAttribute="width" constant="240" id="Q17-0W-ILb"/>
+                                    <constraint firstAttribute="height" constant="130" id="cI2-kN-Auv"/>
+                                    <constraint firstItem="Yag-8G-7P5" firstAttribute="trailing" secondItem="HTT-0L-p0y" secondAttribute="trailing" constant="-10" id="kw2-yw-HiN"/>
+                                    <constraint firstItem="fUt-RR-0Ks" firstAttribute="top" secondItem="36u-eh-Ibr" secondAttribute="top" constant="89" id="mKY-qO-M8o"/>
+                                    <constraint firstItem="Yag-8G-7P5" firstAttribute="centerY" secondItem="36u-eh-Ibr" secondAttribute="centerY" id="nkG-h8-vRg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ApI-DY-17E" firstAttribute="centerY" secondItem="FCH-u6-iqn" secondAttribute="centerY" id="3O6-vo-Dbl"/>
+                            <constraint firstItem="TS3-fm-ViJ" firstAttribute="top" secondItem="XPd-KM-7cg" secondAttribute="top" constant="80" id="3mm-rM-mxc"/>
+                            <constraint firstItem="36u-eh-Ibr" firstAttribute="centerX" secondItem="FCH-u6-iqn" secondAttribute="centerX" id="8CM-mJ-j0F"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="leading" secondItem="XPd-KM-7cg" secondAttribute="leading" id="AsL-Ea-O9K"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="bottom" secondItem="XPd-KM-7cg" secondAttribute="bottom" id="CAb-cN-TO1"/>
-                            <constraint firstItem="ApI-DY-17E" firstAttribute="centerX" secondItem="FCH-u6-iqn" secondAttribute="centerX" id="GpH-57-c8H"/>
+                            <constraint firstItem="TS3-fm-ViJ" firstAttribute="centerX" secondItem="FCH-u6-iqn" secondAttribute="centerX" id="Hhh-7R-Ptr"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="trailing" secondItem="XPd-KM-7cg" secondAttribute="trailing" id="Khf-S8-mJG"/>
-                            <constraint firstItem="cdn-5h-TUK" firstAttribute="trailing" secondItem="ApI-DY-17E" secondAttribute="trailing" id="PR1-Ob-YZa"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="top" secondItem="XPd-KM-7cg" secondAttribute="top" id="QJo-hR-cwq"/>
-                            <constraint firstItem="cdn-5h-TUK" firstAttribute="top" secondItem="ApI-DY-17E" secondAttribute="top" id="aQO-8E-aXr"/>
+                            <constraint firstItem="36u-eh-Ibr" firstAttribute="centerY" secondItem="FCH-u6-iqn" secondAttribute="centerY" id="t5d-Dr-Ja7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XPd-KM-7cg"/>
                     </view>
                     <navigationItem key="navigationItem" id="jmw-WX-nyq"/>
                     <connections>
-                        <outlet property="modalButton" destination="cdn-5h-TUK" id="bHp-zN-998"/>
-                        <outlet property="modalLabel" destination="ApI-DY-17E" id="PXf-cX-W9Z"/>
+                        <outlet property="lockPremiumFeatureLabel" destination="Omw-lC-Jla" id="mYT-U0-bKa"/>
                         <outlet property="tableView" destination="brz-QX-Ylr" id="nT9-aH-cVc"/>
+                        <outlet property="unlockPremiumFeatureButton" destination="TS3-fm-ViJ" id="Jyd-em-Y2q"/>
+                        <outlet property="unlockPremiumFeatureModalLabel" destination="Yag-8G-7P5" id="pLA-c6-44u"/>
+                        <outlet property="unlockPremiumFeatureModalView" destination="36u-eh-Ibr" id="dxJ-eY-1tX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ar9-It-yWL" sceneMemberID="firstResponder"/>
@@ -145,7 +207,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Mxg-wu-oGO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.27908620239999998" green="0.62241619829999995" blue="0.41565775869999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
