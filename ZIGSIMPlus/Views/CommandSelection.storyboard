@@ -37,46 +37,18 @@
                                     <outlet property="delegate" destination="mba-MW-Syn" id="10U-4U-Fhl"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApI-DY-17E">
-                                <rect key="frame" x="102" y="299" width="210" height="210"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="ojn-aV-OXE"/>
-                                    <constraint firstAttribute="width" constant="210" id="zsC-bH-eau"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="modalButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdn-5h-TUK">
-                                <rect key="frame" x="282" y="299" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="bwe-UT-5Ug"/>
-                                    <constraint firstAttribute="width" constant="30" id="uc5-nz-2Qg"/>
-                                </constraints>
-                                <state key="normal" title="×"/>
-                                <connections>
-                                    <action selector="actionButton:" destination="mba-MW-Syn" eventType="touchUpInside" id="4Wd-Wq-eGz"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ApI-DY-17E" firstAttribute="centerY" secondItem="FCH-u6-iqn" secondAttribute="centerY" id="3O6-vo-Dbl"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="leading" secondItem="XPd-KM-7cg" secondAttribute="leading" id="AsL-Ea-O9K"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="bottom" secondItem="XPd-KM-7cg" secondAttribute="bottom" id="CAb-cN-TO1"/>
-                            <constraint firstItem="ApI-DY-17E" firstAttribute="centerX" secondItem="FCH-u6-iqn" secondAttribute="centerX" id="GpH-57-c8H"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="trailing" secondItem="XPd-KM-7cg" secondAttribute="trailing" id="Khf-S8-mJG"/>
-                            <constraint firstItem="cdn-5h-TUK" firstAttribute="trailing" secondItem="ApI-DY-17E" secondAttribute="trailing" id="PR1-Ob-YZa"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="top" secondItem="XPd-KM-7cg" secondAttribute="top" id="QJo-hR-cwq"/>
-                            <constraint firstItem="cdn-5h-TUK" firstAttribute="top" secondItem="ApI-DY-17E" secondAttribute="top" id="aQO-8E-aXr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XPd-KM-7cg"/>
                     </view>
                     <navigationItem key="navigationItem" id="jmw-WX-nyq"/>
                     <connections>
-                        <outlet property="modalButton" destination="cdn-5h-TUK" id="bHp-zN-998"/>
-                        <outlet property="modalLabel" destination="ApI-DY-17E" id="PXf-cX-W9Z"/>
                         <outlet property="tableView" destination="brz-QX-Ylr" id="nT9-aH-cVc"/>
                     </connections>
                 </viewController>
