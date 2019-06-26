@@ -11,6 +11,11 @@ import Foundation
 /// Command is a constant label corresponds to features.
 /// NOTE: the order of cases affects selection view.
 public enum Command: String, CaseIterable {
+    case ndi = "NDI"
+    case arkit = "ARKit"
+    case imageDetection = "IMAGE DETECTION"
+    case nfc = "NFC READER"
+    case applePencil = "Apple Pencil"
     case acceleration = "Acceleration"
     case gravity = "Gravity"
     case gyro = "Gyro"
@@ -23,10 +28,5 @@ public enum Command: String, CaseIterable {
     case proximity = "Proximity"
     case micLevel = "MIC LEVEL"
     case remoteControl = "Remote Control"
-    case ndi = "NDI"
-    case nfc = "NFC READER"
-    case arkit = "ARKit"
-    case imageDetection = "IMAGE DETECTION"
     case battery = "Battery"
-    case applePencil = "Apple Pencil"
 }

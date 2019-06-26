@@ -175,7 +175,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
-                                                    <action selector="actionButton:" destination="M4O-L3-dJK" eventType="touchUpInside" id="atx-7n-bgO"/>
+                                                    <action selector="restorePurchasePressed:" destination="M4O-L3-dJK" eventType="touchUpInside" id="atx-7n-bgO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -246,7 +246,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="button" destination="2qx-FQ-b89" id="UZN-h7-aWO"/>
+                        <outlet property="restorePurchaseButton" destination="2qx-FQ-b89" id="UZN-h7-aWO"/>
                         <outlet property="scrollView" destination="dap-Xf-KgX" id="PtE-fC-uVZ"/>
                         <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZIR-2R-J7T"/>
                         <outletCollection property="labels" destination="v2V-4u-ORS" collectionClass="NSMutableArray" id="ZDt-zW-C27"/>

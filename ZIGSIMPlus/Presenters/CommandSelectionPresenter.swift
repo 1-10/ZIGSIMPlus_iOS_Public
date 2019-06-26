@@ -9,12 +9,15 @@
 import Foundation
 
 protocol CommandSelectionPresenterProtocol {
+    var isPremiumFeaturePurchased: Bool { get }
     var numberOfCommandToSelect: Int { get }
     func getCommandToSelect(forRow row: Int) -> CommandToSelect
     func didSelectRow(atLabel labelString: String)
+    func purchase()
 }
 
 protocol CommandSelectionPresenterDelegate: AnyObject {
+    func showPurchaseResult(isSuccessful: Bool, title: String?, message: String?)
 }
 
 final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
@@ -26,6 +29,10 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
         self.view = view
         self.mediator = mediator
         updateCommandToSelectArray()
+    }
+    
+    var isPremiumFeaturePurchased: Bool {
+        return InAppPurchaseFacade.shared.isPurchased()
     }
     
     var numberOfCommandToSelect: Int {
@@ -46,6 +53,32 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
         // We need to update Command because "command.isAvailable" may change by selection
         // e.g. When user enables "ARKit", "Face Tracking" must be disabled
         updateCommandToSelectArray()
+    }
+    
+    func purchase() {
+        InAppPurchaseFacade.shared.purchase { (result, error) in
+            var title = ""
+            var message = ""
+            var isSuccessful = false
+            
+            if result == .purchaseSuccessful {
+                isSuccessful = true
+                title = "Purchase Successful"
+                message = """
+                Thank you for purchasing.
+                Enjoy!
+                """
+            } else {
+                title = "Purchase Failed"
+                if let error = error {
+                    message = "There was a problem in purchase:\n" + error.localizedDescription
+                } else {
+                    message = "There was a problem in purchase."
+                }
+            }
+            
+            self.view.showPurchaseResult(isSuccessful: isSuccessful, title: title, message: message)
+        }
     }
 
     // Update all CommandToSelect

@@ -7,6 +7,7 @@
 //
 import Foundation
 import UIKit
+import SVProgressHUD
 
 protocol ContentScrollable {
     var scrollView: UIScrollView! { get }
@@ -20,7 +21,7 @@ public class CommandSettingViewController : UIViewController {
     @IBOutlet var labels: [UILabel]!
     @IBOutlet var segments: [UISegmentedControl]!
     @IBOutlet var textFields: [UITextField]!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var restorePurchaseButton: UIButton!
     var presenter: CommandSettingPresenterProtocol!
 
     override public func viewDidLoad() {
@@ -65,9 +66,11 @@ public class CommandSettingViewController : UIViewController {
     @IBAction func changeSettingData(_ sender: UISegmentedControl) {
         updateSettingData()
     }
-
-    // Please modify this method, when you add the processing of Restore Purchase.
-    @IBAction func actionButton(_ sender: UIButton) {
+    
+    @IBAction func restorePurchasePressed(_ sender: UIButton) {
+        restorePurchaseButton.isEnabled = false
+        SVProgressHUD.show()
+        presenter.restorePurchase()
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
@@ -113,16 +116,27 @@ public class CommandSettingViewController : UIViewController {
     }
 
     private func adjustViewDesign() {
-        button.setTitle(" Restore\nPurchase", for: .normal)
-        button.setTitleColor(Theme.main, for: .normal)
-        button.titleLabel?.numberOfLines = 2
-        button.layer.cornerRadius = 0.5 * button.bounds.size.width
-        button.layer.borderWidth = 1.0
-        button.layer.borderColor = Theme.main.cgColor
+        restorePurchaseButton.setTitle(" Restore\nPurchase", for: .normal)
+        restorePurchaseButton.setTitleColor(Theme.main, for: .normal)
+        restorePurchaseButton.titleLabel?.numberOfLines = 2
+        restorePurchaseButton.layer.cornerRadius = 0.5 * restorePurchaseButton.bounds.size.width
+        restorePurchaseButton.layer.borderWidth = 1.0
+        restorePurchaseButton.layer.borderColor = Theme.main.cgColor
     }
 }
 
-extension CommandSettingViewController: CommandSettingPresenterDelegate {}
+extension CommandSettingViewController: CommandSettingPresenterDelegate {
+    func showRestorePurchaseResult(isSuccessful: Bool, title: String?, message: String?) {
+        SVProgressHUD.dismiss()
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Close", style: .default) { _ in
+            self.restorePurchaseButton.isEnabled = true
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
 
 extension CommandSettingViewController: UITextFieldDelegate {
     private func setTextFieldSetting(texField:UITextField, text:String) {
