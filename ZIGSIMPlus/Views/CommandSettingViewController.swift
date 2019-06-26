@@ -113,40 +113,6 @@ public class CommandSettingViewController : UIViewController {
     }
 
     private func adjustViewDesign() {
-        for label in labels {
-            adjustLabelDesign(label: label)
-        }
-
-        for segment in segments {
-            adjustSegmentDesign(segment: segment)
-        }
-
-        for textField in textFields {
-            adjustTextFieldDesign(textField: textField)
-        }
-
-        adjustButtonDesign()
-    }
-
-    private func adjustLabelDesign(label: UILabel) {
-        label.textColor = Theme.main
-    }
-
-    private func adjustSegmentDesign(segment: UISegmentedControl) {
-        segment.tintColor = Theme.main
-        segment.layer.backgroundColor = Theme.black.cgColor
-        segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : Theme.white], for: .selected)
-    }
-
-    private func adjustTextFieldDesign(textField: UITextField) {
-        textField.textColor = Theme.main
-        textField.backgroundColor = Theme.black
-        textField.layer.borderWidth = 1.0
-        textField.layer.cornerRadius = 4.0
-        textField.layer.borderColor = Theme.main.cgColor
-    }
-
-    private func adjustButtonDesign() {
         button.setTitle(" Restore\nPurchase", for: .normal)
         button.setTitleColor(Theme.main, for: .normal)
         button.titleLabel?.numberOfLines = 2
