@@ -11,6 +11,14 @@ import CoreLocation
 import SwiftOSC
 import SwiftyJSON
 
+private func createBeaconRegion(_ appSetting: AppSettingModel) -> CLBeaconRegion {
+    // TODO: Refactor AppSettingModel to return default values if invalid stored values are invalid
+    let uuid = UUID(uuidString: appSetting.beaconUUID) ?? UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B570000")!
+    let deviceUUID = appSetting.deviceUUID
+    return CLBeaconRegion(proximityUUID: uuid, identifier: "\(deviceUUID) region")
+}
+
+
 /// Data store for commands which depend on LocationManager.
 /// e.g.) GPS, iBeacon, etc.
 public class LocationService: NSObject {
@@ -32,7 +40,7 @@ public class LocationService: NSObject {
     var compassCallback: ((Double) -> Void)? = nil
 
     // beacons data
-    private let beaconRegion : CLBeaconRegion
+    private var beaconRegion : CLBeaconRegion
     private var beacons: [CLBeacon] = [CLBeacon]()
     var beaconsCallback: (([CLBeacon]) -> Void)? = nil
 
@@ -45,10 +53,7 @@ public class LocationService: NSObject {
         locationManager.headingFilter = kCLHeadingFilterNone
 
         // Init beacons
-        let appSetting = AppSettingModel.shared
-        let uuid = UUID(uuidString: appSetting.beaconUUID)!
-        let deviceUUID =  appSetting.deviceUUID
-        beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: "\(deviceUUID) region")
+        beaconRegion = createBeaconRegion(AppSettingModel.shared)
 
         super.init()
         locationManager.delegate = self
@@ -58,6 +63,7 @@ public class LocationService: NSObject {
 
     func startBeacons() {
         if isLocationAvailable() {
+            beaconRegion = createBeaconRegion(AppSettingModel.shared)
             locationManager.requestAlwaysAuthorization()
             locationManager.startMonitoring(for: beaconRegion)
             locationManager.startRangingBeacons(in: beaconRegion)

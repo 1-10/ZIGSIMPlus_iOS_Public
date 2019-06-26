@@ -21,6 +21,7 @@ public enum DetailSettingsKey: Int {
     case imageDetectorNumberOfAnglesForSegment = 8
     case imageDetectorDetectsEyeBlink = 9
     case imageDetectorDetectsSmile = 10
+    case beaconUUID = 11
 }
 
 
@@ -77,6 +78,20 @@ public struct SegmentedBool: Segmented {
 //     var value: Float
 // }
 
+public struct UUIDInput: DetailSetting {
+    var key: DetailSettingsKey
+    var label: String
+    var width: Int
+    var value: String
+
+    init (_ key: DetailSettingsKey, _ label: String, _ width: Int, _ value: String) {
+        self.key = key
+        self.label = label
+        self.width = width
+        self.value = value
+    }
+}
+
 protocol CommandDetailSettingsPresenterProtocol {
     func getCommandDetailSettings() -> [Command: [DetailSetting]]
     func updateSetting(setting: DetailSetting)
@@ -107,6 +122,9 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedInt(.imageDetectorNumberOfAnglesForSegment, "NUMBER OF FACE ANGLES", ["1", "3", "5", "7", "9", "11"], 240, app.imageDetectorNumberOfAnglesForSegment.rawValue),
                 SegmentedBool(.imageDetectorDetectsEyeBlink, "DETECT EYE BLINK", ["ON", "OFF"], 240, app.imageDetectorDetectsEyeBlink),
                 SegmentedBool(.imageDetectorDetectsSmile, "DETECT SMILE", ["ON", "OFF"], 240, app.imageDetectorDetectsSmile),
+            ],
+            .beacon: [
+                UUIDInput(.beaconUUID, "BEACON UUID", 270, app.beaconUUID),
             ],
         ]
     }
@@ -153,6 +171,14 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             case .imageDetectorDetectsSmile:
                 AppSettingModel.shared.imageDetectorDetectsSmile = data.value
                 Defaults[.userImageDetectorDetectsSmile] = data.value
+            default:
+                fatalError("Undefined key")
+            }
+        case let data as UUIDInput:
+            switch data.key {
+            case .beaconUUID:
+                AppSettingModel.shared.beaconUUID = data.value
+                Defaults[.userBeaconUUID] = data.value
             default:
                 fatalError("Undefined key")
             }
