@@ -99,15 +99,15 @@ class Utils {
     static func isValidSettingViewText(text: UITextField, textType: SettingViewTextType) -> Bool {
         switch textType {
         case .ipAddress:
-            return Utils.isValidTextStructure(original: text.text ?? "0", structuredBy: "1234567890.")
+            return Utils.isContains(original: text.text ?? "0", structuredBy: "1234567890.")
         case .portNumber:
-            return Utils.isValidTextStructure(original: text.text ?? "0", structuredBy: "1234567890")
+            return Utils.isContains(original: text.text ?? "0", structuredBy: "1234567890")
         case .deviceUuid:
-            return Utils.isValidTextStructure(original: text.text ?? "0", structuredBy: "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+            return Utils.isContains(original: text.text ?? "0", structuredBy: "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         }
     }
     
-    private static func isValidTextStructure(original: String, structuredBy chars: String) -> Bool {
+    private static func isContains(original: String, structuredBy chars: String) -> Bool {
         let characterSet = NSMutableCharacterSet()
         characterSet.addCharacters(in: chars)
         return original.trimmingCharacters(in: characterSet as CharacterSet).count <= 0
