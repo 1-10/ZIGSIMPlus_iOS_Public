@@ -99,17 +99,17 @@ class Utils {
     static func isValidSettingViewText(text: UITextField, textType: SettingViewTextType) -> Bool {
         switch textType {
         case .ipAddress:
-            return Utils.composeOf(original: text.text ?? "0", structuredBy: "1234567890.")
+            return Utils.isCompose(text.text ?? "0", of: "1234567890.")
         case .portNumber:
-            return Utils.composeOf(original: text.text ?? "0", structuredBy: "1234567890")
+            return Utils.isCompose(text.text ?? "0", of: "1234567890")
         case .deviceUuid:
-            return Utils.composeOf(original: text.text ?? "0", structuredBy: "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+            return Utils.isCompose(text.text ?? "0", of: "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         }
     }
     
-    private static func composeOf(original: String, structuredBy chars: String) -> Bool {
+    private static func isCompose(_ text: String, of chars: String) -> Bool {
         let characterSet = NSMutableCharacterSet()
         characterSet.addCharacters(in: chars)
-        return original.trimmingCharacters(in: characterSet as CharacterSet).count <= 0
+        return text.trimmingCharacters(in: characterSet as CharacterSet).count <= 0
     }
 }
