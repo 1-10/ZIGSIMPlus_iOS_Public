@@ -96,13 +96,13 @@ class Utils {
         return uuid
     }
     
-    static func isValidSettingViewText(text: UITextField, settingTextType: SettingTextType) -> Bool {
-        switch settingTextType {
-        case .IP_ADDRESS:
+    static func isValidSettingViewText(text: UITextField, textType: SettingViewTextType) -> Bool {
+        switch textType {
+        case .ipAddress:
             return Utils.isValidText(original: text.text ?? "0", structuredBy: "1234567890.")
-        case .PORT_NUMBER:
+        case .portNumber:
             return Utils.isValidText(original: text.text ?? "0", structuredBy: "1234567890")
-        case .DEVICE_UUID:
+        case .deviceUuid:
             return Utils.isValidText(original: text.text ?? "0", structuredBy: "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         }
     }

@@ -87,10 +87,10 @@ enum CompassOrientation: Int {
     case faceup = 1
 }
 
-enum SettingTextType {
-    case IP_ADDRESS
-    case PORT_NUMBER
-    case DEVICE_UUID
+enum SettingViewTextType {
+    case ipAddress
+    case portNumber
+    case deviceUuid
 }
 
 public class AppSettingModel {

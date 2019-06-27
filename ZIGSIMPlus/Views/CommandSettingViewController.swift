@@ -88,19 +88,19 @@ public class CommandSettingViewController : UIViewController {
         var texts:[textFieldName: String] = [:]
         for textField in textFields {
             if textField.tag == 0 {
-                if Utils.isValidSettingViewText(text: textField, settingTextType: .IP_ADDRESS) && textField.text != "" {
+                if Utils.isValidSettingViewText(text: textField, textType: .ipAddress) && textField.text != "" {
                     texts[.ipAdress] = textField.text ?? ""
                 } else {
                     return false
                 }
             } else if textField.tag == 1 {
-                if Utils.isValidSettingViewText(text: textField, settingTextType: .PORT_NUMBER) && textField.text != "" {
+                if Utils.isValidSettingViewText(text: textField, textType: .portNumber) && textField.text != "" {
                     texts[.portNumber] = textField.text ?? ""
                 } else {
                     return false
                 }
             } else if textField.tag == 2 {
-                if Utils.isValidSettingViewText(text: textField, settingTextType: .DEVICE_UUID) && textField.text != "" {
+                if Utils.isValidSettingViewText(text: textField, textType: .deviceUuid) && textField.text != "" {
                     texts[.uuid] = textField.text ?? ""
                 } else {
                     return false
