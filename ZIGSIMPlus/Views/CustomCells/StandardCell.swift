@@ -57,9 +57,9 @@ public class StandardCell: UITableViewCell {
             Command.allCases[sender.tag] == .arkit ||
             Command.allCases[sender.tag] == .imageDetection) {
             if sender.isOn{
-                parent.setImageSegmentsInvalid(sender.tag)
+                parent.setImageSegmentsUnavailable(sender.tag)
             } else {
-                parent.setImageSegmentsValid()
+                parent.setImageSegmentsAvailable()
             }
         }
     }
