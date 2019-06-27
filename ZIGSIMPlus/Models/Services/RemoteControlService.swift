@@ -19,11 +19,16 @@ public class RemoteControlService: NSObject {
     let audioEngine = AVAudioEngine()
     let playerNode = AVAudioPlayerNode()
     var isEnabled = false
-    var volume = 0.0
+
     var isPlaying = false
-    var lastVolume = 0.0
-    var lastIsPlaying = false
-    var callback: ((Bool, Double) -> Void)? = nil
+    var volume = 0.0
+
+    var lastIsPlaying = false /// isPlaying of last frame
+    var lastVolume = 0.0 /// volume of last frame
+
+    var playPauseChanged = false
+    var volumeUp = false
+    var volumeDown = false
 
     override private init() {
         // Create dummy audioEngine.
@@ -36,20 +41,14 @@ public class RemoteControlService: NSObject {
 
     @objc func onVolumeChange(notification: NSNotification) {
         volume = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as! Double
-        update()
     }
 
     @objc func onTogglePlayPause(_ event: MPRemoteCommandEvent) {
         isPlaying.toggle()
-        update()
-    }
-
-    private func update() {
-        print(">> remoteControl: (\(isPlaying), \(volume))")
-        callback?(isPlaying, volume)
     }
 
     // MARK: - Internal methods
+
     func start() {
         if isEnabled { return }
         isEnabled = true
@@ -73,6 +72,7 @@ public class RemoteControlService: NSObject {
 
     func stop() {
         if !isEnabled { return }
+        isEnabled = false
 
         audioEngine.pause()
 
@@ -83,7 +83,16 @@ public class RemoteControlService: NSObject {
             object: nil
         )
         MPRemoteCommandCenter.shared().togglePlayPauseCommand.removeTarget(self, action: #selector(onTogglePlayPause(_:)))
+    }
 
+    /// Called every frame to convert button events to boolean values
+    func update() {
+        volumeUp = lastVolume < volume
+        volumeDown = lastVolume > volume
+        playPauseChanged = lastIsPlaying != isPlaying
+
+        lastVolume = volume
+        lastIsPlaying = isPlaying
     }
 
     func isAvailable() -> Bool {
@@ -101,7 +110,10 @@ extension RemoteControlService : Service {
 
         if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
             log += [
-                "remotecontrol:playpause \(isPlaying)",
+                "remotecontrol:playpause \(playPauseChanged)",
+                "remotecontrol:volumeup \(volumeUp)",
+                "remotecontrol:volumedown \(volumeDown)",
+                "remotecontrol:isPlaying \(isPlaying)",
                 "remotecontrol:volume \(volume)"
             ]
         }
@@ -112,13 +124,6 @@ extension RemoteControlService : Service {
     func toOSC() -> [OSCMessage] {
         let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
-
-        // Detect changes
-        let volumeUp = lastVolume < volume
-        let volumeDown = lastVolume > volume
-        let playPauseChanged = lastIsPlaying != isPlaying
-        lastVolume = volume
-        lastIsPlaying = isPlaying
 
         if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
             messages.append(OSCMessage(
@@ -136,13 +141,6 @@ extension RemoteControlService : Service {
 
     func toJSON() throws -> JSON {
         var data = JSON()
-
-        // Detect changes
-        let volumeUp = lastVolume < volume
-        let volumeDown = lastVolume > volume
-        let playPauseChanged = lastIsPlaying != isPlaying
-        lastVolume = volume
-        lastIsPlaying = isPlaying
 
         if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
             data["remoteControl"] = JSON([

@@ -69,6 +69,9 @@ public class CommandAndServiceMediator {
         if isActive(.battery) {
             BatteryService.shared.updateBattery()
         }
+        if isActive(.remoteControl) {
+            RemoteControlService.shared.update()
+        }
     }
 
     public func stopActiveCommands() {
