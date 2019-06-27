@@ -1,16 +1,9 @@
-//
-//  TermsOfUseText.swift
-//  ZIGSIMPlus
-//
-//  Created by YoneyamaShunpei on 2019/06/27.
-//  Copyright © 2019 Nozomu Kuwae. All rights reserved.
-//
-
-import Foundation
-import MarkdownKit
-
-let termsOfUseText = """
-**Terms of Use**
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TermsOfUse</key>
+	<string>**Terms of Use**
 
 
 # Article 1. Purpose
@@ -132,6 +125,6 @@ If any User breaches these TOS and 1-10 incurs direct or indirect damage, 1-10 m
     2. Users agree that any dispute relating to these TOS will be submitted to the exclusive jurisdiction of the Kyoto District Court as the court of first instance.
 
 
-Prescribed on June 17, 2019
-
-"""
+Prescribed on June 17, 2019</string>
+</dict>
+</plist>
