@@ -16,4 +16,6 @@ struct Theme {
     static let black = UIColor(0x000000)
     static let warn = UIColor(0xFFDD66)
     static let error = UIColor(0xFF4466)
+    static let overlay = UIColor(0x00A165)
+    static let darkgray = UIColor(0x3F3F3F)
 }

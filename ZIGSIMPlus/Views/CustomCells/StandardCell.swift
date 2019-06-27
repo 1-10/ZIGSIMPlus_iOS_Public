@@ -36,14 +36,12 @@ public class StandardCell: UITableViewCell {
     }
 
     func initCell() {
-        commandLabel.textColor = Theme.main
         commandOnOff.thumbTintColor = Theme.gray
         commandOnOff.onTintColor = Theme.main
         commandOnOff.tintColor = Theme.main
         commandOnOff.backgroundColor = Theme.black
         commandOnOff.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         detailButton.setStyle(.caretRight, animated: true)
-        detailButton.strokeColor = Theme.main
         modalButton.backgroundColor = Theme.gray
         modalButton.layer.borderWidth = 2.0
         modalButton.layer.borderColor = Theme.gray.cgColor
