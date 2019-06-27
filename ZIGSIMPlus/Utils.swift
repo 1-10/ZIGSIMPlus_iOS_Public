@@ -57,7 +57,7 @@ class Utils {
         // Set image frame to the center of the navBar
         titleImageView.frame = CGRect(
             x: center.x - imageWidth / 2,
-            y: center.y - bounds.height / 2 - imageHeight,
+            y: 0,
             width: imageWidth,
             height: imageHeight
         )
