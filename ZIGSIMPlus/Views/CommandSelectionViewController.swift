@@ -20,6 +20,7 @@ final class CommandSelectionViewController: UIViewController {
     
     var presenter: CommandSelectionPresenterProtocol!
     var alert: UIAlertController = UIAlertController() // dummy
+    var cells:[Command:StandardCell] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,29 @@ final class CommandSelectionViewController: UIViewController {
             unlockPremiumFeature()
         } else {
             lockPremiumFeature()
+        }
+    }
+    
+    func setMovieSegmentsValid(){
+        setAvailable(true, forCell: cells[Command.ndi])
+        setAvailable(true, forCell: cells[Command.arkit])
+        setAvailable(true, forCell: cells[Command.imageDetection])
+    }
+    
+    func setMovieSegmentsInvalid(_ selectedCommandNo: Int){
+        let selectedCommand = Command.allCases[selectedCommandNo]
+        switch selectedCommand {
+        case .ndi:
+            setAvailable(false, forCell: cells[Command.arkit])
+            setAvailable(false, forCell: cells[Command.imageDetection])
+        case .arkit:
+            setAvailable(false, forCell: cells[Command.imageDetection])
+            setAvailable(false, forCell: cells[Command.ndi])
+        case .imageDetection:
+            setAvailable(false, forCell: cells[Command.ndi])
+            setAvailable(false, forCell: cells[Command.arkit])
+        default:
+            return
         }
     }
     
@@ -224,11 +248,8 @@ extension CommandSelectionViewController: UITableViewDataSource {
            cell.detailButton.isHidden = true
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] == true {
-            cell.commandOnOff.isOn = true
-        } else {
-            cell.commandOnOff.isOn = false
-        }
+        cells[Command.allCases[indexPath.row]] = cell
+        cell.commandOnOff.isOn = AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] ?? false
         
         let mediator = CommandAndServiceMediator()
         if mediator.isAvailable(Command.allCases[indexPath.row]){
@@ -242,15 +263,15 @@ extension CommandSelectionViewController: UITableViewDataSource {
         return cell
     }
     
-    func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell) {
-        cell.commandOnOff.isEnabled = isAvailable
-        cell.detailButton.isEnabled = isAvailable
+    func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell?) {
+        cell?.commandOnOff.isEnabled = isAvailable
+        cell?.detailButton.isEnabled = isAvailable
         if isAvailable {
-            cell.commandLabel.textColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
-            cell.detailButton.strokeColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+            cell?.commandLabel.textColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+            cell?.detailButton.strokeColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
         } else {
-            cell.commandLabel.textColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
-            cell.detailButton.strokeColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+            cell?.commandLabel.textColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+            cell?.detailButton.strokeColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
         }
     }
 }

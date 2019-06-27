@@ -21,6 +21,7 @@ public class StandardCell: UITableViewCell {
     var viewController: UIViewController!
 
     @IBAction func commandOnOffAction(_ sender: UISwitch) {
+        setMovieSegmentsAvailability(sender)
         commandSelectionPresenter.didSelectRow(atLabel: Command.allCases[sender.tag].rawValue)
     }
 
@@ -50,5 +51,18 @@ public class StandardCell: UITableViewCell {
         let screenWidth = UIScreen.main.bounds.size.width
         let newConstant = screenWidth - 300 // "300" is a length other than this constant
         labelConstaint.constant = newConstant
+    }
+    
+    func setMovieSegmentsAvailability(_ sender: UISwitch) {
+        let parent = viewController as! CommandSelectionViewController
+        if (Command.allCases[sender.tag] == .ndi ||
+            Command.allCases[sender.tag] == .arkit ||
+            Command.allCases[sender.tag] == .imageDetection) {
+            if sender.isOn{
+                parent.setMovieSegmentsInvalid(sender.tag)
+            } else {
+                parent.setMovieSegmentsValid()
+            }
+        }
     }
 }
