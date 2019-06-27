@@ -72,6 +72,7 @@ public class RemoteControlService: NSObject {
 
     func stop() {
         if !isEnabled { return }
+        isEnabled = false
 
         audioEngine.pause()
 
