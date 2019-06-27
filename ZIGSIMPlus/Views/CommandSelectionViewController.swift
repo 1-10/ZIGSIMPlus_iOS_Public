@@ -39,13 +39,13 @@ final class CommandSelectionViewController: UIViewController {
         }
     }
     
-    func setMovieSegmentsValid(){
+    func setImageSegmentsValid(){
         setAvailable(true, forCell: cells[Command.ndi])
         setAvailable(true, forCell: cells[Command.arkit])
         setAvailable(true, forCell: cells[Command.imageDetection])
     }
     
-    func setMovieSegmentsInvalid(_ selectedCommandNo: Int){
+    func setImageSegmentsInvalid(_ selectedCommandNo: Int){
         let selectedCommand = Command.allCases[selectedCommandNo]
         switch selectedCommand {
         case .ndi:
