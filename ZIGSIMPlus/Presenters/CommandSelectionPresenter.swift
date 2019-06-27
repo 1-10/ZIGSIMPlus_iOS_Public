@@ -27,7 +27,7 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     
     init(view: CommandSelectionPresenterDelegate, mediator: CommandAndServiceMediator) {
         self.view = view
-        self.mediator = mediator
+        self.mediator = mediator  
         updateCommandToSelectArray()
     }
     
