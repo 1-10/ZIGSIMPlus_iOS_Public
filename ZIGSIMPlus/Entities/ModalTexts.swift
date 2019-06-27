@@ -32,7 +32,8 @@ Beacon command detects iBeacons around the device and outputs following values:
     .micLevel : ("Mic Level", "test10\nmicLevelです。"),
     .remoteControl : ("Remote Control", """
 Remote Control command monitors the state of remote controllers of headphones connected to the device.
-TBD
+*playpause*, *volumeUp* and *volumeDown* shows the buttons are pressed or not.
+*isPlaying* and *volume* shows the device state changed by controllers.
 """),
     .ndi : ("NDI™", """
 NDI command transmits images from the device via NDI protocol.
