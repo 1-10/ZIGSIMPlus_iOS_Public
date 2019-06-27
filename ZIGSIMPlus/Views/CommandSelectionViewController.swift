@@ -21,6 +21,7 @@ final class CommandSelectionViewController: UIViewController {
     
     var presenter: CommandSelectionPresenterProtocol!
     var alert: UIAlertController = UIAlertController() // dummy
+    var cells:[Command:StandardCell] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,29 @@ final class CommandSelectionViewController: UIViewController {
             unlockPremiumFeature()
         } else {
             lockPremiumFeature()
+        }
+    }
+    
+    func setImageSegmentsAvailable(){
+        setAvailable(true, forCell: cells[Command.ndi])
+        setAvailable(true, forCell: cells[Command.arkit])
+        setAvailable(true, forCell: cells[Command.imageDetection])
+    }
+    
+    func setImageSegmentsUnavailable(_ selectedCommandNo: Int){
+        let selectedCommand = Command.allCases[selectedCommandNo]
+        switch selectedCommand {
+        case .ndi:
+            setAvailable(false, forCell: cells[Command.arkit])
+            setAvailable(false, forCell: cells[Command.imageDetection])
+        case .arkit:
+            setAvailable(false, forCell: cells[Command.imageDetection])
+            setAvailable(false, forCell: cells[Command.ndi])
+        case .imageDetection:
+            setAvailable(false, forCell: cells[Command.ndi])
+            setAvailable(false, forCell: cells[Command.arkit])
+        default:
+            return
         }
     }
     
@@ -130,12 +154,12 @@ final class CommandSelectionViewController: UIViewController {
     
     private func adjustLockPremiumFeatureLabel() {
         lockPremiumFeatureLabel.frame = CGRect(x:0,y:0,width: UIScreen.main.bounds.size.width, height: 44 * 5)
-        lockPremiumFeatureLabel.backgroundColor = UIColor(displayP3Red: 0, green: 161/255, blue: 101/255, alpha: 0.46)
+        lockPremiumFeatureLabel.backgroundColor = Theme.overlay
     }
     
     private func adjustUnlockPremiumFeatureButton() {
         let billingImage = UIImage(named: "key")
-        unlockPremiumFeatureButton.tintColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7)
+        unlockPremiumFeatureButton.tintColor = Theme.white.withAlphaComponent(0.7)
         unlockPremiumFeatureButton.setImage(billingImage, for: .normal)
         unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width ) / 2,
                                         y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height ) / 2,
@@ -147,7 +171,7 @@ final class CommandSelectionViewController: UIViewController {
         unlockPremiumFeatureModalLabel.layer.cornerRadius = 10
         unlockPremiumFeatureModalLabel.layer.borderWidth = 1.0
         unlockPremiumFeatureModalLabel.layer.masksToBounds = true
-        unlockPremiumFeatureModalLabel.layer.borderColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0).cgColor
+        unlockPremiumFeatureModalLabel.layer.borderColor = Theme.gray.cgColor
         
         adjustUnlockPremiumFeatureModalLine(x: 0,
                                y: unlockPremiumFeatureModalLabel.frame.size.height - 44,
@@ -169,7 +193,7 @@ final class CommandSelectionViewController: UIViewController {
             width: width,
             height: height
         )
-        upperLayer.backgroundColor = UIColor(displayP3Red: 63/255, green: 63/255, blue: 63/255, alpha: 1.0).cgColor
+        upperLayer.backgroundColor = Theme.darkgray.cgColor
         unlockPremiumFeatureModalLabel.layer.addSublayer(upperLayer)
     }
 }
@@ -231,16 +255,15 @@ extension CommandSelectionViewController: UITableViewDataSource {
            cell.detailButton.isHidden = true
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] == true {
-            cell.commandOnOff.isOn = true
-        } else {
-            cell.commandOnOff.isOn = false
-        }
+        cells[Command.allCases[indexPath.row]] = cell
+        cell.commandOnOff.isOn = AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] ?? false
         
         let mediator = CommandAndServiceMediator()
         if mediator.isAvailable(Command.allCases[indexPath.row]){
+            print("isAvailable0: \(cell)")
             setAvailable(true, forCell:cell)
         } else {
+            print("isAvailable1: \(cell)")
             setAvailable(false, forCell:cell)
         }
 
@@ -249,15 +272,15 @@ extension CommandSelectionViewController: UITableViewDataSource {
         return cell
     }
     
-    func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell) {
-        cell.commandOnOff.isEnabled = isAvailable
-        cell.detailButton.isEnabled = isAvailable
+    func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell?) {
+        cell?.commandOnOff.isEnabled = isAvailable
+        cell?.detailButton.isEnabled = isAvailable
         if isAvailable {
-            cell.commandLabel.textColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
-            cell.detailButton.strokeColor = UIColor(displayP3Red: 2/255, green: 141/255, blue: 90/255, alpha: 1.0)
+            cell?.commandLabel.textColor = Theme.main
+            cell?.detailButton.strokeColor = Theme.main
         } else {
-            cell.commandLabel.textColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
-            cell.detailButton.strokeColor = UIColor(displayP3Red: 103/255, green: 103/255, blue: 103/255, alpha: 1.0)
+            cell?.commandLabel.textColor = Theme.dark
+            cell?.detailButton.strokeColor = Theme.dark
         }
     }
 }
