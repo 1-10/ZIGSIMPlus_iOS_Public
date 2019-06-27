@@ -15,19 +15,17 @@
             <objects>
                 <viewController storyboardIdentifier="Settings" id="M4O-L3-dJK" customClass="CommandSettingViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qj2-o4-ZPx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dap-Xf-KgX">
-                                <rect key="frame" x="20" y="20" width="374" height="705"/>
-
+                                <rect key="frame" x="16" y="88" width="343" height="724"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-vs-ZAX" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="-27" width="343" height="751"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA DESTINATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2V-4u-ORS" userLabel="DATA DESTINATION" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="95" y="53" width="184" height="21"/>
-
+                                                <rect key="frame" x="79.666666666666686" y="53" width="184" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="184" id="DGV-IJ-mk8"/>
                                                     <constraint firstAttribute="height" constant="21" id="QKm-Mm-fGG"/>
@@ -37,8 +35,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5H5-aJ-fv1" userLabel="Data Destination Seg" customClass="ZIGSegmentedControl" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="62" y="82" width="250" height="29"/>
-
+                                                <rect key="frame" x="46.666666666666657" y="82" width="249.99999999999997" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="NwA-UX-4Lc"/>
                                                     <constraint firstAttribute="height" constant="28" id="fZt-Vs-hWx"/>
@@ -51,10 +48,8 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="aNp-hd-ezq"/>
                                                 </connections>
                                             </segmentedControl>
-
                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROTOCOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMC-XZ-wNJ" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="134" y="118" width="106" height="21"/>
-
+                                                <rect key="frame" x="118.66666666666666" y="118" width="106" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="aqq-dW-P3q"/>
                                                     <constraint firstAttribute="width" constant="106" id="jJn-C1-AeN"/>
@@ -63,10 +58,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-
                                             <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GPj-aK-iT9" userLabel="Protocolo Seg" customClass="ZIGSegmentedControl" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="62" y="147" width="250" height="29"/>
-
+                                                <rect key="frame" x="46.666666666666657" y="147" width="249.99999999999997" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="QGv-Dw-K0T"/>
                                                     <constraint firstAttribute="height" constant="28" id="fD5-Op-wsY"/>
@@ -79,9 +72,8 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="qin-UG-LSx"/>
                                                 </connections>
                                             </segmentedControl>
-
                                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP ADDRESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eK-AB-Aoh" userLabel="IP ADDRESS" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="134" y="183" width="106" height="21"/>
+                                                <rect key="frame" x="118.66666666666666" y="183" width="106" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="106" id="Ta7-Ox-yCI"/>
                                                     <constraint firstAttribute="height" constant="21" id="xTX-uS-gof"/>
@@ -90,9 +82,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.0.1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgy-NE-D0I" userLabel="Ip Adress Text Field" customClass="ZIGTextField" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="62" y="212" width="250" height="30"/>
+                                                <rect key="frame" x="46.666666666666657" y="212" width="249.99999999999997" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="2IW-Bt-tCg"/>
                                                     <constraint firstAttribute="width" constant="250" id="mLn-uN-Klm"/>
@@ -101,18 +92,14 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-
                                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORT NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-SP-GhO" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="127.5" y="250" width="119" height="21"/>
-
+                                                <rect key="frame" x="112" y="250" width="119" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-
                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-m2-OQN" userLabel="PORT NUMBER" customClass="ZIGTextField" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="62" y="279" width="250" height="30"/>
-
+                                                <rect key="frame" x="46.666666666666657" y="279" width="249.99999999999997" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="PB1-7J-pqA"/>
                                                     <constraint firstAttribute="height" constant="30" id="dZ3-OM-gac"/>
@@ -121,18 +108,14 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-
                                             <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE FORMAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-j7-8iF" userLabel="MESSAGE FORMAT" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="112" y="317" width="150" height="21"/>
-
+                                                <rect key="frame" x="96.666666666666686" y="317" width="150" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-
                                             <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-vs-Rkk" userLabel="Message Format Seg" customClass="ZIGSegmentedControl" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="62" y="346" width="250" height="29"/>
-
+                                                <rect key="frame" x="46.666666666666657" y="346" width="249.99999999999997" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="7fo-hI-lBq"/>
                                                     <constraint firstAttribute="height" constant="28" id="XUL-ci-4Dl"/>
@@ -145,18 +128,14 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="63j-jC-z8N"/>
                                                 </connections>
                                             </segmentedControl>
-
                                             <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE RATE(PER SEC)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNW-Ua-0gi" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="86" y="382" width="202" height="21"/>
-
+                                                <rect key="frame" x="70.666666666666686" y="382" width="202" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-
                                             <segmentedControl opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aew-3o-Evt" userLabel="Message Rate Seg" customClass="ZIGSegmentedControl" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="62" y="411" width="250" height="29"/>
-
+                                                <rect key="frame" x="46.666666666666657" y="411" width="249.99999999999997" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="d5K-w1-Mna"/>
                                                     <constraint firstAttribute="height" constant="28" id="kR0-8O-qko"/>
@@ -171,18 +150,14 @@
                                                     <action selector="changeSettingData:" destination="M4O-L3-dJK" eventType="valueChanged" id="0px-jW-xEL"/>
                                                 </connections>
                                             </segmentedControl>
-
                                             <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVICE UUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LZ-QD-3aa" userLabel="DEVICE UUID" customClass="ZIGLabel" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="135" y="447" width="104" height="21"/>
-
+                                                <rect key="frame" x="119.66666666666666" y="447" width="104" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0123456789abcdef" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM4-Na-6XE" userLabel="Uuid Text Field" customClass="ZIGTextField" customModule="ZIGSIMPlus" customModuleProvider="target">
-                                                <rect key="frame" x="62" y="476" width="250" height="30"/>
-
+                                                <rect key="frame" x="46.666666666666657" y="476" width="249.99999999999997" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="5ei-rw-knf"/>
                                                     <constraint firstAttribute="width" constant="250" id="6yF-iI-kRh"/>
@@ -260,11 +235,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="rYm-eR-kz0">
                         <barButtonItem key="backBarButtonItem" title="Settings" id="tx4-IJ-mIN"/>
-
                         <barButtonItem key="rightBarButtonItem" style="plain" id="EDP-J4-sDn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Ahx-BX-Vgc">
-                                <rect key="frame" x="372" y="11" width="22" height="22"/>
-
+                                <rect key="frame" x="337" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="gwc-33-QSk" kind="show" id="VVf-3P-l9r"/>
@@ -296,18 +269,16 @@
             </objects>
             <point key="canvasLocation" x="1968.8" y="1695.0738916256159"/>
         </scene>
-        <!--View Controller-->
+        <!--Terms Of Use View Controller-->
         <scene sceneID="lId-WS-97T">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="gwc-33-QSk" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="gwc-33-QSk" customClass="TermsOfUseViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XjP-kJ-gIC">
-
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wqG-KJ-mCC">
                                 <rect key="frame" x="20" y="88" width="335" height="690"/>
-
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Terms of Use">
@@ -1621,9 +1592,9 @@ For continued use of the Service</string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> or acts that otherwise economically or psychologically damage or disadvantage a third party
+                                        <string key="content"> or acts that otherwise economically or psychologically damage or disadvantage a third party
 5. Fraud or other criminal acts or involvement in such criminal acts
-6. Submitting or sending content including scenes of violence or cruelty that is likely to make a third party uneasy or images or messages including indecent or abusive scenes that are likely to adversely affect the development of a child or young person</mutableString>
+6. Submitting or sending content including scenes of violence or cruelty that is likely to make a third party uneasy or images or messages including indecent or abusive scenes that are likely to adversely affect the development of a child or young person</string>
                                         <attributes>
                                             <color key="NSColor" red="0.013537379913032055" green="0.63507968187332153" blue="0.39604336023330688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
@@ -1699,9 +1670,9 @@ For continued use of the Service</string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> or acts that conflict with the Public Offices Election Act
+                                        <string key="content"> or acts that conflict with the Public Offices Election Act
 10. Religious or similar activities or soliciting persons to join a religious group
-11. Using the Service to pretend to be another person or for commercial use without obtaining permission from 1-10</mutableString>
+11. Using the Service to pretend to be another person or for commercial use without obtaining permission from 1-10</string>
                                         <attributes>
                                             <color key="NSColor" red="0.013537379913032055" green="0.63507968187332153" blue="0.39604336023330688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
@@ -1791,10 +1762,10 @@ For continued use of the Service</string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> or requesting the forwarding of chain-emails or forwarding chain-emails in response to such request
+                                        <string key="content"> or requesting the forwarding of chain-emails or forwarding chain-emails in response to such request
 14. Spreading material misinformation or rumor
 15. Collecting or disclosing personal information of a third party without obtaining consent of the third party or in a fraudulent manner
-16. Sending a virus or other harmful computer program or file</mutableString>
+16. Sending a virus or other harmful computer program or file</string>
                                         <attributes>
                                             <color key="NSColor" red="0.013537379913032055" green="0.63507968187332153" blue="0.39604336023330688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
@@ -1910,12 +1881,12 @@ For continued use of the Service</string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> when using the Fee-Based Service.
+                                        <string key="content"> when using the Fee-Based Service.
 2. The Usage Fee is displayed on the website of the Service.
 3. 1-10 may amend the Usage Fee without obtaining the approval of Users.
 4. The amendment becomes effective at the time the amended Usage Fee is displayed on the website of the Service.
 
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.013537379913032055" green="0.63507968187332153" blue="0.39604336023330688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
@@ -1940,10 +1911,10 @@ For continued use of the Service</string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">
+                                        <string key="content">
 1. Users shall pay the Usage Fee in the settlement method prescribed by 1-10.
 2. 1-10 will not refund any Usage Fee already settled for any reason. The same applies in the case of withdrawal from the Service or cancellation of membership.
-3. 1-10 will not be liable for any disadvantage or damage incurred by Users due to abuse of the settlement method by a third party</mutableString>
+3. 1-10 will not be liable for any disadvantage or damage incurred by Users due to abuse of the settlement method by a third party</string>
                                         <attributes>
                                             <color key="NSColor" red="0.013537379913032055" green="0.63507968187332153" blue="0.39604336023330688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
@@ -2265,11 +2236,11 @@ For continued use of the Service</string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> the use of the Service by a third party
+                                        <string key="content"> the use of the Service by a third party
     - The User breaches these TOS
     - The User is discovered as having been prohibited from using the Service in the past due to breach of these TOS or another notice on use of the Service set forth by 1-10
     - 1-10 otherwise deems it necessary
-2. If 1-10 prohibits or suspends the use of the Service by any User or takes other measures against any User</mutableString>
+2. If 1-10 prohibits or suspends the use of the Service by any User or takes other measures against any User</string>
                                         <attributes>
                                             <color key="NSColor" red="0.013537379913032055" green="0.63507968187332153" blue="0.39604336023330688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
@@ -2599,10 +2570,10 @@ For continued use of the Service</string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> etc. posted or edited using the Service and any related derivatives may be used by 1-10 and its affiliates for the sites and services provided by 1-10 and its affiliates under a perpetual royalty-free license after taking the measures deemed necessary by 1-10.
+                                        <string key="content"> etc. posted or edited using the Service and any related derivatives may be used by 1-10 and its affiliates for the sites and services provided by 1-10 and its affiliates under a perpetual royalty-free license after taking the measures deemed necessary by 1-10.
 5. Users may not exercise the moral rights of the copyright holder upon the use by 1-10 and the affiliates provided in Article 13.4.
 
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.013537379913032055" green="0.63507968187332153" blue="0.39604336023330688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
@@ -2916,10 +2887,10 @@ For continued use of the Service</string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">.
+                                        <string key="content">.
 6. The maximum amount of damages that 1-10 may be liable for to a User under these TOS for each event resulting in damages is the amount equal to the aggregate amount of Usage Fees for the Service that have been paid by the User to 1-10 in the period of the previous three months.
 
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.013537379913032055" green="0.63507968187332153" blue="0.39604336023330688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
@@ -2976,11 +2947,11 @@ If any of the following events will occur or has occurred</string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> inspection or improvement of the server or peripheral equipment
+                                        <string key="content"> inspection or improvement of the server or peripheral equipment
 2. 1-10 deems it necessary to shut down the server or peripheral equipment in order to prevent infection by a computer virus
 3. Provision of the Service becomes impossible due to force majeure caused by a large-scale disaster or other event
 
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.013537379913032055" green="0.63507968187332153" blue="0.39604336023330688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
@@ -3155,6 +3126,9 @@ Prescribed on June 17</string>
                         <viewLayoutGuide key="safeArea" id="IjN-3h-d6I"/>
                     </view>
                     <navigationItem key="navigationItem" id="0hh-kU-B1G"/>
+                    <connections>
+                        <outlet property="text" destination="wqG-KJ-mCC" id="jkZ-xr-ytl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gA8-5O-xgt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3168,10 +3142,8 @@ Prescribed on June 17</string>
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
                     </tabBarItem>
                     <toolbarItems/>
-
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NUb-1x-Jr2">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
