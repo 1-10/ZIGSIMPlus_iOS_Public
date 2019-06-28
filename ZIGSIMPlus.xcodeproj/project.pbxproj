@@ -70,6 +70,8 @@
 		B30188E222B3909E00CB549F /* CommandSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30188E122B3909E00CB549F /* CommandSelection.storyboard */; };
 		B30188E422B390C500CB549F /* CommandOutput.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30188E322B390C500CB549F /* CommandOutput.storyboard */; };
 		B30188E622B390E600CB549F /* CommandSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30188E522B390E600CB549F /* CommandSetting.storyboard */; };
+		B315239722C47E5300654A63 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B315239622C47E5300654A63 /* TermsOfUseViewController.swift */; };
+		B315239922C4A09300654A63 /* TermsOfUse.plist in Resources */ = {isa = PBXBuildFile; fileRef = B315239822C4A09200654A63 /* TermsOfUse.plist */; };
 		B39DCDA222B7728C00D4E722 /* UITabBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39DCDA122B7728C00D4E722 /* UITabBarExtension.swift */; };
 		B3C6588722A9022600B4358B /* StandardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C6588622A9022600B4358B /* StandardCell.xib */; };
 		B3C6588922A9028500B4358B /* StandardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6588822A9028500B4358B /* StandardCell.swift */; };
@@ -186,6 +188,8 @@
 		B30188E122B3909E00CB549F /* CommandSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandSelection.storyboard; sourceTree = "<group>"; };
 		B30188E322B390C500CB549F /* CommandOutput.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandOutput.storyboard; sourceTree = "<group>"; };
 		B30188E522B390E600CB549F /* CommandSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandSetting.storyboard; sourceTree = "<group>"; };
+		B315239622C47E5300654A63 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
+		B315239822C4A09200654A63 /* TermsOfUse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TermsOfUse.plist; sourceTree = "<group>"; };
 		B39DCDA122B7728C00D4E722 /* UITabBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarExtension.swift; sourceTree = "<group>"; };
 		B3C6588622A9022600B4358B /* StandardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardCell.xib; sourceTree = "<group>"; };
 		B3C6588822A9028500B4358B /* StandardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCell.swift; sourceTree = "<group>"; };
@@ -416,6 +420,7 @@
 				902EB9D0227BE68F008F1650 /* Assets.xcassets */,
 				02621F5122A4F9140071E9D2 /* Extensions */,
 				0236461F2298257500171F73 /* ZIGSIMPlus-Bridging-Header.h */,
+				B315239822C4A09200654A63 /* TermsOfUse.plist */,
 				902EB9D5227BE68F008F1650 /* Info.plist */,
 			);
 			path = ZIGSIMPlus;
@@ -460,6 +465,7 @@
 				B30188E322B390C500CB549F /* CommandOutput.storyboard */,
 				902EB9CD227BE68D008F1650 /* Main.storyboard */,
 				B30188E522B390E600CB549F /* CommandSetting.storyboard */,
+				B315239622C47E5300654A63 /* TermsOfUseViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -627,6 +633,7 @@
 				B30188E222B3909E00CB549F /* CommandSelection.storyboard in Resources */,
 				B30188E622B390E600CB549F /* CommandSetting.storyboard in Resources */,
 				B3C6588722A9022600B4358B /* StandardCell.xib in Resources */,
+				B315239922C4A09300654A63 /* TermsOfUse.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,6 +814,7 @@
 				026A3C3222BB656C0016DEF6 /* UIColorExtension.swift in Sources */,
 				02DF072D22BB36D300F3ABE2 /* Theme.swift in Sources */,
 				02CF468222A8D9A8006F93EF /* ArkitUtils.swift in Sources */,
+				B315239722C47E5300654A63 /* TermsOfUseViewController.swift in Sources */,
 				02852E4822B777F800801B6A /* CommandSelectionTabNavigationController.swift in Sources */,
 				6345569A22B0CEF20032E976 /* VideoCapturePresenter.swift in Sources */,
 				02A03599229CD56E00E7399E /* ProximityService.swift in Sources */,
