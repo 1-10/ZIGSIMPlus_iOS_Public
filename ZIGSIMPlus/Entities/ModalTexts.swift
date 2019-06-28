@@ -14,9 +14,22 @@ let modalTexts:[Command: (title: String, body: String)] = [
     .gravity : ("Gravity", "test1\ngravityです。"),
     .gyro : ("Gyro", "test2\ngyroです。"),
     .quaternion : ("Quaternion", "test3\nquaternionです。"),
-    .compass : ("Compass", "test4\ncompassです。"),
-    .pressure: ("Pressure", "test5\npressureです。"),
-    .gps : ("GPS", "test6\ngpsです。"),
+    .compass : ("Compass", """
+Compass command detects azimuth angle.
+This unit is DEGREE.
+
+**PORTRAIT**:The device is held upright and the home button at the bottom.
+**FACEUP** :The device is held parallel to the ground with the screen facing upwards.
+"""),
+    .pressure: ("Pressure", """
+Pressure command detects altitude events and outputs following values:
+Pressure[hPa]
+Altitude[meter]
+"""),
+    .gps : ("GPS", """
+GPS command detects GPS signal and outputs latitude and Longitude.
+This unit is DEGREE.
+"""),
     .touch : ("Touch", """
 Touch command detects touch events in Start tab and outputs following values:
 **Position** is the relative position of touches from the center of the screen.
@@ -28,8 +41,15 @@ Beacon command detects iBeacons around the device and outputs following values:
 **BeaconUUID**, **Major** and **Minor** are used to identify the beacon.
 **RSSI** is the strength of the signal from the beacon.
 """),
-    .proximity : ("Proximity", "test9\nproximityです。"),
-    .micLevel : ("Mic Level", "test10\nmicLevelです。"),
+    .proximity : ("Proximity", """
+Proximity command detects whether the proximity sensor is close to the user (true) or not (false).
+"""),
+    .micLevel : ("Mic Level", """
+Mic Level command detects sound level around the device and outputs following values:
+Average RMS power of the audio channel.
+Peak RMS power of the audio channel's.
+Max value is 0.
+"""),
     .remoteControl : ("Remote Control", """
 Remote Control command monitors the state of remote controllers of headphones connected to the device.
 *playpause*, *volumeUp* and *volumeDown* shows the buttons are pressed or not.
