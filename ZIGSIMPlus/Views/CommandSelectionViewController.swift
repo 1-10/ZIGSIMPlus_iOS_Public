@@ -40,22 +40,35 @@ final class CommandSelectionViewController: UIViewController {
         }
     }
     
-    func setImageSegmentsAvailable(){
+    func setNdiArkitImageDetectionButtonAvailable() {
+        cells[Command.ndi]?.commandOnOffButton.isEnabled = true
+        cells[Command.arkit]?.commandOnOffButton.isEnabled = true
+        cells[Command.imageDetection]?.commandOnOffButton.isEnabled = true
         setAvailable(true, forCell: cells[Command.ndi])
         setAvailable(true, forCell: cells[Command.arkit])
         setAvailable(true, forCell: cells[Command.imageDetection])
     }
     
-    func setImageSegmentsUnavailable(_ selectedCommandNo: Int){
+    
+    func setSelectedButtonAvailable(_ selectedCommandNo: Int){
         let selectedCommand = Command.allCases[selectedCommandNo]
         switch selectedCommand {
         case .ndi:
+            cells[Command.ndi]?.commandOnOffButton.isEnabled = true
+            cells[Command.arkit]?.commandOnOffButton.isEnabled = false
+            cells[Command.imageDetection]?.commandOnOffButton.isEnabled = false
             setAvailable(false, forCell: cells[Command.arkit])
             setAvailable(false, forCell: cells[Command.imageDetection])
         case .arkit:
+            cells[Command.ndi]?.commandOnOffButton.isEnabled = false
+            cells[Command.arkit]?.commandOnOffButton.isEnabled = true
+            cells[Command.imageDetection]?.commandOnOffButton.isEnabled = false
             setAvailable(false, forCell: cells[Command.imageDetection])
             setAvailable(false, forCell: cells[Command.ndi])
         case .imageDetection:
+            cells[Command.ndi]?.commandOnOffButton.isEnabled = false
+            cells[Command.arkit]?.commandOnOffButton.isEnabled = false
+            cells[Command.imageDetection]?.commandOnOffButton.isEnabled = true
             setAvailable(false, forCell: cells[Command.ndi])
             setAvailable(false, forCell: cells[Command.arkit])
         default:
@@ -230,19 +243,21 @@ extension CommandSelectionViewController: UITableViewDataSource {
 
         let commandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
-        
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableView.separatorStyle = .none
         tableView.backgroundColor = Theme.dark
-        
         cell.commandLabel.text = commandToSelect.labelString
         cell.commandLabel.tag = indexPath.row
-        cell.commandOnOff.tag = indexPath.row
+        cell.commandOnOffButton.tag = indexPath.row
         cell.viewController = self
         cell.commandSelectionPresenter = self.presenter
-        
         cells[Command.allCases[indexPath.row]] = cell
-        cell.commandOnOff.isOn = AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] ?? false
+        
+        if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]]! {
+          cell.checkMarkLavel.text = "\u{2713}"
+        } else {
+          cell.checkMarkLavel.text = ""
+        }
         
         let mediator = CommandAndServiceMediator()
         if mediator.isAvailable(Command.allCases[indexPath.row]){
@@ -257,8 +272,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
     }
     
     func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell?) {
-        cell?.commandOnOff.isEnabled = isAvailable
-        cell?.detailButton.isEnabled = isAvailable
+        cell?.commandOnOffButton.isEnabled = isAvailable
         if isAvailable {
             cell?.commandLabel.textColor = Theme.main
             cell?.detailButton.tintColor = Theme.main
