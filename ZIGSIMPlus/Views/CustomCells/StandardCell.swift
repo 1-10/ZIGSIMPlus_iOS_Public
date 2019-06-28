@@ -38,6 +38,7 @@ public class StandardCell: UITableViewCell {
     }
     
     func initCell() {
+        self.backgroundColor = Theme.black
         checkMarkLavel.textColor = Theme.main
         checkMarkLavel.font = UIFont.boldSystemFont(ofSize: 23)
         modalButton.tintColor = Theme.main

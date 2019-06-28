@@ -245,7 +245,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Theme.dark
+        tableView.backgroundColor = Theme.black
         cell.commandLabel.text = commandToSelect.labelString
         cell.commandLabel.tag = indexPath.row
         cell.commandOnOffButton.tag = indexPath.row
