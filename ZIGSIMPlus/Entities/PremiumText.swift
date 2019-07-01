@@ -8,7 +8,7 @@
 
 import Foundation
 
-let premiumTextTitle: String = "These functions are pay"
+let premiumTextTitle: String = "These functions are charged"
 let premiumTextBody: String = """
 You must charge to use these functions.
 """

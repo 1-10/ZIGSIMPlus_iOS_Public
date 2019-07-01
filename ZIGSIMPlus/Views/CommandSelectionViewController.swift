@@ -12,12 +12,15 @@ import MarkdownKit
 
 typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
+enum alertModalType{
+    case premium
+    case detailSetting
+}
+
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lockPremiumFeatureLabel: UILabel!
     @IBOutlet weak var unlockPremiumFeatureButton: UIButton!
-    @IBOutlet weak var unlockPremiumFeatureModalView: UIView!
-    @IBOutlet weak var unlockPremiumFeatureModalLabel: UILabel!
     
     var presenter: CommandSelectionPresenterProtocol!
     var alert: UIAlertController = UIAlertController() // dummy
@@ -65,39 +68,7 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     @IBAction func actionButton(_ sender: UIButton) {
-        print("sender.tag: \(sender.tag)")
-        if sender.tag == 1 { // "sender.tag == 1" is the unlock button
-            alert = UIAlertController(title: premiumTextTitle, message: "", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "BACK", style: .default))
-            alert.addAction(UIAlertAction(title: "PURCHASE", style: .default, handler: { action in
-                self.unlockPremiumFeatureModalView.isHidden = true
-                self.tableView.isUserInteractionEnabled = false
-                SVProgressHUD.show()
-                self.presenter.purchase()
-            }))
-            
-            var msg = premiumTextBody + "\n\nBut the following function can not be used on your device."
-            for unAvailablePremiumCommand in unAvailablePremiumCommands {
-                msg = msg + "\n・" + unAvailablePremiumCommand.rawValue
-            }
-            if !unAvailablePremiumCommands.contains(Command.ndi) {
-                if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-                    msg = msg + "\n・NDI Depth function."
-                }
-                if VideoCaptureService.shared.isDepthRearCameraAvailable() && !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
-                    msg = msg + "\n・NDI Depth function on front camera."
-                }
-            }
-            // Convert msg string to attributed text
-            let markdownParser = MarkdownParser()
-            let aText = NSMutableAttributedString(attributedString: markdownParser.parse(msg))
-            
-            alert.setValue(aText, forKey: "attributedMessage")
-            
-            present(alert, animated: true, completion: {
-                self.tableView.isUserInteractionEnabled = true
-            })
-        }
+        showAlertModal(premiumTextTitle, premiumTextBody, alertModalType.premium)
     }
     
     public func showDetail(commandNo: Int) {
@@ -127,22 +98,33 @@ final class CommandSelectionViewController: UIViewController {
             fatalError("Invalid command: \(command)")
         }
 
-        alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
-            UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
-        }))
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-
-        // Convert msg string to attributed text
-        let markdownParser = MarkdownParser()
-        let aText = NSMutableAttributedString(attributedString: markdownParser.parse(msg))
-
-        alert.setValue(aText, forKey: "attributedMessage")
-
-        present(alert, animated: true, completion: {
-            self.alert.view.superview?.isUserInteractionEnabled = true
-            self.alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.hideAlert)))
-        })
+        showAlertModal(title, msg, alertModalType.detailSetting)
+    }
+    
+    func showAlertModal(_ title: String, _ msg: String , _ alertType: alertModalType) {
+        alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        setAlertMessage(msg,alertType)
+        switch alertType {
+        case alertModalType.premium:
+            alert.addAction(UIAlertAction(title: "BACK", style: .default))
+            alert.addAction(UIAlertAction(title: "PURCHASE", style: .default, handler: { action in
+                self.tableView.isUserInteractionEnabled = false
+                SVProgressHUD.show()
+                self.presenter.purchase()
+            }))
+            present(alert, animated: true, completion: {
+                self.tableView.isUserInteractionEnabled = true
+            })
+        case alertModalType.detailSetting:
+            alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
+                UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
+            }))
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true, completion: {
+                self.alert.view.superview?.isUserInteractionEnabled = true
+                self.alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.hideAlert)))
+            })
+        }
     }
 
     @objc private func hideAlert() {
@@ -159,7 +141,6 @@ final class CommandSelectionViewController: UIViewController {
         setPremiumFeatureIsHidden(false)
         adjustLockPremiumFeatureLabel()
         adjustUnlockPremiumFeatureButton()
-        adjustUnlockPremiumFeatureModalLabel()
     }
     
     private func unlockPremiumFeature() {
@@ -169,8 +150,6 @@ final class CommandSelectionViewController: UIViewController {
     private func setPremiumFeatureIsHidden(_ isHidden: Bool) {
         lockPremiumFeatureLabel.isHidden = isHidden
         unlockPremiumFeatureButton.isHidden = isHidden
-        unlockPremiumFeatureModalView.isHidden = isHidden
-        unlockPremiumFeatureModalLabel.isHidden = isHidden
     }
     
     private func adjustLockPremiumFeatureLabel() {
@@ -188,34 +167,40 @@ final class CommandSelectionViewController: UIViewController {
                                         height: unlockPremiumFeatureButton.frame.size.height)
     }
     
-    private func adjustUnlockPremiumFeatureModalLabel() {
-        unlockPremiumFeatureModalLabel.layer.cornerRadius = 10
-        unlockPremiumFeatureModalLabel.layer.borderWidth = 1.0
-        unlockPremiumFeatureModalLabel.layer.masksToBounds = true
-        unlockPremiumFeatureModalLabel.layer.borderColor = Theme.gray.cgColor
+    private func setAlertMessage(_ message: String, _ alertType: alertModalType) {
+        var msg = message
+        if  alertType == alertModalType.premium && !isAvailablePremiumCommands() {
+            msg = premiumTextBody + "\n\nBut the following function can not be used on your device."
+            for unAvailablePremiumCommand in unAvailablePremiumCommands {
+                msg = msg + "\n・" + unAvailablePremiumCommand.rawValue
+            }
+            if !unAvailablePremiumCommands.contains(Command.ndi) {
+                if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+                    msg = msg + "\n・NDI Depth function."
+                }
+                if VideoCaptureService.shared.isDepthRearCameraAvailable() && !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
+                    msg = msg + "\n・NDI Depth function on front camera."
+                }
+            }
+        }
         
-        adjustUnlockPremiumFeatureModalLine(x: 0,
-                               y: unlockPremiumFeatureModalLabel.frame.size.height - 44,
-                               width: unlockPremiumFeatureModalLabel.frame.size.width,
-                               height: 1)
-        adjustUnlockPremiumFeatureModalLine(x: unlockPremiumFeatureModalLabel.frame.size.width / 2,
-                               y: unlockPremiumFeatureModalLabel.frame.size.height - 44,
-                               width: 1,
-                               height: unlockPremiumFeatureModalLabel.frame.size.height - 44)
+        convertMeaageFromStringToAttributedText(msg)
         
-        unlockPremiumFeatureModalView.isHidden = true
     }
     
-    private func adjustUnlockPremiumFeatureModalLine(x:CGFloat, y:CGFloat, width:CGFloat, height:CGFloat) {
-        let upperLayer = CALayer()
-        upperLayer.frame = CGRect(
-            x: x,
-            y: y,
-            width: width,
-            height: height
-        )
-        upperLayer.backgroundColor = Theme.darkgray.cgColor
-        unlockPremiumFeatureModalLabel.layer.addSublayer(upperLayer)
+    private func convertMeaageFromStringToAttributedText(_ msg:String) {
+        let markdownParser = MarkdownParser()
+        let aText = NSMutableAttributedString(attributedString: markdownParser.parse(msg))
+        alert.setValue(aText, forKey: "attributedMessage")
+    }
+    
+    private func isAvailablePremiumCommands() -> Bool {
+        if unAvailablePremiumCommands.count != 0 ||
+            !VideoCaptureService.shared.isDepthRearCameraAvailable() ||
+            !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
+            return false
+        }
+        return true
     }
 }
 
@@ -284,7 +269,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
             setAvailable(true, forCell:cell)
         } else {
             setAvailable(false, forCell:cell)
-            if isPremiumCommand(Command.allCases[indexPath.row]) && !InAppPurchaseFacade.shared.isPurchased(){
+            if isPremiumCommands(Command.allCases[indexPath.row]) && !InAppPurchaseFacade.shared.isPurchased(){
                 unAvailablePremiumCommands.append(Command.allCases[indexPath.row])
                 let orderedSet: NSOrderedSet = NSOrderedSet(array: unAvailablePremiumCommands)
                 unAvailablePremiumCommands = orderedSet.array as! [Command]
@@ -296,7 +281,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         return cell
     }
     
-    func isPremiumCommand(_ command:Command) -> Bool {
+    func isPremiumCommands(_ command:Command) -> Bool {
         if command == Command.ndi ||
             command == Command.arkit ||
             command == Command.imageDetection ||
