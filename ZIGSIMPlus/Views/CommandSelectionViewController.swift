@@ -264,32 +264,39 @@ extension CommandSelectionViewController: UITableViewDataSource {
         if isAvailable {
             cell?.commandLabel.textColor = Theme.main
             cell?.detailButton.tintColor = Theme.main
-            setDetailImageView(true, forCell: cell)
+            setDetailButton(isCommandAvailable: true, forCell: cell)
         } else {
             cell?.commandLabel.textColor = Theme.dark
             cell?.detailButton.tintColor = Theme.dark
-            setDetailImageView(false, forCell: cell)
+            setDetailButton(isCommandAvailable: false, forCell: cell)
         }
     }
     
-    func setDetailImageView(_ isAvailable: Bool,forCell cell: StandardCell? ) {
+    func setDetailButton(isCommandAvailable: Bool, forCell cell: StandardCell?) {
         let image: UIImage?
         cell?.detailButton.isHidden = true
         cell?.detailImageView.isHidden = true
-        if  cell?.commandLabel.text == Command.ndi.rawValue ||
-            cell?.commandLabel.text == Command.arkit.rawValue ||
-            cell?.commandLabel.text == Command.imageDetection.rawValue ||
-            cell?.commandLabel.text == Command.compass.rawValue ||
-            cell?.commandLabel.text == Command.beacon.rawValue {
+        if isContainDetailView(commandLabel: cell?.commandLabel.text) {
             cell?.detailButton.isHidden = false
             cell?.detailImageView.isHidden = false
-            if isAvailable {
+            if isCommandAvailable {
                 image = UIImage(named: "ActiveDetailButton")
             } else {
                 image = UIImage(named: "UnactiveDetailButton")
             }
             cell?.detailImageView.image = image
         }
+    }
+    
+    func isContainDetailView(commandLabel: String?) -> Bool {
+        if commandLabel == Command.ndi.rawValue ||
+            commandLabel == Command.arkit.rawValue ||
+            commandLabel == Command.imageDetection.rawValue ||
+            commandLabel == Command.compass.rawValue ||
+            commandLabel == Command.beacon.rawValue {
+            return true
+        }
+        return false
     }
 }
 
