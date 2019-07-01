@@ -50,7 +50,7 @@ public class StandardCell: UITableViewCell {
     func setCommandsOfImageAvailability(_ sender: UIButton) {
         let parent = viewController as! CommandSelectionViewController
         if Command.allCases[sender.tag] == .ndi || Command.allCases[sender.tag] == .arkit || Command.allCases[sender.tag] == .imageDetection{
-            if checkMarkLavel.text == "\u{2713}" { // "\u{2713}" is "✔︎"
+            if checkMarkLavel.text == checkMark {
                 parent.setSelectedButtonAvailable(sender.tag)
             } else {
                 parent.setNdiArkitImageDetectionButtonAvailable()
@@ -60,7 +60,7 @@ public class StandardCell: UITableViewCell {
     
     func setCheckMarkLavelText() {
         if checkMarkLavel.text == "" {
-            checkMarkLavel.text = "\u{2713}" // "\u{2713}" is "✔︎"
+            checkMarkLavel.text = checkMark
         } else  {
             checkMarkLavel.text = ""
         }

@@ -242,7 +242,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         cells[Command.allCases[indexPath.row]] = cell
         
         if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]]! {
-          cell.checkMarkLavel.text = "\u{2713}"
+          cell.checkMarkLavel.text = checkMark
         } else {
           cell.checkMarkLavel.text = ""
         }
