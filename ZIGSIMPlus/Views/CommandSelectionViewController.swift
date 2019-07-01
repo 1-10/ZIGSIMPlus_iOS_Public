@@ -41,9 +41,6 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     func setNdiArkitImageDetectionButtonAvailable() {
-        cells[Command.ndi]?.commandOnOffButton.isEnabled = true
-        cells[Command.arkit]?.commandOnOffButton.isEnabled = true
-        cells[Command.imageDetection]?.commandOnOffButton.isEnabled = true
         setAvailable(true, forCell: cells[Command.ndi])
         setAvailable(true, forCell: cells[Command.arkit])
         setAvailable(true, forCell: cells[Command.imageDetection])
@@ -54,21 +51,12 @@ final class CommandSelectionViewController: UIViewController {
         let selectedCommand = Command.allCases[selectedCommandNo]
         switch selectedCommand {
         case .ndi:
-            cells[Command.ndi]?.commandOnOffButton.isEnabled = true
-            cells[Command.arkit]?.commandOnOffButton.isEnabled = false
-            cells[Command.imageDetection]?.commandOnOffButton.isEnabled = false
             setAvailable(false, forCell: cells[Command.arkit])
             setAvailable(false, forCell: cells[Command.imageDetection])
         case .arkit:
-            cells[Command.ndi]?.commandOnOffButton.isEnabled = false
-            cells[Command.arkit]?.commandOnOffButton.isEnabled = true
-            cells[Command.imageDetection]?.commandOnOffButton.isEnabled = false
             setAvailable(false, forCell: cells[Command.imageDetection])
             setAvailable(false, forCell: cells[Command.ndi])
         case .imageDetection:
-            cells[Command.ndi]?.commandOnOffButton.isEnabled = false
-            cells[Command.arkit]?.commandOnOffButton.isEnabled = false
-            cells[Command.imageDetection]?.commandOnOffButton.isEnabled = true
             setAvailable(false, forCell: cells[Command.ndi])
             setAvailable(false, forCell: cells[Command.arkit])
         default:
