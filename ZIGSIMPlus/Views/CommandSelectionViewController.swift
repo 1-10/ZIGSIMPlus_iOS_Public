@@ -22,6 +22,7 @@ final class CommandSelectionViewController: UIViewController {
     var presenter: CommandSelectionPresenterProtocol!
     var alert: UIAlertController = UIAlertController() // dummy
     var cells:[Command:StandardCell] = [:]
+    var unAvailablePremiumCommands:[Command] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,16 +67,36 @@ final class CommandSelectionViewController: UIViewController {
     @IBAction func actionButton(_ sender: UIButton) {
         print("sender.tag: \(sender.tag)")
         if sender.tag == 1 { // "sender.tag == 1" is the unlock button
-            unlockPremiumFeatureModalView.isHidden = false
-            tableView.isUserInteractionEnabled = false
-        } else if sender.tag == 2 { // "sender.tag == 2" is the back button of unlock modal
-            unlockPremiumFeatureModalView.isHidden = true
-            tableView.isUserInteractionEnabled = true
-        } else if sender.tag == 3 { // "sender.tag == 3" is the purchase button of unlock modal
-            unlockPremiumFeatureModalView.isHidden = true
-            tableView.isUserInteractionEnabled = false
-            SVProgressHUD.show()
-            presenter.purchase()
+            alert = UIAlertController(title: premiumTextTitle, message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "BACK", style: .default))
+            alert.addAction(UIAlertAction(title: "PURCHASE", style: .default, handler: { action in
+                self.unlockPremiumFeatureModalView.isHidden = true
+                self.tableView.isUserInteractionEnabled = false
+                SVProgressHUD.show()
+                self.presenter.purchase()
+            }))
+            
+            var msg = premiumTextBody + "\n\nBut the following function can not be used on your device."
+            for unAvailablePremiumCommand in unAvailablePremiumCommands {
+                msg = msg + "\n・" + unAvailablePremiumCommand.rawValue
+            }
+            if !unAvailablePremiumCommands.contains(Command.ndi) {
+                if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+                    msg = msg + "\n・NDI Depth function."
+                }
+                if VideoCaptureService.shared.isDepthRearCameraAvailable() && !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
+                    msg = msg + "\n・NDI Depth function on front camera."
+                }
+            }
+            // Convert msg string to attributed text
+            let markdownParser = MarkdownParser()
+            let aText = NSMutableAttributedString(attributedString: markdownParser.parse(msg))
+            
+            alert.setValue(aText, forKey: "attributedMessage")
+            
+            present(alert, animated: true, completion: {
+                self.tableView.isUserInteractionEnabled = true
+            })
         }
     }
     
@@ -260,16 +281,30 @@ extension CommandSelectionViewController: UITableViewDataSource {
         
         let mediator = CommandAndServiceMediator()
         if mediator.isAvailable(Command.allCases[indexPath.row]){
-            print("isAvailable0: \(cell)")
             setAvailable(true, forCell:cell)
         } else {
-            print("isAvailable1: \(cell)")
             setAvailable(false, forCell:cell)
+            if isPremiumCommand(Command.allCases[indexPath.row]) && !InAppPurchaseFacade.shared.isPurchased(){
+                unAvailablePremiumCommands.append(Command.allCases[indexPath.row])
+                let orderedSet: NSOrderedSet = NSOrderedSet(array: unAvailablePremiumCommands)
+                unAvailablePremiumCommands = orderedSet.array as! [Command]
+            }
         }
 
         cell.initCell()
         
         return cell
+    }
+    
+    func isPremiumCommand(_ command:Command) -> Bool {
+        if command == Command.ndi ||
+            command == Command.arkit ||
+            command == Command.imageDetection ||
+            command == Command.nfc ||
+            command == Command.applePencil{
+            return true
+        }
+        return false
     }
     
     func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell?) {
