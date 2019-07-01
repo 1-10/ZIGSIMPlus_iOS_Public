@@ -16,8 +16,8 @@ let modalTexts:[Command: (title: String, body: String)] = [
     .quaternion : ("Quaternion", "test3\nquaternionです。"),
     .compass : ("Compass", """
 Compass command detects azimuth angle.
-This unit is DEGREE.
 
+Users can switch the orientation of device in detail settings:
 **PORTRAIT**:The device is held upright and the home button at the bottom.
 **FACEUP** :The device is held parallel to the ground with the screen facing upwards.
 """),
@@ -27,8 +27,7 @@ Pressure[hPa]
 Altitude[meter]
 """),
     .gps : ("GPS", """
-GPS command detects GPS signal and outputs latitude and Longitude.
-This unit is DEGREE.
+GPS command detects GPS signal and outputs **latitude** and **longitude**.
 """),
     .touch : ("Touch", """
 Touch command detects touch events in Start tab and outputs following values:
@@ -46,8 +45,8 @@ Proximity command detects whether the proximity sensor is close to the user (tru
 """),
     .micLevel : ("Mic Level", """
 Mic Level command detects sound level around the device and outputs following values:
-Average RMS power of the audio channel.
-Peak RMS power of the audio channel's.
+**max**: Peak RMS power of the mic input.
+**average**: Average RMS power of the mic input.
 Max value is 0.
 """),
     .remoteControl : ("Remote Control", """
