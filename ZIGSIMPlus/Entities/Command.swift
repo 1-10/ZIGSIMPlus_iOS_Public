@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
 
 /// Command is a constant label corresponds to features.
 /// NOTE: the order of cases affects selection view.
@@ -29,4 +30,27 @@ public enum Command: String, CaseIterable {
     case micLevel = "MIC LEVEL"
     case remoteControl = "Remote Control"
     case battery = "Battery"
+    
+    var userDefaultsKey: DefaultsKey<Bool?> {
+        switch self {
+        case .ndi: return DefaultsKeys.userNdiCommand
+        case .arkit: return DefaultsKeys.userArkitCommand
+        case .imageDetection: return DefaultsKeys.userImageDetectionCommand
+        case .nfc: return DefaultsKeys.userNfcReaderCommand
+        case .applePencil: return DefaultsKeys.userApplePencilCommand
+        case .acceleration: return DefaultsKeys.userAccelerationCommand
+        case .gravity: return DefaultsKeys.userGravityCommand
+        case .gyro: return DefaultsKeys.userGyroCommand
+        case .quaternion: return DefaultsKeys.userQuaternionCommand
+        case .compass: return DefaultsKeys.userCompassCommand
+        case .pressure: return DefaultsKeys.userPressureCommand
+        case .gps: return DefaultsKeys.userGpsCommand
+        case .touch: return DefaultsKeys.userTouchCommand
+        case .beacon: return DefaultsKeys.userBeaconCommand
+        case .proximity: return DefaultsKeys.userProximityCommand
+        case .micLevel: return DefaultsKeys.userMicLevelCommand
+        case .remoteControl: return DefaultsKeys.userRemoteControlCommand
+        case .battery: return DefaultsKeys.userBatteryCommand
+        }
+    }
 }
