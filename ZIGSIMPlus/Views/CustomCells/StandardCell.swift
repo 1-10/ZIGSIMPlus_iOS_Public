@@ -23,9 +23,9 @@ public class StandardCell: UITableViewCell {
     @IBAction func commandOnOffAction(_ sender: UISwitch) {
         setImageSegmentsAvailability(sender)
         if sender.isOn {
-            commandSelectionPresenter.setUserDefaults(Command.allCases[sender.tag], true)
+            commandSelectionPresenter.saveCommandOnOffToUserDefaults(Command.allCases[sender.tag], true)
         } else {
-            commandSelectionPresenter.setUserDefaults(Command.allCases[sender.tag], false)
+            commandSelectionPresenter.saveCommandOnOffToUserDefaults(Command.allCases[sender.tag], false)
         }
         commandSelectionPresenter.didSelectRow(atLabel: Command.allCases[sender.tag].rawValue)
     }
