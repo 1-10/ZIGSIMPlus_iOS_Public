@@ -273,18 +273,19 @@ extension CommandSelectionViewController: UITableViewDataSource {
     }
     
     func setDetailButton(isCommandAvailable: Bool, forCell cell: StandardCell?) {
-        let image: UIImage?
-        cell?.detailButton.isHidden = true
-        cell?.detailImageView.isHidden = true
         if isContainDetailView(commandLabel: cell?.commandLabel.text) {
             cell?.detailButton.isHidden = false
             cell?.detailImageView.isHidden = false
+            let image: UIImage?
             if isCommandAvailable {
                 image = UIImage(named: "ActiveDetailButton")
             } else {
                 image = UIImage(named: "UnactiveDetailButton")
             }
             cell?.detailImageView.image = image
+        } else {
+            cell?.detailButton.isHidden = true
+            cell?.detailImageView.isHidden = true
         }
     }
     
