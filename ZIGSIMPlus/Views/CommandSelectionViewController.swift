@@ -106,8 +106,8 @@ final class CommandSelectionViewController: UIViewController {
         setAlertMessage(message,alertType)
         switch alertType {
         case alertModalType.premium:
-            alert.addAction(UIAlertAction(title: "BACK", style: .default))
-            alert.addAction(UIAlertAction(title: "PURCHASE", style: .default, handler: { action in
+            alert.addAction(UIAlertAction(title: "Back", style: .default))
+            alert.addAction(UIAlertAction(title: "Purchase", style: .default, handler: { action in
                 self.tableView.isUserInteractionEnabled = false
                 SVProgressHUD.show()
                 self.presenter.purchase()
