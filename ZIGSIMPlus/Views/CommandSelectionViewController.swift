@@ -260,10 +260,8 @@ extension CommandSelectionViewController: UITableViewDataSource {
         
         let mediator = CommandAndServiceMediator()
         if mediator.isAvailable(Command.allCases[indexPath.row]){
-            print("isAvailable0: \(cell)")
             setAvailable(true, forCell:cell)
         } else {
-            print("isAvailable1: \(cell)")
             setAvailable(false, forCell:cell)
         }
 
