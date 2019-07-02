@@ -269,7 +269,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
             setAvailable(true, forCell:cell)
         } else {
             setAvailable(false, forCell:cell)
-            if isPremiumCommands(Command.allCases[indexPath.row]) && !InAppPurchaseFacade.shared.isPurchased(){
+            if isPremiumCommand(Command.allCases[indexPath.row]) && !InAppPurchaseFacade.shared.isPurchased(){
                 unAvailablePremiumCommands.append(Command.allCases[indexPath.row])
                 let orderedSet: NSOrderedSet = NSOrderedSet(array: unAvailablePremiumCommands)
                 unAvailablePremiumCommands = orderedSet.array as! [Command]
@@ -281,7 +281,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         return cell
     }
     
-    func isPremiumCommands(_ command:Command) -> Bool {
+    func isPremiumCommand(_ command:Command) -> Bool {
         if command == Command.ndi ||
             command == Command.arkit ||
             command == Command.imageDetection ||
