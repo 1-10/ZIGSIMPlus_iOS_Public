@@ -36,7 +36,9 @@ final class CommandSelectionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        // "tableView.reloadData()" is used for updating availability of command in tabelView after comming back from another tab.
+        // e.g. If user come back to this View,after pushing the Restore Purchase Button in Setting View.
+        tableView.reloadData()
         // Check here to switch lock/unlock after restore
         if presenter.isPremiumFeaturePurchased {
             unlockPremiumFeature()
@@ -265,6 +267,10 @@ extension CommandSelectionViewController: UITableViewDataSource {
                 unAvailablePremiumCommands = orderedSet.array as! [Command]
             }
         }
+        
+        if !InAppPurchaseFacade.shared.isPurchased() && isPremiumCommand(Command.allCases[indexPath.row]){
+            setAvailable(false,forCell: cell)
+        }
 
         cell.initCell()
         
@@ -327,7 +333,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
 extension CommandSelectionViewController: CommandSelectionPresenterDelegate {
     func showPurchaseResult(isSuccessful: Bool, title: String?, message: String?) {
         SVProgressHUD.dismiss()
-        
+        tableView.reloadData()
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Close", style: .default) { _ in
             if isSuccessful {
