@@ -25,6 +25,7 @@ final class CommandSelectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.loadCommandOnOffFromUserDefaults()
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
         adjustNavigationDesign()
     }
