@@ -68,7 +68,7 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     @IBAction func actionButton(_ sender: UIButton) {
-        showAlertModal(premiumTextTitle, premiumTextBody, alertModalType.premium)
+        showAlertModal(title:premiumTextTitle, message: premiumTextBody, alertModalType.premium)
     }
     
     public func showDetail(commandNo: Int) {
@@ -98,12 +98,12 @@ final class CommandSelectionViewController: UIViewController {
             fatalError("Invalid command: \(command)")
         }
 
-        showAlertModal(title, msg, alertModalType.detailSetting)
+        showAlertModal(title:title,message: msg, alertModalType.detailSetting)
     }
     
-    func showAlertModal(_ title: String, _ msg: String , _ alertType: alertModalType) {
-        alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        setAlertMessage(msg,alertType)
+    func showAlertModal(title: String, message: String , _ alertType: alertModalType) {
+        alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        setAlertMessage(message,alertType)
         switch alertType {
         case alertModalType.premium:
             alert.addAction(UIAlertAction(title: "BACK", style: .default))
