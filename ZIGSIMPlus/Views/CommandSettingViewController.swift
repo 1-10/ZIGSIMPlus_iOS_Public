@@ -59,12 +59,13 @@ public class CommandSettingViewController : UIViewController {
 
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touch screen!")
-        updateSettingData()
-        self.view.endEditing(true)
+        if updateSettingTextData() {
+            self.view.endEditing(true)
+        }
     }
 
     @IBAction func changeSettingData(_ sender: UISegmentedControl) {
-        updateSettingData()
+        updateSettingSegmentData()
     }
     
     @IBAction func restorePurchasePressed(_ sender: UIButton) {
@@ -75,24 +76,43 @@ public class CommandSettingViewController : UIViewController {
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         print("should end editing!")
-        updateSettingData()
-        self.view.endEditing(true)
-        return true
+        if updateSettingTextData() {
+            self.view.endEditing(true)
+            return true
+        } else {
+            return false
+        }
     }
-
-    private func updateSettingData() {
+    
+    private func updateSettingTextData() -> Bool {
         var texts:[textFieldName: String] = [:]
         for textField in textFields {
             if textField.tag == 0 {
-                texts[.ipAdress] = textField.text ?? ""
+                if Utils.isValidSettingViewText(text: textField, textType: .ipAddress) && textField.text != "" {
+                    texts[.ipAdress] = textField.text ?? ""
+                } else {
+                    return false
+                }
             } else if textField.tag == 1 {
-                texts[.portNumber] = textField.text ?? ""
+                if Utils.isValidSettingViewText(text: textField, textType: .portNumber) && textField.text != "" {
+                    texts[.portNumber] = textField.text ?? ""
+                } else {
+                    return false
+                }
             } else if textField.tag == 2 {
-                texts[.uuid] = textField.text ?? ""
+                if Utils.isValidSettingViewText(text: textField, textType: .deviceUuid) && textField.text != "" {
+                    texts[.uuid] = textField.text ?? ""
+                } else {
+                    return false
+                }
             }
         }
+        
         presenter.updateTextsUserDefault(texts:texts)
-
+        return true
+    }
+    
+    private func updateSettingSegmentData() {
         var segmentControls:[segmentName:Int] = [:]
         for segment in segments {
             if segment.tag == 0 {

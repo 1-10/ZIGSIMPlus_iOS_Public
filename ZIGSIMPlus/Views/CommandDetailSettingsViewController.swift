@@ -146,7 +146,7 @@ public class CommandDetailSettingsViewController : UIViewController {
             }
             
             let segmentedForNdiCamera = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)
-            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() && 1 == segmented.selectedSegmentIndex {
+            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() && segmented.selectedSegmentIndex == 1  {
                 segmentedForNdiCamera?.selectedSegmentIndex = 0
                 AppSettingModel.shared.ndiCameraPosition = .BACK
                 segmentedForNdiCamera?.isEnabled = false

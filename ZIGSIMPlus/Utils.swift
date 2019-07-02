@@ -95,4 +95,21 @@ class Utils {
 
         return uuid
     }
+    
+    static func isValidSettingViewText(text: UITextField, textType: SettingViewTextType) -> Bool {
+        switch textType {
+        case .ipAddress:
+            return Utils.isCompose(text.text ?? "0", of: "1234567890.")
+        case .portNumber:
+            return Utils.isCompose(text.text ?? "0", of: "1234567890")
+        case .deviceUuid:
+            return Utils.isCompose(text.text ?? "0", of: "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        }
+    }
+    
+    private static func isCompose(_ text: String, of chars: String) -> Bool {
+        let characterSet = NSMutableCharacterSet()
+        characterSet.addCharacters(in: chars)
+        return text.trimmingCharacters(in: characterSet as CharacterSet).count <= 0
+    }
 }

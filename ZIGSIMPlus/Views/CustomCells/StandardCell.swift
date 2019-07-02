@@ -24,6 +24,11 @@ public class StandardCell: UITableViewCell {
     @IBAction func commandOnOffButtonAction(_ sender: UIButton) {
         setCheckMarkLavelText()
         setCommandsOfImageAvailability(sender)
+        if checkMarkLavel.text == checkMark {
+            commandSelectionPresenter.saveCommandOnOffToUserDefaults(Command.allCases[sender.tag], true)
+        } else {
+            commandSelectionPresenter.saveCommandOnOffToUserDefaults(Command.allCases[sender.tag], false)
+        }
         commandSelectionPresenter.didSelectRow(atLabel: Command.allCases[sender.tag].rawValue)
     }
     

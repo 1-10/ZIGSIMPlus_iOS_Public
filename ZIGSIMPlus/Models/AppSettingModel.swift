@@ -87,6 +87,12 @@ enum CompassOrientation: Int {
     case faceup = 1
 }
 
+enum SettingViewTextType {
+    case ipAddress
+    case portNumber
+    case deviceUuid
+}
+
 public class AppSettingModel {
     private init() {
         for command in Command.allCases {
@@ -222,4 +228,22 @@ extension DefaultsKeys {
     static let userImageDetectorNumberOfAnglesForSegment = DefaultsKey<Int?>("userImageDetectorNumberOfAnglesForSegment", defaultValue: 0)
     static let userImageDetectorDetectsEyeBlink = DefaultsKey<Bool?>("userImageDetectorDetectsEyeBlink", defaultValue: true)
     static let userImageDetectorDetectsSmile = DefaultsKey<Bool?>("userImageDetectorDetectsSmile", defaultValue: true)
+    static let userNdiCommand = DefaultsKey<Bool?>("userNdiCommand", defaultValue: false)
+    static let userArkitCommand = DefaultsKey<Bool?>("userArkitCommand", defaultValue: false)
+    static let userImageDetectionCommand = DefaultsKey<Bool?>("userImageDetectionCommand", defaultValue: false)
+    static let userNfcReaderCommand = DefaultsKey<Bool?>("userNfcReaderCommand", defaultValue: false)
+    static let userApplePencilCommand = DefaultsKey<Bool?>("userApplePencilCommand", defaultValue: false)
+    static let userAccelerationCommand = DefaultsKey<Bool?>("userAccelerationCommand", defaultValue: false)
+    static let userGravityCommand = DefaultsKey<Bool?>("userGravityCommand", defaultValue: false)
+    static let userGyroCommand = DefaultsKey<Bool?>("userGyroCommand", defaultValue: false)
+    static let userQuaternionCommand = DefaultsKey<Bool?>("userQuaternionCommand", defaultValue: false)
+    static let userCompassCommand = DefaultsKey<Bool?>("userCompassCommand", defaultValue: false)
+    static let userPressureCommand = DefaultsKey<Bool?>("userPressureCommand", defaultValue: false)
+    static let userGpsCommand = DefaultsKey<Bool?>("userGpsCommand", defaultValue: false)
+    static let userTouchCommand = DefaultsKey<Bool?>("userTouchCommand", defaultValue: false)
+    static let userBeaconCommand = DefaultsKey<Bool?>("userBeaconCommand", defaultValue: false)
+    static let userProximityCommand = DefaultsKey<Bool?>("userProximityCommand", defaultValue: false)
+    static let userMicLevelCommand = DefaultsKey<Bool?>("userMicLevelCommand", defaultValue: false)
+    static let userRemoteControlCommand = DefaultsKey<Bool?>("userRemoteControlCommand", defaultValue: false)
+    static let userBatteryCommand = DefaultsKey<Bool?>("userBatteryCommand", defaultValue: false)
 }
