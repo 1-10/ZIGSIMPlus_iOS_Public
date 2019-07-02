@@ -64,7 +64,6 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     @IBAction func actionButton(_ sender: UIButton) {
-        print("sender.tag: \(sender.tag)")
         if sender.tag == 1 { // "sender.tag == 1" is the unlock button
             unlockPremiumFeatureModalView.isHidden = false
             tableView.isUserInteractionEnabled = false
@@ -260,10 +259,8 @@ extension CommandSelectionViewController: UITableViewDataSource {
         
         let mediator = CommandAndServiceMediator()
         if mediator.isAvailable(Command.allCases[indexPath.row]){
-            print("isAvailable0: \(cell)")
             setAvailable(true, forCell:cell)
         } else {
-            print("isAvailable1: \(cell)")
             setAvailable(false, forCell:cell)
         }
 
