@@ -8,60 +8,66 @@
 
 import Foundation
 import UIKit
-import DynamicButton
 
 public class StandardCell: UITableViewCell {
 
-    @IBOutlet weak var commandOnOff: UISwitch!
+    @IBOutlet weak var commandOnOffButton: UIButton!
     @IBOutlet weak var commandLabel: UILabel!
-    @IBOutlet weak var detailButton: DynamicButton!
+    @IBOutlet weak var checkMarkLavel: UILabel!
+    @IBOutlet weak var detailButton: UIButton!
+    @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var modalButton: UIButton!
     @IBOutlet weak var labelConstaint: NSLayoutConstraint!
     var commandSelectionPresenter: CommandSelectionPresenterProtocol!
     var viewController: UIViewController!
-
-    @IBAction func commandOnOffAction(_ sender: UISwitch) {
-        setImageSegmentsAvailability(sender)
-        commandSelectionPresenter.saveCommandOnOffToUserDefaults(Command.allCases[sender.tag], sender.isOn)
+    
+    @IBAction func commandOnOffButtonAction(_ sender: UIButton) {
+        setCheckMarkLavelText()
+        setCommandsOfImageAvailability(sender)
+        if checkMarkLavel.text == checkMark {
+            commandSelectionPresenter.saveCommandOnOffToUserDefaults(Command.allCases[sender.tag], true)
+        } else {
+            commandSelectionPresenter.saveCommandOnOffToUserDefaults(Command.allCases[sender.tag], false)
+        }
         commandSelectionPresenter.didSelectRow(atLabel: Command.allCases[sender.tag].rawValue)
     }
-
+    
     @IBAction func detailButtonAction(_ sender: UIButton) {
         let parent = viewController as! CommandSelectionViewController
-        parent.showDetail(commandNo: commandOnOff.tag)
+        parent.showDetail(commandNo: commandOnOffButton.tag)
     }
 
     @IBAction func modalButtonAction(_ sender: UIButton) {
         let parent = viewController as! CommandSelectionViewController
         parent.showModal(commandNo: commandLabel.tag)
     }
-
+    
     func initCell() {
-        commandOnOff.thumbTintColor = Theme.gray
-        commandOnOff.onTintColor = Theme.main
-        commandOnOff.tintColor = Theme.main
-        commandOnOff.backgroundColor = Theme.black
-        commandOnOff.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        detailButton.setStyle(.caretRight, animated: true)
-        modalButton.backgroundColor = Theme.gray
-        modalButton.layer.borderWidth = 2.0
-        modalButton.layer.borderColor = Theme.gray.cgColor
-        modalButton.layer.cornerRadius = 10.0
+        self.backgroundColor = Theme.black
+        checkMarkLavel.textColor = Theme.main
+        checkMarkLavel.font = UIFont.boldSystemFont(ofSize: 23)
+        modalButton.tintColor = Theme.main
         let screenWidth = UIScreen.main.bounds.size.width
-        let newConstant = screenWidth - 300 // "300" is a length other than this constant
-        labelConstaint.constant = newConstant
+        let newConstant = screenWidth - 195 // "195" is calibration constant adjusted to fit any devices.
+        labelConstaint.constant =  newConstant
     }
     
-    func setImageSegmentsAvailability(_ sender: UISwitch) {
+    func setCommandsOfImageAvailability(_ sender: UIButton) {
         let parent = viewController as! CommandSelectionViewController
-        if (Command.allCases[sender.tag] == .ndi ||
-            Command.allCases[sender.tag] == .arkit ||
-            Command.allCases[sender.tag] == .imageDetection) {
-            if sender.isOn{
-                parent.setImageSegmentsUnavailable(sender.tag)
+        if Command.allCases[sender.tag] == .ndi || Command.allCases[sender.tag] == .arkit || Command.allCases[sender.tag] == .imageDetection{
+            if checkMarkLavel.text == checkMark {
+                parent.setSelectedButtonAvailable(sender.tag)
             } else {
-                parent.setImageSegmentsAvailable()
+                parent.setNdiArkitImageDetectionButtonAvailable()
             }
+        }
+    }
+    
+    func setCheckMarkLavelText() {
+        if checkMarkLavel.text == "" {
+            checkMarkLavel.text = checkMark
+        } else  {
+            checkMarkLavel.text = ""
         }
     }
 }
