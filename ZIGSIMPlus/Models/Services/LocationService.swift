@@ -181,8 +181,8 @@ extension LocationService : Service {
 
         if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
             log += [
-                "compass:latitude:\(latitudeData)",
-                "compass:longitude:\(longitudeData)"
+                "gps:latitude:\(latitudeData)",
+                "gps:longitude:\(longitudeData)"
             ]
         }
 

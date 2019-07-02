@@ -29,6 +29,7 @@ final class CommandSelectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.loadCommandOnOffFromUserDefaults()
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
         adjustNavigationDesign()
     }
@@ -44,13 +45,14 @@ final class CommandSelectionViewController: UIViewController {
         }
     }
     
-    func setImageSegmentsAvailable(){
+    func setNdiArkitImageDetectionButtonAvailable() {
         setAvailable(true, forCell: cells[Command.ndi])
         setAvailable(true, forCell: cells[Command.arkit])
         setAvailable(true, forCell: cells[Command.imageDetection])
     }
     
-    func setImageSegmentsUnavailable(_ selectedCommandNo: Int){
+    
+    func setSelectedButtonAvailable(_ selectedCommandNo: Int){
         let selectedCommand = Command.allCases[selectedCommandNo]
         switch selectedCommand {
         case .ndi:
@@ -234,35 +236,23 @@ extension CommandSelectionViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let CommandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
+        let commandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
-        
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Theme.dark
-        
-        cell.commandLabel.text = CommandToSelect.labelString
+        tableView.backgroundColor = Theme.black
+        cell.commandLabel.text = commandToSelect.labelString
         cell.commandLabel.tag = indexPath.row
-        cell.commandOnOff.tag = indexPath.row
+        cell.commandOnOffButton.tag = indexPath.row
         cell.viewController = self
         cell.commandSelectionPresenter = self.presenter
-        
-        cell.detailButton.isHidden = false
-        if CommandToSelect.labelString == Command.acceleration.rawValue ||
-           CommandToSelect.labelString == Command.gravity.rawValue ||
-           CommandToSelect.labelString == Command.gyro.rawValue ||
-           CommandToSelect.labelString == Command.quaternion.rawValue ||
-           CommandToSelect.labelString == Command.pressure.rawValue ||
-           CommandToSelect.labelString == Command.gps.rawValue ||
-           CommandToSelect.labelString == Command.touch.rawValue ||
-           CommandToSelect.labelString == Command.proximity.rawValue ||
-           CommandToSelect.labelString == Command.micLevel.rawValue ||
-           CommandToSelect.labelString == Command.remoteControl.rawValue {
-           cell.detailButton.isHidden = true
-        }
-
         cells[Command.allCases[indexPath.row]] = cell
-        cell.commandOnOff.isOn = AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] ?? false
+        
+        if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]]! {
+          cell.checkMarkLavel.text = checkMark
+        } else {
+          cell.checkMarkLavel.text = ""
+        }
         
         let mediator = CommandAndServiceMediator()
         if mediator.isAvailable(Command.allCases[indexPath.row]){
@@ -293,15 +283,44 @@ extension CommandSelectionViewController: UITableViewDataSource {
     }
     
     func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell?) {
-        cell?.commandOnOff.isEnabled = isAvailable
-        cell?.detailButton.isEnabled = isAvailable
+        cell?.commandOnOffButton.isEnabled = isAvailable
         if isAvailable {
             cell?.commandLabel.textColor = Theme.main
-            cell?.detailButton.strokeColor = Theme.main
+            cell?.detailButton.tintColor = Theme.main
+            setDetailButton(isCommandAvailable: true, forCell: cell)
         } else {
             cell?.commandLabel.textColor = Theme.dark
-            cell?.detailButton.strokeColor = Theme.dark
+            cell?.detailButton.tintColor = Theme.dark
+            setDetailButton(isCommandAvailable: false, forCell: cell)
         }
+    }
+    
+    func setDetailButton(isCommandAvailable: Bool, forCell cell: StandardCell?) {
+        if hasDetailView(commandLabel: cell?.commandLabel.text) {
+            cell?.detailButton.isHidden = false
+            cell?.detailImageView.isHidden = false
+            let image: UIImage?
+            if isCommandAvailable {
+                image = UIImage(named: "ActiveDetailButton")
+            } else {
+                image = UIImage(named: "UnactiveDetailButton")
+            }
+            cell?.detailImageView.image = image
+        } else {
+            cell?.detailButton.isHidden = true
+            cell?.detailImageView.isHidden = true
+        }
+    }
+    
+    func hasDetailView(commandLabel: String?) -> Bool {
+        if commandLabel == Command.ndi.rawValue ||
+            commandLabel == Command.arkit.rawValue ||
+            commandLabel == Command.imageDetection.rawValue ||
+            commandLabel == Command.compass.rawValue ||
+            commandLabel == Command.beacon.rawValue {
+            return true
+        }
+        return false
     }
 }
 

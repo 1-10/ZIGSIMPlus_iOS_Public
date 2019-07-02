@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
 
 protocol CommandSelectionPresenterProtocol {
     var isPremiumFeaturePurchased: Bool { get }
@@ -14,6 +15,8 @@ protocol CommandSelectionPresenterProtocol {
     func getCommandToSelect(forRow row: Int) -> CommandToSelect
     func didSelectRow(atLabel labelString: String)
     func purchase()
+    func saveCommandOnOffToUserDefaults(_ command: Command,_ isOn: Bool)
+    func loadCommandOnOffFromUserDefaults()
 }
 
 protocol CommandSelectionPresenterDelegate: AnyObject {
@@ -78,6 +81,16 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
             }
             
             self.view.showPurchaseResult(isSuccessful: isSuccessful, title: title, message: message)
+        }
+    }
+    
+    func saveCommandOnOffToUserDefaults(_ command: Command, _ isOn: Bool) {
+        Defaults[command.userDefaultsKey] = isOn
+    }
+    
+    func loadCommandOnOffFromUserDefaults() {
+        for command in Command.allCases {
+            AppSettingModel.shared.isActiveByCommand[command] = Defaults[command.userDefaultsKey]
         }
     }
 
