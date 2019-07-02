@@ -273,7 +273,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
     }
     
     func setDetailButton(isCommandAvailable: Bool, forCell cell: StandardCell?) {
-        if isContainDetailView(commandLabel: cell?.commandLabel.text) {
+        if hasDetailView(commandLabel: cell?.commandLabel.text) {
             cell?.detailButton.isHidden = false
             cell?.detailImageView.isHidden = false
             let image: UIImage?
@@ -289,7 +289,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         }
     }
     
-    func isContainDetailView(commandLabel: String?) -> Bool {
+    func hasDetailView(commandLabel: String?) -> Bool {
         if commandLabel == Command.ndi.rawValue ||
             commandLabel == Command.arkit.rawValue ||
             commandLabel == Command.imageDetection.rawValue ||
