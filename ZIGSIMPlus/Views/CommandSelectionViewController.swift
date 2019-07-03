@@ -261,31 +261,20 @@ extension CommandSelectionViewController: UITableViewDataSource {
             setAvailable(true, forCell:cell)
         } else {
             setAvailable(false, forCell:cell)
-            if isPremiumCommand(Command.allCases[indexPath.row]) && !presenter.isPremiumFeaturePurchased{
+            if mediator.isPremiumCommand(Command.allCases[indexPath.row]) && !presenter.isPremiumFeaturePurchased{
                 unAvailablePremiumCommands.append(Command.allCases[indexPath.row])
                 let orderedSet: NSOrderedSet = NSOrderedSet(array: unAvailablePremiumCommands)
                 unAvailablePremiumCommands = orderedSet.array as! [Command]
             }
         }
         
-        if !presenter.isPremiumFeaturePurchased && isPremiumCommand(Command.allCases[indexPath.row]){
+        if !presenter.isPremiumFeaturePurchased && mediator.isPremiumCommand(Command.allCases[indexPath.row]){
             setAvailable(false,forCell: cell)
         }
 
         cell.initCell()
         
         return cell
-    }
-    
-    func isPremiumCommand(_ command:Command) -> Bool {
-        if command == Command.ndi ||
-            command == Command.arkit ||
-            command == Command.imageDetection ||
-            command == Command.nfc ||
-            command == Command.applePencil{
-            return true
-        }
-        return false
     }
     
     func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell?) {
