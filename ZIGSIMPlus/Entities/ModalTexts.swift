@@ -90,10 +90,10 @@ For more detail of NDI, See http://NDI.NewTek.com/
 NFC command detects NFC tags and read messages that contain NDEF data.
 Output values are defined by the NDEF specification.
 
-**id** is the identifier of the payload.
-**data** is the data of the payload. Trimming header for the first several bytes is not supported.
-**typenameformat** is the Type Name Format field of the payload.
-**type** is the type of the payload.
+**id**: The identifier of the payload.
+**data**: Data of the payload. Trimming header for the first several bytes is not supported.
+**typenameformat**: Type Name Format field of the payload.
+**type**: Type of the payload.
 """),
     .arkit : ("ARKit", """
 ARKit command tracks different objects for the tracking type.
@@ -111,10 +111,10 @@ It ranges from 0.0 (fully discharged) to 1.0 (100% charged).
 Apple Pencil command detects touch events in Start tab (same as Touch command).
 Note that it only works on Apple Pencil compatible devices, that are some of iPad models.
 
-**touch** is the relative position of touches from the center of the screen.
-**altitude** is the altitude (in radians) of the stylus. A value of 0 indicates that the stylus is parallel to the surface. The value is Pi/2 when the stylus is perpendicular to the surface.
-**azimuth** is the azimuth angle (in radians) of the stylus. In the plane of the screen, the azimuth angle is the direction in which the stylus is pointing. It increases as the user swings the cap end of the stylus in a clockwise direction around the tip.
-**force** is the force of 3D Touch, where a value of 1.0 represents the force of an average touch.
+**touch**: Relative position of touches from the center of the screen.
+**altitude**: The altitude (in radians) of the stylus. A value of 0 indicates that the stylus is parallel to the surface. The value is Pi/2 when the stylus is perpendicular to the surface.
+**azimuth**: The azimuth angle (in radians) of the stylus. In the plane of the screen, the azimuth angle is the direction in which the stylus is pointing. It increases as the user swings the cap end of the stylus in a clockwise direction around the tip.
+**force**: The force of 3D Touch, where a value of 1.0 represents the force of an average touch.
 """),
     .imageDetection: ("Image Detection", """
 Image Detection command identifies notable features (such as faces and barcodes) from a camera.
