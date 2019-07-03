@@ -117,11 +117,15 @@ Note that it only works on Apple Pencil compatible devices, that are some of iPa
 **force** is the force of 3D Touch, where a value of 1.0 represents the force of an average touch.
 """),
     .imageDetection: ("Image Detection", """
-test18\nimageDetectionです。
+Image Detection command identifies notable features (such as faces and barcodes) from a camera.
+You cannot use NDI, ARKit, and Image Detection simultaneously.
+This command has following settings:
 
-
-
-
-
+**DETECTION TYPE**: Object type to detect, i.e. face, QR code, rectangle, and text.
+**ACCURACY**: Accuracy of detection. When set high, it requires more processing time.
+**TRACKING**: Enable or disable face tracking across frames in the video. Valid only when DETECTION TYPE is FACE.
+**NUMBER OF FACE ANGLES**: The number of perspectives to use for detecting a face. At higher numbers of angles, it becomes more accurate, but at a higher computational cost. Valid only when DETECTION TYPE is FACE.
+**DETECT EYE BLINK**: Whether to perform additional processing to recognize closed eyes in detected faces. Valid only when DETECTION TYPE is FACE.
+**DETECT SMILE**: Whether to perform additional processing to recognize smiles in detected faces. Valid only when DETECTION TYPE is FACE.
 """),
 ]
