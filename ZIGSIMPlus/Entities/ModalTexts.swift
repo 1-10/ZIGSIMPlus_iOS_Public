@@ -118,14 +118,20 @@ Note that it only works on Apple Pencil compatible devices, that are some of iPa
 """),
     .imageDetection: ("Image Detection", """
 Image Detection command identifies notable features (such as faces and barcodes) from a camera.
-You cannot use NDI, ARKit, and Image Detection simultaneously.
+You cannot use NDI, ARKit and Image Detection simultaneously.
 This command has following settings:
 
-**DETECTION TYPE**: Object type to detect, i.e. face, QR code, rectangle, and text.
+**DETECTION TYPE**: Object type to detect, i.e. face, QR code, rectangle and text.
 **ACCURACY**: Accuracy of detection. When set high, it requires more processing time.
 **TRACKING**: Enable or disable face tracking across frames in the video. Valid only when DETECTION TYPE is FACE.
 **NUMBER OF FACE ANGLES**: The number of perspectives to use for detecting a face. At higher numbers of angles, it becomes more accurate, but at a higher computational cost. Valid only when DETECTION TYPE is FACE.
 **DETECT EYE BLINK**: Whether to perform additional processing to recognize closed eyes in detected faces. Valid only when DETECTION TYPE is FACE.
 **DETECT SMILE**: Whether to perform additional processing to recognize smiles in detected faces. Valid only when DETECTION TYPE is FACE.
+
+Output values are as follows:
+**leftx, rightx, topy, bottomy, lefteye, righteye, mouth**: Coordinate in the video frame. Bottom left is (0, 0). Output only when DETECTION TYPE is FACE.
+**hassmile, lefteye-closed, righteye-closed**: True or false. Output only when DETECTION TYPE is FACE.
+**topleft, topright, bottomleft, bottomright**: Coordinate in the video frame. Bottom left is (0, 0). Output only when DETECTION TYPE is QR, RECT or TEXT.
+**qrmessage, qrversion, qrmaskpattern, errorcorrectionlevel**: Output only when DETECTION TYPE is QR.
 """),
 ]
