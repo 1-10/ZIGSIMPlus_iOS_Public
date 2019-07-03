@@ -128,10 +128,12 @@ Settings:
 **Detect Eye Blink**: Whether to perform additional processing to recognize closed eyes in detected faces. Valid only when Detection Type is FACE.
 **Detect Smile**: Whether to perform additional processing to recognize smiles in detected faces. Valid only when Detection Type is FACE.
 
-Output values:
-**leftx, rightx, topy, bottomy, lefteye, righteye, mouth**: Coordinate in the video frame. Bottom left is (0, 0). Output only when Detection Type is FACE.
-**hassmile, lefteye-closed, righteye-closed**: True or false. Output only when Detection Type is FACE.
-**topleft, topright, bottomleft, bottomright**: Coordinate in the video frame. Bottom left is (0, 0). Output only when Detection Type is QR, RECT or TEXT.
+Output values for Detection Type FACE:
+**left:x, right:x, top:y, bottom:y, lefteye, righteye, mouth**: Coordinate(point) in the video frame. Bottom left is (0, 0), top right is determined by the dimension of the video.
+**hassmile, lefteye-closed, righteye-closed**: True or false.
+
+Output values for others:
+**topleft, topright, bottomleft, bottomright**: Coordinate in the video frame. Bottom left is (0, 0), top right is determined by the dimension of the video.
 **qrmessage, qrversion, qrmaskpattern, errorcorrectionlevel**: Output only when Detection Type is QR.
 """),
 ]
