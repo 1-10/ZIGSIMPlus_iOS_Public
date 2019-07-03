@@ -12,20 +12,20 @@ import Foundation
 let modalTexts:[Command: (title: String, body: String)] = [
     .acceleration : ("Acceleration", """
 Acceleration command detects acceleration that the user is giving to the device.
-Values are in G's (gravitational force) for X, Y, and Z axis.
+Values are in G's (gravitational force) for X, Y and Z axis.
 """),
     .gravity : ("Gravity", """
 Gravity command detects gravity acceleration vector expressed in the device's reference frame.
-Values are in G's (gravitational force) for X, Y, and Z axis.
+Values are in G's (gravitational force) for X, Y and Z axis.
 """),
     .gyro : ("Gyro", """
 Gyro command detects rotation rate of the device.
 Values contain a measurement of gyroscope data whose bias has been removed by Core Motion algorithms.
-Values are in radians per second around X, Y, and Z axis.
+Values are in radians per second around X, Y and Z axis.
 """),
     .quaternion : ("Quaternion", """
 Quaternion command detects attitude of the device, that is, the orientation of a body relative to a given frame of reference.
-Values are quaternion for X, Y, Z, and W axis.
+Values are quaternion for X, Y, Z and W axis.
 """),
     .compass : ("Compass", """
 Compass command detects azimuth angle.
@@ -69,7 +69,7 @@ Remote Control command monitors the state of remote controllers of headphones co
 """),
     .ndi : ("NDI™", """
 NDI command transmits images from the device via NDI protocol.
-You cannot use NDI, ARKit, and Image Detection simultaneously.
+You cannot use NDI, ARKit and Image Detection simultaneously.
 This command has 3 settings:
 
 ## IMAGE TYPE
@@ -97,7 +97,7 @@ Output values are defined by the NDEF specification.
 """),
     .arkit : ("ARKit", """
 ARKit command tracks different objects for the tracking type.
-You cannot use NDI, ARKit, and Image Detection simultaneously.
+You cannot use NDI, ARKit and Image Detection simultaneously.
 
 **DEVICE**: device position, device rotation, feature points' positions.
 **FACE**: device rotation, face position, face rotation, eye position.
