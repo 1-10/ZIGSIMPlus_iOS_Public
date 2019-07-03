@@ -72,7 +72,9 @@
 		B30188E622B390E600CB549F /* CommandSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30188E522B390E600CB549F /* CommandSetting.storyboard */; };
 		B315239722C47E5300654A63 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B315239622C47E5300654A63 /* TermsOfUseViewController.swift */; };
 		B315239922C4A09300654A63 /* TermsOfUse.plist in Resources */ = {isa = PBXBuildFile; fileRef = B315239822C4A09200654A63 /* TermsOfUse.plist */; };
+		B37502F122CB38820050735C /* PremiumText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37502F022CB38820050735C /* PremiumText.swift */; };
 		B39DCDA222B7728C00D4E722 /* UITabBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39DCDA122B7728C00D4E722 /* UITabBarExtension.swift */; };
+		B39DECA922C9DE850088DD88 /* CheckMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39DECA822C9DE850088DD88 /* CheckMark.swift */; };
 		B3C6588722A9022600B4358B /* StandardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C6588622A9022600B4358B /* StandardCell.xib */; };
 		B3C6588922A9028500B4358B /* StandardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6588822A9028500B4358B /* StandardCell.swift */; };
 		B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFE5B722ADF436009664C0 /* ModalTexts.swift */; };
@@ -190,7 +192,9 @@
 		B30188E522B390E600CB549F /* CommandSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandSetting.storyboard; sourceTree = "<group>"; };
 		B315239622C47E5300654A63 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		B315239822C4A09200654A63 /* TermsOfUse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TermsOfUse.plist; sourceTree = "<group>"; };
+		B37502F022CB38820050735C /* PremiumText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumText.swift; sourceTree = "<group>"; };
 		B39DCDA122B7728C00D4E722 /* UITabBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarExtension.swift; sourceTree = "<group>"; };
+		B39DECA822C9DE850088DD88 /* CheckMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMark.swift; sourceTree = "<group>"; };
 		B3C6588622A9022600B4358B /* StandardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardCell.xib; sourceTree = "<group>"; };
 		B3C6588822A9028500B4358B /* StandardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCell.swift; sourceTree = "<group>"; };
 		B3CFE5B722ADF436009664C0 /* ModalTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTexts.swift; sourceTree = "<group>"; };
@@ -484,9 +488,11 @@
 		902EB9FB227BF0DB008F1650 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				B37502F022CB38820050735C /* PremiumText.swift */,
 				9092E4CB227EBF4D0019F1C1 /* Command.swift */,
 				B3CFE5B722ADF436009664C0 /* ModalTexts.swift */,
 				02DF072C22BB36D300F3ABE2 /* Theme.swift */,
+				B39DECA822C9DE850088DD88 /* CheckMark.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -784,6 +790,8 @@
 				02A0359B229CD6F800E7399E /* CommandSettingViewController.swift in Sources */,
 				02A03597229CD56E00E7399E /* AltimeterService.swift in Sources */,
 				0236461D2298253900171F73 /* NDI.cpp in Sources */,
+				B39DECA922C9DE850088DD88 /* CheckMark.swift in Sources */,
+				B37502F122CB38820050735C /* PremiumText.swift in Sources */,
 				02A8FA8C2296B62D001FB3DD /* ServiceManager.swift in Sources */,
 				63A6192B22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift in Sources */,
 				02A8FA8B2296B62D001FB3DD /* BatteryService.swift in Sources */,

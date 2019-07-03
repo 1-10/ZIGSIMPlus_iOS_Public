@@ -12,19 +12,24 @@ import MarkdownKit
 
 typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
+enum alertModalType{
+    case premium
+    case detailSetting
+}
+
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lockPremiumFeatureLabel: UILabel!
     @IBOutlet weak var unlockPremiumFeatureButton: UIButton!
-    @IBOutlet weak var unlockPremiumFeatureModalView: UIView!
-    @IBOutlet weak var unlockPremiumFeatureModalLabel: UILabel!
     
     var presenter: CommandSelectionPresenterProtocol!
     var alert: UIAlertController = UIAlertController() // dummy
     var cells:[Command:StandardCell] = [:]
+    var unAvailablePremiumCommands:[Command] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.loadCommandOnOffFromUserDefaults()
         self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
         adjustNavigationDesign()
     }
@@ -40,13 +45,14 @@ final class CommandSelectionViewController: UIViewController {
         }
     }
     
-    func setImageSegmentsAvailable(){
+    func setNdiArkitImageDetectionButtonAvailable() {
         setAvailable(true, forCell: cells[Command.ndi])
         setAvailable(true, forCell: cells[Command.arkit])
         setAvailable(true, forCell: cells[Command.imageDetection])
     }
     
-    func setImageSegmentsUnavailable(_ selectedCommandNo: Int){
+    
+    func setSelectedButtonAvailable(_ selectedCommandNo: Int){
         let selectedCommand = Command.allCases[selectedCommandNo]
         switch selectedCommand {
         case .ndi:
@@ -64,18 +70,7 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     @IBAction func actionButton(_ sender: UIButton) {
-        if sender.tag == 1 { // "sender.tag == 1" is the unlock button
-            unlockPremiumFeatureModalView.isHidden = false
-            tableView.isUserInteractionEnabled = false
-        } else if sender.tag == 2 { // "sender.tag == 2" is the back button of unlock modal
-            unlockPremiumFeatureModalView.isHidden = true
-            tableView.isUserInteractionEnabled = true
-        } else if sender.tag == 3 { // "sender.tag == 3" is the purchase button of unlock modal
-            unlockPremiumFeatureModalView.isHidden = true
-            tableView.isUserInteractionEnabled = false
-            SVProgressHUD.show()
-            presenter.purchase()
-        }
+        showAlertModal(title:premiumTextTitle, message: premiumTextBody, alertModalType.premium)
     }
     
     public func showDetail(commandNo: Int) {
@@ -105,22 +100,33 @@ final class CommandSelectionViewController: UIViewController {
             fatalError("Invalid command: \(command)")
         }
 
-        alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
-            UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
-        }))
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-
-        // Convert msg string to attributed text
-        let markdownParser = MarkdownParser()
-        let aText = NSMutableAttributedString(attributedString: markdownParser.parse(msg))
-
-        alert.setValue(aText, forKey: "attributedMessage")
-
-        present(alert, animated: true, completion: {
-            self.alert.view.superview?.isUserInteractionEnabled = true
-            self.alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.hideAlert)))
-        })
+        showAlertModal(title:title,message: msg, alertModalType.detailSetting)
+    }
+    
+    func showAlertModal(title: String, message: String , _ alertType: alertModalType) {
+        alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        setAlertMessage(message,alertType)
+        switch alertType {
+        case alertModalType.premium:
+            alert.addAction(UIAlertAction(title: "Back", style: .default))
+            alert.addAction(UIAlertAction(title: "Purchase", style: .default, handler: { action in
+                self.tableView.isUserInteractionEnabled = false
+                SVProgressHUD.show()
+                self.presenter.purchase()
+            }))
+            present(alert, animated: true, completion: {
+                self.tableView.isUserInteractionEnabled = true
+            })
+        case alertModalType.detailSetting:
+            alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
+                UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
+            }))
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true, completion: {
+                self.alert.view.superview?.isUserInteractionEnabled = true
+                self.alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.hideAlert)))
+            })
+        }
     }
 
     @objc private func hideAlert() {
@@ -137,7 +143,6 @@ final class CommandSelectionViewController: UIViewController {
         setPremiumFeatureIsHidden(false)
         adjustLockPremiumFeatureLabel()
         adjustUnlockPremiumFeatureButton()
-        adjustUnlockPremiumFeatureModalLabel()
     }
     
     private func unlockPremiumFeature() {
@@ -147,8 +152,6 @@ final class CommandSelectionViewController: UIViewController {
     private func setPremiumFeatureIsHidden(_ isHidden: Bool) {
         lockPremiumFeatureLabel.isHidden = isHidden
         unlockPremiumFeatureButton.isHidden = isHidden
-        unlockPremiumFeatureModalView.isHidden = isHidden
-        unlockPremiumFeatureModalLabel.isHidden = isHidden
     }
     
     private func adjustLockPremiumFeatureLabel() {
@@ -166,34 +169,40 @@ final class CommandSelectionViewController: UIViewController {
                                         height: unlockPremiumFeatureButton.frame.size.height)
     }
     
-    private func adjustUnlockPremiumFeatureModalLabel() {
-        unlockPremiumFeatureModalLabel.layer.cornerRadius = 10
-        unlockPremiumFeatureModalLabel.layer.borderWidth = 1.0
-        unlockPremiumFeatureModalLabel.layer.masksToBounds = true
-        unlockPremiumFeatureModalLabel.layer.borderColor = Theme.gray.cgColor
+    private func setAlertMessage(_ message: String, _ alertType: alertModalType) {
+        var msg = message
+        if  alertType == alertModalType.premium && !isAvailablePremiumCommands() {
+            msg = premiumTextBody + "\n\nBut the following function can not be used on your device."
+            for unAvailablePremiumCommand in unAvailablePremiumCommands {
+                msg = msg + "\n・" + unAvailablePremiumCommand.rawValue
+            }
+            if !unAvailablePremiumCommands.contains(Command.ndi) {
+                if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+                    msg = msg + "\n・NDI Depth function."
+                }
+                if VideoCaptureService.shared.isDepthRearCameraAvailable() && !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
+                    msg = msg + "\n・NDI Depth function on front camera."
+                }
+            }
+        }
         
-        adjustUnlockPremiumFeatureModalLine(x: 0,
-                               y: unlockPremiumFeatureModalLabel.frame.size.height - 44,
-                               width: unlockPremiumFeatureModalLabel.frame.size.width,
-                               height: 1)
-        adjustUnlockPremiumFeatureModalLine(x: unlockPremiumFeatureModalLabel.frame.size.width / 2,
-                               y: unlockPremiumFeatureModalLabel.frame.size.height - 44,
-                               width: 1,
-                               height: unlockPremiumFeatureModalLabel.frame.size.height - 44)
+        convertMeaageFromStringToAttributedText(msg)
         
-        unlockPremiumFeatureModalView.isHidden = true
     }
     
-    private func adjustUnlockPremiumFeatureModalLine(x:CGFloat, y:CGFloat, width:CGFloat, height:CGFloat) {
-        let upperLayer = CALayer()
-        upperLayer.frame = CGRect(
-            x: x,
-            y: y,
-            width: width,
-            height: height
-        )
-        upperLayer.backgroundColor = Theme.darkgray.cgColor
-        unlockPremiumFeatureModalLabel.layer.addSublayer(upperLayer)
+    private func convertMeaageFromStringToAttributedText(_ msg:String) {
+        let markdownParser = MarkdownParser()
+        let aText = NSMutableAttributedString(attributedString: markdownParser.parse(msg))
+        alert.setValue(aText, forKey: "attributedMessage")
+    }
+    
+    private func isAvailablePremiumCommands() -> Bool {
+        if unAvailablePremiumCommands.count != 0 ||
+            !VideoCaptureService.shared.isDepthRearCameraAvailable() ||
+            !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
+            return false
+        }
+        return true
     }
 }
 
@@ -227,41 +236,34 @@ extension CommandSelectionViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let CommandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
+        let commandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
-        
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Theme.dark
-        
-        cell.commandLabel.text = CommandToSelect.labelString
+        tableView.backgroundColor = Theme.black
+        cell.commandLabel.text = commandToSelect.labelString
         cell.commandLabel.tag = indexPath.row
-        cell.commandOnOff.tag = indexPath.row
+        cell.commandOnOffButton.tag = indexPath.row
         cell.viewController = self
         cell.commandSelectionPresenter = self.presenter
-        
-        cell.detailButton.isHidden = false
-        if CommandToSelect.labelString == Command.acceleration.rawValue ||
-           CommandToSelect.labelString == Command.gravity.rawValue ||
-           CommandToSelect.labelString == Command.gyro.rawValue ||
-           CommandToSelect.labelString == Command.quaternion.rawValue ||
-           CommandToSelect.labelString == Command.pressure.rawValue ||
-           CommandToSelect.labelString == Command.gps.rawValue ||
-           CommandToSelect.labelString == Command.touch.rawValue ||
-           CommandToSelect.labelString == Command.proximity.rawValue ||
-           CommandToSelect.labelString == Command.micLevel.rawValue ||
-           CommandToSelect.labelString == Command.remoteControl.rawValue {
-           cell.detailButton.isHidden = true
-        }
-
         cells[Command.allCases[indexPath.row]] = cell
-        cell.commandOnOff.isOn = AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] ?? false
+        
+        if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]]! {
+          cell.checkMarkLavel.text = checkMark
+        } else {
+          cell.checkMarkLavel.text = ""
+        }
         
         let mediator = CommandAndServiceMediator()
         if mediator.isAvailable(Command.allCases[indexPath.row]){
             setAvailable(true, forCell:cell)
         } else {
             setAvailable(false, forCell:cell)
+            if isPremiumCommand(Command.allCases[indexPath.row]) && !InAppPurchaseFacade.shared.isPurchased(){
+                unAvailablePremiumCommands.append(Command.allCases[indexPath.row])
+                let orderedSet: NSOrderedSet = NSOrderedSet(array: unAvailablePremiumCommands)
+                unAvailablePremiumCommands = orderedSet.array as! [Command]
+            }
         }
 
         cell.initCell()
@@ -269,16 +271,56 @@ extension CommandSelectionViewController: UITableViewDataSource {
         return cell
     }
     
+    func isPremiumCommand(_ command:Command) -> Bool {
+        if command == Command.ndi ||
+            command == Command.arkit ||
+            command == Command.imageDetection ||
+            command == Command.nfc ||
+            command == Command.applePencil{
+            return true
+        }
+        return false
+    }
+    
     func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell?) {
-        cell?.commandOnOff.isEnabled = isAvailable
-        cell?.detailButton.isEnabled = isAvailable
+        cell?.commandOnOffButton.isEnabled = isAvailable
         if isAvailable {
             cell?.commandLabel.textColor = Theme.main
-            cell?.detailButton.strokeColor = Theme.main
+            cell?.detailButton.tintColor = Theme.main
+            setDetailButton(isCommandAvailable: true, forCell: cell)
         } else {
             cell?.commandLabel.textColor = Theme.dark
-            cell?.detailButton.strokeColor = Theme.dark
+            cell?.detailButton.tintColor = Theme.dark
+            setDetailButton(isCommandAvailable: false, forCell: cell)
         }
+    }
+    
+    func setDetailButton(isCommandAvailable: Bool, forCell cell: StandardCell?) {
+        if hasDetailView(commandLabel: cell?.commandLabel.text) {
+            cell?.detailButton.isHidden = false
+            cell?.detailImageView.isHidden = false
+            let image: UIImage?
+            if isCommandAvailable {
+                image = UIImage(named: "ActiveDetailButton")
+            } else {
+                image = UIImage(named: "UnactiveDetailButton")
+            }
+            cell?.detailImageView.image = image
+        } else {
+            cell?.detailButton.isHidden = true
+            cell?.detailImageView.isHidden = true
+        }
+    }
+    
+    func hasDetailView(commandLabel: String?) -> Bool {
+        if commandLabel == Command.ndi.rawValue ||
+            commandLabel == Command.arkit.rawValue ||
+            commandLabel == Command.imageDetection.rawValue ||
+            commandLabel == Command.compass.rawValue ||
+            commandLabel == Command.beacon.rawValue {
+            return true
+        }
+        return false
     }
 }
 
