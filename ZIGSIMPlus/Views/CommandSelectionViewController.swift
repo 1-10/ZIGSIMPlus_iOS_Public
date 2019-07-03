@@ -38,9 +38,6 @@ final class CommandSelectionViewController: UIViewController {
         super.viewWillAppear(animated)
         // Check here to switch lock/unlock after restore
         if presenter.isPremiumFeaturePurchased {
-            // "tableView.reloadData()" is used for updating availability of command in tabelView after coming back from another tab.
-            // e.g. If user come back to this View,after pushing the Restore Purchase Button in Setting View.
-            tableView.reloadData()
             unlockPremiumFeature()
         } else {
             lockPremiumFeature()
@@ -148,6 +145,9 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     private func unlockPremiumFeature() {
+        // "tableView.reloadData()" is used for updating availability of command in tabelView after coming back from another tab.
+        // e.g. If user come back to this View,after pushing the Restore Purchase Button in Setting View.
+        tableView.reloadData()
         setPremiumFeatureIsHidden(true)
     }
     
@@ -336,7 +336,6 @@ extension CommandSelectionViewController: CommandSelectionPresenterDelegate {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Close", style: .default) { _ in
             if isSuccessful {
-                self.tableView.reloadData()
                 self.unlockPremiumFeature()
             }
             self.tableView.isUserInteractionEnabled = true
