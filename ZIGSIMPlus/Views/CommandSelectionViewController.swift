@@ -145,7 +145,7 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     private func unlockPremiumFeature() {
-        // "tableView.reloadData()" is used for updating availability of command in tabelView after coming back from another tab.
+        // "tableView.reloadData()" is used to update availability of command.
         // e.g. If user come back to this View,after pushing the Restore Purchase Button in Setting View.
         tableView.reloadData()
         setPremiumFeatureIsHidden(true)
