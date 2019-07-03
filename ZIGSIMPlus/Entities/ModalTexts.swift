@@ -86,8 +86,8 @@ Toggle camera between **REAR** and **FRONT**.
 NDI™ is a trademark of NewTek, Inc.
 For more detail of NDI, See http://NDI.NewTek.com/
 """),
-    .nfc : ("NFC", """
-NFC command detects NFC tags and read messages that contain NDEF data.
+    .nfc : ("NFC Reader", """
+NFC Reader command detects NFC tags and read messages that contain NDEF data.
 Output values are defined by the NDEF specification.
 
 **id**: The identifier of the payload.
