@@ -214,7 +214,7 @@ extension DefaultsKeys {
     static let userIpAdress = DefaultsKey<String?>("userIpAdress", defaultValue: "172.17.1.20")
     static let userPortNumber = DefaultsKey<Int?>("userPortNumber", defaultValue: 3333)
     static let userMessageFormat = DefaultsKey<Int?>("userMessageFormat", defaultValue: 1)
-    static let userMessageRatePerSecond = DefaultsKey<Int?>("userMessageRatePerSecond", defaultValue: 3)
+    static let userMessageRatePerSecond = DefaultsKey<Int?>("userMessageRatePerSecond", defaultValue: 1)
     static let userCompassOrientation = DefaultsKey<Int?>("userCompassOrientation", defaultValue: 1)
     static let userDeviceUUID = DefaultsKey<String?>("userDeviceUUID", defaultValue: Utils.randomStringWithLength(16))
     static let userBeaconUUID = DefaultsKey<String?>("userBeaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
