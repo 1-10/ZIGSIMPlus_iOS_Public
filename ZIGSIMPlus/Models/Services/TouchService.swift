@@ -212,7 +212,7 @@ extension TouchService : Service {
 
                 return obj
             }
-            data["touches"] = JSON(touchData)
+            data["touch"] = JSON(touchData)
         }
 
         if isApplePencilActive {
