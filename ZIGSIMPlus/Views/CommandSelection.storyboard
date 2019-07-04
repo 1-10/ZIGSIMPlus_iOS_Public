@@ -37,7 +37,7 @@
                                     <outlet property="delegate" destination="mba-MW-Syn" id="10U-4U-Fhl"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" alpha="0.46000000000000002" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omw-lC-Jla">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.46000000000000002" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omw-lC-Jla">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="212"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.11630727640000001" green="1" blue="0.55855442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
