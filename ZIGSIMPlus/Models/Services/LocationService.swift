@@ -249,7 +249,7 @@ extension LocationService : Service {
                     "rssi": beacon.rssi
                 ]
             }
-            data["beacons"] = JSON(objs)
+            data["beacon"] = JSON(objs)
         }
 
         return data
