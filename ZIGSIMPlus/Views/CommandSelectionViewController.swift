@@ -36,7 +36,6 @@ final class CommandSelectionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // Check here to switch lock/unlock after restore
         if presenter.isPremiumFeaturePurchased {
             unlockPremiumFeature()
@@ -146,6 +145,9 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     private func unlockPremiumFeature() {
+        // "tableView.reloadData()" is used to update availability of command.
+        // e.g. If user come back to this View,after pushing the Restore Purchase Button in Setting View.
+        tableView.reloadData()
         setPremiumFeatureIsHidden(true)
     }
     
@@ -259,27 +261,20 @@ extension CommandSelectionViewController: UITableViewDataSource {
             setAvailable(true, forCell:cell)
         } else {
             setAvailable(false, forCell:cell)
-            if isPremiumCommand(Command.allCases[indexPath.row]) && !InAppPurchaseFacade.shared.isPurchased(){
+            if mediator.isPremiumCommand(Command.allCases[indexPath.row]) && !presenter.isPremiumFeaturePurchased{
                 unAvailablePremiumCommands.append(Command.allCases[indexPath.row])
                 let orderedSet: NSOrderedSet = NSOrderedSet(array: unAvailablePremiumCommands)
                 unAvailablePremiumCommands = orderedSet.array as! [Command]
             }
         }
+        
+        if !presenter.isPremiumFeaturePurchased && mediator.isPremiumCommand(Command.allCases[indexPath.row]){
+            setAvailable(false,forCell: cell)
+        }
 
         cell.initCell()
         
         return cell
-    }
-    
-    func isPremiumCommand(_ command:Command) -> Bool {
-        if command == Command.ndi ||
-            command == Command.arkit ||
-            command == Command.imageDetection ||
-            command == Command.nfc ||
-            command == Command.applePencil{
-            return true
-        }
-        return false
     }
     
     func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell?) {
@@ -327,7 +322,6 @@ extension CommandSelectionViewController: UITableViewDataSource {
 extension CommandSelectionViewController: CommandSelectionPresenterDelegate {
     func showPurchaseResult(isSuccessful: Bool, title: String?, message: String?) {
         SVProgressHUD.dismiss()
-        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Close", style: .default) { _ in
             if isSuccessful {

@@ -81,6 +81,17 @@ public class CommandAndServiceMediator {
             }
         }
     }
+    
+    public func isPremiumCommand(_ command: Command) -> Bool {
+        if command == Command.ndi ||
+            command == Command.arkit ||
+            command == Command.imageDetection ||
+            command == Command.nfc ||
+            command == Command.applePencil{
+            return true
+        }
+        return false
+    }
 
     // MARK: - Private methods
 
