@@ -189,7 +189,7 @@ extension LocationService : Service {
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
             log += [
                 "compass:compass:\(compassData)",
-                "compass:orientation:\(AppSettingModel.shared.compassOrientation == .faceup ? "faceup" : "portrait")"
+                "compass:faceup:\(AppSettingModel.shared.compassOrientation.rawValue)"
             ]
         }
 
@@ -237,7 +237,7 @@ extension LocationService : Service {
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
-            data["compass"] = JSON(["compass": compassData,"orientation": AppSettingModel.shared.compassOrientation == .faceup ? "faceup" : "portrait" ])
+            data["compass"] = JSON(["compass": compassData,"faceup": AppSettingModel.shared.compassOrientation.rawValue])
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
