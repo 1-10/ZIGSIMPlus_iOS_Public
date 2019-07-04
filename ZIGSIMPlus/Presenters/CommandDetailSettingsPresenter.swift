@@ -13,15 +13,17 @@ public enum DetailSettingsKey: Int {
     case ndiType = 0
     case ndiCamera = 1
     case ndiDepthType = 2
-    case compassOrientation = 3
-    case arkitTrackingType = 4
-    case imageDetectorType = 5
-    case imageDetectorAccuracy = 6
-    case imageDetectorTracks = 7
-    case imageDetectorNumberOfAnglesForSegment = 8
-    case imageDetectorDetectsEyeBlink = 9
-    case imageDetectorDetectsSmile = 10
-    case beaconUUID = 11
+    case ndiResolution = 3
+    case ndiAudioBufferSize = 4
+    case compassOrientation = 5
+    case arkitTrackingType = 6
+    case imageDetectorType = 7
+    case imageDetectorAccuracy = 8
+    case imageDetectorTracks = 9
+    case imageDetectorNumberOfAnglesForSegment = 10
+    case imageDetectorDetectsEyeBlink = 11
+    case imageDetectorDetectsSmile = 12
+    case beaconUUID = 13
 }
 
 
@@ -108,6 +110,8 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedInt(.ndiType, "IMAGE TYPE", ["CAMERA", "DEPTH"], 240, app.ndiType.rawValue),
                 SegmentedInt(.ndiCamera, "CAMERA", ["REAR", "FRONT"], 240, app.ndiCameraPosition.rawValue),
                 SegmentedInt(.ndiDepthType, "DEPTH TYPE", ["DEPTH", "DISPARITY"], 240, app.depthType.rawValue),
+                SegmentedInt(.ndiResolution, "RESOLUTION", ["VGA", "HD", "FHD"], 240, app.ndiResolution.rawValue),
+                SegmentedInt(.ndiAudioBufferSize, "AUDIO LATENCY", ["LOW", "MID", "HIGH"], 240, app.ndiAudioBufferSize.rawValue),
             ],
             .compass: [
                 SegmentedInt(.compassOrientation, "ORIENTATION", ["PORTRAIT", "FACEUP"], 240, app.compassOrientation.rawValue),
@@ -142,6 +146,12 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             case .ndiDepthType:
                 AppSettingModel.shared.depthType = DepthType(rawValue: data.value)!
                 Defaults[.userDepthType] = data.value
+            case .ndiResolution:
+                AppSettingModel.shared.ndiResolution = NdiResolution(rawValue: data.value)!
+                Defaults[.userNdiResolution] = data.value
+            case .ndiAudioBufferSize:
+                AppSettingModel.shared.ndiAudioBufferSize = NdiAudioBufferSize(rawValue: data.value)!
+                Defaults[.userNdiAudioBufferSize] = data.value
             case .compassOrientation:
                 AppSettingModel.shared.compassOrientation = CompassOrientation(rawValue: data.value)!
                 Defaults[.userCompassOrientation] = data.value
