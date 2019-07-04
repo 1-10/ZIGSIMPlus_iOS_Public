@@ -15,7 +15,9 @@ let modalTexts:[Command: (title: String, body: String)] = [
     .gyro : ("Gyro", "test2\ngyroです。"),
     .quaternion : ("Quaternion", "test3\nquaternionです。"),
     .compass : ("Compass", """
-Compass command detects azimuth angle.
+Compass command detects the heading relative to magnetic north and outputs following values:
+**compass**: Azimuth angle
+**faceup**: 0(PORTRAIT) or 1(FACEUP). This is value set in detaile settings.
 
 Users can switch the orientation of device in detail settings:
 **PORTRAIT**:The device is held upright and the home button at the bottom.
