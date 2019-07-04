@@ -56,7 +56,7 @@ Remote Control command monitors the state of remote controllers of headphones co
 """),
     .ndi : ("NDI™", """
 NDI command transmits images from the device via NDI protocol.
-This command has 3 settings:
+This command has following settings:
 
 ## IMAGE TYPE
 **CAMERA**: send images captured by camera.
@@ -68,6 +68,13 @@ Toggle camera between **REAR** and **FRONT**.
 ## DEPTH TYPE
 **DEPTH**: capture depth map.
 **DISPARITY**: capture disparity map.
+
+## RESOLUTION
+Set NDI video resolution to **VGA**, **HD** or **FHD**.
+
+## AUDIO LATENCY
+Set NDI audio latency **LOW**, **MEDIUM** or **HIGH** by changing the buffer size.
+Lower latency may cause audio glitch due to small buffer.
 
 NDI™ is a trademark of NewTek, Inc.
 For more detail of NDI, See http://NDI.NewTek.com/
