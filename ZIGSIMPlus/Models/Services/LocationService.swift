@@ -233,7 +233,7 @@ extension LocationService : Service {
         var data = JSON()
 
         if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
-            data["gps"] = JSON([latitudeData, longitudeData])
+            data["gps"] = JSON(["latitude": latitudeData, "longitude":longitudeData])
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
