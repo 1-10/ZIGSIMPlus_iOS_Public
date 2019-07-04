@@ -211,7 +211,7 @@ extension LocationService : Service {
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
-            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData))
+            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData, AppSettingModel.shared.compassOrientation.rawValue))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
