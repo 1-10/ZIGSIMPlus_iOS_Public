@@ -73,7 +73,7 @@ extension ProximityService : Service {
         var data = JSON()
 
         if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
-            data["proximitymonitor"] = JSON(proximity)
+            data["proximitymonitor"] = JSON(["proximitymonitor":proximity])
         }
 
         return data
