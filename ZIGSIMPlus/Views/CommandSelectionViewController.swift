@@ -174,16 +174,16 @@ final class CommandSelectionViewController: UIViewController {
     private func setAlertMessage(_ message: String, _ alertType: alertModalType) {
         var msg = message
         if  alertType == alertModalType.premium && !isAvailablePremiumCommands() {
-            msg = premiumTextBody + "\n\nBut the following function can not be used on your device."
+            msg = premiumTextBody + "\n\nBut the following function cannot be used on your device:"
             for unAvailablePremiumCommand in unAvailablePremiumCommands {
-                msg = msg + "\n・" + unAvailablePremiumCommand.rawValue
+                msg = msg + "\n- " + unAvailablePremiumCommand.rawValue
             }
             if !unAvailablePremiumCommands.contains(Command.ndi) {
                 if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-                    msg = msg + "\n・NDI Depth function."
+                    msg = msg + "\n- NDI Depth function"
                 }
                 if VideoCaptureService.shared.isDepthRearCameraAvailable() && !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
-                    msg = msg + "\n・NDI Depth function on front camera."
+                    msg = msg + "\n- NDI Depth function on front camera"
                 }
             }
         }
