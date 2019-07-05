@@ -21,7 +21,7 @@ public enum DetailSettingsKey: Int {
     case imageDetectorType = 8
     case imageDetectorAccuracy = 9
     case imageDetectorTracks = 10
-    case imageDetectorNumberOfAnglesForSegment = 11
+    case imageDetectorNumberOfAngles = 11
     case imageDetectorDetectsEyeBlink = 12
     case imageDetectorDetectsSmile = 13
     case beaconUUID = 14
@@ -125,7 +125,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedInt(.imageDetectorType, "DETECTION TYPE", ["FACE", "QR", "RECT", "TEXT"], 240, app.imageDetectorType.rawValue),
                 SegmentedInt(.imageDetectorAccuracy, "ACCURACY", ["LOW", "HIGH"], 240, app.imageDetectorAccuracy.rawValue),
                 SegmentedBool(.imageDetectorTracks, "TRACKING", ["ON", "OFF"], 240, app.imageDetectorTracks),
-                SegmentedInt(.imageDetectorNumberOfAnglesForSegment, "NUMBER OF FACE ANGLES", ["1", "3", "5", "7", "9", "11"], 240, app.imageDetectorNumberOfAnglesForSegment.rawValue),
+                SegmentedInt(.imageDetectorNumberOfAngles, "NUMBER OF FACE ANGLES", ["1", "3", "5", "7", "9", "11"], 240, app.imageDetectorNumberOfAngles.rawValue),
                 SegmentedBool(.imageDetectorDetectsEyeBlink, "DETECT EYE BLINK", ["ON", "OFF"], 240, app.imageDetectorDetectsEyeBlink),
                 SegmentedBool(.imageDetectorDetectsSmile, "DETECT SMILE", ["ON", "OFF"], 240, app.imageDetectorDetectsSmile),
             ],
@@ -159,8 +159,8 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 AppSettingModel.shared.imageDetectorType = ImageDetectorType(rawValue: data.value)!
             case .imageDetectorAccuracy:
                 AppSettingModel.shared.imageDetectorAccuracy = ImageDetectorAccuracy(rawValue: data.value)!
-            case .imageDetectorNumberOfAnglesForSegment:
-                AppSettingModel.shared.imageDetectorNumberOfAnglesForSegment = ImageDetectorNumberOfAnglesForSegment(rawValue: data.value)!
+            case .imageDetectorNumberOfAngles:
+                AppSettingModel.shared.imageDetectorNumberOfAngles = ImageDetectorNumberOfAngles(rawValue: data.value)!
             default:
                 fatalError("Undefined key")
             }

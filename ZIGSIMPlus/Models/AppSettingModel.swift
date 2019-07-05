@@ -44,15 +44,6 @@ enum ImageDetectorAccuracy: Int, DefaultsSerializable {
 }
 
 enum ImageDetectorNumberOfAngles: Int, DefaultsSerializable {
-    case one = 1
-    case three = 3
-    case five = 5
-    case seven = 7
-    case nine = 9
-    case eleven = 11
-}
-
-enum ImageDetectorNumberOfAnglesForSegment: Int, DefaultsSerializable {
     case one = 0
     case three = 1
     case five = 2
@@ -158,23 +149,6 @@ public class AppSettingModel {
         return AppSettingModel.shared.isActiveByCommand[.touch]! ||
             AppSettingModel.shared.isActiveByCommand[.applePencil]!
     }
-    
-    var imageDetectorNumberOfAngles: ImageDetectorNumberOfAngles {
-        switch imageDetectorNumberOfAnglesForSegment {
-        case .one:
-            return .one
-        case .three:
-            return .three
-        case .five:
-            return .five
-        case .seven:
-            return .seven
-        case .nine:
-            return .nine
-        case .eleven:
-            return .eleven
-        }
-    }
 }
 
 // user default value
@@ -200,7 +174,7 @@ extension DefaultsKeys {
     static let imageDetectorType = DefaultsKey<ImageDetectorType>("imageDetectorType", defaultValue: .face)
     static let imageDetectorAccuracy = DefaultsKey<ImageDetectorAccuracy>("imageDetectorAccuracy", defaultValue: .high)
     static let imageDetectorTracks = DefaultsKey<Bool>("imageDetectorTracks", defaultValue: true)
-    static let imageDetectorNumberOfAnglesForSegment = DefaultsKey<ImageDetectorNumberOfAnglesForSegment>("imageDetectorNumberOfAnglesForSegment", defaultValue: .one)
+    static let imageDetectorNumberOfAngles = DefaultsKey<ImageDetectorNumberOfAngles>("imageDetectorNumberOfAngles", defaultValue: .one)
     static let imageDetectorDetectsEyeBlink = DefaultsKey<Bool>("imageDetectorDetectsEyeBlink", defaultValue: true)
     static let imageDetectorDetectsSmile = DefaultsKey<Bool>("imageDetectorDetectsSmile", defaultValue: true)
 

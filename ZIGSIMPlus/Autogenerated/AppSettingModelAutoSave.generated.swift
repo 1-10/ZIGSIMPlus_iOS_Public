@@ -39,7 +39,7 @@ private var arkitTrackingTypeKey: Void?
 private var imageDetectorTypeKey: Void?
 private var imageDetectorAccuracyKey: Void?
 private var imageDetectorTracksKey: Void?
-private var imageDetectorNumberOfAnglesForSegmentKey: Void?
+private var imageDetectorNumberOfAnglesKey: Void?
 private var imageDetectorDetectsEyeBlinkKey: Void?
 private var imageDetectorDetectsSmileKey: Void?
 
@@ -235,13 +235,13 @@ extension AppSettingModel {
         }
     }
 
-    var imageDetectorNumberOfAnglesForSegment: ImageDetectorNumberOfAnglesForSegment {
+    var imageDetectorNumberOfAngles: ImageDetectorNumberOfAngles {
         get {
-            return getAssociatedObject(self, &imageDetectorNumberOfAnglesForSegmentKey) ?? Defaults[.imageDetectorNumberOfAnglesForSegment]
+            return getAssociatedObject(self, &imageDetectorNumberOfAnglesKey) ?? Defaults[.imageDetectorNumberOfAngles]
         }
         set {
-            setRetainedAssociatedObject(self, &imageDetectorNumberOfAnglesForSegmentKey, newValue)
-            Defaults[.imageDetectorNumberOfAnglesForSegment] = newValue
+            setRetainedAssociatedObject(self, &imageDetectorNumberOfAnglesKey, newValue)
+            Defaults[.imageDetectorNumberOfAngles] = newValue
         }
     }
 
