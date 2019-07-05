@@ -151,8 +151,8 @@ public class AppSettingModel {
         return [
             ("DATA DESTINATION", dst),
             ("PROTOCOL", prot),
-            ("IP ADDRESS", address),
-            ("PORT", String(port)),
+            ("IP ADDRESS", ipAddress),
+            ("PORT", String(portNumber)),
             ("MESSAGE FORMAT", format),
             ("DEVICE UUID", deviceUUID),
         ]
@@ -201,7 +201,7 @@ extension DefaultsKeys {
     // Settings
     static let dataDestination = DefaultsKey<DataDestination>("dataDestination", defaultValue: .OTHER_APP)
     static let transportProtocol = DefaultsKey<TransportProtocol>("transportProtocol", defaultValue: .UDP)
-    static let ipAdress = DefaultsKey<String>("ipAdress", defaultValue: "172.17.1.20")
+    static let ipAddress = DefaultsKey<String>("ipAddress", defaultValue: "172.17.1.20")
     static let portNumber = DefaultsKey<Int>("portNumber", defaultValue: 3333)
     static let transportFormat = DefaultsKey<TransportFormat>("messageFormat", defaultValue: .OSC)
     static let messageRatePerSecond = DefaultsKey<RatePerSecond>("messageRatePerSecond", defaultValue: .ten)
@@ -209,7 +209,7 @@ extension DefaultsKeys {
     static let deviceUUID = DefaultsKey<String>("deviceUUID", defaultValue: Utils.randomStringWithLength(16))
     static let beaconUUID = DefaultsKey<String>("beaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
     static let ndiType = DefaultsKey<NdiType>("ndiType", defaultValue: .CAMERA)
-    static let ndiCameraType = DefaultsKey<NdiCameraPosition>("ndiCameraType", defaultValue: .BACK)
+    static let ndiCameraPosition = DefaultsKey<NdiCameraPosition>("ndiCameraPosition", defaultValue: .BACK)
     static let depthType = DefaultsKey<DepthType>("depthType", defaultValue: .DEPTH)
     static let ndiResolution = DefaultsKey<NdiResolution>("ndiResolution", defaultValue: .vga)
     static let ndiAudioEnabled = DefaultsKey<NdiAudioEnabled>("ndiAudioEnabled", defaultValue: .enabled)

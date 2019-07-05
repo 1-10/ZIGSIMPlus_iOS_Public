@@ -43,7 +43,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
     
     func getUserDefaultTexts() -> Dictionary<textFieldName,String> {
         var texts:[textFieldName: String] = [:]
-        texts[.ipAdress] = Defaults[.ipAdress]
+        texts[.ipAdress] = Defaults[.ipAddress]
         texts[.portNumber] = Defaults[.portNumber].description
         texts[.uuid] = Defaults[.deviceUUID]
         return texts
@@ -62,11 +62,11 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
     func updateTextsUserDefault(texts: Dictionary<textFieldName, String>) {
         let appSettings = AppSettingModel.shared
 
-        appSettings.address = texts[.ipAdress] ?? ""
-        Defaults[.ipAdress] = appSettings.address
+        appSettings.ipAddress = texts[.ipAdress] ?? ""
+        Defaults[.ipAddress] = appSettings.ipAddress
 
-        appSettings.port = Int(texts[.portNumber] ?? "0") ?? 0
-        Defaults[.portNumber] = appSettings.port
+        appSettings.portNumber = Int(texts[.portNumber] ?? "0") ?? 0
+        Defaults[.portNumber] = appSettings.portNumber
 
         appSettings.deviceUUID = texts[.uuid] ?? ""
         Defaults[.deviceUUID] = appSettings.deviceUUID

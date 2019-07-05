@@ -146,7 +146,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             case .ndiCamera:
                 let val = NdiCameraPosition(rawValue: data.value)!
                 AppSettingModel.shared.ndiCameraPosition = val
-                Defaults[.ndiCameraType] = val
+                Defaults[.ndiCameraPosition] = val
             case .ndiDepthType:
                 let val = DepthType(rawValue: data.value)!
                 AppSettingModel.shared.depthType = val
