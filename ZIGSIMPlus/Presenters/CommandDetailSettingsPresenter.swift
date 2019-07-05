@@ -123,8 +123,8 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             ],
             .imageDetection: [
                 SegmentedInt(.imageDetectorType, "DETECTION TYPE", ["FACE", "QR", "RECT", "TEXT"], 240, app.imageDetectorType.rawValue),
-                SegmentedInt(.imageDetectorCameraPosition, "CAMERA", ["REAR", "FRONT"], 240, app.imageDetectorCameraPosition.rawValue),
-                SegmentedInt(.imageDetectorResolution, "RESOLUTION", ["VGA", "HD", "FHD"], 240, app.imageDetectorResolution.rawValue),
+                SegmentedInt(.imageDetectorCameraPosition, "Camera", ["REAR", "FRONT"], 240, app.imageDetectorCameraPosition.rawValue),
+                SegmentedInt(.imageDetectorResolution, "Resolution", ["VGA", "HD", "FHD"], 240, app.imageDetectorResolution.rawValue),
                 SegmentedInt(.imageDetectorAccuracy, "ACCURACY", ["LOW", "HIGH"], 240, app.imageDetectorAccuracy.rawValue),
                 SegmentedBool(.imageDetectorTracks, "TRACKING", ["ON", "OFF"], 240, app.imageDetectorTracks),
                 SegmentedInt(.imageDetectorNumberOfAnglesForSegment, "NUMBER OF FACE ANGLES", ["1", "3", "5", "7", "9", "11"], 240, app.imageDetectorNumberOfAnglesForSegment.rawValue),
