@@ -189,7 +189,7 @@ extension LocationService : Service {
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
             log += [
                 "compass:compass:\(compassData)",
-                "compass:faceup:\(AppSettingModel.shared.compassOrientation.rawValue)"
+                "compass:orientation:\(AppSettingModel.shared.compassOrientation == .faceup ? "faceup" : "portrait")"
             ]
         }
 
