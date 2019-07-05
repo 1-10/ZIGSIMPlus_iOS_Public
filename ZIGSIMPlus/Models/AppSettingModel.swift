@@ -117,7 +117,7 @@ public class AppSettingModel {
         }
 
         address = Defaults[.userIpAdress].description
-        port = Int32(Defaults[.userPortNumber].description) ?? 0
+        port = Defaults[.userPortNumber]
         deviceUUID = Defaults[.userDeviceUUID].description
         beaconUUID = Defaults[.userBeaconUUID].description
         dataDestination = DataDestination(rawValue: Defaults[.userDataDestination])!
@@ -141,7 +141,7 @@ public class AppSettingModel {
     var dataDestination: DataDestination = .OTHER_APP
     var transportProtocol: TransportProtocol = .UDP
     var address: String = "172.17.1.20"
-    var port: Int32 = 3333
+    var port: Int = 3333
     var transportFormat: TransportFormat = .OSC
     var messageRatePerSecondSegment: Int = 3
     var deviceUUID: String = Utils.randomStringWithLength(16)

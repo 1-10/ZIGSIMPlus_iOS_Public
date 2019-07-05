@@ -15,8 +15,8 @@ public class NetworkAdapter {
     static let shared = NetworkAdapter()
     private init() {}
 
-    var tcpClient: TCPClient = TCPClient(address: AppSettingModel.shared.address, port: AppSettingModel.shared.port)
-    var udpClient: UDPClient = UDPClient(address: AppSettingModel.shared.address, port: AppSettingModel.shared.port)
+    var tcpClient: TCPClient = TCPClient(address: AppSettingModel.shared.address, port: Int32(AppSettingModel.shared.port))
+    var udpClient: UDPClient = UDPClient(address: AppSettingModel.shared.address, port: Int32(AppSettingModel.shared.port))
 
     var error: Error?
     
@@ -54,7 +54,7 @@ public class NetworkAdapter {
         // Recreate client
         if tcpClient.address != appSetting.address || tcpClient.port != appSetting.port {
             tcpClient.close()
-            tcpClient = TCPClient(address: appSetting.address, port: appSetting.port)
+            tcpClient = TCPClient(address: appSetting.address, port: Int32(appSetting.port))
         }
 
         // Reopen connection if needed
@@ -83,7 +83,7 @@ public class NetworkAdapter {
         // Recreate client
         if udpClient.fd == nil || udpClient.address != appSetting.address || udpClient.port != appSetting.port {
             udpClient.close()
-            udpClient = UDPClient(address: appSetting.address, port: appSetting.port)
+            udpClient = UDPClient(address: appSetting.address, port: Int32(appSetting.port))
         }
 
         switch udpClient.send(data: data) {

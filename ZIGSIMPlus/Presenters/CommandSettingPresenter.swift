@@ -60,11 +60,11 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
     }
     
     func updateTextsUserDefault(texts: Dictionary<textFieldName, String>) {
-        AppSettingModel.shared.address = texts[.ipAdress]?.description ?? ""
+        AppSettingModel.shared.address = texts[.ipAdress] ?? ""
         Defaults[.userIpAdress] = AppSettingModel.shared.address
-        AppSettingModel.shared.port = Int32(texts[.portNumber]?.description ?? "") ?? 0
-        Defaults[.userPortNumber] = Int(AppSettingModel.shared.port)
-        AppSettingModel.shared.deviceUUID = texts[.uuid]?.description ?? ""
+        AppSettingModel.shared.port = Int(texts[.portNumber] ?? "0") ?? 0
+        Defaults[.userPortNumber] = AppSettingModel.shared.port
+        AppSettingModel.shared.deviceUUID = texts[.uuid] ?? ""
         Defaults[.userDeviceUUID] = AppSettingModel.shared.deviceUUID
     }
     
