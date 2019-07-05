@@ -167,7 +167,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qx-FQ-b89">
-                                                <rect key="frame" x="143.66666666666666" y="551" width="56" height="56"/>
+                                                <rect key="frame" x="143.66666666666666" y="531" width="56" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="56" id="8OY-jL-hlA"/>
                                                     <constraint firstAttribute="height" constant="56" id="pJg-58-LLn"/>
@@ -186,7 +186,7 @@
                                             <constraint firstItem="7LZ-QD-3aa" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="90Y-hL-3Po"/>
                                             <constraint firstItem="yGV-vs-Rkk" firstAttribute="top" secondItem="sS3-j7-8iF" secondAttribute="bottom" constant="8" id="Cxn-WE-Bxw"/>
                                             <constraint firstItem="yGV-vs-Rkk" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="Ffj-qp-1vt"/>
-                                            <constraint firstItem="2qx-FQ-b89" firstAttribute="top" secondItem="oM4-Na-6XE" secondAttribute="bottom" constant="45" id="IVh-O4-Rt6"/>
+                                            <constraint firstItem="2qx-FQ-b89" firstAttribute="top" secondItem="oM4-Na-6XE" secondAttribute="bottom" constant="25" id="IVh-O4-Rt6"/>
                                             <constraint firstItem="RMC-XZ-wNJ" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="JvV-Ga-I1H"/>
                                             <constraint firstItem="GPj-aK-iT9" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="Nmh-vK-kf1"/>
                                             <constraint firstItem="cgy-NE-D0I" firstAttribute="top" secondItem="4eK-AB-Aoh" secondAttribute="bottom" constant="8" id="Rw0-e9-LZY"/>
