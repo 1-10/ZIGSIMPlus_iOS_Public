@@ -173,8 +173,11 @@ final class CommandSelectionViewController: UIViewController {
     
     private func setAlertMessage(_ message: String, _ alertType: alertModalType) {
         var msg = message
-        if  alertType == alertModalType.premium && !isAvailablePremiumCommands() {
-            msg = premiumTextBody + "\n\nBut the following function cannot be used on your device:"
+        if  alertType == alertModalType.premium && unavailableFunctionCount > 0 {
+            msg += (unavailableFunctionCount >= 2
+                ? "\n\nThe following functions don't work on this device:"
+                : "\n\nThe following function doesn't work on this device:")
+            
             for unAvailablePremiumCommand in unAvailablePremiumCommands {
                 msg = msg + "\n- " + unAvailablePremiumCommand.rawValue
             }
@@ -189,7 +192,6 @@ final class CommandSelectionViewController: UIViewController {
         }
         
         convertMeaageFromStringToAttributedText(msg)
-        
     }
     
     private func convertMeaageFromStringToAttributedText(_ msg:String) {
@@ -198,13 +200,17 @@ final class CommandSelectionViewController: UIViewController {
         alert.setValue(aText, forKey: "attributedMessage")
     }
     
-    private func isAvailablePremiumCommands() -> Bool {
-        if unAvailablePremiumCommands.count != 0 ||
-            !VideoCaptureService.shared.isDepthRearCameraAvailable() ||
-            !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
-            return false
+    private var unavailableFunctionCount: Int {
+        var count = unAvailablePremiumCommands.count
+        if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+            count += 1
+        } else {
+            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
+                count += 1
+            }
         }
-        return true
+        
+        return count
     }
 }
 
