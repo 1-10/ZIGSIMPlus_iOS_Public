@@ -176,12 +176,12 @@ public class AppSettingModel {
         let format = transportFormat == .OSC ? "OSC" : "JSON"
 
         return [
-            ("DATA DESTINATION", dst),
-            ("PROTOCOL", prot),
-            ("IP ADDRESS", address),
-            ("PORT", String(port)),
-            ("MESSAGE FORMAT", format),
-            ("DEVICE UUID", deviceUUID),
+            ("Data Destination", dst),
+            ("Protocol", prot),
+            ("IP Address", address),
+            ("Port", String(port)),
+            ("Message Format", format),
+            ("Device UUID", deviceUUID),
         ]
     }
 
