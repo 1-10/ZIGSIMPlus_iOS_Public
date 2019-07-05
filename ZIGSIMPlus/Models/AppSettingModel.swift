@@ -116,50 +116,34 @@ public class AppSettingModel {
             isActiveByCommand[command] = false
         }
 
-        address = Defaults[.userIpAdress]
-        port = Defaults[.userPortNumber]
-        deviceUUID = Defaults[.userDeviceUUID]
-        beaconUUID = Defaults[.userBeaconUUID]
-        dataDestination = Defaults[.userDataDestination]
-        transportProtocol = Defaults[.userProtocol]
-        transportFormat = Defaults[.userMessageFormat]
-        messageRatePerSecond = Defaults[.userMessageRatePerSecond]
-        compassOrientation = Defaults[.userCompassOrientation]
-        ndiType = Defaults[.userNdiType]
-        ndiCameraPosition = Defaults[.userNdiCameraType]
-        depthType = Defaults[.userDepthType]
-        ndiResolution = Defaults[.userNdiResolution]
-        ndiAudioEnabled = Defaults[.userNdiAudioEnabled]
-        ndiAudioBufferSize = Defaults[.userNdiAudioBufferSize]
-        arkitTrackingType = Defaults[.userArkitTrackingType]
     }
-
     static let shared = AppSettingModel()
     var isActiveByCommand: Dictionary<Command, Bool> = [:]
 
     // app default value & variable used in app
-    var dataDestination: DataDestination = .OTHER_APP
-    var transportProtocol: TransportProtocol = .UDP
-    var address: String = "172.17.1.20"
-    var port: Int = 3333
-    var transportFormat: TransportFormat = .OSC
-    var messageRatePerSecond: RatePerSecond = .ten
-    var deviceUUID: String = Utils.randomStringWithLength(16)
-    var compassOrientation: CompassOrientation = .faceup
-    var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
+    var address = Defaults[.userIpAdress]
+    var port = Defaults[.userPortNumber]
+    var deviceUUID = Defaults[.userDeviceUUID]
+    var beaconUUID = Defaults[.userBeaconUUID]
+    var dataDestination = Defaults[.userDataDestination]
+    var transportProtocol = Defaults[.userProtocol]
+    var transportFormat = Defaults[.userMessageFormat]
+    var messageRatePerSecond = Defaults[.userMessageRatePerSecond]
+    var compassOrientation = Defaults[.userCompassOrientation]
+    var ndiType = Defaults[.userNdiType]
+    var ndiCameraPosition = Defaults[.userNdiCameraType]
+    var depthType = Defaults[.userDepthType]
+    var ndiResolution = Defaults[.userNdiResolution]
+    var ndiAudioEnabled = Defaults[.userNdiAudioEnabled]
+    var ndiAudioBufferSize = Defaults[.userNdiAudioBufferSize]
+    var arkitTrackingType = Defaults[.userArkitTrackingType]
+
     var imageDetectorType: ImageDetectorType = .face
     var imageDetectorAccuracy: ImageDetectorAccuracy = .high
     var imageDetectorTracks: Bool = false
     var imageDetectorNumberOfAnglesForSegment: ImageDetectorNumberOfAnglesForSegment = .one
     var imageDetectorDetectsEyeBlink: Bool = true
     var imageDetectorDetectsSmile: Bool = true
-    var ndiType: NdiType = .CAMERA
-    var ndiCameraPosition: NdiCameraPosition = .BACK
-    var depthType: DepthType = .DEPTH
-    var ndiResolution: NdiResolution = .vga
-    var ndiAudioEnabled: NdiAudioEnabled = .enabled
-    var ndiAudioBufferSize: NdiAudioBufferSize = .large
-    var arkitTrackingType: ArkitTrackingType = .device
 
     public func getSettingsForOutput() -> [(String, String)] {
         let dst = dataDestination == .OTHER_APP ? "OTHER APP" : "LOCAL FILE"
