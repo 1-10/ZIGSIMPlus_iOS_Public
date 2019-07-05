@@ -2,7 +2,7 @@
 // DO NOT EDIT
 
 //
-//  Defaults.swift
+//  AppSettingModelAutoSave.stencil
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/07/05.
