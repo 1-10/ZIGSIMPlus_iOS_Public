@@ -140,38 +140,49 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
         case let data as SegmentedInt:
             switch data.key {
             case .ndiType:
-                AppSettingModel.shared.ndiType = NdiType(rawValue: data.value)!
-                Defaults[.userNdiType] = data.value
+                let val = NdiType(rawValue: data.value)!
+                AppSettingModel.shared.ndiType = val
+                Defaults[.userNdiType] = val
             case .ndiCamera:
-                AppSettingModel.shared.ndiCameraPosition = NdiCameraPosition(rawValue: data.value)!
-                Defaults[.userNdiCameraType] = data.value
+                let val = NdiCameraPosition(rawValue: data.value)!
+                AppSettingModel.shared.ndiCameraPosition = val
+                Defaults[.userNdiCameraType] = val
             case .ndiDepthType:
-                AppSettingModel.shared.depthType = DepthType(rawValue: data.value)!
-                Defaults[.userDepthType] = data.value
+                let val = DepthType(rawValue: data.value)!
+                AppSettingModel.shared.depthType = val
+                Defaults[.userDepthType] = val
             case .ndiResolution:
-                AppSettingModel.shared.ndiResolution = NdiResolution(rawValue: data.value)!
-                Defaults[.userNdiResolution] = data.value
+                let val = NdiResolution(rawValue: data.value)!
+                AppSettingModel.shared.ndiResolution = val
+                Defaults[.userNdiResolution] = val
             case .ndiAudioBufferSize:
-                AppSettingModel.shared.ndiAudioBufferSize = NdiAudioBufferSize(rawValue: data.value)!
-                Defaults[.userNdiAudioBufferSize] = data.value
+                let val = NdiAudioBufferSize(rawValue: data.value)!
+                AppSettingModel.shared.ndiAudioBufferSize = val
+                Defaults[.userNdiAudioBufferSize] = val
             case .ndiAudioEnabled:
-                AppSettingModel.shared.ndiAudioEnabled = NdiAudioEnabled(rawValue: data.value)!
-                Defaults[.userNdiAudioEnabled] = data.value
+                let val = NdiAudioEnabled(rawValue: data.value)!
+                AppSettingModel.shared.ndiAudioEnabled = val
+                Defaults[.userNdiAudioEnabled] = val
             case .compassOrientation:
-                AppSettingModel.shared.compassOrientation = CompassOrientation(rawValue: data.value)!
-                Defaults[.userCompassOrientation] = data.value
+                let val = CompassOrientation(rawValue: data.value)!
+                AppSettingModel.shared.compassOrientation = val
+                Defaults[.userCompassOrientation] = val
             case .arkitTrackingType:
-                AppSettingModel.shared.arkitTrackingType = ArkitTrackingType(rawValue: data.value)!
-                Defaults[.userArkitTrackingType] = data.value
+                let val = ArkitTrackingType(rawValue: data.value)!
+                AppSettingModel.shared.arkitTrackingType = val
+                Defaults[.userArkitTrackingType] = val
             case .imageDetectorType:
-                AppSettingModel.shared.imageDetectorType = ImageDetectorType(rawValue: data.value)!
-                Defaults[.userImageDetectorType] = data.value
+                let val = ImageDetectorType(rawValue: data.value)!
+                AppSettingModel.shared.imageDetectorType = val
+                Defaults[.userImageDetectorType] = val
             case .imageDetectorAccuracy:
-                AppSettingModel.shared.imageDetectorAccuracy = ImageDetectorAccuracy(rawValue: data.value)!
-                Defaults[.userImageDetectorAccuracy] = data.value
+                let val = ImageDetectorAccuracy(rawValue: data.value)!
+                AppSettingModel.shared.imageDetectorAccuracy = val
+                Defaults[.userImageDetectorAccuracy] = val
             case .imageDetectorNumberOfAnglesForSegment:
-                AppSettingModel.shared.imageDetectorNumberOfAnglesForSegment = ImageDetectorNumberOfAnglesForSegment(rawValue: data.value)!
-                Defaults[.userImageDetectorNumberOfAnglesForSegment] = data.value
+                let val = ImageDetectorNumberOfAnglesForSegment(rawValue: data.value)!
+                AppSettingModel.shared.imageDetectorNumberOfAnglesForSegment = val
+                Defaults[.userImageDetectorNumberOfAnglesForSegment] = val
             default:
                 fatalError("Undefined key")
             }

@@ -43,40 +43,49 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
     
     func getUserDefaultTexts() -> Dictionary<textFieldName,String> {
         var texts:[textFieldName: String] = [:]
-        texts[.ipAdress] = Defaults[.userIpAdress].description
+        texts[.ipAdress] = Defaults[.userIpAdress]
         texts[.portNumber] = Defaults[.userPortNumber].description
-        texts[.uuid] = Defaults[.userDeviceUUID].description
+        texts[.uuid] = Defaults[.userDeviceUUID]
         return texts
     }
     
     func getUserDefaultSegments() -> Dictionary<segmentName,Int> {
         var segments:[segmentName:Int] = [:]
-        segments[.dataDestination] = Defaults[.userDataDestination]
-        segments[.dataProtocol] = Defaults[.userProtocol]
-        segments[.messageFormat] = Defaults[.userMessageFormat]
+        segments[.dataDestination] = Defaults[.userDataDestination].rawValue
+        segments[.dataProtocol] = Defaults[.userProtocol].rawValue
+        segments[.messageFormat] = Defaults[.userMessageFormat].rawValue
         segments[.messageRatePerSecond] = Defaults[.userMessageRatePerSecond]
 
         return segments
     }
     
     func updateTextsUserDefault(texts: Dictionary<textFieldName, String>) {
-        AppSettingModel.shared.address = texts[.ipAdress] ?? ""
-        Defaults[.userIpAdress] = AppSettingModel.shared.address
-        AppSettingModel.shared.port = Int(texts[.portNumber] ?? "0") ?? 0
-        Defaults[.userPortNumber] = AppSettingModel.shared.port
-        AppSettingModel.shared.deviceUUID = texts[.uuid] ?? ""
-        Defaults[.userDeviceUUID] = AppSettingModel.shared.deviceUUID
+        let appSettings = AppSettingModel.shared
+
+        appSettings.address = texts[.ipAdress] ?? ""
+        Defaults[.userIpAdress] = appSettings.address
+
+        appSettings.port = Int(texts[.portNumber] ?? "0") ?? 0
+        Defaults[.userPortNumber] = appSettings.port
+
+        appSettings.deviceUUID = texts[.uuid] ?? ""
+        Defaults[.userDeviceUUID] = appSettings.deviceUUID
     }
     
     func updateSegmentsUserDefault(segmentControls: Dictionary<segmentName, Int>) {
-        AppSettingModel.shared.dataDestination = DataDestination(rawValue: segmentControls[.dataDestination] ?? 0)!
-        Defaults[.userDataDestination] = AppSettingModel.shared.dataDestination.rawValue
-        AppSettingModel.shared.transportProtocol = TransportProtocol(rawValue: segmentControls[.dataProtocol] ?? 0)!
-        Defaults[.userProtocol] = AppSettingModel.shared.transportProtocol.rawValue
-        AppSettingModel.shared.transportFormat = TransportFormat(rawValue: segmentControls[.messageFormat] ?? 0)!
-        Defaults[.userMessageFormat] = AppSettingModel.shared.transportFormat.rawValue
-        AppSettingModel.shared.messageRatePerSecondSegment = segmentControls[.messageRatePerSecond] ?? 0
-        Defaults[.userMessageRatePerSecond] = AppSettingModel.shared.messageRatePerSecondSegment
+        let appSettings = AppSettingModel.shared
+
+        appSettings.dataDestination = DataDestination(rawValue: segmentControls[.dataDestination] ?? 0)!
+        Defaults[.userDataDestination] = appSettings.dataDestination
+
+        appSettings.transportProtocol = TransportProtocol(rawValue: segmentControls[.dataProtocol] ?? 0)!
+        Defaults[.userProtocol] = appSettings.transportProtocol
+
+        appSettings.transportFormat = TransportFormat(rawValue: segmentControls[.messageFormat] ?? 0)!
+        Defaults[.userMessageFormat] = appSettings.transportFormat
+
+        appSettings.messageRatePerSecondSegment = segmentControls[.messageRatePerSecond] ?? 0
+        Defaults[.userMessageRatePerSecond] = appSettings.messageRatePerSecondSegment
     }
     
     func restorePurchase() {
