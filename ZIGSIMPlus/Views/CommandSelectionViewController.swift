@@ -23,7 +23,6 @@ final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var unlockPremiumFeatureButton: UIButton!
     
     var presenter: CommandSelectionPresenterProtocol!
-    var alert: UIAlertController = UIAlertController() // dummy
     var cells:[Command:StandardCell] = [:]
     var unAvailablePremiumCommands:[Command] = []
 
@@ -69,7 +68,7 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     @IBAction func actionButton(_ sender: UIButton) {
-        showAlertModal(title:premiumTextTitle, message: premiumTextBody, alertModalType.premium)
+        showAlertModal(alertType: .premium)
     }
     
     public func showDetail(commandNo: Int) {
@@ -99,37 +98,37 @@ final class CommandSelectionViewController: UIViewController {
             fatalError("Invalid command: \(command)")
         }
 
-        showAlertModal(title:title,message: msg, alertModalType.detailSetting)
+        showAlertModal(title:title, message: msg, alertType: .detailSetting)
     }
     
-    func showAlertModal(title: String, message: String , _ alertType: alertModalType) {
-        alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        setAlertMessage(message,alertType)
+    func showAlertModal(title: String? = nil, message: String? = nil, alertType: alertModalType) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         switch alertType {
-        case alertModalType.premium:
+        case .premium:
+            let text = getAlertMessageForPurchase()
+            alert.setValue(text, forKey: "attributedMessage")
+            alert.title = premiumTextTitle
+            
             alert.addAction(UIAlertAction(title: "Back", style: .default))
             alert.addAction(UIAlertAction(title: "Purchase", style: .default, handler: { action in
                 self.tableView.isUserInteractionEnabled = false
                 SVProgressHUD.show()
                 self.presenter.purchase()
             }))
-            present(alert, animated: true, completion: {
-                self.tableView.isUserInteractionEnabled = true
-            })
-        case alertModalType.detailSetting:
+        case .detailSetting:
+            guard let msg = message else { fatalError("Message nil") }
+            let text = convertMessageFromStringToAttributedText(msg)
+            alert.setValue(text, forKey: "attributedMessage")
+            
             alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
                 UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
             }))
             alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true, completion: {
-                self.alert.view.superview?.isUserInteractionEnabled = true
-                self.alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.hideAlert)))
-            })
         }
-    }
-
-    @objc private func hideAlert() {
-        alert.dismiss(animated: true, completion: nil)
+        
+        present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true
+        })
     }
     
     private func adjustNavigationDesign() {
@@ -171,33 +170,33 @@ final class CommandSelectionViewController: UIViewController {
                                         height: unlockPremiumFeatureButton.frame.size.height)
     }
     
-    private func setAlertMessage(_ message: String, _ alertType: alertModalType) {
-        var msg = message
-        if  alertType == alertModalType.premium && unavailableFunctionCount > 0 {
-            msg += (unavailableFunctionCount >= 2
+    private func getAlertMessageForPurchase() -> NSMutableAttributedString {
+        var message = premiumTextBody
+        if  unavailableFunctionCount > 0 {
+            message += (unavailableFunctionCount >= 2
                 ? "\n\nThe following functions don't work on this device:"
                 : "\n\nThe following function doesn't work on this device:")
-            
+
             for unAvailablePremiumCommand in unAvailablePremiumCommands {
-                msg = msg + "\n- " + unAvailablePremiumCommand.rawValue
+                message += "\n- " + unAvailablePremiumCommand.rawValue
             }
             if !unAvailablePremiumCommands.contains(Command.ndi) {
                 if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-                    msg = msg + "\n- NDI Depth function"
+                    message += "\n- NDI Depth function"
                 }
                 if VideoCaptureService.shared.isDepthRearCameraAvailable() && !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
-                    msg = msg + "\n- NDI Depth function on front camera"
+                    message += "\n- NDI Depth function on front camera"
                 }
             }
         }
-        
-        convertMeaageFromStringToAttributedText(msg)
+
+        return convertMessageFromStringToAttributedText(message)
     }
     
-    private func convertMeaageFromStringToAttributedText(_ msg:String) {
+    private func convertMessageFromStringToAttributedText(_ msg: String) -> NSMutableAttributedString {
         let markdownParser = MarkdownParser()
-        let aText = NSMutableAttributedString(attributedString: markdownParser.parse(msg))
-        alert.setValue(aText, forKey: "attributedMessage")
+        return NSMutableAttributedString(attributedString: markdownParser.parse(msg))
+//        alert.setValue(aText, forKey: "attributedMessage")
     }
     
     private var unavailableFunctionCount: Int {
