@@ -141,13 +141,13 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 AppSettingModel.shared.ndiType = NdiType(rawValue: data.value)!
                 Defaults[.userNdiType] = data.value
             case .ndiCamera:
-                AppSettingModel.shared.ndiCameraPosition = NdiCameraPosition(rawValue: data.value)!
+                AppSettingModel.shared.ndiCameraPosition = CameraPosition(rawValue: data.value)!
                 Defaults[.userNdiCameraType] = data.value
             case .ndiDepthType:
                 AppSettingModel.shared.depthType = DepthType(rawValue: data.value)!
                 Defaults[.userDepthType] = data.value
             case .ndiResolution:
-                AppSettingModel.shared.ndiResolution = NdiResolution(rawValue: data.value)!
+                AppSettingModel.shared.ndiResolution = VideoResolution(rawValue: data.value)!
                 Defaults[.userNdiResolution] = data.value
             case .ndiAudioBufferSize:
                 AppSettingModel.shared.ndiAudioBufferSize = NdiAudioBufferSize(rawValue: data.value)!

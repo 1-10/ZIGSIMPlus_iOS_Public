@@ -72,7 +72,7 @@ enum NdiType: Int {
     case DEPTH = 1
 }
 
-enum NdiCameraPosition: Int {
+enum CameraPosition: Int {
     case BACK = 0
     case FRONT = 1
 }
@@ -82,7 +82,7 @@ enum DepthType: Int {
     case DISPARITY = 1
 }
 
-enum NdiResolution: Int {
+enum VideoResolution: Int {
     case vga = 0
     case hd = 1
     case fhd = 2
@@ -121,9 +121,9 @@ public class AppSettingModel {
         messageRatePerSecondSegment = Defaults[.userMessageRatePerSecond] ?? 0
         compassOrientation = CompassOrientation(rawValue: Defaults[.userCompassOrientation] ?? 0)!
         ndiType = NdiType(rawValue: Defaults[.userNdiType] ?? 0)!
-        ndiCameraPosition = NdiCameraPosition(rawValue: Defaults[.userNdiCameraType] ?? 0)!
+        ndiCameraPosition = CameraPosition(rawValue: Defaults[.userNdiCameraType] ?? 0)!
         depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
-        ndiResolution = NdiResolution(rawValue: Defaults[.userNdiResolution] ?? 0)!
+        ndiResolution = VideoResolution(rawValue: Defaults[.userNdiResolution] ?? 0)!
         ndiAudioBufferSize = NdiAudioBufferSize(rawValue: Defaults[.userNdiAudioBufferSize] ?? 0)!
         arkitTrackingType = ArkitTrackingType(rawValue: Defaults[.userArkitTrackingType] ?? 0)!
     }
@@ -158,15 +158,17 @@ public class AppSettingModel {
         return 1.0 / Double(messageRatePerSecond.rawValue)
     }
     var imageDetectorType: ImageDetectorType = .face
+    var imageDetectorCameraPosition: CameraPosition = .BACK
+    var imageDetectorResolution: VideoResolution = .vga
     var imageDetectorAccuracy: ImageDetectorAccuracy = .high
     var imageDetectorTracks: Bool = false
     var imageDetectorNumberOfAnglesForSegment: ImageDetectorNumberOfAnglesForSegment = .one
     var imageDetectorDetectsEyeBlink: Bool = true
     var imageDetectorDetectsSmile: Bool = true
     var ndiType: NdiType = .CAMERA
-    var ndiCameraPosition: NdiCameraPosition = .BACK
+    var ndiCameraPosition: CameraPosition = .BACK
     var depthType: DepthType = .DEPTH
-    var ndiResolution: NdiResolution = .vga
+    var ndiResolution: VideoResolution = .vga
     var ndiAudioBufferSize: NdiAudioBufferSize = .large
     var arkitTrackingType: ArkitTrackingType = .device
 
@@ -240,7 +242,9 @@ extension DefaultsKeys {
     static let userNdiResolution = DefaultsKey<Int?>("userNdiResolution", defaultValue: 0)
     static let userNdiAudioBufferSize = DefaultsKey<Int?>("userNdiAudioBufferSize", defaultValue: 0)
     static let userArkitTrackingType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
-    static let userImageDetectorType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
+    static let userImageDetectorType = DefaultsKey<Int?>("userImageDetectorType", defaultValue: 0)
+    static let userImageDetectorCameraPosition = DefaultsKey<Int?>("userImageDetectorCameraPosition", defaultValue: 0)
+    static let userImageDetectorResolution = DefaultsKey<Int?>("userImageDetectorResolution", defaultValue: 0)
     static let userImageDetectorAccuracy = DefaultsKey<Int?>("userImageDetectorAccuracy", defaultValue: 0)
     static let userImageDetectorTracks = DefaultsKey<Bool?>("userImageDetectorTracks", defaultValue: true)
     static let userImageDetectorNumberOfAnglesForSegment = DefaultsKey<Int?>("userImageDetectorNumberOfAnglesForSegment", defaultValue: 0)
