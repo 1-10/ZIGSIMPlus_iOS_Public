@@ -82,6 +82,18 @@ enum DepthType: Int {
     case DISPARITY = 1
 }
 
+enum NdiResolution: Int {
+    case vga = 0
+    case hd = 1
+    case fhd = 2
+}
+
+enum NdiAudioBufferSize: Int {
+    case small = 0
+    case medium = 1
+    case large = 2
+}
+
 enum CompassOrientation: Int {
     case portrait = 0
     case faceup = 1
@@ -111,6 +123,8 @@ public class AppSettingModel {
         ndiType = NdiType(rawValue: Defaults[.userNdiType] ?? 0)!
         ndiCameraPosition = NdiCameraPosition(rawValue: Defaults[.userNdiCameraType] ?? 0)!
         depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
+        ndiResolution = NdiResolution(rawValue: Defaults[.userNdiResolution] ?? 0)!
+        ndiAudioBufferSize = NdiAudioBufferSize(rawValue: Defaults[.userNdiAudioBufferSize] ?? 0)!
         arkitTrackingType = ArkitTrackingType(rawValue: Defaults[.userArkitTrackingType] ?? 0)!
     }
 
@@ -152,6 +166,8 @@ public class AppSettingModel {
     var ndiType: NdiType = .CAMERA
     var ndiCameraPosition: NdiCameraPosition = .BACK
     var depthType: DepthType = .DEPTH
+    var ndiResolution: NdiResolution = .vga
+    var ndiAudioBufferSize: NdiAudioBufferSize = .large
     var arkitTrackingType: ArkitTrackingType = .device
 
     public func getSettingsForOutput() -> [(String, String)] {
@@ -214,13 +230,15 @@ extension DefaultsKeys {
     static let userIpAdress = DefaultsKey<String?>("userIpAdress", defaultValue: "172.17.1.20")
     static let userPortNumber = DefaultsKey<Int?>("userPortNumber", defaultValue: 3333)
     static let userMessageFormat = DefaultsKey<Int?>("userMessageFormat", defaultValue: 1)
-    static let userMessageRatePerSecond = DefaultsKey<Int?>("userMessageRatePerSecond", defaultValue: 3)
+    static let userMessageRatePerSecond = DefaultsKey<Int?>("userMessageRatePerSecond", defaultValue: 1)
     static let userCompassOrientation = DefaultsKey<Int?>("userCompassOrientation", defaultValue: 1)
     static let userDeviceUUID = DefaultsKey<String?>("userDeviceUUID", defaultValue: Utils.randomStringWithLength(16))
     static let userBeaconUUID = DefaultsKey<String?>("userBeaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
     static let userNdiType = DefaultsKey<Int?>("userNdiType", defaultValue: 0)
     static let userNdiCameraType = DefaultsKey<Int?>("userNdiCameraType", defaultValue: 0)
     static let userDepthType = DefaultsKey<Int?>("userDepthType", defaultValue: 0)
+    static let userNdiResolution = DefaultsKey<Int?>("userNdiResolution", defaultValue: 0)
+    static let userNdiAudioBufferSize = DefaultsKey<Int?>("userNdiAudioBufferSize", defaultValue: 0)
     static let userArkitTrackingType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
     static let userImageDetectorType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
     static let userImageDetectorAccuracy = DefaultsKey<Int?>("userImageDetectorAccuracy", defaultValue: 0)

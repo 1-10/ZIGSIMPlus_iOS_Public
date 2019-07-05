@@ -121,8 +121,11 @@ public class TouchService {
                     "pencil:touch:y:\(point.y)",
                     "pencil:altitude:\(touch.altitudeAngle)",
                     "pencil:azimuth:\(touch.azimuthAngle(in: touch.view!))",
-                    "pencil:force:\(touch.force)",
                 ]
+                
+                if #available(iOS 9.0, *) {
+                    result.append(String(format: "pencil:force:%.3f", touch.force))
+                }
             }
         }
 
@@ -181,7 +184,9 @@ extension TouchService : Service {
                 messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/penciltouch\(i)2"), Float(point.y)))
                 messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilaltitude\(i)"), Float(touch.altitudeAngle)))
                 messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilazimuth\(i)"), Float(touch.azimuthAngle(in: touch.view!))))
-                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilforce\(i)"), Float(touch.force)))
+                if #available(iOS 9.0, *) {
+                    messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilforce\(i)"), Float(touch.force)))
+                }
             }
         }
 
@@ -220,13 +225,17 @@ extension TouchService : Service {
                 var point = touch.location(in: touch.view!)
                 point = remapToScreenCoord(point)
 
-                return [
+                var obj = [
                     "x": point.x,
                     "y": point.y,
                     "altitude": touch.altitudeAngle,
-                    "azimuth": touch.azimuthAngle(in: touch.view!),
-                    "force": touch.force
+                    "azimuth": touch.azimuthAngle(in: touch.view!)
                 ]
+                if #available(iOS 9.0, *) {
+                    obj["force"] = touch.force
+                }
+                
+                return obj
             }
             data["pencil"] = JSON(pencilData)
         }
