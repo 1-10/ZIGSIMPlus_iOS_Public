@@ -168,8 +168,8 @@ final class CommandSelectionViewController: UIViewController {
     
     private func getAlertMessageForPurchase() -> String {
         var message = premiumTextBody
-        if  unavailableFunctionCount > 0 {
-            message += (unavailableFunctionCount >= 2
+        if  unavailablePremiumFunctionCount > 0 {
+            message += (unavailablePremiumFunctionCount >= 2
                 ? "\n\nThe following functions don't work on this device:"
                 : "\n\nThe following function doesn't work on this device:")
 
@@ -194,7 +194,7 @@ final class CommandSelectionViewController: UIViewController {
         return NSMutableAttributedString(attributedString: markdownParser.parse(msg))
     }
     
-    private var unavailableFunctionCount: Int {
+    private var unavailablePremiumFunctionCount: Int {
         var count = unAvailablePremiumCommands.count
         if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
             count += 1
