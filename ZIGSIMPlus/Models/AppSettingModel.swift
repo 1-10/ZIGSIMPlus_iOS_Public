@@ -25,10 +25,10 @@ enum TransportFormat: Int, DefaultsSerializable {
 }
 
 enum RatePerSecond: Int, DefaultsSerializable {
-    case one = 1
-    case ten = 10
-    case thirty = 30
-    case sixty = 60
+    case one = 0
+    case ten = 1
+    case thirty = 2
+    case sixty = 3
 }
 
 enum ImageDetectorType: Int, DefaultsSerializable {
@@ -123,7 +123,7 @@ public class AppSettingModel {
         dataDestination = Defaults[.userDataDestination]
         transportProtocol = Defaults[.userProtocol]
         transportFormat = Defaults[.userMessageFormat]
-        messageRatePerSecondSegment = Defaults[.userMessageRatePerSecond]
+        messageRatePerSecond = Defaults[.userMessageRatePerSecond]
         compassOrientation = Defaults[.userCompassOrientation]
         ndiType = Defaults[.userNdiType]
         ndiCameraPosition = Defaults[.userNdiCameraType]
@@ -143,26 +143,10 @@ public class AppSettingModel {
     var address: String = "172.17.1.20"
     var port: Int = 3333
     var transportFormat: TransportFormat = .OSC
-    var messageRatePerSecondSegment: Int = 3
+    var messageRatePerSecond: RatePerSecond = .ten
     var deviceUUID: String = Utils.randomStringWithLength(16)
     var compassOrientation: CompassOrientation = .faceup
     var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
-    var messageRatePerSecond: RatePerSecond {
-        if messageRatePerSecondSegment == 0 {
-            return .one
-        } else if messageRatePerSecondSegment == 1 {
-            return .ten
-        } else if messageRatePerSecondSegment == 2 {
-            return .thirty
-        } else if messageRatePerSecondSegment == 3 {
-            return .sixty
-        } else {
-            fatalError("Unexpected message rate")
-        }
-    }
-    var messageInterval: TimeInterval {
-        return 1.0 / Double(messageRatePerSecond.rawValue)
-    }
     var imageDetectorType: ImageDetectorType = .face
     var imageDetectorAccuracy: ImageDetectorAccuracy = .high
     var imageDetectorTracks: Bool = false
@@ -238,7 +222,7 @@ extension DefaultsKeys {
     static let userIpAdress = DefaultsKey<String>("userIpAdress", defaultValue: "172.17.1.20")
     static let userPortNumber = DefaultsKey<Int>("userPortNumber", defaultValue: 3333)
     static let userMessageFormat = DefaultsKey<TransportFormat>("userMessageFormat", defaultValue: .OSC)
-    static let userMessageRatePerSecond = DefaultsKey<Int>("userMessageRatePerSecond", defaultValue: 1)
+    static let userMessageRatePerSecond = DefaultsKey<RatePerSecond>("userMessageRatePerSecond", defaultValue: .ten)
     static let userCompassOrientation = DefaultsKey<CompassOrientation>("userCompassOrientation", defaultValue: .portrait)
     static let userDeviceUUID = DefaultsKey<String>("userDeviceUUID", defaultValue: Utils.randomStringWithLength(16))
     static let userBeaconUUID = DefaultsKey<String>("userBeaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")

@@ -54,7 +54,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         segments[.dataDestination] = Defaults[.userDataDestination].rawValue
         segments[.dataProtocol] = Defaults[.userProtocol].rawValue
         segments[.messageFormat] = Defaults[.userMessageFormat].rawValue
-        segments[.messageRatePerSecond] = Defaults[.userMessageRatePerSecond]
+        segments[.messageRatePerSecond] = Defaults[.userMessageRatePerSecond].rawValue
 
         return segments
     }
@@ -84,8 +84,8 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         appSettings.transportFormat = TransportFormat(rawValue: segmentControls[.messageFormat] ?? 0)!
         Defaults[.userMessageFormat] = appSettings.transportFormat
 
-        appSettings.messageRatePerSecondSegment = segmentControls[.messageRatePerSecond] ?? 0
-        Defaults[.userMessageRatePerSecond] = appSettings.messageRatePerSecondSegment
+        appSettings.messageRatePerSecond = RatePerSecond(rawValue: segmentControls[.messageRatePerSecond] ?? 0)!
+        Defaults[.userMessageRatePerSecond] = appSettings.messageRatePerSecond
     }
     
     func restorePurchase() {

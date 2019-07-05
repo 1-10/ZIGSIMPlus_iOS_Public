@@ -456,9 +456,9 @@
 			isa = PBXGroup;
 			children = (
 				B3C6588522A901D400B4358B /* CustomCells */,
+				02E49EA122C20F1100987C1A /* Components */,
 				902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */,
 				9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */,
-				02E49EA122C20F1100987C1A /* Components */,
 				B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */,
 				029C0B0722B0D5C3006C96BC /* CommandSettingTabNavigationController.swift */,
 				026A3C3322BB831F0016DEF6 /* CommandOutputTabNavigationController.swift */,

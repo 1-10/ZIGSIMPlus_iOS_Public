@@ -41,8 +41,10 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
 
     // MARK: Start commands
     func startCommands() {
+        let interval = Utils.getMessageInterval()
+
         updatingTimer = Timer.scheduledTimer(
-            timeInterval: AppSettingModel.shared.messageInterval,
+            timeInterval: interval,
             target: self,
             selector: #selector(self.monitorCommands),
             userInfo: nil,

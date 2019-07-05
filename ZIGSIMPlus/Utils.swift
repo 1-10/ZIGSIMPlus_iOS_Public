@@ -112,4 +112,13 @@ class Utils {
         characterSet.addCharacters(in: chars)
         return text.trimmingCharacters(in: characterSet as CharacterSet).count <= 0
     }
+
+    static func getMessageInterval() -> TimeInterval {
+        switch AppSettingModel.shared.messageRatePerSecond {
+        case .one: return 1.0
+        case .ten: return 1.0 / 10.0
+        case .thirty: return 1.0 / 30.0
+        case .sixty: return 1.0 / 60.0
+        }
+    }
 }
