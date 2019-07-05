@@ -88,6 +88,11 @@ enum NdiResolution: Int {
     case fhd = 2
 }
 
+enum NdiAudioEnabled: Int {
+    case enabled = 0
+    case disabled = 1
+}
+
 enum NdiAudioBufferSize: Int {
     case small = 0
     case medium = 1
@@ -124,6 +129,7 @@ public class AppSettingModel {
         ndiCameraPosition = NdiCameraPosition(rawValue: Defaults[.userNdiCameraType] ?? 0)!
         depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
         ndiResolution = NdiResolution(rawValue: Defaults[.userNdiResolution] ?? 0)!
+        ndiAudioEnabled = NdiAudioEnabled(rawValue: Defaults[.userNdiAudioEnabled] ?? 0)!
         ndiAudioBufferSize = NdiAudioBufferSize(rawValue: Defaults[.userNdiAudioBufferSize] ?? 0)!
         arkitTrackingType = ArkitTrackingType(rawValue: Defaults[.userArkitTrackingType] ?? 0)!
     }
@@ -167,6 +173,7 @@ public class AppSettingModel {
     var ndiCameraPosition: NdiCameraPosition = .BACK
     var depthType: DepthType = .DEPTH
     var ndiResolution: NdiResolution = .vga
+    var ndiAudioEnabled: NdiAudioEnabled = .enabled
     var ndiAudioBufferSize: NdiAudioBufferSize = .large
     var arkitTrackingType: ArkitTrackingType = .device
 
@@ -238,6 +245,7 @@ extension DefaultsKeys {
     static let userNdiCameraType = DefaultsKey<Int?>("userNdiCameraType", defaultValue: 0)
     static let userDepthType = DefaultsKey<Int?>("userDepthType", defaultValue: 0)
     static let userNdiResolution = DefaultsKey<Int?>("userNdiResolution", defaultValue: 0)
+    static let userNdiAudioEnabled = DefaultsKey<Int?>("userNdiAudioEnabled", defaultValue: 0)
     static let userNdiAudioBufferSize = DefaultsKey<Int?>("userNdiAudioBufferSize", defaultValue: 0)
     static let userArkitTrackingType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
     static let userImageDetectorType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
