@@ -137,13 +137,12 @@ public class AppSettingModel {
     var ndiAudioEnabled = Defaults[.userNdiAudioEnabled]
     var ndiAudioBufferSize = Defaults[.userNdiAudioBufferSize]
     var arkitTrackingType = Defaults[.userArkitTrackingType]
-
-    var imageDetectorType: ImageDetectorType = .face
-    var imageDetectorAccuracy: ImageDetectorAccuracy = .high
-    var imageDetectorTracks: Bool = false
-    var imageDetectorNumberOfAnglesForSegment: ImageDetectorNumberOfAnglesForSegment = .one
-    var imageDetectorDetectsEyeBlink: Bool = true
-    var imageDetectorDetectsSmile: Bool = true
+    var imageDetectorType = Defaults[.userImageDetectorType]
+    var imageDetectorAccuracy = Defaults[.userImageDetectorType]
+    var imageDetectorTracks = Defaults[.userImageDetectorTracks]
+    var imageDetectorNumberOfAnglesForSegment = Defaults[.userImageDetectorNumberOfAnglesForSegment]
+    var imageDetectorDetectsEyeBlink = Defaults[.userImageDetectorDetectsEyeBlink]
+    var imageDetectorDetectsSmile = Defaults[.userImageDetectorDetectsSmile]
 
     public func getSettingsForOutput() -> [(String, String)] {
         let dst = dataDestination == .OTHER_APP ? "OTHER APP" : "LOCAL FILE"
