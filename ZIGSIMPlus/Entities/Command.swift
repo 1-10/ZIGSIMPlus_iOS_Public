@@ -31,7 +31,7 @@ public enum Command: String, CaseIterable {
     case remoteControl = "Remote Control"
     case battery = "Battery"
     
-    var userDefaultsKey: DefaultsKey<Bool?> {
+    var userDefaultsKey: DefaultsKey<Bool> {
         switch self {
         case .ndi: return DefaultsKeys.userNdiCommand
         case .arkit: return DefaultsKeys.userArkitCommand

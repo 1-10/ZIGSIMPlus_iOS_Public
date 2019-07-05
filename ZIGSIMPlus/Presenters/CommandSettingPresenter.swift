@@ -43,9 +43,9 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
     
     func getUserDefaultTexts() -> Dictionary<textFieldName,String> {
         var texts:[textFieldName: String] = [:]
-        texts[.ipAdress] = Defaults[.userIpAdress]?.description ?? ""
-        texts[.portNumber] = Defaults[.userPortNumber]?.description ?? ""
-        texts[.uuid] = Defaults[.userDeviceUUID]?.description ?? ""
+        texts[.ipAdress] = Defaults[.userIpAdress].description
+        texts[.portNumber] = Defaults[.userPortNumber].description
+        texts[.uuid] = Defaults[.userDeviceUUID].description
         return texts
     }
     
