@@ -68,7 +68,8 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     @IBAction func actionButton(_ sender: UIButton) {
-        showAlertModal(alertType: .premium)
+        let message = getAlertMessageForPurchase()
+        showAlertWithMarkdownMessage(title: premiumTextTitle, message: message, alertType: .premium)
     }
     
     public func showDetail(commandNo: Int) {
@@ -98,17 +99,16 @@ final class CommandSelectionViewController: UIViewController {
             fatalError("Invalid command: \(command)")
         }
 
-        showAlertModal(title:title, message: msg, alertType: .detailSetting)
+        showAlertWithMarkdownMessage(title:title, message: msg, alertType: .detailSetting)
     }
     
-    func showAlertModal(title: String? = nil, message: String? = nil, alertType: alertModalType) {
+    func showAlertWithMarkdownMessage(title: String, message: String, alertType: alertModalType) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let attributedText = convertMessageFromStringToAttributedText(message)
+        alert.setValue(attributedText, forKey: "attributedMessage")
+        
         switch alertType {
         case .premium:
-            let text = getAlertMessageForPurchase()
-            alert.setValue(text, forKey: "attributedMessage")
-            alert.title = premiumTextTitle
-            
             alert.addAction(UIAlertAction(title: "Back", style: .default))
             alert.addAction(UIAlertAction(title: "Purchase", style: .default, handler: { action in
                 self.tableView.isUserInteractionEnabled = false
@@ -116,10 +116,6 @@ final class CommandSelectionViewController: UIViewController {
                 self.presenter.purchase()
             }))
         case .detailSetting:
-            guard let msg = message else { fatalError("Message nil") }
-            let text = convertMessageFromStringToAttributedText(msg)
-            alert.setValue(text, forKey: "attributedMessage")
-            
             alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
                 UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
             }))
@@ -170,7 +166,7 @@ final class CommandSelectionViewController: UIViewController {
                                         height: unlockPremiumFeatureButton.frame.size.height)
     }
     
-    private func getAlertMessageForPurchase() -> NSMutableAttributedString {
+    private func getAlertMessageForPurchase() -> String {
         var message = premiumTextBody
         if  unavailableFunctionCount > 0 {
             message += (unavailableFunctionCount >= 2
@@ -189,14 +185,13 @@ final class CommandSelectionViewController: UIViewController {
                 }
             }
         }
-
-        return convertMessageFromStringToAttributedText(message)
+        
+        return message
     }
     
     private func convertMessageFromStringToAttributedText(_ msg: String) -> NSMutableAttributedString {
         let markdownParser = MarkdownParser()
         return NSMutableAttributedString(attributedString: markdownParser.parse(msg))
-//        alert.setValue(aText, forKey: "attributedMessage")
     }
     
     private var unavailableFunctionCount: Int {
