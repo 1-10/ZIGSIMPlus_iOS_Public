@@ -142,47 +142,47 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             case .ndiType:
                 let val = NdiType(rawValue: data.value)!
                 AppSettingModel.shared.ndiType = val
-                Defaults[.userNdiType] = val
+                Defaults[.ndiType] = val
             case .ndiCamera:
                 let val = NdiCameraPosition(rawValue: data.value)!
                 AppSettingModel.shared.ndiCameraPosition = val
-                Defaults[.userNdiCameraType] = val
+                Defaults[.ndiCameraType] = val
             case .ndiDepthType:
                 let val = DepthType(rawValue: data.value)!
                 AppSettingModel.shared.depthType = val
-                Defaults[.userDepthType] = val
+                Defaults[.depthType] = val
             case .ndiResolution:
                 let val = NdiResolution(rawValue: data.value)!
                 AppSettingModel.shared.ndiResolution = val
-                Defaults[.userNdiResolution] = val
+                Defaults[.ndiResolution] = val
             case .ndiAudioBufferSize:
                 let val = NdiAudioBufferSize(rawValue: data.value)!
                 AppSettingModel.shared.ndiAudioBufferSize = val
-                Defaults[.userNdiAudioBufferSize] = val
+                Defaults[.ndiAudioBufferSize] = val
             case .ndiAudioEnabled:
                 let val = NdiAudioEnabled(rawValue: data.value)!
                 AppSettingModel.shared.ndiAudioEnabled = val
-                Defaults[.userNdiAudioEnabled] = val
+                Defaults[.ndiAudioEnabled] = val
             case .compassOrientation:
                 let val = CompassOrientation(rawValue: data.value)!
                 AppSettingModel.shared.compassOrientation = val
-                Defaults[.userCompassOrientation] = val
+                Defaults[.compassOrientation] = val
             case .arkitTrackingType:
                 let val = ArkitTrackingType(rawValue: data.value)!
                 AppSettingModel.shared.arkitTrackingType = val
-                Defaults[.userArkitTrackingType] = val
+                Defaults[.arkitTrackingType] = val
             case .imageDetectorType:
                 let val = ImageDetectorType(rawValue: data.value)!
                 AppSettingModel.shared.imageDetectorType = val
-                Defaults[.userImageDetectorType] = val
+                Defaults[.imageDetectorType] = val
             case .imageDetectorAccuracy:
                 let val = ImageDetectorAccuracy(rawValue: data.value)!
                 AppSettingModel.shared.imageDetectorAccuracy = val
-                Defaults[.userImageDetectorAccuracy] = val
+                Defaults[.imageDetectorAccuracy] = val
             case .imageDetectorNumberOfAnglesForSegment:
                 let val = ImageDetectorNumberOfAnglesForSegment(rawValue: data.value)!
                 AppSettingModel.shared.imageDetectorNumberOfAnglesForSegment = val
-                Defaults[.userImageDetectorNumberOfAnglesForSegment] = val
+                Defaults[.imageDetectorNumberOfAnglesForSegment] = val
             default:
                 fatalError("Undefined key")
             }
@@ -190,13 +190,13 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             switch data.key {
             case .imageDetectorTracks:
                 AppSettingModel.shared.imageDetectorTracks = data.value
-                Defaults[.userImageDetectorTracks] = data.value
+                Defaults[.imageDetectorTracks] = data.value
             case .imageDetectorDetectsEyeBlink:
                 AppSettingModel.shared.imageDetectorDetectsEyeBlink = data.value
-                Defaults[.userImageDetectorDetectsEyeBlink] = data.value
+                Defaults[.imageDetectorDetectsEyeBlink] = data.value
             case .imageDetectorDetectsSmile:
                 AppSettingModel.shared.imageDetectorDetectsSmile = data.value
-                Defaults[.userImageDetectorDetectsSmile] = data.value
+                Defaults[.imageDetectorDetectsSmile] = data.value
             default:
                 fatalError("Undefined key")
             }
@@ -204,7 +204,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             switch data.key {
             case .beaconUUID:
                 AppSettingModel.shared.beaconUUID = data.value
-                Defaults[.userBeaconUUID] = data.value
+                Defaults[.beaconUUID] = data.value
             default:
                 fatalError("Undefined key")
             }
