@@ -3,7 +3,7 @@
 //  ZIGSIMPlusUITests
 //
 //  Created by Nozomu Kuwae on 5/3/19.
-//  Copyright © 2019 Nozomu Kuwae. All rights reserved.
+//  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
 import XCTest
