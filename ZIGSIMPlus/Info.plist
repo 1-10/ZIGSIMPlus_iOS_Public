@@ -53,5 +53,7 @@
 	<false/>
 	<key>ProductIDForPremiumFeatures</key>
 	<string>com.OneToTen.ZIGSIMPlusExplicit.PremiumFeatures</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>
