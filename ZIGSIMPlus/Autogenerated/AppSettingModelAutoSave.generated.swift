@@ -37,6 +37,8 @@ private var ndiAudioEnabledKey: Void?
 private var ndiAudioBufferSizeKey: Void?
 private var arkitTrackingTypeKey: Void?
 private var imageDetectorTypeKey: Void?
+private var imageDetectorCameraPositionKey: Void?
+private var imageDetectorResolutionKey: Void?
 private var imageDetectorAccuracyKey: Void?
 private var imageDetectorTracksKey: Void?
 private var imageDetectorNumberOfAnglesKey: Void?
@@ -145,7 +147,7 @@ extension AppSettingModel {
         }
     }
 
-    var ndiCameraPosition: NdiCameraPosition {
+    var ndiCameraPosition: CameraPosition {
         get {
             return getAssociatedObject(self, &ndiCameraPositionKey) ?? Defaults[.ndiCameraPosition]
         }
@@ -165,7 +167,7 @@ extension AppSettingModel {
         }
     }
 
-    var ndiResolution: NdiResolution {
+    var ndiResolution: VideoResolution {
         get {
             return getAssociatedObject(self, &ndiResolutionKey) ?? Defaults[.ndiResolution]
         }
@@ -212,6 +214,26 @@ extension AppSettingModel {
         set {
             setRetainedAssociatedObject(self, &imageDetectorTypeKey, newValue)
             Defaults[.imageDetectorType] = newValue
+        }
+    }
+
+    var imageDetectorCameraPosition: CameraPosition {
+        get {
+            return getAssociatedObject(self, &imageDetectorCameraPositionKey) ?? Defaults[.imageDetectorCameraPosition]
+        }
+        set {
+            setRetainedAssociatedObject(self, &imageDetectorCameraPositionKey, newValue)
+            Defaults[.imageDetectorCameraPosition] = newValue
+        }
+    }
+
+    var imageDetectorResolution: VideoResolution {
+        get {
+            return getAssociatedObject(self, &imageDetectorResolutionKey) ?? Defaults[.imageDetectorResolution]
+        }
+        set {
+            setRetainedAssociatedObject(self, &imageDetectorResolutionKey, newValue)
+            Defaults[.imageDetectorResolution] = newValue
         }
     }
 

@@ -63,7 +63,7 @@ enum NdiType: Int, DefaultsSerializable {
     case DEPTH = 1
 }
 
-enum NdiCameraPosition: Int, DefaultsSerializable {
+enum CameraPosition: Int, DefaultsSerializable {
     case BACK = 0
     case FRONT = 1
 }
@@ -73,7 +73,7 @@ enum DepthType: Int, DefaultsSerializable {
     case DISPARITY = 1
 }
 
-enum NdiResolution: Int, DefaultsSerializable {
+enum VideoResolution: Int, DefaultsSerializable {
     case vga = 0
     case hd = 1
     case fhd = 2
@@ -121,12 +121,12 @@ public class AppSettingModel {
         let format = transportFormat == .OSC ? "OSC" : "JSON"
 
         return [
-            ("DATA DESTINATION", dst),
-            ("PROTOCOL", prot),
-            ("IP ADDRESS", ipAddress),
-            ("PORT", String(portNumber)),
-            ("MESSAGE FORMAT", format),
-            ("DEVICE UUID", deviceUUID),
+            ("Data Destination", dst),
+            ("Protocol", prot),
+            ("IP Address", ipAddress),
+            ("Port", String(portNumber)),
+            ("Message Format", format),
+            ("Device UUID", deviceUUID),
         ]
     }
 
@@ -165,13 +165,15 @@ extension DefaultsKeys {
     static let deviceUUID = DefaultsKey<String>("deviceUUID", defaultValue: Utils.randomStringWithLength(16))
     static let beaconUUID = DefaultsKey<String>("beaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
     static let ndiType = DefaultsKey<NdiType>("ndiType", defaultValue: .CAMERA)
-    static let ndiCameraPosition = DefaultsKey<NdiCameraPosition>("ndiCameraPosition", defaultValue: .BACK)
+    static let ndiCameraPosition = DefaultsKey<CameraPosition>("ndiCameraPosition", defaultValue: .BACK)
     static let depthType = DefaultsKey<DepthType>("depthType", defaultValue: .DEPTH)
-    static let ndiResolution = DefaultsKey<NdiResolution>("ndiResolution", defaultValue: .vga)
+    static let ndiResolution = DefaultsKey<VideoResolution>("ndiResolution", defaultValue: .vga)
     static let ndiAudioEnabled = DefaultsKey<NdiAudioEnabled>("ndiAudioEnabled", defaultValue: .enabled)
     static let ndiAudioBufferSize = DefaultsKey<NdiAudioBufferSize>("ndiAudioBufferSize", defaultValue: .large)
     static let arkitTrackingType = DefaultsKey<ArkitTrackingType>("arkitTrackingType", defaultValue: .device)
     static let imageDetectorType = DefaultsKey<ImageDetectorType>("imageDetectorType", defaultValue: .face)
+    static let imageDetectorCameraPosition = DefaultsKey<CameraPosition>("userImageDetectorCameraPosition", defaultValue: .BACK)
+    static let imageDetectorResolution = DefaultsKey<VideoResolution>("userImageDetectorResolution", defaultValue: .vga)
     static let imageDetectorAccuracy = DefaultsKey<ImageDetectorAccuracy>("imageDetectorAccuracy", defaultValue: .high)
     static let imageDetectorTracks = DefaultsKey<Bool>("imageDetectorTracks", defaultValue: true)
     static let imageDetectorNumberOfAngles = DefaultsKey<ImageDetectorNumberOfAngles>("imageDetectorNumberOfAngles", defaultValue: .one)
