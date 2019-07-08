@@ -30,7 +30,7 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
         self.view = view
         self.mediator = mediator
 
-        mediator.onUpdate = {
+        CommandPlayer.shared.onUpdate = {
             self.updateOutput()
         }
     }
@@ -43,12 +43,12 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
     }
 
     func startCommands() {
-        mediator.play()
+        CommandPlayer.shared.play()
         view.updateSettings(with: AppSettingModel.shared.getSettingsForOutput())
     }
 
     func stopCommands() {
-        mediator.stop()
+        CommandPlayer.shared.stop()
     }
 
     func isCameraUsed() -> Bool {

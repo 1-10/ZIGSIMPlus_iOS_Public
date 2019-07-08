@@ -13,7 +13,6 @@ import StoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let mediator = CommandAndServiceMediator()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // It's recommended to add a transaction queue observer at application launch
@@ -22,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Inject dependency here
         let tabBarController = window?.rootViewController as! UITabBarController
+        let mediator = CommandAndServiceMediator()
+
         for viewController in tabBarController.viewControllers! {
             if type(of: viewController) == CommandSelectionTabNavigationController.self {
                 let vc = viewController as! CommandSelectionTabNavigationController
@@ -42,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        mediator.pause()
+        CommandPlayer.shared.pause()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {}
@@ -50,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {}
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        mediator.resume()
+        CommandPlayer.shared.resume()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
