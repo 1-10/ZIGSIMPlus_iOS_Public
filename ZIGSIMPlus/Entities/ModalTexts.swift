@@ -3,7 +3,7 @@
 //  ZIGSIMPlus
 //
 //  Created by YoneyamaShunpei on 2019/06/10.
-//  Copyright © 2019 Nozomu Kuwae. All rights reserved.
+//  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
 import Foundation

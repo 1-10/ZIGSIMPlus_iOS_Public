@@ -610,7 +610,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = "Nozomu Kuwae";
+				ORGANIZATIONNAME = "1→10, Inc.";
 				TargetAttributes = {
 					902EB9C5227BE68D008F1650 = {
 						CreatedOnToolsVersion = 10.1;
