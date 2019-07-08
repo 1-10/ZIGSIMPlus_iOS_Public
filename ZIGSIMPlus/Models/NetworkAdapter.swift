@@ -21,13 +21,19 @@ public class NetworkAdapter {
     var error: Error?
     
     /// Send data over TCP / UDP automatically
-    func send(_ data: Data){
+    func send(_ data: Data) {
         switch AppSettingModel.shared.transportProtocol {
         case .TCP:
             sendTCP(data)
         case .UDP:
             sendUDP(data)
         }
+    }
+
+    func close() {
+        udpClient.close()
+        tcpClient.close()
+        print(">>>>>>>>>>>> close")
     }
 
     /// Get error description to show in output view

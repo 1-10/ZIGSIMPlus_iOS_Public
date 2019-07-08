@@ -74,6 +74,7 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
         }
 
         mediator.stopActiveCommands()
+        NetworkAdapter.shared.close()
     }
 
     func isCameraUsed() -> Bool {
