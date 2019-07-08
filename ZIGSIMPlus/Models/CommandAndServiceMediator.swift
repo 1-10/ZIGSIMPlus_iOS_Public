@@ -56,17 +56,6 @@ public class CommandAndServiceMediator {
         }
     }
 
-    public static func isPremiumCommand(_ command: Command) -> Bool {
-        if command == Command.ndi ||
-            command == Command.arkit ||
-            command == Command.imageDetection ||
-            command == Command.nfc ||
-            command == Command.applePencil{
-            return true
-        }
-        return false
-    }
-
     public static func startCommand(_ command: Command) {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
