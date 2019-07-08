@@ -68,7 +68,9 @@ public class CommandPlayer {
             }
         }
 
-        ServiceManager.shared.send()
+        let data = ServiceManager.shared.getData()
+        NetworkAdapter.shared.send(data)
+
         onUpdate?()
     }
 
@@ -80,7 +82,9 @@ public class CommandPlayer {
             RemoteControlService.shared.update()
         }
 
-        ServiceManager.shared.send()
+        let data = ServiceManager.shared.getData()
+        NetworkAdapter.shared.send(data)
+
         onUpdate?()
     }
 
