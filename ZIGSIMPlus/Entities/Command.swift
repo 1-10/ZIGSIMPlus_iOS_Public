@@ -14,8 +14,8 @@ import SwiftyUserDefaults
 public enum Command: String, CaseIterable {
     case ndi = "NDI"
     case arkit = "ARKit"
-    case imageDetection = "IMAGE DETECTION"
-    case nfc = "NFC READER"
+    case imageDetection = "Image Detection"
+    case nfc = "NFC Reader"
     case applePencil = "Apple Pencil"
     case acceleration = "Acceleration"
     case gravity = "Gravity"
@@ -23,34 +23,34 @@ public enum Command: String, CaseIterable {
     case quaternion = "Quaternion"
     case compass = "Compass"
     case pressure = "Pressure"
-    case gps = "Gps"
+    case gps = "GPS"
     case touch = "Touch"
     case beacon = "Beacon"
     case proximity = "Proximity"
-    case micLevel = "MIC LEVEL"
+    case micLevel = "Mic Level"
     case remoteControl = "Remote Control"
     case battery = "Battery"
     
-    var userDefaultsKey: DefaultsKey<Bool?> {
+    var userDefaultsKey: DefaultsKey<Bool> {
         switch self {
-        case .ndi: return DefaultsKeys.userNdiCommand
-        case .arkit: return DefaultsKeys.userArkitCommand
-        case .imageDetection: return DefaultsKeys.userImageDetectionCommand
-        case .nfc: return DefaultsKeys.userNfcReaderCommand
-        case .applePencil: return DefaultsKeys.userApplePencilCommand
-        case .acceleration: return DefaultsKeys.userAccelerationCommand
-        case .gravity: return DefaultsKeys.userGravityCommand
-        case .gyro: return DefaultsKeys.userGyroCommand
-        case .quaternion: return DefaultsKeys.userQuaternionCommand
-        case .compass: return DefaultsKeys.userCompassCommand
-        case .pressure: return DefaultsKeys.userPressureCommand
-        case .gps: return DefaultsKeys.userGpsCommand
-        case .touch: return DefaultsKeys.userTouchCommand
-        case .beacon: return DefaultsKeys.userBeaconCommand
-        case .proximity: return DefaultsKeys.userProximityCommand
-        case .micLevel: return DefaultsKeys.userMicLevelCommand
-        case .remoteControl: return DefaultsKeys.userRemoteControlCommand
-        case .battery: return DefaultsKeys.userBatteryCommand
+        case .ndi: return .isNdiCommandActive
+        case .arkit: return .isArkitCommandActive
+        case .imageDetection: return .isImageDetectionCommandActive
+        case .nfc: return .isNfcReaderCommandActive
+        case .applePencil: return .isApplePencilCommandActive
+        case .acceleration: return DefaultsKeys.isAccelerationCommandActive
+        case .gravity: return DefaultsKeys.isGravityCommandActive
+        case .gyro: return DefaultsKeys.isGyroCommandActive
+        case .quaternion: return DefaultsKeys.isQuaternionCommandActive
+        case .compass: return DefaultsKeys.isCompassCommandActive
+        case .pressure: return DefaultsKeys.isPressureCommandActive
+        case .gps: return DefaultsKeys.isGpsCommandActive
+        case .touch: return DefaultsKeys.isTouchCommandActive
+        case .beacon: return DefaultsKeys.isBeaconCommandActive
+        case .proximity: return DefaultsKeys.isProximityCommandActive
+        case .micLevel: return DefaultsKeys.isMicLevelCommandActive
+        case .remoteControl: return DefaultsKeys.isRemoteControlCommandActive
+        case .battery: return DefaultsKeys.isBatteryCommandActive
         }
     }
 }

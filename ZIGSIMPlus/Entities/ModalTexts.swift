@@ -38,8 +38,8 @@ Users can switch the orientation of device in detail settings:
 """),
     .pressure: ("Pressure", """
 Pressure command detects altitude events and outputs following values:
-Pressure[hPa]
-Altitude[meter]
+**pressure** [hPa]
+**altitude** [meter]
 """),
     .gps : ("GPS", """
 GPS command detects GPS signal and outputs **latitude** and **longitude**.
@@ -74,21 +74,21 @@ NDI command transmits images from the device via NDI protocol.
 You cannot use NDI, ARKit and Image Detection simultaneously.
 This command has following settings:
 
-## IMAGE TYPE
+## Image Type
 **CAMERA**: send images captured by camera.
 **DEPTH**: send depth maps captured by camera.
 
-## CAMERA
+## Camera
 Toggle camera between **REAR** and **FRONT**.
 
-## DEPTH TYPE
+## Depth Type
 **DEPTH**: capture depth map.
 **DISPARITY**: capture disparity map.
 
-## RESOLUTION
+## Resolution
 Set NDI video resolution to **VGA**, **HD** or **FHD**.
 
-## AUDIO LATENCY
+## Audio Latency
 Set NDI audio latency **LOW**, **MEDIUM** or **HIGH** by changing the buffer size.
 Lower latency may cause audio glitch due to small buffer.
 

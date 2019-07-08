@@ -20,6 +20,12 @@ name: MarkdownKit, nameSpecified:
 body: The MIT License (MIT…
 version: 1.5
 
+name: Sourcery, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 0.16.1
+
 name: SVProgressHUD, nameSpecified: 
 body: MIT License
 
