@@ -14,18 +14,19 @@ public enum DetailSettingsKey: Int {
     case ndiCamera = 1
     case ndiDepthType = 2
     case ndiResolution = 3
-    case ndiAudioBufferSize = 4
-    case compassOrientation = 5
-    case arkitTrackingType = 6
-    case imageDetectorType = 7
-    case imageDetectorCameraPosition = 8
-    case imageDetectorResolution = 9
-    case imageDetectorAccuracy = 10
-    case imageDetectorTracks = 11
-    case imageDetectorNumberOfAnglesForSegment = 12
-    case imageDetectorDetectsEyeBlink = 13
-    case imageDetectorDetectsSmile = 14
-    case beaconUUID = 15
+    case ndiAudioEnabled = 4
+    case ndiAudioBufferSize = 5
+    case compassOrientation = 6
+    case arkitTrackingType = 7
+    case imageDetectorType = 8
+    case imageDetectorCameraPosition = 9
+    case imageDetectorResolution = 10
+    case imageDetectorAccuracy = 11
+    case imageDetectorTracks = 12
+    case imageDetectorNumberOfAngles = 13
+    case imageDetectorDetectsEyeBlink = 14
+    case imageDetectorDetectsSmile = 15
+    case beaconUUID = 16
 }
 
 
@@ -113,6 +114,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedInt(.ndiCamera, "Camera", ["REAR", "FRONT"], 240, app.ndiCameraPosition.rawValue),
                 SegmentedInt(.ndiDepthType, "Depth Type", ["DEPTH", "DISPARITY"], 240, app.depthType.rawValue),
                 SegmentedInt(.ndiResolution, "Resolution", ["VGA", "HD", "FHD"], 240, app.ndiResolution.rawValue),
+                SegmentedInt(.ndiAudioEnabled, "Audio", ["ON", "OFF"], 240, app.ndiAudioEnabled.rawValue),
                 SegmentedInt(.ndiAudioBufferSize, "Audio Latency", ["LOW", "MID", "HIGH"], 240, app.ndiAudioBufferSize.rawValue),
             ],
             .compass: [
@@ -127,7 +129,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedInt(.imageDetectorResolution, "Resolution", ["VGA", "HD", "FHD"], 240, app.imageDetectorResolution.rawValue),
                 SegmentedInt(.imageDetectorAccuracy, "Accuracy", ["LOW", "HIGH"], 240, app.imageDetectorAccuracy.rawValue),
                 SegmentedBool(.imageDetectorTracks, "Tracking", ["ON", "OFF"], 240, app.imageDetectorTracks),
-                SegmentedInt(.imageDetectorNumberOfAnglesForSegment, "Number of Face Angles", ["1", "3", "5", "7", "9", "11"], 240, app.imageDetectorNumberOfAnglesForSegment.rawValue),
+                SegmentedInt(.imageDetectorNumberOfAngles, "Number of Face Angles", ["1", "3", "5", "7", "9", "11"], 240, app.imageDetectorNumberOfAngles.rawValue),
                 SegmentedBool(.imageDetectorDetectsEyeBlink, "Detect Eye Blink", ["ON", "OFF"], 240, app.imageDetectorDetectsEyeBlink),
                 SegmentedBool(.imageDetectorDetectsSmile, "Detect Smile", ["ON", "OFF"], 240, app.imageDetectorDetectsSmile),
             ],
@@ -143,40 +145,30 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             switch data.key {
             case .ndiType:
                 AppSettingModel.shared.ndiType = NdiType(rawValue: data.value)!
-                Defaults[.userNdiType] = data.value
             case .ndiCamera:
                 AppSettingModel.shared.ndiCameraPosition = CameraPosition(rawValue: data.value)!
-                Defaults[.userNdiCameraType] = data.value
             case .ndiDepthType:
                 AppSettingModel.shared.depthType = DepthType(rawValue: data.value)!
-                Defaults[.userDepthType] = data.value
             case .ndiResolution:
                 AppSettingModel.shared.ndiResolution = VideoResolution(rawValue: data.value)!
-                Defaults[.userNdiResolution] = data.value
             case .ndiAudioBufferSize:
                 AppSettingModel.shared.ndiAudioBufferSize = NdiAudioBufferSize(rawValue: data.value)!
-                Defaults[.userNdiAudioBufferSize] = data.value
+            case .ndiAudioEnabled:
+                AppSettingModel.shared.ndiAudioEnabled = NdiAudioEnabled(rawValue: data.value)!
             case .compassOrientation:
                 AppSettingModel.shared.compassOrientation = CompassOrientation(rawValue: data.value)!
-                Defaults[.userCompassOrientation] = data.value
             case .arkitTrackingType:
                 AppSettingModel.shared.arkitTrackingType = ArkitTrackingType(rawValue: data.value)!
-                Defaults[.userArkitTrackingType] = data.value
             case .imageDetectorType:
                 AppSettingModel.shared.imageDetectorType = ImageDetectorType(rawValue: data.value)!
-                Defaults[.userImageDetectorType] = data.value
             case .imageDetectorCameraPosition:
                 AppSettingModel.shared.imageDetectorCameraPosition = CameraPosition(rawValue: data.value)!
-                Defaults[.userImageDetectorCameraPosition] = data.value
             case .imageDetectorResolution:
                 AppSettingModel.shared.imageDetectorResolution = VideoResolution(rawValue: data.value)!
-                Defaults[.userImageDetectorResolution] = data.value
             case .imageDetectorAccuracy:
                 AppSettingModel.shared.imageDetectorAccuracy = ImageDetectorAccuracy(rawValue: data.value)!
-                Defaults[.userImageDetectorAccuracy] = data.value
-            case .imageDetectorNumberOfAnglesForSegment:
-                AppSettingModel.shared.imageDetectorNumberOfAnglesForSegment = ImageDetectorNumberOfAnglesForSegment(rawValue: data.value)!
-                Defaults[.userImageDetectorNumberOfAnglesForSegment] = data.value
+            case .imageDetectorNumberOfAngles:
+                AppSettingModel.shared.imageDetectorNumberOfAngles = ImageDetectorNumberOfAngles(rawValue: data.value)!
             default:
                 fatalError("Undefined key")
             }
@@ -184,13 +176,10 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             switch data.key {
             case .imageDetectorTracks:
                 AppSettingModel.shared.imageDetectorTracks = data.value
-                Defaults[.userImageDetectorTracks] = data.value
             case .imageDetectorDetectsEyeBlink:
                 AppSettingModel.shared.imageDetectorDetectsEyeBlink = data.value
-                Defaults[.userImageDetectorDetectsEyeBlink] = data.value
             case .imageDetectorDetectsSmile:
                 AppSettingModel.shared.imageDetectorDetectsSmile = data.value
-                Defaults[.userImageDetectorDetectsSmile] = data.value
             default:
                 fatalError("Undefined key")
             }
@@ -198,7 +187,6 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             switch data.key {
             case .beaconUUID:
                 AppSettingModel.shared.beaconUUID = data.value
-                Defaults[.userBeaconUUID] = data.value
             default:
                 fatalError("Undefined key")
             }

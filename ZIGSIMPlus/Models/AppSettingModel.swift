@@ -9,50 +9,41 @@
 import Foundation
 import SwiftyUserDefaults
 
-enum DataDestination: Int {
+enum DataDestination: Int, DefaultsSerializable {
     case LOCAL_FILE = 0
     case OTHER_APP = 1
 }
 
-enum TransportProtocol: Int {
+enum TransportProtocol: Int, DefaultsSerializable {
     case UDP = 0
     case TCP = 1
 }
 
-enum TransportFormat: Int {
+enum TransportFormat: Int, DefaultsSerializable {
     case JSON = 0
     case OSC = 1
 }
 
-enum RatePerSecond: Int {
-    case one = 1
-    case ten = 10
-    case thirty = 30
-    case sixty = 60
+enum RatePerSecond: Int, DefaultsSerializable {
+    case one = 0
+    case ten = 1
+    case thirty = 2
+    case sixty = 3
 }
 
-enum ImageDetectorType: Int {
+enum ImageDetectorType: Int, DefaultsSerializable {
     case face = 0
     case qrCode = 1
     case rectangle = 2
     case text = 3
 }
 
-enum ImageDetectorAccuracy: Int {
+enum ImageDetectorAccuracy: Int, DefaultsSerializable {
     case low = 0
     case high = 1
 }
 
-enum ImageDetectorNumberOfAngles: Int {
-    case one = 1
-    case three = 3
-    case five = 5
-    case seven = 7
-    case nine = 9
-    case eleven = 11
-}
-
-enum ImageDetectorNumberOfAnglesForSegment: Int {
+enum ImageDetectorNumberOfAngles: Int, DefaultsSerializable {
     case one = 0
     case three = 1
     case five = 2
@@ -61,40 +52,45 @@ enum ImageDetectorNumberOfAnglesForSegment: Int {
     case eleven = 5
 }
 
-enum ArkitTrackingType: Int {
+enum ArkitTrackingType: Int, DefaultsSerializable {
     case device = 0
     case face = 1
     case image = 2
 }
 
-enum NdiType: Int {
+enum NdiType: Int, DefaultsSerializable {
     case CAMERA = 0
     case DEPTH = 1
 }
 
-enum CameraPosition: Int {
+enum CameraPosition: Int, DefaultsSerializable {
     case BACK = 0
     case FRONT = 1
 }
 
-enum DepthType: Int {
+enum DepthType: Int, DefaultsSerializable {
     case DEPTH = 0
     case DISPARITY = 1
 }
 
-enum VideoResolution: Int {
+enum VideoResolution: Int, DefaultsSerializable {
     case vga = 0
     case hd = 1
     case fhd = 2
 }
 
-enum NdiAudioBufferSize: Int {
+enum NdiAudioEnabled: Int, DefaultsSerializable {
+    case enabled = 0
+    case disabled = 1
+}
+
+enum NdiAudioBufferSize: Int, DefaultsSerializable {
     case small = 0
     case medium = 1
     case large = 2
 }
 
-enum CompassOrientation: Int {
+enum CompassOrientation: Int, DefaultsSerializable {
     case portrait = 0
     case faceup = 1
 }
@@ -110,67 +106,14 @@ public class AppSettingModel {
         for command in Command.allCases {
             isActiveByCommand[command] = false
         }
-
-        address = Defaults[.userIpAdress]?.description ?? ""
-        port = Int32(Defaults[.userPortNumber]?.description ?? "") ?? 0
-        deviceUUID = Defaults[.userDeviceUUID]?.description ?? ""
-        beaconUUID = Defaults[.userBeaconUUID]?.description ?? ""
-        dataDestination = DataDestination(rawValue: Defaults[.userDataDestination] ?? 0)!
-        transportProtocol = TransportProtocol(rawValue: Defaults[.userProtocol] ?? 0)!
-        transportFormat = TransportFormat(rawValue: Defaults[.userMessageFormat] ?? 0)!
-        messageRatePerSecondSegment = Defaults[.userMessageRatePerSecond] ?? 0
-        compassOrientation = CompassOrientation(rawValue: Defaults[.userCompassOrientation] ?? 0)!
-        ndiType = NdiType(rawValue: Defaults[.userNdiType] ?? 0)!
-        ndiCameraPosition = CameraPosition(rawValue: Defaults[.userNdiCameraType] ?? 0)!
-        depthType = DepthType(rawValue: Defaults[.userDepthType] ?? 0)!
-        ndiResolution = VideoResolution(rawValue: Defaults[.userNdiResolution] ?? 0)!
-        ndiAudioBufferSize = NdiAudioBufferSize(rawValue: Defaults[.userNdiAudioBufferSize] ?? 0)!
-        arkitTrackingType = ArkitTrackingType(rawValue: Defaults[.userArkitTrackingType] ?? 0)!
     }
-
     static let shared = AppSettingModel()
+
+    // MARK: - properties
+
     var isActiveByCommand: Dictionary<Command, Bool> = [:]
 
-    // app default value & variable used in app
-    var dataDestination: DataDestination = .OTHER_APP
-    var transportProtocol: TransportProtocol = .UDP
-    var address: String = "172.17.1.20"
-    var port: Int32 = 3333
-    var transportFormat: TransportFormat = .OSC
-    var messageRatePerSecondSegment: Int = 3
-    var deviceUUID: String = Utils.randomStringWithLength(16)
-    var compassOrientation: CompassOrientation = .faceup
-    var beaconUUID = "B9407F30-F5F8-466E-AFF9-25556B570000"
-    var messageRatePerSecond: RatePerSecond {
-        if messageRatePerSecondSegment == 0 {
-            return .one
-        } else if messageRatePerSecondSegment == 1 {
-            return .ten
-        } else if messageRatePerSecondSegment == 2 {
-            return .thirty
-        } else if messageRatePerSecondSegment == 3 {
-            return .sixty
-        } else {
-            fatalError("Unexpected message rate")
-        }
-    }
-    var messageInterval: TimeInterval {
-        return 1.0 / Double(messageRatePerSecond.rawValue)
-    }
-    var imageDetectorType: ImageDetectorType = .face
-    var imageDetectorCameraPosition: CameraPosition = .BACK
-    var imageDetectorResolution: VideoResolution = .vga
-    var imageDetectorAccuracy: ImageDetectorAccuracy = .high
-    var imageDetectorTracks: Bool = false
-    var imageDetectorNumberOfAnglesForSegment: ImageDetectorNumberOfAnglesForSegment = .one
-    var imageDetectorDetectsEyeBlink: Bool = true
-    var imageDetectorDetectsSmile: Bool = true
-    var ndiType: NdiType = .CAMERA
-    var ndiCameraPosition: CameraPosition = .BACK
-    var depthType: DepthType = .DEPTH
-    var ndiResolution: VideoResolution = .vga
-    var ndiAudioBufferSize: NdiAudioBufferSize = .large
-    var arkitTrackingType: ArkitTrackingType = .device
+    // MARK: - public methods
 
     public func getSettingsForOutput() -> [(String, String)] {
         let dst = dataDestination == .OTHER_APP ? "OTHER APP" : "LOCAL FILE"
@@ -180,8 +123,8 @@ public class AppSettingModel {
         return [
             ("Data Destination", dst),
             ("Protocol", prot),
-            ("IP Address", address),
-            ("Port", String(port)),
+            ("IP Address", ipAddress),
+            ("Port", String(portNumber)),
             ("Message Format", format),
             ("Device UUID", deviceUUID),
         ]
@@ -206,66 +149,55 @@ public class AppSettingModel {
         return AppSettingModel.shared.isActiveByCommand[.touch]! ||
             AppSettingModel.shared.isActiveByCommand[.applePencil]!
     }
-    
-    var imageDetectorNumberOfAngles: ImageDetectorNumberOfAngles {
-        switch imageDetectorNumberOfAnglesForSegment {
-        case .one:
-            return .one
-        case .three:
-            return .three
-        case .five:
-            return .five
-        case .seven:
-            return .seven
-        case .nine:
-            return .nine
-        case .eleven:
-            return .eleven
-        }
-    }
 }
 
 // user default value
 extension DefaultsKeys {
-    static let userDataDestination = DefaultsKey<Int?>("userDataDestination", defaultValue: 1)
-    static let userProtocol = DefaultsKey<Int?>("userProtocol", defaultValue: 0)
-    static let userIpAdress = DefaultsKey<String?>("userIpAdress", defaultValue: "172.17.1.20")
-    static let userPortNumber = DefaultsKey<Int?>("userPortNumber", defaultValue: 3333)
-    static let userMessageFormat = DefaultsKey<Int?>("userMessageFormat", defaultValue: 1)
-    static let userMessageRatePerSecond = DefaultsKey<Int?>("userMessageRatePerSecond", defaultValue: 1)
-    static let userCompassOrientation = DefaultsKey<Int?>("userCompassOrientation", defaultValue: 1)
-    static let userDeviceUUID = DefaultsKey<String?>("userDeviceUUID", defaultValue: Utils.randomStringWithLength(16))
-    static let userBeaconUUID = DefaultsKey<String?>("userBeaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
-    static let userNdiType = DefaultsKey<Int?>("userNdiType", defaultValue: 0)
-    static let userNdiCameraType = DefaultsKey<Int?>("userNdiCameraType", defaultValue: 0)
-    static let userDepthType = DefaultsKey<Int?>("userDepthType", defaultValue: 0)
-    static let userNdiResolution = DefaultsKey<Int?>("userNdiResolution", defaultValue: 0)
-    static let userNdiAudioBufferSize = DefaultsKey<Int?>("userNdiAudioBufferSize", defaultValue: 0)
-    static let userArkitTrackingType = DefaultsKey<Int?>("userArkitTrackingType", defaultValue: 0)
-    static let userImageDetectorType = DefaultsKey<Int?>("userImageDetectorType", defaultValue: 0)
-    static let userImageDetectorCameraPosition = DefaultsKey<Int?>("userImageDetectorCameraPosition", defaultValue: 0)
-    static let userImageDetectorResolution = DefaultsKey<Int?>("userImageDetectorResolution", defaultValue: 0)
-    static let userImageDetectorAccuracy = DefaultsKey<Int?>("userImageDetectorAccuracy", defaultValue: 0)
-    static let userImageDetectorTracks = DefaultsKey<Bool?>("userImageDetectorTracks", defaultValue: true)
-    static let userImageDetectorNumberOfAnglesForSegment = DefaultsKey<Int?>("userImageDetectorNumberOfAnglesForSegment", defaultValue: 0)
-    static let userImageDetectorDetectsEyeBlink = DefaultsKey<Bool?>("userImageDetectorDetectsEyeBlink", defaultValue: true)
-    static let userImageDetectorDetectsSmile = DefaultsKey<Bool?>("userImageDetectorDetectsSmile", defaultValue: true)
-    static let userNdiCommand = DefaultsKey<Bool?>("userNdiCommand", defaultValue: false)
-    static let userArkitCommand = DefaultsKey<Bool?>("userArkitCommand", defaultValue: false)
-    static let userImageDetectionCommand = DefaultsKey<Bool?>("userImageDetectionCommand", defaultValue: false)
-    static let userNfcReaderCommand = DefaultsKey<Bool?>("userNfcReaderCommand", defaultValue: false)
-    static let userApplePencilCommand = DefaultsKey<Bool?>("userApplePencilCommand", defaultValue: false)
-    static let userAccelerationCommand = DefaultsKey<Bool?>("userAccelerationCommand", defaultValue: false)
-    static let userGravityCommand = DefaultsKey<Bool?>("userGravityCommand", defaultValue: false)
-    static let userGyroCommand = DefaultsKey<Bool?>("userGyroCommand", defaultValue: false)
-    static let userQuaternionCommand = DefaultsKey<Bool?>("userQuaternionCommand", defaultValue: false)
-    static let userCompassCommand = DefaultsKey<Bool?>("userCompassCommand", defaultValue: false)
-    static let userPressureCommand = DefaultsKey<Bool?>("userPressureCommand", defaultValue: false)
-    static let userGpsCommand = DefaultsKey<Bool?>("userGpsCommand", defaultValue: false)
-    static let userTouchCommand = DefaultsKey<Bool?>("userTouchCommand", defaultValue: false)
-    static let userBeaconCommand = DefaultsKey<Bool?>("userBeaconCommand", defaultValue: false)
-    static let userProximityCommand = DefaultsKey<Bool?>("userProximityCommand", defaultValue: false)
-    static let userMicLevelCommand = DefaultsKey<Bool?>("userMicLevelCommand", defaultValue: false)
-    static let userRemoteControlCommand = DefaultsKey<Bool?>("userRemoteControlCommand", defaultValue: false)
-    static let userBatteryCommand = DefaultsKey<Bool?>("userBatteryCommand", defaultValue: false)
+    // Keys for App Settings.
+    // Properties of AppSettingModel will be generated by these keys by Sourcery.
+    static let dataDestination = DefaultsKey<DataDestination>("dataDestination", defaultValue: .OTHER_APP)
+    static let transportProtocol = DefaultsKey<TransportProtocol>("transportProtocol", defaultValue: .UDP)
+    static let ipAddress = DefaultsKey<String>("ipAddress", defaultValue: "172.17.1.20")
+    static let portNumber = DefaultsKey<Int>("portNumber", defaultValue: 3333)
+    static let transportFormat = DefaultsKey<TransportFormat>("messageFormat", defaultValue: .OSC)
+    static let messageRatePerSecond = DefaultsKey<RatePerSecond>("messageRatePerSecond", defaultValue: .ten)
+    static let compassOrientation = DefaultsKey<CompassOrientation>("compassOrientation", defaultValue: .portrait)
+    static let deviceUUID = DefaultsKey<String>("deviceUUID", defaultValue: Utils.randomStringWithLength(16))
+    static let beaconUUID = DefaultsKey<String>("beaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
+    static let ndiType = DefaultsKey<NdiType>("ndiType", defaultValue: .CAMERA)
+    static let ndiCameraPosition = DefaultsKey<CameraPosition>("ndiCameraPosition", defaultValue: .BACK)
+    static let depthType = DefaultsKey<DepthType>("depthType", defaultValue: .DEPTH)
+    static let ndiResolution = DefaultsKey<VideoResolution>("ndiResolution", defaultValue: .vga)
+    static let ndiAudioEnabled = DefaultsKey<NdiAudioEnabled>("ndiAudioEnabled", defaultValue: .enabled)
+    static let ndiAudioBufferSize = DefaultsKey<NdiAudioBufferSize>("ndiAudioBufferSize", defaultValue: .large)
+    static let arkitTrackingType = DefaultsKey<ArkitTrackingType>("arkitTrackingType", defaultValue: .device)
+    static let imageDetectorType = DefaultsKey<ImageDetectorType>("imageDetectorType", defaultValue: .face)
+    static let imageDetectorCameraPosition = DefaultsKey<CameraPosition>("userImageDetectorCameraPosition", defaultValue: .BACK)
+    static let imageDetectorResolution = DefaultsKey<VideoResolution>("userImageDetectorResolution", defaultValue: .vga)
+    static let imageDetectorAccuracy = DefaultsKey<ImageDetectorAccuracy>("imageDetectorAccuracy", defaultValue: .high)
+    static let imageDetectorTracks = DefaultsKey<Bool>("imageDetectorTracks", defaultValue: true)
+    static let imageDetectorNumberOfAngles = DefaultsKey<ImageDetectorNumberOfAngles>("imageDetectorNumberOfAngles", defaultValue: .one)
+    static let imageDetectorDetectsEyeBlink = DefaultsKey<Bool>("imageDetectorDetectsEyeBlink", defaultValue: true)
+    static let imageDetectorDetectsSmile = DefaultsKey<Bool>("imageDetectorDetectsSmile", defaultValue: true)
+
+    // Commands
+    static let isNdiCommandActive = DefaultsKey<Bool>("isNdiCommandActive", defaultValue: false)
+    static let isArkitCommandActive = DefaultsKey<Bool>("isArkitCommandActive", defaultValue: false)
+    static let isImageDetectionCommandActive = DefaultsKey<Bool>("isImageDetectionCommandActive", defaultValue: false)
+    static let isNfcReaderCommandActive = DefaultsKey<Bool>("isNfcReaderCommandActive", defaultValue: false)
+    static let isApplePencilCommandActive = DefaultsKey<Bool>("isApplePencilCommandActive", defaultValue: false)
+    static let isAccelerationCommandActive = DefaultsKey<Bool>("isAccelerationCommandActive", defaultValue: false)
+    static let isGravityCommandActive = DefaultsKey<Bool>("isGravityCommandActive", defaultValue: false)
+    static let isGyroCommandActive = DefaultsKey<Bool>("isGyroCommandActive", defaultValue: false)
+    static let isQuaternionCommandActive = DefaultsKey<Bool>("isQuaternionCommandActive", defaultValue: false)
+    static let isCompassCommandActive = DefaultsKey<Bool>("isCompassCommandActive", defaultValue: false)
+    static let isPressureCommandActive = DefaultsKey<Bool>("isPressureCommandActive", defaultValue: false)
+    static let isGpsCommandActive = DefaultsKey<Bool>("isGpsCommandActive", defaultValue: false)
+    static let isTouchCommandActive = DefaultsKey<Bool>("isTouchCommandActive", defaultValue: false)
+    static let isBeaconCommandActive = DefaultsKey<Bool>("isBeaconCommandActive", defaultValue: false)
+    static let isProximityCommandActive = DefaultsKey<Bool>("isProximityCommandActive", defaultValue: false)
+    static let isMicLevelCommandActive = DefaultsKey<Bool>("isMicLevelCommandActive", defaultValue: false)
+    static let isRemoteControlCommandActive = DefaultsKey<Bool>("isRemoteControlCommandActive", defaultValue: false)
+    static let isBatteryCommandActive = DefaultsKey<Bool>("isBatteryCommandActive", defaultValue: false)
 }
+

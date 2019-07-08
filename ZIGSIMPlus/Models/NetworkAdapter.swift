@@ -15,8 +15,8 @@ public class NetworkAdapter {
     static let shared = NetworkAdapter()
     private init() {}
 
-    var tcpClient: TCPClient = TCPClient(address: AppSettingModel.shared.address, port: AppSettingModel.shared.port)
-    var udpClient: UDPClient = UDPClient(address: AppSettingModel.shared.address, port: AppSettingModel.shared.port)
+    var tcpClient: TCPClient = TCPClient(address: AppSettingModel.shared.ipAddress, port: Int32(AppSettingModel.shared.portNumber))
+    var udpClient: UDPClient = UDPClient(address: AppSettingModel.shared.ipAddress, port: Int32(AppSettingModel.shared.portNumber))
 
     var error: Error?
     
@@ -36,7 +36,7 @@ public class NetworkAdapter {
 
         switch error! {
         case SocketError.queryFailed:
-            return "Socket Error: Host \(AppSettingModel.shared.address) not found"
+            return "Socket Error: Host \(AppSettingModel.shared.ipAddress) not found"
         case SocketError.connectionClosed:
             return "Socket Error: Connection is closed"
         case SocketError.connectionTimeout:
@@ -52,9 +52,9 @@ public class NetworkAdapter {
         let appSetting = AppSettingModel.shared
 
         // Recreate client
-        if tcpClient.address != appSetting.address || tcpClient.port != appSetting.port {
+        if tcpClient.address != appSetting.ipAddress || tcpClient.port != appSetting.portNumber {
             tcpClient.close()
-            tcpClient = TCPClient(address: appSetting.address, port: appSetting.port)
+            tcpClient = TCPClient(address: appSetting.ipAddress, port: Int32(appSetting.portNumber))
         }
 
         // Reopen connection if needed
@@ -81,9 +81,9 @@ public class NetworkAdapter {
         let appSetting = AppSettingModel.shared
 
         // Recreate client
-        if udpClient.fd == nil || udpClient.address != appSetting.address || udpClient.port != appSetting.port {
+        if udpClient.fd == nil || udpClient.address != appSetting.ipAddress || udpClient.port != appSetting.portNumber {
             udpClient.close()
-            udpClient = UDPClient(address: appSetting.address, port: appSetting.port)
+            udpClient = UDPClient(address: appSetting.ipAddress, port: Int32(appSetting.portNumber))
         }
 
         switch udpClient.send(data: data) {

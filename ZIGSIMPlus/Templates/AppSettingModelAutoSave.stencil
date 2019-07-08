@@ -1,0 +1,37 @@
+//
+//  AppSettingModelAutoSave.stencil
+//  ZIGSIMPlus
+//
+//  Created by Takayosi Amagi on 2019/07/05.
+//  Copyright © 2019 Nozomu Kuwae. All rights reserved.
+//
+
+import Foundation
+import SwiftyUserDefaults
+
+private func getAssociatedObject<T>(_ object: Any, _ key: UnsafeRawPointer) -> T? {
+    return objc_getAssociatedObject(object, key) as? T
+}
+
+private func setRetainedAssociatedObject<T>(_ object: Any, _ key: UnsafeRawPointer, _ value: T) {
+    objc_setAssociatedObject(object, key, value, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+}
+
+{% for variable in type.DefaultsKeys.staticVariables where variable.name|!hasSuffix:"CommandActive" %}
+private var {{variable.name}}Key: Void?
+{% endfor %}
+
+extension AppSettingModel {
+    {% for variable in type.DefaultsKeys.staticVariables where variable.name|!hasSuffix:"CommandActive" %}
+
+    var {{variable.name}}: {{variable.typeName|replace:"DefaultsKey<",""|replace:">",""}} {
+        get {
+            return getAssociatedObject(self, &{{variable.name}}Key) ?? Defaults[.{{variable.name}}]
+        }
+        set {
+            setRetainedAssociatedObject(self, &{{variable.name}}Key, newValue)
+            Defaults[.{{variable.name}}] = newValue
+        }
+    }
+    {% endfor %}
+}
