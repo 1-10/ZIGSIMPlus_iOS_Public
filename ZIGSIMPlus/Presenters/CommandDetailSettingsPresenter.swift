@@ -18,12 +18,14 @@ public enum DetailSettingsKey: Int {
     case compassOrientation = 5
     case arkitTrackingType = 6
     case imageDetectorType = 7
-    case imageDetectorAccuracy = 8
-    case imageDetectorTracks = 9
-    case imageDetectorNumberOfAnglesForSegment = 10
-    case imageDetectorDetectsEyeBlink = 11
-    case imageDetectorDetectsSmile = 12
-    case beaconUUID = 13
+    case imageDetectorCameraPosition = 8
+    case imageDetectorResolution = 9
+    case imageDetectorAccuracy = 10
+    case imageDetectorTracks = 11
+    case imageDetectorNumberOfAnglesForSegment = 12
+    case imageDetectorDetectsEyeBlink = 13
+    case imageDetectorDetectsSmile = 14
+    case beaconUUID = 15
 }
 
 
@@ -121,6 +123,8 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             ],
             .imageDetection: [
                 SegmentedInt(.imageDetectorType, "Detection Type", ["FACE", "QR", "RECT", "TEXT"], 240, app.imageDetectorType.rawValue),
+                SegmentedInt(.imageDetectorCameraPosition, "Camera", ["REAR", "FRONT"], 240, app.imageDetectorCameraPosition.rawValue),
+                SegmentedInt(.imageDetectorResolution, "Resolution", ["VGA", "HD", "FHD"], 240, app.imageDetectorResolution.rawValue),
                 SegmentedInt(.imageDetectorAccuracy, "Accuracy", ["LOW", "HIGH"], 240, app.imageDetectorAccuracy.rawValue),
                 SegmentedBool(.imageDetectorTracks, "Tracking", ["ON", "OFF"], 240, app.imageDetectorTracks),
                 SegmentedInt(.imageDetectorNumberOfAnglesForSegment, "Number of Face Angles", ["1", "3", "5", "7", "9", "11"], 240, app.imageDetectorNumberOfAnglesForSegment.rawValue),
@@ -141,13 +145,13 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 AppSettingModel.shared.ndiType = NdiType(rawValue: data.value)!
                 Defaults[.userNdiType] = data.value
             case .ndiCamera:
-                AppSettingModel.shared.ndiCameraPosition = NdiCameraPosition(rawValue: data.value)!
+                AppSettingModel.shared.ndiCameraPosition = CameraPosition(rawValue: data.value)!
                 Defaults[.userNdiCameraType] = data.value
             case .ndiDepthType:
                 AppSettingModel.shared.depthType = DepthType(rawValue: data.value)!
                 Defaults[.userDepthType] = data.value
             case .ndiResolution:
-                AppSettingModel.shared.ndiResolution = NdiResolution(rawValue: data.value)!
+                AppSettingModel.shared.ndiResolution = VideoResolution(rawValue: data.value)!
                 Defaults[.userNdiResolution] = data.value
             case .ndiAudioBufferSize:
                 AppSettingModel.shared.ndiAudioBufferSize = NdiAudioBufferSize(rawValue: data.value)!
@@ -161,6 +165,12 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             case .imageDetectorType:
                 AppSettingModel.shared.imageDetectorType = ImageDetectorType(rawValue: data.value)!
                 Defaults[.userImageDetectorType] = data.value
+            case .imageDetectorCameraPosition:
+                AppSettingModel.shared.imageDetectorCameraPosition = CameraPosition(rawValue: data.value)!
+                Defaults[.userImageDetectorCameraPosition] = data.value
+            case .imageDetectorResolution:
+                AppSettingModel.shared.imageDetectorResolution = VideoResolution(rawValue: data.value)!
+                Defaults[.userImageDetectorResolution] = data.value
             case .imageDetectorAccuracy:
                 AppSettingModel.shared.imageDetectorAccuracy = ImageDetectorAccuracy(rawValue: data.value)!
                 Defaults[.userImageDetectorAccuracy] = data.value
