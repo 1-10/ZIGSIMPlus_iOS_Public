@@ -25,11 +25,14 @@ protocol CommandOutputPresenterDelegate: AnyObject {
 final class CommandOutputPresenter: CommandOutputPresenterProtocol {
     private weak var view: CommandOutputPresenterDelegate!
     private var mediator: CommandAndServiceMediator
-    private var updatingTimer: Timer?
     
     init(view: CommandOutputPresenterDelegate, mediator: CommandAndServiceMediator) {
         self.view = view
         self.mediator = mediator
+
+        mediator.onUpdate = {
+            self.updateOutput()
+        }
     }
     
     // This cannnot be defined in AppDelegate, because subviews cannot be accessed from AppDelegate
@@ -39,42 +42,13 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
         factory.createVideoCapturePresenter(parentView: view as! CommandOutputViewController)
     }
 
-    // MARK: Start commands
     func startCommands() {
-        let interval = Utils.getMessageInterval()
-
-        updatingTimer = Timer.scheduledTimer(
-            timeInterval: interval,
-            target: self,
-            selector: #selector(self.monitorCommands),
-            userInfo: nil,
-            repeats: true)
-
-        mediator.startActiveCommands()
-        ServiceManager.shared.send()
-        updateOutput()
-
-        let settings = AppSettingModel.shared.getSettingsForOutput()
-        view.updateSettings(with: settings)
+        mediator.play()
+        view.updateSettings(with: AppSettingModel.shared.getSettingsForOutput())
     }
 
-    // MARK: Monitor commands
-    @objc private func monitorCommands() {
-        mediator.monitorManualCommands()
-        ServiceManager.shared.send()
-        updateOutput()
-    }
-    
-    
-    // MARK: Stop commands
     func stopCommands() {
-        guard let t = updatingTimer else { return }
-        if t.isValid {
-            t.invalidate()
-        }
-
-        mediator.stopActiveCommands()
-        NetworkAdapter.shared.close()
+        mediator.stop()
     }
 
     func isCameraUsed() -> Bool {

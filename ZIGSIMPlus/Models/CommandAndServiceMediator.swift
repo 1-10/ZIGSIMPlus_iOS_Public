@@ -8,7 +8,17 @@
 
 import Foundation
 
+enum CommandState {
+    case playing
+    case paused
+    case stopped
+}
+
 public class CommandAndServiceMediator {
+
+    private var updatingTimer: Timer?
+    public var onUpdate: (() -> Void)?
+    private var state: CommandState = .stopped
 
     // MARK: - Public methods
 
@@ -56,32 +66,34 @@ public class CommandAndServiceMediator {
         }
     }
 
-    public func startActiveCommands() {
-        for command in Command.allCases {
-            if isActive(command) {
-                startCommand(command)
-            }
+    public func play() {
+        if state == .stopped {
+            startCommands()
+            state = .playing
         }
     }
 
-    /// Call update methods for active commands
-    public func monitorManualCommands() {
-        if isActive(.battery) {
-            BatteryService.shared.updateBattery()
-        }
-        if isActive(.remoteControl) {
-            RemoteControlService.shared.update()
+    public func pause() {
+        if state == .playing {
+            stopCommands()
+            state = .paused
         }
     }
 
-    public func stopActiveCommands() {
-        for command in Command.allCases {
-            if isActive(command) {
-                stopCommand(command)
-            }
+    public func resume() {
+        if state == .paused {
+            startCommands()
+            state = .playing
         }
     }
-    
+
+    public func stop() {
+        if state == .playing {
+            stopCommands()
+            state = .stopped
+        }
+    }
+
     public func isPremiumCommand(_ command: Command) -> Bool {
         if command == Command.ndi ||
             command == Command.arkit ||
@@ -94,6 +106,51 @@ public class CommandAndServiceMediator {
     }
 
     // MARK: - Private methods
+
+    private func startCommands() {
+        updatingTimer = Timer.scheduledTimer(
+            timeInterval: Utils.getMessageInterval(),
+            target: self,
+            selector: #selector(self.monitorCommands),
+            userInfo: nil,
+            repeats: true)
+
+        for command in Command.allCases {
+            if isActive(command) {
+                startCommand(command)
+            }
+        }
+
+        ServiceManager.shared.send()
+        onUpdate?()
+    }
+
+    @objc private func monitorCommands() {
+        if isActive(.battery) {
+            BatteryService.shared.updateBattery()
+        }
+        if isActive(.remoteControl) {
+            RemoteControlService.shared.update()
+        }
+
+        ServiceManager.shared.send()
+        onUpdate?()
+    }
+
+    private func stopCommands() {
+        guard let t = updatingTimer else { return }
+        if t.isValid {
+            t.invalidate()
+        }
+
+        for command in Command.allCases {
+            if isActive(command) {
+                stopCommand(command)
+            }
+        }
+
+        NetworkAdapter.shared.close()
+    }
 
     private func startCommand(_ command: Command) {
         switch command {
