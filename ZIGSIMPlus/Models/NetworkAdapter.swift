@@ -33,7 +33,6 @@ public class NetworkAdapter {
     func close() {
         udpClient.close()
         tcpClient.close()
-        print(">>>>>>>>>>>> close")
     }
 
     /// Get error description to show in output view

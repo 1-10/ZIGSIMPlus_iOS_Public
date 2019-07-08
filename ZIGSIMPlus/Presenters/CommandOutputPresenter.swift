@@ -24,11 +24,9 @@ protocol CommandOutputPresenterDelegate: AnyObject {
 
 final class CommandOutputPresenter: CommandOutputPresenterProtocol {
     private weak var view: CommandOutputPresenterDelegate!
-    private var mediator: CommandAndServiceMediator
     
-    init(view: CommandOutputPresenterDelegate, mediator: CommandAndServiceMediator) {
+    init(view: CommandOutputPresenterDelegate) {
         self.view = view
-        self.mediator = mediator
 
         CommandPlayer.shared.onUpdate = {
             self.updateOutput()

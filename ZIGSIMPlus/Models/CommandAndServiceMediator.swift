@@ -15,7 +15,7 @@ public class CommandAndServiceMediator {
     /// Returns if the service for given command is available.
     ///
     /// Simultaneous use of multiple commands accessing camera is not allowed.
-    public func isAvailable(_ command: Command) -> Bool {
+    public static func isAvailable(_ command: Command) -> Bool {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             return MotionService.shared.isAvailable()
@@ -56,7 +56,7 @@ public class CommandAndServiceMediator {
         }
     }
 
-    public func isPremiumCommand(_ command: Command) -> Bool {
+    public static func isPremiumCommand(_ command: Command) -> Bool {
         if command == Command.ndi ||
             command == Command.arkit ||
             command == Command.imageDetection ||
@@ -69,7 +69,7 @@ public class CommandAndServiceMediator {
 
     // MARK: - Private methods
 
-    private func isCameraAvailable(for command: Command) -> Bool {
+    private static func isCameraAvailable(for command: Command) -> Bool {
         // When camera is set to on by other command,
         // user cannot use camera
         return !AppSettingModel.shared.isCameraUsed(exceptBy: command)

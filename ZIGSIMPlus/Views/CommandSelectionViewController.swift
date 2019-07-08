@@ -255,20 +255,19 @@ extension CommandSelectionViewController: UITableViewDataSource {
         } else {
           cell.checkMarkLavel.text = ""
         }
-        
-        let mediator = CommandAndServiceMediator()
-        if mediator.isAvailable(Command.allCases[indexPath.row]){
+
+        if CommandAndServiceMediator.isAvailable(Command.allCases[indexPath.row]){
             setAvailable(true, forCell:cell)
         } else {
             setAvailable(false, forCell:cell)
-            if mediator.isPremiumCommand(Command.allCases[indexPath.row]) && !presenter.isPremiumFeaturePurchased{
+            if CommandAndServiceMediator.isPremiumCommand(Command.allCases[indexPath.row]) && !presenter.isPremiumFeaturePurchased {
                 unAvailablePremiumCommands.append(Command.allCases[indexPath.row])
                 let orderedSet: NSOrderedSet = NSOrderedSet(array: unAvailablePremiumCommands)
                 unAvailablePremiumCommands = orderedSet.array as! [Command]
             }
         }
         
-        if !presenter.isPremiumFeaturePurchased && mediator.isPremiumCommand(Command.allCases[indexPath.row]){
+        if !presenter.isPremiumFeaturePurchased && CommandAndServiceMediator.isPremiumCommand(Command.allCases[indexPath.row]){
             setAvailable(false,forCell: cell)
         }
 

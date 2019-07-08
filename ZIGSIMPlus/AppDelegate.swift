@@ -19,22 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html
         SKPaymentQueue.default().add(InAppPurchaseFacade.shared)
 
-        // Inject dependency here
-        let tabBarController = window?.rootViewController as! UITabBarController
-        let mediator = CommandAndServiceMediator()
-
-        for viewController in tabBarController.viewControllers! {
-            if type(of: viewController) == CommandSelectionTabNavigationController.self {
-                let vc = viewController as! CommandSelectionTabNavigationController
-                vc.setMediator(mediator)
-            } else if type(of: viewController) == CommandOutputTabNavigationController.self {
-                let vc = viewController as! CommandOutputTabNavigationController
-                vc.setMediator(mediator)
-            } else {
-                print("else")
-            }
-        }
-
         // Setup tab bar styles
         UITabBar.appearance().barTintColor = Theme.dark
         UITabBar.appearance().tintColor = Theme.main
