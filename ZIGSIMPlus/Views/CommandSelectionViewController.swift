@@ -23,7 +23,6 @@ final class CommandSelectionViewController: UIViewController {
     @IBOutlet weak var unlockPremiumFeatureButton: UIButton!
     
     var presenter: CommandSelectionPresenterProtocol!
-    var alert: UIAlertController = UIAlertController() // dummy
     var cells:[Command:StandardCell] = [:]
     var unAvailablePremiumCommands:[Command] = []
 
@@ -69,7 +68,8 @@ final class CommandSelectionViewController: UIViewController {
     }
     
     @IBAction func actionButton(_ sender: UIButton) {
-        showAlertModal(title:premiumTextTitle, message: premiumTextBody, alertModalType.premium)
+        let message = getAlertMessageForPurchase()
+        showAlertWithMarkdownMessage(title: premiumTextTitle, message: message, alertType: .premium)
     }
     
     public func showDetail(commandNo: Int) {
@@ -99,37 +99,32 @@ final class CommandSelectionViewController: UIViewController {
             fatalError("Invalid command: \(command)")
         }
 
-        showAlertModal(title:title,message: msg, alertModalType.detailSetting)
+        showAlertWithMarkdownMessage(title:title, message: msg, alertType: .detailSetting)
     }
     
-    func showAlertModal(title: String, message: String , _ alertType: alertModalType) {
-        alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        setAlertMessage(message,alertType)
+    func showAlertWithMarkdownMessage(title: String, message: String, alertType: alertModalType) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let attributedText = convertMessageFromStringToAttributedText(message)
+        alert.setValue(attributedText, forKey: "attributedMessage")
+        
         switch alertType {
-        case alertModalType.premium:
+        case .premium:
             alert.addAction(UIAlertAction(title: "Back", style: .default))
             alert.addAction(UIAlertAction(title: "Purchase", style: .default, handler: { action in
                 self.tableView.isUserInteractionEnabled = false
                 SVProgressHUD.show()
                 self.presenter.purchase()
             }))
-            present(alert, animated: true, completion: {
-                self.tableView.isUserInteractionEnabled = true
-            })
-        case alertModalType.detailSetting:
+        case .detailSetting:
             alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
                 UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
             }))
             alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true, completion: {
-                self.alert.view.superview?.isUserInteractionEnabled = true
-                self.alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.hideAlert)))
-            })
         }
-    }
-
-    @objc private func hideAlert() {
-        alert.dismiss(animated: true, completion: nil)
+        
+        present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true
+        })
     }
     
     private func adjustNavigationDesign() {
@@ -171,40 +166,45 @@ final class CommandSelectionViewController: UIViewController {
                                         height: unlockPremiumFeatureButton.frame.size.height)
     }
     
-    private func setAlertMessage(_ message: String, _ alertType: alertModalType) {
-        var msg = message
-        if  alertType == alertModalType.premium && !isAvailablePremiumCommands() {
-            msg = premiumTextBody + "\n\nBut the following function can not be used on your device."
+    private func getAlertMessageForPurchase() -> String {
+        var message = premiumTextBody
+        if  unavailablePremiumFunctionCount > 0 {
+            message += (unavailablePremiumFunctionCount >= 2
+                ? "\n\nThe following functions don't work on this device:"
+                : "\n\nThe following function doesn't work on this device:")
+
             for unAvailablePremiumCommand in unAvailablePremiumCommands {
-                msg = msg + "\n・" + unAvailablePremiumCommand.rawValue
+                message += "\n- " + unAvailablePremiumCommand.rawValue
             }
             if !unAvailablePremiumCommands.contains(Command.ndi) {
                 if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-                    msg = msg + "\n・NDI Depth function."
+                    message += "\n- NDI Depth function"
                 }
                 if VideoCaptureService.shared.isDepthRearCameraAvailable() && !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
-                    msg = msg + "\n・NDI Depth function on front camera."
+                    message += "\n- NDI Depth function on front camera"
                 }
             }
         }
         
-        convertMeaageFromStringToAttributedText(msg)
-        
+        return message
     }
     
-    private func convertMeaageFromStringToAttributedText(_ msg:String) {
+    private func convertMessageFromStringToAttributedText(_ msg: String) -> NSMutableAttributedString {
         let markdownParser = MarkdownParser()
-        let aText = NSMutableAttributedString(attributedString: markdownParser.parse(msg))
-        alert.setValue(aText, forKey: "attributedMessage")
+        return NSMutableAttributedString(attributedString: markdownParser.parse(msg))
     }
     
-    private func isAvailablePremiumCommands() -> Bool {
-        if unAvailablePremiumCommands.count != 0 ||
-            !VideoCaptureService.shared.isDepthRearCameraAvailable() ||
-            !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
-            return false
+    private var unavailablePremiumFunctionCount: Int {
+        var count = unAvailablePremiumCommands.count
+        if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+            count += 1
+        } else {
+            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
+                count += 1
+            }
         }
-        return true
+        
+        return count
     }
 }
 
