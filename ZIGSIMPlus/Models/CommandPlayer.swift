@@ -68,8 +68,15 @@ public class CommandPlayer {
             }
         }
 
-        let data = ServiceManager.shared.getData()
-        NetworkAdapter.shared.send(data)
+        if AppSettingModel.shared.dataDestination == .LOCAL_FILE {
+            let data = ServiceManager.shared.getString()
+            FileAdapter.shared.open()
+            FileAdapter.shared.write(data)
+        }
+        else {
+            let data = ServiceManager.shared.getData()
+            NetworkAdapter.shared.send(data)
+        }
 
         onUpdate?()
     }
@@ -82,8 +89,14 @@ public class CommandPlayer {
             RemoteControlService.shared.update()
         }
 
-        let data = ServiceManager.shared.getData()
-        NetworkAdapter.shared.send(data)
+        if AppSettingModel.shared.dataDestination == .LOCAL_FILE {
+            let data = ServiceManager.shared.getString()
+            FileAdapter.shared.write(data)
+        }
+        else {
+            let data = ServiceManager.shared.getData()
+            NetworkAdapter.shared.send(data)
+        }
 
         onUpdate?()
     }
@@ -100,6 +113,7 @@ public class CommandPlayer {
             }
         }
 
+        FileAdapter.shared.close()
         NetworkAdapter.shared.close()
     }
 

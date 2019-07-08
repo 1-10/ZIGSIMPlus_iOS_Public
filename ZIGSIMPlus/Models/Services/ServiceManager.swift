@@ -43,6 +43,21 @@ class ServiceManager {
         return data
     }
 
+    public func getString() -> String {
+        let data: String
+
+        if AppSettingModel.shared.transportFormat == .OSC {
+            let osc = getOSC()
+            data = osc.description
+        }
+        else {
+            let json = getJSON()
+            data = try! json.rawString(.utf8, options: [])!
+        }
+
+        return data
+    }
+
     public func getLog() -> String {
         var log = [String]()
         log += AltimeterService.shared.toLog()
