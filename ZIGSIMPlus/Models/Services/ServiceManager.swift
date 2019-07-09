@@ -11,19 +11,6 @@ import SwiftOSC
 import SwiftyJSON
 import DeviceKit
 
-protocol Service {
-    func toLog() -> [String]
-    func toOSC() -> [OSCMessage]
-    func toJSON() throws -> JSON
-}
-
-extension Service {
-    func osc(_ address: String, _ args: OSCType?...) -> OSCMessage {
-        let deviceUUID = AppSettingModel.shared.deviceUUID
-        return OSCMessage(OSCAddressPattern("/ZIGSIM/\(deviceUUID)/\(address)"), args)
-    }
-}
-
 /// ServiceManager creates OSC / JSON data.
 /// It also creates single string for output view.
 ///
