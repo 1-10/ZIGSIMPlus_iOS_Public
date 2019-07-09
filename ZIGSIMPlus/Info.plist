@@ -26,8 +26,6 @@
 	<string>This app scans NFC in NFC Reader.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses camera in NDI, ARKit and Image Detection.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app uses location in Compass, GPS and Beacon.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app uses location in Compass, GPS and Beacon.</string>
 	<key>NSMicrophoneUsageDescription</key>

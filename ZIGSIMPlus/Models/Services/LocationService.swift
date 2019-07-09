@@ -64,7 +64,7 @@ public class LocationService: NSObject {
     func startBeacons() {
         if isLocationAvailable() {
             beaconRegion = createBeaconRegion(AppSettingModel.shared)
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             locationManager.startMonitoring(for: beaconRegion)
             locationManager.startRangingBeacons(in: beaconRegion)
         }
@@ -80,7 +80,7 @@ public class LocationService: NSObject {
 
     func startGps() {
         if isLocationAvailable() {
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
     }
@@ -93,7 +93,7 @@ public class LocationService: NSObject {
 
     func startCompass() {
         if isLocationAvailable() {
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
 
             switch AppSettingModel.shared.compassOrientation {
             case .portrait:
