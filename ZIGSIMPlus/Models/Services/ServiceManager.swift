@@ -20,7 +20,7 @@ protocol Service {
 extension Service {
     func osc(_ address: String, _ args: OSCType?...) -> OSCMessage {
         let deviceUUID = AppSettingModel.shared.deviceUUID
-        return OSCMessage(OSCAddressPattern("/\(deviceUUID)/\(address)"), args)
+        return OSCMessage(OSCAddressPattern("/ZIGSIM/\(deviceUUID)/\(address)"), args)
     }
 }
 
