@@ -12,9 +12,5 @@ class CommandOutputTabNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Initialize child view controllers
-        let factory = PresenterFactory()
-        factory.createCommandOutputViewController(parentView: self)
     }
 }

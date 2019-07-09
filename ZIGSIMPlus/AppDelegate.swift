@@ -18,6 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // It's recommended to add a transaction queue observer at application launch
         // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html
         SKPaymentQueue.default().add(InAppPurchaseFacade.shared)
+        
+        // Inject dependency here
+        let factory = PresenterFactory()
+        let tabBarController = window?.rootViewController as! UITabBarController
+        for viewController in tabBarController.viewControllers! {
+            if type(of: viewController) == CommandSelectionTabNavigationController.self {
+                let vc = viewController as! CommandSelectionTabNavigationController
+                factory.createCommandSelectionPresenter(parentView: vc)
+            } else if type(of: viewController) == CommandOutputTabNavigationController.self {
+                let vc = viewController as! CommandOutputTabNavigationController
+                factory.createCommandOutputViewController(parentView: vc)
+            } else if type(of: viewController) == CommandSettingTabNavigationController.self {
+                let vc = viewController as! CommandSettingTabNavigationController
+                factory.createCommandSettingPresenter(parentView: vc)
+            }
+        }
 
         // Setup tab bar styles
         UITabBar.appearance().barTintColor = Theme.dark
