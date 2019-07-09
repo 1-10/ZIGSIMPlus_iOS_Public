@@ -143,7 +143,7 @@ extension RemoteControlService : Service {
         var data = JSON()
 
         if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
-            data["remoteControl"] = JSON([
+            data["remotecontrol"] = JSON([
                 "playpause": playPauseChanged,
                 "volumeup": volumeUp,
                 "volumedown": volumeDown,
