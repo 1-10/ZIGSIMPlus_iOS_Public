@@ -12,34 +12,37 @@ class FileAdapter {
     static let shared = FileAdapter()
     private init() {}
 
-    var fileHandle: FileHandle?
+    var output: OutputStream?
 
     func open() {
         let dirpath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let datetime = Utils.getTimestamp()
         let filepath = "\(dirpath)/\(datetime).json"
-        print("open: \(filepath)")
 
-        fileHandle = FileHandle(forWritingAtPath: filepath)
-
-        var result = FileManager.default.fileExists(atPath: filepath)
-        if !result {
-            result = FileManager.default.createFile(atPath: filepath, contents: "".data(using: .utf8), attributes: nil)
-        }
-        if !result {
+        if let stream = OutputStream(toFileAtPath: filepath, append: true) {
+            stream.open()
+            output = stream
+        } else {
             print("File I/O Error.")
         }
     }
 
-    func write(_ str: String) {
-        let data = str.data(using: .utf8)!
-        fileHandle?.write(data)
-        print("wrote: \(str)")
+    func write(_ originalText: String) {
+        let text = originalText + "\n"
+
+        guard let data = text.data(using: .utf8) else { return }
+
+        let bytesWritten = data.withUnsafeBytes {
+            output?.write($0, maxLength: data.count)
+        }
+
+        if bytesWritten != data.count {
+            print("Write failed")
+        }
     }
 
     func close() {
-        fileHandle?.closeFile()
-        fileHandle = nil
-        print("closed")
+        output?.close()
+        output = nil
     }
 }
