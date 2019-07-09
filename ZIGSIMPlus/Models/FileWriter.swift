@@ -1,5 +1,5 @@
 //
-//  FileAdapter.swift
+//  FileWriter.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/07/09.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class FileAdapter {
-    static let shared = FileAdapter()
+class FileWriter {
+    static let shared = FileWriter()
     private init() {}
 
     var output: OutputStream?

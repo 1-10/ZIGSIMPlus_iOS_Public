@@ -70,8 +70,8 @@ public class CommandPlayer {
 
         if AppSettingModel.shared.dataDestination == .LOCAL_FILE {
             let data = ServiceManager.shared.getString()
-            FileAdapter.shared.open()
-            FileAdapter.shared.write(data)
+            FileWriter.shared.open()
+            FileWriter.shared.write(data)
         }
         else {
             let data = ServiceManager.shared.getData()
@@ -91,7 +91,7 @@ public class CommandPlayer {
 
         if AppSettingModel.shared.dataDestination == .LOCAL_FILE {
             let data = ServiceManager.shared.getString()
-            FileAdapter.shared.write(data)
+            FileWriter.shared.write(data)
         }
         else {
             let data = ServiceManager.shared.getData()
@@ -113,7 +113,7 @@ public class CommandPlayer {
             }
         }
 
-        FileAdapter.shared.close()
+        FileWriter.shared.close()
         NetworkAdapter.shared.close()
     }
 

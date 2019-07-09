@@ -11,7 +11,7 @@
 		0212CDB322A6356500A83C16 /* VideoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0212CDB222A6356500A83C16 /* VideoCaptureViewController.swift */; };
 		021EEA0D22C46814007174E3 /* InAppPurchaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EEA0C22C46813007174E3 /* InAppPurchaseFacade.swift */; };
 		021F240E22D39A580065D641 /* CommandPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F240D22D39A580065D641 /* CommandPlayer.swift */; };
-		021F241022D3B16B0065D641 /* FileAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F240F22D3B16B0065D641 /* FileAdapter.swift */; };
+		021F241022D3B16B0065D641 /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F240F22D3B16B0065D641 /* FileWriter.swift */; };
 		021F241222D434F80065D641 /* SwiftOSCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F241122D434F80065D641 /* SwiftOSCExtension.swift */; };
 		0236461B2298253900171F73 /* VideoCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* VideoCaptureService.swift */; };
 		0236461C2298253900171F73 /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 023644BF2298253800171F73 /* libndi_ios.a */; };
@@ -110,7 +110,7 @@
 		0212CDB222A6356500A83C16 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureViewController.swift; sourceTree = "<group>"; };
 		021EEA0C22C46813007174E3 /* InAppPurchaseFacade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseFacade.swift; sourceTree = "<group>"; };
 		021F240D22D39A580065D641 /* CommandPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPlayer.swift; sourceTree = "<group>"; };
-		021F240F22D3B16B0065D641 /* FileAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAdapter.swift; sourceTree = "<group>"; };
+		021F240F22D3B16B0065D641 /* FileWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
 		021F241122D434F80065D641 /* SwiftOSCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOSCExtension.swift; sourceTree = "<group>"; };
 		023644AE2298253800171F73 /* VideoCaptureService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureService.swift; sourceTree = "<group>"; };
 		023644B12298253800171F73 /* Processing.NDI.compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.compat.h; sourceTree = "<group>"; };
@@ -534,7 +534,7 @@
 				021EEA0C22C46813007174E3 /* InAppPurchaseFacade.swift */,
 				021F240D22D39A580065D641 /* CommandPlayer.swift */,
 				63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */,
-				021F240F22D3B16B0065D641 /* FileAdapter.swift */,
+				021F240F22D3B16B0065D641 /* FileWriter.swift */,
 				02A8FA822296B62D001FB3DD /* Services */,
 			);
 			path = Models;
@@ -842,7 +842,7 @@
 				0236461D2298253900171F73 /* NDI.cpp in Sources */,
 				B39DECA922C9DE850088DD88 /* CheckMark.swift in Sources */,
 				B37502F322CB44C80050735C /* PremiumText.swift in Sources */,
-				021F241022D3B16B0065D641 /* FileAdapter.swift in Sources */,
+				021F241022D3B16B0065D641 /* FileWriter.swift in Sources */,
 				02A8FA8C2296B62D001FB3DD /* ServiceManager.swift in Sources */,
 				63A6192B22A77DDA00B015DE /* NFCTypeNameFormatExtension.swift in Sources */,
 				02A8FA8B2296B62D001FB3DD /* BatteryService.swift in Sources */,
