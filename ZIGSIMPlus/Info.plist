@@ -30,6 +30,10 @@
 	<string>Beacons</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Send microphone sound via NDI</string>
+	<key>ProductIDForPremiumFeatures</key>
+	<string>com.OneToTen.ZIGSIMPlusExplicit.PremiumFeatures</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -41,19 +45,14 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>ProductIDForPremiumFeatures</key>
-	<string>com.OneToTen.ZIGSIMPlusExplicit.PremiumFeatures</string>
-	<key>UIFileSharingEnabled</key>
-	<true/>
 </dict>
 </plist>
