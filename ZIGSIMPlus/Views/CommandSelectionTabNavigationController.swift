@@ -14,11 +14,7 @@ class CommandSelectionTabNavigationController: UINavigationController {
         super.viewDidLoad()
 
         // Initialize child view controllers
-        for viewController in viewControllers {
-            if type(of: viewController) == CommandSelectionViewController.self {
-                let vc = viewController as! CommandSelectionViewController
-                vc.presenter = CommandSelectionPresenter(view: vc)
-            }
-        }
+        let factory = PresenterFactory()
+        factory.createCommandSelectionPresenter(parentView: self)
     }
 }

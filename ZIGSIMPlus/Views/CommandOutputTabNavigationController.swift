@@ -14,11 +14,7 @@ class CommandOutputTabNavigationController: UINavigationController {
         super.viewDidLoad()
 
         // Initialize child view controllers
-        for viewController in viewControllers {
-            if type(of: viewController) == CommandOutputViewController.self {
-                let vc = viewController as! CommandOutputViewController
-                vc.presenter = CommandOutputPresenter(view: vc)
-            }
-        }
+        let factory = PresenterFactory()
+        factory.createCommandOutputViewController(parentView: self)
     }
 }

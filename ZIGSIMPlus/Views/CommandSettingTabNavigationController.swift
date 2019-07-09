@@ -13,11 +13,7 @@ class CommandSettingTabNavigationController: UINavigationController {
         super.viewDidLoad()
 
         // Initialize child view controllers
-        for viewController in viewControllers {
-            if type(of: viewController) == CommandSettingViewController.self {
-                let vc = viewController as! CommandSettingViewController
-                vc.presenter = CommandSettingPresenter(view: vc)
-            }
-        }
+        let factory = PresenterFactory()
+        factory.createCommandSettingPresenter(parentView: self)
     }
 }
