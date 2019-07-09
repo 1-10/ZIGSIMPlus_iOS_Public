@@ -16,7 +16,7 @@ class FileWriter {
 
     func open() {
         let dirpath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let datetime = Utils.getTimestamp()
+        let datetime = Utils.getTimestamp().replacingOccurrences(of: ":", with: ".")
         let format = AppSettingModel.shared.transportFormat == .OSC ? "osc" : "json"
         let filepath = "\(dirpath)/\(datetime).\(format).log"
 
