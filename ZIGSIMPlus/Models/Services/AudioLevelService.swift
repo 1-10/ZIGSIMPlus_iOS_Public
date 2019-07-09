@@ -131,15 +131,10 @@ extension AudioLevelService : Service {
     }
 
     func toOSC() -> [OSCMessage] {
-        let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
-            data.append(OSCMessage(
-                OSCAddressPattern("/\(deviceUUID)/miclevel"),
-                averageLevel,
-                maxLevel
-            ))
+            data.append(osc("miclevel", averageLevel, maxLevel))
         }
 
         return data

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftOSC
 
 class Utils {
     static func randomStringWithLength(_ length: Int) -> String {

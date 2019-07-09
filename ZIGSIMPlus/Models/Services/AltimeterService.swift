@@ -93,15 +93,10 @@ extension AltimeterService : Service {
     }
 
     func toOSC() -> [OSCMessage] {
-        let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.pressure]! {
-            messages.append(OSCMessage(
-                OSCAddressPattern("/\(deviceUUID)/pressure"),
-                pressureData,
-                altitudeData
-            ))
+            messages.append(osc("pressure", pressureData, altitudeData))
         }
 
         return messages

@@ -108,44 +108,22 @@ extension MotionService : Service {
     }
 
     func toOSC() -> [OSCMessage] {
-        let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.acceleration]! {
-            messages.append(OSCMessage(
-                OSCAddressPattern("/\(deviceUUID)/accel"),
-                accel.x,
-                accel.y,
-                accel.z
-            ))
+            messages.append(osc("accel", accel.x, accel.y, accel.z))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.gravity]! {
-            messages.append(OSCMessage(
-                OSCAddressPattern("/\(deviceUUID)/gravity"),
-                gravity.x,
-                gravity.y,
-                gravity.z
-            ))
+            messages.append(osc("gravity", gravity.x, gravity.y, gravity.z))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.gyro]! {
-            messages.append(OSCMessage(
-                OSCAddressPattern("/\(deviceUUID)/gyro"),
-                gyro.x,
-                gyro.y,
-                gyro.z
-            ))
+            messages.append(osc("gyro", gyro.x, gyro.y, gyro.z))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.quaternion]! {
-            messages.append(OSCMessage(
-                OSCAddressPattern("/\(deviceUUID)/quaternion"),
-                quaternion.x,
-                quaternion.y,
-                quaternion.z,
-                quaternion.w
-            ))
+            messages.append(osc("quaternion", quaternion.x, quaternion.y, quaternion.z))
         }
 
         return messages

@@ -60,11 +60,10 @@ extension BatteryService : Service {
     }
 
     func toOSC() -> [OSCMessage] {
-        let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.battery]! {
-            messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/battery"), battery))
+            messages.append(osc("battery", battery))
         }
 
         return messages

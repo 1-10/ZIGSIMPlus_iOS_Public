@@ -59,11 +59,10 @@ extension ProximityService : Service {
     }
 
     func toOSC() -> [OSCMessage] {
-        let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
-            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/proximitymonitor"), proximity))
+            data.append(osc("proximitymonitor", proximity))
         }
 
         return data

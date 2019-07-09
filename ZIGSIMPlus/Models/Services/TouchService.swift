@@ -168,24 +168,24 @@ extension TouchService : Service {
 
             if isTouchActive {
                 // Position
-                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)1"), Float(point.x)))
-                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touch\(i)2"), Float(point.y)))
+                messages.append(osc("touch\(i)1", Float(point.x)))
+                messages.append(osc("touch\(i)2", Float(point.y)))
 
                 if #available(iOS 8.0, *) {
-                    messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touchradius\(i)"), Float(touch.majorRadius)))
+                    messages.append(osc("touchradius\(i)", Float(touch.majorRadius)))
                 }
                 if #available(iOS 9.0, *) {
-                    messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/touchforce\(i)"), Float(touch.force)))
+                    messages.append(osc("touchforce\(i)", Float(touch.force)))
                 }
             }
 
             if isApplePencilActive && touch.type == .pencil {
-                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/penciltouch\(i)1"), Float(point.x)))
-                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/penciltouch\(i)2"), Float(point.y)))
-                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilaltitude\(i)"), Float(touch.altitudeAngle)))
-                messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilazimuth\(i)"), Float(touch.azimuthAngle(in: touch.view!))))
+                messages.append(osc("penciltouch\(i)1", Float(point.x)))
+                messages.append(osc("penciltouch\(i)2", Float(point.y)))
+                messages.append(osc("pencilaltitude\(i)", Float(touch.altitudeAngle)))
+                messages.append(osc("pencilazimuth\(i)", Float(touch.azimuthAngle(in: touch.view!))))
                 if #available(iOS 9.0, *) {
-                    messages.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/pencilforce\(i)"), Float(touch.force)))
+                    messages.append(osc("pencilforce\(i)", Float(touch.force)))
                 }
             }
         }
