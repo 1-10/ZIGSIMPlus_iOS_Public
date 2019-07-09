@@ -9,25 +9,16 @@
 import UIKit
 
 class CommandSelectionTabNavigationController: UINavigationController {
-    private var mediator: CommandAndServiceMediator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if mediator == nil {
-            fatalError("CommandSelectionTabNavigatorController.mediator is not initialized")
-        }
 
         // Initialize child view controllers
         for viewController in viewControllers {
             if type(of: viewController) == CommandSelectionViewController.self {
                 let vc = viewController as! CommandSelectionViewController
-                vc.presenter = CommandSelectionPresenter(view: vc, mediator: mediator!)
+                vc.presenter = CommandSelectionPresenter(view: vc)
             }
         }
-    }
-
-    func setMediator(_ mediator: CommandAndServiceMediator) {
-        self.mediator = mediator
     }
 }

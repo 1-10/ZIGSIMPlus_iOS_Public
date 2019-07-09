@@ -15,7 +15,7 @@ public class CommandAndServiceMediator {
     /// Returns if the service for given command is available.
     ///
     /// Simultaneous use of multiple commands accessing camera is not allowed.
-    public func isAvailable(_ command: Command) -> Bool {
+    public static func isAvailable(_ command: Command) -> Bool {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             return MotionService.shared.isAvailable()
@@ -56,46 +56,7 @@ public class CommandAndServiceMediator {
         }
     }
 
-    public func startActiveCommands() {
-        for command in Command.allCases {
-            if isActive(command) {
-                startCommand(command)
-            }
-        }
-    }
-
-    /// Call update methods for active commands
-    public func monitorManualCommands() {
-        if isActive(.battery) {
-            BatteryService.shared.updateBattery()
-        }
-        if isActive(.remoteControl) {
-            RemoteControlService.shared.update()
-        }
-    }
-
-    public func stopActiveCommands() {
-        for command in Command.allCases {
-            if isActive(command) {
-                stopCommand(command)
-            }
-        }
-    }
-    
-    public func isPremiumCommand(_ command: Command) -> Bool {
-        if command == Command.ndi ||
-            command == Command.arkit ||
-            command == Command.imageDetection ||
-            command == Command.nfc ||
-            command == Command.applePencil{
-            return true
-        }
-        return false
-    }
-
-    // MARK: - Private methods
-
-    private func startCommand(_ command: Command) {
+    public static func startCommand(_ command: Command) {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             MotionService.shared.start()
@@ -126,7 +87,7 @@ public class CommandAndServiceMediator {
         }
     }
 
-    private func stopCommand(_ command: Command) {
+    public static func stopCommand(_ command: Command) {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             MotionService.shared.stop()
@@ -157,14 +118,9 @@ public class CommandAndServiceMediator {
         }
     }
 
-    private func isActive(_ command: Command) -> Bool {
-        guard let b = AppSettingModel.shared.isActiveByCommand[command] else {
-            fatalError("AppSetting for Command \"\(command)\" is nil")
-        }
-        return b
-    }
+    // MARK: - Private methods
 
-    private func isCameraAvailable(for command: Command) -> Bool {
+    private static func isCameraAvailable(for command: Command) -> Bool {
         // When camera is set to on by other command,
         // user cannot use camera
         return !AppSettingModel.shared.isCameraUsed(exceptBy: command)

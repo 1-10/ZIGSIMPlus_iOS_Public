@@ -17,20 +17,20 @@ protocol Service {
     func toJSON() throws -> JSON
 }
 
-/// ServiceManager creates OSC / JSON data and send it over TCP / UDP.
+/// ServiceManager creates OSC / JSON data.
 /// It also creates single string for output view.
 ///
 /// This class does following things:
 /// - Fetch data from services
 /// - Merge them into single OSC / JSON data
 /// - Add device data to it
-/// - Send it over network with NetworkAdapter
 class ServiceManager {
     static let shared = ServiceManager()
     private init() {}
 
-    public func send() {
+    public func getData() -> Data {
         let data: Data
+
         if AppSettingModel.shared.transportFormat == .OSC {
             let osc = getOSC()
             data = osc.data
@@ -39,7 +39,8 @@ class ServiceManager {
             let json = getJSON()
             data = try! json.rawData()
         }
-        NetworkAdapter.shared.send(data)
+
+        return data
     }
 
     public func getLog() -> String {
