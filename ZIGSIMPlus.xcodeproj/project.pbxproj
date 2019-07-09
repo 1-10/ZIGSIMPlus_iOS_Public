@@ -12,6 +12,7 @@
 		021EEA0D22C46814007174E3 /* InAppPurchaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EEA0C22C46813007174E3 /* InAppPurchaseFacade.swift */; };
 		021F240E22D39A580065D641 /* CommandPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F240D22D39A580065D641 /* CommandPlayer.swift */; };
 		021F241022D3B16B0065D641 /* FileAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F240F22D3B16B0065D641 /* FileAdapter.swift */; };
+		021F241222D434F80065D641 /* SwiftOSCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F241122D434F80065D641 /* SwiftOSCExtension.swift */; };
 		0236461B2298253900171F73 /* VideoCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* VideoCaptureService.swift */; };
 		0236461C2298253900171F73 /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 023644BF2298253800171F73 /* libndi_ios.a */; };
 		0236461D2298253900171F73 /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 023644C32298253800171F73 /* NDI.cpp */; };
@@ -110,6 +111,7 @@
 		021EEA0C22C46813007174E3 /* InAppPurchaseFacade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseFacade.swift; sourceTree = "<group>"; };
 		021F240D22D39A580065D641 /* CommandPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPlayer.swift; sourceTree = "<group>"; };
 		021F240F22D3B16B0065D641 /* FileAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAdapter.swift; sourceTree = "<group>"; };
+		021F241122D434F80065D641 /* SwiftOSCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOSCExtension.swift; sourceTree = "<group>"; };
 		023644AE2298253800171F73 /* VideoCaptureService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureService.swift; sourceTree = "<group>"; };
 		023644B12298253800171F73 /* Processing.NDI.compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.compat.h; sourceTree = "<group>"; };
 		023644B22298253800171F73 /* Processing.NDI.utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.utilities.h; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				02621F5322A4F9140071E9D2 /* StringExtension.swift */,
 				02621F5422A4F9140071E9D2 /* UIScrollViewExtension.swift */,
 				026A3C3122BB656C0016DEF6 /* UIColorExtension.swift */,
+				021F241122D434F80065D641 /* SwiftOSCExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				02A8FA8B2296B62D001FB3DD /* BatteryService.swift in Sources */,
 				02E9AE1C22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandSelectionPresenter.swift in Sources */,
+				021F241222D434F80065D641 /* SwiftOSCExtension.swift in Sources */,
 				02A8FA882296B62D001FB3DD /* TouchService.swift in Sources */,
 				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,
 				638345F422A6832700370600 /* NFCService.swift in Sources */,

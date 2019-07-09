@@ -44,18 +44,14 @@ class ServiceManager {
     }
 
     public func getString() -> String {
-        let data: String
-
         if AppSettingModel.shared.transportFormat == .OSC {
             let osc = getOSC()
-            data = osc.description
+            return osc.getString()
         }
         else {
             let json = getJSON()
-            data = try! json.rawString(.utf8, options: [])!
+            return json.rawString(.utf8, options: [])! + "\n"
         }
-
-        return data
     }
 
     public func getLog() -> String {

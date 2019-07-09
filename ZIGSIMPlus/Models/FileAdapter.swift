@@ -27,9 +27,7 @@ class FileAdapter {
         }
     }
 
-    func write(_ originalText: String) {
-        let text = originalText + "\n"
-
+    func write(_ text: String) {
         guard let data = text.data(using: .utf8) else { return }
 
         let bytesWritten = data.withUnsafeBytes {
