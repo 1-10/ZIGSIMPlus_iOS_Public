@@ -10,29 +10,19 @@ import Foundation
 import UIKit
 
 class PresenterFactory {
-    func createCommandSelectionPresenter(parentView: UINavigationController) {
+    func createPresenter<T> (parentView: UINavigationController, viewType: T.Type) where T: UIViewController {
         for viewController in parentView.viewControllers {
-            if type(of: viewController) == CommandSelectionViewController.self {
-                let vc = viewController as! CommandSelectionViewController
-                vc.presenter = CommandSelectionPresenter(view: vc)
-            }
-        }
-    }
-    
-    func createCommandOutputViewController(parentView: UINavigationController) {
-        for viewController in parentView.viewControllers {
-            if type(of: viewController) == CommandOutputViewController.self {
-                let vc = viewController as! CommandOutputViewController
-                vc.presenter = CommandOutputPresenter(view: vc)
-            }
-        }
-    }
-    
-    func createCommandSettingPresenter(parentView: UINavigationController) {
-        for viewController in parentView.viewControllers {
-            if type(of: viewController) == CommandSettingViewController.self {
-                let vc = viewController as! CommandSettingViewController
-                vc.presenter = CommandSettingPresenter(view: vc)
+            if type(of: viewController) == viewType {
+                if viewType == CommandSelectionViewController.self {
+                    let vc = viewController as! CommandSelectionViewController
+                    vc.presenter = CommandSelectionPresenter(view: vc)
+                } else if viewType == CommandOutputViewController.self {
+                    let vc = viewController as! CommandOutputViewController
+                    vc.presenter = CommandOutputPresenter(view: vc)
+                } else if viewType == CommandSettingViewController.self {
+                    let vc = viewController as! CommandSettingViewController
+                    vc.presenter = CommandSettingPresenter(view: vc)
+                }
             }
         }
     }

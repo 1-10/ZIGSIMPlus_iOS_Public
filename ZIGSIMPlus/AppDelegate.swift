@@ -25,13 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for viewController in tabBarController.viewControllers! {
             if type(of: viewController) == CommandSelectionTabNavigationController.self {
                 let vc = viewController as! CommandSelectionTabNavigationController
-                factory.createCommandSelectionPresenter(parentView: vc)
+                factory.createPresenter(parentView: vc, viewType: CommandSelectionViewController.self)
             } else if type(of: viewController) == CommandOutputTabNavigationController.self {
                 let vc = viewController as! CommandOutputTabNavigationController
-                factory.createCommandOutputViewController(parentView: vc)
+                factory.createPresenter(parentView: vc, viewType: CommandOutputViewController.self)
             } else if type(of: viewController) == CommandSettingTabNavigationController.self {
                 let vc = viewController as! CommandSettingTabNavigationController
-                factory.createCommandSettingPresenter(parentView: vc)
+                factory.createPresenter(parentView: vc, viewType: CommandSettingViewController.self)
             }
         }
 
