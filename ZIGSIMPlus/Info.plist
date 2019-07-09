@@ -27,9 +27,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses camera in NDI, ARKit and Image Detection.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app uses location in GPS and Beacon.</string>
+	<string>This app uses location in Compass, GPS and Beacon.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app uses location in GPS and Beacon.</string>
+	<string>This app uses location in Compass, GPS and Beacon.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app uses microphone in NDI and Mic Level.</string>
 	<key>ProductIDForPremiumFeatures</key>
