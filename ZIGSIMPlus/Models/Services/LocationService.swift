@@ -211,7 +211,7 @@ extension LocationService : Service {
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
-            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData))
+            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData, AppSettingModel.shared.compassOrientation.rawValue))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
@@ -233,11 +233,11 @@ extension LocationService : Service {
         var data = JSON()
 
         if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
-            data["gps"] = JSON([latitudeData, longitudeData])
+            data["gps"] = JSON(["latitude": latitudeData, "longitude":longitudeData])
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
-            data["compass"] = JSON(compassData)
+            data["compass"] = JSON(["compass": compassData,"faceup": AppSettingModel.shared.compassOrientation.rawValue])
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
@@ -249,7 +249,7 @@ extension LocationService : Service {
                     "rssi": beacon.rssi
                 ]
             }
-            data["beacons"] = JSON(objs)
+            data["beacon"] = JSON(objs)
         }
 
         return data

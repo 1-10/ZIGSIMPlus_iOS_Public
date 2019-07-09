@@ -28,7 +28,9 @@ Quaternion command detects attitude of the device, that is, the orientation of a
 Values are quaternion for X, Y, Z and W axis.
 """),
     .compass : ("Compass", """
-Compass command detects azimuth angle.
+Compass command detects azimuth angle and outputs following values:
+**Compass**:Azimuth angle. North is 0 degrees, east is 90 degrees, south is 180 degrees, and so on. A negative value indicates an invalid direction.
+**Orientation**:Orientation of device. This can be set in the detail settings.
 
 Users can switch the orientation of device in detail settings:
 **PORTRAIT**:The device is held upright and the home button at the bottom.
