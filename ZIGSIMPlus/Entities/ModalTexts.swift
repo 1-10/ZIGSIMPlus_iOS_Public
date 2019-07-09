@@ -127,12 +127,14 @@ Note that it only works on Apple Pencil compatible devices, that are some of iPa
 """),
     .imageDetection: ("Image Detection", """
 Image Detection command identifies notable features (such as faces and barcodes) from a camera.
-Max frame rate is 30fps, so if you set 60fps it works on 30fps. Note that at the higher the frame rate, computational cost gets higher. You cannot use NDI, ARKit and Image Detection simultaneously.
+Max frame rate is 30fps, so if you set 60fps it works on 30fps. Note that at the higher the frame rate and resolution, computational cost gets higher. You cannot use NDI, ARKit and Image Detection simultaneously.
 
 Settings:
 **Detection Type**: Object type to detect, i.e. face, QR code, rectangle and text.
+**Camera**: Which camera to use, REAR or FRONT.
+**Resolution**: Video resolution.
 **Accuracy**: Accuracy of detection. When set high, it requires more processing time.
-**Tracking**: Enable or disable face tracking across frames in the video. Valid only when Detection Type is FACE.
+**Tracking**: Enable or disable face tracking across frames in the video. Valid only when Detection Type is FACE. When turned ON, line color around detected faces varies depending on tracking IDs.
 **Number of Face Angles**: The number of perspectives to use for detecting a face. At higher numbers of angles, it becomes more accurate, but at a higher computational cost. Valid only when Detection Type is FACE.
 **Detect Eye Blink**: Whether to perform additional processing to recognize closed eyes in detected faces. Valid only when Detection Type is FACE.
 **Detect Smile**: Whether to perform additional processing to recognize smiles in detected faces. Valid only when Detection Type is FACE.
