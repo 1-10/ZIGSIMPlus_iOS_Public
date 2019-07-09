@@ -203,21 +203,20 @@ extension LocationService : Service {
     }
 
     func toOSC() -> [OSCMessage] {
-        let deviceUUID = AppSettingModel.shared.deviceUUID
         var data = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
-            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/gps"), latitudeData, longitudeData))
+            data.append(osc("gps", latitudeData, longitudeData))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
-            data.append(OSCMessage(OSCAddressPattern("/\(deviceUUID)/compass"), compassData, AppSettingModel.shared.compassOrientation.rawValue))
+            data.append(osc("compass", compassData, AppSettingModel.shared.compassOrientation.rawValue))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
             data += beacons.enumerated().map { (i, beacon)  in
-                return OSCMessage(
-                    OSCAddressPattern("/\(deviceUUID)/beacon\(i)"),
+                return osc(
+                    "beacon\(i)",
                     beacon.proximityUUID.uuidString,
                     beacon.major.intValue,
                     beacon.minor.intValue,

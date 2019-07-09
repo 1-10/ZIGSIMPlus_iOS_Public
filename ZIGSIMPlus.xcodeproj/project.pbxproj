@@ -13,6 +13,7 @@
 		021F240E22D39A580065D641 /* CommandPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F240D22D39A580065D641 /* CommandPlayer.swift */; };
 		021F241022D3B16B0065D641 /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F240F22D3B16B0065D641 /* FileWriter.swift */; };
 		021F241222D434F80065D641 /* SwiftOSCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F241122D434F80065D641 /* SwiftOSCExtension.swift */; };
+		021F241422D47DC60065D641 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F241322D47DC60065D641 /* Service.swift */; };
 		0236461B2298253900171F73 /* VideoCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023644AE2298253800171F73 /* VideoCaptureService.swift */; };
 		0236461C2298253900171F73 /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 023644BF2298253800171F73 /* libndi_ios.a */; };
 		0236461D2298253900171F73 /* NDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 023644C32298253800171F73 /* NDI.cpp */; };
@@ -112,6 +113,7 @@
 		021F240D22D39A580065D641 /* CommandPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPlayer.swift; sourceTree = "<group>"; };
 		021F240F22D3B16B0065D641 /* FileWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
 		021F241122D434F80065D641 /* SwiftOSCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOSCExtension.swift; sourceTree = "<group>"; };
+		021F241322D47DC60065D641 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		023644AE2298253800171F73 /* VideoCaptureService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureService.swift; sourceTree = "<group>"; };
 		023644B12298253800171F73 /* Processing.NDI.compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.compat.h; sourceTree = "<group>"; };
 		023644B22298253800171F73 /* Processing.NDI.utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processing.NDI.utilities.h; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				02A03595229CD56E00E7399E /* AudioLevelService.swift */,
 				02A03596229CD56E00E7399E /* ProximityService.swift */,
 				02A8FA872296B62D001FB3DD /* ServiceManager.swift */,
+				021F241322D47DC60065D641 /* Service.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -854,6 +857,7 @@
 				638345F422A6832700370600 /* NFCService.swift in Sources */,
 				026A3C3422BB831F0016DEF6 /* CommandOutputTabNavigationController.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
+				021F241422D47DC60065D641 /* Service.swift in Sources */,
 				6345569C22B0E9150032E976 /* PresenterFactory.swift in Sources */,
 				B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */,
 				9092E4CA227D8ADF0019F1C1 /* CommandOutputViewController.swift in Sources */,

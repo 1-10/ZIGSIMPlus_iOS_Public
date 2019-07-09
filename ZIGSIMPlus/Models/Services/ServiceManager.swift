@@ -11,12 +11,6 @@ import SwiftOSC
 import SwiftyJSON
 import DeviceKit
 
-protocol Service {
-    func toLog() -> [String]
-    func toOSC() -> [OSCMessage]
-    func toJSON() throws -> JSON
-}
-
 /// ServiceManager creates OSC / JSON data.
 /// It also creates single string for output view.
 ///

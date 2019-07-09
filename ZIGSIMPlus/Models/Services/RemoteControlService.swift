@@ -122,12 +122,11 @@ extension RemoteControlService : Service {
     }
 
     func toOSC() -> [OSCMessage] {
-        let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
-            messages.append(OSCMessage(
-                OSCAddressPattern("/\(deviceUUID)/remotecontrol"),
+            messages.append(osc(
+                "remotecontrol",
                 playPauseChanged,
                 volumeUp,
                 volumeDown,
