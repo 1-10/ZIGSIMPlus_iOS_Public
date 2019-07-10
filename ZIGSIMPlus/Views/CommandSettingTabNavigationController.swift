@@ -11,13 +11,5 @@ import UIKit
 class CommandSettingTabNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Initialize child view controllers
-        for viewController in viewControllers {
-            if type(of: viewController) == CommandSettingViewController.self {
-                let vc = viewController as! CommandSettingViewController
-                vc.presenter = CommandSettingPresenter(view: vc)
-            }
-        }
     }
 }
