@@ -235,7 +235,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rYm-eR-kz0">
                         <barButtonItem key="backBarButtonItem" title="Settings" id="tx4-IJ-mIN"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="EDP-J4-sDn">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="EDP-J4-sDn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Ahx-BX-Vgc">
                                 <rect key="frame" x="337" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
