@@ -29,8 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {}
-
+    // These code can't be moved to applicationWillResignActive / applicationDidBecomeActive
+    // Because NFC dialog invokes them and causes pause/resume loop.
+    // See PR #86 for details.
     func applicationDidEnterBackground(_ application: UIApplication) {
         CommandPlayer.shared.pause()
     }
@@ -38,8 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         CommandPlayer.shared.resume()
     }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {}
 
     func applicationWillTerminate(_ application: UIApplication) {
         // It's recommended to remove a transaction queue observer at application termination
