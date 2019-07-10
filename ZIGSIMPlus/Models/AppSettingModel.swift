@@ -58,6 +58,11 @@ enum ArkitTrackingType: Int, DefaultsSerializable {
     case image = 2
 }
 
+enum ArkitFeaturePointsEnabled: Int, DefaultsSerializable {
+    case enabled
+    case disabled
+}
+
 enum NdiType: Int, DefaultsSerializable {
     case CAMERA = 0
     case DEPTH = 1
@@ -171,6 +176,7 @@ extension DefaultsKeys {
     static let ndiAudioEnabled = DefaultsKey<NdiAudioEnabled>("ndiAudioEnabled", defaultValue: .enabled)
     static let ndiAudioBufferSize = DefaultsKey<NdiAudioBufferSize>("ndiAudioBufferSize", defaultValue: .large)
     static let arkitTrackingType = DefaultsKey<ArkitTrackingType>("arkitTrackingType", defaultValue: .device)
+    static let arkitFeaturePointsEnabled = DefaultsKey<ArkitFeaturePointsEnabled>("arkitFeaturePointsEnabled", defaultValue: .enabled)
     static let imageDetectorType = DefaultsKey<ImageDetectorType>("imageDetectorType", defaultValue: .face)
     static let imageDetectorCameraPosition = DefaultsKey<CameraPosition>("userImageDetectorCameraPosition", defaultValue: .BACK)
     static let imageDetectorResolution = DefaultsKey<VideoResolution>("userImageDetectorResolution", defaultValue: .vga)
