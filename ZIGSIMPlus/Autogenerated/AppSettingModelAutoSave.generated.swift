@@ -36,6 +36,7 @@ private var ndiResolutionKey: Void?
 private var ndiAudioEnabledKey: Void?
 private var ndiAudioBufferSizeKey: Void?
 private var arkitTrackingTypeKey: Void?
+private var arkitFeaturePointsEnabledKey: Void?
 private var imageDetectorTypeKey: Void?
 private var imageDetectorCameraPositionKey: Void?
 private var imageDetectorResolutionKey: Void?
@@ -204,6 +205,16 @@ extension AppSettingModel {
         set {
             setRetainedAssociatedObject(self, &arkitTrackingTypeKey, newValue)
             Defaults[.arkitTrackingType] = newValue
+        }
+    }
+
+    var arkitFeaturePointsEnabled: ArkitFeaturePointsEnabled {
+        get {
+            return getAssociatedObject(self, &arkitFeaturePointsEnabledKey) ?? Defaults[.arkitFeaturePointsEnabled]
+        }
+        set {
+            setRetainedAssociatedObject(self, &arkitFeaturePointsEnabledKey, newValue)
+            Defaults[.arkitFeaturePointsEnabled] = newValue
         }
     }
 

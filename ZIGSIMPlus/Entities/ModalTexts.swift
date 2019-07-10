@@ -111,6 +111,8 @@ You cannot use NDI, ARKit and Image Detection simultaneously.
 **DEVICE**: device position, device rotation, feature points' positions.
 **FACE**: device rotation, face position, face rotation, eye position.
 **MARKER**: device rotation, marker position, marker rotation.
+
+If **Feature Points** is *ON*, the position of feature points will be output.
 """),
     .battery : ("Battery", """
 Battery command monitors the battery charge level of the device.

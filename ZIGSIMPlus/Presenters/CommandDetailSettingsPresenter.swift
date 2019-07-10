@@ -10,23 +10,24 @@ import Foundation
 import SwiftyUserDefaults
 
 public enum DetailSettingsKey: Int {
-    case ndiType = 0
-    case ndiCamera = 1
-    case ndiDepthType = 2
-    case ndiResolution = 3
-    case ndiAudioEnabled = 4
-    case ndiAudioBufferSize = 5
-    case compassOrientation = 6
-    case arkitTrackingType = 7
-    case imageDetectorType = 8
-    case imageDetectorCameraPosition = 9
-    case imageDetectorResolution = 10
-    case imageDetectorAccuracy = 11
-    case imageDetectorTracks = 12
-    case imageDetectorNumberOfAngles = 13
-    case imageDetectorDetectsEyeBlink = 14
-    case imageDetectorDetectsSmile = 15
-    case beaconUUID = 16
+    case ndiType
+    case ndiCamera
+    case ndiDepthType
+    case ndiResolution
+    case ndiAudioEnabled
+    case ndiAudioBufferSize
+    case compassOrientation
+    case arkitTrackingType
+    case arkitFeaturePointsEnabled
+    case imageDetectorType
+    case imageDetectorCameraPosition
+    case imageDetectorResolution
+    case imageDetectorAccuracy
+    case imageDetectorTracks
+    case imageDetectorNumberOfAngles
+    case imageDetectorDetectsEyeBlink
+    case imageDetectorDetectsSmile
+    case beaconUUID
 }
 
 
@@ -122,6 +123,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             ],
             .arkit: [
                 SegmentedInt(.arkitTrackingType, "Tracking Type", ["DEVICE", "FACE", "MARKER"], 240, app.arkitTrackingType.rawValue),
+                SegmentedInt(.arkitFeaturePointsEnabled, "Feature Points", ["ON", "OFF"], 240, app.arkitFeaturePointsEnabled.rawValue),
             ],
             .imageDetection: [
                 SegmentedInt(.imageDetectorType, "Detection Type", ["FACE", "QR", "RECT", "TEXT"], 240, app.imageDetectorType.rawValue),
@@ -159,6 +161,8 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 AppSettingModel.shared.compassOrientation = CompassOrientation(rawValue: data.value)!
             case .arkitTrackingType:
                 AppSettingModel.shared.arkitTrackingType = ArkitTrackingType(rawValue: data.value)!
+            case .arkitFeaturePointsEnabled:
+                AppSettingModel.shared.arkitFeaturePointsEnabled = ArkitFeaturePointsEnabled(rawValue: data.value)!
             case .imageDetectorType:
                 AppSettingModel.shared.imageDetectorType = ImageDetectorType(rawValue: data.value)!
             case .imageDetectorCameraPosition:
