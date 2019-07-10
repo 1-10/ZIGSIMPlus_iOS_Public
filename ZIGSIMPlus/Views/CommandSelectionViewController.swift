@@ -117,7 +117,7 @@ final class CommandSelectionViewController: UIViewController {
             }))
         case .detailSetting:
             alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { action in
-                UIApplication.shared.open(URL(string: "https://zig-project.com/")!, options: [:])
+                UIApplication.shared.open(URL(string: "https://1-10.github.io/zigsim/")!, options: [:])
             }))
             alert.addAction(UIAlertAction(title: "OK", style: .default))
         }
