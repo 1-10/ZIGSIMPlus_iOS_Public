@@ -29,15 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
+    // These code can't be moved to applicationWillResignActive / applicationDidBecomeActive
+    // Because NFC dialog invokes them and causes pause/resume loop.
+    // See PR #86 for details.
+    func applicationDidEnterBackground(_ application: UIApplication) {
         CommandPlayer.shared.pause()
     }
 
-    func applicationDidEnterBackground(_ application: UIApplication) {}
-
-    func applicationWillEnterForeground(_ application: UIApplication) {}
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         CommandPlayer.shared.resume()
     }
 
