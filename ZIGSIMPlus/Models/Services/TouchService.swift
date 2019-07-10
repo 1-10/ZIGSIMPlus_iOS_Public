@@ -159,7 +159,6 @@ extension TouchService : Service {
             return []
         }
 
-        let deviceUUID = AppSettingModel.shared.deviceUUID
         var messages = [OSCMessage]()
 
         for (i, touch) in touchPoints.enumerated() {
