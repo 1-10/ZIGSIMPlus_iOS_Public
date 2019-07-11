@@ -11,7 +11,7 @@ import SwiftyJSON
 import XCTest
 @testable import ZIGSIMPlus
 
-// swiftlint:disable force_cast function_body_length force_try
+// swiftlint:disable force_cast function_body_length force_try identifier_name
 
 /// UITouch with public setter for position, radius, force
 class UITouchMock: UITouch {

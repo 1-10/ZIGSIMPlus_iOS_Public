@@ -12,6 +12,8 @@ import SwiftyJSON
 import XCTest
 @testable import ZIGSIMPlus
 
+// swiftlint:disable force_cast force_try identifier_name
+
 class AttitudeMock: CMAttitude {
     var _quaternion: CMQuaternion?
 

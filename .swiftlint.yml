@@ -6,11 +6,12 @@ disabled_rules:
 
 identifier_name:
   excluded:
-    - id
     - x
     - y
     - z
+    - id
     - i
     - ii
     - j
     - t
+
