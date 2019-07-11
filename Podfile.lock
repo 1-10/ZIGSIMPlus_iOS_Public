@@ -5,6 +5,7 @@ PODS:
   - MarkdownKit (1.5)
   - Sourcery (0.16.1)
   - SVProgressHUD (2.2.5)
+  - SwiftLint (0.33.0)
   - SwiftOSC (1.2.4)
   - SwiftSocket (2.0.2)
   - SwiftyJSON (4.3.0)
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - MarkdownKit
   - Sourcery
   - SVProgressHUD
+  - SwiftLint
   - SwiftOSC (~> 1.2)
   - SwiftSocket
   - SwiftyJSON (~> 4.0)
@@ -30,6 +32,7 @@ SPEC REPOS:
     - MarkdownKit
     - Sourcery
     - SVProgressHUD
+    - SwiftLint
     - SwiftOSC
     - SwiftSocket
     - SwiftyJSON
@@ -42,11 +45,12 @@ SPEC CHECKSUMS:
   MarkdownKit: 379028e9cd3ebf05ccac87205cd9aead446159d4
   Sourcery: 16779170d35ee204666843b09031f36721a84bcc
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
   SwiftOSC: 6003d35ecb3e906361b9d0d43f75845e0f2562c2
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   SwiftyUserDefaults: 6a1951df1daa19337862b677dd9a4b9bd4c288cd
 
-PODFILE CHECKSUM: f71fc7a109b3bb181caa96294c89e61ba4a26e84
+PODFILE CHECKSUM: b4b8a447d01e65eca10d63b1032c9115fb56cf04
 
 COCOAPODS: 1.6.2
