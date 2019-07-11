@@ -62,7 +62,7 @@ extension ProximityService : Service {
         var data = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
-            data.append(osc("proximitymonitor", proximity))
+            data.append(osc("proximitymonitor", proximity ? 1 : 0))
         }
 
         return data
