@@ -70,11 +70,12 @@ class Utils {
     }
 
     static func isValidBeaconUUID(_ uuid: String) -> Bool {
-        let re = try! NSRegularExpression(pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}")
-        return re.matches(in: uuid, options: [], range: .init(location: 0, length: uuid.count)).count != 0
+        // swiftlint:disable:next force_try
+        let reg = try! NSRegularExpression(pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}")
+        return reg.matches(in: uuid, options: [], range: .init(location: 0, length: uuid.count)).count != 0
     }
 
-    static func formatBeaconUUID(_ _uuid: String) -> String {
+    static func formatBeaconUUID(_ _uuid: String) -> String { // swiftlint:disable:this identifier_name
         var uuid = _uuid.uppercased()
 
         // Insert hyphens
@@ -103,6 +104,7 @@ class Utils {
         case .portNumber:
             return Utils.isCompose(text.text ?? "0", of: "1234567890")
         case .deviceUuid:
+            // swiftlint:disable:next line_length
             return Utils.isCompose(text.text ?? "0", of: "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         }
     }

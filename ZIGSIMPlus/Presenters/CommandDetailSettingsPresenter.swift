@@ -140,6 +140,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
         // swiftlint:enable line_length
     }
 
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     public func updateSetting(setting: DetailSetting) {
         switch setting {
         case let data as SegmentedInt:

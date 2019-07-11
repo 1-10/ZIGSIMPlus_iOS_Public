@@ -132,7 +132,7 @@ public class CommandDetailSettingsViewController: UIViewController {
 
         // Find setting by DetailSettingKey
         guard var setting = settingsForCommand.first(where: {
-            if let s = $0 as? UUIDInput {
+            if let s = $0 as? UUIDInput { // swiftlint:disable:this identifier_name
                 return s.key.rawValue == input.tag
             }
             return false

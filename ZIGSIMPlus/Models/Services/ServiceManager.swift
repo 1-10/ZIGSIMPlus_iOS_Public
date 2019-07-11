@@ -30,7 +30,7 @@ class ServiceManager {
             data = osc.data
         } else {
             let json = getJSON()
-            data = try! json.rawData()
+            data = try! json.rawData() // swiftlint:disable:this force_try
         }
 
         return data

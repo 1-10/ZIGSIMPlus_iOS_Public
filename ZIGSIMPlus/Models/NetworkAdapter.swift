@@ -73,8 +73,8 @@ public class NetworkAdapter {
             switch tcpClient.connect(timeout: 1) {
             case .success:
                 break
-            case let .failure(e):
-                error = e
+            case let .failure(err):
+                error = err
                 return
             }
         }
@@ -83,8 +83,8 @@ public class NetworkAdapter {
         switch tcpClient.send(data: data) {
         case .success:
             error = nil
-        case let .failure(e):
-            error = e
+        case let .failure(err):
+            error = err
         }
     }
 
@@ -100,8 +100,8 @@ public class NetworkAdapter {
         switch udpClient.send(data: data) {
         case .success:
             error = nil
-        case let .failure(e):
-            error = e
+        case let .failure(err):
+            error = err
         }
     }
 }

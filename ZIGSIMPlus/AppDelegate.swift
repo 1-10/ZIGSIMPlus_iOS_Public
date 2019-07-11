@@ -48,15 +48,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func composePresenters() {
         let factory = PresenterFactory()
+
+        // swiftlint:disable:next force_cast
         let tabBarController = window?.rootViewController as! UITabBarController
+
         for viewController in tabBarController.viewControllers! {
             if type(of: viewController) == CommandSelectionTabNavigationController.self {
+                // swiftlint:disable:next force_cast
                 let vc = viewController as! CommandSelectionTabNavigationController
                 factory.createPresenter(parentView: vc, viewType: CommandSelectionViewController.self)
             } else if type(of: viewController) == CommandOutputTabNavigationController.self {
+                // swiftlint:disable:next force_cast
                 let vc = viewController as! CommandOutputTabNavigationController
                 factory.createPresenter(parentView: vc, viewType: CommandOutputViewController.self)
             } else if type(of: viewController) == CommandSettingTabNavigationController.self {
+                // swiftlint:disable:next force_cast
                 let vc = viewController as! CommandSettingTabNavigationController
                 factory.createPresenter(parentView: vc, viewType: CommandSettingViewController.self)
             }

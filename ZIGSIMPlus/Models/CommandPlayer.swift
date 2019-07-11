@@ -117,9 +117,9 @@ public class CommandPlayer {
     }
 
     private func isActive(_ command: Command) -> Bool {
-        guard let b = AppSettingModel.shared.isActiveByCommand[command] else {
+        guard let res = AppSettingModel.shared.isActiveByCommand[command] else {
             fatalError("AppSetting for Command \"\(command)\" is nil")
         }
-        return b
+        return res
     }
 }

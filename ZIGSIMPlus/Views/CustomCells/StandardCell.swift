@@ -32,6 +32,7 @@ public class StandardCell: UITableViewCell {
     }
 
     @IBAction func detailButtonAction(_: UIButton) {
+        // swiftlint:disable:next force_cast
         let parent = viewController as! CommandSelectionViewController
         parent.showDetail(commandNo: commandOnOffButton.tag)
     }
