@@ -9,7 +9,6 @@
 import Foundation
 
 public class CommandAndServiceMediator {
-
     // MARK: - Public methods
 
     /// Returns if the service for given command is available.

@@ -11,7 +11,6 @@ import UIKit
 /// UITextField with custom style
 @IBDesignable
 open class ZIGLabel: UILabel {
-
     func setup() {
         textColor = Theme.main
     }
@@ -21,7 +20,7 @@ open class ZIGLabel: UILabel {
         setup()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }

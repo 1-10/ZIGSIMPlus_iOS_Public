@@ -11,7 +11,6 @@ import UIKit
 
 private var maxLengths = [UITextField: Int]()
 extension UITextField {
-
     @IBInspectable var maxLength: Int {
         get {
             guard let length = maxLengths[self] else {
@@ -35,9 +34,9 @@ extension UITextField {
         let maxCharIndex = prospectiveText.index(prospectiveText.startIndex, offsetBy: maxLength)
 
         #if swift(>=4.0)
-        text = String(prospectiveText[..<maxCharIndex])
+            text = String(prospectiveText[..<maxCharIndex])
         #else
-        text = prospectiveText.substring(to: maxCharIndex)
+            text = prospectiveText.substring(to: maxCharIndex)
         #endif
 
         selectedTextRange = selection

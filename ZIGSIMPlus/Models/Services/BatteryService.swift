@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import UIKit
 import SwiftOSC
 import SwiftyJSON
+import UIKit
 
 /// Data store for battery
 public class BatteryService {

@@ -9,7 +9,6 @@
 import UIKit
 
 class CommandOutputTabNavigationController: UINavigationController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }

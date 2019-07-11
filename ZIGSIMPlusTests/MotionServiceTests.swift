@@ -6,10 +6,10 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import XCTest
+import CoreMotion
 import SwiftOSC
 import SwiftyJSON
-import CoreMotion
+import XCTest
 @testable import ZIGSIMPlus
 
 class AttitudeMock: CMAttitude {
@@ -24,9 +24,7 @@ class AttitudeMock: CMAttitude {
         super.init(coder: aDecoder)
     }
 
-    override var quaternion: CMQuaternion {
-        get { return _quaternion! }
-    }
+    override var quaternion: CMQuaternion { return _quaternion! }
 }
 
 class MotionMock: CMDeviceMotion {
@@ -47,21 +45,13 @@ class MotionMock: CMDeviceMotion {
         super.init(coder: aDecoder)
     }
 
-    override var userAcceleration: CMAcceleration {
-        get { return _userAcceleration! }
-    }
+    override var userAcceleration: CMAcceleration { return _userAcceleration! }
 
-    override var gravity: CMAcceleration {
-        get { return _gravity! }
-    }
+    override var gravity: CMAcceleration { return _gravity! }
 
-    override var rotationRate: CMRotationRate {
-        get { return _rotationRate! }
-    }
+    override var rotationRate: CMRotationRate { return _rotationRate! }
 
-    override var attitude: CMAttitude {
-        get { return _attitude! }
-    }
+    override var attitude: CMAttitude { return _attitude! }
 }
 
 class MotionServiceTests: XCTestCase {
@@ -134,8 +124,8 @@ class MotionServiceTests: XCTestCase {
         var json = try! MotionService.shared.toJSON()
         var exp = [
             "accel": [
-                "x": 1.0, "y": 2.0, "z": 3.0
-            ]
+                "x": 1.0, "y": 2.0, "z": 3.0,
+            ],
         ]
         XCTAssertEqual(json, JSON(exp), "accel all")
         AppSettingModel.shared.isActiveByCommand[.acceleration] = false
@@ -145,8 +135,8 @@ class MotionServiceTests: XCTestCase {
         json = try! MotionService.shared.toJSON()
         exp = [
             "gravity": [
-                "x": 4.0, "y": 5.0, "z": 6.0
-            ]
+                "x": 4.0, "y": 5.0, "z": 6.0,
+            ],
         ]
         XCTAssertEqual(json, JSON(exp), "gravity all")
         AppSettingModel.shared.isActiveByCommand[.gravity] = false
@@ -156,8 +146,8 @@ class MotionServiceTests: XCTestCase {
         json = try! MotionService.shared.toJSON()
         exp = [
             "gyro": [
-                "x": 1.0, "y": 2.0, "z": 3.0
-            ]
+                "x": 1.0, "y": 2.0, "z": 3.0,
+            ],
         ]
         XCTAssertEqual(json, JSON(exp), "gyro all")
         AppSettingModel.shared.isActiveByCommand[.gyro] = false
@@ -167,8 +157,8 @@ class MotionServiceTests: XCTestCase {
         json = try! MotionService.shared.toJSON()
         exp = [
             "quaternion": [
-                "x": 1.0, "y": 2.0, "z": 3.0, "w": 4.0
-            ]
+                "x": 1.0, "y": 2.0, "z": 3.0, "w": 4.0,
+            ],
         ]
         XCTAssertEqual(json, JSON(exp), "quaternion all")
         AppSettingModel.shared.isActiveByCommand[.quaternion] = false

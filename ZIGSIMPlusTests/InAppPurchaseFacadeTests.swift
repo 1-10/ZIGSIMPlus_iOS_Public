@@ -6,8 +6,8 @@
 //  Copyright © 2019 Nozomu Kuwae. All rights reserved.
 //
 
-import XCTest
 import StoreKit
+import XCTest
 @testable import ZIGSIMPlus
 
 class InAppPurchaseFacadeTests: XCTestCase {
@@ -24,7 +24,7 @@ class InAppPurchaseFacadeTests: XCTestCase {
     func testDidGetTransactionResult_WhenSuccessful() {
         let testCases = [
             (SKPaymentTransactionState.purchased, InAppPurchaseFacade.TransactionResult.purchaseSuccessful),
-            (SKPaymentTransactionState.restored, InAppPurchaseFacade.TransactionResult.restoreSuccessful)
+            (SKPaymentTransactionState.restored, InAppPurchaseFacade.TransactionResult.restoreSuccessful),
         ]
 
         for testCase in testCases {
@@ -32,7 +32,7 @@ class InAppPurchaseFacadeTests: XCTestCase {
             XCTAssertFalse(purchaseFacade.isPurchased())
 
             let exp = expectation(description: "Purchase premium features successful")
-            purchaseFacade.completion = { (result, error) in
+            purchaseFacade.completion = { result, error in
                 XCTAssertEqual(result, testCase.1)
                 XCTAssertNil(error)
                 XCTAssertTrue(self.purchaseFacade.isPurchased())
@@ -52,7 +52,7 @@ class InAppPurchaseFacadeTests: XCTestCase {
         XCTAssertFalse(purchaseFacade.isPurchased())
 
         let exp = expectation(description: "Purchase premium features failed")
-        purchaseFacade.completion = { (result, error) in
+        purchaseFacade.completion = { result, _ in
             XCTAssertEqual(result, .purchaseFailed)
             XCTAssertFalse(self.purchaseFacade.isPurchased())
             exp.fulfill()
@@ -68,7 +68,7 @@ class InAppPurchaseFacadeTests: XCTestCase {
     func testDidGetTransactionResult_WhenInProcess() {
         let testCases = [
             SKPaymentTransactionState.deferred,
-            SKPaymentTransactionState.purchasing
+            SKPaymentTransactionState.purchasing,
         ]
 
         for testCase in testCases {
@@ -78,7 +78,7 @@ class InAppPurchaseFacadeTests: XCTestCase {
             let exp = expectation(description: "Purchase premium features in process")
             exp.isInverted = true
 
-            purchaseFacade.completion = { (result, error) in
+            purchaseFacade.completion = { result, _ in
                 print("result: \(result)")
                 exp.fulfill()
             }

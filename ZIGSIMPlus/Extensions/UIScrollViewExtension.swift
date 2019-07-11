@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIScrollView {
-    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.next?.touchesBegan(touches, with: event)
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        next?.touchesBegan(touches, with: event)
     }
 }

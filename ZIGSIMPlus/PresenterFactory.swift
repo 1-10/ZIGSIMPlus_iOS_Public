@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class PresenterFactory {
-    func createPresenter<T> (parentView: UINavigationController, viewType: T.Type) where T: UIViewController {
+    func createPresenter<T>(parentView: UINavigationController, viewType: T.Type) where T: UIViewController {
         for viewController in parentView.viewControllers {
             if type(of: viewController) == viewType {
                 if viewType == CommandSelectionViewController.self {

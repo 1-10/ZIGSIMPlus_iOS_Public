@@ -6,8 +6,8 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 import Foundation
-import UIKit
 import SVProgressHUD
+import UIKit
 
 protocol ContentScrollable {
     var scrollView: UIScrollView! { get }
@@ -16,15 +16,14 @@ protocol ContentScrollable {
 }
 
 public class CommandSettingViewController: UIViewController {
-
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var labels: [UILabel]!
     @IBOutlet var segments: [UISegmentedControl]!
     @IBOutlet var textFields: [UITextField]!
-    @IBOutlet weak var restorePurchaseButton: UIButton!
+    @IBOutlet var restorePurchaseButton: UIButton!
     var presenter: CommandSettingPresenterProtocol!
 
-    override public func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         let userDefaultTexts = presenter.getUserDefaultTexts()
@@ -54,30 +53,29 @@ public class CommandSettingViewController: UIViewController {
 
         initNavigationBar()
         adjustViewDesign()
-
     }
 
-    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
         print("touch screen!")
         if updateSettingTextData() {
-            self.view.endEditing(true)
+            view.endEditing(true)
         }
     }
 
-    @IBAction func changeSettingData(_ sender: UISegmentedControl) {
+    @IBAction func changeSettingData(_: UISegmentedControl) {
         updateSettingSegmentData()
     }
 
-    @IBAction func restorePurchasePressed(_ sender: UIButton) {
+    @IBAction func restorePurchasePressed(_: UIButton) {
         restorePurchaseButton.isEnabled = false
         SVProgressHUD.show()
         presenter.restorePurchase()
     }
 
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_: UITextField) -> Bool {
         print("should end editing!")
         if updateSettingTextData() {
-            self.view.endEditing(true)
+            view.endEditing(true)
             return true
         } else {
             return false
@@ -88,19 +86,19 @@ public class CommandSettingViewController: UIViewController {
         var texts: [textFieldName: String] = [:]
         for textField in textFields {
             if textField.tag == 0 {
-                if Utils.isValidSettingViewText(text: textField, textType: .ipAddress) && textField.text != "" {
+                if Utils.isValidSettingViewText(text: textField, textType: .ipAddress), textField.text != "" {
                     texts[.ipAdress] = textField.text ?? ""
                 } else {
                     return false
                 }
             } else if textField.tag == 1 {
-                if Utils.isValidSettingViewText(text: textField, textType: .portNumber) && textField.text != "" {
+                if Utils.isValidSettingViewText(text: textField, textType: .portNumber), textField.text != "" {
                     texts[.portNumber] = textField.text ?? ""
                 } else {
                     return false
                 }
             } else if textField.tag == 2 {
-                if Utils.isValidSettingViewText(text: textField, textType: .deviceUuid) && textField.text != "" {
+                if Utils.isValidSettingViewText(text: textField, textType: .deviceUuid), textField.text != "" {
                     texts[.uuid] = textField.text ?? ""
                 } else {
                     return false
@@ -146,7 +144,7 @@ public class CommandSettingViewController: UIViewController {
 }
 
 extension CommandSettingViewController: CommandSettingPresenterDelegate {
-    func showRestorePurchaseResult(isSuccessful: Bool, title: String?, message: String?) {
+    func showRestorePurchaseResult(isSuccessful _: Bool, title: String?, message: String?) {
         SVProgressHUD.dismiss()
 
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -154,7 +152,7 @@ extension CommandSettingViewController: CommandSettingPresenterDelegate {
             self.restorePurchaseButton.isEnabled = true
         }
         alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -166,12 +164,12 @@ extension CommandSettingViewController: UITextFieldDelegate {
 }
 
 extension CommandSettingViewController: ContentScrollable {
-    override public func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureObserver()
     }
 
-    override public func viewWillDisappear(_ animated: Bool) {
+    public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeObserver()
     }
@@ -195,7 +193,7 @@ extension CommandSettingViewController: ContentScrollable {
         scrollView.contentInset.bottom = keyboardSize
     }
 
-    func keyboardWillHide(_ notification: Notification) {
+    func keyboardWillHide(_: Notification) {
         scrollView.contentInset = .zero
         scrollView.scrollIndicatorInsets = .zero
     }

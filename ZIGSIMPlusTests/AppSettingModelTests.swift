@@ -10,11 +10,9 @@ import XCTest
 @testable import ZIGSIMPlus
 
 class AppSettingModelTests: XCTestCase {
-    override func setUp() {
-    }
+    override func setUp() {}
 
-    override func tearDown() {
-    }
+    override func tearDown() {}
 
     func testIsCameraUsed_WithoutParameter_WhenAllCameraCommandsInactive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = false

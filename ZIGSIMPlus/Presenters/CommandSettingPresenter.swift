@@ -23,10 +23,10 @@ public enum segmentName {
 }
 
 protocol CommandSettingPresenterProtocol {
-    func getUserDefaultTexts() -> Dictionary<textFieldName, String>
-    func getUserDefaultSegments() -> Dictionary<segmentName, Int>
-    func updateTextsUserDefault(texts: Dictionary<textFieldName, String>)
-    func updateSegmentsUserDefault(segmentControls: Dictionary<segmentName, Int>)
+    func getUserDefaultTexts() -> [textFieldName: String]
+    func getUserDefaultSegments() -> [segmentName: Int]
+    func updateTextsUserDefault(texts: [textFieldName: String])
+    func updateSegmentsUserDefault(segmentControls: [segmentName: Int])
     func restorePurchase()
 }
 
@@ -41,7 +41,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         self.view = view
     }
 
-    func getUserDefaultTexts() -> Dictionary<textFieldName, String> {
+    func getUserDefaultTexts() -> [textFieldName: String] {
         var texts: [textFieldName: String] = [:]
         let appSettings = AppSettingModel.shared
         texts[.ipAdress] = appSettings.ipAddress
@@ -50,7 +50,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         return texts
     }
 
-    func getUserDefaultSegments() -> Dictionary<segmentName, Int> {
+    func getUserDefaultSegments() -> [segmentName: Int] {
         var segments: [segmentName: Int] = [:]
         let appSettings = AppSettingModel.shared
         segments[.dataDestination] = appSettings.dataDestination.rawValue
@@ -61,14 +61,14 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         return segments
     }
 
-    func updateTextsUserDefault(texts: Dictionary<textFieldName, String>) {
+    func updateTextsUserDefault(texts: [textFieldName: String]) {
         let appSettings = AppSettingModel.shared
         appSettings.ipAddress = texts[.ipAdress] ?? ""
         appSettings.portNumber = Int(texts[.portNumber] ?? "0") ?? 0
         appSettings.deviceUUID = texts[.uuid] ?? ""
     }
 
-    func updateSegmentsUserDefault(segmentControls: Dictionary<segmentName, Int>) {
+    func updateSegmentsUserDefault(segmentControls: [segmentName: Int]) {
         let appSettings = AppSettingModel.shared
         appSettings.dataDestination = DataDestination(rawValue: segmentControls[.dataDestination] ?? 0)!
         appSettings.transportProtocol = TransportProtocol(rawValue: segmentControls[.dataProtocol] ?? 0)!
@@ -77,7 +77,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
     }
 
     func restorePurchase() {
-        InAppPurchaseFacade.shared.restorePurchase { (result, error) in
+        InAppPurchaseFacade.shared.restorePurchase { result, error in
             var title = ""
             var message = ""
             var isSuccessful = false

@@ -16,6 +16,7 @@ public class RemoteControlService: NSObject {
     static let shared = RemoteControlService()
 
     // MARK: - Instance Properties
+
     let audioEngine = AVAudioEngine()
     let playerNode = AVAudioPlayerNode()
     var isEnabled = false
@@ -30,7 +31,7 @@ public class RemoteControlService: NSObject {
     var volumeUp = false
     var volumeDown = false
 
-    override private init() {
+    private override init() {
         // Create dummy audioEngine.
         // We don't play audio, but we need it to receive MPRemoteCommandCenter commands.
         // cf. https://developer.apple.com/documentation/mediaplayer/handling_external_player_events_notifications
@@ -43,7 +44,7 @@ public class RemoteControlService: NSObject {
         volume = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as! Double
     }
 
-    @objc func onTogglePlayPause(_ event: MPRemoteCommandEvent) {
+    @objc func onTogglePlayPause(_: MPRemoteCommandEvent) {
         isPlaying.toggle()
     }
 
@@ -114,7 +115,7 @@ extension RemoteControlService: Service {
                 "remotecontrol:volumeup \(volumeUp)",
                 "remotecontrol:volumedown \(volumeDown)",
                 "remotecontrol:isPlaying \(isPlaying)",
-                "remotecontrol:volume \(volume)"
+                "remotecontrol:volume \(volume)",
             ]
         }
 
@@ -147,7 +148,7 @@ extension RemoteControlService: Service {
                 "volumeup": volumeUp,
                 "volumedown": volumeDown,
                 "isPlaying": isPlaying,
-                "volume": volume
+                "volume": volume,
             ])
         }
 

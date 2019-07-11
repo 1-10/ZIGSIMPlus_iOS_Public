@@ -57,7 +57,7 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     }
 
     func purchase() {
-        InAppPurchaseFacade.shared.purchase { (result, error) in
+        InAppPurchaseFacade.shared.purchase { result, error in
             var title = ""
             var message = ""
             var isSuccessful = false

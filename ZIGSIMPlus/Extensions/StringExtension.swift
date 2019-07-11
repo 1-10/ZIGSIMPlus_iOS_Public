@@ -11,6 +11,6 @@ import Foundation
 extension String {
     /// Appends the given string to this string, with adding line break between them. If this string is empty or ends with line break, line break will not be not added.
     mutating func appendLines(_ other: String) {
-        self = ((self.isEmpty || self.last == "\n") ? (self + other) : (self + "\n" + other))
+        self = ((isEmpty || last == "\n") ? (self + other) : (self + "\n" + other))
     }
 }

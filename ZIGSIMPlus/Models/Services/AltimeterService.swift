@@ -6,8 +6,8 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import Foundation
 import CoreMotion
+import Foundation
 import SwiftOSC
 import SwiftyJSON
 
@@ -16,6 +16,7 @@ public class AltimeterService {
     static let shared = AltimeterService()
 
     // MARK: - Instance Properties
+
     var altimeter: AnyObject!
     var isWorking: Bool
     var pressureData: Double
@@ -32,15 +33,14 @@ public class AltimeterService {
         } else {
             altimeter = false as AnyObject
         }
-
     }
 
     private func updateAltimeterData() {
-        print("pressure:pressure: \(self.pressureData)")
-        print("pressure:altitude: \(self.altitudeData)")
+        print("pressure:pressure: \(pressureData)")
+        print("pressure:altitude: \(altitudeData)")
         var altimeterData = [0.0, 0.0]
-        altimeterData[0] = self.pressureData
-        altimeterData[1] = self.altitudeData
+        altimeterData[0] = pressureData
+        altimeterData[1] = altitudeData
         callbackAltimeter?(altimeterData)
     }
 
@@ -57,7 +57,7 @@ public class AltimeterService {
         if #available(iOS 8.0, *) {
             if CMAltimeter.isRelativeAltitudeAvailable() {
                 isWorking = true
-                altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: { (data, error) in
+                altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: { data, error in
                     if error == nil {
                         self.pressureData = Double(truncating: data!.pressure) * 10.0
                         self.altitudeData = Double(truncating: data!.relativeAltitude)
@@ -85,7 +85,7 @@ extension AltimeterService: Service {
         if AppSettingModel.shared.isActiveByCommand[Command.pressure]! {
             log += [
                 "pressure:pressure:\(pressureData)",
-                "pressure:altitude:\(altitudeData)"
+                "pressure:altitude:\(altitudeData)",
             ]
         }
 
@@ -108,7 +108,7 @@ extension AltimeterService: Service {
         if AppSettingModel.shared.isActiveByCommand[Command.pressure]! {
             data["pressure"] = [
                 "pressure": pressureData,
-                "altitude": altitudeData
+                "altitude": altitudeData,
             ]
         }
 

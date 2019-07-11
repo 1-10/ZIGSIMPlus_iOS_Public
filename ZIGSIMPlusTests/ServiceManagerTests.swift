@@ -6,8 +6,8 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import XCTest
 import SwiftOSC
+import XCTest
 @testable import ZIGSIMPlus
 
 class ServiceManagerTests: XCTestCase {
@@ -43,13 +43,13 @@ class ServiceManagerTests: XCTestCase {
             .gps: "gps", // LocationDataStore
             .acceleration: "accel", // MiscDataStore
             .proximity: "proximitymonitor", // ProximityDataStore
-            .remoteControl: "remotecontrol" // RemoteControlDataStore
+            .remoteControl: "remotecontrol", // RemoteControlDataStore
 
             // TouchDataStore data is not sent until the device is touched
             // .touch: "touch01", // TouchDataStore
         ]
 
-        commandsAndKeys.forEach { (command, key) in
+        commandsAndKeys.forEach { command, key in
             AppSettingModel.shared.isActiveByCommand[command] = true
             let osc = ServiceManager.shared.getOSC()
 
@@ -91,10 +91,10 @@ class ServiceManagerTests: XCTestCase {
             .acceleration: "accel", // MiscDataStore
             .proximity: "proximitymonitor", // ProximityDataStore
             .remoteControl: "remoteControl", // RemoteControlDataStore
-            .touch: "touches" // TouchDataStore
+            .touch: "touches", // TouchDataStore
         ]
 
-        commandsAndKeys.forEach { (command, key) in
+        commandsAndKeys.forEach { command, key in
             AppSettingModel.shared.isActiveByCommand[command] = true
             let json = ServiceManager.shared.getJSON()
             XCTAssert(json["sensordata"][key].exists(), "Sensordata for \(command) is stored as \(key)")

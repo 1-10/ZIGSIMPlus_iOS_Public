@@ -38,7 +38,7 @@ protocol Segmented: DetailSetting {
     var key: DetailSettingsKey { get set }
     var label: String { get set }
     var segments: [String] { get set }
-    var width: Int { get set }  // width of UISegmentController
+    var width: Int { get set } // width of UISegmentController
 }
 
 /// Segmented is used for settings with UISegmentedController
@@ -49,7 +49,7 @@ public struct SegmentedInt: Segmented {
     var width: Int
     var value: Int
 
-    init (_ key: DetailSettingsKey, _ label: String, _ segments: [String], _ width: Int, _ value: Int) {
+    init(_ key: DetailSettingsKey, _ label: String, _ segments: [String], _ width: Int, _ value: Int) {
         self.key = key
         self.label = label
         self.segments = segments
@@ -65,7 +65,7 @@ public struct SegmentedBool: Segmented {
     var width: Int
     var value: Bool
 
-    init (_ key: DetailSettingsKey, _ label: String, _ segments: [String], _ width: Int, _ value: Bool) {
+    init(_ key: DetailSettingsKey, _ label: String, _ segments: [String], _ width: Int, _ value: Bool) {
         self.key = key
         self.label = label
         self.segments = segments
@@ -88,7 +88,7 @@ public struct UUIDInput: DetailSetting {
     var width: Int
     var value: String
 
-    init (_ key: DetailSettingsKey, _ label: String, _ width: Int, _ value: String) {
+    init(_ key: DetailSettingsKey, _ label: String, _ width: Int, _ value: String) {
         self.key = key
         self.label = label
         self.width = width
@@ -102,7 +102,6 @@ protocol CommandDetailSettingsPresenterProtocol {
 }
 
 final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtocol {
-
     // Get data to generate detail settings view dinamically
     public func getCommandDetailSettings() -> [Command: [DetailSetting]] {
         let app = AppSettingModel.shared
@@ -114,14 +113,14 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedInt(.ndiDepthType, "Depth Type", ["DEPTH", "DISPARITY"], 240, app.depthType.rawValue),
                 SegmentedInt(.ndiResolution, "Resolution", ["VGA", "HD", "FHD"], 240, app.ndiResolution.rawValue),
                 SegmentedInt(.ndiAudioEnabled, "Audio", ["ON", "OFF"], 240, app.ndiAudioEnabled.rawValue),
-                SegmentedInt(.ndiAudioBufferSize, "Audio Latency", ["LOW", "MID", "HIGH"], 240, app.ndiAudioBufferSize.rawValue)
+                SegmentedInt(.ndiAudioBufferSize, "Audio Latency", ["LOW", "MID", "HIGH"], 240, app.ndiAudioBufferSize.rawValue),
             ],
             .compass: [
-                SegmentedInt(.compassOrientation, "Orientation", ["PORTRAIT", "FACEUP"], 240, app.compassOrientation.rawValue)
+                SegmentedInt(.compassOrientation, "Orientation", ["PORTRAIT", "FACEUP"], 240, app.compassOrientation.rawValue),
             ],
             .arkit: [
                 SegmentedInt(.arkitTrackingType, "Tracking Type", ["DEVICE", "FACE", "MARKER"], 240, app.arkitTrackingType.rawValue),
-                SegmentedInt(.arkitFeaturePointsEnabled, "Feature Points", ["ON", "OFF"], 240, app.arkitFeaturePointsEnabled.rawValue)
+                SegmentedInt(.arkitFeaturePointsEnabled, "Feature Points", ["ON", "OFF"], 240, app.arkitFeaturePointsEnabled.rawValue),
             ],
             .imageDetection: [
                 SegmentedInt(.imageDetectorType, "Detection Type", ["FACE", "QR", "RECT", "TEXT"], 240, app.imageDetectorType.rawValue),
@@ -131,11 +130,11 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedBool(.imageDetectorTracks, "Tracking", ["ON", "OFF"], 240, app.imageDetectorTracks),
                 SegmentedInt(.imageDetectorNumberOfAngles, "Number of Face Angles", ["1", "3", "5", "7", "9", "11"], 240, app.imageDetectorNumberOfAngles.rawValue),
                 SegmentedBool(.imageDetectorDetectsEyeBlink, "Detect Eye Blink", ["ON", "OFF"], 240, app.imageDetectorDetectsEyeBlink),
-                SegmentedBool(.imageDetectorDetectsSmile, "Detect Smile", ["ON", "OFF"], 240, app.imageDetectorDetectsSmile)
+                SegmentedBool(.imageDetectorDetectsSmile, "Detect Smile", ["ON", "OFF"], 240, app.imageDetectorDetectsSmile),
             ],
             .beacon: [
-                UUIDInput(.beaconUUID, "Beacon UUID", 270, app.beaconUUID)
-            ]
+                UUIDInput(.beaconUUID, "Beacon UUID", 270, app.beaconUUID),
+            ],
         ]
     }
 

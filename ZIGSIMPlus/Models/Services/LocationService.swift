@@ -6,8 +6,8 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 import SwiftOSC
 import SwiftyJSON
 
@@ -21,7 +21,6 @@ private func createBeaconRegion(_ appSetting: AppSettingModel) -> CLBeaconRegion
 /// Data store for commands which depend on LocationManager.
 /// e.g.) GPS, iBeacon, etc.
 public class LocationService: NSObject {
-
     /// Singleton instance
     static let shared = LocationService()
 
@@ -124,22 +123,22 @@ public class LocationService: NSObject {
 // MARK: - CLLocationManagerDelegate methods
 
 extension LocationService: CLLocationManagerDelegate {
-    public final func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.latitudeData = (locations.last?.coordinate.latitude)!
-        self.longitudeData = (locations.last?.coordinate.longitude)!
+    public final func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        latitudeData = (locations.last?.coordinate.latitude)!
+        longitudeData = (locations.last?.coordinate.longitude)!
     }
 
-    public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        self.compassData = newHeading.magneticHeading
+    public func locationManager(_: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        compassData = newHeading.magneticHeading
     }
 
     // Called when the device started monitoring
-    public func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+    public func locationManager(_: CLLocationManager, didStartMonitoringFor _: CLRegion) {
         print("Start monitoring for iBeacon")
     }
 
     // Called when new data is received from beacons
-    public func locationManager(_ manager: CLLocationManager, didRangeBeacons newBeacons: [CLBeacon], in region: CLBeaconRegion) {
+    public func locationManager(_: CLLocationManager, didRangeBeacons newBeacons: [CLBeacon], in _: CLBeaconRegion) {
         for b in newBeacons {
             // Check if the beacon is already registered
             let index = beacons.firstIndex(where: {
@@ -159,7 +158,7 @@ extension LocationService: CLLocationManagerDelegate {
     }
 
     // Called when the user authorized monitorin location data
-    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    public func locationManager(_: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status != .authorizedAlways || status != .authorizedWhenInUse {
             // TODO: Show error message
         }
@@ -173,20 +172,20 @@ extension LocationService: Service {
         if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
             log += [
                 "gps:latitude:\(latitudeData)",
-                "gps:longitude:\(longitudeData)"
+                "gps:longitude:\(longitudeData)",
             ]
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
             log += [
                 "compass:compass:\(compassData)",
-                "compass:orientation:\(AppSettingModel.shared.compassOrientation == .faceup ? "faceup" : "portrait")"
+                "compass:orientation:\(AppSettingModel.shared.compassOrientation == .faceup ? "faceup" : "portrait")",
             ]
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
-            log += beacons.enumerated().map { (i, b) in
-                return "Beacon \(i): uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)\n"
+            log += beacons.enumerated().map { i, b in
+                "Beacon \(i): uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)\n"
             }
         }
 
@@ -205,8 +204,8 @@ extension LocationService: Service {
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
-            data += beacons.enumerated().map { (i, beacon)  in
-                return osc(
+            data += beacons.enumerated().map { i, beacon in
+                osc(
                     "beacon\(i)",
                     beacon.proximityUUID.uuidString,
                     beacon.major.intValue,
@@ -232,11 +231,11 @@ extension LocationService: Service {
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
             let objs = beacons.map { beacon in
-                return [
+                [
                     "uuid": beacon.proximityUUID.uuidString,
                     "major": beacon.major.intValue,
                     "minor": beacon.minor.intValue,
-                    "rssi": beacon.rssi
+                    "rssi": beacon.rssi,
                 ]
             }
             data["beacon"] = JSON(objs)

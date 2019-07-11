@@ -10,13 +10,12 @@ import Foundation
 import UIKit
 
 public class CommandDetailSettingsViewController: UIViewController {
-
     var presenter: CommandDetailSettingsPresenterProtocol!
     var command: Command!
 
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet var stackView: UIStackView!
 
-    override public func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         presenter = CommandDetailSettingsPresenter()
 
@@ -77,7 +76,7 @@ public class CommandDetailSettingsViewController: UIViewController {
         stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settingsForCommand.count) * 64.0)
     }
 
-    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
         view.endEditing(true)
     }
 
@@ -145,7 +144,7 @@ public class CommandDetailSettingsViewController: UIViewController {
             }
 
             let segmentedForNdiCamera = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)
-            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() && segmented.selectedSegmentIndex == 1 {
+            if !VideoCaptureService.shared.isDepthFrontCameraAvailable(), segmented.selectedSegmentIndex == 1 {
                 segmentedForNdiCamera?.selectedSegmentIndex = 0
                 AppSettingModel.shared.ndiCameraPosition = .BACK
                 segmentedForNdiCamera?.isEnabled = false
@@ -167,19 +166,18 @@ public class CommandDetailSettingsViewController: UIViewController {
             if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
                 segmented.isEnabled = false
             }
-        default :
+        default:
             return
         }
-
     }
 
     private func getSegmented(tagNo: Int) -> UISegmentedControl? {
         var segmented: UISegmentedControl?
         for stackView in stackView.arrangedSubviews {
             if ZIGSegmentedControl.self == type(of: stackView) {
-                if stackView.tag ==  tagNo {
-                  segmented = stackView as? UISegmentedControl
-                  break
+                if stackView.tag == tagNo {
+                    segmented = stackView as? UISegmentedControl
+                    break
                 }
             }
         }

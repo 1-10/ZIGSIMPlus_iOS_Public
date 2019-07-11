@@ -7,20 +7,21 @@
 //
 
 import Foundation
-import UIKit
 import SwiftOSC
 import SwiftyJSON
+import UIKit
 
 public class ProximityService {
     // Singleton instance
     static let shared = ProximityService()
 
     // MARK: - Instance Properties
+
     var proximity: Bool = false
     var callbackProximity: ((Bool) -> Void)?
 
     @objc func proximitySensorStateDidChange() {
-        self.proximity = UIDevice.current.proximityState
+        proximity = UIDevice.current.proximityState
     }
 
     // MARK: - Public methods
@@ -51,7 +52,7 @@ extension ProximityService: Service {
 
         if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
             log += [
-                "proximitymonitor:proximitymonitor:\(proximity)"
+                "proximitymonitor:proximitymonitor:\(proximity)",
             ]
         }
 

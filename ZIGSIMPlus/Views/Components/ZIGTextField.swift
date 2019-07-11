@@ -11,7 +11,6 @@ import UIKit
 /// UITextField with custom style
 @IBDesignable
 open class ZIGTextField: UITextField {
-
     func setup() {
         textColor = Theme.main
         backgroundColor = Theme.black
@@ -26,7 +25,7 @@ open class ZIGTextField: UITextField {
         setup()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }

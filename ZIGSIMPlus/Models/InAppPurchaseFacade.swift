@@ -18,7 +18,7 @@ class InAppPurchaseFacade: NSObject {
     }
 
     static let shared: InAppPurchaseFacade = InAppPurchaseFacade()
-    private override init () { super.init() }
+    private override init() { super.init() }
     var completion: ((TransactionResult, Error?) -> Void)?
     var productRequest: SKProductsRequest?
 
@@ -65,7 +65,7 @@ class InAppPurchaseFacade: NSObject {
 }
 
 extension InAppPurchaseFacade: SKProductsRequestDelegate {
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+    func productsRequest(_: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("didReceive")
         productRequest?.delegate = nil
 
@@ -78,7 +78,7 @@ extension InAppPurchaseFacade: SKProductsRequestDelegate {
         }
     }
 
-    func request(_ request: SKRequest, didFailWithError error: Error) {
+    func request(_: SKRequest, didFailWithError error: Error) {
         print("didFailWithError")
         productRequest?.delegate = nil
         executeCompletionHandler(result: .purchaseFailed, error: error)
@@ -86,7 +86,7 @@ extension InAppPurchaseFacade: SKProductsRequestDelegate {
 }
 
 extension InAppPurchaseFacade: SKPaymentTransactionObserver {
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    func paymentQueue(_: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("updatedTransactions")
 
         for transaction in transactions {

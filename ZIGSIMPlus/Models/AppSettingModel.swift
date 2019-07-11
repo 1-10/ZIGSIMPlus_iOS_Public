@@ -112,11 +112,12 @@ public class AppSettingModel {
             isActiveByCommand[command] = false
         }
     }
+
     static let shared = AppSettingModel()
 
     // MARK: - properties
 
-    var isActiveByCommand: Dictionary<Command, Bool> = [:]
+    var isActiveByCommand: [Command: Bool] = [:]
 
     // MARK: - public methods
 
@@ -131,7 +132,7 @@ public class AppSettingModel {
             ("IP Address", ipAddress),
             ("Port", String(portNumber)),
             ("Message Format", format),
-            ("Device UUID", deviceUUID)
+            ("Device UUID", deviceUUID),
         ]
     }
 

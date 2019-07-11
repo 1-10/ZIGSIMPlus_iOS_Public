@@ -6,18 +6,18 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import UIKit
 import MediaPlayer
+import UIKit
 
 class CommandOutputViewController: UIViewController {
-    @IBOutlet weak var textField: UITextView!
-    @IBOutlet weak var touchArea: UIView!
-    @IBOutlet weak var textPreview: UIView!
-    @IBOutlet weak var imagePreview: UIView!
-    @IBOutlet weak var togglePreviewModeButton: UIBarButtonItem!
+    @IBOutlet var textField: UITextView!
+    @IBOutlet var touchArea: UIView!
+    @IBOutlet var textPreview: UIView!
+    @IBOutlet var imagePreview: UIView!
+    @IBOutlet var togglePreviewModeButton: UIBarButtonItem!
     private var isTextPreviewMode: Bool = true
 
-    @IBOutlet weak var settingsTable: UITableView!
+    @IBOutlet var settingsTable: UITableView!
     var settings: [(String, String)] = []
 
     var presenter: CommandOutputPresenterProtocol!
@@ -34,7 +34,7 @@ class CommandOutputViewController: UIViewController {
         presenter.composeChildViewArchitecture()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_: Bool) {
         // Dummy volume view to disable default system volume hooks
         let volumeView = MPVolumeView(frame: CGRect(x: -100, y: -100, width: 0, height: 0))
         view.addSubview(volumeView)
@@ -48,18 +48,18 @@ class CommandOutputViewController: UIViewController {
         updatePreviewMode()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_: Bool) {
         // Set area for touch points.
         // This has to be done after auto layout.
         touchArea.isHidden = !presenter.isTouchEnabled()
         TouchService.shared.setTouchArea(rect: touchArea.bounds)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_: Bool) {
         presenter.stopCommands()
     }
 
-    @IBAction func togglePreviewMode(_ sender: Any) {
+    @IBAction func togglePreviewMode(_: Any) {
         isTextPreviewMode.toggle()
         updatePreviewMode()
     }
@@ -72,19 +72,19 @@ class CommandOutputViewController: UIViewController {
 
     // MARK: - Touch Events
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
         TouchService.shared.addTouches(Array(touches))
     }
 
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with _: UIEvent?) {
         TouchService.shared.updateTouches(Array(touches))
     }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
         TouchService.shared.removeTouches(Array(touches))
     }
 
-    override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
+    override func touchesCancelled(_: Set<UITouch>?, with _: UIEvent?) {
         TouchService.shared.removeAllTouches()
     }
 }
@@ -119,7 +119,7 @@ extension CommandOutputViewController: CommandOutputPresenterDelegate {
 extension CommandOutputViewController: UITableViewDelegate {}
 
 extension CommandOutputViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return settings.count
     }
 

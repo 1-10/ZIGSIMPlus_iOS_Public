@@ -6,10 +6,10 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
+import DeviceKit
 import Foundation
 import SwiftOSC
 import SwiftyJSON
-import DeviceKit
 
 /// ServiceManager creates OSC / JSON data.
 /// It also creates single string for output view.
@@ -124,10 +124,10 @@ class ServiceManager {
                 "os": "ios",
                 "osversion": device.systemVersion,
                 "displaywidth": Int(Utils.screenWidth),
-                "displayheight": Int(Utils.screenHeight)
+                "displayheight": Int(Utils.screenHeight),
             ],
             "timestamp": Utils.getTimestamp(),
-            "sensordata": data
+            "sensordata": data,
         ])
     }
 

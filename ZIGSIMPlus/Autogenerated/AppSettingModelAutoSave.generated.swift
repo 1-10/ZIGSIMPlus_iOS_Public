@@ -47,7 +47,6 @@ private var imageDetectorDetectsEyeBlinkKey: Void?
 private var imageDetectorDetectsSmileKey: Void?
 
 extension AppSettingModel {
-
     var dataDestination: DataDestination {
         get {
             return getAssociatedObject(self, &dataDestinationKey) ?? Defaults[.dataDestination]

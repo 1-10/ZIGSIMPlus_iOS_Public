@@ -6,9 +6,9 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import UIKit
-import SVProgressHUD
 import MarkdownKit
+import SVProgressHUD
+import UIKit
 
 typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
@@ -18,9 +18,9 @@ enum alertModalType {
 }
 
 final class CommandSelectionViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var lockPremiumFeatureLabel: UILabel!
-    @IBOutlet weak var unlockPremiumFeatureButton: UIButton!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var lockPremiumFeatureLabel: UILabel!
+    @IBOutlet var unlockPremiumFeatureButton: UIButton!
 
     var presenter: CommandSelectionPresenterProtocol!
     var cells: [Command: StandardCell] = [:]
@@ -29,7 +29,7 @@ final class CommandSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.loadCommandOnOffFromUserDefaults()
-        self.tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
+        tableView.register(UINib(nibName: "StandardCell", bundle: nil), forCellReuseIdentifier: "StandardCell")
         adjustNavigationDesign()
     }
 
@@ -66,7 +66,7 @@ final class CommandSelectionViewController: UIViewController {
         }
     }
 
-    @IBAction func actionButton(_ sender: UIButton) {
+    @IBAction func actionButton(_: UIButton) {
         let message = getAlertMessageForPurchase()
         showAlertWithMarkdownMessage(title: premiumTextTitle, message: message, alertType: .premium)
     }
@@ -159,15 +159,15 @@ final class CommandSelectionViewController: UIViewController {
         let billingImage = UIImage(named: "key")
         unlockPremiumFeatureButton.tintColor = Theme.white.withAlphaComponent(0.7)
         unlockPremiumFeatureButton.setImage(billingImage, for: .normal)
-        unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width ) / 2,
-                                        y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height ) / 2,
-                                        width: unlockPremiumFeatureButton.frame.size.width ,
-                                        height: unlockPremiumFeatureButton.frame.size.height)
+        unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width) / 2,
+                                                  y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height) / 2,
+                                                  width: unlockPremiumFeatureButton.frame.size.width,
+                                                  height: unlockPremiumFeatureButton.frame.size.height)
     }
 
     private func getAlertMessageForPurchase() -> String {
         var message = premiumTextBody
-        if  unavailablePremiumFunctionCount > 0 {
+        if unavailablePremiumFunctionCount > 0 {
             message += (unavailablePremiumFunctionCount >= 2
                 ? "\n\nThe following functions don't work on this device:"
                 : "\n\nThe following function doesn't work on this device:")
@@ -179,7 +179,7 @@ final class CommandSelectionViewController: UIViewController {
                 if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
                     message += "\n- NDI Depth function"
                 }
-                if VideoCaptureService.shared.isDepthRearCameraAvailable() && !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
+                if VideoCaptureService.shared.isDepthRearCameraAvailable(), !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
                     message += "\n- NDI Depth function on front camera"
                 }
             }
@@ -208,7 +208,6 @@ final class CommandSelectionViewController: UIViewController {
 }
 
 extension CommandSelectionViewController: UITableViewDelegate {
-
     // Disallow selecting unavailable command
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let cell = tableView.cellForRow(at: indexPath) {
@@ -223,21 +222,20 @@ extension CommandSelectionViewController: UITableViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         lockPremiumFeatureLabel.frame = CGRect(x: 0, y: (-1) * scrollView.contentOffset.y, width: lockPremiumFeatureLabel.frame.size.width, height: lockPremiumFeatureLabel.frame.size.height)
-        unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width ) / 2,
-                                        y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height ) / 2 - scrollView.contentOffset.y,
-                                        width: unlockPremiumFeatureButton.frame.size.width ,
-                                        height: unlockPremiumFeatureButton.frame.size.height)
+        unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width) / 2,
+                                                  y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height) / 2 - scrollView.contentOffset.y,
+                                                  width: unlockPremiumFeatureButton.frame.size.width,
+                                                  height: unlockPremiumFeatureButton.frame.size.height)
     }
 }
 
 extension CommandSelectionViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return presenter.numberOfCommandToSelect
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let commandToSelect = self.presenter.getCommandToSelect(forRow: indexPath.row)
+        let commandToSelect = presenter.getCommandToSelect(forRow: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableView.separatorStyle = .none
@@ -246,27 +244,27 @@ extension CommandSelectionViewController: UITableViewDataSource {
         cell.commandLabel.tag = indexPath.row
         cell.commandOnOffButton.tag = indexPath.row
         cell.viewController = self
-        cell.commandSelectionPresenter = self.presenter
+        cell.commandSelectionPresenter = presenter
         cells[Command.allCases[indexPath.row]] = cell
 
         if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]]! {
-          cell.checkMarkLavel.text = checkMark
+            cell.checkMarkLavel.text = checkMark
         } else {
-          cell.checkMarkLavel.text = ""
+            cell.checkMarkLavel.text = ""
         }
 
         if CommandAndServiceMediator.isAvailable(Command.allCases[indexPath.row]) {
             setAvailable(true, forCell: cell)
         } else {
             setAvailable(false, forCell: cell)
-            if Command.allCases[indexPath.row].isPremium && !presenter.isPremiumFeaturePurchased {
+            if Command.allCases[indexPath.row].isPremium, !presenter.isPremiumFeaturePurchased {
                 unAvailablePremiumCommands.append(Command.allCases[indexPath.row])
                 let orderedSet: NSOrderedSet = NSOrderedSet(array: unAvailablePremiumCommands)
                 unAvailablePremiumCommands = orderedSet.array as! [Command]
             }
         }
 
-        if !presenter.isPremiumFeaturePurchased && Command.allCases[indexPath.row].isPremium {
+        if !presenter.isPremiumFeaturePurchased, Command.allCases[indexPath.row].isPremium {
             setAvailable(false, forCell: cell)
         }
 
@@ -329,6 +327,6 @@ extension CommandSelectionViewController: CommandSelectionPresenterDelegate {
             self.tableView.isUserInteractionEnabled = true
         }
         alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }

@@ -11,10 +11,10 @@ import MarkdownKit
 import UIKit
 
 public class TermsOfUseViewController: UIViewController {
-    @IBOutlet weak var text: UITextView!
-    override public func viewDidLoad() {
+    @IBOutlet var text: UITextView!
+    public override func viewDidLoad() {
         super.viewDidLoad()
-        let filePath = Bundle.main.path(forResource: "TermsOfUse", ofType: "plist" )
+        let filePath = Bundle.main.path(forResource: "TermsOfUse", ofType: "plist")
         let plist = NSDictionary(contentsOfFile: filePath!)
         let termsOfuse: String? = plist?["TermsOfUse"] as? String
         let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 10))

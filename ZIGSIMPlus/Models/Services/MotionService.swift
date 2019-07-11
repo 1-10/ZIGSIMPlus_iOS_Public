@@ -6,17 +6,18 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import Foundation
-import UIKit
 import CoreMotion
+import Foundation
 import SwiftOSC
 import SwiftyJSON
+import UIKit
 
 public class MotionService {
     // Singleton instance
     static let shared = MotionService()
 
     // MARK: - Instance Properties
+
     let motionManager = CMMotionManager()
     var accel: CMAcceleration = CMAcceleration()
     var gravity: CMAcceleration = CMAcceleration()
@@ -34,11 +35,11 @@ public class MotionService {
             return
         }
 
-        motionManager.startDeviceMotionUpdates(to: OperationQueue.current!) { (deviceMotion, error) in
+        motionManager.startDeviceMotionUpdates(to: OperationQueue.current!) { deviceMotion, error in
             guard error == nil,
                 let motion = deviceMotion else {
-                    self.isError = true
-                    return
+                self.isError = true
+                return
             }
 
             // Save data
@@ -67,7 +68,7 @@ extension MotionService: Service {
 
         if isError {
             return [
-                "motion unavailable"
+                "motion unavailable",
             ]
         }
 
@@ -75,7 +76,7 @@ extension MotionService: Service {
             log += [
                 "accel:x:\(accel.x)",
                 "accel:y:\(accel.y)",
-                "accel:z:\(accel.z)"
+                "accel:z:\(accel.z)",
             ]
         }
 
@@ -83,7 +84,7 @@ extension MotionService: Service {
             log += [
                 "gravity:x:\(gravity.x)",
                 "gravity:y:\(gravity.y)",
-                "gravity:z:\(gravity.z)"
+                "gravity:z:\(gravity.z)",
             ]
         }
 
@@ -91,7 +92,7 @@ extension MotionService: Service {
             log += [
                 "gyro:x:\(gyro.x)",
                 "gyro:y:\(gyro.y)",
-                "gyro:z:\(gyro.z)"
+                "gyro:z:\(gyro.z)",
             ]
         }
 
@@ -100,7 +101,7 @@ extension MotionService: Service {
                 "quaternion:x:\(quaternion.x)",
                 "quaternion:y:\(quaternion.y)",
                 "quaternion:z:\(quaternion.z)",
-                "quaternion:w:\(quaternion.w)"
+                "quaternion:w:\(quaternion.w)",
             ]
         }
 
@@ -136,7 +137,7 @@ extension MotionService: Service {
             data["accel"] = [
                 "x": accel.x,
                 "y": accel.y,
-                "z": accel.z
+                "z": accel.z,
             ]
         }
 
@@ -144,7 +145,7 @@ extension MotionService: Service {
             data["gravity"] = [
                 "x": gravity.x,
                 "y": gravity.y,
-                "z": gravity.z
+                "z": gravity.z,
             ]
         }
 
@@ -152,7 +153,7 @@ extension MotionService: Service {
             data["gyro"] = [
                 "x": gyro.x,
                 "y": gyro.y,
-                "z": gyro.z
+                "z": gyro.z,
             ]
         }
 
@@ -161,7 +162,7 @@ extension MotionService: Service {
                 "x": quaternion.x,
                 "y": quaternion.y,
                 "z": quaternion.z,
-                "w": quaternion.w
+                "w": quaternion.w,
             ]
         }
 

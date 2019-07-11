@@ -58,9 +58,10 @@ public class CommandPlayer {
         updatingTimer = Timer.scheduledTimer(
             timeInterval: Utils.getMessageInterval(),
             target: self,
-            selector: #selector(self.monitorCommands),
+            selector: #selector(monitorCommands),
             userInfo: nil,
-            repeats: true)
+            repeats: true
+        )
 
         for command in Command.allCases {
             if isActive(command) {

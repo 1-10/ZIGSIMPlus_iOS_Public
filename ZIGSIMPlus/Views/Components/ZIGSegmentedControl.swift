@@ -11,7 +11,6 @@ import UIKit
 /// UISegmentedControl with custom style
 @IBDesignable
 open class ZIGSegmentedControl: UISegmentedControl {
-
     func setup() {
         tintColor = Theme.main
         layer.backgroundColor = Theme.black.cgColor
@@ -28,7 +27,7 @@ open class ZIGSegmentedControl: UISegmentedControl {
         setup()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
