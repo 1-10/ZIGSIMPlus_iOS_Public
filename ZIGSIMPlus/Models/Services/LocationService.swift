@@ -172,13 +172,6 @@ extension LocationService : Service {
     func toLog() -> [String] {
         var log = [String]()
 
-        var stringMsg = ""
-
-        for (i, b) in beacons.enumerated() {
-            stringMsg += "Beacon \(i): uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)\n"
-        }
-
-
         if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
             log += [
                 "gps:latitude:\(latitudeData)",
