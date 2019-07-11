@@ -181,7 +181,10 @@ extension LocationService: Service {
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
             log += beacons.enumerated().map { i, b in // swiftlint:disable:this identifier_name
-                "Beacon \(i): uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)\n"
+                let uuid = b.proximityUUID.uuidString
+                let major = b.major.intValue
+                let minor = b.minor.intValue
+                return "Beacon \(i): uuid:\(uuid) major:\(major) minor:\(minor) rssi:\(b.rssi)"
             }
         }
 
