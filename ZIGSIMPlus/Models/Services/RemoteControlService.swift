@@ -41,6 +41,7 @@ public class RemoteControlService: NSObject {
     }
 
     @objc func onVolumeChange(notification: NSNotification) {
+        // swiftlint:disable:next force_cast
         volume = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as! Double
     }
 
@@ -57,7 +58,10 @@ public class RemoteControlService: NSObject {
         // Start audioengine and add trigger for play/pause button
         do {
             try audioEngine.start()
-            MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget(self, action: #selector(onTogglePlayPause(_:)))
+            MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget(
+                self,
+                action: #selector(onTogglePlayPause(_:))
+            )
         } catch {
             print(">> yo Failed to start audio engine")
         }
@@ -83,7 +87,10 @@ public class RemoteControlService: NSObject {
             name: Notification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
             object: nil
         )
-        MPRemoteCommandCenter.shared().togglePlayPauseCommand.removeTarget(self, action: #selector(onTogglePlayPause(_:)))
+        MPRemoteCommandCenter.shared().togglePlayPauseCommand.removeTarget(
+            self,
+            action: #selector(onTogglePlayPause(_:))
+        )
     }
 
     /// Called every frame to convert button events to boolean values

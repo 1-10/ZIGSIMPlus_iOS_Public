@@ -94,6 +94,7 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
             case .purchased, .restored:
                 // Deal with .restored here, not in "paymentQueueRestoreCompletedTransactionsFinished"
                 // See: https://stackoverflow.com/questions/14309427/paymentqueuerestorecompletedtransactionsfinished-vs-updatedtransactions
+                // swiftlint:disable:previous line_length
 
                 SKPaymentQueue.default().finishTransaction(transaction)
 

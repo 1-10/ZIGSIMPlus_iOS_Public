@@ -15,8 +15,14 @@ public class NetworkAdapter {
     static let shared = NetworkAdapter()
     private init() {}
 
-    var tcpClient: TCPClient = TCPClient(address: AppSettingModel.shared.ipAddress, port: Int32(AppSettingModel.shared.portNumber))
-    var udpClient: UDPClient = UDPClient(address: AppSettingModel.shared.ipAddress, port: Int32(AppSettingModel.shared.portNumber))
+    var tcpClient: TCPClient = TCPClient(
+        address: AppSettingModel.shared.ipAddress,
+        port: Int32(AppSettingModel.shared.portNumber)
+    )
+    var udpClient: UDPClient = UDPClient(
+        address: AppSettingModel.shared.ipAddress,
+        port: Int32(AppSettingModel.shared.portNumber)
+    )
 
     var error: Error?
 

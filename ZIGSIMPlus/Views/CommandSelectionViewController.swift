@@ -77,6 +77,7 @@ final class CommandSelectionViewController: UIViewController {
         // Get detail view controller
         switch command {
         case .compass, .ndi, .arkit, .beacon, .imageDetection:
+            // swiftlint:disable:next line_length force_cast
             let vc = storyboard!.instantiateViewController(withIdentifier: "CommandDetailSettingsView") as! CommandDetailSettingsViewController
             vc.command = command
 
@@ -159,10 +160,12 @@ final class CommandSelectionViewController: UIViewController {
         let billingImage = UIImage(named: "key")
         unlockPremiumFeatureButton.tintColor = Theme.white.withAlphaComponent(0.7)
         unlockPremiumFeatureButton.setImage(billingImage, for: .normal)
-        unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width) / 2,
-                                                  y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height) / 2,
-                                                  width: unlockPremiumFeatureButton.frame.size.width,
-                                                  height: unlockPremiumFeatureButton.frame.size.height)
+        unlockPremiumFeatureButton.frame = CGRect(
+            x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width) / 2,
+            y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height) / 2,
+            width: unlockPremiumFeatureButton.frame.size.width,
+            height: unlockPremiumFeatureButton.frame.size.height
+        )
     }
 
     private func getAlertMessageForPurchase() -> String {
@@ -179,7 +182,8 @@ final class CommandSelectionViewController: UIViewController {
                 if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
                     message += "\n- NDI Depth function"
                 }
-                if VideoCaptureService.shared.isDepthRearCameraAvailable(), !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
+                if VideoCaptureService.shared.isDepthRearCameraAvailable(),
+                    !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
                     message += "\n- NDI Depth function on front camera"
                 }
             }
@@ -211,8 +215,8 @@ extension CommandSelectionViewController: UITableViewDelegate {
     // Disallow selecting unavailable command
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let cell = tableView.cellForRow(at: indexPath) {
-            let ip = tableView.indexPath(for: cell)!
-            let CommandToSelect = presenter.getCommandToSelect(forRow: ip.row)
+            let ipForCell = tableView.indexPath(for: cell)!
+            let CommandToSelect = presenter.getCommandToSelect(forRow: ipForCell.row)
             if !CommandToSelect.isAvailable {
                 return nil
             }
@@ -221,11 +225,18 @@ extension CommandSelectionViewController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        lockPremiumFeatureLabel.frame = CGRect(x: 0, y: (-1) * scrollView.contentOffset.y, width: lockPremiumFeatureLabel.frame.size.width, height: lockPremiumFeatureLabel.frame.size.height)
-        unlockPremiumFeatureButton.frame = CGRect(x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width) / 2,
-                                                  y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height) / 2 - scrollView.contentOffset.y,
-                                                  width: unlockPremiumFeatureButton.frame.size.width,
-                                                  height: unlockPremiumFeatureButton.frame.size.height)
+        lockPremiumFeatureLabel.frame = CGRect(
+            x: 0,
+            y: (-1) * scrollView.contentOffset.y,
+            width: lockPremiumFeatureLabel.frame.size.width,
+            height: lockPremiumFeatureLabel.frame.size.height
+        )
+        unlockPremiumFeatureButton.frame = CGRect(
+            x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width) / 2,
+            y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height) / 2 - scrollView.contentOffset.y,
+            width: unlockPremiumFeatureButton.frame.size.width,
+            height: unlockPremiumFeatureButton.frame.size.height
+        )
     }
 }
 
@@ -236,6 +247,8 @@ extension CommandSelectionViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let commandToSelect = presenter.getCommandToSelect(forRow: indexPath.row)
+
+        // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath) as! StandardCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableView.separatorStyle = .none
@@ -260,7 +273,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
             if Command.allCases[indexPath.row].isPremium, !presenter.isPremiumFeaturePurchased {
                 unAvailablePremiumCommands.append(Command.allCases[indexPath.row])
                 let orderedSet: NSOrderedSet = NSOrderedSet(array: unAvailablePremiumCommands)
-                unAvailablePremiumCommands = orderedSet.array as! [Command]
+                unAvailablePremiumCommands = orderedSet.array as! [Command] // swiftlint:disable:this force_cast
             }
         }
 

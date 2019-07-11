@@ -9,7 +9,7 @@
 import XCTest
 @testable import ZIGSIMPlus
 
-// swiftlint:disable function_body_length force_try identifier_name
+// swiftlint:disable identifier_name
 
 class StringExtensionTests: XCTestCase {
     override func setUp() {

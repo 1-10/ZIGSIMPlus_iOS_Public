@@ -9,8 +9,6 @@
 import XCTest
 @testable import ZIGSIMPlus
 
-// swiftlint:disable force_cast function_body_length force_try
-
 class AppSettingModelTests: XCTestCase {
     override func setUp() {}
 

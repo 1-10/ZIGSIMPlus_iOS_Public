@@ -13,6 +13,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
+    // swiftlint:disable:next line_length
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // It's recommended to add a transaction queue observer at application launch
         // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html

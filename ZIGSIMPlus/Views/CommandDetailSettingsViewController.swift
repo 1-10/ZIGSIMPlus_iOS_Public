@@ -58,7 +58,15 @@ public class CommandDetailSettingsViewController: UIViewController {
 
                 let input = ZIGTextField()
                 input.text = data.value
-                input.addConstraint(NSLayoutConstraint(item: input, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(data.width)))
+                input.addConstraint(NSLayoutConstraint(
+                    item: input,
+                    attribute: .width,
+                    relatedBy: .equal,
+                    toItem: nil,
+                    attribute: .notAnAttribute,
+                    multiplier: 1,
+                    constant: CGFloat(data.width)
+                ))
 
                 input.addTarget(self, action: #selector(uuidInputAction(input:)), for: .allEditingEvents)
                 input.autocapitalizationType = .allCharacters
@@ -87,8 +95,8 @@ public class CommandDetailSettingsViewController: UIViewController {
 
         // Find setting by DetailSettingKey
         guard let setting: DetailSetting = settingsForCommand.first(where: {
-            if let s = $0 as? Segmented {
-                return s.key.rawValue == segmented.tag
+            if let seg = $0 as? Segmented {
+                return seg.key.rawValue == segmented.tag
             }
             return false
         }) else { return }

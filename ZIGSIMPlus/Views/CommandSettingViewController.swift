@@ -175,10 +175,18 @@ extension CommandSettingViewController: ContentScrollable {
     }
 
     func configureObserver() {
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { notification in
+        NotificationCenter.default.addObserver(
+            forName: UIResponder.keyboardWillShowNotification,
+            object: nil,
+            queue: nil
+        ) { notification in
             self.keyboardWillShow(notification)
         }
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { notification in
+        NotificationCenter.default.addObserver(
+            forName: UIResponder.keyboardWillHideNotification,
+            object: nil,
+            queue: nil
+        ) { notification in
             self.keyboardWillHide(notification)
         }
     }

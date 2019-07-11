@@ -10,7 +10,7 @@ import SwiftOSC
 import XCTest
 @testable import ZIGSIMPlus
 
-// swiftlint:disable force_cast function_body_length identifier_name
+// swiftlint:disable force_cast
 
 class ServiceManagerTests: XCTestCase {
     // Test if OSC includes device data

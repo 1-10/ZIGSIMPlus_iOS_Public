@@ -8,6 +8,8 @@
 
 import Foundation
 
+// swiftlint:disable line_length
+
 // Title and Body for help modal
 let modalTexts: [Command: (title: String, body: String)] = [
     .acceleration: ("Acceleration", """

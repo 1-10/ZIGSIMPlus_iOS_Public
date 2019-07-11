@@ -72,7 +72,9 @@ class AudioLevelService {
         var dataFormat = AudioStreamBasicDescription(
             mSampleRate: 44100.0,
             mFormatID: kAudioFormatLinearPCM,
-            mFormatFlags: AudioFormatFlags(kLinearPCMFormatFlagIsBigEndian | kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked),
+            mFormatFlags: AudioFormatFlags(
+                kLinearPCMFormatFlagIsBigEndian | kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked
+            ),
             mBytesPerPacket: 2,
             mFramesPerPacket: 1,
             mBytesPerFrame: 2,
@@ -101,12 +103,19 @@ class AudioLevelService {
 
         // Enable level meter
         var enabledLevelMeter: UInt32 = 1
-        AudioQueueSetProperty(queue, kAudioQueueProperty_EnableLevelMetering, &enabledLevelMeter, UInt32(MemoryLayout<UInt32>.size))
-        timer = Timer.scheduledTimer(timeInterval: fps,
-                                     target: self,
-                                     selector: #selector(AudioLevelService.detectVolume(timer:)),
-                                     userInfo: nil,
-                                     repeats: true)
+        AudioQueueSetProperty(
+            queue,
+            kAudioQueueProperty_EnableLevelMetering,
+            &enabledLevelMeter,
+            UInt32(MemoryLayout<UInt32>.size)
+        )
+        timer = Timer.scheduledTimer(
+            timeInterval: fps,
+            target: self,
+            selector: #selector(AudioLevelService.detectVolume(timer:)),
+            userInfo: nil,
+            repeats: true
+        )
         timer?.fire()
     }
 

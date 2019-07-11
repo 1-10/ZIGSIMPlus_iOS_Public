@@ -106,6 +106,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
     public func getCommandDetailSettings() -> [Command: [DetailSetting]] {
         let app = AppSettingModel.shared
 
+        // swiftlint:disable line_length
         return [
             .ndi: [
                 SegmentedInt(.ndiType, "Image Type", ["CAMERA", "DEPTH"], 240, app.ndiType.rawValue),
@@ -136,6 +137,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 UUIDInput(.beaconUUID, "Beacon UUID", 270, app.beaconUUID),
             ],
         ]
+        // swiftlint:enable line_length
     }
 
     public func updateSetting(setting: DetailSetting) {

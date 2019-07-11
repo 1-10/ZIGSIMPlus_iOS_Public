@@ -96,7 +96,11 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     private func updateCommandToSelectArray() {
         CommandToSelectArray = [CommandToSelect]()
         for command in Command.allCases {
-            CommandToSelectArray.append(CommandToSelect(labelString: command.rawValue, isAvailable: CommandAndServiceMediator.isAvailable(command)))
+            let cmd = CommandToSelect(
+                labelString: command.rawValue,
+                isAvailable: CommandAndServiceMediator.isAvailable(command)
+            )
+            CommandToSelectArray.append(cmd)
         }
     }
 }

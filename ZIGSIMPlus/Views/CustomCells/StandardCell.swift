@@ -52,8 +52,10 @@ public class StandardCell: UITableViewCell {
     }
 
     func setCommandsOfImageAvailability(_ sender: UIButton) {
-        let parent = viewController as! CommandSelectionViewController
-        if Command.allCases[sender.tag] == .ndi || Command.allCases[sender.tag] == .arkit || Command.allCases[sender.tag] == .imageDetection {
+        let parent = viewController as! CommandSelectionViewController // swiftlint:disable:this force_cast
+        if Command.allCases[sender.tag] == .ndi ||
+            Command.allCases[sender.tag] == .arkit ||
+            Command.allCases[sender.tag] == .imageDetection {
             if checkMarkLavel.text == checkMark {
                 parent.setSelectedButtonAvailable(sender.tag)
             } else {

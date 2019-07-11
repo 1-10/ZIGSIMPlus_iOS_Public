@@ -139,20 +139,16 @@ extension LocationService: CLLocationManagerDelegate {
 
     // Called when new data is received from beacons
     public func locationManager(_: CLLocationManager, didRangeBeacons newBeacons: [CLBeacon], in _: CLBeaconRegion) {
-        for b in newBeacons {
+        for beacon in newBeacons {
             // Check if the beacon is already registered
             let index = beacons.firstIndex(where: {
-                $0.proximityUUID == b.proximityUUID && $0.major == b.major && $0.minor == b.minor
+                $0.proximityUUID == beacon.proximityUUID && $0.major == beacon.major && $0.minor == beacon.minor
             })
 
             if index == nil {
-                // Add beacon data
-                print("Found iBeacon: uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)")
-                beacons.append(b)
+                beacons.append(beacon)
             } else {
-                // Update beacon data
-                beacons[index!] = b
-                print("Updated iBeacon: uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)")
+                beacons[index!] = beacon
             }
         }
     }
@@ -184,7 +180,7 @@ extension LocationService: Service {
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
-            log += beacons.enumerated().map { i, b in
+            log += beacons.enumerated().map { i, b in // swiftlint:disable:this identifier_name
                 "Beacon \(i): uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)\n"
             }
         }
@@ -226,7 +222,10 @@ extension LocationService: Service {
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
-            data["compass"] = JSON(["compass": compassData, "faceup": AppSettingModel.shared.compassOrientation.rawValue])
+            data["compass"] = JSON([
+                "compass": compassData,
+                "faceup": AppSettingModel.shared.compassOrientation.rawValue,
+            ])
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
