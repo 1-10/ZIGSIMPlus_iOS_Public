@@ -38,6 +38,7 @@ public class StandardCell: UITableViewCell {
     }
 
     @IBAction func modalButtonAction(_: UIButton) {
+        // swiftlint:disable:next force_cast
         let parent = viewController as! CommandSelectionViewController
         parent.showModal(commandNo: commandLabel.tag)
     }

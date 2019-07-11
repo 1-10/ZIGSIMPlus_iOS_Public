@@ -25,7 +25,7 @@ protocol CommandSelectionPresenterDelegate: AnyObject {
 
 final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     private weak var view: CommandSelectionPresenterDelegate!
-    private var CommandToSelectArray: [CommandToSelect] = []
+    private var commandToSelectArray: [CommandToSelect] = []
 
     init(view: CommandSelectionPresenterDelegate) {
         self.view = view
@@ -37,12 +37,12 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     }
 
     var numberOfCommandToSelect: Int {
-        return CommandToSelectArray.count
+        return commandToSelectArray.count
     }
 
     func getCommandToSelect(forRow row: Int) -> CommandToSelect {
-        guard row < CommandToSelectArray.count else { fatalError("Command nil") }
-        return CommandToSelectArray[row]
+        guard row < commandToSelectArray.count else { fatalError("Command nil") }
+        return commandToSelectArray[row]
     }
 
     func didSelectRow(atLabel labelString: String) {
@@ -94,13 +94,13 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
 
     // Update all CommandToSelect
     private func updateCommandToSelectArray() {
-        CommandToSelectArray = [CommandToSelect]()
+        commandToSelectArray = [CommandToSelect]()
         for command in Command.allCases {
             let cmd = CommandToSelect(
                 labelString: command.rawValue,
                 isAvailable: CommandAndServiceMediator.isAvailable(command)
             )
-            CommandToSelectArray.append(cmd)
+            commandToSelectArray.append(cmd)
         }
     }
 }

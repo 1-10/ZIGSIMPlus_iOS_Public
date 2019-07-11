@@ -86,7 +86,7 @@ public class CommandSettingViewController: UIViewController {
     }
 
     private func updateSettingTextData() -> Bool {
-        var texts: [textFieldName: String] = [:]
+        var texts: [TextFieldName: String] = [:]
         for textField in textFields {
             if textField.tag == 0 {
                 if Utils.isValidSettingViewText(text: textField, textType: .ipAddress), textField.text != "" {
@@ -114,7 +114,7 @@ public class CommandSettingViewController: UIViewController {
     }
 
     private func updateSettingSegmentData() {
-        var segmentControls: [segmentName: Int] = [:]
+        var segmentControls: [SegmentName: Int] = [:]
         for segment in segments {
             if segment.tag == 0 {
                 segmentControls[.dataDestination] = segment.selectedSegmentIndex

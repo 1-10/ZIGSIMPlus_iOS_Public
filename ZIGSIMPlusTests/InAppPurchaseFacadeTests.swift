@@ -94,7 +94,7 @@ class InAppPurchaseFacadeTests: XCTestCase {
 }
 
 class PaymentTransactionMock: SKPaymentTransaction {
-    var _transactionState: SKPaymentTransactionState = .deferred
+    var _transactionState: SKPaymentTransactionState = .deferred // swiftlint:disable:this identifier_name
 
     override var transactionState: SKPaymentTransactionState {
         get {

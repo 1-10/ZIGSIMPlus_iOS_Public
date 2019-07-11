@@ -12,7 +12,7 @@ import UIKit
 
 typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
-enum alertModalType {
+enum AlertModalType {
     case premium
     case detailSetting
 }
@@ -102,7 +102,7 @@ final class CommandSelectionViewController: UIViewController {
         showAlertWithMarkdownMessage(title: title, message: msg, alertType: .detailSetting)
     }
 
-    func showAlertWithMarkdownMessage(title: String, message: String, alertType: alertModalType) {
+    func showAlertWithMarkdownMessage(title: String, message: String, alertType: AlertModalType) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let attributedText = convertMessageFromStringToAttributedText(message)
         alert.setValue(attributedText, forKey: "attributedMessage")

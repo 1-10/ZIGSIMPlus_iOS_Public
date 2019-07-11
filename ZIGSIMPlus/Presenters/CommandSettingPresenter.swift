@@ -9,13 +9,13 @@
 import Foundation
 import SwiftyUserDefaults
 
-public enum textFieldName {
+public enum TextFieldName {
     case ipAdress
     case portNumber
     case uuid
 }
 
-public enum segmentName {
+public enum SegmentName {
     case dataDestination
     case dataProtocol
     case messageFormat
@@ -23,10 +23,10 @@ public enum segmentName {
 }
 
 protocol CommandSettingPresenterProtocol {
-    func getUserDefaultTexts() -> [textFieldName: String]
-    func getUserDefaultSegments() -> [segmentName: Int]
-    func updateTextsUserDefault(texts: [textFieldName: String])
-    func updateSegmentsUserDefault(segmentControls: [segmentName: Int])
+    func getUserDefaultTexts() -> [TextFieldName: String]
+    func getUserDefaultSegments() -> [SegmentName: Int]
+    func updateTextsUserDefault(texts: [TextFieldName: String])
+    func updateSegmentsUserDefault(segmentControls: [SegmentName: Int])
     func restorePurchase()
 }
 
@@ -41,8 +41,8 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         self.view = view
     }
 
-    func getUserDefaultTexts() -> [textFieldName: String] {
-        var texts: [textFieldName: String] = [:]
+    func getUserDefaultTexts() -> [TextFieldName: String] {
+        var texts: [TextFieldName: String] = [:]
         let appSettings = AppSettingModel.shared
         texts[.ipAdress] = appSettings.ipAddress
         texts[.portNumber] = appSettings.portNumber.description
@@ -50,8 +50,8 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         return texts
     }
 
-    func getUserDefaultSegments() -> [segmentName: Int] {
-        var segments: [segmentName: Int] = [:]
+    func getUserDefaultSegments() -> [SegmentName: Int] {
+        var segments: [SegmentName: Int] = [:]
         let appSettings = AppSettingModel.shared
         segments[.dataDestination] = appSettings.dataDestination.rawValue
         segments[.dataProtocol] = appSettings.transportProtocol.rawValue
@@ -61,14 +61,14 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
         return segments
     }
 
-    func updateTextsUserDefault(texts: [textFieldName: String]) {
+    func updateTextsUserDefault(texts: [TextFieldName: String]) {
         let appSettings = AppSettingModel.shared
         appSettings.ipAddress = texts[.ipAdress] ?? ""
         appSettings.portNumber = Int(texts[.portNumber] ?? "0") ?? 0
         appSettings.deviceUUID = texts[.uuid] ?? ""
     }
 
-    func updateSegmentsUserDefault(segmentControls: [segmentName: Int]) {
+    func updateSegmentsUserDefault(segmentControls: [SegmentName: Int]) {
         let appSettings = AppSettingModel.shared
         appSettings.dataDestination = DataDestination(rawValue: segmentControls[.dataDestination] ?? 0)!
         appSettings.transportProtocol = TransportProtocol(rawValue: segmentControls[.dataProtocol] ?? 0)!

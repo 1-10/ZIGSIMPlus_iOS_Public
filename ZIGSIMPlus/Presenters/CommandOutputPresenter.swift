@@ -37,6 +37,7 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
     // https://stackoverflow.com/questions/50780404/swift-how-to-reference-subview-from-appdelegate
     func composeChildViewArchitecture() {
         let factory = PresenterFactory()
+        // swiftlint:disable:next force_cast
         factory.createVideoCapturePresenter(parentView: view as! CommandOutputViewController)
     }
 

@@ -69,7 +69,7 @@ public class CommandPlayer {
             }
         }
 
-        if AppSettingModel.shared.dataDestination == .LOCAL_FILE {
+        if AppSettingModel.shared.dataDestination == .localFile {
             let data = ServiceManager.shared.getString()
             FileWriter.shared.open()
             FileWriter.shared.write(data)
@@ -89,7 +89,7 @@ public class CommandPlayer {
             RemoteControlService.shared.update()
         }
 
-        if AppSettingModel.shared.dataDestination == .LOCAL_FILE {
+        if AppSettingModel.shared.dataDestination == .localFile {
             let data = ServiceManager.shared.getString()
             FileWriter.shared.write(data)
         } else {

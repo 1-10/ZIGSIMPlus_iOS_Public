@@ -126,9 +126,9 @@ extension CommandOutputViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
 
-        if let c = cell as? CommandOutputViewSettingsTableCell {
+        if let cellForSetting = cell as? CommandOutputViewSettingsTableCell {
             let setting = settings[indexPath.row]
-            c.setKeyValue(setting.0, setting.1)
+            cellForSetting.setKeyValue(setting.0, setting.1)
         }
 
         return cell
