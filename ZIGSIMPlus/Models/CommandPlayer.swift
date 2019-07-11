@@ -72,8 +72,7 @@ public class CommandPlayer {
             let data = ServiceManager.shared.getString()
             FileWriter.shared.open()
             FileWriter.shared.write(data)
-        }
-        else {
+        } else {
             let data = ServiceManager.shared.getData()
             NetworkAdapter.shared.send(data)
         }
@@ -92,8 +91,7 @@ public class CommandPlayer {
         if AppSettingModel.shared.dataDestination == .LOCAL_FILE {
             let data = ServiceManager.shared.getString()
             FileWriter.shared.write(data)
-        }
-        else {
+        } else {
             let data = ServiceManager.shared.getData()
             NetworkAdapter.shared.send(data)
         }

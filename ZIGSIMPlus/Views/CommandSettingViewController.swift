@@ -15,7 +15,7 @@ protocol ContentScrollable {
     func removeObserver()
 }
 
-public class CommandSettingViewController : UIViewController {
+public class CommandSettingViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var labels: [UILabel]!
@@ -67,14 +67,14 @@ public class CommandSettingViewController : UIViewController {
     @IBAction func changeSettingData(_ sender: UISegmentedControl) {
         updateSettingSegmentData()
     }
-    
+
     @IBAction func restorePurchasePressed(_ sender: UIButton) {
         restorePurchaseButton.isEnabled = false
         SVProgressHUD.show()
         presenter.restorePurchase()
     }
 
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("should end editing!")
         if updateSettingTextData() {
             self.view.endEditing(true)
@@ -83,9 +83,9 @@ public class CommandSettingViewController : UIViewController {
             return false
         }
     }
-    
+
     private func updateSettingTextData() -> Bool {
-        var texts:[textFieldName: String] = [:]
+        var texts: [textFieldName: String] = [:]
         for textField in textFields {
             if textField.tag == 0 {
                 if Utils.isValidSettingViewText(text: textField, textType: .ipAddress) && textField.text != "" {
@@ -107,13 +107,13 @@ public class CommandSettingViewController : UIViewController {
                 }
             }
         }
-        
-        presenter.updateTextsUserDefault(texts:texts)
+
+        presenter.updateTextsUserDefault(texts: texts)
         return true
     }
-    
+
     private func updateSettingSegmentData() {
-        var segmentControls:[segmentName:Int] = [:]
+        var segmentControls: [segmentName: Int] = [:]
         for segment in segments {
             if segment.tag == 0 {
                 segmentControls[.dataDestination] = segment.selectedSegmentIndex
@@ -148,7 +148,7 @@ public class CommandSettingViewController : UIViewController {
 extension CommandSettingViewController: CommandSettingPresenterDelegate {
     func showRestorePurchaseResult(isSuccessful: Bool, title: String?, message: String?) {
         SVProgressHUD.dismiss()
-        
+
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Close", style: .default) { _ in
             self.restorePurchaseButton.isEnabled = true
@@ -159,13 +159,13 @@ extension CommandSettingViewController: CommandSettingPresenterDelegate {
 }
 
 extension CommandSettingViewController: UITextFieldDelegate {
-    private func setTextFieldSetting(texField:UITextField, text:String) {
+    private func setTextFieldSetting(texField: UITextField, text: String) {
         texField.text = String(text)
         texField.delegate = self
     }
 }
 
-extension CommandSettingViewController: ContentScrollable{
+extension CommandSettingViewController: ContentScrollable {
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureObserver()

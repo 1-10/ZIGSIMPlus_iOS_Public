@@ -19,7 +19,7 @@ public class NetworkAdapter {
     var udpClient: UDPClient = UDPClient(address: AppSettingModel.shared.ipAddress, port: Int32(AppSettingModel.shared.portNumber))
 
     var error: Error?
-    
+
     /// Send data over TCP / UDP automatically
     func send(_ data: Data) {
         switch AppSettingModel.shared.transportProtocol {

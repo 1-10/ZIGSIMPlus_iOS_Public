@@ -12,7 +12,6 @@ import SwiftyJSON
 import CoreMotion
 @testable import ZIGSIMPlus
 
-
 class AttitudeMock: CMAttitude {
     var _quaternion: CMQuaternion?
 
@@ -64,7 +63,6 @@ class MotionMock: CMDeviceMotion {
         get { return _attitude! }
     }
 }
-
 
 class MotionServiceTests: XCTestCase {
     // Test if OSC includes device data

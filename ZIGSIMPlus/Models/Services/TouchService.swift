@@ -84,7 +84,7 @@ public class TouchService {
         touchArea = rect
     }
 
-    private func getTouchResult(from touches:[UITouch]) -> [String] {
+    private func getTouchResult(from touches: [UITouch]) -> [String] {
         guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
             let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
             else {
@@ -101,7 +101,7 @@ public class TouchService {
                 // Position
                 result += [
                     String(format: "touch:x:%.3f", point.x),
-                    String(format: "touch:y:%.3f", point.y),
+                    String(format: "touch:y:%.3f", point.y)
                 ]
 
                 // touch radius
@@ -120,9 +120,9 @@ public class TouchService {
                     "pencil:touch:x:\(point.x)",
                     "pencil:touch:y:\(point.y)",
                     "pencil:altitude:\(touch.altitudeAngle)",
-                    "pencil:azimuth:\(touch.azimuthAngle(in: touch.view!))",
+                    "pencil:azimuth:\(touch.azimuthAngle(in: touch.view!))"
                 ]
-                
+
                 if #available(iOS 9.0, *) {
                     result.append(String(format: "pencil:force:%.3f", touch.force))
                 }
@@ -143,7 +143,7 @@ public class TouchService {
     }
 }
 
-extension TouchService : Service {
+extension TouchService: Service {
     func toLog() -> [String] {
         return getTouchResult(from: touchPoints)
     }
@@ -233,7 +233,7 @@ extension TouchService : Service {
                 if #available(iOS 9.0, *) {
                     obj["force"] = touch.force
                 }
-                
+
                 return obj
             }
             data["pencil"] = JSON(pencilData)

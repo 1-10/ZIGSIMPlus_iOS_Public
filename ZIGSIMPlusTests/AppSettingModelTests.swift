@@ -22,7 +22,7 @@ class AppSettingModelTests: XCTestCase {
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
         XCTAssertFalse(AppSettingModel.shared.isCameraUsed())
     }
-    
+
     func testIsCameraUsed_WithoutParameter_WhenArkitActive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = true
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
@@ -43,28 +43,28 @@ class AppSettingModelTests: XCTestCase {
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
         XCTAssertTrue(AppSettingModel.shared.isCameraUsed(exceptBy: .arkit))
     }
- 
+
     func testIsCameraUsed_ExceptNdi_WhenAllCameraCommandsInactive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = false
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
         XCTAssertFalse(AppSettingModel.shared.isCameraUsed(exceptBy: .ndi))
     }
-    
+
     func testIsCameraUsed_ExceptNdi_WhenImageDetectionActive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = false
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = true
         XCTAssertTrue(AppSettingModel.shared.isCameraUsed(exceptBy: .ndi))
     }
-    
+
     func testIsCameraUsed_ExceptImageDetection_WhenAllCameraCommandsInactive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = false
         AppSettingModel.shared.isActiveByCommand[.ndi] = false
         AppSettingModel.shared.isActiveByCommand[.imageDetection] = false
         XCTAssertFalse(AppSettingModel.shared.isCameraUsed(exceptBy: .imageDetection))
     }
-    
+
     func testIsCameraUsed_ExceptImageDetection_WhenArkitActive() {
         AppSettingModel.shared.isActiveByCommand[.arkit] = true
         AppSettingModel.shared.isActiveByCommand[.ndi] = false

@@ -38,7 +38,7 @@ public class AltimeterService {
     private func updateAltimeterData() {
         print("pressure:pressure: \(self.pressureData)")
         print("pressure:altitude: \(self.altitudeData)")
-        var altimeterData = [0.0,0.0]
+        var altimeterData = [0.0, 0.0]
         altimeterData[0] = self.pressureData
         altimeterData[1] = self.altitudeData
         callbackAltimeter?(altimeterData)
@@ -78,14 +78,14 @@ public class AltimeterService {
     }
 }
 
-extension AltimeterService : Service {
+extension AltimeterService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.pressure]! {
             log += [
                 "pressure:pressure:\(pressureData)",
-                "pressure:altitude:\(altitudeData)",
+                "pressure:altitude:\(altitudeData)"
             ]
         }
 

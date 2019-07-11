@@ -30,7 +30,6 @@ public enum DetailSettingsKey: Int {
     case beaconUUID
 }
 
-
 /// DetailSetting data represents each setting in CommandDetailSettings view.
 /// We only have Segmented now, but you can support input types by adding a struct which implement DetailSetting.
 protocol DetailSetting {}
@@ -65,7 +64,7 @@ public struct SegmentedBool: Segmented {
     var segments: [String]
     var width: Int
     var value: Bool
-    
+
     init (_ key: DetailSettingsKey, _ label: String, _ segments: [String], _ width: Int, _ value: Bool) {
         self.key = key
         self.label = label
@@ -74,7 +73,6 @@ public struct SegmentedBool: Segmented {
         self.value = value
     }
 }
-
 
 // For example, If you want to support settings with Float slider, use this:
 // public struct FloatInput: DetailSetting {
@@ -116,14 +114,14 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedInt(.ndiDepthType, "Depth Type", ["DEPTH", "DISPARITY"], 240, app.depthType.rawValue),
                 SegmentedInt(.ndiResolution, "Resolution", ["VGA", "HD", "FHD"], 240, app.ndiResolution.rawValue),
                 SegmentedInt(.ndiAudioEnabled, "Audio", ["ON", "OFF"], 240, app.ndiAudioEnabled.rawValue),
-                SegmentedInt(.ndiAudioBufferSize, "Audio Latency", ["LOW", "MID", "HIGH"], 240, app.ndiAudioBufferSize.rawValue),
+                SegmentedInt(.ndiAudioBufferSize, "Audio Latency", ["LOW", "MID", "HIGH"], 240, app.ndiAudioBufferSize.rawValue)
             ],
             .compass: [
-                SegmentedInt(.compassOrientation, "Orientation", ["PORTRAIT", "FACEUP"], 240, app.compassOrientation.rawValue),
+                SegmentedInt(.compassOrientation, "Orientation", ["PORTRAIT", "FACEUP"], 240, app.compassOrientation.rawValue)
             ],
             .arkit: [
                 SegmentedInt(.arkitTrackingType, "Tracking Type", ["DEVICE", "FACE", "MARKER"], 240, app.arkitTrackingType.rawValue),
-                SegmentedInt(.arkitFeaturePointsEnabled, "Feature Points", ["ON", "OFF"], 240, app.arkitFeaturePointsEnabled.rawValue),
+                SegmentedInt(.arkitFeaturePointsEnabled, "Feature Points", ["ON", "OFF"], 240, app.arkitFeaturePointsEnabled.rawValue)
             ],
             .imageDetection: [
                 SegmentedInt(.imageDetectorType, "Detection Type", ["FACE", "QR", "RECT", "TEXT"], 240, app.imageDetectorType.rawValue),
@@ -133,11 +131,11 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedBool(.imageDetectorTracks, "Tracking", ["ON", "OFF"], 240, app.imageDetectorTracks),
                 SegmentedInt(.imageDetectorNumberOfAngles, "Number of Face Angles", ["1", "3", "5", "7", "9", "11"], 240, app.imageDetectorNumberOfAngles.rawValue),
                 SegmentedBool(.imageDetectorDetectsEyeBlink, "Detect Eye Blink", ["ON", "OFF"], 240, app.imageDetectorDetectsEyeBlink),
-                SegmentedBool(.imageDetectorDetectsSmile, "Detect Smile", ["ON", "OFF"], 240, app.imageDetectorDetectsSmile),
+                SegmentedBool(.imageDetectorDetectsSmile, "Detect Smile", ["ON", "OFF"], 240, app.imageDetectorDetectsSmile)
             ],
             .beacon: [
-                UUIDInput(.beaconUUID, "Beacon UUID", 270, app.beaconUUID),
-            ],
+                UUIDInput(.beaconUUID, "Beacon UUID", 270, app.beaconUUID)
+            ]
         ]
     }
 

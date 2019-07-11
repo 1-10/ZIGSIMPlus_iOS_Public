@@ -104,7 +104,7 @@ public class RemoteControlService: NSObject {
     }
 }
 
-extension RemoteControlService : Service {
+extension RemoteControlService: Service {
     func toLog() -> [String] {
         var log = [String]()
 

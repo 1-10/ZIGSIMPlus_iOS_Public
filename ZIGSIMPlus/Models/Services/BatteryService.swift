@@ -43,15 +43,14 @@ public class BatteryService {
     }
 }
 
-extension BatteryService : Service {
+extension BatteryService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.battery]! {
             if isBatteryError {
                 log.append("battery level unknown")
-            }
-            else {
+            } else {
                 log.append("battery:\(battery)")
             }
         }

@@ -74,7 +74,7 @@ class TouchServiceTests: XCTestCase {
 
         var touches: [UITouchMock] = [
             UITouchMock(12, 34, 0.1, 0.2),
-            UITouchMock(56, 78, 0.3, 0.4),
+            UITouchMock(56, 78, 0.3, 0.4)
         ]
         TouchService.shared.addTouches(touches)
 
@@ -171,7 +171,7 @@ class TouchServiceTests: XCTestCase {
 
         var touches: [UITouchMock] = [
             UITouchMock(12, 34, 0.1, 0.2),
-            UITouchMock(56, 78, 0.3, 0.4),
+            UITouchMock(56, 78, 0.3, 0.4)
         ]
         TouchService.shared.addTouches(touches)
 
@@ -252,7 +252,7 @@ class TouchServiceTests: XCTestCase {
 
         var touches: [UITouchMock] = [
             UITouchMock(12, 34, 0.1, 0.2),
-            UITouchMock(56, 78, 0.3, 0.4),
+            UITouchMock(56, 78, 0.3, 0.4)
         ]
         TouchService.shared.addTouches(touches)
 

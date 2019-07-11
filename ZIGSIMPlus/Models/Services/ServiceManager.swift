@@ -28,8 +28,7 @@ class ServiceManager {
         if AppSettingModel.shared.transportFormat == .OSC {
             let osc = getOSC()
             data = osc.data
-        }
-        else {
+        } else {
             let json = getJSON()
             data = try! json.rawData()
         }
@@ -41,8 +40,7 @@ class ServiceManager {
         if AppSettingModel.shared.transportFormat == .OSC {
             let osc = getOSC()
             return osc.getString()
-        }
-        else {
+        } else {
             let json = getJSON()
             return json.rawString(.utf8, options: [])! + "\n"
         }
@@ -126,7 +124,7 @@ class ServiceManager {
                 "os": "ios",
                 "osversion": device.systemVersion,
                 "displaywidth": Int(Utils.screenWidth),
-                "displayheight": Int(Utils.screenHeight),
+                "displayheight": Int(Utils.screenHeight)
             ],
             "timestamp": Utils.getTimestamp(),
             "sensordata": data

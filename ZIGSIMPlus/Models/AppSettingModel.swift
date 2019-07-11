@@ -131,7 +131,7 @@ public class AppSettingModel {
             ("IP Address", ipAddress),
             ("Port", String(portNumber)),
             ("Message Format", format),
-            ("Device UUID", deviceUUID),
+            ("Device UUID", deviceUUID)
         ]
     }
 
@@ -206,4 +206,3 @@ extension DefaultsKeys {
     static let isRemoteControlCommandActive = DefaultsKey<Bool>("isRemoteControlCommandActive", defaultValue: false)
     static let isBatteryCommandActive = DefaultsKey<Bool>("isBatteryCommandActive", defaultValue: false)
 }
-

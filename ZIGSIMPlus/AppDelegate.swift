@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // It's recommended to add a transaction queue observer at application launch
         // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html
         SKPaymentQueue.default().add(InAppPurchaseFacade.shared)
-        
+
         // Inject dependency here
         composePresenters()
 
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html
         SKPaymentQueue.default().remove(InAppPurchaseFacade.shared)
     }
-    
+
     private func composePresenters() {
         let factory = PresenterFactory()
         let tabBarController = window?.rootViewController as! UITabBarController

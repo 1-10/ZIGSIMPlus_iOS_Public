@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class CommandDetailSettingsViewController : UIViewController {
+public class CommandDetailSettingsViewController: UIViewController {
 
     var presenter: CommandDetailSettingsPresenterProtocol!
     var command: Command!
@@ -36,20 +36,20 @@ public class CommandDetailSettingsViewController : UIViewController {
                     segmented.insertSegment(withTitle: segment, at: i, animated: true)
                     segmented.setWidth(CGFloat(data.width / data.segments.count), forSegmentAt: i)
                 }
-                
+
                 if let dataInt = data as? SegmentedInt {
                     segmented.selectedSegmentIndex = dataInt.value
                 } else if let dataBool = data as? SegmentedBool {
                     segmented.selectedSegmentIndex = (dataBool.value ? 0 : 1)
                 }
-                
+
                 segmented.addTarget(self, action: #selector(segmentedAction(segmented:)), for: .valueChanged)
 
                 // Use DetailSettingKey for identifier
                 segmented.tag = data.key.rawValue
-                
+
                 setSegmentedAvailablity(settingKey: data.key, segmented)
-                
+
                 stackView.addArrangedSubview(segmented)
 
             case let data as UUIDInput:
@@ -93,8 +93,7 @@ public class CommandDetailSettingsViewController : UIViewController {
             }
             return false
         }) else { return }
-        
-        
+
         // Pass updated setting to presenter
         if var segmentedInt = setting as? SegmentedInt {
             setSegmentedAvailablity(settingKey: segmentedInt.key, segmented)
@@ -131,12 +130,12 @@ public class CommandDetailSettingsViewController : UIViewController {
             }
             return false
         }) as? UUIDInput else { return }
-        
+
         // Pass updated setting to presenter
         setting.value = text
         presenter.updateSetting(setting: setting)
     }
-    
+
     private func setSegmentedAvailablity(settingKey: DetailSettingsKey, _ segmented: UISegmentedControl) {
         switch settingKey {
         case .ndiType:
@@ -144,9 +143,9 @@ public class CommandDetailSettingsViewController : UIViewController {
                 segmented.selectedSegmentIndex = 0
                 segmented.isEnabled = false
             }
-            
+
             let segmentedForNdiCamera = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)
-            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() && segmented.selectedSegmentIndex == 1  {
+            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() && segmented.selectedSegmentIndex == 1 {
                 segmentedForNdiCamera?.selectedSegmentIndex = 0
                 AppSettingModel.shared.ndiCameraPosition = .BACK
                 segmentedForNdiCamera?.isEnabled = false
@@ -154,7 +153,7 @@ public class CommandDetailSettingsViewController : UIViewController {
                 segmentedForNdiCamera?.isEnabled = true
             }
         case .ndiCamera:
-            if !VideoCaptureService.shared.isDepthFrontCameraAvailable(){
+            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
                 let segmentedForNdiType = getSegmented(tagNo: DetailSettingsKey.ndiType.rawValue)
                 if segmentedForNdiType?.selectedSegmentIndex == 1 {
                     segmented.selectedSegmentIndex = 0
@@ -171,10 +170,10 @@ public class CommandDetailSettingsViewController : UIViewController {
         default :
             return
         }
-        
+
     }
-    
-    private func getSegmented(tagNo :Int) -> UISegmentedControl? {
+
+    private func getSegmented(tagNo: Int) -> UISegmentedControl? {
         var segmented: UISegmentedControl?
         for stackView in stackView.arrangedSubviews {
             if ZIGSegmentedControl.self == type(of: stackView) {

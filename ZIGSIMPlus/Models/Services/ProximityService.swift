@@ -45,7 +45,7 @@ public class ProximityService {
     }
 }
 
-extension ProximityService : Service {
+extension ProximityService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
@@ -72,7 +72,7 @@ extension ProximityService : Service {
         var data = JSON()
 
         if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
-            data["proximitymonitor"] = JSON(["proximitymonitor":proximity])
+            data["proximitymonitor"] = JSON(["proximitymonitor": proximity])
         }
 
         return data

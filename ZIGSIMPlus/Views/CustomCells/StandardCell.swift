@@ -20,7 +20,7 @@ public class StandardCell: UITableViewCell {
     @IBOutlet weak var labelConstaint: NSLayoutConstraint!
     var commandSelectionPresenter: CommandSelectionPresenterProtocol!
     var viewController: UIViewController!
-    
+
     @IBAction func commandOnOffButtonAction(_ sender: UIButton) {
         setCheckMarkLavelText()
         setCommandsOfImageAvailability(sender)
@@ -31,7 +31,7 @@ public class StandardCell: UITableViewCell {
         }
         commandSelectionPresenter.didSelectRow(atLabel: Command.allCases[sender.tag].rawValue)
     }
-    
+
     @IBAction func detailButtonAction(_ sender: UIButton) {
         let parent = viewController as! CommandSelectionViewController
         parent.showDetail(commandNo: commandOnOffButton.tag)
@@ -41,7 +41,7 @@ public class StandardCell: UITableViewCell {
         let parent = viewController as! CommandSelectionViewController
         parent.showModal(commandNo: commandLabel.tag)
     }
-    
+
     func initCell() {
         self.backgroundColor = Theme.black
         checkMarkLavel.textColor = Theme.main
@@ -51,10 +51,10 @@ public class StandardCell: UITableViewCell {
         let newConstant = screenWidth - 195 // "195" is calibration constant adjusted to fit any devices.
         labelConstaint.constant =  newConstant
     }
-    
+
     func setCommandsOfImageAvailability(_ sender: UIButton) {
         let parent = viewController as! CommandSelectionViewController
-        if Command.allCases[sender.tag] == .ndi || Command.allCases[sender.tag] == .arkit || Command.allCases[sender.tag] == .imageDetection{
+        if Command.allCases[sender.tag] == .ndi || Command.allCases[sender.tag] == .arkit || Command.allCases[sender.tag] == .imageDetection {
             if checkMarkLavel.text == checkMark {
                 parent.setSelectedButtonAvailable(sender.tag)
             } else {
@@ -62,11 +62,11 @@ public class StandardCell: UITableViewCell {
             }
         }
     }
-    
+
     func setCheckMarkLavelText() {
         if checkMarkLavel.text == "" {
             checkMarkLavel.text = checkMark
-        } else  {
+        } else {
             checkMarkLavel.text = ""
         }
     }

@@ -26,7 +26,7 @@ class PresenterFactory {
             }
         }
     }
-    
+
     func createVideoCapturePresenter(parentView: CommandOutputViewController) {
         for viewController in parentView.children {
             if type(of: viewController) == VideoCaptureViewController.self {

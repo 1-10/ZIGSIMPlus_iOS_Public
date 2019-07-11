@@ -14,10 +14,10 @@ class Utils {
         let alphabet = "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         return String((0..<length).map { _ -> Character in alphabet.randomElement()! })
     }
-    
+
     static func separateBeaconUuid(uuid: String, position: Int) -> String {
         let strTmp = uuid
-        var separatedUuid:[String]
+        var separatedUuid: [String]
         if ((strTmp.range(of: "-")) != nil) {
             separatedUuid = strTmp.components(separatedBy: "-")
             if position >= 0 && position <= 4 && separatedUuid.count == 5 {
@@ -95,7 +95,7 @@ class Utils {
 
         return uuid
     }
-    
+
     static func isValidSettingViewText(text: UITextField, textType: SettingViewTextType) -> Bool {
         switch textType {
         case .ipAddress:
@@ -106,7 +106,7 @@ class Utils {
             return Utils.isCompose(text.text ?? "0", of: "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         }
     }
-    
+
     private static func isCompose(_ text: String, of chars: String) -> Bool {
         let characterSet = NSMutableCharacterSet()
         characterSet.addCharacters(in: chars)

@@ -36,14 +36,14 @@ class ServiceManagerTests: XCTestCase {
 
     // Test if OSC includes data from Stores
     func test_getOSC_keys() {
-        let commandsAndKeys: [Command:String] = [
+        let commandsAndKeys: [Command: String] = [
             .pressure: "pressure", // AltimeterDataStore
             .arkit: "arkit", // ArkitDataStore
             .micLevel: "miclevel", // AudioLevelDataStore
             .gps: "gps", // LocationDataStore
             .acceleration: "accel", // MiscDataStore
             .proximity: "proximitymonitor", // ProximityDataStore
-            .remoteControl: "remotecontrol", // RemoteControlDataStore
+            .remoteControl: "remotecontrol" // RemoteControlDataStore
 
             // TouchDataStore data is not sent until the device is touched
             // .touch: "touch01", // TouchDataStore
@@ -83,7 +83,7 @@ class ServiceManagerTests: XCTestCase {
 
     // Test if JSON includes data from Stores
     func test_getJSON_keys() {
-        let commandsAndKeys: [Command:String] = [
+        let commandsAndKeys: [Command: String] = [
             .pressure: "pressure", // AltimeterDataStore
             .arkit: "arkit", // ArkitDataStore
             .micLevel: "miclevel", // AudioLevelDataStore
@@ -91,7 +91,7 @@ class ServiceManagerTests: XCTestCase {
             .acceleration: "accel", // MiscDataStore
             .proximity: "proximitymonitor", // ProximityDataStore
             .remoteControl: "remoteControl", // RemoteControlDataStore
-            .touch: "touches", // TouchDataStore
+            .touch: "touches" // TouchDataStore
         ]
 
         commandsAndKeys.forEach { (command, key) in

@@ -18,7 +18,6 @@ private func createBeaconRegion(_ appSetting: AppSettingModel) -> CLBeaconRegion
     return CLBeaconRegion(proximityUUID: uuid, identifier: "\(deviceUUID) region")
 }
 
-
 /// Data store for commands which depend on LocationManager.
 /// e.g.) GPS, iBeacon, etc.
 public class LocationService: NSObject {
@@ -33,16 +32,16 @@ public class LocationService: NSObject {
     // For GPS
     private var latitudeData: Double = 0.0
     private var longitudeData: Double = 0.0
-    var gpsCallback: (([Double]) -> Void)? = nil
+    var gpsCallback: (([Double]) -> Void)?
 
     // For compass
     private var compassData: Double = 0.0
-    var compassCallback: ((Double) -> Void)? = nil
+    var compassCallback: ((Double) -> Void)?
 
     // beacons data
-    private var beaconRegion : CLBeaconRegion
+    private var beaconRegion: CLBeaconRegion
     private var beacons: [CLBeacon] = [CLBeacon]()
-    var beaconsCallback: (([CLBeacon]) -> Void)? = nil
+    var beaconsCallback: (([CLBeacon]) -> Void)?
 
     private override init() {
         // Init GPS
@@ -130,7 +129,7 @@ extension LocationService: CLLocationManagerDelegate {
         self.longitudeData = (locations.last?.coordinate.longitude)!
     }
 
-    public func locationManager(_ manager:CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+    public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         self.compassData = newHeading.magneticHeading
     }
 
@@ -151,8 +150,7 @@ extension LocationService: CLLocationManagerDelegate {
                 // Add beacon data
                 print("Found iBeacon: uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)")
                 beacons.append(b)
-            }
-            else {
+            } else {
                 // Update beacon data
                 beacons[index!] = b
                 print("Updated iBeacon: uuid:\(b.proximityUUID.uuidString) major:\(b.major.intValue) minor:\(b.minor.intValue) rssi:\(b.rssi)")
@@ -168,7 +166,7 @@ extension LocationService: CLLocationManagerDelegate {
     }
 }
 
-extension LocationService : Service {
+extension LocationService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
@@ -225,11 +223,11 @@ extension LocationService : Service {
         var data = JSON()
 
         if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
-            data["gps"] = JSON(["latitude": latitudeData, "longitude":longitudeData])
+            data["gps"] = JSON(["latitude": latitudeData, "longitude": longitudeData])
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
-            data["compass"] = JSON(["compass": compassData,"faceup": AppSettingModel.shared.compassOrientation.rawValue])
+            data["compass"] = JSON(["compass": compassData, "faceup": AppSettingModel.shared.compassOrientation.rawValue])
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {

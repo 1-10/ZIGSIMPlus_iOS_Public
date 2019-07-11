@@ -79,7 +79,7 @@ class AudioLevelService {
             mReserved: 0)
 
         // Observe input level
-        var audioQueue: AudioQueueRef? = nil
+        var audioQueue: AudioQueueRef?
         var error = noErr
         error = AudioQueueNewInput(
                            &dataFormat,
@@ -116,14 +116,14 @@ class AudioLevelService {
     }
 }
 
-extension AudioLevelService : Service {
+extension AudioLevelService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
             log += [
                 "miclevel:max\(maxLevel)",
-                "miclevel:average\(averageLevel)",
+                "miclevel:average\(averageLevel)"
             ]
         }
 

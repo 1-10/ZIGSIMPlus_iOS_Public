@@ -93,8 +93,7 @@ extension CommandOutputViewController: CommandOutputPresenterDelegate {
     func updateOutput(with log: String, errorLog: String?) {
         if errorLog == nil {
             textField.text = log
-        }
-        else {
+        } else {
             let output = "\(errorLog!)\n\n\(log)"
             let attributedString = NSMutableAttributedString(string: output)
 

@@ -9,25 +9,25 @@
 import Foundation
 
 // Title and Body for help modal
-let modalTexts:[Command: (title: String, body: String)] = [
-    .acceleration : ("Acceleration", """
+let modalTexts: [Command: (title: String, body: String)] = [
+    .acceleration: ("Acceleration", """
 Acceleration command detects acceleration that the user is giving to the device.
 Values are in G's (gravitational force) for X, Y and Z axis.
 """),
-    .gravity : ("Gravity", """
+    .gravity: ("Gravity", """
 Gravity command detects gravity acceleration vector expressed in the device's reference frame.
 Values are in G's (gravitational force) for X, Y and Z axis.
 """),
-    .gyro : ("Gyro", """
+    .gyro: ("Gyro", """
 Gyro command detects rotation rate of the device.
 Values contain a measurement of gyroscope data whose bias has been removed by Core Motion algorithms.
 Values are in radians per second around X, Y and Z axis.
 """),
-    .quaternion : ("Quaternion", """
+    .quaternion: ("Quaternion", """
 Quaternion command detects attitude of the device, that is, the orientation of a body relative to a given frame of reference.
 Values are quaternion for X, Y, Z and W axis.
 """),
-    .compass : ("Compass", """
+    .compass: ("Compass", """
 Compass command detects azimuth angle and outputs following values:
 **Compass**:Azimuth angle. North is 0 degrees, east is 90 degrees, south is 180 degrees, and so on. A negative value indicates an invalid direction.
 **Orientation**:Orientation of device. This can be set in the detail settings.
@@ -41,35 +41,35 @@ Pressure command detects altitude events and outputs following values:
 **pressure** [hPa]
 **altitude** [meter]
 """),
-    .gps : ("GPS", """
+    .gps: ("GPS", """
 GPS command detects GPS signal and outputs **latitude** and **longitude**.
 """),
-    .touch : ("Touch", """
+    .touch: ("Touch", """
 Touch command detects touch events in Start tab and outputs following values:
 **Position** is the relative position of touches from the center of the screen.
 **Radius** is the radius of touch event in pixel size.
 **Force** is the force of 3D Touch, where a value of 1.0 represents the force of an average touch.
 """),
-    .beacon : ("Beacon", """
+    .beacon: ("Beacon", """
 Beacon command detects iBeacons around the device and outputs following values:
 **BeaconUUID**, **Major** and **Minor** are used to identify the beacon.
 **RSSI** is the strength of the signal from the beacon.
 """),
-    .proximity : ("Proximity", """
+    .proximity: ("Proximity", """
 Proximity command detects whether the proximity sensor is close to the user (true) or not (false).
 """),
-    .micLevel : ("Mic Level", """
+    .micLevel: ("Mic Level", """
 Mic Level command detects sound level around the device and outputs following values:
 **max**: Peak RMS power of the mic input.
 **average**: Average RMS power of the mic input.
 Max value is 0.
 """),
-    .remoteControl : ("Remote Control", """
+    .remoteControl: ("Remote Control", """
 Remote Control command monitors the state of remote controllers of headphones connected to the device.
 *playpause*, *volumeUp* and *volumeDown* shows the buttons are pressed or not.
 *isPlaying* and *volume* shows the device state changed by controllers.
 """),
-    .ndi : ("NDI™", """
+    .ndi: ("NDI™", """
 NDI command transmits images from the device via NDI protocol.
 You cannot use NDI, ARKit and Image Detection simultaneously.
 This command has following settings:
@@ -95,7 +95,7 @@ Lower latency may cause audio glitch due to small buffer.
 NDI™ is a trademark of NewTek, Inc.
 For more detail of NDI, See http://NDI.NewTek.com/
 """),
-    .nfc : ("NFC Reader", """
+    .nfc: ("NFC Reader", """
 NFC Reader command detects NFC tags and read messages that contain NDEF data.
 Output values are defined by the NDEF specification.
 
@@ -104,7 +104,7 @@ Output values are defined by the NDEF specification.
 **typenameformat**: Type Name Format field of the payload.
 **type**: Type of the payload.
 """),
-    .arkit : ("ARKit", """
+    .arkit: ("ARKit", """
 ARKit command tracks different objects for the tracking type.
 You cannot use NDI, ARKit and Image Detection simultaneously.
 
@@ -114,11 +114,11 @@ You cannot use NDI, ARKit and Image Detection simultaneously.
 
 If **Feature Points** is *ON*, the position of feature points will be output.
 """),
-    .battery : ("Battery", """
+    .battery: ("Battery", """
 Battery command monitors the battery charge level of the device.
 It ranges from 0.0 (fully discharged) to 1.0 (100% charged).
 """),
-    .applePencil : ("Apple Pencil", """
+    .applePencil: ("Apple Pencil", """
 Apple Pencil command detects touch events in Start tab (same as Touch command).
 Note that it only works on Apple Pencil compatible devices, that are some of iPad models.
 
@@ -148,5 +148,5 @@ Output values for Detection Type FACE:
 Output values for others:
 **topleft, topright, bottomleft, bottomright**: Coordinate in the video frame. Bottom left is (0, 0), top right is determined by the dimension of the video.
 **qrmessage, qrversion, qrmaskpattern, errorcorrectionlevel**: Output only when Detection Type is QR.
-"""),
+""")
 ]

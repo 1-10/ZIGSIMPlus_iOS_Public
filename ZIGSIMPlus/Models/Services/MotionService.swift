@@ -61,7 +61,7 @@ public class MotionService {
     }
 }
 
-extension MotionService : Service {
+extension MotionService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
@@ -75,7 +75,7 @@ extension MotionService : Service {
             log += [
                 "accel:x:\(accel.x)",
                 "accel:y:\(accel.y)",
-                "accel:z:\(accel.z)",
+                "accel:z:\(accel.z)"
             ]
         }
 
@@ -83,7 +83,7 @@ extension MotionService : Service {
             log += [
                 "gravity:x:\(gravity.x)",
                 "gravity:y:\(gravity.y)",
-                "gravity:z:\(gravity.z)",
+                "gravity:z:\(gravity.z)"
             ]
         }
 
@@ -91,7 +91,7 @@ extension MotionService : Service {
             log += [
                 "gyro:x:\(gyro.x)",
                 "gyro:y:\(gyro.y)",
-                "gyro:z:\(gyro.z)",
+                "gyro:z:\(gyro.z)"
             ]
         }
 
@@ -100,7 +100,7 @@ extension MotionService : Service {
                 "quaternion:x:\(quaternion.x)",
                 "quaternion:y:\(quaternion.y)",
                 "quaternion:z:\(quaternion.z)",
-                "quaternion:w:\(quaternion.w)",
+                "quaternion:w:\(quaternion.w)"
             ]
         }
 
