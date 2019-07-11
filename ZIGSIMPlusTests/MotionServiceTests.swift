@@ -70,11 +70,19 @@ class MotionServiceTests: XCTestCase {
     // Test if OSC includes device data
     func test_toOSC_empty() {
         AppSettingModel.shared.isActiveByCommand[.acceleration] = false
+        AppSettingModel.shared.isActiveByCommand[.gravity] = false
+        AppSettingModel.shared.isActiveByCommand[.gyro] = false
+        AppSettingModel.shared.isActiveByCommand[.quaternion] = false
         let osc = MotionService.shared.toOSC()
         XCTAssertEqual(osc.count, 0, "No messages")
     }
 
     func test_toOSC() {
+        
+        AppSettingModel.shared.isActiveByCommand[.acceleration] = false
+        AppSettingModel.shared.isActiveByCommand[.gravity] = false
+        AppSettingModel.shared.isActiveByCommand[.gyro] = false
+        AppSettingModel.shared.isActiveByCommand[.quaternion] = false
         let motion = MotionMock(
             CMAcceleration(x: 1, y: 2, z: 3),
             CMAcceleration(x: 4, y: 5, z: 6),
@@ -112,6 +120,7 @@ class MotionServiceTests: XCTestCase {
         osc = MotionService.shared.toOSC()
         XCTAssertEqual(osc.count, 1, "Only 1 message")
         XCTAssert(osc[0].address.string.contains("/quaternion"), "0th message is quaternion")
+        print("testQuaternion: \(osc[0].arguments)")
         XCTAssertEqual(osc[0].arguments as! [Double], [1.0, 2.0, 3.0, 4.0], "quaternion is correct")
         AppSettingModel.shared.isActiveByCommand[.quaternion] = false
     }
