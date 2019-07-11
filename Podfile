@@ -17,6 +17,7 @@ target 'ZIGSIMPlus' do
   pod 'MarkdownKit'
   pod 'Sourcery'
   pod 'SwiftLint'
+  pod 'SwiftFormat/CLI'
 
   target 'ZIGSIMPlusTests' do
     inherit! :search_paths
