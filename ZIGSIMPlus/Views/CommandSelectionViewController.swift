@@ -278,6 +278,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
     
     func setAvailable(_ isAvailable: Bool, forCell cell: StandardCell?) {
         cell?.commandOnOffButton.isEnabled = isAvailable
+        cell?.detailButton.isEnabled = isAvailable
         if isAvailable {
             cell?.commandLabel.textColor = Theme.main
             cell?.detailButton.tintColor = Theme.main
