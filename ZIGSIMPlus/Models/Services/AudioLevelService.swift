@@ -134,7 +134,7 @@ extension AudioLevelService : Service {
         var data = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
-            data.append(osc("miclevel", averageLevel, maxLevel))
+            data.append(osc("miclevel", maxLevel, averageLevel))
         }
 
         return data
