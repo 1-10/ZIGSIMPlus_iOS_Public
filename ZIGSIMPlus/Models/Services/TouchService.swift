@@ -52,11 +52,9 @@ public class TouchService {
         if !isEnabled { return }
 
         for touchToRemove in touchesToRemove {
-            for (i, t) in touchPoints.enumerated() {
-                if t == touchToRemove {
-                    touchPoints.remove(at: i)
-                    break
-                }
+            for (i, t) in touchPoints.enumerated() where t == touchToRemove {
+                touchPoints.remove(at: i)
+                break
             }
         }
     }
@@ -65,11 +63,9 @@ public class TouchService {
         if !isEnabled { return }
 
         for touchToUpdate in touchesToUpdate {
-            for (i, t) in touchPoints.enumerated() {
-                if t == touchToUpdate {
-                    touchPoints[i] = touchToUpdate
-                    break
-                }
+            for (i, t) in touchPoints.enumerated() where t == touchToUpdate {
+                touchPoints[i] = touchToUpdate
+                break
             }
         }
     }

@@ -11,6 +11,7 @@ import Foundation
 import SwiftOSC
 import SwiftyJSON
 
+// swiftlint:disable:next function_parameter_count
 func audioQueueInputCallback(inUserData _: UnsafeMutableRawPointer?,
                              inAQ _: AudioQueueRef,
                              inBuffer _: AudioQueueBufferRef,
