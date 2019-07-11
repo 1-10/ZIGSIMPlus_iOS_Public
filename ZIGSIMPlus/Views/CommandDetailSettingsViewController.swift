@@ -26,56 +26,9 @@ public class CommandDetailSettingsViewController: UIViewController {
         for setting in settingsForCommand {
             switch setting {
             case let data as Segmented:
-                let label = ZIGLabel()
-                label.text = data.label
-                stackView.addArrangedSubview(label)
-
-                let segmented = ZIGSegmentedControl()
-                for (i, segment) in data.segments.enumerated() {
-                    segmented.insertSegment(withTitle: segment, at: i, animated: true)
-                    segmented.setWidth(CGFloat(data.width / data.segments.count), forSegmentAt: i)
-                }
-
-                if let dataInt = data as? SegmentedInt {
-                    segmented.selectedSegmentIndex = dataInt.value
-                } else if let dataBool = data as? SegmentedBool {
-                    segmented.selectedSegmentIndex = (dataBool.value ? 0 : 1)
-                }
-
-                segmented.addTarget(self, action: #selector(segmentedAction(segmented:)), for: .valueChanged)
-
-                // Use DetailSettingKey for identifier
-                segmented.tag = data.key.rawValue
-
-                setSegmentedAvailablity(settingKey: data.key, segmented)
-
-                stackView.addArrangedSubview(segmented)
-
+                renderSegmented(data)
             case let data as UUIDInput:
-                let label = ZIGLabel()
-                label.text = data.label
-                stackView.addArrangedSubview(label)
-
-                let input = ZIGTextField()
-                input.text = data.value
-                input.addConstraint(NSLayoutConstraint(
-                    item: input,
-                    attribute: .width,
-                    relatedBy: .equal,
-                    toItem: nil,
-                    attribute: .notAnAttribute,
-                    multiplier: 1,
-                    constant: CGFloat(data.width)
-                ))
-
-                input.addTarget(self, action: #selector(uuidInputAction(input:)), for: .allEditingEvents)
-                input.autocapitalizationType = .allCharacters
-
-                // Use DetailSettingKey for identifier
-                input.tag = data.key.rawValue
-
-                stackView.addArrangedSubview(input)
-
+                renderUUIDInput(data)
             default:
                 break
             }
@@ -177,6 +130,59 @@ public class CommandDetailSettingsViewController: UIViewController {
         default:
             return
         }
+    }
+
+    private func renderSegmented(_ data: Segmented) {
+        let label = ZIGLabel()
+        label.text = data.label
+        stackView.addArrangedSubview(label)
+
+        let segmented = ZIGSegmentedControl()
+        for (i, segment) in data.segments.enumerated() {
+            segmented.insertSegment(withTitle: segment, at: i, animated: true)
+            segmented.setWidth(CGFloat(data.width / data.segments.count), forSegmentAt: i)
+        }
+
+        if let dataInt = data as? SegmentedInt {
+            segmented.selectedSegmentIndex = dataInt.value
+        } else if let dataBool = data as? SegmentedBool {
+            segmented.selectedSegmentIndex = (dataBool.value ? 0 : 1)
+        }
+
+        segmented.addTarget(self, action: #selector(segmentedAction(segmented:)), for: .valueChanged)
+
+        // Use DetailSettingKey for identifier
+        segmented.tag = data.key.rawValue
+
+        setSegmentedAvailablity(settingKey: data.key, segmented)
+
+        stackView.addArrangedSubview(segmented)
+    }
+
+    private func renderUUIDInput(_ data: UUIDInput) {
+        let label = ZIGLabel()
+        label.text = data.label
+        stackView.addArrangedSubview(label)
+
+        let input = ZIGTextField()
+        input.text = data.value
+        input.addConstraint(NSLayoutConstraint(
+            item: input,
+            attribute: .width,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1,
+            constant: CGFloat(data.width)
+        ))
+
+        input.addTarget(self, action: #selector(uuidInputAction(input:)), for: .allEditingEvents)
+        input.autocapitalizationType = .allCharacters
+
+        // Use DetailSettingKey for identifier
+        input.tag = data.key.rawValue
+
+        stackView.addArrangedSubview(input)
     }
 
     private func getSegmented(tagNo: Int) -> UISegmentedControl? {
