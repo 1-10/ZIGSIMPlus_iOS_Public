@@ -1,2 +1,16 @@
 excluded:
-- Pods
+  - Pods
+
+disabled_rules:
+  - trailing_comma
+
+identifier_name:
+  excluded:
+    - id
+    - x
+    - y
+    - z
+    - i
+    - ii
+    - j
+    - t
