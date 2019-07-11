@@ -11,7 +11,7 @@ import Foundation
 import SwiftOSC
 import SwiftyJSON
 
-func AudioQueueInputCallback(inUserData _: UnsafeMutableRawPointer?,
+func audioQueueInputCallback(inUserData _: UnsafeMutableRawPointer?,
                              inAQ _: AudioQueueRef,
                              inBuffer _: AudioQueueBufferRef,
                              inStartTime _: UnsafePointer<AudioTimeStamp>,
@@ -88,7 +88,7 @@ class AudioLevelService {
         var error = noErr
         error = AudioQueueNewInput(
             &dataFormat,
-            AudioQueueInputCallback,
+            audioQueueInputCallback,
             unsafeBitCast(self, to: UnsafeMutableRawPointer.self),
             CFRunLoopGetCurrent(),
             CFRunLoopMode.commonModes.rawValue,

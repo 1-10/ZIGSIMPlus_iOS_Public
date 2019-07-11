@@ -23,6 +23,9 @@ public class CommandSettingViewController: UIViewController {
     @IBOutlet var restorePurchaseButton: UIButton!
     var presenter: CommandSettingPresenterProtocol!
 
+    var showObserver: NSObjectProtocol?
+    var hideObserver: NSObjectProtocol?
+
     public override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -175,14 +178,14 @@ extension CommandSettingViewController: ContentScrollable {
     }
 
     func configureObserver() {
-        NotificationCenter.default.addObserver(
+        showObserver = NotificationCenter.default.addObserver(
             forName: UIResponder.keyboardWillShowNotification,
             object: nil,
             queue: nil
         ) { notification in
             self.keyboardWillShow(notification)
         }
-        NotificationCenter.default.addObserver(
+        hideObserver = NotificationCenter.default.addObserver(
             forName: UIResponder.keyboardWillHideNotification,
             object: nil,
             queue: nil
@@ -193,10 +196,13 @@ extension CommandSettingViewController: ContentScrollable {
 
     func removeObserver() {
         NotificationCenter.default.removeObserver(self)
+        if showObserver != nil { NotificationCenter.default.removeObserver(showObserver! as Any) }
+        if hideObserver != nil { NotificationCenter.default.removeObserver(hideObserver! as Any) }
     }
 
     func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
+        // swiftlint:disable:next force_cast
         let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
         scrollView.contentInset.bottom = keyboardSize
     }

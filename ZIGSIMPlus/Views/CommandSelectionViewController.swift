@@ -216,8 +216,8 @@ extension CommandSelectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let cell = tableView.cellForRow(at: indexPath) {
             let ipForCell = tableView.indexPath(for: cell)!
-            let CommandToSelect = presenter.getCommandToSelect(forRow: ipForCell.row)
-            if !CommandToSelect.isAvailable {
+            let commandToSelect = presenter.getCommandToSelect(forRow: ipForCell.row)
+            if !commandToSelect.isAvailable {
                 return nil
             }
         }
@@ -225,15 +225,17 @@ extension CommandSelectionViewController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let labelWidth = lockPremiumFeatureLabel.frame.size.width
+        let labelHeight = lockPremiumFeatureLabel.frame.size.height
         lockPremiumFeatureLabel.frame = CGRect(
             x: 0,
             y: (-1) * scrollView.contentOffset.y,
-            width: lockPremiumFeatureLabel.frame.size.width,
-            height: lockPremiumFeatureLabel.frame.size.height
+            width: labelWidth,
+            height: labelHeight
         )
         unlockPremiumFeatureButton.frame = CGRect(
-            x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width) / 2,
-            y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height) / 2 - scrollView.contentOffset.y,
+            x: (labelWidth - unlockPremiumFeatureButton.frame.size.width) / 2,
+            y: (labelHeight - unlockPremiumFeatureButton.frame.size.height) / 2 - scrollView.contentOffset.y,
             width: unlockPremiumFeatureButton.frame.size.width,
             height: unlockPremiumFeatureButton.frame.size.height
         )

@@ -14,7 +14,7 @@ public class CommandAndServiceMediator {
     /// Returns if the service for given command is available.
     ///
     /// Simultaneous use of multiple commands accessing camera is not allowed.
-    public static func isAvailable(_ command: Command) -> Bool {
+    public static func isAvailable(_ command: Command) -> Bool { // swiftlint:disable:this cyclomatic_complexity
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             return MotionService.shared.isAvailable()
@@ -55,6 +55,7 @@ public class CommandAndServiceMediator {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     public static func startCommand(_ command: Command) {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
@@ -86,6 +87,7 @@ public class CommandAndServiceMediator {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     public static func stopCommand(_ command: Command) {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
