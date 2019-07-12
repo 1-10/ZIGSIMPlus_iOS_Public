@@ -78,7 +78,6 @@ class MotionServiceTests: XCTestCase {
     }
 
     func test_toOSC() {
-        
         AppSettingModel.shared.isActiveByCommand[.acceleration] = false
         AppSettingModel.shared.isActiveByCommand[.gravity] = false
         AppSettingModel.shared.isActiveByCommand[.gyro] = false
@@ -132,6 +131,10 @@ class MotionServiceTests: XCTestCase {
     }
 
     func test_toJSON() {
+        AppSettingModel.shared.isActiveByCommand[.acceleration] = false
+        AppSettingModel.shared.isActiveByCommand[.gravity] = false
+        AppSettingModel.shared.isActiveByCommand[.gyro] = false
+        AppSettingModel.shared.isActiveByCommand[.quaternion] = false
         let motion = MotionMock(
             CMAcceleration(x: 1, y: 2, z: 3),
             CMAcceleration(x: 4, y: 5, z: 6),

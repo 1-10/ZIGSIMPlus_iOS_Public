@@ -98,7 +98,7 @@ class AudioLevelService {
         // Enable level meter
         var enabledLevelMeter: UInt32 = 1
         AudioQueueSetProperty(self.queue, kAudioQueueProperty_EnableLevelMetering, &enabledLevelMeter, UInt32(MemoryLayout<UInt32>.size))
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0 / fps,
+        self.timer = Timer.scheduledTimer(timeInterval: fps,
                                           target: self,
                                           selector: #selector(AudioLevelService.detectVolume(timer:)),
                                           userInfo: nil,
@@ -134,7 +134,7 @@ extension AudioLevelService : Service {
         var data = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
-            data.append(osc("miclevel", averageLevel, maxLevel))
+            data.append(osc("miclevel", maxLevel, averageLevel))
         }
 
         return data

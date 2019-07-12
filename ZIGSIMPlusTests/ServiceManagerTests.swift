@@ -81,8 +81,8 @@ class ServiceManagerTests: XCTestCase {
         XCTAssert(device["displayheight"].type == .number)
     }
 
-    // Test if JSON includes data from Stores
-    func test_getJSON_keys() {
+    // Test if JSON includes data from Stores other than "image detect" and "nfc"
+    func test_getJSON_otherThan_imageDetect_nfc_keys() {
         let commandsAndKeys: [Command:String] = [
             .pressure: "pressure", // AltimeterDataStore
             .arkit: "arkit", // ArkitDataStore
@@ -90,8 +90,15 @@ class ServiceManagerTests: XCTestCase {
             .gps: "gps", // LocationDataStore
             .acceleration: "accel", // MiscDataStore
             .proximity: "proximitymonitor", // ProximityDataStore
-            .remoteControl: "remoteControl", // RemoteControlDataStore
-            .touch: "touches", // TouchDataStore
+            .remoteControl: "remotecontrol", // RemoteControlDataStore
+            .touch: "touch", // TouchDataStore
+            .applePencil: "pencil",
+            .gravity: "gravity",
+            .gyro: "gyro",
+            .quaternion: "quaternion",
+            .compass: "compass",
+            .beacon: "beacon",
+            .battery: "battery"
         ]
 
         commandsAndKeys.forEach { (command, key) in
