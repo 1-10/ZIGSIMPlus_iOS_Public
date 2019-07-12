@@ -123,11 +123,7 @@ extension MotionService : Service {
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.quaternion]! {
-<<<<<<< Updated upstream
             messages.append(osc("quaternion", quaternion.x, quaternion.y, quaternion.z, quaternion.w))
-=======
-            messages.append(osc("quaternion", quaternion.x, quaternion.y, quaternion.z, quaternion.z))
->>>>>>> Stashed changes
         }
 
         return messages
