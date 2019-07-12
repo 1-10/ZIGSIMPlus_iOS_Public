@@ -84,6 +84,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.0.1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgy-NE-D0I" userLabel="Ip Adress Text Field" customClass="ZIGTextField" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="46.666666666666657" y="212" width="249.99999999999997" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="ipAddressTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="2IW-Bt-tCg"/>
                                                     <constraint firstAttribute="width" constant="250" id="mLn-uN-Klm"/>
@@ -100,6 +101,7 @@
                                             </label>
                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-m2-OQN" userLabel="PORT NUMBER" customClass="ZIGTextField" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="46.666666666666657" y="279" width="249.99999999999997" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="portNumberTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="PB1-7J-pqA"/>
                                                     <constraint firstAttribute="height" constant="30" id="dZ3-OM-gac"/>
@@ -158,6 +160,7 @@
                                             </label>
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0123456789abcdef" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oM4-Na-6XE" userLabel="Uuid Text Field" customClass="ZIGTextField" customModule="ZIGSIMPlus" customModuleProvider="target">
                                                 <rect key="frame" x="46.666666666666657" y="476" width="249.99999999999997" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="deviceUuidTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="5ei-rw-knf"/>
                                                     <constraint firstAttribute="width" constant="250" id="6yF-iI-kRh"/>
@@ -180,6 +183,7 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="contentView"/>
                                         <constraints>
                                             <constraint firstItem="sS3-j7-8iF" firstAttribute="top" secondItem="JbH-m2-OQN" secondAttribute="bottom" constant="8" id="8Xn-Va-o0k"/>
                                             <constraint firstItem="JbH-m2-OQN" firstAttribute="centerX" secondItem="FAR-vs-ZAX" secondAttribute="centerX" id="8gr-9E-lsZ"/>
