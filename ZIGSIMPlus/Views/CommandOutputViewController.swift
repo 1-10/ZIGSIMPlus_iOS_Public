@@ -34,7 +34,7 @@ class CommandOutputViewController: UIViewController {
         presenter.composeChildViewArchitecture()
     }
 
-    override func viewWillAppear(_: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         // Dummy volume view to disable default system volume hooks
         let volumeView = MPVolumeView(frame: CGRect(x: -100, y: -100, width: 0, height: 0))
         view.addSubview(volumeView)
@@ -48,18 +48,18 @@ class CommandOutputViewController: UIViewController {
         updatePreviewMode()
     }
 
-    override func viewDidAppear(_: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         // Set area for touch points.
         // This has to be done after auto layout.
         touchArea.isHidden = !presenter.isTouchEnabled()
         TouchService.shared.setTouchArea(rect: touchArea.bounds)
     }
 
-    override func viewDidDisappear(_: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         presenter.stopCommands()
     }
 
-    @IBAction func togglePreviewMode(_: Any) {
+    @IBAction func togglePreviewMode(_ sender: Any) {
         isTextPreviewMode.toggle()
         updatePreviewMode()
     }
@@ -72,19 +72,19 @@ class CommandOutputViewController: UIViewController {
 
     // MARK: - Touch Events
 
-    override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         TouchService.shared.addTouches(Array(touches))
     }
 
-    override func touchesMoved(_ touches: Set<UITouch>, with _: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         TouchService.shared.updateTouches(Array(touches))
     }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         TouchService.shared.removeTouches(Array(touches))
     }
 
-    override func touchesCancelled(_: Set<UITouch>?, with _: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
         TouchService.shared.removeAllTouches()
     }
 }
@@ -119,7 +119,7 @@ extension CommandOutputViewController: CommandOutputPresenterDelegate {
 extension CommandOutputViewController: UITableViewDelegate {}
 
 extension CommandOutputViewController: UITableViewDataSource {
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settings.count
     }
 

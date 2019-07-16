@@ -37,7 +37,7 @@ class UITouchMock: UITouch {
 
     override var view: UIView? { return UIView() }
 
-    override func location(in _: UIView?) -> CGPoint {
+    override func location(in view: UIView?) -> CGPoint {
         return CGPoint(x: _x, y: _y)
     }
 

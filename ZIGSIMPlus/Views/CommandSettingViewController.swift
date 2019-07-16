@@ -58,24 +58,24 @@ public class CommandSettingViewController: UIViewController {
         adjustViewDesign()
     }
 
-    public override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touch screen!")
         if updateSettingTextData() {
             view.endEditing(true)
         }
     }
 
-    @IBAction func changeSettingData(_: UISegmentedControl) {
+    @IBAction func changeSettingData(_ sender: UISegmentedControl) {
         updateSettingSegmentData()
     }
 
-    @IBAction func restorePurchasePressed(_: UIButton) {
+    @IBAction func restorePurchasePressed(_ sender: UIButton) {
         restorePurchaseButton.isEnabled = false
         SVProgressHUD.show()
         presenter.restorePurchase()
     }
 
-    public func textFieldShouldReturn(_: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("should end editing!")
         if updateSettingTextData() {
             view.endEditing(true)
@@ -147,7 +147,7 @@ public class CommandSettingViewController: UIViewController {
 }
 
 extension CommandSettingViewController: CommandSettingPresenterDelegate {
-    func showRestorePurchaseResult(isSuccessful _: Bool, title: String?, message: String?) {
+    func showRestorePurchaseResult(isSuccessful: Bool, title: String?, message: String?) {
         SVProgressHUD.dismiss()
 
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -207,7 +207,7 @@ extension CommandSettingViewController: ContentScrollable {
         scrollView.contentInset.bottom = keyboardSize
     }
 
-    func keyboardWillHide(_: Notification) {
+    func keyboardWillHide(_ notification: Notification) {
         scrollView.contentInset = .zero
         scrollView.scrollIndicatorInsets = .zero
     }

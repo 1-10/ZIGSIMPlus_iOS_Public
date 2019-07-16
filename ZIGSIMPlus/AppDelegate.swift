@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     // swiftlint:disable:next line_length
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // It's recommended to add a transaction queue observer at application launch
         // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html
         SKPaymentQueue.default().add(InAppPurchaseFacade.shared)
@@ -32,15 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // These code can't be moved to applicationWillResignActive / applicationDidBecomeActive
     // Because NFC dialog invokes them and causes pause/resume loop.
     // See PR #86 for details.
-    func applicationDidEnterBackground(_: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         CommandPlayer.shared.pause()
     }
 
-    func applicationWillEnterForeground(_: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         CommandPlayer.shared.resume()
     }
 
-    func applicationWillTerminate(_: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // It's recommended to remove a transaction queue observer at application termination
         // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html
         SKPaymentQueue.default().remove(InAppPurchaseFacade.shared)

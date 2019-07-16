@@ -66,7 +66,7 @@ final class CommandSelectionViewController: UIViewController {
         }
     }
 
-    @IBAction func actionButton(_: UIButton) {
+    @IBAction func actionButton(_ sender: UIButton) {
         let message = getAlertMessageForPurchase()
         showAlertWithMarkdownMessage(title: premiumTextTitle, message: message, alertType: .premium)
     }
@@ -243,7 +243,7 @@ extension CommandSelectionViewController: UITableViewDelegate {
 }
 
 extension CommandSelectionViewController: UITableViewDataSource {
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfCommandToSelect
     }
 

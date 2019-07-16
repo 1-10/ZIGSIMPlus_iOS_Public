@@ -12,12 +12,12 @@ import SwiftOSC
 import SwiftyJSON
 
 // swiftlint:disable:next function_parameter_count
-func audioQueueInputCallback(inUserData _: UnsafeMutableRawPointer?,
-                             inAQ _: AudioQueueRef,
-                             inBuffer _: AudioQueueBufferRef,
-                             inStartTime _: UnsafePointer<AudioTimeStamp>,
-                             inNumberPacketDescriptions _: UInt32,
-                             inPacketDescs _: UnsafePointer<AudioStreamPacketDescription>?) {}
+func audioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
+                             inAQ: AudioQueueRef,
+                             inBuffer: AudioQueueBufferRef,
+                             inStartTime: UnsafePointer<AudioTimeStamp>,
+                             inNumberPacketDescriptions: UInt32,
+                             inPacketDescs: UnsafePointer<AudioStreamPacketDescription>?) {}
 
 class AudioLevelService {
     // Singleton instance
@@ -44,7 +44,7 @@ class AudioLevelService {
     var maxLevel: Float = 0.0
     var callbackAudio: (([Float]) -> Void)?
 
-    @objc func detectVolume(timer _: Timer) {
+    @objc func detectVolume(timer: Timer) {
         // Get level
         var levelMeter = AudioQueueLevelMeterState()
         var propertySize = UInt32(MemoryLayout<AudioQueueLevelMeterState>.size)

@@ -123,22 +123,26 @@ public class LocationService: NSObject {
 // MARK: - CLLocationManagerDelegate methods
 
 extension LocationService: CLLocationManagerDelegate {
-    public final func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public final func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         latitudeData = (locations.last?.coordinate.latitude)!
         longitudeData = (locations.last?.coordinate.longitude)!
     }
 
-    public func locationManager(_: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+    public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         compassData = newHeading.magneticHeading
     }
 
     // Called when the device started monitoring
-    public func locationManager(_: CLLocationManager, didStartMonitoringFor _: CLRegion) {
+    public func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
         print("Start monitoring for iBeacon")
     }
 
     // Called when new data is received from beacons
-    public func locationManager(_: CLLocationManager, didRangeBeacons newBeacons: [CLBeacon], in _: CLBeaconRegion) {
+    public func locationManager(
+        _ manager: CLLocationManager,
+        didRangeBeacons newBeacons: [CLBeacon],
+        in region: CLBeaconRegion
+    ) {
         for beacon in newBeacons {
             // Check if the beacon is already registered
             let index = beacons.firstIndex(where: {
@@ -154,7 +158,7 @@ extension LocationService: CLLocationManagerDelegate {
     }
 
     // Called when the user authorized monitorin location data
-    public func locationManager(_: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status != .authorizedAlways || status != .authorizedWhenInUse {
             // TODO: Show error message
         }
