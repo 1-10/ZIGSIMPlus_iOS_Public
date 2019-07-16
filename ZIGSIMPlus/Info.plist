@@ -31,7 +31,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app uses microphone in NDI and Mic Level.</string>
 	<key>ProductIDForPremiumFeatures</key>
-	<string>com.OneToTen.ZIGSIMPlusExplicit.PremiumFeatures</string>
+	<string>com.OneToTen.drive.ZIGSIM.PremiumFeatures</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>
