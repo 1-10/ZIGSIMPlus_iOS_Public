@@ -729,7 +729,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token a6b7222029fa5c23c25caf2619d8b3f743b5ddfc\nfi\n";
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path \"$PRODUCT_NAME/Settings.bundle\" --github-token a6b7222029fa5c23c25caf2619d8b3f743b5ddfc\nfi\n";
 		};
 		0C08B6B7878D8F62CABB8B9B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
