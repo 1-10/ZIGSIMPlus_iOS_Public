@@ -30,7 +30,6 @@ public enum DetailSettingsKey: Int {
     case beaconUUID
 }
 
-
 /// DetailSetting data represents each setting in CommandDetailSettings view.
 /// We only have Segmented now, but you can support input types by adding a struct which implement DetailSetting.
 protocol DetailSetting {}
@@ -39,7 +38,7 @@ protocol Segmented: DetailSetting {
     var key: DetailSettingsKey { get set }
     var label: String { get set }
     var segments: [String] { get set }
-    var width: Int { get set }  // width of UISegmentController
+    var width: Int { get set } // width of UISegmentController
 }
 
 /// Segmented is used for settings with UISegmentedController
@@ -50,7 +49,7 @@ public struct SegmentedInt: Segmented {
     var width: Int
     var value: Int
 
-    init (_ key: DetailSettingsKey, _ label: String, _ segments: [String], _ width: Int, _ value: Int) {
+    init(_ key: DetailSettingsKey, _ label: String, _ segments: [String], _ width: Int, _ value: Int) {
         self.key = key
         self.label = label
         self.segments = segments
@@ -65,8 +64,8 @@ public struct SegmentedBool: Segmented {
     var segments: [String]
     var width: Int
     var value: Bool
-    
-    init (_ key: DetailSettingsKey, _ label: String, _ segments: [String], _ width: Int, _ value: Bool) {
+
+    init(_ key: DetailSettingsKey, _ label: String, _ segments: [String], _ width: Int, _ value: Bool) {
         self.key = key
         self.label = label
         self.segments = segments
@@ -74,7 +73,6 @@ public struct SegmentedBool: Segmented {
         self.value = value
     }
 }
-
 
 // For example, If you want to support settings with Float slider, use this:
 // public struct FloatInput: DetailSetting {
@@ -90,7 +88,7 @@ public struct UUIDInput: DetailSetting {
     var width: Int
     var value: String
 
-    init (_ key: DetailSettingsKey, _ label: String, _ width: Int, _ value: String) {
+    init(_ key: DetailSettingsKey, _ label: String, _ width: Int, _ value: String) {
         self.key = key
         self.label = label
         self.width = width
@@ -104,11 +102,11 @@ protocol CommandDetailSettingsPresenterProtocol {
 }
 
 final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtocol {
-
     // Get data to generate detail settings view dinamically
     public func getCommandDetailSettings() -> [Command: [DetailSetting]] {
         let app = AppSettingModel.shared
 
+        // swiftlint:disable line_length
         return [
             .ndi: [
                 SegmentedInt(.ndiType, "Image Type", ["CAMERA", "DEPTH"], 240, app.ndiType.rawValue),
@@ -139,8 +137,10 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 UUIDInput(.beaconUUID, "Beacon UUID", 270, app.beaconUUID),
             ],
         ]
+        // swiftlint:enable line_length
     }
 
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     public func updateSetting(setting: DetailSetting) {
         switch setting {
         case let data as SegmentedInt:

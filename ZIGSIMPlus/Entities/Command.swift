@@ -30,7 +30,7 @@ public enum Command: String, CaseIterable {
     case micLevel = "Mic Level"
     case remoteControl = "Remote Control"
     case battery = "Battery"
-    
+
     var userDefaultsKey: DefaultsKey<Bool> {
         switch self {
         case .ndi: return .isNdiCommandActive

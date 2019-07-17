@@ -6,9 +6,11 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import XCTest
 import SwiftOSC
+import XCTest
 @testable import ZIGSIMPlus
+
+// swiftlint:disable force_cast
 
 class ServiceManagerTests: XCTestCase {
     // Test if OSC includes device data
@@ -36,7 +38,7 @@ class ServiceManagerTests: XCTestCase {
 
     // Test if OSC includes data from Stores
     func test_getOSC_keys() {
-        let commandsAndKeys: [Command:String] = [
+        let commandsAndKeys: [Command: String] = [
             .pressure: "pressure", // AltimeterDataStore
             .arkit: "arkit", // ArkitDataStore
             .micLevel: "miclevel", // AudioLevelDataStore
@@ -49,7 +51,7 @@ class ServiceManagerTests: XCTestCase {
             // .touch: "touch01", // TouchDataStore
         ]
 
-        commandsAndKeys.forEach { (command, key) in
+        commandsAndKeys.forEach { command, key in
             AppSettingModel.shared.isActiveByCommand[command] = true
             let osc = ServiceManager.shared.getOSC()
 
@@ -83,7 +85,7 @@ class ServiceManagerTests: XCTestCase {
 
     // Test if JSON includes data from Stores
     func test_getJSON_keys() {
-        let commandsAndKeys: [Command:String] = [
+        let commandsAndKeys: [Command: String] = [
             .pressure: "pressure", // AltimeterDataStore
             .arkit: "arkit", // ArkitDataStore
             .micLevel: "miclevel", // AudioLevelDataStore
@@ -94,7 +96,7 @@ class ServiceManagerTests: XCTestCase {
             .touch: "touches", // TouchDataStore
         ]
 
-        commandsAndKeys.forEach { (command, key) in
+        commandsAndKeys.forEach { command, key in
             AppSettingModel.shared.isActiveByCommand[command] = true
             let json = ServiceManager.shared.getJSON()
             XCTAssert(json["sensordata"][key].exists(), "Sensordata for \(command) is stored as \(key)")

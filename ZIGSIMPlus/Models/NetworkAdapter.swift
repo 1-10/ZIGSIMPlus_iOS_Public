@@ -6,20 +6,26 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
+import CoreMotion
 import Foundation
 import SwiftSocket
-import CoreMotion
 
 /// Wrapper of SwiftSocket.
 public class NetworkAdapter {
     static let shared = NetworkAdapter()
     private init() {}
 
-    var tcpClient: TCPClient = TCPClient(address: AppSettingModel.shared.ipAddress, port: Int32(AppSettingModel.shared.portNumber))
-    var udpClient: UDPClient = UDPClient(address: AppSettingModel.shared.ipAddress, port: Int32(AppSettingModel.shared.portNumber))
+    var tcpClient: TCPClient = TCPClient(
+        address: AppSettingModel.shared.ipAddress,
+        port: Int32(AppSettingModel.shared.portNumber)
+    )
+    var udpClient: UDPClient = UDPClient(
+        address: AppSettingModel.shared.ipAddress,
+        port: Int32(AppSettingModel.shared.portNumber)
+    )
 
     var error: Error?
-    
+
     /// Send data over TCP / UDP automatically
     func send(_ data: Data) {
         switch AppSettingModel.shared.transportProtocol {
@@ -67,8 +73,8 @@ public class NetworkAdapter {
             switch tcpClient.connect(timeout: 1) {
             case .success:
                 break
-            case .failure(let e):
-                error = e
+            case let .failure(err):
+                error = err
                 return
             }
         }
@@ -77,8 +83,8 @@ public class NetworkAdapter {
         switch tcpClient.send(data: data) {
         case .success:
             error = nil
-        case .failure(let e):
-            error = e
+        case let .failure(err):
+            error = err
         }
     }
 
@@ -94,8 +100,8 @@ public class NetworkAdapter {
         switch udpClient.send(data: data) {
         case .success:
             error = nil
-        case .failure(let e):
-            error = e
+        case let .failure(err):
+            error = err
         }
     }
 }

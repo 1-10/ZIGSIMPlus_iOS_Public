@@ -6,19 +6,19 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import UIKit
 import StoreKit
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    // swiftlint:disable:next line_length
+    func application(_: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // It's recommended to add a transaction queue observer at application launch
         // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html
         SKPaymentQueue.default().add(InAppPurchaseFacade.shared)
-        
+
         // Inject dependency here
         composePresenters()
 
@@ -45,18 +45,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html
         SKPaymentQueue.default().remove(InAppPurchaseFacade.shared)
     }
-    
+
     private func composePresenters() {
         let factory = PresenterFactory()
+
+        // swiftlint:disable:next force_cast
         let tabBarController = window?.rootViewController as! UITabBarController
+
         for viewController in tabBarController.viewControllers! {
             if type(of: viewController) == CommandSelectionTabNavigationController.self {
+                // swiftlint:disable:next force_cast
                 let vc = viewController as! CommandSelectionTabNavigationController
                 factory.createPresenter(parentView: vc, viewType: CommandSelectionViewController.self)
             } else if type(of: viewController) == CommandOutputTabNavigationController.self {
+                // swiftlint:disable:next force_cast
                 let vc = viewController as! CommandOutputTabNavigationController
                 factory.createPresenter(parentView: vc, viewType: CommandOutputViewController.self)
             } else if type(of: viewController) == CommandSettingTabNavigationController.self {
+                // swiftlint:disable:next force_cast
                 let vc = viewController as! CommandSettingTabNavigationController
                 factory.createPresenter(parentView: vc, viewType: CommandSettingViewController.self)
             }

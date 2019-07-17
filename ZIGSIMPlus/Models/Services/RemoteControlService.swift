@@ -16,6 +16,7 @@ public class RemoteControlService: NSObject {
     static let shared = RemoteControlService()
 
     // MARK: - Instance Properties
+
     let audioEngine = AVAudioEngine()
     let playerNode = AVAudioPlayerNode()
     var isEnabled = false
@@ -30,7 +31,7 @@ public class RemoteControlService: NSObject {
     var volumeUp = false
     var volumeDown = false
 
-    override private init() {
+    private override init() {
         // Create dummy audioEngine.
         // We don't play audio, but we need it to receive MPRemoteCommandCenter commands.
         // cf. https://developer.apple.com/documentation/mediaplayer/handling_external_player_events_notifications
@@ -40,6 +41,7 @@ public class RemoteControlService: NSObject {
     }
 
     @objc func onVolumeChange(notification: NSNotification) {
+        // swiftlint:disable:next force_cast
         volume = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as! Double
     }
 
@@ -56,7 +58,10 @@ public class RemoteControlService: NSObject {
         // Start audioengine and add trigger for play/pause button
         do {
             try audioEngine.start()
-            MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget(self, action: #selector(onTogglePlayPause(_:)))
+            MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget(
+                self,
+                action: #selector(onTogglePlayPause(_:))
+            )
         } catch {
             print(">> yo Failed to start audio engine")
         }
@@ -82,7 +87,10 @@ public class RemoteControlService: NSObject {
             name: Notification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
             object: nil
         )
-        MPRemoteCommandCenter.shared().togglePlayPauseCommand.removeTarget(self, action: #selector(onTogglePlayPause(_:)))
+        MPRemoteCommandCenter.shared().togglePlayPauseCommand.removeTarget(
+            self,
+            action: #selector(onTogglePlayPause(_:))
+        )
     }
 
     /// Called every frame to convert button events to boolean values
@@ -104,7 +112,7 @@ public class RemoteControlService: NSObject {
     }
 }
 
-extension RemoteControlService : Service {
+extension RemoteControlService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
@@ -114,7 +122,7 @@ extension RemoteControlService : Service {
                 "remotecontrol:volumeup \(volumeUp)",
                 "remotecontrol:volumedown \(volumeDown)",
                 "remotecontrol:isPlaying \(isPlaying)",
-                "remotecontrol:volume \(volume)"
+                "remotecontrol:volume \(volume)",
             ]
         }
 
@@ -147,7 +155,7 @@ extension RemoteControlService : Service {
                 "volumeup": volumeUp,
                 "volumedown": volumeDown,
                 "isPlaying": isPlaying,
-                "volume": volume
+                "volume": volume,
             ])
         }
 

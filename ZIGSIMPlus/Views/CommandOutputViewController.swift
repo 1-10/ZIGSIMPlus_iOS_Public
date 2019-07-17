@@ -6,18 +6,18 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import UIKit
 import MediaPlayer
+import UIKit
 
 class CommandOutputViewController: UIViewController {
-    @IBOutlet weak var textField: UITextView!
-    @IBOutlet weak var touchArea: UIView!
-    @IBOutlet weak var textPreview: UIView!
-    @IBOutlet weak var imagePreview: UIView!
-    @IBOutlet weak var togglePreviewModeButton: UIBarButtonItem!
+    @IBOutlet var textField: UITextView!
+    @IBOutlet var touchArea: UIView!
+    @IBOutlet var textPreview: UIView!
+    @IBOutlet var imagePreview: UIView!
+    @IBOutlet var togglePreviewModeButton: UIBarButtonItem!
     private var isTextPreviewMode: Bool = true
 
-    @IBOutlet weak var settingsTable: UITableView!
+    @IBOutlet var settingsTable: UITableView!
     var settings: [(String, String)] = []
 
     var presenter: CommandOutputPresenterProtocol!
@@ -93,8 +93,7 @@ extension CommandOutputViewController: CommandOutputPresenterDelegate {
     func updateOutput(with log: String, errorLog: String?) {
         if errorLog == nil {
             textField.text = log
-        }
-        else {
+        } else {
             let output = "\(errorLog!)\n\n\(log)"
             let attributedString = NSMutableAttributedString(string: output)
 
@@ -127,9 +126,9 @@ extension CommandOutputViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
 
-        if let c = cell as? CommandOutputViewSettingsTableCell {
-            let kv = settings[indexPath.row]
-            c.setKeyValue(kv.0, kv.1)
+        if let cellForSetting = cell as? CommandOutputViewSettingsTableCell {
+            let setting = settings[indexPath.row]
+            cellForSetting.setKeyValue(setting.0, setting.1)
         }
 
         return cell

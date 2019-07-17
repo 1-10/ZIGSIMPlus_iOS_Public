@@ -58,9 +58,10 @@ public class CommandPlayer {
         updatingTimer = Timer.scheduledTimer(
             timeInterval: Utils.getMessageInterval(),
             target: self,
-            selector: #selector(self.monitorCommands),
+            selector: #selector(monitorCommands),
             userInfo: nil,
-            repeats: true)
+            repeats: true
+        )
 
         for command in Command.allCases {
             if isActive(command) {
@@ -68,12 +69,11 @@ public class CommandPlayer {
             }
         }
 
-        if AppSettingModel.shared.dataDestination == .LOCAL_FILE {
+        if AppSettingModel.shared.dataDestination == .localFile {
             let data = ServiceManager.shared.getString()
             FileWriter.shared.open()
             FileWriter.shared.write(data)
-        }
-        else {
+        } else {
             let data = ServiceManager.shared.getData()
             NetworkAdapter.shared.send(data)
         }
@@ -89,11 +89,10 @@ public class CommandPlayer {
             RemoteControlService.shared.update()
         }
 
-        if AppSettingModel.shared.dataDestination == .LOCAL_FILE {
+        if AppSettingModel.shared.dataDestination == .localFile {
             let data = ServiceManager.shared.getString()
             FileWriter.shared.write(data)
-        }
-        else {
+        } else {
             let data = ServiceManager.shared.getData()
             NetworkAdapter.shared.send(data)
         }
@@ -118,9 +117,9 @@ public class CommandPlayer {
     }
 
     private func isActive(_ command: Command) -> Bool {
-        guard let b = AppSettingModel.shared.isActiveByCommand[command] else {
+        guard let res = AppSettingModel.shared.isActiveByCommand[command] else {
             fatalError("AppSetting for Command \"\(command)\" is nil")
         }
-        return b
+        return res
     }
 }

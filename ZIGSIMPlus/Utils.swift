@@ -12,15 +12,15 @@ import UIKit
 class Utils {
     static func randomStringWithLength(_ length: Int) -> String {
         let alphabet = "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        return String((0..<length).map { _ -> Character in alphabet.randomElement()! })
+        return String((0 ..< length).map { _ -> Character in alphabet.randomElement()! })
     }
-    
+
     static func separateBeaconUuid(uuid: String, position: Int) -> String {
         let strTmp = uuid
-        var separatedUuid:[String]
-        if ((strTmp.range(of: "-")) != nil) {
+        var separatedUuid: [String]
+        if strTmp.range(of: "-") != nil {
             separatedUuid = strTmp.components(separatedBy: "-")
-            if position >= 0 && position <= 4 && separatedUuid.count == 5 {
+            if position >= 0, position <= 4, separatedUuid.count == 5 {
                 return separatedUuid[position]
             }
         }
@@ -70,11 +70,12 @@ class Utils {
     }
 
     static func isValidBeaconUUID(_ uuid: String) -> Bool {
-        let re = try! NSRegularExpression(pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}")
-        return re.matches(in: uuid, options: [], range: .init(location: 0, length: uuid.count)).count != 0
+        // swiftlint:disable:next force_try
+        let reg = try! NSRegularExpression(pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}")
+        return reg.matches(in: uuid, options: [], range: .init(location: 0, length: uuid.count)).count != 0
     }
 
-    static func formatBeaconUUID(_ _uuid: String) -> String {
+    static func formatBeaconUUID(_ _uuid: String) -> String { // swiftlint:disable:this identifier_name
         var uuid = _uuid.uppercased()
 
         // Insert hyphens
@@ -95,7 +96,7 @@ class Utils {
 
         return uuid
     }
-    
+
     static func isValidSettingViewText(text: UITextField, textType: SettingViewTextType) -> Bool {
         switch textType {
         case .ipAddress:
@@ -103,10 +104,11 @@ class Utils {
         case .portNumber:
             return Utils.isCompose(text.text ?? "0", of: "1234567890")
         case .deviceUuid:
+            // swiftlint:disable:next line_length
             return Utils.isCompose(text.text ?? "0", of: "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         }
     }
-    
+
     private static func isCompose(_ text: String, of chars: String) -> Bool {
         let characterSet = NSMutableCharacterSet()
         characterSet.addCharacters(in: chars)

@@ -9,7 +9,6 @@
 import UIKit
 
 class CommandSelectionTabNavigationController: UINavigationController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }

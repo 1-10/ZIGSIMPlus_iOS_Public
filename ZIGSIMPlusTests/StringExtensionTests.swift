@@ -9,8 +9,9 @@
 import XCTest
 @testable import ZIGSIMPlus
 
-class StringExtensionTests: XCTestCase {
+// swiftlint:disable identifier_name
 
+class StringExtensionTests: XCTestCase {
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -18,14 +19,14 @@ class StringExtensionTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
+
     func testAppendLines_WhenSelfIsEmpty() {
         var s1 = ""
         let s2 = "a"
         s1.appendLines(s2)
         XCTAssertEqual(s1, s2)
     }
-    
+
     func testAppendLines_WhenSelfIsNotEmptyAndEndsWithLineBreak() {
         var s1 = "a\n"
         let s2 = "b"

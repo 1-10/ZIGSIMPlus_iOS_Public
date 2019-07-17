@@ -1,0 +1,2 @@
+--exclude Pods
+--stripunusedargs closure-only

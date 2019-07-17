@@ -6,10 +6,10 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
+import DeviceKit
 import Foundation
 import SwiftOSC
 import SwiftyJSON
-import DeviceKit
 
 /// ServiceManager creates OSC / JSON data.
 /// It also creates single string for output view.
@@ -28,10 +28,9 @@ class ServiceManager {
         if AppSettingModel.shared.transportFormat == .OSC {
             let osc = getOSC()
             data = osc.data
-        }
-        else {
+        } else {
             let json = getJSON()
-            data = try! json.rawData()
+            data = try! json.rawData() // swiftlint:disable:this force_try
         }
 
         return data
@@ -41,8 +40,7 @@ class ServiceManager {
         if AppSettingModel.shared.transportFormat == .OSC {
             let osc = getOSC()
             return osc.getString()
-        }
-        else {
+        } else {
             let json = getJSON()
             return json.rawString(.utf8, options: [])! + "\n"
         }
@@ -129,7 +127,7 @@ class ServiceManager {
                 "displayheight": Int(Utils.screenHeight),
             ],
             "timestamp": Utils.getTimestamp(),
-            "sensordata": data
+            "sensordata": data,
         ])
     }
 

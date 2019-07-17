@@ -24,7 +24,7 @@ protocol CommandOutputPresenterDelegate: AnyObject {
 
 final class CommandOutputPresenter: CommandOutputPresenterProtocol {
     private weak var view: CommandOutputPresenterDelegate!
-    
+
     init(view: CommandOutputPresenterDelegate) {
         self.view = view
 
@@ -32,11 +32,12 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
             self.updateOutput()
         }
     }
-    
+
     // This cannnot be defined in AppDelegate, because subviews cannot be accessed from AppDelegate
     // https://stackoverflow.com/questions/50780404/swift-how-to-reference-subview-from-appdelegate
     func composeChildViewArchitecture() {
         let factory = PresenterFactory()
+        // swiftlint:disable:next force_cast
         factory.createVideoCapturePresenter(parentView: view as! CommandOutputViewController)
     }
 

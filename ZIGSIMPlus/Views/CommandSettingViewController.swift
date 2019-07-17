@@ -6,8 +6,8 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 import Foundation
-import UIKit
 import SVProgressHUD
+import UIKit
 
 protocol ContentScrollable {
     var scrollView: UIScrollView! { get }
@@ -15,16 +15,18 @@ protocol ContentScrollable {
     func removeObserver()
 }
 
-public class CommandSettingViewController : UIViewController {
-
-    @IBOutlet weak var scrollView: UIScrollView!
+public class CommandSettingViewController: UIViewController {
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var labels: [UILabel]!
     @IBOutlet var segments: [UISegmentedControl]!
     @IBOutlet var textFields: [UITextField]!
-    @IBOutlet weak var restorePurchaseButton: UIButton!
+    @IBOutlet var restorePurchaseButton: UIButton!
     var presenter: CommandSettingPresenterProtocol!
 
-    override public func viewDidLoad() {
+    var showObserver: NSObjectProtocol?
+    var hideObserver: NSObjectProtocol?
+
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         let userDefaultTexts = presenter.getUserDefaultTexts()
@@ -54,66 +56,65 @@ public class CommandSettingViewController : UIViewController {
 
         initNavigationBar()
         adjustViewDesign()
-
     }
 
-    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touch screen!")
         if updateSettingTextData() {
-            self.view.endEditing(true)
+            view.endEditing(true)
         }
     }
 
     @IBAction func changeSettingData(_ sender: UISegmentedControl) {
         updateSettingSegmentData()
     }
-    
+
     @IBAction func restorePurchasePressed(_ sender: UIButton) {
         restorePurchaseButton.isEnabled = false
         SVProgressHUD.show()
         presenter.restorePurchase()
     }
 
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("should end editing!")
         if updateSettingTextData() {
-            self.view.endEditing(true)
+            view.endEditing(true)
             return true
         } else {
             return false
         }
     }
-    
+
     private func updateSettingTextData() -> Bool {
-        var texts:[textFieldName: String] = [:]
+        var texts: [TextFieldName: String] = [:]
         for textField in textFields {
             if textField.tag == 0 {
-                if Utils.isValidSettingViewText(text: textField, textType: .ipAddress) && textField.text != "" {
+                if Utils.isValidSettingViewText(text: textField, textType: .ipAddress), textField.text != "" {
                     texts[.ipAdress] = textField.text ?? ""
                 } else {
                     return false
                 }
             } else if textField.tag == 1 {
-                if Utils.isValidSettingViewText(text: textField, textType: .portNumber) && textField.text != "" {
+                if Utils.isValidSettingViewText(text: textField, textType: .portNumber), textField.text != "" {
                     texts[.portNumber] = textField.text ?? ""
                 } else {
                     return false
                 }
             } else if textField.tag == 2 {
-                if Utils.isValidSettingViewText(text: textField, textType: .deviceUuid) && textField.text != "" {
+                if Utils.isValidSettingViewText(text: textField, textType: .deviceUuid), textField.text != "" {
                     texts[.uuid] = textField.text ?? ""
                 } else {
                     return false
                 }
             }
         }
-        
-        presenter.updateTextsUserDefault(texts:texts)
+
+        presenter.updateTextsUserDefault(texts: texts)
         return true
     }
-    
+
     private func updateSettingSegmentData() {
-        var segmentControls:[segmentName:Int] = [:]
+        var segmentControls: [SegmentName: Int] = [:]
         for segment in segments {
             if segment.tag == 0 {
                 segmentControls[.dataDestination] = segment.selectedSegmentIndex
@@ -148,49 +149,60 @@ public class CommandSettingViewController : UIViewController {
 extension CommandSettingViewController: CommandSettingPresenterDelegate {
     func showRestorePurchaseResult(isSuccessful: Bool, title: String?, message: String?) {
         SVProgressHUD.dismiss()
-        
+
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Close", style: .default) { _ in
             self.restorePurchaseButton.isEnabled = true
         }
         alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }
 
 extension CommandSettingViewController: UITextFieldDelegate {
-    private func setTextFieldSetting(texField:UITextField, text:String) {
+    private func setTextFieldSetting(texField: UITextField, text: String) {
         texField.text = String(text)
         texField.delegate = self
     }
 }
 
-extension CommandSettingViewController: ContentScrollable{
-    override public func viewWillAppear(_ animated: Bool) {
+extension CommandSettingViewController: ContentScrollable {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureObserver()
     }
 
-    override public func viewWillDisappear(_ animated: Bool) {
+    public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeObserver()
     }
 
     func configureObserver() {
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { notification in
+        showObserver = NotificationCenter.default.addObserver(
+            forName: UIResponder.keyboardWillShowNotification,
+            object: nil,
+            queue: nil
+        ) { notification in
             self.keyboardWillShow(notification)
         }
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { notification in
+        hideObserver = NotificationCenter.default.addObserver(
+            forName: UIResponder.keyboardWillHideNotification,
+            object: nil,
+            queue: nil
+        ) { notification in
             self.keyboardWillHide(notification)
         }
     }
 
     func removeObserver() {
         NotificationCenter.default.removeObserver(self)
+        if showObserver != nil { NotificationCenter.default.removeObserver(showObserver! as Any) }
+        if hideObserver != nil { NotificationCenter.default.removeObserver(hideObserver! as Any) }
     }
 
     func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
+        // swiftlint:disable:next force_cast
         let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
         scrollView.contentInset.bottom = keyboardSize
     }

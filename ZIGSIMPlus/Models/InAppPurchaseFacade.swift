@@ -16,12 +16,12 @@ class InAppPurchaseFacade: NSObject {
         case restoreSuccessful
         case restoreFailed
     }
-    
+
     static let shared: InAppPurchaseFacade = InAppPurchaseFacade()
-    private override init () { super.init() }
+    private override init() { super.init() }
     var completion: ((TransactionResult, Error?) -> Void)?
     var productRequest: SKProductsRequest?
-    
+
     func purchase(completion: ((TransactionResult, Error?) -> Void)?) {
         self.completion = completion
         if SKPaymentQueue.canMakePayments() {
@@ -37,7 +37,7 @@ class InAppPurchaseFacade: NSObject {
 
     func restorePurchase(completion: ((TransactionResult, Error?) -> Void)?) {
         self.completion = completion
-        
+
         // This "canMakePayments" is necessary.
         // See: https://stackoverflow.com/questions/28734890/restore-inapp-purchase-using-swift-ios
         if SKPaymentQueue.canMakePayments() {
@@ -46,11 +46,11 @@ class InAppPurchaseFacade: NSObject {
             executeCompletionHandler(result: .restoreFailed, error: nil)
         }
     }
-    
+
     func isPurchased() -> Bool {
         return UserDefaults.standard.bool(forKey: productId)
     }
-    
+
     private func storePurchasedState() {
         UserDefaults.standard.set(true, forKey: productId)
     }
@@ -59,7 +59,7 @@ class InAppPurchaseFacade: NSObject {
         guard let id = (Bundle.main.infoDictionary?["ProductIDForPremiumFeatures"] as? String) else {
             fatalError("Product ID not defined")
         }
-        
+
         return id
     }
 }
@@ -68,7 +68,7 @@ extension InAppPurchaseFacade: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("didReceive")
         productRequest?.delegate = nil
-        
+
         if response.products.count > 0 {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productId
@@ -77,7 +77,7 @@ extension InAppPurchaseFacade: SKProductsRequestDelegate {
             executeCompletionHandler(result: .purchaseFailed, error: nil)
         }
     }
-    
+
     func request(_ request: SKRequest, didFailWithError error: Error) {
         print("didFailWithError")
         productRequest?.delegate = nil
@@ -88,13 +88,14 @@ extension InAppPurchaseFacade: SKProductsRequestDelegate {
 extension InAppPurchaseFacade: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("updatedTransactions")
-        
+
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased, .restored:
                 // Deal with .restored here, not in "paymentQueueRestoreCompletedTransactionsFinished"
                 // See: https://stackoverflow.com/questions/14309427/paymentqueuerestorecompletedtransactionsfinished-vs-updatedtransactions
-                
+                // swiftlint:disable:previous line_length
+
                 SKPaymentQueue.default().finishTransaction(transaction)
 
                 // In case that other purchase is contained, skip it.
@@ -110,12 +111,12 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
             }
         }
     }
-    
+
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
         // This delegate method is necessary, because updatedTransactions is not called
         // when restore failed.
         print("restoreCompletedTransactionsFailedWithError")
-        
+
         for transaction in queue.transactions {
             SKPaymentQueue.default().finishTransaction(transaction)
         }
@@ -136,7 +137,7 @@ extension InAppPurchaseFacade: SKPaymentTransactionObserver {
             break
         }
     }
-    
+
     private func executeCompletionHandler(result: TransactionResult, error: Error?) {
         completion?(result, error)
         completion = nil

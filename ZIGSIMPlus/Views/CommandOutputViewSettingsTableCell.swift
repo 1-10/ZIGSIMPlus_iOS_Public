@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class CommandOutputViewSettingsTableCell: UITableViewCell {
-    @IBOutlet weak var settingKeyLabel: UILabel!
-    @IBOutlet weak var settingValueLabel: UILabel!
+    @IBOutlet var settingKeyLabel: UILabel!
+    @IBOutlet var settingValueLabel: UILabel!
 
     public func setKeyValue(_ key: String?, _ value: String?) {
         settingKeyLabel.text = " \(key ?? "")" // add padding

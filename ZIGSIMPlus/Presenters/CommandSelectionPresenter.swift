@@ -15,7 +15,7 @@ protocol CommandSelectionPresenterProtocol {
     func getCommandToSelect(forRow row: Int) -> CommandToSelect
     func didSelectRow(atLabel labelString: String)
     func purchase()
-    func saveCommandOnOffToUserDefaults(_ command: Command,_ isOn: Bool)
+    func saveCommandOnOffToUserDefaults(_ command: Command, _ isOn: Bool)
     func loadCommandOnOffFromUserDefaults()
 }
 
@@ -25,26 +25,26 @@ protocol CommandSelectionPresenterDelegate: AnyObject {
 
 final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     private weak var view: CommandSelectionPresenterDelegate!
-    private var CommandToSelectArray: [CommandToSelect] = []
-    
+    private var commandToSelectArray: [CommandToSelect] = []
+
     init(view: CommandSelectionPresenterDelegate) {
         self.view = view
         updateCommandToSelectArray()
     }
-    
+
     var isPremiumFeaturePurchased: Bool {
         return InAppPurchaseFacade.shared.isPurchased()
     }
-    
+
     var numberOfCommandToSelect: Int {
-        return CommandToSelectArray.count
+        return commandToSelectArray.count
     }
-    
+
     func getCommandToSelect(forRow row: Int) -> CommandToSelect {
-        guard row < CommandToSelectArray.count else { fatalError("Command nil") }
-        return CommandToSelectArray[row]
+        guard row < commandToSelectArray.count else { fatalError("Command nil") }
+        return commandToSelectArray[row]
     }
-    
+
     func didSelectRow(atLabel labelString: String) {
         guard let command = Command(rawValue: labelString) else {
             fatalError("Invalid Command selected: \(labelString)")
@@ -55,13 +55,13 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
         // e.g. When user enables "ARKit", "Face Tracking" must be disabled
         updateCommandToSelectArray()
     }
-    
+
     func purchase() {
-        InAppPurchaseFacade.shared.purchase { (result, error) in
+        InAppPurchaseFacade.shared.purchase { result, error in
             var title = ""
             var message = ""
             var isSuccessful = false
-            
+
             if result == .purchaseSuccessful {
                 isSuccessful = true
                 title = "Purchase Successful"
@@ -77,15 +77,15 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
                     message = "There was a problem in purchase."
                 }
             }
-            
+
             self.view.showPurchaseResult(isSuccessful: isSuccessful, title: title, message: message)
         }
     }
-    
+
     func saveCommandOnOffToUserDefaults(_ command: Command, _ isOn: Bool) {
         Defaults[command.userDefaultsKey] = isOn
     }
-    
+
     func loadCommandOnOffFromUserDefaults() {
         for command in Command.allCases {
             AppSettingModel.shared.isActiveByCommand[command] = Defaults[command.userDefaultsKey]
@@ -94,10 +94,13 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
 
     // Update all CommandToSelect
     private func updateCommandToSelectArray() {
-        CommandToSelectArray = [CommandToSelect]()
+        commandToSelectArray = [CommandToSelect]()
         for command in Command.allCases {
-            CommandToSelectArray.append(CommandToSelect(labelString: command.rawValue, isAvailable: CommandAndServiceMediator.isAvailable(command)))
+            let cmd = CommandToSelect(
+                labelString: command.rawValue,
+                isAvailable: CommandAndServiceMediator.isAvailable(command)
+            )
+            commandToSelectArray.append(cmd)
         }
     }
 }
-

@@ -6,10 +6,12 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import XCTest
 import SwiftOSC
 import SwiftyJSON
+import XCTest
 @testable import ZIGSIMPlus
+
+// swiftlint:disable force_cast function_body_length force_try identifier_name
 
 /// UITouch with public setter for position, radius, force
 class UITouchMock: UITouch {
@@ -33,21 +35,15 @@ class UITouchMock: UITouch {
         _force = force
     }
 
-    override var view: UIView? {
-        get { return UIView() }
-    }
+    override var view: UIView? { return UIView() }
 
     override func location(in view: UIView?) -> CGPoint {
         return CGPoint(x: _x, y: _y)
     }
 
-    override var majorRadius: CGFloat {
-        get { return _radius }
-    }
+    override var majorRadius: CGFloat { return _radius }
 
-    override var force: CGFloat {
-        get { return _force }
-    }
+    override var force: CGFloat { return _force }
 }
 
 class TouchServiceTests: XCTestCase {
@@ -143,7 +139,7 @@ class TouchServiceTests: XCTestCase {
         osc = TouchService.shared.toOSC()
         XCTAssertEqual(osc.count, 0, "No messages returned afeter removeAllTouches")
 
-        TouchService.shared.addTouches(touches)  // add touches again
+        TouchService.shared.addTouches(touches) // add touches again
         TouchService.shared.disable()
         osc = TouchService.shared.toOSC()
         XCTAssertEqual(osc.count, 0, "TouchService resets touches when disabled")
@@ -158,7 +154,7 @@ class TouchServiceTests: XCTestCase {
     func test_toJSON_notouch() {
         AppSettingModel.shared.isActiveByCommand[.touch] = true
         let json = try! TouchService.shared.toJSON()
-        XCTAssertEqual(json, JSON([ "touches": [] ]), "touches is an empty array")
+        XCTAssertEqual(json, JSON(["touches": []]), "touches is an empty array")
     }
 
     func test_toJSON() {
@@ -212,7 +208,7 @@ class TouchServiceTests: XCTestCase {
         ({
             let t = json["touches"][0]
             let x = Float(touches[0]._x) / Float(tWidth) * 2 - 1
-            let y = Float(touches[0]._y) / Float(tHeight) * 2 - 1//
+            let y = Float(touches[0]._y) / Float(tHeight) * 2 - 1 //
             XCTAssertLessThan(abs(t["x"].float! - x), 0.01, "x is almost correct")
             XCTAssertLessThan(abs(t["y"].float! - y), 0.01, "y is almost correct")
             XCTAssertEqual(t["radius"].float!, Float(touches[0]._radius), "radius is correct")
@@ -310,7 +306,7 @@ class TouchServiceTests: XCTestCase {
         log = TouchService.shared.toLog()
         XCTAssertEqual(log.count, 0, "No messages returned afeter removeAllTouches")
 
-        TouchService.shared.addTouches(touches)  // add touches again
+        TouchService.shared.addTouches(touches) // add touches again
         TouchService.shared.disable()
         log = TouchService.shared.toLog()
         XCTAssertEqual(log.count, 0, "TouchService resets touches when disabled")

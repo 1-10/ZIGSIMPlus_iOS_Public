@@ -6,23 +6,25 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import Foundation
 import AudioToolbox
+import Foundation
 import SwiftOSC
 import SwiftyJSON
 
-func AudioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
-                               inAQ: AudioQueueRef,
-                               inBuffer: AudioQueueBufferRef,
-                               inStartTime: UnsafePointer<AudioTimeStamp>,
-                               inNumberPacketDescriptions: UInt32,
-                               inPacketDescs: UnsafePointer<AudioStreamPacketDescription>?) {}
+// swiftlint:disable:next function_parameter_count
+func audioQueueInputCallback(inUserData: UnsafeMutableRawPointer?,
+                             inAQ: AudioQueueRef,
+                             inBuffer: AudioQueueBufferRef,
+                             inStartTime: UnsafePointer<AudioTimeStamp>,
+                             inNumberPacketDescriptions: UInt32,
+                             inPacketDescs: UnsafePointer<AudioStreamPacketDescription>?) {}
 
 class AudioLevelService {
     // Singleton instance
     static let shared = AudioLevelService()
 
     // MARK: - Instance Properties
+
     var queue: AudioQueueRef!
     var timer: Timer!
     var dataFormat = AudioStreamBasicDescription(
@@ -48,10 +50,11 @@ class AudioLevelService {
         var propertySize = UInt32(MemoryLayout<AudioQueueLevelMeterState>.size)
 
         AudioQueueGetProperty(
-            self.queue,
+            queue,
             kAudioQueueProperty_CurrentLevelMeterDB,
             &levelMeter,
-            &propertySize)
+            &propertySize
+        )
 
         averageLevel = levelMeter.mAveragePower
         maxLevel = levelMeter.mPeakPower
@@ -70,53 +73,64 @@ class AudioLevelService {
         var dataFormat = AudioStreamBasicDescription(
             mSampleRate: 44100.0,
             mFormatID: kAudioFormatLinearPCM,
-            mFormatFlags: AudioFormatFlags(kLinearPCMFormatFlagIsBigEndian | kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked),
+            mFormatFlags: AudioFormatFlags(
+                kLinearPCMFormatFlagIsBigEndian | kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked
+            ),
             mBytesPerPacket: 2,
             mFramesPerPacket: 1,
             mBytesPerFrame: 2,
             mChannelsPerFrame: 1,
             mBitsPerChannel: 16,
-            mReserved: 0)
+            mReserved: 0
+        )
 
         // Observe input level
-        var audioQueue: AudioQueueRef? = nil
+        var audioQueue: AudioQueueRef?
         var error = noErr
         error = AudioQueueNewInput(
-                           &dataFormat,
-                           AudioQueueInputCallback,
-                           unsafeBitCast(self, to: UnsafeMutableRawPointer.self),
-                           CFRunLoopGetCurrent(),
-                           CFRunLoopMode.commonModes.rawValue,
-                           0,
-                           &audioQueue)
+            &dataFormat,
+            audioQueueInputCallback,
+            unsafeBitCast(self, to: UnsafeMutableRawPointer.self),
+            CFRunLoopGetCurrent(),
+            CFRunLoopMode.commonModes.rawValue,
+            0,
+            &audioQueue
+        )
 
         if error == noErr {
-            self.queue = audioQueue
+            queue = audioQueue
         }
-        AudioQueueStart(self.queue, nil)
+        AudioQueueStart(queue, nil)
 
         // Enable level meter
         var enabledLevelMeter: UInt32 = 1
-        AudioQueueSetProperty(self.queue, kAudioQueueProperty_EnableLevelMetering, &enabledLevelMeter, UInt32(MemoryLayout<UInt32>.size))
-        self.timer = Timer.scheduledTimer(timeInterval: fps,
-                                          target: self,
-                                          selector: #selector(AudioLevelService.detectVolume(timer:)),
-                                          userInfo: nil,
-                                          repeats: true)
-        self.timer?.fire()
+        AudioQueueSetProperty(
+            queue,
+            kAudioQueueProperty_EnableLevelMetering,
+            &enabledLevelMeter,
+            UInt32(MemoryLayout<UInt32>.size)
+        )
+        timer = Timer.scheduledTimer(
+            timeInterval: fps,
+            target: self,
+            selector: #selector(AudioLevelService.detectVolume(timer:)),
+            userInfo: nil,
+            repeats: true
+        )
+        timer?.fire()
     }
 
     public func stop() {
         // Finish observation
-        self.timer.invalidate()
-        self.timer = nil
-        AudioQueueFlush(self.queue)
-        AudioQueueStop(self.queue, false)
-        AudioQueueDispose(self.queue, true)
+        timer.invalidate()
+        timer = nil
+        AudioQueueFlush(queue)
+        AudioQueueStop(queue, false)
+        AudioQueueDispose(queue, true)
     }
 }
 
-extension AudioLevelService : Service {
+extension AudioLevelService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
@@ -146,7 +160,7 @@ extension AudioLevelService : Service {
         if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
             data["miclevel"] = [
                 "average": averageLevel,
-                "max": maxLevel
+                "max": maxLevel,
             ]
         }
 

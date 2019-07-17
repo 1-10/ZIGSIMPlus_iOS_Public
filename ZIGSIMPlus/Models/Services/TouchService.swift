@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import UIKit
 import SwiftOSC
 import SwiftyJSON
+import UIKit
 
 /// Data store for touch data.
 public class TouchService {
@@ -52,11 +52,9 @@ public class TouchService {
         if !isEnabled { return }
 
         for touchToRemove in touchesToRemove {
-            for (i, t) in touchPoints.enumerated() {
-                if t == touchToRemove {
-                    touchPoints.remove(at: i)
-                    break
-                }
+            for (i, t) in touchPoints.enumerated() where t == touchToRemove {
+                touchPoints.remove(at: i)
+                break
             }
         }
     }
@@ -65,11 +63,9 @@ public class TouchService {
         if !isEnabled { return }
 
         for touchToUpdate in touchesToUpdate {
-            for (i, t) in touchPoints.enumerated() {
-                if t == touchToUpdate {
-                    touchPoints[i] = touchToUpdate
-                    break
-                }
+            for (i, t) in touchPoints.enumerated() where t == touchToUpdate {
+                touchPoints[i] = touchToUpdate
+                break
             }
         }
     }
@@ -84,11 +80,11 @@ public class TouchService {
         touchArea = rect
     }
 
-    private func getTouchResult(from touches:[UITouch]) -> [String] {
+    private func getTouchResult(from touches: [UITouch]) -> [String] {
         guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
             let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
-            else {
-                fatalError("AppSetting for the command is nil")
+        else {
+            fatalError("AppSetting for the command is nil")
         }
 
         var result = [String]()
@@ -115,14 +111,14 @@ public class TouchService {
                 }
             }
 
-            if isApplePencilActive && touch.type == .pencil {
+            if isApplePencilActive, touch.type == .pencil {
                 result += [
                     "pencil:touch:x:\(point.x)",
                     "pencil:touch:y:\(point.y)",
                     "pencil:altitude:\(touch.altitudeAngle)",
                     "pencil:azimuth:\(touch.azimuthAngle(in: touch.view!))",
                 ]
-                
+
                 if #available(iOS 9.0, *) {
                     result.append(String(format: "pencil:force:%.3f", touch.force))
                 }
@@ -143,7 +139,7 @@ public class TouchService {
     }
 }
 
-extension TouchService : Service {
+extension TouchService: Service {
     func toLog() -> [String] {
         return getTouchResult(from: touchPoints)
     }
@@ -151,11 +147,11 @@ extension TouchService : Service {
     func toOSC() -> [OSCMessage] {
         guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
             let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
-            else {
-                fatalError("AppSetting for the command is nil")
+        else {
+            fatalError("AppSetting for the command is nil")
         }
 
-        if !isTouchActive && !isApplePencilActive {
+        if !isTouchActive, !isApplePencilActive {
             return []
         }
 
@@ -178,7 +174,7 @@ extension TouchService : Service {
                 }
             }
 
-            if isApplePencilActive && touch.type == .pencil {
+            if isApplePencilActive, touch.type == .pencil {
                 messages.append(osc("penciltouch\(i)1", Float(point.x)))
                 messages.append(osc("penciltouch\(i)2", Float(point.y)))
                 messages.append(osc("pencilaltitude\(i)", Float(touch.altitudeAngle)))
@@ -195,13 +191,13 @@ extension TouchService : Service {
     func toJSON() throws -> JSON {
         guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
             let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
-            else {
-                fatalError("AppSetting for the command is nil")
+        else {
+            fatalError("AppSetting for the command is nil")
         }
         var data = JSON()
 
         if isTouchActive {
-            let touchData: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
+            let touchData: [[String: CGFloat]] = touchPoints.map { touch in
                 var point = touch.location(in: touch.view!)
                 point = remapToScreenCoord(point)
 
@@ -220,7 +216,7 @@ extension TouchService : Service {
         }
 
         if isApplePencilActive {
-            let pencilData: [Dictionary<String, CGFloat>] = touchPoints.map { touch in
+            let pencilData: [[String: CGFloat]] = touchPoints.map { touch in
                 var point = touch.location(in: touch.view!)
                 point = remapToScreenCoord(point)
 
@@ -228,12 +224,12 @@ extension TouchService : Service {
                     "x": point.x,
                     "y": point.y,
                     "altitude": touch.altitudeAngle,
-                    "azimuth": touch.azimuthAngle(in: touch.view!)
+                    "azimuth": touch.azimuthAngle(in: touch.view!),
                 ]
                 if #available(iOS 9.0, *) {
                     obj["force"] = touch.force
                 }
-                
+
                 return obj
             }
             data["pencil"] = JSON(pencilData)
