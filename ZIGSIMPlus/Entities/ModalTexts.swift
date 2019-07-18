@@ -146,9 +146,11 @@ let modalTexts: [Command: (title: String, body: String)] = [
     Output values for Detection Type FACE:
     **left:x, right:x, top:y, bottom:y, lefteye, righteye, mouth**: Coordinate(point) in the video frame. Bottom left is (0, 0), top right is determined by the dimension of the video.
     **hassmile, lefteye-closed, righteye-closed**: True or false.
+    **faceangle**: The rotation of the face. Rotation is measured counterclockwise in degrees, with zero indicating that a line drawn between the eyes is horizontal relative to the image orientation.
+    **trackingID**: The tracking identifier of the face object. This identifier persists only as long as a face is in the video frame and is not associated with a specific face.
 
     Output values for others:
     **topleft, topright, bottomleft, bottomright**: Coordinate in the video frame. Bottom left is (0, 0), top right is determined by the dimension of the video.
-    **qrmessage, qrversion, qrmaskpattern, errorcorrectionlevel**: Output only when Detection Type is QR.
+    **qrmessage, qrversion, qrmaskpattern, qrerrorcorrectionlevel**: Output only when Detection Type is QR.
     """),
 ]
