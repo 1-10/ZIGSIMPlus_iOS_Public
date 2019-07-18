@@ -119,6 +119,7 @@ let modalTexts: [Command: (title: String, body: String)] = [
     .battery: ("Battery", """
     Battery command monitors the battery charge level of the device.
     It ranges from 0.0 (fully discharged) to 1.0 (100% charged).
+    Note that this value may be inaccurate.
     """),
     .applePencil: ("Apple Pencil", """
     Apple Pencil command detects touch events in Start tab (same as Touch command).
