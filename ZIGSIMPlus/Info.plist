@@ -19,17 +19,17 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NFCReaderUsageDescription</key>
-	<string>This app scans NFC in NFC Reader.</string>
+	<string>This app scans NFC in NFC Reader command to read the data and output them over network.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>This app uses camera in NDI, ARKit and Image Detection.</string>
+	<string>This app uses camera for in NDI, ARKit and Image Detection commands.  NDI command outputs captured images over NDI protocol. ARKit command, tracks data of the device, face and markers with the camera, then output them over network.  Image Detection command detects face, rectangle etc in captured images and output the data over network.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app uses location in Compass, GPS and Beacon.</string>
+	<string>This app uses location in Compass, GPS and Beacon commands to get device data and output them over network.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>This app uses microphone in NDI and Mic Level.</string>
+	<string>This app uses microphone in NDI and Mic Level commands. NDI command outputs the audio over NDI protocol. Mic Level command monitors the level of mic input, then send the data over network.</string>
 	<key>ProductIDForPremiumFeatures</key>
 	<string>com.OneToTen.drive.ZIGSIM.PremiumFeatures</string>
 	<key>UIFileSharingEnabled</key>
