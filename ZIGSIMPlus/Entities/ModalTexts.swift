@@ -151,6 +151,6 @@ let modalTexts: [Command: (title: String, body: String)] = [
 
     Output values for others:
     **topleft, topright, bottomleft, bottomright**: Coordinate in the video frame. Bottom left is (0, 0), top right is determined by the dimension of the video.
-    **qrmessage, qrversion, qrmaskpattern, errorcorrectionlevel**: Output only when Detection Type is QR.
+    **qrmessage, qrversion, qrmaskpattern, qrerrorcorrectionlevel**: Output only when Detection Type is QR.
     """),
 ]
