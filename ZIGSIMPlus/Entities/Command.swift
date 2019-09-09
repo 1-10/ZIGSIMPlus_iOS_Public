@@ -56,7 +56,7 @@ public enum Command: String, CaseIterable {
 
     var isPremium: Bool {
         switch self {
-        case .ndi, .arkit, .imageDetection, .nfc, .applePencil:
+        case .ndi, .arkit, .imageDetection, .nfc:
             return true
         default:
             return false
