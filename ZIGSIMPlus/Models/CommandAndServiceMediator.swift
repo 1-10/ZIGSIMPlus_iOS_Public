@@ -18,8 +18,10 @@ public class CommandAndServiceMediator {
         switch command {
         case .acceleration, .gravity, .gyro, .quaternion:
             return MotionService.shared.isAvailable()
-        case .touch, .applePencil:
-            return TouchService.shared.isAvailable()
+        case .touch:
+            return TouchService.shared.isTouchAvailable()
+        case .applePencil:
+            return TouchService.shared.isApplePencilAvailable()
         case .battery:
             return BatteryService.shared.isAvailable()
         case .compass, .gps, .beacon:

@@ -6,6 +6,7 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
+import DeviceKit
 import Foundation
 import SwiftOSC
 import SwiftyJSON
@@ -29,8 +30,15 @@ public class TouchService {
 
     // MARK: - Public methods
 
-    func isAvailable() -> Bool {
+    func isTouchAvailable() -> Bool {
         return true
+    }
+
+    func isApplePencilAvailable() -> Bool {
+        if Device().model == DeviceModel.ipad.rawValue {
+            return true
+        }
+        return false
     }
 
     func enable() {
