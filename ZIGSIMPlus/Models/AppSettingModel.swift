@@ -106,11 +106,6 @@ enum SettingViewTextType {
     case deviceUuid
 }
 
-enum DeviceModel: String {
-    case iphone = "iPhone"
-    case ipad = "iPad"
-}
-
 public class AppSettingModel {
     private init() {
         for command in Command.allCases {

@@ -35,10 +35,7 @@ public class TouchService {
     }
 
     func isApplePencilAvailable() -> Bool {
-        if Device().model == DeviceModel.ipad.rawValue {
-            return true
-        }
-        return false
+        return Device().isPad
     }
 
     func enable() {
