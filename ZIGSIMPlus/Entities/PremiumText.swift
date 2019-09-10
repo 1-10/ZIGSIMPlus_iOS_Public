@@ -11,6 +11,4 @@ import Foundation
 let premiumTextTitle: String = "Explore more with premium features"
 let premiumTextBody: String = """
 You have to purchase to unlock these functions.
-
-Note that Apple Pencil function only works on Apple Pencil compatible devices, that are some of iPad models.
 """
