@@ -178,7 +178,7 @@
 		63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndServiceMediator.swift; sourceTree = "<group>"; };
 		63E5785A2296991400C6340C /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		902EB9C6227BE68D008F1650 /* ZIG SIM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZIG SIM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		902EB9C6227BE68D008F1650 /* ZIG SIM PRO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZIG SIM PRO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9C9227BE68D008F1650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelectionViewController.swift; sourceTree = "<group>"; };
 		902EB9CE227BE68D008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -428,7 +428,7 @@
 		902EB9C7227BE68D008F1650 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				902EB9C6227BE68D008F1650 /* ZIG SIM.app */,
+				902EB9C6227BE68D008F1650 /* ZIG SIM PRO.app */,
 				902EB9DA227BE68F008F1650 /* ZIGSIMPlusTests.xctest */,
 				902EB9E5227BE68F008F1650 /* ZIGSIMPlusUITests.xctest */,
 			);
@@ -569,7 +569,7 @@
 			);
 			name = ZIGSIMPlus;
 			productName = ZIGSIMPlus;
-			productReference = 902EB9C6227BE68D008F1650 /* ZIG SIM.app */;
+			productReference = 902EB9C6227BE68D008F1650 /* ZIG SIM PRO.app */;
 			productType = "com.apple.product-type.application";
 		};
 		902EB9D9227BE68F008F1650 /* ZIGSIMPlusTests */ = {
@@ -1129,8 +1129,8 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/VideoCapture/SDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.drive.ZIG-SIM";
-				PRODUCT_NAME = "ZIG SIM";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIG-SIM-PRO";
+				PRODUCT_NAME = "ZIG SIM PRO";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
@@ -1170,8 +1170,8 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/VideoCapture/SDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.drive.ZIG-SIM";
-				PRODUCT_NAME = "ZIG SIM";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIG-SIM-PRO";
+				PRODUCT_NAME = "ZIG SIM PRO";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ZIGSIMPlus/ZIGSIMPlus-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
