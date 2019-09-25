@@ -14,7 +14,7 @@
         <!--Command Selection View Controller-->
         <scene sceneID="nO0-sm-PVh">
             <objects>
-                <viewController id="mba-MW-Syn" customClass="CommandSelectionViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mba-MW-Syn" customClass="CommandSelectionViewController" customModule="ZIG_SIM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FCH-u6-iqn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,33 +37,11 @@
                                     <outlet property="delegate" destination="mba-MW-Syn" id="10U-4U-Fhl"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.46000000000000002" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omw-lC-Jla">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="212"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.11630727640000001" green="1" blue="0.55855442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TS3-fm-ViJ">
-                                <rect key="frame" x="184" y="80" width="46" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="BO3-mZ-hf2"/>
-                                    <constraint firstAttribute="height" constant="65" id="dVb-GI-phg"/>
-                                    <constraint firstAttribute="width" constant="46" id="hEc-Y4-Gk5"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="actionButton:" destination="mba-MW-Syn" eventType="touchUpInside" id="m6H-9a-W55"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="TS3-fm-ViJ" firstAttribute="top" secondItem="XPd-KM-7cg" secondAttribute="top" constant="80" id="3mm-rM-mxc"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="leading" secondItem="XPd-KM-7cg" secondAttribute="leading" id="AsL-Ea-O9K"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="bottom" secondItem="XPd-KM-7cg" secondAttribute="bottom" id="CAb-cN-TO1"/>
-                            <constraint firstItem="TS3-fm-ViJ" firstAttribute="centerX" secondItem="FCH-u6-iqn" secondAttribute="centerX" id="Hhh-7R-Ptr"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="trailing" secondItem="XPd-KM-7cg" secondAttribute="trailing" id="Khf-S8-mJG"/>
                             <constraint firstItem="brz-QX-Ylr" firstAttribute="top" secondItem="XPd-KM-7cg" secondAttribute="top" id="QJo-hR-cwq"/>
                         </constraints>
@@ -71,9 +49,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="jmw-WX-nyq"/>
                     <connections>
-                        <outlet property="lockPremiumFeatureLabel" destination="Omw-lC-Jla" id="mYT-U0-bKa"/>
                         <outlet property="tableView" destination="brz-QX-Ylr" id="nT9-aH-cVc"/>
-                        <outlet property="unlockPremiumFeatureButton" destination="TS3-fm-ViJ" id="Jyd-em-Y2q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ar9-It-yWL" sceneMemberID="firstResponder"/>
@@ -83,7 +59,7 @@
         <!--Command Detail Settings View Controller-->
         <scene sceneID="Dtf-fQ-5Lf">
             <objects>
-                <viewController storyboardIdentifier="CommandDetailSettingsView" id="qUZ-kx-Ls0" userLabel="Command Detail Settings View Controller" customClass="CommandDetailSettingsViewController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommandDetailSettingsView" id="qUZ-kx-Ls0" userLabel="Command Detail Settings View Controller" customClass="CommandDetailSettingsViewController" customModule="ZIG_SIM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="On0-6i-BIT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,7 +108,7 @@
         <!--Command Selection Tab Navigation Controller-->
         <scene sceneID="HMt-Mt-5eU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Cw-W1-YeO" customClass="CommandSelectionTabNavigationController" customModule="ZIGSIMPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Cw-W1-YeO" customClass="CommandSelectionTabNavigationController" customModule="ZIG_SIM" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" image="sensorLogo" id="q3R-r8-tFu">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
