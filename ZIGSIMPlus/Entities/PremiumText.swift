@@ -8,7 +8,7 @@
 
 import Foundation
 
-let premiumTextTitle: String = "Explore more with premium features"
-let premiumTextBody: String = """
-You have to purchase to unlock these functions.
-"""
+// let premiumTextTitle: String = "Explore more with premium features"
+// let premiumTextBody: String = """
+// You have to purchase to unlock these functions.
+// """
