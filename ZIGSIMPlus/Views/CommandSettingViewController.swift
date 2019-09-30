@@ -51,6 +51,13 @@ public class CommandSettingViewController: UIViewController {
             } else if segment.tag == 3 {
                 segment.selectedSegmentIndex = userDefaultSegments[.messageRatePerSecond] ?? 0
             }
+            // Because the specification of UISegmentedControl has changed from iOS13
+            if #available(iOS 13.0, *) {
+                segment.selectedSegmentTintColor = Theme.main
+                segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Theme.main], for: .normal)
+                segment.layer.borderWidth = 1
+                segment.layer.borderColor = Theme.main.cgColor
+            }
         }
 
         initNavigationBar()
