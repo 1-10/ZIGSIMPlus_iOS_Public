@@ -34,8 +34,8 @@ class FileWriter {
         var bytesWritten: Int?
         data.withUnsafeBytes {
             bytesWritten = $0.count
-            let baffer = $0.baseAddress!.assumingMemoryBound(to: UInt8.self)
-            output?.write(baffer, maxLength: $0.count)
+            let buffer = $0.baseAddress!.assumingMemoryBound(to: UInt8.self)
+            output?.write(buffer, maxLength: $0.count)
         }
 
         if bytesWritten != data.count {
