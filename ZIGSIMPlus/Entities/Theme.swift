@@ -12,6 +12,7 @@ struct Theme {
     static let main = UIColor(0x018E5B)
     static let dark = UIColor(0x202020)
     static let gray = UIColor(0x6B6B6B)
+    static let lightgray = UIColor(0xD3D3D3)
     static let white = UIColor(0xFFFFFF)
     static let black = UIColor(0x000000)
     static let warn = UIColor(0xFFDD66)

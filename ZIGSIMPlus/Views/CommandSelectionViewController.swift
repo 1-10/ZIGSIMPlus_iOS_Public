@@ -93,6 +93,8 @@ final class CommandSelectionViewController: UIViewController {
         present(alert, animated: true, completion: {
             alert.view.superview?.isUserInteractionEnabled = true
         })
+        // Unification of background color due to existence of dark mode
+        alert.setBackgroundColor(Theme.lightgray)
     }
 
     private func adjustNavigationDesign() {
