@@ -31,8 +31,11 @@ class FileWriter {
     func write(_ text: String) {
         guard let data = text.data(using: .utf8) else { return }
 
-        let bytesWritten = data.withUnsafeBytes {
-            output?.write($0, maxLength: data.count)
+        var bytesWritten: Int?
+        data.withUnsafeBytes {
+            bytesWritten = $0.count
+            let buffer = $0.baseAddress!.assumingMemoryBound(to: UInt8.self)
+            output?.write(buffer, maxLength: $0.count)
         }
 
         if bytesWritten != data.count {

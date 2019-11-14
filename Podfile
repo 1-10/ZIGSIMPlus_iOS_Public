@@ -6,7 +6,7 @@ target 'ZIGSIMPlus' do
   use_frameworks!
 
   # Pods for ZIGSIMPlus
-  pod 'DeviceKit', '~> 1.3'
+  pod 'DeviceKit', '~> 2.0'
   pod 'LicensePlist'
   pod 'SwiftSocket'
   pod 'SwiftOSC', '~> 1.2'

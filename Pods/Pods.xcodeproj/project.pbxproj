@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftFormat;
+			productName = SwiftFormat;
 		};
 		E9745EED2EAB93DFAF9D9FE6AD2CEAC6 /* SwiftLint */ = {
 			isa = PBXAggregateTarget;
@@ -24,6 +25,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 		EF1789223B4BA35B9051DB4DCDA4B079 /* Sourcery */ = {
 			isa = PBXAggregateTarget;
@@ -33,6 +35,7 @@
 			dependencies = (
 			);
 			name = Sourcery;
+			productName = Sourcery;
 		};
 		F1C285BD38F5442D2968D9B00CB31C8F /* LicensePlist */ = {
 			isa = PBXAggregateTarget;
@@ -42,6 +45,7 @@
 			dependencies = (
 			);
 			name = LicensePlist;
+			productName = LicensePlist;
 		};
 /* End PBXAggregateTarget section */
 
@@ -318,10 +322,10 @@
 		17FB4AC700FBDFCC5285B40BAF51C0FF /* Timetag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timetag.swift; path = Framework/SwiftOSC/Types/Timetag.swift; sourceTree = "<group>"; };
 		1BEE6BA7F864B3BEB68BA23C53059966 /* Pods-ZIGSIMPlusTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZIGSIMPlusTests-umbrella.h"; sourceTree = "<group>"; };
 		1C9FD0E7550FC95FEB32B634F42DCB03 /* Pods-ZIGSIMPlusUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZIGSIMPlusUITests-dummy.m"; sourceTree = "<group>"; };
-		1CE9A88566C8FFB6C4311CA1F621699A /* yudpsocket.c */ = {isa = PBXFileReference; includeInIndex = 1; name = yudpsocket.c; path = Framework/SwiftOSC/Communication/ysocket/yudpsocket.c; sourceTree = "<group>"; };
+		1CE9A88566C8FFB6C4311CA1F621699A /* yudpsocket.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = yudpsocket.c; path = Framework/SwiftOSC/Communication/ysocket/yudpsocket.c; sourceTree = "<group>"; };
 		1D61A1AD5E2634A0AAA974A343D23136 /* SwiftSocket-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftSocket-Info.plist"; sourceTree = "<group>"; };
 		1D920C6CD888C058EC74B23C0B140D59 /* SwiftOSC.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftOSC.xcconfig; sourceTree = "<group>"; };
-		1FFE1A42A28EDB7A4B745A338BE3B1E1 /* DeviceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DeviceKit.framework; path = "DeviceKit-framework.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFE1A42A28EDB7A4B745A338BE3B1E1 /* DeviceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DeviceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2100BD33F097D25537184CB9091DF817 /* MarkdownElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownElement.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownElement.swift; sourceTree = "<group>"; };
 		21156F5FA803F83A09D487A738EF32C7 /* DeviceKit-library.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "DeviceKit-library.xcconfig"; path = "../DeviceKit-library/DeviceKit-library.xcconfig"; sourceTree = "<group>"; };
 		23A2249F4C0B80F4976586D49D6441EB /* Pods-ZIGSIMPlusUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZIGSIMPlusUITests-umbrella.h"; sourceTree = "<group>"; };
@@ -329,7 +333,7 @@
 		27273776485A1763F1F4AC935D5AE224 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		27802038502972C8B7614C1E8D65790C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		27A6006654BB27C3068AD3C68D7AE7FC /* DynamicButtonStyleArrowLeft.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleArrowLeft.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleArrowLeft.swift; sourceTree = "<group>"; };
-		27C0772AC06698E9F4D1B1E3249C0592 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZIGSIMPlus.framework; path = "Pods-ZIGSIMPlus.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C0772AC06698E9F4D1B1E3249C0592 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29253DA25DD7155FD11ADEDF102D2209 /* SwiftyJSON-library-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftyJSON-library-umbrella.h"; path = "../SwiftyJSON-library/SwiftyJSON-library-umbrella.h"; sourceTree = "<group>"; };
 		2B298FAE209D843E4CFD79AE99F054E3 /* SVProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.xcconfig; sourceTree = "<group>"; };
 		2C0D36153520CD6DB6F7141D3A89F427 /* SwiftyUserDefaults-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyUserDefaults-prefix.pch"; sourceTree = "<group>"; };
@@ -388,13 +392,13 @@
 		6B420ECF4F0C6054CEFB35C749DF7996 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
 		704C670B8DE803FBA6E4A0907B56B73F /* DynamicButtonPathVector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonPathVector.swift; path = Sources/DynamicButtonPathVector.swift; sourceTree = "<group>"; };
 		706059E1F1DE543AB01C83FC55B1A98F /* MarkdownKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarkdownKit-dummy.m"; sourceTree = "<group>"; };
-		70F7359C716967783100EDAD99DFB60E /* libSwiftyJSON-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libSwiftyJSON-library.a"; path = "libSwiftyJSON-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70F7359C716967783100EDAD99DFB60E /* libSwiftyJSON-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSwiftyJSON-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		715B98529360E1D8DE07613682E6A3EF /* DynamicButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DynamicButton-dummy.m"; sourceTree = "<group>"; };
 		72881CDDE041787AE59046D3BA1CF3D0 /* SVProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SVProgressHUD.modulemap; sourceTree = "<group>"; };
 		72B641E619E8B0A5D1F61F8E4BCED0DC /* Typealias.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealias.swift; path = MarkdownKit/Sources/UIKit/Typealias.swift; sourceTree = "<group>"; };
 		737D66AE939C3C31B9FD0F5C031AAD4E /* MarkdownStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownStyle.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownStyle.swift; sourceTree = "<group>"; };
 		745885FD9757766E3E553F47A1842B9C /* Pods-ZIGSIMPlusTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZIGSIMPlusTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7736E1066CBE35696E9FE3D26B096BB5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = "SwiftyJSON-framework.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7736E1066CBE35696E9FE3D26B096BB5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AFF17B5B78ECC805407DDD0F12322D /* SwiftyJSON-framework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "SwiftyJSON-framework.modulemap"; sourceTree = "<group>"; };
 		78438478FD9ED5D6FA1EF82B03F5ABDF /* DynamicButtonStyleClose.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleClose.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleClose.swift; sourceTree = "<group>"; };
 		7AAF00CC1CD72176D08D4E4CFDAA19C2 /* DeviceKit-library-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DeviceKit-library-prefix.pch"; path = "../DeviceKit-library/DeviceKit-library-prefix.pch"; sourceTree = "<group>"; };
@@ -422,15 +426,15 @@
 		965B6C2E740DEDB3FF8DC4D600DD003F /* MarkdownItalic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownItalic.swift; path = MarkdownKit/Sources/Common/Elements/Italic/MarkdownItalic.swift; sourceTree = "<group>"; };
 		966811943AFE56534F723A74A5C81464 /* Defaults+Observing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Defaults+Observing.swift"; path = "Sources/Defaults+Observing.swift"; sourceTree = "<group>"; };
 		97EF6B12FD490104BAE2818415F28838 /* Pods-ZIGSIMPlusTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZIGSIMPlusTests.modulemap"; sourceTree = "<group>"; };
-		9A67ADE2F48A570A7155ACAE9BAF0E53 /* SwiftSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftSocket.framework; path = SwiftSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A67ADE2F48A570A7155ACAE9BAF0E53 /* SwiftSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B67ABE437675F84A2E8CAAF9DF24F18 /* Pods-ZIGSIMPlus-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZIGSIMPlus-dummy.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E5C56F56171E8E04ED530245D1E29D3 /* DynamicButtonStyleCaretDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleCaretDown.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleCaretDown.swift; sourceTree = "<group>"; };
 		9EE0E8538573556E18EB2E30F69A2F29 /* MarkdownQuote.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownQuote.swift; path = MarkdownKit/Sources/Common/Elements/Quote/MarkdownQuote.swift; sourceTree = "<group>"; };
 		A1EFAD91A34930D33B804EF1B131999C /* MarkdownKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MarkdownKit-Info.plist"; sourceTree = "<group>"; };
 		A2DAC614C970C7D71EE488421CAC6BCB /* MarkdownLevelElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownLevelElement.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownLevelElement.swift; sourceTree = "<group>"; };
-		A49F35A8EFA88FAE71574815857C8DFD /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVProgressHUD.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A54A851C698CB07544C702105613CDC0 /* libPods-ZIGSIMPlusUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ZIGSIMPlusUITests.a"; path = "libPods-ZIGSIMPlusUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A49F35A8EFA88FAE71574815857C8DFD /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54A851C698CB07544C702105613CDC0 /* libPods-ZIGSIMPlusUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZIGSIMPlusUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D5B39502D6800958BF5B3A30711715 /* DefaultsObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultsObserver.swift; path = Sources/DefaultsObserver.swift; sourceTree = "<group>"; };
 		A68F5C8344E2376F14CBB4F9582B6897 /* MarkdownKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarkdownKit.xcconfig; sourceTree = "<group>"; };
 		A6EC47369A1A41495C678015904B9509 /* yudpsocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = yudpsocket.swift; path = Framework/SwiftOSC/Communication/ysocket/yudpsocket.swift; sourceTree = "<group>"; };
@@ -449,26 +453,26 @@
 		B2FE033275322B9CE10562522031D7ED /* SwiftSocket-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftSocket-umbrella.h"; sourceTree = "<group>"; };
 		B3D6CDFC63AA53FD308DCF8BA24BD850 /* DeviceKit-framework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "DeviceKit-framework.modulemap"; sourceTree = "<group>"; };
 		B4BABE4C4B54956752110C95E0FB1D12 /* MarkdownAutomaticLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownAutomaticLink.swift; path = MarkdownKit/Sources/Common/Elements/Link/MarkdownAutomaticLink.swift; sourceTree = "<group>"; };
-		B73DAFFECA436AB5B685ED33981DC9D3 /* MarkdownKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MarkdownKit.framework; path = MarkdownKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B73DAFFECA436AB5B685ED33981DC9D3 /* MarkdownKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarkdownKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8F4EDAE03D447CD37CAC828E05F970F /* DynamicButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicButton-umbrella.h"; sourceTree = "<group>"; };
 		BA0F613DD48F389BB85DF8FB01D27CD9 /* DeviceKit-library.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "DeviceKit-library.modulemap"; path = "../DeviceKit-library/DeviceKit-library.modulemap"; sourceTree = "<group>"; };
 		BA0F69CBDF2293918813BD87009FB04B /* DynamicButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButton.swift; path = Sources/DynamicButton.swift; sourceTree = "<group>"; };
 		BADE459764E063EA80E5801B94C39533 /* DynamicButtonStyleReload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleReload.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleReload.swift; sourceTree = "<group>"; };
 		BB7636C283333B313F4A3AF93761758D /* UIFont+Traits.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+Traits.swift"; path = "MarkdownKit/Sources/UIKit/Extensions/UIFont+Traits.swift"; sourceTree = "<group>"; };
 		BBA3C166637DFD75881AFB5DF053F101 /* DynamicButtonStyleCircleClose.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleCircleClose.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleCircleClose.swift; sourceTree = "<group>"; };
-		BC4F2D99BE6528FCC655A46A82D33B1A /* SwiftOSC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftOSC.framework; path = SwiftOSC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4F2D99BE6528FCC655A46A82D33B1A /* SwiftOSC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftOSC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF195AE2BCD8C6C2CCCC6743145CB205 /* Pods-ZIGSIMPlus-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZIGSIMPlus-Info.plist"; sourceTree = "<group>"; };
 		C42C4A2DC6CB4BBEC52858B95E50CFEF /* SwiftOSC.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftOSC.h; path = Framework/iOS/SwiftOSC.h; sourceTree = "<group>"; };
 		C513A88AB26CF4D63C03A2E1750EAB58 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
 		C649D001898C42F93F682772F4EC266D /* Device.generated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Device.generated.swift; path = Source/Device.generated.swift; sourceTree = "<group>"; };
 		C6632D06DC487FD9E62F33BF11D6096A /* OSCClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OSCClient.swift; path = Framework/SwiftOSC/Communication/OSCClient.swift; sourceTree = "<group>"; };
-		C8AA2ACB935BC2036699D00110EC89F4 /* Pods_ZIGSIMPlusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZIGSIMPlusTests.framework; path = "Pods-ZIGSIMPlusTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8AA2ACB935BC2036699D00110EC89F4 /* Pods_ZIGSIMPlusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8C73843B2210776A89BE08D9841BBD0 /* SwiftyJSON-library-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SwiftyJSON-library-dummy.m"; path = "../SwiftyJSON-library/SwiftyJSON-library-dummy.m"; sourceTree = "<group>"; };
 		C9DEDAC867B941E1FCE2F68B257EA8C0 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
-		CA5C1B13CF51E64F85C7DEFD28CA05CB /* ytcpsocket.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ytcpsocket.c; path = Sources/ytcpsocket.c; sourceTree = "<group>"; };
+		CA5C1B13CF51E64F85C7DEFD28CA05CB /* ytcpsocket.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ytcpsocket.c; path = Sources/ytcpsocket.c; sourceTree = "<group>"; };
 		CAB7553E5639FF08E19F28BB891F36D1 /* SwiftSocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftSocket.xcconfig; sourceTree = "<group>"; };
 		CC8CCC577F6D610390562A40CA9F069C /* DeviceKit-framework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DeviceKit-framework-dummy.m"; sourceTree = "<group>"; };
-		CFA4171BF43901E79C0327FE4C6D55FB /* libDeviceKit-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libDeviceKit-library.a"; path = "libDeviceKit-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA4171BF43901E79C0327FE4C6D55FB /* libDeviceKit-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libDeviceKit-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03CBAE29C860350DCA7185DBE317163 /* Pods-ZIGSIMPlusUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZIGSIMPlusUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D068D4C360A11ACC0D35614CAAE1720E /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		D429820E00A9C8135B441EB8FD7541E9 /* String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = String.swift; path = Framework/SwiftOSC/Types/String.swift; sourceTree = "<group>"; };
@@ -481,7 +485,7 @@
 		D88C5F2A5991F104D8478175119809A0 /* MarkdownParser+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MarkdownParser+UIKit.swift"; path = "MarkdownKit/Sources/UIKit/MarkdownParser+UIKit.swift"; sourceTree = "<group>"; };
 		DA15E5905632F23DFCF7A2DDD3D56E2F /* MarkdownList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownList.swift; path = MarkdownKit/Sources/Common/Elements/List/MarkdownList.swift; sourceTree = "<group>"; };
 		DB5084B36C4249E2C7DD869C1F70089F /* Pods-ZIGSIMPlusUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZIGSIMPlusUITests.modulemap"; sourceTree = "<group>"; };
-		DDDD8609A4CA4A6AF9F8B9EE8A6ABC34 /* yudpsocket.c */ = {isa = PBXFileReference; includeInIndex = 1; name = yudpsocket.c; path = Sources/yudpsocket.c; sourceTree = "<group>"; };
+		DDDD8609A4CA4A6AF9F8B9EE8A6ABC34 /* yudpsocket.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = yudpsocket.c; path = Sources/yudpsocket.c; sourceTree = "<group>"; };
 		DF25B4933D84A35B97D727B3B0E5E9E5 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressAnimatedView.m; path = SVProgressHUD/SVProgressAnimatedView.m; sourceTree = "<group>"; };
 		E00455C45D0402EA786251CD72D59593 /* Defaults+Subscripts.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Defaults+Subscripts.swift"; path = "Sources/Defaults+Subscripts.swift"; sourceTree = "<group>"; };
 		E07DA0379FBC664A82FEB9619FC919D2 /* DynamicButtonStyleCaretLeft.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleCaretLeft.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleCaretLeft.swift; sourceTree = "<group>"; };
@@ -502,10 +506,10 @@
 		F405D4016EB0FDDA7797C6B2AEB30BEC /* MarkdownKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownKit-umbrella.h"; sourceTree = "<group>"; };
 		F753D925CF5B15234ABB898E8E67EEAA /* DynamicButtonStyleCheckMark.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleCheckMark.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleCheckMark.swift; sourceTree = "<group>"; };
 		F841D92CE0676A2DF78E4FEDA6FDBF6D /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		F85054D47F4406463580065249A9C463 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyUserDefaults.framework; path = SwiftyUserDefaults.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F85054D47F4406463580065249A9C463 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyUserDefaults.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA2470DFD4C2054A097D22F6EC07F450 /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
 		FB6F627A9A2F64A164D349F7B027BAD8 /* DeviceKit-library-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DeviceKit-library-umbrella.h"; path = "../DeviceKit-library/DeviceKit-library-umbrella.h"; sourceTree = "<group>"; };
-		FBAAC90FA8ACD2D08A67892502A06632 /* DynamicButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DynamicButton.framework; path = DynamicButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBAAC90FA8ACD2D08A67892502A06632 /* DynamicButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DynamicButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCA22BBF499B47B8256B2459571DE9C /* Pods-ZIGSIMPlusUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZIGSIMPlusUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		FBCAF0E7B49EA7D200DB3A0DA441AA7B /* SwiftyJSON-framework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-framework-prefix.pch"; sourceTree = "<group>"; };
 		FC99E9692B580BFD4DAF3B10798806CD /* DynamicButtonStylePause.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStylePause.swift; path = Sources/DynamicButtonStyles/DynamicButtonStylePause.swift; sourceTree = "<group>"; };
@@ -644,7 +648,6 @@
 				5207B7C934F41E45FBD14B077154091A /* OptionalType.swift */,
 				49AFDB68A0048680471BD5A50EADDCFA /* Support Files */,
 			);
-			name = SwiftyUserDefaults;
 			path = SwiftyUserDefaults;
 			sourceTree = "<group>";
 		};
@@ -686,7 +689,6 @@
 				6B420ECF4F0C6054CEFB35C749DF7996 /* SwiftyJSON.swift */,
 				9B21B380869F23319C4AE77731A2C49A /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -762,7 +764,6 @@
 				C649D001898C42F93F682772F4EC266D /* Device.generated.swift */,
 				E50DD176EAA59447BE707FB61E4DB11A /* Support Files */,
 			);
-			name = DeviceKit;
 			path = DeviceKit;
 			sourceTree = "<group>";
 		};
@@ -809,7 +810,6 @@
 				A6EC47369A1A41495C678015904B9509 /* yudpsocket.swift */,
 				AEBEA1E5B9A9E8DEB5A2227E8146F53E /* Support Files */,
 			);
-			name = SwiftOSC;
 			path = SwiftOSC;
 			sourceTree = "<group>";
 		};
@@ -842,7 +842,6 @@
 				BB7636C283333B313F4A3AF93761758D /* UIFont+Traits.swift */,
 				C74D132BB9883C82B3185362D8BAA69B /* Support Files */,
 			);
-			name = MarkdownKit;
 			path = MarkdownKit;
 			sourceTree = "<group>";
 		};
@@ -851,7 +850,6 @@
 			children = (
 				0EBA5BDC16C85BBDBE9433D953C7FB3A /* Support Files */,
 			);
-			name = Sourcery;
 			path = Sourcery;
 			sourceTree = "<group>";
 		};
@@ -860,7 +858,6 @@
 			children = (
 				68C9B0BB01A24685384C6001CA273DE7 /* Support Files */,
 			);
-			name = LicensePlist;
 			path = LicensePlist;
 			sourceTree = "<group>";
 		};
@@ -869,7 +866,6 @@
 			children = (
 				7A7D1F70EDED5373ED723D12E18CDB50 /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -913,7 +909,6 @@
 			children = (
 				E0FA9857E2B7D0163A3914C53C979FDB /* Support Files */,
 			);
-			name = SwiftFormat;
 			path = SwiftFormat;
 			sourceTree = "<group>";
 		};
@@ -931,7 +926,6 @@
 				3827586B049FF34D1DDF085E2728AE0E /* Resources */,
 				DC42DAD151B43AB002C7D94098F82AE0 /* Support Files */,
 			);
-			name = SVProgressHUD;
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -1107,7 +1101,6 @@
 				D6A2501CBE668BB69D0D407128317A39 /* PathHelper.swift */,
 				4532D8195FF405578AAA304F0771CAA8 /* Support Files */,
 			);
-			name = DynamicButton;
 			path = DynamicButton;
 			sourceTree = "<group>";
 		};
@@ -1122,7 +1115,6 @@
 				DDDD8609A4CA4A6AF9F8B9EE8A6ABC34 /* yudpsocket.c */,
 				D50EB2B5530ADC97B83FCF591F970F3D /* Support Files */,
 			);
-			name = SwiftSocket;
 			path = SwiftSocket;
 			sourceTree = "<group>";
 		};
@@ -1504,6 +1496,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 6E73DDB4089290C99800A1460406540B /* Products */;
