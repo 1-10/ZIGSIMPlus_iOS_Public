@@ -12,19 +12,10 @@ import UIKit
 
 typealias CommandToSelect = (labelString: String, isAvailable: Bool)
 
-enum AlertModalType {
-    case premium
-    case detailSetting
-}
-
 final class CommandSelectionViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var lockPremiumFeatureLabel: UILabel!
-    @IBOutlet var unlockPremiumFeatureButton: UIButton!
-
     var presenter: CommandSelectionPresenterProtocol!
     var cells: [Command: StandardCell] = [:]
-    var unAvailablePremiumCommands: [Command] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +26,6 @@ final class CommandSelectionViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Check here to switch lock/unlock after restore
-        if presenter.isPremiumFeaturePurchased {
-            unlockPremiumFeature()
-        } else {
-            lockPremiumFeature()
-        }
     }
 
     func setNdiArkitImageDetectionButtonAvailable() {
@@ -64,11 +49,6 @@ final class CommandSelectionViewController: UIViewController {
         default:
             return
         }
-    }
-
-    @IBAction func actionButton(_ sender: UIButton) {
-        let message = getAlertMessageForPurchase()
-        showAlertWithMarkdownMessage(title: premiumTextTitle, message: message, alertType: .premium)
     }
 
     public func showDetail(commandNo: Int) {
@@ -99,29 +79,17 @@ final class CommandSelectionViewController: UIViewController {
             fatalError("Invalid command: \(command)")
         }
 
-        showAlertWithMarkdownMessage(title: title, message: msg, alertType: .detailSetting)
+        showAlertWithMarkdownMessage(title: title, message: msg)
     }
 
-    func showAlertWithMarkdownMessage(title: String, message: String, alertType: AlertModalType) {
+    func showAlertWithMarkdownMessage(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let attributedText = convertMessageFromStringToAttributedText(message)
         alert.setValue(attributedText, forKey: "attributedMessage")
-
-        switch alertType {
-        case .premium:
-            alert.addAction(UIAlertAction(title: "Back", style: .default))
-            alert.addAction(UIAlertAction(title: "Purchase", style: .default, handler: { _ in
-                self.tableView.isUserInteractionEnabled = false
-                SVProgressHUD.show()
-                self.presenter.purchase()
-            }))
-        case .detailSetting:
-            alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { _ in
-                UIApplication.shared.open(URL(string: "https://1-10.github.io/zigsim/")!, options: [:])
-            }))
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-        }
-
+        alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: "https://1-10.github.io/zigsim/")!, options: [:])
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true, completion: {
             alert.view.superview?.isUserInteractionEnabled = true
         })
@@ -133,81 +101,9 @@ final class CommandSelectionViewController: UIViewController {
         navigationController?.navigationBar.tintColor = Theme.main
     }
 
-    private func lockPremiumFeature() {
-        setPremiumFeatureIsHidden(false)
-        adjustLockPremiumFeatureLabel()
-        adjustUnlockPremiumFeatureButton()
-    }
-
-    private func unlockPremiumFeature() {
-        // "tableView.reloadData()" is used to update availability of command.
-        // e.g. If user come back to this View,after pushing the Restore Purchase Button in Setting View.
-        tableView.reloadData()
-        setPremiumFeatureIsHidden(true)
-    }
-
-    private func setPremiumFeatureIsHidden(_ isHidden: Bool) {
-        lockPremiumFeatureLabel.isHidden = isHidden
-        unlockPremiumFeatureButton.isHidden = isHidden
-    }
-
-    private func adjustLockPremiumFeatureLabel() {
-        lockPremiumFeatureLabel.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 44 * 4)
-        lockPremiumFeatureLabel.backgroundColor = Theme.overlay
-    }
-
-    private func adjustUnlockPremiumFeatureButton() {
-        let billingImage = UIImage(named: "key")
-        unlockPremiumFeatureButton.tintColor = Theme.white.withAlphaComponent(0.7)
-        unlockPremiumFeatureButton.setImage(billingImage, for: .normal)
-        unlockPremiumFeatureButton.frame = CGRect(
-            x: (lockPremiumFeatureLabel.frame.size.width - unlockPremiumFeatureButton.frame.size.width) / 2,
-            y: (lockPremiumFeatureLabel.frame.size.height - unlockPremiumFeatureButton.frame.size.height) / 2,
-            width: unlockPremiumFeatureButton.frame.size.width,
-            height: unlockPremiumFeatureButton.frame.size.height
-        )
-    }
-
-    private func getAlertMessageForPurchase() -> String {
-        var message = premiumTextBody
-        if unavailablePremiumFunctionCount > 0 {
-            message += (unavailablePremiumFunctionCount >= 2
-                ? "\n\nThe following functions don't work on this device:"
-                : "\n\nThe following function doesn't work on this device:")
-
-            for unAvailablePremiumCommand in unAvailablePremiumCommands {
-                message += "\n- " + unAvailablePremiumCommand.rawValue
-            }
-            if !unAvailablePremiumCommands.contains(Command.ndi) {
-                if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-                    message += "\n- NDI Depth function"
-                }
-                if VideoCaptureService.shared.isDepthRearCameraAvailable(),
-                    !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
-                    message += "\n- NDI Depth function on front camera"
-                }
-            }
-        }
-
-        return message
-    }
-
     private func convertMessageFromStringToAttributedText(_ msg: String) -> NSMutableAttributedString {
         let markdownParser = MarkdownParser()
         return NSMutableAttributedString(attributedString: markdownParser.parse(msg))
-    }
-
-    private var unavailablePremiumFunctionCount: Int {
-        var count = unAvailablePremiumCommands.count
-        if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-            count += 1
-        } else {
-            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
-                count += 1
-            }
-        }
-
-        return count
     }
 }
 
@@ -222,23 +118,6 @@ extension CommandSelectionViewController: UITableViewDelegate {
             }
         }
         return indexPath
-    }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let labelWidth = lockPremiumFeatureLabel.frame.size.width
-        let labelHeight = lockPremiumFeatureLabel.frame.size.height
-        lockPremiumFeatureLabel.frame = CGRect(
-            x: 0,
-            y: (-1) * scrollView.contentOffset.y,
-            width: labelWidth,
-            height: labelHeight
-        )
-        unlockPremiumFeatureButton.frame = CGRect(
-            x: (labelWidth - unlockPremiumFeatureButton.frame.size.width) / 2,
-            y: (labelHeight - unlockPremiumFeatureButton.frame.size.height) / 2 - scrollView.contentOffset.y,
-            width: unlockPremiumFeatureButton.frame.size.width,
-            height: unlockPremiumFeatureButton.frame.size.height
-        )
     }
 }
 
@@ -271,15 +150,6 @@ extension CommandSelectionViewController: UITableViewDataSource {
         if CommandAndServiceMediator.isAvailable(Command.allCases[indexPath.row]) {
             setAvailable(true, forCell: cell)
         } else {
-            setAvailable(false, forCell: cell)
-            if Command.allCases[indexPath.row].isPremium, !presenter.isPremiumFeaturePurchased {
-                unAvailablePremiumCommands.append(Command.allCases[indexPath.row])
-                let orderedSet: NSOrderedSet = NSOrderedSet(array: unAvailablePremiumCommands)
-                unAvailablePremiumCommands = orderedSet.array as! [Command] // swiftlint:disable:this force_cast
-            }
-        }
-
-        if !presenter.isPremiumFeaturePurchased, Command.allCases[indexPath.row].isPremium {
             setAvailable(false, forCell: cell)
         }
 
@@ -331,17 +201,4 @@ extension CommandSelectionViewController: UITableViewDataSource {
     }
 }
 
-extension CommandSelectionViewController: CommandSelectionPresenterDelegate {
-    func showPurchaseResult(isSuccessful: Bool, title: String?, message: String?) {
-        SVProgressHUD.dismiss()
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Close", style: .default) { _ in
-            if isSuccessful {
-                self.unlockPremiumFeature()
-            }
-            self.tableView.isUserInteractionEnabled = true
-        }
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
-}
+extension CommandSelectionViewController: CommandSelectionPresenterDelegate {}

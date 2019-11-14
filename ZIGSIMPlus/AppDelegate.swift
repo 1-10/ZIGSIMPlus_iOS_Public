@@ -15,10 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // swiftlint:disable:next line_length
     func application(_: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // It's recommended to add a transaction queue observer at application launch
-        // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html
-        SKPaymentQueue.default().add(InAppPurchaseFacade.shared)
-
         // Inject dependency here
         composePresenters()
 
@@ -40,11 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CommandPlayer.shared.resume()
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
-        // It's recommended to remove a transaction queue observer at application termination
-        // See https://developer.apple.com/library/archive/technotes/tn2387/_index.html
-        SKPaymentQueue.default().remove(InAppPurchaseFacade.shared)
-    }
+    func applicationWillTerminate(_ application: UIApplication) {}
 
     private func composePresenters() {
         let factory = PresenterFactory()

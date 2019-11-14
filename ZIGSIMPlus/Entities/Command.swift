@@ -53,13 +53,4 @@ public enum Command: String, CaseIterable {
         case .battery: return DefaultsKeys.isBatteryCommandActive
         }
     }
-
-    var isPremium: Bool {
-        switch self {
-        case .ndi, .arkit, .imageDetection, .nfc:
-            return true
-        default:
-            return false
-        }
-    }
 }
