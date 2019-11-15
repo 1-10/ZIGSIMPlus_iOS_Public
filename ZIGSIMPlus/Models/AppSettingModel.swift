@@ -66,6 +66,7 @@ enum ArkitFeaturePointsEnabled: Int, DefaultsSerializable {
 enum NdiType: Int, DefaultsSerializable {
     case CAMERA = 0
     case DEPTH = 1
+    case BOTH = 2
 }
 
 enum CameraPosition: Int, DefaultsSerializable {
