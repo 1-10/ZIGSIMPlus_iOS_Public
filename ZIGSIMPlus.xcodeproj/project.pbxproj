@@ -1107,6 +1107,7 @@
 				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.0;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -1129,6 +1130,7 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/VideoCapture/SDK/lib",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIG-SIM-PRO";
 				PRODUCT_NAME = "ZIG SIM PRO";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1148,6 +1150,7 @@
 				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.0;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -1170,6 +1173,7 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/VideoCapture/SDK/lib",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIG-SIM-PRO";
 				PRODUCT_NAME = "ZIG SIM PRO";
 				PROVISIONING_PROFILE_SPECIFIER = "";
