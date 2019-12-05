@@ -1115,6 +1115,7 @@
 				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
