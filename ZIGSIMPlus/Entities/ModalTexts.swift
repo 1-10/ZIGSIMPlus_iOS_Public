@@ -79,6 +79,7 @@ let modalTexts: [Command: (title: String, body: String)] = [
     ## Image Type
     **CAMERA**: send images captured by camera.
     **DEPTH**: send depth maps captured by camera.
+    **BOTH**: send camera images in RGB channel and depth maps in alpha channel.
 
     ## Camera
     Toggle camera between **REAR** and **FRONT**.

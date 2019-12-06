@@ -19,6 +19,8 @@
 		0236461E2298253900171F73 /* NDIAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 023644C42298253800171F73 /* NDIAdapter.mm */; };
 		02381A6A22CF3D58007D4863 /* AppSettingModelAutoSave.stencil in Sources */ = {isa = PBXBuildFile; fileRef = 02381A6922CF3D58007D4863 /* AppSettingModelAutoSave.stencil */; };
 		02381A6F22CF5496007D4863 /* AppSettingModelAutoSave.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02381A6E22CF5495007D4863 /* AppSettingModelAutoSave.generated.swift */; };
+		023A16B8237F21CC00569FCB /* CompositeRGBWithAlpha.metal in Sources */ = {isa = PBXBuildFile; fileRef = 023A16B7237F21CC00569FCB /* CompositeRGBWithAlpha.metal */; };
+		023A16BA237F228100569FCB /* CompositeRGBWithAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A16B9237F228100569FCB /* CompositeRGBWithAlpha.swift */; };
 		023BB10622965B490094363B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BB10522965B490094363B /* Utils.swift */; };
 		02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */; };
 		02621F5622A4F9140071E9D2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02621F5322A4F9140071E9D2 /* StringExtension.swift */; };
@@ -133,6 +135,8 @@
 		0236461F2298257500171F73 /* ZIGSIMPlus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZIGSIMPlus-Bridging-Header.h"; sourceTree = "<group>"; };
 		02381A6922CF3D58007D4863 /* AppSettingModelAutoSave.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = AppSettingModelAutoSave.stencil; sourceTree = "<group>"; };
 		02381A6E22CF5495007D4863 /* AppSettingModelAutoSave.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingModelAutoSave.generated.swift; sourceTree = "<group>"; };
+		023A16B7237F21CC00569FCB /* CompositeRGBWithAlpha.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = CompositeRGBWithAlpha.metal; sourceTree = "<group>"; };
+		023A16B9237F228100569FCB /* CompositeRGBWithAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeRGBWithAlpha.swift; sourceTree = "<group>"; };
 		023BB10522965B490094363B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		02621F5222A4F9140071E9D2 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		02621F5322A4F9140071E9D2 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 				633A82CE22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift */,
 				023644AF2298253800171F73 /* SDK */,
 				023644C02298253800171F73 /* Bindings */,
+				023A16B7237F21CC00569FCB /* CompositeRGBWithAlpha.metal */,
+				023A16B9237F228100569FCB /* CompositeRGBWithAlpha.swift */,
 			);
 			path = VideoCapture;
 			sourceTree = "<group>";
@@ -883,6 +889,7 @@
 				02E9AE1C22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift in Sources */,
 				902EB9FA227BED1B008F1650 /* CommandSelectionPresenter.swift in Sources */,
 				021F241222D434F80065D641 /* SwiftOSCExtension.swift in Sources */,
+				023A16B8237F21CC00569FCB /* CompositeRGBWithAlpha.metal in Sources */,
 				02A8FA882296B62D001FB3DD /* TouchService.swift in Sources */,
 				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,
 				638345F422A6832700370600 /* NFCService.swift in Sources */,
@@ -905,6 +912,7 @@
 				02621F5522A4F9140071E9D2 /* UITextFieldExtension.swift in Sources */,
 				9092E4D1227ECCFA0019F1C1 /* CommandOutputPresenter.swift in Sources */,
 				02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */,
+				023A16BA237F228100569FCB /* CompositeRGBWithAlpha.swift in Sources */,
 				02E49EA022C20DA200987C1A /* ZIGLabel.swift in Sources */,
 				02381A6A22CF3D58007D4863 /* AppSettingModelAutoSave.stencil in Sources */,
 				026A3C3222BB656C0016DEF6 /* UIColorExtension.swift in Sources */,
@@ -1108,6 +1116,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -1131,6 +1140,8 @@
 					"$(PROJECT_DIR)/Private/VideoCapture/SDK/lib",
 				);
 				MARKETING_VERSION = 1.1.0;
+				MTLLINKER_FLAGS = "-cikernel";
+				MTL_COMPILER_FLAGS = "-fcikernel";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIG-SIM-PRO";
 				PRODUCT_NAME = "ZIG SIM PRO";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1174,6 +1185,8 @@
 					"$(PROJECT_DIR)/Private/VideoCapture/SDK/lib",
 				);
 				MARKETING_VERSION = 1.1.0;
+				MTLLINKER_FLAGS = "-cikernel";
+				MTL_COMPILER_FLAGS = "-fcikernel";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIG-SIM-PRO";
 				PRODUCT_NAME = "ZIG SIM PRO";
 				PROVISIONING_PROFILE_SPECIFIER = "";

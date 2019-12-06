@@ -109,7 +109,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
         // swiftlint:disable line_length
         return [
             .ndi: [
-                SegmentedInt(.ndiType, "Image Type", ["CAMERA", "DEPTH"], 240, app.ndiType.rawValue),
+                SegmentedInt(.ndiType, "Image Type", ["CAMERA", "DEPTH", "BOTH"], 240, app.ndiType.rawValue),
                 SegmentedInt(.ndiCamera, "Camera", ["REAR", "FRONT"], 240, app.ndiCameraPosition.rawValue),
                 SegmentedInt(.ndiDepthType, "Depth Type", ["DEPTH", "DISPARITY"], 240, app.depthType.rawValue),
                 SegmentedInt(.ndiResolution, "Resolution", ["VGA", "HD", "FHD"], 240, app.ndiResolution.rawValue),
