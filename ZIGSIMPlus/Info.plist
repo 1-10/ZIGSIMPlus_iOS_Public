@@ -24,8 +24,14 @@
 	<true/>
 	<key>NFCReaderUsageDescription</key>
 	<string>This app scans NFC in NFC Reader command to read the data and output them over network.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_ndi._tcp</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses camera in NDI, ARKit and Image Detection commands. NDI command outputs captured images over NDI protocol. ARKit command, tracks data of the device, face and markers with the camera, then outputs them over network. Image Detection command detects face, rectangle etc in captured images and outputs the data over network.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>This app uses local network in all commands.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app uses location in Compass, GPS and Beacon commands to get device data and output them over network.</string>
 	<key>NSMicrophoneUsageDescription</key>
