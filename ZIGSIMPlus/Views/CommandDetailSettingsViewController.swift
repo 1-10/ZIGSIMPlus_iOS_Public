@@ -40,6 +40,8 @@ public class CommandDetailSettingsViewController: UIViewController {
         } else {
             stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settingsForCommand.count) * 64.0)
         }
+        // only ndi detail view
+        setActivityOfDependingOnNdiSceneType()
     }
 
     public override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
@@ -47,6 +49,9 @@ public class CommandDetailSettingsViewController: UIViewController {
     }
 
     @objc func segmentedAction(segmented: UISegmentedControl) {
+        // only ndi detail view
+        setActivityOfDependingOnNdiSceneType()
+
         // Get settings for current command
         let settings = presenter.getCommandDetailSettings()
         guard let settingsForCommand = settings[command] else { return }
@@ -103,35 +108,12 @@ public class CommandDetailSettingsViewController: UIViewController {
 
     private func setSegmentedAvailablity(settingKey: DetailSettingsKey, _ segmented: UISegmentedControl) {
         switch settingKey {
-        case .ndiType:
-            if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-                segmented.selectedSegmentIndex = 0
-                segmented.isEnabled = false
-            }
-
-            let segmentedForNdiCamera = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)
-            if !VideoCaptureService.shared.isDepthFrontCameraAvailable(), segmented.selectedSegmentIndex == 1 {
-                segmentedForNdiCamera?.selectedSegmentIndex = 0
-                AppSettingModel.shared.ndiCameraPosition = .BACK
-                segmentedForNdiCamera?.isEnabled = false
-            } else {
-                segmentedForNdiCamera?.isEnabled = true
-            }
+        case .ndiWorldType:
+            setActivityOfDependingOnNdiWorldType(segmentedControl: segmented)
         case .ndiCamera:
-            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
-                let segmentedForNdiType = getSegmented(tagNo: DetailSettingsKey.ndiType.rawValue)
-                if segmentedForNdiType?.selectedSegmentIndex == 1 {
-                    segmented.selectedSegmentIndex = 0
-                    AppSettingModel.shared.ndiCameraPosition = .BACK
-                    segmented.isEnabled = false
-                } else {
-                    segmented.isEnabled = true
-                }
-            }
+            setActivityOfDependingOnNdiCameraType(segmentedControl: segmented)
         case .ndiDepthType:
-            if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-                segmented.isEnabled = false
-            }
+            setActivityOfDependingOnNdiDepthType(segmentedControl: segmented)
         default:
             return
         }
@@ -209,5 +191,70 @@ public class CommandDetailSettingsViewController: UIViewController {
             }
         }
         return segmented
+    }
+
+    private func setActivityOfDependingOnNdiWorldType(segmentedControl: UISegmentedControl) {
+        if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+            segmentedControl.selectedSegmentIndex = 0
+            segmentedControl.isEnabled = false
+        }
+
+        let segmentedForNdiCamera = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)
+        if !VideoCaptureService.shared.isDepthFrontCameraAvailable(), segmentedControl.selectedSegmentIndex == 1 {
+            segmentedForNdiCamera?.selectedSegmentIndex = 0
+            AppSettingModel.shared.ndiCameraPosition = .BACK
+            segmentedForNdiCamera?.isEnabled = false
+        } else {
+            segmentedForNdiCamera?.isEnabled = true
+        }
+    }
+
+    private func setActivityOfDependingOnNdiCameraType(segmentedControl: UISegmentedControl) {
+        if !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
+            let segmentedForNdiWorldType = getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)
+            if segmentedForNdiWorldType?.selectedSegmentIndex == 1 {
+                segmentedControl.selectedSegmentIndex = 0
+                AppSettingModel.shared.ndiCameraPosition = .BACK
+                segmentedControl.isEnabled = false
+            } else {
+                segmentedControl.isEnabled = true
+            }
+        }
+    }
+
+    private func setActivityOfDependingOnNdiDepthType(segmentedControl: UISegmentedControl) {
+        if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+            segmentedControl.isEnabled = false
+        }
+    }
+
+    private func setActivityOfDependingOnNdiSceneType() {
+        getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = true
+        getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)?.isEnabled = true
+        getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = true
+        getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = true
+
+        let segmentedForNdiSceneType = getSegmented(tagNo: DetailSettingsKey.ndiSceneType.rawValue)
+        if segmentedForNdiSceneType?.selectedSegmentIndex == 0 {
+            if let ndiWorldSegmented = getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue) {
+                setActivityOfDependingOnNdiWorldType(segmentedControl: ndiWorldSegmented)
+            }
+            if let ndiCameraSegmented = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue) {
+                setActivityOfDependingOnNdiCameraType(segmentedControl: ndiCameraSegmented)
+            }
+            if let ndiDepthTypeSegmented = getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue) {
+                setActivityOfDependingOnNdiDepthType(segmentedControl: ndiDepthTypeSegmented)
+            }
+            getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = false
+        } else {
+            if let ndiCameraSegmented = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue) {
+                ndiCameraSegmented.selectedSegmentIndex = 0
+                setActivityOfDependingOnNdiCameraType(segmentedControl: ndiCameraSegmented)
+            }
+            AppSettingModel.shared.ndiCameraPosition = .BACK
+            getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = false
+            getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)?.isEnabled = false
+            getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = false
+        }
     }
 }

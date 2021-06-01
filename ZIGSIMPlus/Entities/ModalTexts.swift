@@ -75,8 +75,12 @@ let modalTexts: [Command: (title: String, body: String)] = [
     NDI command transmits images from the device via NDI protocol.
     You cannot use NDI, ARKit and Image Detection simultaneously.
     This command has following settings:
+    
+    ## Scene Type
+    **WORLD**: everything captured by camera.
+    **HUMAN**: human captured by camera.
 
-    ## Image Type
+    ## World Image Type
     **CAMERA**: send images captured by camera.
     **DEPTH**: send depth maps captured by camera.
     **BOTH**: send camera images in RGB channel and depth maps in alpha channel.
@@ -87,6 +91,11 @@ let modalTexts: [Command: (title: String, body: String)] = [
     ## Depth Type
     **DEPTH**: capture depth map.
     **DISPARITY**: capture disparity map.
+    
+    ## Human Image Type
+    **HUMAN**: send only human images in RGB channel and alpha channel.
+    **BOTH**: send camera images in RGB channel and human maps in alpha channel.
+    ※The alpha channel in "BOTH" is a diff between alpha value and red value of the human part of image.
 
     ## Resolution
     Set NDI video resolution to **VGA**, **HD** or **FHD**.

@@ -29,9 +29,11 @@ private var messageRatePerSecondKey: Void?
 private var compassOrientationKey: Void?
 private var deviceUUIDKey: Void?
 private var beaconUUIDKey: Void?
-private var ndiTypeKey: Void?
+private var ndiSceneTypeKey: Void?
+private var ndiWorldTypeKey: Void?
 private var ndiCameraPositionKey: Void?
 private var depthTypeKey: Void?
+private var ndiHumanTypeKey: Void?
 private var ndiResolutionKey: Void?
 private var ndiAudioEnabledKey: Void?
 private var ndiAudioBufferSizeKey: Void?
@@ -137,13 +139,23 @@ extension AppSettingModel {
         }
     }
 
-    var ndiType: NdiType {
+    var ndiSceneType: NdiSceneType {
         get {
-            return getAssociatedObject(self, &ndiTypeKey) ?? Defaults[.ndiType]
+            return getAssociatedObject(self, &ndiSceneTypeKey) ?? Defaults[.ndiSceneType]
         }
         set {
-            setRetainedAssociatedObject(self, &ndiTypeKey, newValue)
-            Defaults[.ndiType] = newValue
+            setRetainedAssociatedObject(self, &ndiSceneTypeKey, newValue)
+            Defaults[.ndiSceneType] = newValue
+        }
+    }
+
+    var ndiWorldType: NdiWorldType {
+        get {
+            return getAssociatedObject(self, &ndiWorldTypeKey) ?? Defaults[.ndiWorldType]
+        }
+        set {
+            setRetainedAssociatedObject(self, &ndiWorldTypeKey, newValue)
+            Defaults[.ndiWorldType] = newValue
         }
     }
 
@@ -164,6 +176,16 @@ extension AppSettingModel {
         set {
             setRetainedAssociatedObject(self, &depthTypeKey, newValue)
             Defaults[.depthType] = newValue
+        }
+    }
+
+    var ndiHumanType: NdiHumanType {
+        get {
+            return getAssociatedObject(self, &ndiHumanTypeKey) ?? Defaults[.ndiHumanType]
+        }
+        set {
+            setRetainedAssociatedObject(self, &ndiHumanTypeKey, newValue)
+            Defaults[.ndiHumanType] = newValue
         }
     }
 
