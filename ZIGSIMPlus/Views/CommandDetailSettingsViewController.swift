@@ -40,6 +40,10 @@ public class CommandDetailSettingsViewController: UIViewController {
         } else {
             stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settingsForCommand.count) * 64.0)
         }
+
+        // set height of stack view
+        stackView.constraints.first?.constant = CGFloat(80 * settingsForCommand.count)
+
         // only ndi detail view
         setActivityOfDependingOnNdiSceneType()
     }
