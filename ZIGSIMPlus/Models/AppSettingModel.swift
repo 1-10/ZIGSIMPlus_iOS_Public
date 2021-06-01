@@ -86,7 +86,8 @@ enum DepthType: Int, DefaultsSerializable {
 
 enum NdiHumanType: Int, DefaultsSerializable {
     case HUMAN = 0
-    case BOTH = 1
+    case BOTH1 = 1
+    case BOTH2 = 2
 }
 
 enum VideoResolution: Int, DefaultsSerializable {

@@ -115,7 +115,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedInt(.ndiWorldType, "World Image Type", ["CAMERA", "DEPTH", "BOTH"], 240, app.ndiWorldType.rawValue),
                 SegmentedInt(.ndiCamera, "Camera", ["REAR", "FRONT"], 240, app.ndiCameraPosition.rawValue),
                 SegmentedInt(.ndiDepthType, "Depth Type", ["DEPTH", "DISPARITY"], 240, app.depthType.rawValue),
-                SegmentedInt(.ndiHumanType, "Human Image Type", ["HUMAN", "BOTH"], 240, app.ndiHumanType.rawValue),
+                SegmentedInt(.ndiHumanType, "Human Image Type", ["HUMAN", "BOTH1", "BOTH2"], 240, app.ndiHumanType.rawValue),
                 SegmentedInt(.ndiResolution, "Resolution", ["VGA", "HD", "FHD"], 240, app.ndiResolution.rawValue),
                 SegmentedInt(.ndiAudioEnabled, "Audio", ["ON", "OFF"], 240, app.ndiAudioEnabled.rawValue),
                 SegmentedInt(.ndiAudioBufferSize, "Audio Latency", ["LOW", "MID", "HIGH"], 240, app.ndiAudioBufferSize.rawValue),

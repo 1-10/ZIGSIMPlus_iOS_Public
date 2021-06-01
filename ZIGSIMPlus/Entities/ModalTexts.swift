@@ -94,8 +94,9 @@ let modalTexts: [Command: (title: String, body: String)] = [
     
     ## Human Image Type
     **HUMAN**: send only human images in RGB channel and alpha channel.
-    **BOTH**: send camera images in RGB channel and human maps in alpha channel.
-    ※The alpha channel in "BOTH" is a diff between alpha value and red value of the human part of image.
+    **BOTH1,BOTH2**: send camera images in RGB channel and human maps in alpha channel.
+    ※The alpha in "BOTH1" is 0.5 .
+    ※The alpha in "BOTH2" is a diff between alpha value and red value of the human part of image.
 
     ## Resolution
     Set NDI video resolution to **VGA**, **HD** or **FHD**.
