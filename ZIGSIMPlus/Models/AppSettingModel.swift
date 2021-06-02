@@ -183,7 +183,7 @@ extension DefaultsKeys {
     static let compassOrientation = DefaultsKey<CompassOrientation>("compassOrientation", defaultValue: .portrait)
     static let deviceUUID = DefaultsKey<String>("deviceUUID", defaultValue: Utils.randomStringWithLength(16))
     static let beaconUUID = DefaultsKey<String>("beaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
-    static let ndiSceneType = DefaultsKey<NdiSceneType>("ndiType", defaultValue: .WORLD)
+    static let ndiSceneType = DefaultsKey<NdiSceneType>("ndiSceneType", defaultValue: .WORLD)
     static let ndiWorldType = DefaultsKey<NdiWorldType>("ndiType", defaultValue: .CAMERA)
     static let ndiCameraPosition = DefaultsKey<CameraPosition>("ndiCameraPosition", defaultValue: .BACK)
     static let depthType = DefaultsKey<DepthType>("depthType", defaultValue: .DEPTH)
