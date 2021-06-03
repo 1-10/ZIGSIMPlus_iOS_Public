@@ -239,7 +239,7 @@ public class CommandDetailSettingsViewController: UIViewController {
         getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = true
 
         let segmentedForNdiSceneType = getSegmented(tagNo: DetailSettingsKey.ndiSceneType.rawValue)
-        if segmentedForNdiSceneType?.selectedSegmentIndex == 0 {
+        if segmentedForNdiSceneType?.selectedSegmentIndex == NdiSceneType.WORLD.rawValue {
             if let ndiWorldSegmented = getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue) {
                 setActivityOfDependingOnNdiWorldType(segmentedControl: ndiWorldSegmented)
             }
@@ -250,14 +250,8 @@ public class CommandDetailSettingsViewController: UIViewController {
                 setActivityOfDependingOnNdiDepthType(segmentedControl: ndiDepthTypeSegmented)
             }
             getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = false
-        } else {
-            if let ndiCameraSegmented = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue) {
-                ndiCameraSegmented.selectedSegmentIndex = 0
-                setActivityOfDependingOnNdiCameraType(segmentedControl: ndiCameraSegmented)
-            }
-            AppSettingModel.shared.ndiCameraPosition = .BACK
+        } else if segmentedForNdiSceneType?.selectedSegmentIndex == NdiSceneType.HUMAN.rawValue {
             getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = false
-            getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)?.isEnabled = false
             getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = false
         }
     }
