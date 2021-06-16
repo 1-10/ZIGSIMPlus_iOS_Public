@@ -56,6 +56,7 @@ enum ArkitTrackingType: Int, DefaultsSerializable {
     case device = 0
     case face = 1
     case image = 2
+    case body = 3
 }
 
 enum ArkitFeaturePointsEnabled: Int, DefaultsSerializable {
