@@ -132,6 +132,10 @@ public class CommandDetailSettingsViewController: UIViewController {
             if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
                 segmented.isEnabled = false
             }
+        case .arkitTrackingType:
+            if !ArkitService.shared.isBodyTrackingAvailable() {
+                segmented.removeSegment(at: 3, animated: false)
+            }
         default:
             return
         }

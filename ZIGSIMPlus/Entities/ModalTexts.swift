@@ -114,6 +114,8 @@ let modalTexts: [Command: (title: String, body: String)] = [
     **DEVICE**: device position, device rotation, feature points' positions.
     **FACE**: device rotation, face position, face rotation, eye position.
     **MARKER**: device rotation, marker position, marker rotation.
+    **BODY**: human body joints' position and device position in the world coordinate system, device rotation.
+    *BODY can be selected only for devices with A12 chip or higher.
 
     If **Feature Points** is *ON*, the position of feature points will be output.
     """),
