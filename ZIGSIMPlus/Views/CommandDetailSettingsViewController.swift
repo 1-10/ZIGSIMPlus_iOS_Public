@@ -237,26 +237,32 @@ public class CommandDetailSettingsViewController: UIViewController {
     }
 
     private func setActivityOfDependingOnNdiSceneType() {
-        getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = true
-        getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)?.isEnabled = true
-        getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = true
-        getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = true
-
         let segmentedForNdiSceneType = getSegmented(tagNo: DetailSettingsKey.ndiSceneType.rawValue)
-        if segmentedForNdiSceneType?.selectedSegmentIndex == NdiSceneType.WORLD.rawValue {
-            if let ndiWorldSegmented = getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue) {
-                setActivityOfDependingOnNdiWorldType(segmentedControl: ndiWorldSegmented)
+        if !VideoCaptureService.shared.isHumanSegmentationAvailable() {
+            segmentedForNdiSceneType?.selectedSegmentIndex = 0
+            AppSettingModel.shared.ndiSceneType = .WORLD
+            segmentedForNdiSceneType?.isEnabled = false
+        } else {
+            getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = true
+            getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)?.isEnabled = true
+            getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = true
+            getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = true
+
+            if segmentedForNdiSceneType?.selectedSegmentIndex == NdiSceneType.WORLD.rawValue {
+                if let ndiWorldSegmented = getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue) {
+                    setActivityOfDependingOnNdiWorldType(segmentedControl: ndiWorldSegmented)
+                }
+                if let ndiCameraSegmented = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue) {
+                    setActivityOfDependingOnNdiCameraType(segmentedControl: ndiCameraSegmented)
+                }
+                if let ndiDepthTypeSegmented = getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue) {
+                    setActivityOfDependingOnNdiDepthType(segmentedControl: ndiDepthTypeSegmented)
+                }
+                getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = false
+            } else if segmentedForNdiSceneType?.selectedSegmentIndex == NdiSceneType.HUMAN.rawValue {
+                getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = false
+                getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = false
             }
-            if let ndiCameraSegmented = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue) {
-                setActivityOfDependingOnNdiCameraType(segmentedControl: ndiCameraSegmented)
-            }
-            if let ndiDepthTypeSegmented = getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue) {
-                setActivityOfDependingOnNdiDepthType(segmentedControl: ndiDepthTypeSegmented)
-            }
-            getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = false
-        } else if segmentedForNdiSceneType?.selectedSegmentIndex == NdiSceneType.HUMAN.rawValue {
-            getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = false
-            getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = false
         }
     }
 }
