@@ -124,7 +124,7 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
                 SegmentedInt(.compassOrientation, "Orientation", ["PORTRAIT", "FACEUP"], 240, app.compassOrientation.rawValue),
             ],
             .arkit: [
-                SegmentedInt(.arkitTrackingType, "Tracking Type", ["DEVICE", "FACE", "MARKER"], 240, app.arkitTrackingType.rawValue),
+                SegmentedInt(.arkitTrackingType, "Tracking Type", ["DEVICE", "FACE", "MARKER", "BODY"], 260, app.arkitTrackingType.rawValue),
                 SegmentedInt(.arkitFeaturePointsEnabled, "Feature Points", ["ON", "OFF"], 240, app.arkitFeaturePointsEnabled.rawValue),
             ],
             .imageDetection: [

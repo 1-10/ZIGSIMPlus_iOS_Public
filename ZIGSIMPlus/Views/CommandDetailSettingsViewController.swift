@@ -118,6 +118,10 @@ public class CommandDetailSettingsViewController: UIViewController {
             setActivityOfDependingOnNdiCameraType(segmentedControl: segmented)
         case .ndiDepthType:
             setActivityOfDependingOnNdiDepthType(segmentedControl: segmented)
+        case .arkitTrackingType:
+            if !ArkitService.shared.isBodyTrackingAvailable() {
+                segmented.removeSegment(at: 3, animated: false)
+            }
         default:
             return
         }
