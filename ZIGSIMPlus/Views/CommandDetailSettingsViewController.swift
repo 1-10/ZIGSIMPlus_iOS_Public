@@ -242,6 +242,8 @@ public class CommandDetailSettingsViewController: UIViewController {
             segmentedForNdiSceneType?.selectedSegmentIndex = 0
             AppSettingModel.shared.ndiSceneType = .WORLD
             segmentedForNdiSceneType?.isEnabled = false
+            let segmentedForHumanImageType = getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)
+            segmentedForHumanImageType?.isEnabled = false
         } else {
             getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = true
             getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)?.isEnabled = true
