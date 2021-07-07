@@ -40,6 +40,12 @@ public class CommandDetailSettingsViewController: UIViewController {
         } else {
             stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settingsForCommand.count) * 64.0)
         }
+
+        // set height of stack view
+        stackView.constraints.first?.constant = CGFloat(80 * settingsForCommand.count)
+
+        // only ndi detail view
+        setActivityOfDependingOnNdiSceneType()
     }
 
     public override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
@@ -47,6 +53,9 @@ public class CommandDetailSettingsViewController: UIViewController {
     }
 
     @objc func segmentedAction(segmented: UISegmentedControl) {
+        // only ndi detail view
+        setActivityOfDependingOnNdiSceneType()
+
         // Get settings for current command
         let settings = presenter.getCommandDetailSettings()
         guard let settingsForCommand = settings[command] else { return }
@@ -103,35 +112,12 @@ public class CommandDetailSettingsViewController: UIViewController {
 
     private func setSegmentedAvailablity(settingKey: DetailSettingsKey, _ segmented: UISegmentedControl) {
         switch settingKey {
-        case .ndiType:
-            if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-                segmented.selectedSegmentIndex = 0
-                segmented.isEnabled = false
-            }
-
-            let segmentedForNdiCamera = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)
-            if !VideoCaptureService.shared.isDepthFrontCameraAvailable(), segmented.selectedSegmentIndex == 1 {
-                segmentedForNdiCamera?.selectedSegmentIndex = 0
-                AppSettingModel.shared.ndiCameraPosition = .BACK
-                segmentedForNdiCamera?.isEnabled = false
-            } else {
-                segmentedForNdiCamera?.isEnabled = true
-            }
+        case .ndiWorldType:
+            setActivityOfDependingOnNdiWorldType(segmentedControl: segmented)
         case .ndiCamera:
-            if !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
-                let segmentedForNdiType = getSegmented(tagNo: DetailSettingsKey.ndiType.rawValue)
-                if segmentedForNdiType?.selectedSegmentIndex == 1 {
-                    segmented.selectedSegmentIndex = 0
-                    AppSettingModel.shared.ndiCameraPosition = .BACK
-                    segmented.isEnabled = false
-                } else {
-                    segmented.isEnabled = true
-                }
-            }
+            setActivityOfDependingOnNdiCameraType(segmentedControl: segmented)
         case .ndiDepthType:
-            if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-                segmented.isEnabled = false
-            }
+            setActivityOfDependingOnNdiDepthType(segmentedControl: segmented)
         case .arkitTrackingType:
             if !ArkitService.shared.isBodyTrackingAvailable() {
                 segmented.removeSegment(at: 3, animated: false)
@@ -213,5 +199,72 @@ public class CommandDetailSettingsViewController: UIViewController {
             }
         }
         return segmented
+    }
+
+    private func setActivityOfDependingOnNdiWorldType(segmentedControl: UISegmentedControl) {
+        if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+            segmentedControl.selectedSegmentIndex = 0
+            segmentedControl.isEnabled = false
+        }
+
+        let segmentedForNdiCamera = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)
+        if !VideoCaptureService.shared.isDepthFrontCameraAvailable(), segmentedControl.selectedSegmentIndex == 1 {
+            segmentedForNdiCamera?.selectedSegmentIndex = 0
+            AppSettingModel.shared.ndiCameraPosition = .BACK
+            segmentedForNdiCamera?.isEnabled = false
+        } else {
+            segmentedForNdiCamera?.isEnabled = true
+        }
+    }
+
+    private func setActivityOfDependingOnNdiCameraType(segmentedControl: UISegmentedControl) {
+        if !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
+            let segmentedForNdiWorldType = getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)
+            if segmentedForNdiWorldType?.selectedSegmentIndex == 1 {
+                segmentedControl.selectedSegmentIndex = 0
+                AppSettingModel.shared.ndiCameraPosition = .BACK
+                segmentedControl.isEnabled = false
+            } else {
+                segmentedControl.isEnabled = true
+            }
+        }
+    }
+
+    private func setActivityOfDependingOnNdiDepthType(segmentedControl: UISegmentedControl) {
+        if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
+            segmentedControl.isEnabled = false
+        }
+    }
+
+    private func setActivityOfDependingOnNdiSceneType() {
+        let segmentedForNdiSceneType = getSegmented(tagNo: DetailSettingsKey.ndiSceneType.rawValue)
+        if !VideoCaptureService.shared.isHumanSegmentationAvailable() {
+            segmentedForNdiSceneType?.selectedSegmentIndex = 0
+            AppSettingModel.shared.ndiSceneType = .WORLD
+            segmentedForNdiSceneType?.isEnabled = false
+            let segmentedForHumanImageType = getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)
+            segmentedForHumanImageType?.isEnabled = false
+        } else {
+            getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = true
+            getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)?.isEnabled = true
+            getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = true
+            getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = true
+
+            if segmentedForNdiSceneType?.selectedSegmentIndex == NdiSceneType.WORLD.rawValue {
+                if let ndiWorldSegmented = getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue) {
+                    setActivityOfDependingOnNdiWorldType(segmentedControl: ndiWorldSegmented)
+                }
+                if let ndiCameraSegmented = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue) {
+                    setActivityOfDependingOnNdiCameraType(segmentedControl: ndiCameraSegmented)
+                }
+                if let ndiDepthTypeSegmented = getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue) {
+                    setActivityOfDependingOnNdiDepthType(segmentedControl: ndiDepthTypeSegmented)
+                }
+                getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = false
+            } else if segmentedForNdiSceneType?.selectedSegmentIndex == NdiSceneType.HUMAN.rawValue {
+                getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = false
+                getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = false
+            }
+        }
     }
 }

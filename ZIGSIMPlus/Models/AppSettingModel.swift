@@ -64,7 +64,12 @@ enum ArkitFeaturePointsEnabled: Int, DefaultsSerializable {
     case disabled
 }
 
-enum NdiType: Int, DefaultsSerializable {
+enum NdiSceneType: Int, DefaultsSerializable {
+    case WORLD = 0
+    case HUMAN = 1
+}
+
+enum NdiWorldType: Int, DefaultsSerializable {
     case CAMERA = 0
     case DEPTH = 1
     case BOTH = 2
@@ -78,6 +83,12 @@ enum CameraPosition: Int, DefaultsSerializable {
 enum DepthType: Int, DefaultsSerializable {
     case DEPTH = 0
     case DISPARITY = 1
+}
+
+enum NdiHumanType: Int, DefaultsSerializable {
+    case HUMAN = 0
+    case BOTH1 = 1
+    case BOTH2 = 2
 }
 
 enum VideoResolution: Int, DefaultsSerializable {
@@ -173,9 +184,11 @@ extension DefaultsKeys {
     static let compassOrientation = DefaultsKey<CompassOrientation>("compassOrientation", defaultValue: .portrait)
     static let deviceUUID = DefaultsKey<String>("deviceUUID", defaultValue: Utils.randomStringWithLength(16))
     static let beaconUUID = DefaultsKey<String>("beaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
-    static let ndiType = DefaultsKey<NdiType>("ndiType", defaultValue: .CAMERA)
+    static let ndiSceneType = DefaultsKey<NdiSceneType>("ndiSceneType", defaultValue: .WORLD)
+    static let ndiWorldType = DefaultsKey<NdiWorldType>("ndiType", defaultValue: .CAMERA)
     static let ndiCameraPosition = DefaultsKey<CameraPosition>("ndiCameraPosition", defaultValue: .BACK)
     static let depthType = DefaultsKey<DepthType>("depthType", defaultValue: .DEPTH)
+    static let ndiHumanType = DefaultsKey<NdiHumanType>("ndiHumanType", defaultValue: .HUMAN)
     static let ndiResolution = DefaultsKey<VideoResolution>("ndiResolution", defaultValue: .vga)
     static let ndiAudioEnabled = DefaultsKey<NdiAudioEnabled>("ndiAudioEnabled", defaultValue: .enabled)
     static let ndiAudioBufferSize = DefaultsKey<NdiAudioBufferSize>("ndiAudioBufferSize", defaultValue: .large)

@@ -10,9 +10,11 @@ import Foundation
 import SwiftyUserDefaults
 
 public enum DetailSettingsKey: Int {
-    case ndiType
+    case ndiSceneType
+    case ndiWorldType
     case ndiCamera
     case ndiDepthType
+    case ndiHumanType
     case ndiResolution
     case ndiAudioEnabled
     case ndiAudioBufferSize
@@ -109,9 +111,11 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
         // swiftlint:disable line_length
         return [
             .ndi: [
-                SegmentedInt(.ndiType, "Image Type", ["CAMERA", "DEPTH", "BOTH"], 240, app.ndiType.rawValue),
+                SegmentedInt(.ndiSceneType, "Scene Type", ["WORLD", "HUMAN"], 240, app.ndiSceneType.rawValue),
+                SegmentedInt(.ndiWorldType, "World Image Type", ["CAMERA", "DEPTH", "BOTH"], 240, app.ndiWorldType.rawValue),
                 SegmentedInt(.ndiCamera, "Camera", ["REAR", "FRONT"], 240, app.ndiCameraPosition.rawValue),
                 SegmentedInt(.ndiDepthType, "Depth Type", ["DEPTH", "DISPARITY"], 240, app.depthType.rawValue),
+                SegmentedInt(.ndiHumanType, "Human Image Type", ["HUMAN", "BOTH1", "BOTH2"], 240, app.ndiHumanType.rawValue),
                 SegmentedInt(.ndiResolution, "Resolution", ["VGA", "HD", "FHD"], 240, app.ndiResolution.rawValue),
                 SegmentedInt(.ndiAudioEnabled, "Audio", ["ON", "OFF"], 240, app.ndiAudioEnabled.rawValue),
                 SegmentedInt(.ndiAudioBufferSize, "Audio Latency", ["LOW", "MID", "HIGH"], 240, app.ndiAudioBufferSize.rawValue),
@@ -145,12 +149,16 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
         switch setting {
         case let data as SegmentedInt:
             switch data.key {
-            case .ndiType:
-                AppSettingModel.shared.ndiType = NdiType(rawValue: data.value)!
+            case .ndiSceneType:
+                AppSettingModel.shared.ndiSceneType = NdiSceneType(rawValue: data.value)!
+            case .ndiWorldType:
+                AppSettingModel.shared.ndiWorldType = NdiWorldType(rawValue: data.value)!
             case .ndiCamera:
                 AppSettingModel.shared.ndiCameraPosition = CameraPosition(rawValue: data.value)!
             case .ndiDepthType:
                 AppSettingModel.shared.depthType = DepthType(rawValue: data.value)!
+            case .ndiHumanType:
+                AppSettingModel.shared.ndiHumanType = NdiHumanType(rawValue: data.value)!
             case .ndiResolution:
                 AppSettingModel.shared.ndiResolution = VideoResolution(rawValue: data.value)!
             case .ndiAudioBufferSize:
