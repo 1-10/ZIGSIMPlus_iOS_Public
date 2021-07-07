@@ -45,8 +45,9 @@ public class RemoteControlService: NSObject {
         volume = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as! Double
     }
 
-    @objc func onTogglePlayPause(_ event: MPRemoteCommandEvent) {
+    @objc func onTogglePlayPause(_ event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         isPlaying.toggle()
+        return .success
     }
 
     // MARK: - Internal methods
