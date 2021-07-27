@@ -92,8 +92,8 @@ class ServiceManagerTests: XCTestCase {
             .gps: "gps", // LocationDataStore
             .acceleration: "accel", // MiscDataStore
             .proximity: "proximitymonitor", // ProximityDataStore
-            .remoteControl: "remoteControl", // RemoteControlDataStore
-            .touch: "touches", // TouchDataStore
+            .remoteControl: "remotecontrol", // RemoteControlDataStore
+            .touch: "touch", // TouchDataStore
         ]
 
         commandsAndKeys.forEach { command, key in
