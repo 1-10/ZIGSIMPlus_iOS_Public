@@ -154,7 +154,7 @@ class TouchServiceTests: XCTestCase {
     func test_toJSON_notouch() {
         AppSettingModel.shared.isActiveByCommand[.touch] = true
         let json = try! TouchService.shared.toJSON()
-        XCTAssertEqual(json, JSON(["touches": []]), "touches is an empty array")
+        XCTAssertEqual(json, JSON(["touch": []]), "touches is an empty array")
     }
 
     func test_toJSON() {
@@ -172,9 +172,9 @@ class TouchServiceTests: XCTestCase {
         TouchService.shared.addTouches(touches)
 
         var json = try! TouchService.shared.toJSON()
-        XCTAssertEqual(json["touches"].array!.count, 2, "2 touches returned")
+        XCTAssertEqual(json["touch"].array!.count, 2, "2 touches returned")
 
-        for (i, t) in json["touches"].array!.enumerated() {
+        for (i, t) in json["touch"].array!.enumerated() {
             let x = Float(touches[i]._x) / Float(tWidth) * 2 - 1
             let y = Float(touches[i]._y) / Float(tHeight) * 2 - 1
             XCTAssertLessThan(abs(t["x"].float! - x), 0.01, "x is almost correct")
@@ -189,9 +189,9 @@ class TouchServiceTests: XCTestCase {
         TouchService.shared.updateTouches(touches)
 
         json = try! TouchService.shared.toJSON()
-        XCTAssertEqual(json["touches"].array!.count, 2, "2 touches returned")
+        XCTAssertEqual(json["touch"].array!.count, 2, "2 touches returned")
 
-        for (i, t) in json["touches"].array!.enumerated() {
+        for (i, t) in json["touch"].array!.enumerated() {
             let x = Float(touches[i]._x) / Float(tWidth) * 2 - 1
             let y = Float(touches[i]._y) / Float(tHeight) * 2 - 1
             XCTAssertLessThan(abs(t["x"].float! - x), 0.01, "x is almost correct")
@@ -204,9 +204,9 @@ class TouchServiceTests: XCTestCase {
         TouchService.shared.removeTouches([touches[1]])
 
         json = try! TouchService.shared.toJSON()
-        XCTAssertEqual(json["touches"].array!.count, 1, "touches[1] is removed")
+        XCTAssertEqual(json["touch"].array!.count, 1, "touches[1] is removed")
         ({
-            let t = json["touches"][0]
+            let t = json["touch"][0]
             let x = Float(touches[0]._x) / Float(tWidth) * 2 - 1
             let y = Float(touches[0]._y) / Float(tHeight) * 2 - 1 //
             XCTAssertLessThan(abs(t["x"].float! - x), 0.01, "x is almost correct")
@@ -218,12 +218,12 @@ class TouchServiceTests: XCTestCase {
         // Remove all touches
         TouchService.shared.removeAllTouches()
         json = try! TouchService.shared.toJSON()
-        XCTAssertEqual(json["touches"].array!.count, 0, "No touches returned afeter removeAllTouches")
+        XCTAssertEqual(json["touch"].array!.count, 0, "No touches returned afeter removeAllTouches")
 
         TouchService.shared.addTouches(touches) // add touches again
         TouchService.shared.disable()
         json = try! TouchService.shared.toJSON()
-        XCTAssertEqual(json["touches"].array!.count, 0, "TouchService resets touches when disabled")
+        XCTAssertEqual(json["touch"].array!.count, 0, "TouchService resets touches when disabled")
     }
 
     func test_toLog_empty() {
