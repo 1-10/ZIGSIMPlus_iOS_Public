@@ -8,7 +8,7 @@
 
 import SwiftOSC
 import XCTest
-@testable import ZIGSIMPlus
+@testable import ZIG_SIM_PRO
 
 // swiftlint:disable force_cast
 

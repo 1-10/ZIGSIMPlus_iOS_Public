@@ -10,14 +10,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "902EB9D9227BE68F008F1650"
-               BuildableName = "ZIGSIMPlusTests.xctest"
+               BuildableName = ".xctest"
                BlueprintName = "ZIGSIMPlusTests"
                ReferencedContainer = "container:ZIGSIMPlus.xcodeproj">
             </BuildableReference>
