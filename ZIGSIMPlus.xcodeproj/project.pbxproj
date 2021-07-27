@@ -188,7 +188,7 @@
 		902EB9CE227BE68D008F1650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		902EB9D0227BE68F008F1650 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902EB9D5227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		902EB9DA227BE68F008F1650 /* ZIGSIMPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIGSIMPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		902EB9DA227BE68F008F1650 /* ZIG SIM PRO.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ZIG SIM PRO.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9E0227BE68F008F1650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902EB9E5227BE68F008F1650 /* ZIGSIMPlusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIGSIMPlusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9E9227BE68F008F1650 /* ZIGSIMPlusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGSIMPlusUITests.swift; sourceTree = "<group>"; };
@@ -435,7 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				902EB9C6227BE68D008F1650 /* ZIG SIM PRO.app */,
-				902EB9DA227BE68F008F1650 /* ZIGSIMPlusTests.xctest */,
+				902EB9DA227BE68F008F1650 /* ZIG SIM PRO.xctest */,
 				902EB9E5227BE68F008F1650 /* ZIGSIMPlusUITests.xctest */,
 			);
 			name = Products;
@@ -594,7 +594,7 @@
 			);
 			name = ZIGSIMPlusTests;
 			productName = ZIGSIMPlusTests;
-			productReference = 902EB9DA227BE68F008F1650 /* ZIGSIMPlusTests.xctest */;
+			productReference = 902EB9DA227BE68F008F1650 /* ZIG SIM PRO.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		902EB9E4227BE68F008F1650 /* ZIGSIMPlusUITests */ = {
@@ -1142,6 +1142,7 @@
 				MARKETING_VERSION = 1.4.1;
 				MTLLINKER_FLAGS = "-cikernel";
 				MTL_COMPILER_FLAGS = "-fcikernel";
+				PLIST_FILE_OUTPUT_FORMAT = XML;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIG-SIM-PRO";
 				PRODUCT_NAME = "ZIG SIM PRO";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1187,6 +1188,7 @@
 				MARKETING_VERSION = 1.4.1;
 				MTLLINKER_FLAGS = "-cikernel";
 				MTL_COMPILER_FLAGS = "-fcikernel";
+				PLIST_FILE_OUTPUT_FORMAT = XML;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIG-SIM-PRO";
 				PRODUCT_NAME = "ZIG SIM PRO";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1212,10 +1214,11 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlusTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "ZIG SIM PRO";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZIGSIMPlus.app/ZIGSIMPlus";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZIG SIM PRO.app/ZIG SIM PRO";
 				VALID_ARCHS = "arm64 arm64e";
 			};
 			name = Debug;
@@ -1235,10 +1238,11 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.1-10.ZIGSIMPlusTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "ZIG SIM PRO";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZIGSIMPlus.app/ZIGSIMPlus";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZIG SIM PRO.app/ZIG SIM PRO";
 				VALID_ARCHS = "arm64 arm64e";
 			};
 			name = Release;

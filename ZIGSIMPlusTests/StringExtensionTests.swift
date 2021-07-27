@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ZIGSIMPlus
+@testable import ZIG_SIM_PRO
 
 // swiftlint:disable identifier_name
 

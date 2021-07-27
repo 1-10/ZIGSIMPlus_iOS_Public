@@ -10,7 +10,7 @@ import CoreMotion
 import SwiftOSC
 import SwiftyJSON
 import XCTest
-@testable import ZIGSIMPlus
+@testable import ZIG_SIM_PRO
 
 // swiftlint:disable force_cast force_try identifier_name
 
