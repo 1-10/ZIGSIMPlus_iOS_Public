@@ -12,12 +12,13 @@ import UIKit
 public class CommandDetailSettingsViewController: UIViewController {
     var presenter: CommandDetailSettingsPresenterProtocol!
     var command: Command!
+    var selectedSegmented: UISegmentedControl!
 
     @IBOutlet var stackView: UIStackView!
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = CommandDetailSettingsPresenter()
+        presenter = CommandDetailSettingsPresenter(view: self)
 
         let settings = presenter.getCommandDetailSettings()
         guard let settingsForCommand = settings[command] else { return }
@@ -45,7 +46,7 @@ public class CommandDetailSettingsViewController: UIViewController {
         stackView.constraints.first?.constant = CGFloat(80 * settingsForCommand.count)
 
         // only ndi detail view
-        setActivityOfDependingOnNdiSceneType()
+        presenter.setAvailabilityOfNdiSceneType()
     }
 
     public override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
@@ -54,7 +55,7 @@ public class CommandDetailSettingsViewController: UIViewController {
 
     @objc func segmentedAction(segmented: UISegmentedControl) {
         // only ndi detail view
-        setActivityOfDependingOnNdiSceneType()
+        presenter.setAvailabilityOfNdiSceneType()
 
         // Get settings for current command
         let settings = presenter.getCommandDetailSettings()
@@ -68,9 +69,11 @@ public class CommandDetailSettingsViewController: UIViewController {
             return false
         }) else { return }
 
+        selectedSegmented = segmented
+
         // Pass updated setting to presenter
         if var segmentedInt = setting as? SegmentedInt {
-            setSegmentedAvailablity(settingKey: segmentedInt.key, segmented)
+            presenter.didSelectedAndInitSegment(settingKey: segmentedInt.key)
             segmentedInt.value = segmented.selectedSegmentIndex
             presenter.updateSetting(setting: segmentedInt)
         } else if var segmentedBool = setting as? SegmentedBool {
@@ -110,23 +113,6 @@ public class CommandDetailSettingsViewController: UIViewController {
         presenter.updateSetting(setting: setting)
     }
 
-    private func setSegmentedAvailablity(settingKey: DetailSettingsKey, _ segmented: UISegmentedControl) {
-        switch settingKey {
-        case .ndiWorldType:
-            setActivityOfDependingOnNdiWorldType(segmentedControl: segmented)
-        case .ndiCamera:
-            setActivityOfDependingOnNdiCameraType(segmentedControl: segmented)
-        case .ndiDepthType:
-            setActivityOfDependingOnNdiDepthType(segmentedControl: segmented)
-        case .arkitTrackingType:
-            if !ArkitService.shared.isBodyTrackingAvailable() {
-                segmented.removeSegment(at: 3, animated: false)
-            }
-        default:
-            return
-        }
-    }
-
     private func renderSegmented(_ data: Segmented) {
         let label = ZIGLabel()
         label.text = data.label
@@ -157,7 +143,8 @@ public class CommandDetailSettingsViewController: UIViewController {
         // Use DetailSettingKey for identifier
         segmented.tag = data.key.rawValue
 
-        setSegmentedAvailablity(settingKey: data.key, segmented)
+        selectedSegmented = segmented
+        presenter.didSelectedAndInitSegment(settingKey: data.key)
 
         stackView.addArrangedSubview(segmented)
     }
@@ -188,7 +175,7 @@ public class CommandDetailSettingsViewController: UIViewController {
         stackView.addArrangedSubview(input)
     }
 
-    private func getSegmented(tagNo: Int) -> UISegmentedControl? {
+    internal func getSegmented(tagNo: Int) -> UISegmentedControl? {
         var segmented: UISegmentedControl?
         for stackView in stackView.arrangedSubviews {
             if ZIGSegmentedControl.self == type(of: stackView) {
@@ -200,71 +187,32 @@ public class CommandDetailSettingsViewController: UIViewController {
         }
         return segmented
     }
+}
 
-    private func setActivityOfDependingOnNdiWorldType(segmentedControl: UISegmentedControl) {
-        if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-            segmentedControl.selectedSegmentIndex = 0
-            segmentedControl.isEnabled = false
-        }
-
-        let segmentedForNdiCamera = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)
-        if !VideoCaptureService.shared.isDepthFrontCameraAvailable(), segmentedControl.selectedSegmentIndex == 1 {
-            segmentedForNdiCamera?.selectedSegmentIndex = 0
-            AppSettingModel.shared.ndiCameraPosition = .BACK
-            segmentedForNdiCamera?.isEnabled = false
-        } else {
-            segmentedForNdiCamera?.isEnabled = true
-        }
+extension CommandDetailSettingsViewController: CommandDetailSettingsPresenterDelegate {
+    func setSelectedSegmentIndex(index: Int) {
+        selectedSegmented.selectedSegmentIndex = index
     }
 
-    private func setActivityOfDependingOnNdiCameraType(segmentedControl: UISegmentedControl) {
-        if !VideoCaptureService.shared.isDepthFrontCameraAvailable() {
-            let segmentedForNdiWorldType = getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)
-            if segmentedForNdiWorldType?.selectedSegmentIndex == 1 {
-                segmentedControl.selectedSegmentIndex = 0
-                AppSettingModel.shared.ndiCameraPosition = .BACK
-                segmentedControl.isEnabled = false
-            } else {
-                segmentedControl.isEnabled = true
-            }
-        }
+    func setSelectedSegmentActivity(isEnabled: Bool) {
+        selectedSegmented.isEnabled = isEnabled
     }
 
-    private func setActivityOfDependingOnNdiDepthType(segmentedControl: UISegmentedControl) {
-        if !VideoCaptureService.shared.isDepthRearCameraAvailable() {
-            segmentedControl.isEnabled = false
-        }
+    func getSegmentedIndexOf(tagNo: Int) -> Int? {
+        return getSegmented(tagNo: tagNo)?.selectedSegmentIndex
     }
 
-    private func setActivityOfDependingOnNdiSceneType() {
-        let segmentedForNdiSceneType = getSegmented(tagNo: DetailSettingsKey.ndiSceneType.rawValue)
-        if !VideoCaptureService.shared.isHumanSegmentationAvailable() {
-            segmentedForNdiSceneType?.selectedSegmentIndex = 0
-            AppSettingModel.shared.ndiSceneType = .WORLD
-            segmentedForNdiSceneType?.isEnabled = false
-            let segmentedForHumanImageType = getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)
-            segmentedForHumanImageType?.isEnabled = false
-        } else {
-            getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = true
-            getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue)?.isEnabled = true
-            getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = true
-            getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = true
+    func setSegmentedIndexOf(tagNo: Int, index: Int) {
+        getSegmented(tagNo: tagNo)?.selectedSegmentIndex = index
+    }
 
-            if segmentedForNdiSceneType?.selectedSegmentIndex == NdiSceneType.WORLD.rawValue {
-                if let ndiWorldSegmented = getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue) {
-                    setActivityOfDependingOnNdiWorldType(segmentedControl: ndiWorldSegmented)
-                }
-                if let ndiCameraSegmented = getSegmented(tagNo: DetailSettingsKey.ndiCamera.rawValue) {
-                    setActivityOfDependingOnNdiCameraType(segmentedControl: ndiCameraSegmented)
-                }
-                if let ndiDepthTypeSegmented = getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue) {
-                    setActivityOfDependingOnNdiDepthType(segmentedControl: ndiDepthTypeSegmented)
-                }
-                getSegmented(tagNo: DetailSettingsKey.ndiHumanType.rawValue)?.isEnabled = false
-            } else if segmentedForNdiSceneType?.selectedSegmentIndex == NdiSceneType.HUMAN.rawValue {
-                getSegmented(tagNo: DetailSettingsKey.ndiWorldType.rawValue)?.isEnabled = false
-                getSegmented(tagNo: DetailSettingsKey.ndiDepthType.rawValue)?.isEnabled = false
-            }
-        }
+    func setSegmentActivityOf(tagNo: Int, isEnable: Bool) {
+        getSegmented(tagNo: tagNo)?.isEnabled = isEnable
+    }
+
+    func getCurrentSegmentId() -> Int { selectedSegmented.selectedSegmentIndex }
+
+    func setUnavailableBodyTracking() {
+        selectedSegmented.removeSegment(at: 3, animated: false)
     }
 }

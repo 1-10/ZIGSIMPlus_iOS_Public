@@ -101,9 +101,35 @@ public struct UUIDInput: DetailSetting {
 protocol CommandDetailSettingsPresenterProtocol {
     func getCommandDetailSettings() -> [Command: [DetailSetting]]
     func updateSetting(setting: DetailSetting)
+    func setNdiSceneType(ndiSceneType: NdiSceneType)
+    func setNdiCameraPosition(cameraPosition: CameraPosition)
+    func didSelectedAndInitSegment(settingKey: DetailSettingsKey)
+    func setAvailabilityOfNdiSceneType()
+}
+
+protocol CommandDetailSettingsPresenterDelegate: AnyObject {
+    func setSelectedSegmentIndex(index: Int)
+    func setSelectedSegmentActivity(isEnabled: Bool)
+    func getSegmentedIndexOf(tagNo: Int) -> Int?
+    func setSegmentedIndexOf(tagNo: Int, index: Int)
+    func setSegmentActivityOf(tagNo: Int, isEnable: Bool)
+    func getCurrentSegmentId() -> Int
+    func setUnavailableBodyTracking()
 }
 
 final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtocol {
+    let videoCaptureService: VideoCaptureServiceProtocol
+    let arkitService: ArkitServiceProtocol
+    private weak var view: CommandDetailSettingsPresenterDelegate!
+
+    init(view: CommandDetailSettingsPresenterDelegate,
+         videoCaptureService: VideoCaptureServiceProtocol = VideoCaptureService.shared,
+         arkitService: ArkitServiceProtocol = ArkitService.shared) {
+        self.view = view
+        self.videoCaptureService = videoCaptureService
+        self.arkitService = arkitService
+    }
+
     // Get data to generate detail settings view dinamically
     public func getCommandDetailSettings() -> [Command: [DetailSetting]] {
         let app = AppSettingModel.shared
@@ -204,6 +230,90 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
             }
         default:
             break
+        }
+    }
+
+    public func didSelectedAndInitSegment(settingKey: DetailSettingsKey) {
+        switch settingKey {
+        case .ndiWorldType:
+            if !isDepthRearCameraAvailable() {
+                view.setSelectedSegmentIndex(index: 0)
+                view.setSelectedSegmentActivity(isEnabled: false)
+            }
+
+            if !isDepthFrontCameraAvailable(), view.getCurrentSegmentId() == 1 || view.getCurrentSegmentId() == 2 {
+                setNdiCameraPosition(cameraPosition: .BACK)
+                view.setSegmentedIndexOf(tagNo: DetailSettingsKey.ndiCamera.rawValue, index: 0)
+                view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiCamera.rawValue, isEnable: false)
+            } else {
+                view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiCamera.rawValue, isEnable: true)
+            }
+
+        case .ndiCamera:
+            if !isDepthFrontCameraAvailable() {
+                setDepthFrontCameraAvailability()
+            }
+        case .ndiDepthType:
+            if !isDepthRearCameraAvailable() {
+                view.setSelectedSegmentActivity(isEnabled: false)
+            }
+        case .arkitTrackingType:
+            if !isBodyTrackingAvailable() {
+                view.setUnavailableBodyTracking()
+            }
+        default:
+            return
+        }
+    }
+
+    public func setAvailabilityOfNdiSceneType() {
+        if !isHumanSegmentationAvailable() {
+            setNdiSceneType(ndiSceneType: .WORLD)
+            view.setSegmentedIndexOf(tagNo: DetailSettingsKey.ndiSceneType.rawValue, index: 0)
+            view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiSceneType.rawValue, isEnable: false)
+            view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiHumanType.rawValue, isEnable: false)
+        } else {
+            view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiWorldType.rawValue, isEnable: true)
+            view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiCamera.rawValue, isEnable: true)
+            view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiDepthType.rawValue, isEnable: true)
+            view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiHumanType.rawValue, isEnable: true)
+
+            let segmentedForNdiSceneTypeIndex = view.getSegmentedIndexOf(tagNo: DetailSettingsKey.ndiSceneType.rawValue)
+            if segmentedForNdiSceneTypeIndex == NdiSceneType.WORLD.rawValue {
+                didSelectedAndInitSegment(settingKey: DetailSettingsKey.ndiWorldType)
+                didSelectedAndInitSegment(settingKey: DetailSettingsKey.ndiCamera)
+                didSelectedAndInitSegment(settingKey: DetailSettingsKey.ndiDepthType)
+                view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiHumanType.rawValue, isEnable: false)
+            } else if segmentedForNdiSceneTypeIndex == NdiSceneType.HUMAN.rawValue {
+                view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiWorldType.rawValue, isEnable: false)
+                view.setSegmentActivityOf(tagNo: DetailSettingsKey.ndiDepthType.rawValue, isEnable: false)
+            }
+        }
+    }
+
+    internal func setNdiCameraPosition(cameraPosition: CameraPosition) {
+        AppSettingModel.shared.ndiCameraPosition = cameraPosition
+    }
+
+    internal func setNdiSceneType(ndiSceneType: NdiSceneType) {
+        AppSettingModel.shared.ndiSceneType = ndiSceneType
+    }
+
+    private func isBodyTrackingAvailable() -> Bool { arkitService.isBodyTrackingAvailable() }
+
+    private func isDepthRearCameraAvailable() -> Bool { videoCaptureService.isDepthRearCameraAvailable() }
+
+    private func isDepthFrontCameraAvailable() -> Bool { videoCaptureService.isDepthFrontCameraAvailable() }
+
+    private func isHumanSegmentationAvailable() -> Bool { videoCaptureService.isHumanSegmentationAvailable() }
+
+    private func setDepthFrontCameraAvailability() {
+        if view.getSegmentedIndexOf(tagNo: DetailSettingsKey.ndiWorldType.rawValue) == 1 {
+            setNdiCameraPosition(cameraPosition: .BACK)
+            view.setSelectedSegmentIndex(index: 0)
+            view.setSelectedSegmentActivity(isEnabled: false)
+        } else {
+            view.setSelectedSegmentActivity(isEnabled: true)
         }
     }
 }

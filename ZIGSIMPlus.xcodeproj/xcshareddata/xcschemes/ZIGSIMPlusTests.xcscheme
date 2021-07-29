@@ -18,7 +18,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "902EB9D9227BE68F008F1650"
-               BuildableName = ".xctest"
+               BuildableName = "ZIG SIM PRO.xctest"
                BlueprintName = "ZIGSIMPlusTests"
                ReferencedContainer = "container:ZIGSIMPlus.xcodeproj">
             </BuildableReference>
