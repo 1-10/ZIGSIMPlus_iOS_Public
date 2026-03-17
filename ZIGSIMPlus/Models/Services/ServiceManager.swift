@@ -64,7 +64,7 @@ class ServiceManager {
 
     public func getOSC() -> OSCBundle {
         let bundle = OSCBundle()
-        let device = Device()
+        let device = Device.current
 
         // Default data
         let settings = AppSettingModel.shared
@@ -115,7 +115,7 @@ class ServiceManager {
             print(">> JSON convert error")
         }
 
-        let device = Device()
+        let device = Device.current
 
         return JSON([
             "device": [

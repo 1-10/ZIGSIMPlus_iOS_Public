@@ -1,6 +1,0 @@
-module DeviceKit {
-  umbrella header "DeviceKit-library-umbrella.h"
-
-  export *
-  module * { export * }
-}

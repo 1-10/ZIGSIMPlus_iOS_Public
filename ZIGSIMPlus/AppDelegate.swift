@@ -18,10 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Inject dependency here
         composePresenters()
 
-        // Setup tab bar styles
-        UITabBar.appearance().barTintColor = Theme.dark
-        UITabBar.appearance().tintColor = Theme.main
-
         return true
     }
 
@@ -43,6 +39,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // swiftlint:disable:next force_cast
         let tabBarController = window?.rootViewController as! UITabBarController
+
+        // Setup tab bar styles directly on instance
+        let tabBar = tabBarController.tabBar
+        tabBar.isTranslucent = false
+        tabBar.tintColor = Theme.main
+        //tabBar.backgroundColor = Theme.dark
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            //appearance.backgroundColor = Theme.dark
+            tabBar.standardAppearance = appearance
+            tabBar.scrollEdgeAppearance = appearance
+        } else {
+            //tabBar.barTintColor = Theme.dark
+        }
 
         for viewController in tabBarController.viewControllers! {
             if type(of: viewController) == CommandSelectionTabNavigationController.self {

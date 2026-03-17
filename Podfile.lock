@@ -1,5 +1,5 @@
 PODS:
-  - DeviceKit (1.13.0)
+  - DeviceKit (2.3.0)
   - DynamicButton (6.2.0)
   - LicensePlist (2.5.0)
   - MarkdownKit (1.5)
@@ -13,7 +13,7 @@ PODS:
   - SwiftyUserDefaults (4.0.0)
 
 DEPENDENCIES:
-  - DeviceKit (~> 1.3)
+  - DeviceKit (~> 2.0)
   - DynamicButton (~> 6.2.0)
   - LicensePlist
   - MarkdownKit
@@ -27,7 +27,7 @@ DEPENDENCIES:
   - SwiftyUserDefaults (~> 4.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - DeviceKit
     - DynamicButton
     - LicensePlist
@@ -42,7 +42,7 @@ SPEC REPOS:
     - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
-  DeviceKit: 5a4accdb2918ce0b69e62dc3bef6e4d2cc06e2e4
+  DeviceKit: da103891aa928d89f64ea8dd8aca738c5f3d8ac0
   DynamicButton: 99858ce823ceed7263a4eed43bd3870e72723cb2
   LicensePlist: e5f8f2e3465620e53ec4c669955a5a7d0692b9cb
   MarkdownKit: 379028e9cd3ebf05ccac87205cd9aead446159d4
@@ -55,6 +55,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   SwiftyUserDefaults: 6a1951df1daa19337862b677dd9a4b9bd4c288cd
 
-PODFILE CHECKSUM: 1ad5622e9507a2ce6125c3b571a9091b14b3bcd2
+PODFILE CHECKSUM: e1b868d97cfa7294af2e88866a5c6923d2d47884
 
-COCOAPODS: 1.6.2
+COCOAPODS: 1.16.2

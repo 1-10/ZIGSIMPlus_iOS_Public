@@ -35,7 +35,7 @@ public class TouchService {
     }
 
     func isApplePencilAvailable() -> Bool {
-        return Device().isPad
+        return Device.current.isPad
     }
 
     func enable() {
