@@ -1,4 +1,4 @@
-# ZIG SIM PRO — iOS
+# ZIG SIM — iOS
 
 Real-time sensor streaming app for iPhone/iPad. Streams data from device sensors over network protocols (OSC/JSON) to remote systems such as DAWs, visual software, and game engines.
 
