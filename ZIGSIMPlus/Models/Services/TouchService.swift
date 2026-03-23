@@ -8,12 +8,26 @@
 
 import DeviceKit
 import Foundation
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 import UIKit
 
 /// Data store for touch data.
 public class TouchService {
+    private struct TouchCommandSettings {
+        let isTouchActive: Bool
+        let isApplePencilActive: Bool
+    }
+
+    private struct TouchPayload {
+        let point: CGPoint
+        let radius: CGFloat
+        let force: CGFloat
+        let altitudeAngle: CGFloat
+        let azimuthAngle: CGFloat
+        let isPencil: Bool
+    }
+
     // Singleton instance
     static let shared = TouchService()
 
@@ -85,52 +99,35 @@ public class TouchService {
         touchArea = rect
     }
 
-    private func getTouchResult(from touches: [UITouch]) -> [String] {
+    private func commandSettings() -> TouchCommandSettings? {
         guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
             let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
         else {
-            fatalError("AppSetting for the command is nil")
+            return nil
         }
 
-        var result = [String]()
+        return TouchCommandSettings(
+            isTouchActive: isTouchActive,
+            isApplePencilActive: isApplePencilActive
+        )
+    }
 
-        for touch in touches {
-            var point = touch.location(in: touch.view!)
-            point = remapToScreenCoord(point)
-
-            if isTouchActive {
-                // Position
-                result += [
-                    String(format: "touch:x:%.3f", point.x),
-                    String(format: "touch:y:%.3f", point.y),
-                ]
-
-                // touch radius
-                if #available(iOS 8.0, *) {
-                    result.append(String(format: "touch:radius:%.3f", touch.majorRadius))
-                }
-
-                // 3d touch
-                if #available(iOS 9.0, *) {
-                    result.append(String(format: "touch:force:%.3f", touch.force))
-                }
+    private func touchPayloads(from touches: [UITouch]) -> [TouchPayload] {
+        return touches.compactMap { touch in
+            guard let view = touch.view else {
+                return nil
             }
 
-            if isApplePencilActive, touch.type == .pencil {
-                result += [
-                    "pencil:touch:x:\(point.x)",
-                    "pencil:touch:y:\(point.y)",
-                    "pencil:altitude:\(touch.altitudeAngle)",
-                    "pencil:azimuth:\(touch.azimuthAngle(in: touch.view!))",
-                ]
-
-                if #available(iOS 9.0, *) {
-                    result.append(String(format: "pencil:force:%.3f", touch.force))
-                }
-            }
+            let point = remapToScreenCoord(touch.location(in: view))
+            return TouchPayload(
+                point: point,
+                radius: touch.majorRadius,
+                force: touch.force,
+                altitudeAngle: touch.altitudeAngle,
+                azimuthAngle: touch.azimuthAngle(in: view),
+                isPencil: touch.type == .pencil
+            )
         }
-
-        return result
     }
 
     // Remap values to range [-1, 1]
@@ -146,47 +143,62 @@ public class TouchService {
 
 extension TouchService: Service {
     func toLog() -> [String] {
-        return getTouchResult(from: touchPoints)
+        guard let settings = commandSettings() else {
+            return []
+        }
+
+        var result = [String]()
+
+        for payload in touchPayloads(from: touchPoints) {
+            if settings.isTouchActive {
+                result += [
+                    String(format: "touch:x:%.3f", payload.point.x),
+                    String(format: "touch:y:%.3f", payload.point.y),
+                    String(format: "touch:radius:%.3f", payload.radius),
+                    String(format: "touch:force:%.3f", payload.force),
+                ]
+            }
+
+            if settings.isApplePencilActive, payload.isPencil {
+                result += [
+                    "pencil:touch:x:\(payload.point.x)",
+                    "pencil:touch:y:\(payload.point.y)",
+                    "pencil:altitude:\(payload.altitudeAngle)",
+                    "pencil:azimuth:\(payload.azimuthAngle)",
+                    String(format: "pencil:force:%.3f", payload.force),
+                ]
+            }
+        }
+
+        return result
     }
 
     func toOSC() -> [OSCMessage] {
-        guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
-            let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
-        else {
-            fatalError("AppSetting for the command is nil")
+        guard let settings = commandSettings() else {
+            return []
         }
 
-        if !isTouchActive, !isApplePencilActive {
+        if !settings.isTouchActive, !settings.isApplePencilActive {
             return []
         }
 
         var messages = [OSCMessage]()
 
-        for (i, touch) in touchPoints.enumerated() {
-            var point = touch.location(in: touch.view!)
-            point = remapToScreenCoord(point)
-
-            if isTouchActive {
+        for (i, payload) in touchPayloads(from: touchPoints).enumerated() {
+            if settings.isTouchActive {
                 // Position
-                messages.append(osc("touch\(i)1", Float(point.x)))
-                messages.append(osc("touch\(i)2", Float(point.y)))
-
-                if #available(iOS 8.0, *) {
-                    messages.append(osc("touchradius\(i)", Float(touch.majorRadius)))
-                }
-                if #available(iOS 9.0, *) {
-                    messages.append(osc("touchforce\(i)", Float(touch.force)))
-                }
+                messages.append(osc("touch\(i)1", Float(payload.point.x)))
+                messages.append(osc("touch\(i)2", Float(payload.point.y)))
+                messages.append(osc("touchradius\(i)", Float(payload.radius)))
+                messages.append(osc("touchforce\(i)", Float(payload.force)))
             }
 
-            if isApplePencilActive, touch.type == .pencil {
-                messages.append(osc("penciltouch\(i)1", Float(point.x)))
-                messages.append(osc("penciltouch\(i)2", Float(point.y)))
-                messages.append(osc("pencilaltitude\(i)", Float(touch.altitudeAngle)))
-                messages.append(osc("pencilazimuth\(i)", Float(touch.azimuthAngle(in: touch.view!))))
-                if #available(iOS 9.0, *) {
-                    messages.append(osc("pencilforce\(i)", Float(touch.force)))
-                }
+            if settings.isApplePencilActive, payload.isPencil {
+                messages.append(osc("penciltouch\(i)1", Float(payload.point.x)))
+                messages.append(osc("penciltouch\(i)2", Float(payload.point.y)))
+                messages.append(osc("pencilaltitude\(i)", Float(payload.altitudeAngle)))
+                messages.append(osc("pencilazimuth\(i)", Float(payload.azimuthAngle)))
+                messages.append(osc("pencilforce\(i)", Float(payload.force)))
             }
         }
 
@@ -194,48 +206,34 @@ extension TouchService: Service {
     }
 
     func toJSON() throws -> JSON {
-        guard let isTouchActive = AppSettingModel.shared.isActiveByCommand[Command.touch],
-            let isApplePencilActive = AppSettingModel.shared.isActiveByCommand[Command.applePencil]
-        else {
-            fatalError("AppSetting for the command is nil")
+        guard let settings = commandSettings() else {
+            return JSON()
         }
+
         var data = JSON()
+        let payloads = touchPayloads(from: touchPoints)
 
-        if isTouchActive {
-            let touchData: [[String: CGFloat]] = touchPoints.map { touch in
-                var point = touch.location(in: touch.view!)
-                point = remapToScreenCoord(point)
-
-                var obj = ["x": point.x, "y": point.y]
-
-                if #available(iOS 8.0, *) {
-                    obj["radius"] = touch.majorRadius
-                }
-                if #available(iOS 9.0, *) {
-                    obj["force"] = touch.force
-                }
-
-                return obj
+        if settings.isTouchActive {
+            let touchData: [[String: CGFloat]] = payloads.map { payload in
+                return [
+                    "x": payload.point.x,
+                    "y": payload.point.y,
+                    "radius": payload.radius,
+                    "force": payload.force,
+                ]
             }
             data["touch"] = JSON(touchData)
         }
 
-        if isApplePencilActive {
-            let pencilData: [[String: CGFloat]] = touchPoints.map { touch in
-                var point = touch.location(in: touch.view!)
-                point = remapToScreenCoord(point)
-
-                var obj = [
-                    "x": point.x,
-                    "y": point.y,
-                    "altitude": touch.altitudeAngle,
-                    "azimuth": touch.azimuthAngle(in: touch.view!),
+        if settings.isApplePencilActive {
+            let pencilData: [[String: CGFloat]] = payloads.map { payload in
+                return [
+                    "x": payload.point.x,
+                    "y": payload.point.y,
+                    "altitude": payload.altitudeAngle,
+                    "azimuth": payload.azimuthAngle,
+                    "force": payload.force,
                 ]
-                if #available(iOS 9.0, *) {
-                    obj["force"] = touch.force
-                }
-
-                return obj
             }
             data["pencil"] = JSON(pencilData)
         }

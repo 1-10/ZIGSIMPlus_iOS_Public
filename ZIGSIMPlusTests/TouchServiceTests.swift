@@ -6,7 +6,7 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 import XCTest
 @testable import ZIG_SIM_PRO
@@ -44,6 +44,10 @@ class UITouchMock: UITouch {
     override var majorRadius: CGFloat { return _radius }
 
     override var force: CGFloat { return _force }
+}
+
+class UITouchNilViewMock: UITouchMock {
+    override var view: UIView? { return nil }
 }
 
 class TouchServiceTests: XCTestCase {
@@ -236,6 +240,21 @@ class TouchServiceTests: XCTestCase {
         AppSettingModel.shared.isActiveByCommand[.touch] = true
         let log = TouchService.shared.toLog()
         XCTAssertEqual(log, [], "Empty log")
+    }
+
+    func test_toLog_skipsTouchWithoutView() {
+        AppSettingModel.shared.isActiveByCommand[.touch] = true
+        AppSettingModel.shared.isActiveByCommand[.applePencil] = false
+        TouchService.shared.enable()
+
+        TouchService.shared.setTouchArea(rect: CGRect(x: 0, y: 0, width: 100, height: 100))
+        TouchService.shared.addTouches([UITouchNilViewMock(12, 34, 0.1, 0.2)])
+
+        XCTAssertEqual(TouchService.shared.toLog(), [], "Touch without view is ignored")
+        XCTAssertEqual(TouchService.shared.toOSC(), [], "Touch without view is ignored in OSC")
+        XCTAssertEqual(try! TouchService.shared.toJSON(), JSON(["touch": []]), "Touch without view is ignored in JSON")
+
+        TouchService.shared.disable()
     }
 
     func test_toLog() {
