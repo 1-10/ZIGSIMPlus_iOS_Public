@@ -46,13 +46,20 @@ class Utils {
         let bounds = navBar.bounds
         let center = navBar.center
 
-        let titleImage = UIImage(named: "Logo")
+        guard let titleImage = UIImage(named: "Logo") else {
+            return
+        }
+
+        guard let topItem = navBar.topItem else {
+            return
+        }
+
         let titleImageView = UIImageView(image: titleImage)
 
         // Get dimension to render image
-        let scale = bounds.height / titleImage!.size.height
-        let imageWidth = titleImage!.size.width * scale
-        let imageHeight = titleImage!.size.height * scale
+        let scale = bounds.height / titleImage.size.height
+        let imageWidth = titleImage.size.width * scale
+        let imageHeight = titleImage.size.height * scale
 
         // Set image frame to the center of the navBar
         titleImageView.frame = CGRect(
@@ -66,7 +73,7 @@ class Utils {
         let wrapper = UIView(frame: bounds)
         wrapper.addSubview(titleImageView)
 
-        navBar.topItem!.titleView = wrapper
+        topItem.titleView = wrapper
     }
 
     static func isValidBeaconUUID(_ uuid: String) -> Bool {

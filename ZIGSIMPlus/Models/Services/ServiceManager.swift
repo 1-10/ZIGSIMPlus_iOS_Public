@@ -8,7 +8,7 @@
 
 import DeviceKit
 import Foundation
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 
 /// ServiceManager creates OSC / JSON data.
@@ -27,10 +27,10 @@ class ServiceManager {
 
         if AppSettingModel.shared.transportFormat == .OSC {
             let osc = getOSC()
-            data = osc.data
+            data = (try? osc.rawData()) ?? Data()
         } else {
             let json = getJSON()
-            data = try! json.rawData() // swiftlint:disable:this force_try
+            data = (try? json.rawData()) ?? Data()
         }
 
         return data
@@ -42,7 +42,7 @@ class ServiceManager {
             return osc.getString()
         } else {
             let json = getJSON()
-            return json.rawString(.utf8, options: [])! + "\n"
+            return (json.rawString(.utf8, options: []) ?? "") + "\n"
         }
     }
 
@@ -63,37 +63,39 @@ class ServiceManager {
     }
 
     public func getOSC() -> OSCBundle {
-        let bundle = OSCBundle()
         let device = Device.current
+        let settings = AppSettingModel.shared
 
         // Default data
-        let settings = AppSettingModel.shared
-        bundle.add(OSCMessage(
-            OSCAddressPattern("/\(settings.deviceUUID)/deviceinfo"),
-            device.description,
-            settings.deviceUUID,
-            "ios",
-            device.systemVersion,
-            Int(Utils.screenWidth),
-            Int(Utils.screenHeight)
-        ))
+        let deviceInfo = OSCMessage(
+            "/\(settings.deviceUUID)/deviceinfo",
+            values: [
+                device.description,
+                settings.deviceUUID,
+                "ios",
+                device.systemVersion ?? "",
+                Int32(Utils.screenWidth),
+                Int32(Utils.screenHeight),
+            ]
+        )
 
-        // Add data from stores
-        bundle.elements += AltimeterService.shared.toOSC()
-        bundle.elements += ArkitService.shared.toOSC()
-        bundle.elements += AudioLevelService.shared.toOSC()
-        bundle.elements += LocationService.shared.toOSC()
-        bundle.elements += MotionService.shared.toOSC()
-        bundle.elements += BatteryService.shared.toOSC()
-        bundle.elements += ProximityService.shared.toOSC()
-        bundle.elements += RemoteControlService.shared.toOSC()
-        bundle.elements += TouchService.shared.toOSC()
-        bundle.elements += VideoCaptureService.shared.toOSC()
-        bundle.elements += NFCService.shared.toOSC()
+        // Collect messages from all services
+        var messages: [OSCMessage] = [deviceInfo]
+        messages += AltimeterService.shared.toOSC()
+        messages += ArkitService.shared.toOSC()
+        messages += AudioLevelService.shared.toOSC()
+        messages += LocationService.shared.toOSC()
+        messages += MotionService.shared.toOSC()
+        messages += BatteryService.shared.toOSC()
+        messages += ProximityService.shared.toOSC()
+        messages += RemoteControlService.shared.toOSC()
+        messages += TouchService.shared.toOSC()
+        messages += VideoCaptureService.shared.toOSC()
+        messages += NFCService.shared.toOSC()
 
         // TODO: Add timetag
 
-        return bundle
+        return OSCBundle(messages.map { .message($0) })
     }
 
     public func getJSON() -> JSON {
