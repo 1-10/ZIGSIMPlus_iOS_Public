@@ -27,7 +27,7 @@ class ServiceManager {
 
         if AppSettingModel.shared.transportFormat == .OSC {
             let osc = getOSC()
-            data = (try? osc.rawData()) ?? Data()
+            data = (try? OSCPacket.bundle(osc).rawData()) ?? Data()
         } else {
             let json = getJSON()
             data = (try? json.rawData()) ?? Data()
@@ -63,35 +63,36 @@ class ServiceManager {
     }
 
     public func getOSC() -> OSCBundle {
+        var bundle = OSCBundle()
         let device = Device.current
         let settings = AppSettingModel.shared
 
         // Default data
-        let deviceInfo = OSCMessage(
+        let settings = AppSettingModel.shared
+        bundle.elements.append(.message(OSCMessage(
             "/\(settings.deviceUUID)/deviceinfo",
             values: [
                 device.description,
                 settings.deviceUUID,
                 "ios",
                 device.systemVersion ?? "",
-                Int32(Utils.screenWidth),
-                Int32(Utils.screenHeight),
+                Int(Utils.screenWidth),
+                Int(Utils.screenHeight),
             ]
-        )
+        )))
 
-        // Collect messages from all services
-        var messages: [OSCMessage] = [deviceInfo]
-        messages += AltimeterService.shared.toOSC()
-        messages += ArkitService.shared.toOSC()
-        messages += AudioLevelService.shared.toOSC()
-        messages += LocationService.shared.toOSC()
-        messages += MotionService.shared.toOSC()
-        messages += BatteryService.shared.toOSC()
-        messages += ProximityService.shared.toOSC()
-        messages += RemoteControlService.shared.toOSC()
-        messages += TouchService.shared.toOSC()
-        messages += VideoCaptureService.shared.toOSC()
-        messages += NFCService.shared.toOSC()
+        // Add data from stores
+        bundle.elements += AltimeterService.shared.toOSC().map { .message($0) }
+        bundle.elements += ArkitService.shared.toOSC().map { .message($0) }
+        bundle.elements += AudioLevelService.shared.toOSC().map { .message($0) }
+        bundle.elements += LocationService.shared.toOSC().map { .message($0) }
+        bundle.elements += MotionService.shared.toOSC().map { .message($0) }
+        bundle.elements += BatteryService.shared.toOSC().map { .message($0) }
+        bundle.elements += ProximityService.shared.toOSC().map { .message($0) }
+        bundle.elements += RemoteControlService.shared.toOSC().map { .message($0) }
+        bundle.elements += TouchService.shared.toOSC().map { .message($0) }
+        bundle.elements += VideoCaptureService.shared.toOSC().map { .message($0) }
+        bundle.elements += NFCService.shared.toOSC().map { .message($0) }
 
         // TODO: Add timetag
 
