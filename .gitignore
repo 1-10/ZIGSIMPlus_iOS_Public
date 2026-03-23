@@ -36,3 +36,8 @@ DerivedData/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.gitignore.io/api/xcode
+# Local secrets (never commit)
+.license_plist_token
+
+# Claude Code
+.claude/
