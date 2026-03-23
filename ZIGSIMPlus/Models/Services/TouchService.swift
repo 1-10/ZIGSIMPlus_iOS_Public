@@ -8,7 +8,7 @@
 
 import DeviceKit
 import Foundation
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 import UIKit
 
