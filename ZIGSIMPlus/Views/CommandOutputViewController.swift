@@ -26,19 +26,7 @@ class CommandOutputViewController: UIViewController {
         super.viewDidLoad()
 
         // Initialize navigation bar
-        let navBar = navigationController!.navigationBar
-        if #available(iOS 15.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = Theme.dark
-            navBar.standardAppearance = appearance
-            navBar.scrollEdgeAppearance = appearance
-            navBar.tintColor = Theme.main
-        } else {
-            navBar.barTintColor = Theme.dark
-            navBar.tintColor = Theme.main
-        }
-        Utils.setTitleImage(navBar)
+        Utils.configureNavigationBar(navigationController!.navigationBar)
 
         presenter.composeChildViewArchitecture()
     }
