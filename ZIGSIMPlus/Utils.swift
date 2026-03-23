@@ -76,6 +76,16 @@ class Utils {
         topItem.titleView = wrapper
     }
 
+    static func configureNavigationBar(_ navBar: UINavigationBar) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Theme.dark
+        navBar.standardAppearance = appearance
+        navBar.scrollEdgeAppearance = appearance
+        navBar.tintColor = Theme.main
+        setTitleImage(navBar)
+    }
+
     static func isValidBeaconUUID(_ uuid: String) -> Bool {
         // swiftlint:disable:next force_try
         let reg = try! NSRegularExpression(pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}")

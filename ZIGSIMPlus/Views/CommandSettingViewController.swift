@@ -127,18 +127,7 @@ public class CommandSettingViewController: UIViewController {
     }
 
     private func initNavigationBar() {
-        Utils.setTitleImage(navigationController!.navigationBar)
-        if #available(iOS 15.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = Theme.dark
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-            navigationController?.navigationBar.tintColor = Theme.main
-        } else {
-            navigationController?.navigationBar.barTintColor = Theme.dark
-            navigationController?.navigationBar.tintColor = Theme.main
-        }
+        Utils.configureNavigationBar(navigationController!.navigationBar)
     }
 }
 
