@@ -6,7 +6,6 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 import Foundation
-import SVProgressHUD
 import UIKit
 
 protocol ContentScrollable {
@@ -52,12 +51,10 @@ public class CommandSettingViewController: UIViewController {
                 segment.selectedSegmentIndex = userDefaultSegments[.messageRatePerSecond] ?? 0
             }
             // Because the specification of UISegmentedControl has changed from iOS13
-            if #available(iOS 13.0, *) {
-                segment.selectedSegmentTintColor = Theme.main
-                segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Theme.main], for: .normal)
-                segment.layer.borderWidth = 1
-                segment.layer.borderColor = Theme.main.cgColor
-            }
+            segment.selectedSegmentTintColor = Theme.main
+            segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Theme.main], for: .normal)
+            segment.layer.borderWidth = 1
+            segment.layer.borderColor = Theme.main.cgColor
         }
 
         initNavigationBar()
