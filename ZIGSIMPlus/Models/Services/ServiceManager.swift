@@ -65,8 +65,6 @@ class ServiceManager {
     public func getOSC() -> OSCBundle {
         var bundle = OSCBundle()
         let device = Device.current
-        let settings = AppSettingModel.shared
-
         // Default data
         let settings = AppSettingModel.shared
         bundle.elements.append(.message(OSCMessage(
@@ -96,7 +94,7 @@ class ServiceManager {
 
         // TODO: Add timetag
 
-        return OSCBundle(messages.map { .message($0) })
+        return bundle
     }
 
     public func getJSON() -> JSON {
