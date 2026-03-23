@@ -30,7 +30,7 @@ class ServiceManager {
             data = (try? OSCPacket.bundle(osc).rawData()) ?? Data()
         } else {
             let json = getJSON()
-            data = try! json.rawData() // swiftlint:disable:this force_try
+            data = (try? json.rawData()) ?? Data()
         }
 
         return data
@@ -42,7 +42,7 @@ class ServiceManager {
             return osc.getString()
         } else {
             let json = getJSON()
-            return json.rawString(.utf8, options: [])! + "\n"
+            return (json.rawString(.utf8, options: []) ?? "") + "\n"
         }
     }
 
@@ -65,6 +65,7 @@ class ServiceManager {
     public func getOSC() -> OSCBundle {
         var bundle = OSCBundle()
         let device = Device.current
+        let settings = AppSettingModel.shared
 
         // Default data
         let settings = AppSettingModel.shared
@@ -95,7 +96,7 @@ class ServiceManager {
 
         // TODO: Add timetag
 
-        return bundle
+        return OSCBundle(messages.map { .message($0) })
     }
 
     public func getJSON() -> JSON {
