@@ -257,6 +257,27 @@ class TouchServiceTests: XCTestCase {
         TouchService.shared.disable()
     }
 
+    func test_toOSC_preservesOriginalIndexWhenEarlierTouchHasNoView() {
+        AppSettingModel.shared.isActiveByCommand[.touch] = true
+        AppSettingModel.shared.isActiveByCommand[.applePencil] = false
+        TouchService.shared.enable()
+
+        TouchService.shared.setTouchArea(rect: CGRect(x: 0, y: 0, width: 100, height: 100))
+        TouchService.shared.addTouches([
+            UITouchNilViewMock(12, 34, 0.1, 0.2),
+            UITouchMock(56, 78, 0.3, 0.4),
+        ])
+
+        let osc = TouchService.shared.toOSC()
+        XCTAssertEqual(osc.count, 4, "Only the valid touch emits OSC messages")
+        XCTAssert(osc[0].address.string.contains("/touch11"), "Valid touch keeps its original index")
+        XCTAssert(osc[1].address.string.contains("/touch12"), "Valid touch keeps its original index")
+        XCTAssert(osc[2].address.string.contains("/touchradius1"), "Valid touch keeps its original index")
+        XCTAssert(osc[3].address.string.contains("/touchforce1"), "Valid touch keeps its original index")
+
+        TouchService.shared.disable()
+    }
+
     func test_toLog() {
         AppSettingModel.shared.isActiveByCommand[.touch] = true
         TouchService.shared.enable()

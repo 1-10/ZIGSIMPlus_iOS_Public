@@ -8,7 +8,7 @@
 
 import DeviceKit
 import Foundation
-import OSCKit
+import SwiftOSC
 import SwiftyJSON
 import UIKit
 
@@ -112,22 +112,20 @@ public class TouchService {
         )
     }
 
-    private func touchPayloads(from touches: [UITouch]) -> [TouchPayload] {
-        return touches.compactMap { touch in
-            guard let view = touch.view else {
-                return nil
-            }
-
-            let point = remapToScreenCoord(touch.location(in: view))
-            return TouchPayload(
-                point: point,
-                radius: touch.majorRadius,
-                force: touch.force,
-                altitudeAngle: touch.altitudeAngle,
-                azimuthAngle: touch.azimuthAngle(in: view),
-                isPencil: touch.type == .pencil
-            )
+    private func touchPayload(for touch: UITouch) -> TouchPayload? {
+        guard let view = touch.view else {
+            return nil
         }
+
+        let point = remapToScreenCoord(touch.location(in: view))
+        return TouchPayload(
+            point: point,
+            radius: touch.majorRadius,
+            force: touch.force,
+            altitudeAngle: touch.altitudeAngle,
+            azimuthAngle: touch.azimuthAngle(in: view),
+            isPencil: touch.type == .pencil
+        )
     }
 
     // Remap values to range [-1, 1]
@@ -149,7 +147,11 @@ extension TouchService: Service {
 
         var result = [String]()
 
-        for payload in touchPayloads(from: touchPoints) {
+        for touch in touchPoints {
+            guard let payload = touchPayload(for: touch) else {
+                continue
+            }
+
             if settings.isTouchActive {
                 result += [
                     String(format: "touch:x:%.3f", payload.point.x),
@@ -184,7 +186,11 @@ extension TouchService: Service {
 
         var messages = [OSCMessage]()
 
-        for (i, payload) in touchPayloads(from: touchPoints).enumerated() {
+        for (i, touch) in touchPoints.enumerated() {
+            guard let payload = touchPayload(for: touch) else {
+                continue
+            }
+
             if settings.isTouchActive {
                 // Position
                 messages.append(osc("touch\(i)1", Float(payload.point.x)))
@@ -211,10 +217,12 @@ extension TouchService: Service {
         }
 
         var data = JSON()
-        let payloads = touchPayloads(from: touchPoints)
-
         if settings.isTouchActive {
-            let touchData: [[String: CGFloat]] = payloads.map { payload in
+            let touchData: [[String: CGFloat]] = touchPoints.compactMap { touch in
+                guard let payload = touchPayload(for: touch) else {
+                    return nil
+                }
+
                 return [
                     "x": payload.point.x,
                     "y": payload.point.y,
@@ -226,7 +234,11 @@ extension TouchService: Service {
         }
 
         if settings.isApplePencilActive {
-            let pencilData: [[String: CGFloat]] = payloads.map { payload in
+            let pencilData: [[String: CGFloat]] = touchPoints.compactMap { touch in
+                guard let payload = touchPayload(for: touch) else {
+                    return nil
+                }
+
                 return [
                     "x": payload.point.x,
                     "y": payload.point.y,
