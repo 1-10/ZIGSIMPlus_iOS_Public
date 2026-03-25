@@ -86,7 +86,11 @@ final class CommandSelectionViewController: UIViewController {
         let attributedText = convertMessageFromStringToAttributedText(message)
         alert.setValue(attributedText, forKey: "attributedMessage")
         alert.addAction(UIAlertAction(title: "See Docs", style: .default, handler: { _ in
-            UIApplication.shared.open(URL(string: "https://1-10.github.io/zigsim/")!, options: [:])
+            guard let url = URL(string: "https://1-10.github.io/zigsim/") else {
+                assertionFailure("Failed to create docs URL")
+                return
+            }
+            UIApplication.shared.open(url, options: [:])
         }))
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true, completion: {
@@ -95,7 +99,11 @@ final class CommandSelectionViewController: UIViewController {
     }
 
     private func adjustNavigationDesign() {
-        Utils.configureNavigationBar(navigationController!.navigationBar)
+        guard let navigationController else {
+            assertionFailure("CommandSelectionViewController must be embedded in a navigation controller")
+            return
+        }
+        Utils.configureNavigationBar(navigationController.navigationBar)
     }
 
     private func convertMessageFromStringToAttributedText(_ msg: String) -> NSMutableAttributedString {
@@ -108,7 +116,10 @@ extension CommandSelectionViewController: UITableViewDelegate {
     // Disallow selecting unavailable command
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let cell = tableView.cellForRow(at: indexPath) {
-            let ipForCell = tableView.indexPath(for: cell)!
+            guard let ipForCell = tableView.indexPath(for: cell) else {
+                assertionFailure("Failed to resolve indexPath for selected cell")
+                return indexPath
+            }
             let commandToSelect = presenter.getCommandToSelect(forRow: ipForCell.row)
             if !commandToSelect.isAvailable {
                 return nil
@@ -138,7 +149,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         cell.commandSelectionPresenter = presenter
         cells[Command.allCases[indexPath.row]] = cell
 
-        if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] ?? false {
             cell.checkMarkLavel.text = checkMark
         } else {
             cell.checkMarkLavel.text = ""
