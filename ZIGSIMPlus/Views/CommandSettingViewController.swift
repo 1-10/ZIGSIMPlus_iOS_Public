@@ -127,7 +127,8 @@ public class CommandSettingViewController: UIViewController {
     }
 
     private func initNavigationBar() {
-        Utils.configureNavigationBar(navigationController!.navigationBar)
+        guard let navigationController else { return }
+        Utils.configureNavigationBar(navigationController.navigationBar)
     }
 }
 
@@ -170,14 +171,19 @@ extension CommandSettingViewController: ContentScrollable {
 
     func removeObserver() {
         NotificationCenter.default.removeObserver(self)
-        if showObserver != nil { NotificationCenter.default.removeObserver(showObserver! as Any) }
-        if hideObserver != nil { NotificationCenter.default.removeObserver(hideObserver! as Any) }
+        if let showObserver {
+            NotificationCenter.default.removeObserver(showObserver)
+        }
+        if let hideObserver {
+            NotificationCenter.default.removeObserver(hideObserver)
+        }
     }
 
     func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
-        // swiftlint:disable:next force_cast
-        let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        guard let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else {
+            return
+        }
         scrollView.contentInset.bottom = keyboardSize
     }
 
