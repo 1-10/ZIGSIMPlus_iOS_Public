@@ -152,21 +152,21 @@ public class AppSettingModel {
     public func isCameraUsed(exceptBy command: Command? = nil) -> Bool {
         var isCameraUsed = false
         if command != .arkit {
-            isCameraUsed = (isCameraUsed || isActiveByCommand[.arkit]!)
+            isCameraUsed = (isCameraUsed || (isActiveByCommand[.arkit] ?? false))
         }
         if command != .ndi {
-            isCameraUsed = (isCameraUsed || isActiveByCommand[.ndi]!)
+            isCameraUsed = (isCameraUsed || (isActiveByCommand[.ndi] ?? false))
         }
         if command != .imageDetection {
-            isCameraUsed = (isCameraUsed || isActiveByCommand[.imageDetection]!)
+            isCameraUsed = (isCameraUsed || (isActiveByCommand[.imageDetection] ?? false))
         }
 
         return isCameraUsed
     }
 
     public func isTouchEnabled() -> Bool {
-        return AppSettingModel.shared.isActiveByCommand[.touch]! ||
-            AppSettingModel.shared.isActiveByCommand[.applePencil]!
+        return (AppSettingModel.shared.isActiveByCommand[.touch] ?? false) ||
+            (AppSettingModel.shared.isActiveByCommand[.applePencil] ?? false)
     }
 }
 
