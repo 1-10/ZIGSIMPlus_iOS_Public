@@ -72,7 +72,7 @@ extension MotionService: Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.acceleration]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.acceleration] ?? false {
             log += [
                 "accel:x:\(accel.x)",
                 "accel:y:\(accel.y)",
@@ -80,7 +80,7 @@ extension MotionService: Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.gravity]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gravity] ?? false {
             log += [
                 "gravity:x:\(gravity.x)",
                 "gravity:y:\(gravity.y)",
@@ -88,7 +88,7 @@ extension MotionService: Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.gyro]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gyro] ?? false {
             log += [
                 "gyro:x:\(gyro.x)",
                 "gyro:y:\(gyro.y)",
@@ -96,7 +96,7 @@ extension MotionService: Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.quaternion]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.quaternion] ?? false {
             log += [
                 "quaternion:x:\(quaternion.x)",
                 "quaternion:y:\(quaternion.y)",
@@ -111,19 +111,19 @@ extension MotionService: Service {
     func toOSC() -> [OSCMessage] {
         var messages = [OSCMessage]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.acceleration]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.acceleration] ?? false {
             messages.append(osc("accel", accel.x, accel.y, accel.z))
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.gravity]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gravity] ?? false {
             messages.append(osc("gravity", gravity.x, gravity.y, gravity.z))
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.gyro]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gyro] ?? false {
             messages.append(osc("gyro", gyro.x, gyro.y, gyro.z))
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.quaternion]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.quaternion] ?? false {
             messages.append(osc("quaternion", quaternion.x, quaternion.y, quaternion.z, quaternion.w))
         }
 
@@ -133,7 +133,7 @@ extension MotionService: Service {
     func toJSON() throws -> JSON {
         var data = JSON()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.acceleration]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.acceleration] ?? false {
             data["accel"] = [
                 "x": accel.x,
                 "y": accel.y,
@@ -141,7 +141,7 @@ extension MotionService: Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.gravity]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gravity] ?? false {
             data["gravity"] = [
                 "x": gravity.x,
                 "y": gravity.y,
@@ -149,7 +149,7 @@ extension MotionService: Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.gyro]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gyro] ?? false {
             data["gyro"] = [
                 "x": gyro.x,
                 "y": gyro.y,
@@ -157,7 +157,7 @@ extension MotionService: Service {
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.quaternion]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.quaternion] ?? false {
             data["quaternion"] = [
                 "x": quaternion.x,
                 "y": quaternion.y,

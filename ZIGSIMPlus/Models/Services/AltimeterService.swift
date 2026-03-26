@@ -82,7 +82,7 @@ extension AltimeterService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.pressure]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.pressure] ?? false {
             log += [
                 "pressure:pressure:\(pressureData)",
                 "pressure:altitude:\(altitudeData)",
@@ -95,7 +95,7 @@ extension AltimeterService: Service {
     func toOSC() -> [OSCMessage] {
         var messages = [OSCMessage]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.pressure]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.pressure] ?? false {
             messages.append(osc("pressure", pressureData, altitudeData))
         }
 
@@ -105,7 +105,7 @@ extension AltimeterService: Service {
     func toJSON() -> JSON {
         var data = JSON()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.pressure]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.pressure] ?? false {
             data["pressure"] = [
                 "pressure": pressureData,
                 "altitude": altitudeData,

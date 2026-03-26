@@ -50,7 +50,7 @@ extension ProximityService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.proximity] ?? false {
             log += [
                 "proximitymonitor:proximitymonitor:\(proximity)",
             ]
@@ -62,7 +62,7 @@ extension ProximityService: Service {
     func toOSC() -> [OSCMessage] {
         var data = [OSCMessage]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.proximity] ?? false {
             data.append(osc("proximitymonitor", proximity ? 1 : 0))
         }
 
@@ -72,7 +72,7 @@ extension ProximityService: Service {
     func toJSON() throws -> JSON {
         var data = JSON()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.proximity]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.proximity] ?? false {
             data["proximitymonitor"] = JSON(["proximitymonitor": proximity])
         }
 
