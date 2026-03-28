@@ -173,6 +173,7 @@ public class CommandDetailSettingsViewController: UIViewController {
 
         input.addTarget(self, action: #selector(uuidInputAction(input:)), for: .allEditingEvents)
         input.autocapitalizationType = .allCharacters
+        input.keyboardAppearance = .dark
 
         // Use DetailSettingKey for identifier
         input.tag = data.key.rawValue
