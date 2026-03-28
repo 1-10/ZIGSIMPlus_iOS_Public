@@ -7,7 +7,7 @@
 //
 
 import CoreMotion
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 import XCTest
 @testable import ZIG_SIM_PRO

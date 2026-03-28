@@ -8,7 +8,7 @@
 
 import AudioToolbox
 import Foundation
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 
 // swiftlint:disable:next function_parameter_count

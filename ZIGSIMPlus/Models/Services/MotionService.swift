@@ -8,7 +8,7 @@
 
 import CoreMotion
 import Foundation
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 import UIKit
 
@@ -49,7 +49,7 @@ public class MotionService {
     }
 
     func stop() {
-        if !motionManager.isDeviceMotionAvailable {
+        if motionManager.isDeviceMotionAvailable {
             motionManager.stopDeviceMotionUpdates()
         }
     }

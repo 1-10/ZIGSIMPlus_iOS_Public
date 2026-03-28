@@ -34,12 +34,7 @@ public class CommandDetailSettingsViewController: UIViewController {
             }
         }
 
-        // Because the specification of UISegmentedControl has changed from iOS13
-        if #available(iOS 13.0, *) {
-            stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settingsForCommand.count) * 66.0)
-        } else {
-            stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settingsForCommand.count) * 64.0)
-        }
+        stackView.bounds = CGRect(x: 0, y: 0, width: 300, height: CGFloat(settingsForCommand.count) * 66.0)
 
         // set height of stack view
         stackView.constraints.first?.constant = CGFloat(80 * settingsForCommand.count)
@@ -137,13 +132,10 @@ public class CommandDetailSettingsViewController: UIViewController {
             segmented.insertSegment(withTitle: segment, at: i, animated: true)
             segmented.setWidth(CGFloat(data.width / data.segments.count), forSegmentAt: i)
 
-            // Because the specification of UISegmentedControl has changed from iOS13
-            if #available(iOS 13.0, *) {
-                segmented.selectedSegmentTintColor = Theme.main
-                segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Theme.main], for: .normal)
-                segmented.layer.borderWidth = 1
-                segmented.layer.borderColor = Theme.main.cgColor
-            }
+            segmented.selectedSegmentTintColor = Theme.main
+            segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Theme.main], for: .normal)
+            segmented.layer.borderWidth = 1
+            segmented.layer.borderColor = Theme.main.cgColor
         }
 
         if let dataInt = data as? SegmentedInt {

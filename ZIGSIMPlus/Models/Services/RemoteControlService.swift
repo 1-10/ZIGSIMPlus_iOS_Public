@@ -8,7 +8,7 @@
 
 import Foundation
 import MediaPlayer
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 
 public class RemoteControlService: NSObject {

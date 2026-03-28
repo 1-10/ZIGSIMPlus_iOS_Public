@@ -6,7 +6,7 @@
 //  Copyright © 2019 1→10, Inc. All rights reserved.
 //
 
-import SwiftOSC
+import OSCKit
 import XCTest
 @testable import ZIG_SIM_PRO
 

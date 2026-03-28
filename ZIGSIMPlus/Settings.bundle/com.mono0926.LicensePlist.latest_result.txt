@@ -1,67 +1,39 @@
-name: DeviceKit, nameSpecified: 
-body: Copyright (c) 2015 D…
-version: 1.13.0
+name: CocoaAsyncSocket, nameSpecified: CocoaAsyncSocket, owner: robbiehanson, version: 7.6.5, source: https://github.com/robbiehanson/CocoaAsyncSocket
 
-name: DeviceKit, nameSpecified: 
-body: Copyright (c) 2015 D…
-version: 1.13.0
+name: CollectionConcurrencyKit, nameSpecified: CollectionConcurrencyKit, owner: JohnSundell, version: 0.2.0, source: https://github.com/JohnSundell/CollectionConcurrencyKit
 
-name: DynamicButton, nameSpecified: 
-body: The MIT License (MIT…
-version: 6.2.0
+name: CryptoSwift, nameSpecified: CryptoSwift, owner: krzyzanowskim, version: 1.9.0, source: https://github.com/krzyzanowskim/CryptoSwift
 
-name: LicensePlist, nameSpecified: 
-body: MIT License
+name: DeviceKit, nameSpecified: DeviceKit, owner: devicekit, version: 5.8.0, source: https://github.com/devicekit/DeviceKit
 
-Copyrig…
-version: 2.5.0
+name: MarkdownKit, nameSpecified: MarkdownKit, owner: bmoliveira, version: 1.7.1, source: https://github.com/bmoliveira/MarkdownKit
 
-name: MarkdownKit, nameSpecified: 
-body: The MIT License (MIT…
-version: 1.5
+name: OSCKit, nameSpecified: OSCKit, owner: orchetect, version: 2.1.1, source: https://github.com/orchetect/OSCKit
 
-name: Sourcery, nameSpecified: 
-body: MIT License
+name: SourceKitten, nameSpecified: SourceKitten, owner: jpsim, version: 0.37.2, source: https://github.com/jpsim/SourceKitten
 
-Copyrig…
-version: 0.16.1
+name: swift-argument-parser, nameSpecified: swift-argument-parser, owner: apple, version: 1.7.0, source: https://github.com/apple/swift-argument-parser
 
-name: SVProgressHUD, nameSpecified: 
-body: MIT License
+name: swift-ascii, nameSpecified: swift-ascii, owner: orchetect, version: 1.3.0, source: https://github.com/orchetect/swift-ascii
 
-Copyrig…
-version: 2.2.5
+name: swift-filename-matcher, nameSpecified: swift-filename-matcher, owner: ileitch, version: 2.0.1, source: https://github.com/ileitch/swift-filename-matcher
 
-name: SwiftFormat, nameSpecified: 
-body: MIT License
+name: swift-syntax, nameSpecified: swift-syntax, owner: swiftlang, version: 604.0.0-prerelease-2026-01-20, source: https://github.com/swiftlang/swift-syntax
 
-Copyrig…
-version: 0.40.9
+name: SwiftFormat, nameSpecified: SwiftFormat, owner: nicklockwood, version: 0.60.1, source: https://github.com/nicklockwood/SwiftFormat
 
-name: SwiftLint, nameSpecified: 
-body: The MIT License (MIT…
-version: 0.33.0
+name: SwiftLint, nameSpecified: SwiftLint, owner: realm, version: 0.63.2, source: https://github.com/realm/SwiftLint
 
-name: SwiftOSC, nameSpecified: 
-body: The MIT License (MIT…
-version: 1.2.4
+name: SwiftyJSON, nameSpecified: SwiftyJSON, owner: SwiftyJSON, version: 5.0.2, source: https://github.com/SwiftyJSON/SwiftyJSON
 
-name: SwiftSocket, nameSpecified: 
-body: BSD 3-Clause License…
-version: 2.0.2
+name: SwiftyTextTable, nameSpecified: SwiftyTextTable, owner: scottrhoyt, version: 0.9.0, source: https://github.com/scottrhoyt/SwiftyTextTable
 
-name: SwiftyJSON, nameSpecified: 
-body: The MIT License (MIT…
-version: 4.3.0
+name: SwiftyUserDefaults, nameSpecified: SwiftyUserDefaults, owner: sunshinejr, version: 5.3.0, source: https://github.com/sunshinejr/SwiftyUserDefaults
 
-name: SwiftyJSON, nameSpecified: 
-body: The MIT License (MIT…
-version: 4.3.0
+name: SWXMLHash, nameSpecified: SWXMLHash, owner: drmohundro, version: 7.0.2, source: https://github.com/drmohundro/SWXMLHash
 
-name: SwiftyUserDefaults, nameSpecified: 
-body: The MIT License (MIT…
-version: 4.0.0
+name: Yams, nameSpecified: Yams, owner: jpsim, version: 6.2.1, source: https://github.com/jpsim/Yams
 
 add-version-numbers: false
 
-LicensePlist Version: 1.8.3
+LicensePlist Version: 3.27.2

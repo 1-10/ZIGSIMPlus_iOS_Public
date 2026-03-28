@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 
 protocol Service {
@@ -17,8 +17,13 @@ protocol Service {
 }
 
 extension Service {
-    func osc(_ address: String, _ args: OSCType?...) -> OSCMessage {
+    func osc(_ address: String, _ args: any OSCValue...) -> OSCMessage {
         let deviceUUID = AppSettingModel.shared.deviceUUID
-        return OSCMessage(OSCAddressPattern("/ZIGSIM/\(deviceUUID)/\(address)"), args)
+        return OSCMessage("/ZIGSIM/\(deviceUUID)/\(address)", values: args)
+    }
+
+    func osc(_ address: String, values: [any OSCValue]) -> OSCMessage {
+        let deviceUUID = AppSettingModel.shared.deviceUUID
+        return OSCMessage("/ZIGSIM/\(deviceUUID)/\(address)", values: values)
     }
 }

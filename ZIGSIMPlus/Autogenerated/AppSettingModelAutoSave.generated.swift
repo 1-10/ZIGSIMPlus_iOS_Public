@@ -1,6 +1,5 @@
-// Generated using Sourcery 0.16.1 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 2.3.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
-
 //
 //  AppSettingModelAutoSave.stencil
 //  ZIGSIMPlus
@@ -49,273 +48,274 @@ private var imageDetectorDetectsEyeBlinkKey: Void?
 private var imageDetectorDetectsSmileKey: Void?
 
 extension AppSettingModel {
+
     var dataDestination: DataDestination {
         get {
-            return getAssociatedObject(self, &dataDestinationKey) ?? Defaults[.dataDestination]
+            return getAssociatedObject(self, &dataDestinationKey) ?? Defaults[key: DefaultsKeys.dataDestination]
         }
         set {
             setRetainedAssociatedObject(self, &dataDestinationKey, newValue)
-            Defaults[.dataDestination] = newValue
+            Defaults[key: DefaultsKeys.dataDestination] = newValue
         }
     }
 
     var transportProtocol: TransportProtocol {
         get {
-            return getAssociatedObject(self, &transportProtocolKey) ?? Defaults[.transportProtocol]
+            return getAssociatedObject(self, &transportProtocolKey) ?? Defaults[key: DefaultsKeys.transportProtocol]
         }
         set {
             setRetainedAssociatedObject(self, &transportProtocolKey, newValue)
-            Defaults[.transportProtocol] = newValue
+            Defaults[key: DefaultsKeys.transportProtocol] = newValue
         }
     }
 
     var ipAddress: String {
         get {
-            return getAssociatedObject(self, &ipAddressKey) ?? Defaults[.ipAddress]
+            return getAssociatedObject(self, &ipAddressKey) ?? Defaults[key: DefaultsKeys.ipAddress]
         }
         set {
             setRetainedAssociatedObject(self, &ipAddressKey, newValue)
-            Defaults[.ipAddress] = newValue
+            Defaults[key: DefaultsKeys.ipAddress] = newValue
         }
     }
 
     var portNumber: Int {
         get {
-            return getAssociatedObject(self, &portNumberKey) ?? Defaults[.portNumber]
+            return getAssociatedObject(self, &portNumberKey) ?? Defaults[key: DefaultsKeys.portNumber]
         }
         set {
             setRetainedAssociatedObject(self, &portNumberKey, newValue)
-            Defaults[.portNumber] = newValue
+            Defaults[key: DefaultsKeys.portNumber] = newValue
         }
     }
 
     var transportFormat: TransportFormat {
         get {
-            return getAssociatedObject(self, &transportFormatKey) ?? Defaults[.transportFormat]
+            return getAssociatedObject(self, &transportFormatKey) ?? Defaults[key: DefaultsKeys.transportFormat]
         }
         set {
             setRetainedAssociatedObject(self, &transportFormatKey, newValue)
-            Defaults[.transportFormat] = newValue
+            Defaults[key: DefaultsKeys.transportFormat] = newValue
         }
     }
 
     var messageRatePerSecond: RatePerSecond {
         get {
-            return getAssociatedObject(self, &messageRatePerSecondKey) ?? Defaults[.messageRatePerSecond]
+            return getAssociatedObject(self, &messageRatePerSecondKey) ?? Defaults[key: DefaultsKeys.messageRatePerSecond]
         }
         set {
             setRetainedAssociatedObject(self, &messageRatePerSecondKey, newValue)
-            Defaults[.messageRatePerSecond] = newValue
+            Defaults[key: DefaultsKeys.messageRatePerSecond] = newValue
         }
     }
 
     var compassOrientation: CompassOrientation {
         get {
-            return getAssociatedObject(self, &compassOrientationKey) ?? Defaults[.compassOrientation]
+            return getAssociatedObject(self, &compassOrientationKey) ?? Defaults[key: DefaultsKeys.compassOrientation]
         }
         set {
             setRetainedAssociatedObject(self, &compassOrientationKey, newValue)
-            Defaults[.compassOrientation] = newValue
+            Defaults[key: DefaultsKeys.compassOrientation] = newValue
         }
     }
 
     var deviceUUID: String {
         get {
-            return getAssociatedObject(self, &deviceUUIDKey) ?? Defaults[.deviceUUID]
+            return getAssociatedObject(self, &deviceUUIDKey) ?? Defaults[key: DefaultsKeys.deviceUUID]
         }
         set {
             setRetainedAssociatedObject(self, &deviceUUIDKey, newValue)
-            Defaults[.deviceUUID] = newValue
+            Defaults[key: DefaultsKeys.deviceUUID] = newValue
         }
     }
 
     var beaconUUID: String {
         get {
-            return getAssociatedObject(self, &beaconUUIDKey) ?? Defaults[.beaconUUID]
+            return getAssociatedObject(self, &beaconUUIDKey) ?? Defaults[key: DefaultsKeys.beaconUUID]
         }
         set {
             setRetainedAssociatedObject(self, &beaconUUIDKey, newValue)
-            Defaults[.beaconUUID] = newValue
+            Defaults[key: DefaultsKeys.beaconUUID] = newValue
         }
     }
 
     var ndiSceneType: NdiSceneType {
         get {
-            return getAssociatedObject(self, &ndiSceneTypeKey) ?? Defaults[.ndiSceneType]
+            return getAssociatedObject(self, &ndiSceneTypeKey) ?? Defaults[key: DefaultsKeys.ndiSceneType]
         }
         set {
             setRetainedAssociatedObject(self, &ndiSceneTypeKey, newValue)
-            Defaults[.ndiSceneType] = newValue
+            Defaults[key: DefaultsKeys.ndiSceneType] = newValue
         }
     }
 
     var ndiWorldType: NdiWorldType {
         get {
-            return getAssociatedObject(self, &ndiWorldTypeKey) ?? Defaults[.ndiWorldType]
+            return getAssociatedObject(self, &ndiWorldTypeKey) ?? Defaults[key: DefaultsKeys.ndiWorldType]
         }
         set {
             setRetainedAssociatedObject(self, &ndiWorldTypeKey, newValue)
-            Defaults[.ndiWorldType] = newValue
+            Defaults[key: DefaultsKeys.ndiWorldType] = newValue
         }
     }
 
     var ndiCameraPosition: CameraPosition {
         get {
-            return getAssociatedObject(self, &ndiCameraPositionKey) ?? Defaults[.ndiCameraPosition]
+            return getAssociatedObject(self, &ndiCameraPositionKey) ?? Defaults[key: DefaultsKeys.ndiCameraPosition]
         }
         set {
             setRetainedAssociatedObject(self, &ndiCameraPositionKey, newValue)
-            Defaults[.ndiCameraPosition] = newValue
+            Defaults[key: DefaultsKeys.ndiCameraPosition] = newValue
         }
     }
 
     var depthType: DepthType {
         get {
-            return getAssociatedObject(self, &depthTypeKey) ?? Defaults[.depthType]
+            return getAssociatedObject(self, &depthTypeKey) ?? Defaults[key: DefaultsKeys.depthType]
         }
         set {
             setRetainedAssociatedObject(self, &depthTypeKey, newValue)
-            Defaults[.depthType] = newValue
+            Defaults[key: DefaultsKeys.depthType] = newValue
         }
     }
 
     var ndiHumanType: NdiHumanType {
         get {
-            return getAssociatedObject(self, &ndiHumanTypeKey) ?? Defaults[.ndiHumanType]
+            return getAssociatedObject(self, &ndiHumanTypeKey) ?? Defaults[key: DefaultsKeys.ndiHumanType]
         }
         set {
             setRetainedAssociatedObject(self, &ndiHumanTypeKey, newValue)
-            Defaults[.ndiHumanType] = newValue
+            Defaults[key: DefaultsKeys.ndiHumanType] = newValue
         }
     }
 
     var ndiResolution: VideoResolution {
         get {
-            return getAssociatedObject(self, &ndiResolutionKey) ?? Defaults[.ndiResolution]
+            return getAssociatedObject(self, &ndiResolutionKey) ?? Defaults[key: DefaultsKeys.ndiResolution]
         }
         set {
             setRetainedAssociatedObject(self, &ndiResolutionKey, newValue)
-            Defaults[.ndiResolution] = newValue
+            Defaults[key: DefaultsKeys.ndiResolution] = newValue
         }
     }
 
     var ndiAudioEnabled: NdiAudioEnabled {
         get {
-            return getAssociatedObject(self, &ndiAudioEnabledKey) ?? Defaults[.ndiAudioEnabled]
+            return getAssociatedObject(self, &ndiAudioEnabledKey) ?? Defaults[key: DefaultsKeys.ndiAudioEnabled]
         }
         set {
             setRetainedAssociatedObject(self, &ndiAudioEnabledKey, newValue)
-            Defaults[.ndiAudioEnabled] = newValue
+            Defaults[key: DefaultsKeys.ndiAudioEnabled] = newValue
         }
     }
 
     var ndiAudioBufferSize: NdiAudioBufferSize {
         get {
-            return getAssociatedObject(self, &ndiAudioBufferSizeKey) ?? Defaults[.ndiAudioBufferSize]
+            return getAssociatedObject(self, &ndiAudioBufferSizeKey) ?? Defaults[key: DefaultsKeys.ndiAudioBufferSize]
         }
         set {
             setRetainedAssociatedObject(self, &ndiAudioBufferSizeKey, newValue)
-            Defaults[.ndiAudioBufferSize] = newValue
+            Defaults[key: DefaultsKeys.ndiAudioBufferSize] = newValue
         }
     }
 
     var arkitTrackingType: ArkitTrackingType {
         get {
-            return getAssociatedObject(self, &arkitTrackingTypeKey) ?? Defaults[.arkitTrackingType]
+            return getAssociatedObject(self, &arkitTrackingTypeKey) ?? Defaults[key: DefaultsKeys.arkitTrackingType]
         }
         set {
             setRetainedAssociatedObject(self, &arkitTrackingTypeKey, newValue)
-            Defaults[.arkitTrackingType] = newValue
+            Defaults[key: DefaultsKeys.arkitTrackingType] = newValue
         }
     }
 
     var arkitFeaturePointsEnabled: ArkitFeaturePointsEnabled {
         get {
-            return getAssociatedObject(self, &arkitFeaturePointsEnabledKey) ?? Defaults[.arkitFeaturePointsEnabled]
+            return getAssociatedObject(self, &arkitFeaturePointsEnabledKey) ?? Defaults[key: DefaultsKeys.arkitFeaturePointsEnabled]
         }
         set {
             setRetainedAssociatedObject(self, &arkitFeaturePointsEnabledKey, newValue)
-            Defaults[.arkitFeaturePointsEnabled] = newValue
+            Defaults[key: DefaultsKeys.arkitFeaturePointsEnabled] = newValue
         }
     }
 
     var imageDetectorType: ImageDetectorType {
         get {
-            return getAssociatedObject(self, &imageDetectorTypeKey) ?? Defaults[.imageDetectorType]
+            return getAssociatedObject(self, &imageDetectorTypeKey) ?? Defaults[key: DefaultsKeys.imageDetectorType]
         }
         set {
             setRetainedAssociatedObject(self, &imageDetectorTypeKey, newValue)
-            Defaults[.imageDetectorType] = newValue
+            Defaults[key: DefaultsKeys.imageDetectorType] = newValue
         }
     }
 
     var imageDetectorCameraPosition: CameraPosition {
         get {
-            return getAssociatedObject(self, &imageDetectorCameraPositionKey) ?? Defaults[.imageDetectorCameraPosition]
+            return getAssociatedObject(self, &imageDetectorCameraPositionKey) ?? Defaults[key: DefaultsKeys.imageDetectorCameraPosition]
         }
         set {
             setRetainedAssociatedObject(self, &imageDetectorCameraPositionKey, newValue)
-            Defaults[.imageDetectorCameraPosition] = newValue
+            Defaults[key: DefaultsKeys.imageDetectorCameraPosition] = newValue
         }
     }
 
     var imageDetectorResolution: VideoResolution {
         get {
-            return getAssociatedObject(self, &imageDetectorResolutionKey) ?? Defaults[.imageDetectorResolution]
+            return getAssociatedObject(self, &imageDetectorResolutionKey) ?? Defaults[key: DefaultsKeys.imageDetectorResolution]
         }
         set {
             setRetainedAssociatedObject(self, &imageDetectorResolutionKey, newValue)
-            Defaults[.imageDetectorResolution] = newValue
+            Defaults[key: DefaultsKeys.imageDetectorResolution] = newValue
         }
     }
 
     var imageDetectorAccuracy: ImageDetectorAccuracy {
         get {
-            return getAssociatedObject(self, &imageDetectorAccuracyKey) ?? Defaults[.imageDetectorAccuracy]
+            return getAssociatedObject(self, &imageDetectorAccuracyKey) ?? Defaults[key: DefaultsKeys.imageDetectorAccuracy]
         }
         set {
             setRetainedAssociatedObject(self, &imageDetectorAccuracyKey, newValue)
-            Defaults[.imageDetectorAccuracy] = newValue
+            Defaults[key: DefaultsKeys.imageDetectorAccuracy] = newValue
         }
     }
 
     var imageDetectorTracks: Bool {
         get {
-            return getAssociatedObject(self, &imageDetectorTracksKey) ?? Defaults[.imageDetectorTracks]
+            return getAssociatedObject(self, &imageDetectorTracksKey) ?? Defaults[key: DefaultsKeys.imageDetectorTracks]
         }
         set {
             setRetainedAssociatedObject(self, &imageDetectorTracksKey, newValue)
-            Defaults[.imageDetectorTracks] = newValue
+            Defaults[key: DefaultsKeys.imageDetectorTracks] = newValue
         }
     }
 
     var imageDetectorNumberOfAngles: ImageDetectorNumberOfAngles {
         get {
-            return getAssociatedObject(self, &imageDetectorNumberOfAnglesKey) ?? Defaults[.imageDetectorNumberOfAngles]
+            return getAssociatedObject(self, &imageDetectorNumberOfAnglesKey) ?? Defaults[key: DefaultsKeys.imageDetectorNumberOfAngles]
         }
         set {
             setRetainedAssociatedObject(self, &imageDetectorNumberOfAnglesKey, newValue)
-            Defaults[.imageDetectorNumberOfAngles] = newValue
+            Defaults[key: DefaultsKeys.imageDetectorNumberOfAngles] = newValue
         }
     }
 
     var imageDetectorDetectsEyeBlink: Bool {
         get {
-            return getAssociatedObject(self, &imageDetectorDetectsEyeBlinkKey) ?? Defaults[.imageDetectorDetectsEyeBlink]
+            return getAssociatedObject(self, &imageDetectorDetectsEyeBlinkKey) ?? Defaults[key: DefaultsKeys.imageDetectorDetectsEyeBlink]
         }
         set {
             setRetainedAssociatedObject(self, &imageDetectorDetectsEyeBlinkKey, newValue)
-            Defaults[.imageDetectorDetectsEyeBlink] = newValue
+            Defaults[key: DefaultsKeys.imageDetectorDetectsEyeBlink] = newValue
         }
     }
 
     var imageDetectorDetectsSmile: Bool {
         get {
-            return getAssociatedObject(self, &imageDetectorDetectsSmileKey) ?? Defaults[.imageDetectorDetectsSmile]
+            return getAssociatedObject(self, &imageDetectorDetectsSmileKey) ?? Defaults[key: DefaultsKeys.imageDetectorDetectsSmile]
         }
         set {
             setRetainedAssociatedObject(self, &imageDetectorDetectsSmileKey, newValue)
-            Defaults[.imageDetectorDetectsSmile] = newValue
+            Defaults[key: DefaultsKeys.imageDetectorDetectsSmile] = newValue
         }
     }
 }

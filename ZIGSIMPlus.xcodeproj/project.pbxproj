@@ -53,8 +53,11 @@
 		02E9AE1E22B8FF490070A380 /* CommandDetailSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */; };
 		02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */; };
 		02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */; };
-		36E36AC1EC5984082F26816B /* libPods-ZIGSIMPlusUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */; };
-		515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */; };
+		4A6EA2F02F6A3E25003FF4F8 /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A6EA2F52F6A3E25003FF4F8 /* OSCKit */; };
+		4A6EA2F12F6A3E25003FF4F8 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A6EA2F62F6A3E25003FF4F8 /* DeviceKit */; };
+		4A6EA2F22F6A3E25003FF4F8 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A6EA2F72F6A3E25003FF4F8 /* MarkdownKit */; };
+		4A6EA2F32F6A3E25003FF4F8 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 4A6EA2F82F6A3E25003FF4F8 /* SwiftyJSON */; };
+		4A6EA2F42F6A3E25003FF4F8 /* SwiftyUserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = 4A6EA2F92F6A3E25003FF4F8 /* SwiftyUserDefaults */; };
 		6326759422B3B1DA009A26B8 /* AppSettingModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326759322B3B1DA009A26B8 /* AppSettingModelTests.swift */; };
 		633A82CF22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A82CE22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift */; };
 		6345569A22B0CEF20032E976 /* VideoCapturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6345569922B0CEF20032E976 /* VideoCapturePresenter.swift */; };
@@ -85,7 +88,6 @@
 		B3C6588922A9028500B4358B /* StandardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6588822A9028500B4358B /* StandardCell.swift */; };
 		B3CFE5B822ADF436009664C0 /* ModalTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFE5B722ADF436009664C0 /* ModalTexts.swift */; };
 		B3CFE5BA22AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */; };
-		FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +108,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.release.xcconfig"; sourceTree = "<group>"; };
 		0212CDAE22A6219E00A83C16 /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
 		0212CDB222A6356500A83C16 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureViewController.swift; sourceTree = "<group>"; };
 		021F240D22D39A580065D641 /* CommandPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPlayer.swift; sourceTree = "<group>"; };
@@ -169,8 +170,6 @@
 		02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsViewController.swift; sourceTree = "<group>"; };
 		02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitViewController.swift; sourceTree = "<group>"; };
 		02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitService.swift; sourceTree = "<group>"; };
-		4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		6326759322B3B1DA009A26B8 /* AppSettingModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingModelTests.swift; sourceTree = "<group>"; };
 		633A82CE22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIQRCodeDescriptorExtension.swift; sourceTree = "<group>"; };
 		6345569922B0CEF20032E976 /* VideoCapturePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapturePresenter.swift; sourceTree = "<group>"; };
@@ -181,7 +180,6 @@
 		63A6192C22A79EDF00B015DE /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
 		63C02A2B2293D97700551E2F /* CommandAndServiceMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandAndServiceMediator.swift; sourceTree = "<group>"; };
 		63E5785A2296991400C6340C /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
-		845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		902EB9C6227BE68D008F1650 /* ZIG SIM PRO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZIG SIM PRO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		902EB9C9227BE68D008F1650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902EB9CB227BE68D008F1650 /* CommandSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelectionViewController.swift; sourceTree = "<group>"; };
@@ -198,8 +196,6 @@
 		9092E4C9227D8ADF0019F1C1 /* CommandOutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputViewController.swift; sourceTree = "<group>"; };
 		9092E4CB227EBF4D0019F1C1 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		9092E4D0227ECCFA0019F1C1 /* CommandOutputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutputPresenter.swift; sourceTree = "<group>"; };
-		9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlus.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus.release.xcconfig"; sourceTree = "<group>"; };
-		9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusUITests.release.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusUITests/Pods-ZIGSIMPlusUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B30188E122B3909E00CB549F /* CommandSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandSelection.storyboard; sourceTree = "<group>"; };
 		B30188E322B390C500CB549F /* CommandOutput.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandOutput.storyboard; sourceTree = "<group>"; };
 		B30188E522B390E600CB549F /* CommandSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommandSetting.storyboard; sourceTree = "<group>"; };
@@ -211,9 +207,6 @@
 		B3C6588822A9028500B4358B /* StandardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCell.swift; sourceTree = "<group>"; };
 		B3CFE5B722ADF436009664C0 /* ModalTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTexts.swift; sourceTree = "<group>"; };
 		B3CFE5B922AE67AC009664C0 /* CommandOutputViewSettingsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutputViewSettingsTableCell.swift; sourceTree = "<group>"; };
-		BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZIGSIMPlusTests.debug.xcconfig"; path = "Target Support Files/Pods-ZIGSIMPlusTests/Pods-ZIGSIMPlusTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZIGSIMPlusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZIGSIMPlusUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,8 +215,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				63A6192D22A79EDF00B015DE /* CoreNFC.framework in Frameworks */,
-				FA9317F09DA3546086E76F6D /* Pods_ZIGSIMPlus.framework in Frameworks */,
 				0236461C2298253900171F73 /* libndi_ios.a in Frameworks */,
+				4A6EA2F02F6A3E25003FF4F8 /* OSCKit in Frameworks */,
+				4A6EA2F12F6A3E25003FF4F8 /* DeviceKit in Frameworks */,
+				4A6EA2F22F6A3E25003FF4F8 /* MarkdownKit in Frameworks */,
+				4A6EA2F32F6A3E25003FF4F8 /* SwiftyJSON in Frameworks */,
+				4A6EA2F42F6A3E25003FF4F8 /* SwiftyUserDefaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +228,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				515666CDCA3E63C5E3DB8A55 /* Pods_ZIGSIMPlusTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +235,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36E36AC1EC5984082F26816B /* libPods-ZIGSIMPlusUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,24 +385,8 @@
 			children = (
 				63A6192C22A79EDF00B015DE /* CoreNFC.framework */,
 				023642CD2298253500171F73 /* Private */,
-				4EDF0DF0F4741CC4C6E4F711 /* Pods_ZIGSIMPlus.framework */,
-				D649462BFCE87CC9B3FEA3DD /* Pods_ZIGSIMPlusTests.framework */,
-				F47D2DC9D4BC0E47969EFDDD /* libPods-ZIGSIMPlusUITests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5AFFA0679D7FDCE3F553FDCF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */,
-				9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */,
-				BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */,
-				00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */,
-				845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */,
-				9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		638345F222A6830600370600 /* NFC */ = {
@@ -426,7 +405,6 @@
 				902EB9DD227BE68F008F1650 /* ZIGSIMPlusTests */,
 				902EB9E8227BE68F008F1650 /* ZIGSIMPlusUITests */,
 				902EB9C7227BE68D008F1650 /* Products */,
-				5AFFA0679D7FDCE3F553FDCF /* Pods */,
 				3047AA928C608382EC8AFA33 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -559,21 +537,25 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 902EB9EE227BE68F008F1650 /* Build configuration list for PBXNativeTarget "ZIGSIMPlus" */;
 			buildPhases = (
-				76CC18D56D1D4013C08D7E64 /* [CP] Check Pods Manifest.lock */,
 				02381A6322CF3C02007D4863 /* Sourcery */,
 				902EB9C2227BE68D008F1650 /* Sources */,
 				902EB9C3227BE68D008F1650 /* Frameworks */,
 				902EB9C4227BE68D008F1650 /* Resources */,
-				0C08B6B7878D8F62CABB8B9B /* [CP] Embed Pods Frameworks */,
 				02CE3DE222B1F78400A2B7B8 /* LicensePlist */,
-				0257909022D718D40069CAEB /* SwiftFormat */,
-				0257908F22D716A00069CAEB /* SwiftLint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4A6EA2EF2F6A3E25003FF4F8 /* PBXTargetDependency */,
 			);
 			name = ZIGSIMPlus;
+			packageProductDependencies = (
+				4A6EA2F52F6A3E25003FF4F8 /* OSCKit */,
+				4A6EA2F62F6A3E25003FF4F8 /* DeviceKit */,
+				4A6EA2F72F6A3E25003FF4F8 /* MarkdownKit */,
+				4A6EA2F82F6A3E25003FF4F8 /* SwiftyJSON */,
+				4A6EA2F92F6A3E25003FF4F8 /* SwiftyUserDefaults */,
+			);
 			productName = ZIGSIMPlus;
 			productReference = 902EB9C6227BE68D008F1650 /* ZIG SIM PRO.app */;
 			productType = "com.apple.product-type.application";
@@ -582,7 +564,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 902EB9F1227BE68F008F1650 /* Build configuration list for PBXNativeTarget "ZIGSIMPlusTests" */;
 			buildPhases = (
-				C663413003CD65493E6D629C /* [CP] Check Pods Manifest.lock */,
 				902EB9D6227BE68F008F1650 /* Sources */,
 				902EB9D7227BE68F008F1650 /* Frameworks */,
 				902EB9D8227BE68F008F1650 /* Resources */,
@@ -601,7 +582,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 902EB9F4227BE68F008F1650 /* Build configuration list for PBXNativeTarget "ZIGSIMPlusUITests" */;
 			buildPhases = (
-				B91CD1447D838A119DF148B4 /* [CP] Check Pods Manifest.lock */,
 				902EB9E1227BE68F008F1650 /* Sources */,
 				902EB9E2227BE68F008F1650 /* Frameworks */,
 				902EB9E3227BE68F008F1650 /* Resources */,
@@ -653,6 +633,15 @@
 				Base,
 			);
 			mainGroup = 902EB9BD227BE68D008F1650;
+			packageReferences = (
+				4A6EA2E72F6A3871003FF4F8 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
+				4A6EA2E82F6A39B5003FF4F8 /* XCRemoteSwiftPackageReference "OSCKit" */,
+				4A6EA2E92F6A39CA003FF4F8 /* XCRemoteSwiftPackageReference "DeviceKit" */,
+				4A6EA2EA2F6A39DA003FF4F8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				4A6EA2EB2F6A3A09003FF4F8 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
+				4A6EA2EC2F6A3C51003FF4F8 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+				4A6EA2ED2F6A3D26003FF4F8 /* XCRemoteSwiftPackageReference "SwiftFormat" */,
+			);
 			productRefGroup = 902EB9C7227BE68D008F1650 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -713,43 +702,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/Sourcery/bin/sourcery --sources ${SRCROOT}/ZIGSIMPlus --templates ${SRCROOT}/ZIGSIMPlus/Templates --output ${SRCROOT}/ZIGSIMPlus/Autogenerated || echo \"warning: Sourcery failed or not compatible, skipping (generated file already exists)\"\n";
-		};
-		0257908F22D716A00069CAEB /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  \"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		0257909022D718D40069CAEB /* SwiftFormat */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftFormat;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "SWIFT_FORMAT=\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\"\n\nif which $SWIFT_FORMAT >/dev/null; then\n  $SWIFT_FORMAT . || echo \"warning: SwiftFormat binary not compatible, skipping\"\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+			shellScript = "if which sourcery > /dev/null; then\n  sourcery --sources ${SRCROOT}/ZIGSIMPlus --templates ${SRCROOT}/ZIGSIMPlus/Templates --output ${SRCROOT}/ZIGSIMPlus/Autogenerated\nelse\n  echo \"warning: Sourcery not installed. Run: brew install sourcery\"\nfi\n";
 		};
 		02CE3DE222B1F78400A2B7B8 /* LicensePlist */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -767,94 +720,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n  ${PODS_ROOT}/LicensePlist/license-plist --output-path \"$TARGET_NAME/Settings.bundle\" --github-token a6b7222029fa5c23c25caf2619d8b3f743b5ddfc || echo \"warning: LicensePlist binary not compatible, skipping\"\nfi\n";
-		};
-		0C08B6B7878D8F62CABB8B9B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZIGSIMPlus/Pods-ZIGSIMPlus-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		76CC18D56D1D4013C08D7E64 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ZIGSIMPlus-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B91CD1447D838A119DF148B4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ZIGSIMPlusUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C663413003CD65493E6D629C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ZIGSIMPlusTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n  if which license-plist > /dev/null; then\n    # Read GitHub token from local file (gitignored) or environment variable\n    TOKEN=\"${LICENSE_PLIST_GITHUB_TOKEN:-$(cat \"${SRCROOT}/.license_plist_token\" 2>/dev/null)}\"\n    license-plist --output-path \"${SRCROOT}/$TARGET_NAME/Settings.bundle\" ${TOKEN:+--github-token $TOKEN}\n  else\n    echo \"warning: LicensePlist not installed. Run: brew install licenseplist\"\n  fi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -949,6 +815,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4A6EA2EF2F6A3E25003FF4F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 4A6EA2EE2F6A3E25003FF4F8 /* SwiftLintBuildToolPlugin */;
+		};
 		902EB9DC227BE68F008F1650 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 902EB9C5227BE68D008F1650 /* ZIGSIMPlus */;
@@ -1024,7 +894,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1080,7 +950,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1093,7 +963,6 @@
 		};
 		902EB9EF227BE68F008F1650 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60959D172D597521EA4CD112 /* Pods-ZIGSIMPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1107,11 +976,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Private/VideoCapture/SDK/include\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftOSC/SwiftOSC.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftSocket/SwiftSocket.framework/Headers\"",
 				);
 				INFOPLIST_FILE = ZIGSIMPlus/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1140,7 +1007,6 @@
 		};
 		902EB9F0227BE68F008F1650 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9866F41A6DE0F0E17C066FC8 /* Pods-ZIGSIMPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1153,11 +1019,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Private/VideoCapture/SDK/include\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftOSC/SwiftOSC.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftSocket/SwiftSocket.framework/Headers\"",
 				);
 				INFOPLIST_FILE = ZIGSIMPlus/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1186,7 +1050,6 @@
 		};
 		902EB9F2227BE68F008F1650 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA9E79731D84569378E0E641 /* Pods-ZIGSIMPlusTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1210,7 +1073,6 @@
 		};
 		902EB9F3227BE68F008F1650 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00BAC291441A71607FC5D83B /* Pods-ZIGSIMPlusTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1234,7 +1096,6 @@
 		};
 		902EB9F5227BE68F008F1650 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 845FB691AB12A4012EF3796C /* Pods-ZIGSIMPlusUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1256,7 +1117,6 @@
 		};
 		902EB9F6227BE68F008F1650 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B2D113D39BA82A91CF65049 /* Pods-ZIGSIMPlusUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1316,6 +1176,98 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4A6EA2E72F6A3871003FF4F8 /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bmoliveira/MarkdownKit";
+			requirement = {
+				kind = exactVersion;
+				version = 1.7.1;
+			};
+		};
+		4A6EA2E82F6A39B5003FF4F8 /* XCRemoteSwiftPackageReference "OSCKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/OSCKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+		4A6EA2E92F6A39CA003FF4F8 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devicekit/DeviceKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.0;
+			};
+		};
+		4A6EA2EA2F6A39DA003FF4F8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+		4A6EA2EB2F6A3A09003FF4F8 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sunshinejr/SwiftyUserDefaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
+		4A6EA2EC2F6A3C51003FF4F8 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.63.2;
+			};
+		};
+		4A6EA2ED2F6A3D26003FF4F8 /* XCRemoteSwiftPackageReference "SwiftFormat" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/SwiftFormat";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.60.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A6EA2EE2F6A3E25003FF4F8 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A6EA2EC2F6A3C51003FF4F8 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		4A6EA2F52F6A3E25003FF4F8 /* OSCKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A6EA2E82F6A39B5003FF4F8 /* XCRemoteSwiftPackageReference "OSCKit" */;
+			productName = OSCKit;
+		};
+		4A6EA2F62F6A3E25003FF4F8 /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A6EA2E92F6A39CA003FF4F8 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
+		};
+		4A6EA2F72F6A3E25003FF4F8 /* MarkdownKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A6EA2E72F6A3871003FF4F8 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
+			productName = MarkdownKit;
+		};
+		4A6EA2F82F6A3E25003FF4F8 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A6EA2EA2F6A39DA003FF4F8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		4A6EA2F92F6A3E25003FF4F8 /* SwiftyUserDefaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A6EA2EB2F6A3A09003FF4F8 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */;
+			productName = SwiftyUserDefaults;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 902EB9BE227BE68D008F1650 /* Project object */;
 }

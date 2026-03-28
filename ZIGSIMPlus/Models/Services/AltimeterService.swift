@@ -8,7 +8,7 @@
 
 import CoreMotion
 import Foundation
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 
 public class AltimeterService {

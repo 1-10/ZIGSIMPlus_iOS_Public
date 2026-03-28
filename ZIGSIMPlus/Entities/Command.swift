@@ -33,11 +33,11 @@ public enum Command: String, CaseIterable {
 
     var userDefaultsKey: DefaultsKey<Bool> {
         switch self {
-        case .ndi: return .isNdiCommandActive
-        case .arkit: return .isArkitCommandActive
-        case .imageDetection: return .isImageDetectionCommandActive
-        case .nfc: return .isNfcReaderCommandActive
-        case .applePencil: return .isApplePencilCommandActive
+        case .ndi: return DefaultsKeys.isNdiCommandActive
+        case .arkit: return DefaultsKeys.isArkitCommandActive
+        case .imageDetection: return DefaultsKeys.isImageDetectionCommandActive
+        case .nfc: return DefaultsKeys.isNfcReaderCommandActive
+        case .applePencil: return DefaultsKeys.isApplePencilCommandActive
         case .acceleration: return DefaultsKeys.isAccelerationCommandActive
         case .gravity: return DefaultsKeys.isGravityCommandActive
         case .gyro: return DefaultsKeys.isGyroCommandActive

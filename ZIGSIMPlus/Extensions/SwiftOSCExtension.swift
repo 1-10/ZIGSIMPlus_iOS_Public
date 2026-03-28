@@ -1,20 +1,20 @@
 //
-//  SwiftOSCExtension.swift
+//  OSCExtension.swift
 //  ZIGSIMPlus
 //
 //  Created by Takayosi Amagi on 2019/07/09.
-//  Copyright © 2019 1→10, Inc. All rights reserved.
+//  Copyright © 2019 1-10, Inc. All rights reserved.
 //
 
 import Foundation
-import SwiftOSC
+import OSCKit
 
 extension OSCBundle {
     func getString() -> String {
         var output = ""
 
         for element in elements {
-            if let message = element as? OSCMessage {
+            if case .message(let message) = element {
                 output += message.getString() + "\n"
             }
         }
@@ -25,38 +25,20 @@ extension OSCBundle {
 
 extension OSCMessage {
     func getString() -> String {
-        var output = "\(address.string)"
+        var output = "\(addressPattern)"
 
-        for argument in arguments {
-            if let int = argument as? Int {
+        for value in values {
+            if let int = value as? Int32 {
                 output += " \(int)"
-            }
-            if let float = argument as? Float {
+            } else if let float = value as? Float32 {
                 output += " \(float)"
-            }
-            if let float = argument as? Double {
-                output += " \(float)"
-            }
-            if let string = argument as? String {
+            } else if let double = value as? Double {
+                output += " \(double)"
+            } else if let string = value as? String {
                 output += " \(string)"
-            }
-            if let bool = argument as? Bool {
+            } else if let bool = value as? Bool {
                 output += " \(bool)"
             }
-
-            // Not used in ZIGSIM so far
-            // if let blob = argument as? Blob {
-            //    output += " Blob\(blob)"
-            // }
-            // if argument == nil {
-            //     output += " <null>"
-            // }
-            // if argument is Impulse {
-            //     output += " <impulse>"
-            // }
-            // if let timetag = argument as? Timetag {
-            //     output += " Timetag<\(timetag)>"
-            // }
         }
 
         return output

@@ -49,12 +49,12 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     }
 
     func saveCommandOnOffToUserDefaults(_ command: Command, _ isOn: Bool) {
-        Defaults[command.userDefaultsKey] = isOn
+        Defaults[key: command.userDefaultsKey] = isOn
     }
 
     func loadCommandOnOffFromUserDefaults() {
         for command in Command.allCases {
-            AppSettingModel.shared.isActiveByCommand[command] = Defaults[command.userDefaultsKey]
+            AppSettingModel.shared.isActiveByCommand[command] = Defaults[key: command.userDefaultsKey]
         }
     }
 

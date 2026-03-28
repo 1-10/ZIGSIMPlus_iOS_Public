@@ -26,11 +26,11 @@ extension AppSettingModel {
 
     var {{variable.name}}: {{variable.typeName|replace:"DefaultsKey<",""|replace:">",""}} {
         get {
-            return getAssociatedObject(self, &{{variable.name}}Key) ?? Defaults[.{{variable.name}}]
+            return getAssociatedObject(self, &{{variable.name}}Key) ?? Defaults[key: DefaultsKeys.{{variable.name}}]
         }
         set {
             setRetainedAssociatedObject(self, &{{variable.name}}Key, newValue)
-            Defaults[.{{variable.name}}] = newValue
+            Defaults[key: DefaultsKeys.{{variable.name}}] = newValue
         }
     }
     {% endfor %}

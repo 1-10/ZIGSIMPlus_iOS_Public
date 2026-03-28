@@ -8,7 +8,7 @@
 
 import CoreLocation
 import Foundation
-import SwiftOSC
+import OSCKit
 import SwiftyJSON
 
 private func createBeaconRegion(_ appSetting: AppSettingModel) -> CLBeaconRegion {
