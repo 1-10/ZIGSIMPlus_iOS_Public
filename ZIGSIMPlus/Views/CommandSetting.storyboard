@@ -87,7 +87,7 @@
                                                     <constraint firstAttribute="width" constant="250" id="mLn-uN-Klm"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="default" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Port Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-SP-GhO" customClass="ZIGLabel" customModule="ZIG_SIM_PRO" customModuleProvider="target">
                                                 <rect key="frame" x="122.33333333333334" y="250" width="98.333333333333343" height="21"/>
@@ -102,7 +102,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="dZ3-OM-gac"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="default" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Format" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS3-j7-8iF" userLabel="MESSAGE FORMAT" customClass="ZIGLabel" customModule="ZIG_SIM_PRO" customModuleProvider="target">
                                                 <rect key="frame" x="107.66666666666669" y="317" width="128" height="21"/>
@@ -159,7 +159,7 @@
                                                     <constraint firstAttribute="width" constant="250" id="6yF-iI-kRh"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="default" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3093,7 +3093,7 @@ Prescribed on June 17</string>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="default" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

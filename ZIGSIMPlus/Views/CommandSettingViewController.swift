@@ -138,6 +138,18 @@ extension CommandSettingViewController: UITextFieldDelegate {
     private func setTextFieldSetting(texField: UITextField, text: String) {
         texField.text = String(text)
         texField.delegate = self
+        texField.keyboardAppearance = .default
+
+        if texField.tag == 0 {
+            texField.keyboardType = .asciiCapable
+        } else if texField.tag == 1 {
+            texField.keyboardType = .numberPad
+        } else if texField.tag == 2 {
+            texField.keyboardType = .asciiCapable
+            texField.autocapitalizationType = .none
+            texField.autocorrectionType = .no
+            texField.spellCheckingType = .no
+        }
     }
 }
 
