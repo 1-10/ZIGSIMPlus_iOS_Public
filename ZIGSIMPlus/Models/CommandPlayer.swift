@@ -19,6 +19,7 @@ public class CommandPlayer {
     private init() {}
 
     private var updatingTimer: Timer?
+    private let networkQueue = DispatchQueue(label: "com.zigsim.commandPlayer.network")
     public var onUpdate: (() -> Void)?
     private var state: CommandPlayerState = .stopped
 
@@ -74,8 +75,7 @@ public class CommandPlayer {
             FileWriter.shared.open()
             FileWriter.shared.write(data)
         } else {
-            let data = ServiceManager.shared.getData()
-            NetworkAdapter.shared.send(data)
+            enqueueNetworkSend()
         }
 
         onUpdate?()
@@ -93,8 +93,7 @@ public class CommandPlayer {
             let data = ServiceManager.shared.getString()
             FileWriter.shared.write(data)
         } else {
-            let data = ServiceManager.shared.getData()
-            NetworkAdapter.shared.send(data)
+            enqueueNetworkSend()
         }
 
         onUpdate?()
@@ -121,5 +120,12 @@ public class CommandPlayer {
             fatalError("AppSetting for Command \"\(command)\" is nil")
         }
         return res
+    }
+
+    private func enqueueNetworkSend() {
+        let data = ServiceManager.shared.getData()
+        networkQueue.async {
+            NetworkAdapter.shared.send(data)
+        }
     }
 }

@@ -15,6 +15,8 @@ public class NetworkAdapter {
     static let shared = NetworkAdapter()
     private init() {}
 
+    private let networkQueue = DispatchQueue(label: "com.zigsim.network")
+
     var tcpClient: TCPClient = TCPClient(
         address: AppSettingModel.shared.ipAddress,
         port: Int32(AppSettingModel.shared.portNumber)
@@ -28,17 +30,21 @@ public class NetworkAdapter {
 
     /// Send data over TCP / UDP automatically
     func send(_ data: Data) {
-        switch AppSettingModel.shared.transportProtocol {
-        case .TCP:
-            sendTCP(data)
-        case .UDP:
-            sendUDP(data)
+        networkQueue.async {
+            switch AppSettingModel.shared.transportProtocol {
+            case .TCP:
+                self.sendTCP(data)
+            case .UDP:
+                self.sendUDP(data)
+            }
         }
     }
 
     func close() {
-        udpClient.close()
-        tcpClient.close()
+        networkQueue.async {
+            self.udpClient.close()
+            self.tcpClient.close()
+        }
     }
 
     /// Get error description to show in output view
@@ -60,6 +66,8 @@ public class NetworkAdapter {
     }
 
     private func sendTCP(_ data: Data) {
+        assert(!Thread.isMainThread)
+
         let appSetting = AppSettingModel.shared
 
         // Recreate client
@@ -89,6 +97,8 @@ public class NetworkAdapter {
     }
 
     private func sendUDP(_ data: Data) {
+        assert(!Thread.isMainThread)
+
         let appSetting = AppSettingModel.shared
 
         // Recreate client
