@@ -169,21 +169,21 @@ extension LocationService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gps] ?? false {
             log += [
                 "gps:latitude:\(latitudeData)",
                 "gps:longitude:\(longitudeData)",
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.compass] ?? false {
             log += [
                 "compass:compass:\(compassData)",
                 "compass:orientation:\(AppSettingModel.shared.compassOrientation == .faceup ? "faceup" : "portrait")",
             ]
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.beacon] ?? false {
             log += beacons.enumerated().map { i, b in // swiftlint:disable:this identifier_name
                 let uuid = b.proximityUUID.uuidString
                 let major = b.major.intValue
@@ -198,15 +198,15 @@ extension LocationService: Service {
     func toOSC() -> [OSCMessage] {
         var data = [OSCMessage]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gps] ?? false {
             data.append(osc("gps", latitudeData, longitudeData))
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.compass] ?? false {
             data.append(osc("compass", compassData, AppSettingModel.shared.compassOrientation.rawValue))
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.beacon] ?? false {
             data += beacons.enumerated().map { i, beacon in
                 osc(
                     "beacon\(i)",
@@ -224,18 +224,18 @@ extension LocationService: Service {
     func toJSON() -> JSON {
         var data = JSON()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.gps]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.gps] ?? false {
             data["gps"] = JSON(["latitude": latitudeData, "longitude": longitudeData])
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.compass]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.compass] ?? false {
             data["compass"] = JSON([
                 "compass": compassData,
                 "faceup": AppSettingModel.shared.compassOrientation.rawValue,
             ])
         }
 
-        if AppSettingModel.shared.isActiveByCommand[Command.beacon]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.beacon] ?? false {
             let objs = beacons.map { beacon in
                 [
                     "uuid": beacon.proximityUUID.uuidString,

@@ -134,7 +134,7 @@ extension AudioLevelService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.micLevel] ?? false {
             log += [
                 "miclevel:max\(maxLevel)",
                 "miclevel:average\(averageLevel)",
@@ -147,7 +147,7 @@ extension AudioLevelService: Service {
     func toOSC() -> [OSCMessage] {
         var data = [OSCMessage]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.micLevel] ?? false {
             data.append(osc("miclevel", maxLevel, averageLevel))
         }
 
@@ -157,7 +157,7 @@ extension AudioLevelService: Service {
     func toJSON() -> JSON {
         var data = JSON()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.micLevel]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.micLevel] ?? false {
             data["miclevel"] = [
                 "average": averageLevel,
                 "max": maxLevel,

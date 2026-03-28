@@ -117,7 +117,7 @@ extension RemoteControlService: Service {
     func toLog() -> [String] {
         var log = [String]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.remoteControl] ?? false {
             log += [
                 "remotecontrol:playpause \(playPauseChanged)",
                 "remotecontrol:volumeup \(volumeUp)",
@@ -133,7 +133,7 @@ extension RemoteControlService: Service {
     func toOSC() -> [OSCMessage] {
         var messages = [OSCMessage]()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.remoteControl] ?? false {
             messages.append(osc(
                 "remotecontrol",
                 playPauseChanged,
@@ -150,7 +150,7 @@ extension RemoteControlService: Service {
     func toJSON() throws -> JSON {
         var data = JSON()
 
-        if AppSettingModel.shared.isActiveByCommand[Command.remoteControl]! {
+        if AppSettingModel.shared.isActiveByCommand[Command.remoteControl] ?? false {
             data["remotecontrol"] = JSON([
                 "playpause": playPauseChanged,
                 "volumeup": volumeUp,
