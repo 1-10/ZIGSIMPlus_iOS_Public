@@ -28,7 +28,8 @@ final class CommandOutputPresenter: CommandOutputPresenterProtocol {
     init(view: CommandOutputPresenterDelegate) {
         self.view = view
 
-        CommandPlayer.shared.onUpdate = {
+        CommandPlayer.shared.onUpdate = { [weak self] in
+            guard let self else { return }
             self.updateOutput()
         }
     }
