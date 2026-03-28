@@ -19,6 +19,7 @@ public class NetworkAdapter {
     private var currentTCPPort: Int = 0
 
     private let networkQueue = DispatchQueue(label: "com.zigsim.network")
+    private let connectionQueue = DispatchQueue(label: "com.zigsim.network.connection")
 
     var error: Error?
 
@@ -110,7 +111,7 @@ public class NetworkAdapter {
                     break
                 }
             }
-            conn.start(queue: networkQueue)
+            conn.start(queue: connectionQueue)
 
             if semaphore.wait(timeout: .now() + 1.0) == .timedOut {
                 conn.cancel()
@@ -184,7 +185,7 @@ public class NetworkAdapter {
                 break
             }
         }
-        conn.start(queue: networkQueue)
+        conn.start(queue: connectionQueue)
 
         if semaphore.wait(timeout: .now() + 1.0) == .timedOut {
             conn.cancel()
