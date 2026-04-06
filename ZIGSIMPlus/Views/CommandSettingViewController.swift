@@ -138,7 +138,7 @@ extension CommandSettingViewController: UITextFieldDelegate {
     private func setTextFieldSetting(texField: UITextField, text: String) {
         texField.text = String(text)
         texField.delegate = self
-        texField.keyboardAppearance = .default
+        texField.keyboardAppearance = .dark
 
         if texField.tag == 0 {
             texField.keyboardType = .asciiCapable
