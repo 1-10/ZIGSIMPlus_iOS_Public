@@ -32,6 +32,7 @@ DerivedData/
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
+!ZIGSIMPlus.xcworkspace/xcshareddata/swiftpm/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
