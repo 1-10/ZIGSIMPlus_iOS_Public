@@ -61,9 +61,10 @@ class Utils {
         let imageWidth = titleImage.size.width * scale
         let imageHeight = titleImage.size.height * scale
 
-        // Set image frame to the center of the navBar
+        // Set image frame slightly left of center to avoid overlapping right bar button items
+        let offset: CGFloat = 24
         titleImageView.frame = CGRect(
-            x: center.x - imageWidth / 2,
+            x: center.x - imageWidth / 2 - offset,
             y: 0,
             width: imageWidth,
             height: imageHeight
