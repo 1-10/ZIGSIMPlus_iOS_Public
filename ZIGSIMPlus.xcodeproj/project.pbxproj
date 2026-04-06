@@ -969,7 +969,7 @@
 				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				ENABLE_BITCODE = NO;
@@ -991,7 +991,7 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/VideoCapture/SDK/lib",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5.0;
 				MTLLINKER_FLAGS = "-cikernel";
 				MTL_COMPILER_FLAGS = "-fcikernel";
 				PLIST_FILE_OUTPUT_FORMAT = XML;
@@ -1013,7 +1013,7 @@
 				CODE_SIGN_ENTITLEMENTS = ZIGSIMPlus/ZIGSIMPlus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = YBL5BK26BK;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -1034,7 +1034,7 @@
 					"$(PROJECT_DIR)/Private/Prototypes/NDISwift/ofxNDI/libs/NDI/lib/ios",
 					"$(PROJECT_DIR)/Private/VideoCapture/SDK/lib",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5.0;
 				MTLLINKER_FLAGS = "-cikernel";
 				MTL_COMPILER_FLAGS = "-fcikernel";
 				PLIST_FILE_OUTPUT_FORMAT = XML;
