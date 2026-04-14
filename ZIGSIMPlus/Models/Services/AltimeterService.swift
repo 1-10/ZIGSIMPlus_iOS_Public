@@ -57,13 +57,18 @@ public class AltimeterService {
         if #available(iOS 8.0, *) {
             if CMAltimeter.isRelativeAltitudeAvailable() {
                 isWorking = true
-                altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: { data, error in
-                    if error == nil {
-                        self.pressureData = Double(truncating: data!.pressure) * 10.0
-                        self.altitudeData = Double(truncating: data!.relativeAltitude)
-                        self.updateAltimeterData()
+                altimeter.startRelativeAltitudeUpdates(
+                    to: OperationQueue.main,
+                    withHandler: { [weak self] data, error in
+                        guard let self = self else { return }
+                        if error == nil {
+                            guard let data = data else { return }
+                            self.pressureData = Double(truncating: data.pressure) * 10.0
+                            self.altitudeData = Double(truncating: data.relativeAltitude)
+                            self.updateAltimeterData()
+                        }
                     }
-                })
+                )
             }
         } else {
             // Fallback on earlier versions
