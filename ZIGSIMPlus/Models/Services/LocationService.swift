@@ -159,7 +159,7 @@ extension LocationService: CLLocationManagerDelegate {
 
     // Called when the user authorized monitorin location data
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status != .authorizedAlways || status != .authorizedWhenInUse {
+        if status != .authorizedAlways && status != .authorizedWhenInUse {
             // TODO: Show error message
         }
     }
