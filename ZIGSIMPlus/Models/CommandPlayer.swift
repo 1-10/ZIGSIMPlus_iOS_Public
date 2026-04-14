@@ -19,7 +19,7 @@ public class CommandPlayer {
     private init() {}
 
     private var updatingTimer: Timer?
-    private let networkQueue = DispatchQueue(label: "com.zigsim.commandPlayer.network")
+    private var networkSendTask: Task<Void, Never>?
     public var onUpdate: (() -> Void)?
     private var state: CommandPlayerState = .stopped
 
@@ -124,8 +124,16 @@ public class CommandPlayer {
 
     private func enqueueNetworkSend() {
         let data = ServiceManager.shared.getData()
-        networkQueue.async {
-            NetworkAdapter.shared.send(data)
+        let previousTask = networkSendTask
+
+        networkSendTask = Task.detached { [previousTask] in
+            await previousTask?.value
+
+            do {
+                try await NetworkAdapter.shared.send(data)
+            } catch {
+                // NetworkAdapter stores the mapped error for ServiceManager.getErrorLog().
+            }
         }
     }
 }
