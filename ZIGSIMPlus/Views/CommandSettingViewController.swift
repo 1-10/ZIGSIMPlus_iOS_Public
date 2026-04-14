@@ -169,14 +169,16 @@ extension CommandSettingViewController: ContentScrollable {
             forName: UIResponder.keyboardWillShowNotification,
             object: nil,
             queue: nil
-        ) { notification in
+        ) { [weak self] notification in
+            guard let self = self else { return }
             self.keyboardWillShow(notification)
         }
         hideObserver = NotificationCenter.default.addObserver(
             forName: UIResponder.keyboardWillHideNotification,
             object: nil,
             queue: nil
-        ) { notification in
+        ) { [weak self] notification in
+            guard let self = self else { return }
             self.keyboardWillHide(notification)
         }
     }
