@@ -35,7 +35,8 @@ public class MotionService {
             return
         }
 
-        motionManager.startDeviceMotionUpdates(to: OperationQueue.current!) { deviceMotion, error in
+        motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { [weak self] deviceMotion, error in
+            guard let self = self else { return }
             guard error == nil,
                 let motion = deviceMotion else {
                 self.isError = true
