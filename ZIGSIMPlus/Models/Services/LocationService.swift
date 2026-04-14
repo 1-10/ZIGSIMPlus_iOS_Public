@@ -124,8 +124,10 @@ public class LocationService: NSObject {
 
 extension LocationService: CLLocationManagerDelegate {
     public final func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        latitudeData = (locations.last?.coordinate.latitude)!
-        longitudeData = (locations.last?.coordinate.longitude)!
+        guard let location = locations.last else { return }
+
+        latitudeData = location.coordinate.latitude
+        longitudeData = location.coordinate.longitude
     }
 
     public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
@@ -149,10 +151,10 @@ extension LocationService: CLLocationManagerDelegate {
                 $0.proximityUUID == beacon.proximityUUID && $0.major == beacon.major && $0.minor == beacon.minor
             })
 
-            if index == nil {
-                beacons.append(beacon)
+            if let index = index {
+                beacons[index] = beacon
             } else {
-                beacons[index!] = beacon
+                beacons.append(beacon)
             }
         }
     }
