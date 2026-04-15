@@ -57,12 +57,11 @@ public class CommandPlayer {
 
     private func startCommands() {
         updatingTimer = Timer.scheduledTimer(
-            timeInterval: Utils.getMessageInterval(),
-            target: self,
-            selector: #selector(monitorCommands),
-            userInfo: nil,
+            withTimeInterval: Utils.getMessageInterval(),
             repeats: true
-        )
+        ) { [weak self] _ in
+            self?.monitorCommands()
+        }
 
         for command in Command.allCases {
             if isActive(command) {
@@ -81,7 +80,7 @@ public class CommandPlayer {
         onUpdate?()
     }
 
-    @objc private func monitorCommands() {
+    private func monitorCommands() {
         if isActive(.battery) {
             BatteryService.shared.updateBattery()
         }
