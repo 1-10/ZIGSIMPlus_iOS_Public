@@ -41,8 +41,11 @@ public class RemoteControlService: NSObject {
     }
 
     @objc func onVolumeChange(notification: NSNotification) {
-        // swiftlint:disable:next force_cast
-        volume = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as! Double
+        guard let userInfo = notification.userInfo,
+              let value = userInfo["AVSystemController_AudioVolumeNotificationParameter"] as? Double else {
+            return
+        }
+        volume = value
     }
 
     @objc func onTogglePlayPause(_ event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
