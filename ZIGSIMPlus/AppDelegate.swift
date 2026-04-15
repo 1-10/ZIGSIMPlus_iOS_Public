@@ -37,8 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func composePresenters() {
         let factory = PresenterFactory()
 
-        // swiftlint:disable:next force_cast
-        let tabBarController = window?.rootViewController as! UITabBarController
+        guard let tabBarController = window?.rootViewController as? UITabBarController else {
+            assertionFailure("Root VC is not UITabBarController")
+            return
+        }
 
         // Setup tab bar styles directly on instance
         let tabBar = tabBarController.tabBar
@@ -55,19 +57,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //tabBar.barTintColor = Theme.dark
         }
 
-        for viewController in tabBarController.viewControllers! {
+        for viewController in tabBarController.viewControllers ?? [] {
             if type(of: viewController) == CommandSelectionTabNavigationController.self {
-                // swiftlint:disable:next force_cast
-                let vc = viewController as! CommandSelectionTabNavigationController
-                factory.createPresenter(parentView: vc, viewType: CommandSelectionViewController.self)
+                if let vc = viewController as? CommandSelectionTabNavigationController {
+                    factory.createPresenter(parentView: vc, viewType: CommandSelectionViewController.self)
+                } else {
+                    assertionFailure("Command selection tab is not CommandSelectionTabNavigationController")
+                }
             } else if type(of: viewController) == CommandOutputTabNavigationController.self {
-                // swiftlint:disable:next force_cast
-                let vc = viewController as! CommandOutputTabNavigationController
-                factory.createPresenter(parentView: vc, viewType: CommandOutputViewController.self)
+                if let vc = viewController as? CommandOutputTabNavigationController {
+                    factory.createPresenter(parentView: vc, viewType: CommandOutputViewController.self)
+                } else {
+                    assertionFailure("Command output tab is not CommandOutputTabNavigationController")
+                }
             } else if type(of: viewController) == CommandSettingTabNavigationController.self {
-                // swiftlint:disable:next force_cast
-                let vc = viewController as! CommandSettingTabNavigationController
-                factory.createPresenter(parentView: vc, viewType: CommandSettingViewController.self)
+                if let vc = viewController as? CommandSettingTabNavigationController {
+                    factory.createPresenter(parentView: vc, viewType: CommandSettingViewController.self)
+                } else {
+                    assertionFailure("Command setting tab is not CommandSettingTabNavigationController")
+                }
             }
         }
     }
