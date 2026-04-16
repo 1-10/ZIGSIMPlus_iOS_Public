@@ -31,8 +31,6 @@ public class AltimeterService {
     }
 
     private func updateAltimeterData() {
-        print("pressure:pressure: \(pressureData)")
-        print("pressure:altitude: \(altitudeData)")
         var altimeterData = [0.0, 0.0]
         altimeterData[0] = pressureData
         altimeterData[1] = altitudeData

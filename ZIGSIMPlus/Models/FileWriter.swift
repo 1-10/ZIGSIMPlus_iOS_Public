@@ -7,9 +7,15 @@
 //
 
 import Foundation
+import os.log
 
 class FileWriter {
     static let shared = FileWriter()
+    private static let log = OSLog(
+        subsystem: Bundle.main.bundleIdentifier ?? "com.zigsim",
+        category: "FileWriter"
+    )
+
     private init() {}
 
     var output: OutputStream?
@@ -24,7 +30,12 @@ class FileWriter {
             stream.open()
             output = stream
         } else {
-            print("File I/O Error.")
+            os_log(
+                "File I/O error opening log file: %{public}@",
+                log: Self.log,
+                type: .error,
+                filepath
+            )
         }
     }
 
@@ -39,7 +50,13 @@ class FileWriter {
         }
 
         if bytesWritten != data.count {
-            print("Write failed")
+            os_log(
+                "File write failed. Expected %{public}d bytes, wrote %{public}d bytes.",
+                log: Self.log,
+                type: .error,
+                data.count,
+                bytesWritten ?? 0
+            )
         }
     }
 

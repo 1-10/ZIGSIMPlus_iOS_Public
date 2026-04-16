@@ -8,6 +8,7 @@
 
 import DeviceKit
 import Foundation
+import os.log
 import OSCKit
 import SwiftyJSON
 
@@ -20,6 +21,11 @@ import SwiftyJSON
 /// - Add device data to it
 class ServiceManager {
     static let shared = ServiceManager()
+    private static let log = OSLog(
+        subsystem: Bundle.main.bundleIdentifier ?? "com.zigsim",
+        category: "ServiceManager"
+    )
+
     private init() {}
 
     public func getData() -> Data {
@@ -113,7 +119,12 @@ class ServiceManager {
             try data.merge(with: VideoCaptureService.shared.toJSON())
             try data.merge(with: NFCService.shared.toJSON())
         } catch {
-            print(">> JSON convert error")
+            os_log(
+                "JSON convert error: %{public}@",
+                log: Self.log,
+                type: .error,
+                String(describing: error)
+            )
         }
 
         let device = Device.current
