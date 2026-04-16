@@ -30,7 +30,7 @@ public class CommandSettingViewController: UIViewController {
         let userDefaultTexts = presenter.getUserDefaultTexts()
         for textField in textFields {
             if textField.tag == 0 {
-                setTextFieldSetting(texField: textField, text: userDefaultTexts[.ipAdress]?.description ?? "")
+                setTextFieldSetting(texField: textField, text: userDefaultTexts[.ipAddress]?.description ?? "")
             } else if textField.tag == 1 {
                 setTextFieldSetting(texField: textField, text: userDefaultTexts[.portNumber]?.description ?? "")
             } else if textField.tag == 2 {
@@ -84,7 +84,7 @@ public class CommandSettingViewController: UIViewController {
         for textField in textFields {
             if textField.tag == 0 {
                 if Utils.isValidSettingViewText(text: textField, textType: .ipAddress), textField.text != "" {
-                    texts[.ipAdress] = textField.text ?? ""
+                    texts[.ipAddress] = textField.text ?? ""
                 } else {
                     return false
                 }
