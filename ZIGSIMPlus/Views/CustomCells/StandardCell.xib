@@ -94,7 +94,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.050951294600963593" green="0.047058552503585815" blue="0.047058872878551483" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <connections>
-                <outlet property="checkMarkLavel" destination="dIM-VS-hEA" id="xVq-al-hOv"/>
+                <outlet property="checkMarkLabel" destination="dIM-VS-hEA" id="xVq-al-hOv"/>
                 <outlet property="commandLabel" destination="Mgt-VT-WPX" id="jLs-bB-s63"/>
                 <outlet property="commandOnOffButton" destination="8T7-ur-Xt4" id="ZRM-vI-M4b"/>
                 <outlet property="detailButton" destination="0QB-qM-gp6" id="xgl-fM-TBx"/>

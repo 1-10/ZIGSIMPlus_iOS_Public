@@ -12,7 +12,7 @@ import UIKit
 public class StandardCell: UITableViewCell {
     @IBOutlet var commandOnOffButton: UIButton!
     @IBOutlet var commandLabel: UILabel!
-    @IBOutlet var checkMarkLavel: UILabel!
+    @IBOutlet var checkMarkLabel: UILabel!
     @IBOutlet var detailButton: UIButton!
     @IBOutlet var detailImageView: UIImageView!
     @IBOutlet var modalButton: UIButton!
@@ -21,9 +21,9 @@ public class StandardCell: UITableViewCell {
     var viewController: UIViewController!
 
     @IBAction func commandOnOffButtonAction(_ sender: UIButton) {
-        setCheckMarkLavelText()
+        setCheckMarkLabelText()
         setCommandsOfImageAvailability(sender)
-        if checkMarkLavel.text == checkMark {
+        if checkMarkLabel.text == checkMark {
             commandSelectionPresenter.saveCommandOnOffToUserDefaults(Command.allCases[sender.tag], true)
         } else {
             commandSelectionPresenter.saveCommandOnOffToUserDefaults(Command.allCases[sender.tag], false)
@@ -32,21 +32,19 @@ public class StandardCell: UITableViewCell {
     }
 
     @IBAction func detailButtonAction(_: UIButton) {
-        // swiftlint:disable:next force_cast
-        let parent = viewController as! CommandSelectionViewController
+        guard let parent = viewController as? CommandSelectionViewController else { return }
         parent.showDetail(commandNo: commandOnOffButton.tag)
     }
 
     @IBAction func modalButtonAction(_: UIButton) {
-        // swiftlint:disable:next force_cast
-        let parent = viewController as! CommandSelectionViewController
+        guard let parent = viewController as? CommandSelectionViewController else { return }
         parent.showModal(commandNo: commandLabel.tag)
     }
 
     func initCell() {
         backgroundColor = Theme.black
-        checkMarkLavel.textColor = Theme.main
-        checkMarkLavel.font = UIFont.boldSystemFont(ofSize: 23)
+        checkMarkLabel.textColor = Theme.main
+        checkMarkLabel.font = UIFont.boldSystemFont(ofSize: 23)
         modalButton.tintColor = Theme.main
         let screenWidth = UIScreen.main.bounds.size.width
         let newConstant = screenWidth - 195 // "195" is calibration constant adjusted to fit any devices.
@@ -54,11 +52,11 @@ public class StandardCell: UITableViewCell {
     }
 
     func setCommandsOfImageAvailability(_ sender: UIButton) {
-        let parent = viewController as! CommandSelectionViewController // swiftlint:disable:this force_cast
+        guard let parent = viewController as? CommandSelectionViewController else { return }
         if Command.allCases[sender.tag] == .ndi ||
             Command.allCases[sender.tag] == .arkit ||
             Command.allCases[sender.tag] == .imageDetection {
-            if checkMarkLavel.text == checkMark {
+            if checkMarkLabel.text == checkMark {
                 parent.setSelectedButtonAvailable(sender.tag)
             } else {
                 parent.setNdiArkitImageDetectionButtonAvailable()
@@ -66,11 +64,11 @@ public class StandardCell: UITableViewCell {
         }
     }
 
-    func setCheckMarkLavelText() {
-        if checkMarkLavel.text == "" {
-            checkMarkLavel.text = checkMark
+    func setCheckMarkLabelText() {
+        if checkMarkLabel.text == "" {
+            checkMarkLabel.text = checkMark
         } else {
-            checkMarkLavel.text = ""
+            checkMarkLabel.text = ""
         }
     }
 }
