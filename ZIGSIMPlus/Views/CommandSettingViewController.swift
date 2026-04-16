@@ -61,7 +61,6 @@ public class CommandSettingViewController: UIViewController {
     }
 
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touch screen!")
         if updateSettingTextData() {
             view.endEditing(true)
         }
@@ -72,7 +71,6 @@ public class CommandSettingViewController: UIViewController {
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("should end editing!")
         if updateSettingTextData() {
             view.endEditing(true)
             return true

@@ -134,11 +134,6 @@ extension LocationService: CLLocationManagerDelegate {
         compassData = newHeading.magneticHeading
     }
 
-    // Called when the device started monitoring
-    public func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        print("Start monitoring for iBeacon")
-    }
-
     // Called when new data is received from beacons
     public func locationManager(
         _ manager: CLLocationManager,

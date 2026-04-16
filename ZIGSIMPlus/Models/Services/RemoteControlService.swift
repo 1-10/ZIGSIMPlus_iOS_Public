@@ -8,12 +8,17 @@
 
 import Foundation
 import MediaPlayer
+import os.log
 import OSCKit
 import SwiftyJSON
 
 public class RemoteControlService: NSObject {
     // Singleton instance
     static let shared = RemoteControlService()
+    private static let log = OSLog(
+        subsystem: Bundle.main.bundleIdentifier ?? "com.zigsim",
+        category: "RemoteControlService"
+    )
 
     // MARK: - Instance Properties
 
@@ -67,7 +72,12 @@ public class RemoteControlService: NSObject {
                 action: #selector(onTogglePlayPause(_:))
             )
         } catch {
-            print(">> yo Failed to start audio engine")
+            os_log(
+                "Failed to start audio engine: %{public}@",
+                log: Self.log,
+                type: .error,
+                String(describing: error)
+            )
         }
 
         // Add trigger for volumes
