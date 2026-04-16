@@ -17,7 +17,7 @@ public class AltimeterService {
 
     // MARK: - Instance Properties
 
-    var altimeter: AnyObject!
+    var altimeter = CMAltimeter()
     var isWorking: Bool
     var pressureData: Double
     var altitudeData: Double
@@ -28,11 +28,6 @@ public class AltimeterService {
         pressureData = 0.0
         altitudeData = 0.0
         callbackAltimeter = nil
-        if #available(iOS 8.0, *) {
-            altimeter = CMAltimeter()
-        } else {
-            altimeter = false as AnyObject
-        }
     }
 
     private func updateAltimeterData() {
@@ -47,31 +42,24 @@ public class AltimeterService {
     // MARK: - Public methods
 
     func isAvailable() -> Bool {
-        if #available(iOS 8.0, *) {
-            return CMAltimeter.isRelativeAltitudeAvailable()
-        }
-        return false
+        return CMAltimeter.isRelativeAltitudeAvailable()
     }
 
     func startAltimeter() {
-        if #available(iOS 8.0, *) {
-            if CMAltimeter.isRelativeAltitudeAvailable() {
-                isWorking = true
-                altimeter.startRelativeAltitudeUpdates(
-                    to: OperationQueue.main,
-                    withHandler: { [weak self] data, error in
-                        guard let self = self else { return }
-                        if error == nil {
-                            guard let data = data else { return }
-                            self.pressureData = Double(truncating: data.pressure) * 10.0
-                            self.altitudeData = Double(truncating: data.relativeAltitude)
-                            self.updateAltimeterData()
-                        }
+        if CMAltimeter.isRelativeAltitudeAvailable() {
+            isWorking = true
+            altimeter.startRelativeAltitudeUpdates(
+                to: OperationQueue.main,
+                withHandler: { [weak self] data, error in
+                    guard let self = self else { return }
+                    if error == nil {
+                        guard let data = data else { return }
+                        self.pressureData = Double(truncating: data.pressure) * 10.0
+                        self.altitudeData = Double(truncating: data.relativeAltitude)
+                        self.updateAltimeterData()
                     }
-                )
-            }
-        } else {
-            // Fallback on earlier versions
+                }
+            )
         }
     }
 
