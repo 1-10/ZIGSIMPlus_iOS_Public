@@ -196,11 +196,11 @@ extension LocationService: Service {
         var data = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.gps] ?? false {
-            data.append(osc("gps", latitudeData, longitudeData))
+            data.append(osc("gps", Float(latitudeData), Float(longitudeData)))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass] ?? false {
-            data.append(osc("compass", compassData, AppSettingModel.shared.compassOrientation.rawValue))
+            data.append(osc("compass", Float(compassData), AppSettingModel.shared.compassOrientation.rawValue))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon] ?? false {
