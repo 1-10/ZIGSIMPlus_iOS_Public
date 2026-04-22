@@ -8,6 +8,7 @@
 
 import DeviceKit
 import Foundation
+import os.log
 import OSCKit
 import SwiftyJSON
 
@@ -20,6 +21,10 @@ import SwiftyJSON
 /// - Add device data to it
 class ServiceManager {
     static let shared = ServiceManager()
+    private static let log = OSLog(
+        subsystem: Bundle.main.bundleIdentifier ?? "com.zigsim",
+        category: "ServiceManager"
+    )
     private init() {}
 
     public func getData() -> Data {
@@ -28,6 +33,9 @@ class ServiceManager {
         if AppSettingModel.shared.transportFormat == .OSC {
             let osc = getOSC()
             data = (try? OSCPacket.bundle(osc).rawData()) ?? Data()
+            #if DEBUG
+                logOSCPacketBytes(data)
+            #endif
         } else {
             let json = getJSON()
             data = (try? json.rawData()) ?? Data()
@@ -141,4 +149,20 @@ class ServiceManager {
 
         return log.count == 0 ? nil : log.joined(separator: "\n")
     }
+
+    #if DEBUG
+        private func logOSCPacketBytes(_ data: Data) {
+            let hexDump = data.prefix(64)
+                .map { String(format: "%02x", $0) }
+                .joined(separator: " ")
+
+            os_log(
+                "OSC bundle bytes: size=%{public}d first64=%{public}@",
+                log: Self.log,
+                type: .debug,
+                data.count,
+                hexDump
+            )
+        }
+    #endif
 }
