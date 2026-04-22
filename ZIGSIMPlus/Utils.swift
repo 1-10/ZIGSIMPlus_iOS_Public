@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class Utils {
+    private static let beaconUUIDRegex = try? NSRegularExpression(
+        pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}"
+    )
+
     static func randomStringWithLength(_ length: Int) -> String {
         let alphabet = "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         return String((0 ..< length).map { _ -> Character in alphabet.randomElement()! })
@@ -88,8 +92,9 @@ class Utils {
     }
 
     static func isValidBeaconUUID(_ uuid: String) -> Bool {
-        // swiftlint:disable:next force_try
-        let reg = try! NSRegularExpression(pattern: "[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}")
+        guard let reg = beaconUUIDRegex else {
+            return false
+        }
         return reg.matches(in: uuid, options: [], range: .init(location: 0, length: uuid.count)).count != 0
     }
 

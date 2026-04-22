@@ -18,7 +18,6 @@ public class NetworkAdapter {
     private var currentTCPAddress: String = ""
     private var currentTCPPort: Int = 0
 
-    private let networkQueue = DispatchQueue(label: "com.zigsim.network")
     private let connectionQueue = DispatchQueue(label: "com.zigsim.network.connection")
 
     var error: Error?
@@ -30,14 +29,52 @@ public class NetworkAdapter {
         case unknownError
     }
 
+    private final class ConnectionContinuationGate: @unchecked Sendable {
+        private let lock = NSLock()
+        private var continuation: CheckedContinuation<Void, Error>?
+
+        init(_ continuation: CheckedContinuation<Void, Error>) {
+            self.continuation = continuation
+        }
+
+        @discardableResult
+        func resume(returning value: Void = ()) -> Bool {
+            lock.lock()
+            guard let continuation = continuation else {
+                lock.unlock()
+                return false
+            }
+            self.continuation = nil
+            lock.unlock()
+
+            continuation.resume(returning: value)
+            return true
+        }
+
+        @discardableResult
+        func resume(throwing error: Error) -> Bool {
+            lock.lock()
+            guard let continuation = continuation else {
+                lock.unlock()
+                return false
+            }
+            self.continuation = nil
+            lock.unlock()
+
+            continuation.resume(throwing: error)
+            return true
+        }
+    }
+
     /// Send data over TCP / UDP automatically
-    func send(_ data: Data) {
-        networkQueue.async {
-            switch AppSettingModel.shared.transportProtocol {
-            case .TCP:
-                self.sendTCP(data)
-            case .UDP:
-                self.sendUDP(data)
+    func send(_ data: Data) async throws {
+        switch AppSettingModel.shared.transportProtocol {
+        case .TCP:
+            try await sendTCP(data)
+        case .UDP:
+            sendUDP(data)
+            if let error = error {
+                throw error
             }
         }
     }
@@ -69,7 +106,7 @@ public class NetworkAdapter {
         return false
     }
 
-    private func sendTCP(_ data: Data) {
+    private func sendTCP(_ data: Data) async throws {
         assert(!Thread.isMainThread)
 
         let appSetting = AppSettingModel.shared
@@ -88,66 +125,74 @@ public class NetworkAdapter {
         if !isTCPReady {
             guard let nwPort = NWEndpoint.Port(rawValue: UInt16(port)) else {
                 error = NetworkError.queryFailed
-                return
+                throw NetworkError.queryFailed
             }
 
             let conn = NWConnection(host: NWEndpoint.Host(address), port: nwPort, using: .tcp)
             tcpConnection = conn
 
-            let semaphore = DispatchSemaphore(value: 0)
-            var connectError: Error?
-
-            conn.stateUpdateHandler = { state in
-                switch state {
-                case .ready:
-                    semaphore.signal()
-                case .failed(let err):
-                    connectError = err
-                    semaphore.signal()
-                case .cancelled:
-                    connectError = NetworkError.connectionClosed
-                    semaphore.signal()
-                default:
-                    break
-                }
-            }
-            conn.start(queue: connectionQueue)
-
-            if semaphore.wait(timeout: .now() + 1.0) == .timedOut {
-                conn.cancel()
+            do {
+                try await connectTCP(conn)
+            } catch {
                 tcpConnection = nil
-                error = NetworkError.connectionTimeout
-                return
-            }
-
-            if let err = connectError {
-                tcpConnection = nil
-                error = mapNWError(err)
-                return
+                let networkError = mapNetworkError(error)
+                self.error = networkError
+                throw networkError
             }
         }
 
         guard let conn = tcpConnection, isTCPReady else {
             tcpConnection = nil
             error = NetworkError.connectionClosed
-            return
+            throw NetworkError.connectionClosed
         }
 
-        let semaphore = DispatchSemaphore(value: 0)
-        var sendError: Error?
-
-        conn.send(content: data, completion: .contentProcessed { nwError in
-            sendError = nwError
-            semaphore.signal()
-        })
-
-        semaphore.wait()
-
-        if let err = sendError {
-            tcpConnection = nil
-            error = mapNWError(err)
-        } else {
+        do {
+            try await sendTCP(data, on: conn)
             error = nil
+        } catch {
+            tcpConnection = nil
+            let networkError = mapNetworkError(error)
+            self.error = networkError
+            throw networkError
+        }
+    }
+
+    private func connectTCP(_ conn: NWConnection) async throws {
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            let gate = ConnectionContinuationGate(continuation)
+
+            conn.stateUpdateHandler = { state in
+                switch state {
+                case .ready:
+                    gate.resume()
+                case .failed(let err):
+                    gate.resume(throwing: err)
+                case .cancelled:
+                    gate.resume(throwing: NetworkError.connectionClosed)
+                default:
+                    break
+                }
+            }
+            conn.start(queue: connectionQueue)
+
+            connectionQueue.asyncAfter(deadline: .now() + 1.0) {
+                if gate.resume(throwing: NetworkError.connectionTimeout) {
+                    conn.cancel()
+                }
+            }
+        }
+    }
+
+    private func sendTCP(_ data: Data, on conn: NWConnection) async throws {
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            conn.send(content: data, completion: .contentProcessed { nwError in
+                if let nwError = nwError {
+                    continuation.resume(throwing: nwError)
+                } else {
+                    continuation.resume()
+                }
+            })
         }
     }
 
@@ -170,7 +215,7 @@ public class NetworkAdapter {
         let semaphore = DispatchSemaphore(value: 0)
         var sendError: Error?
 
-        conn.stateUpdateHandler = { [weak self] state in
+        conn.stateUpdateHandler = { state in
             switch state {
             case .ready:
                 conn.send(content: data, completion: .contentProcessed { nwError in
@@ -211,5 +256,12 @@ public class NetworkAdapter {
         default:
             return .unknownError
         }
+    }
+
+    private func mapNetworkError(_ err: Error) -> NetworkError {
+        if let networkError = err as? NetworkError {
+            return networkError
+        }
+        return mapNWError(err)
     }
 }

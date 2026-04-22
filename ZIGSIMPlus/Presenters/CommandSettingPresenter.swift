@@ -10,7 +10,7 @@ import Foundation
 import SwiftyUserDefaults
 
 public enum TextFieldName {
-    case ipAdress
+    case ipAddress
     case portNumber
     case uuid
 }
@@ -41,7 +41,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
     func getUserDefaultTexts() -> [TextFieldName: String] {
         var texts: [TextFieldName: String] = [:]
         let appSettings = AppSettingModel.shared
-        texts[.ipAdress] = appSettings.ipAddress
+        texts[.ipAddress] = appSettings.ipAddress
         texts[.portNumber] = appSettings.portNumber.description
         texts[.uuid] = appSettings.deviceUUID
         return texts
@@ -60,7 +60,7 @@ final class CommandSettingPresenter: CommandSettingPresenterProtocol {
 
     func updateTextsUserDefault(texts: [TextFieldName: String]) {
         let appSettings = AppSettingModel.shared
-        appSettings.ipAddress = texts[.ipAdress] ?? ""
+        appSettings.ipAddress = texts[.ipAddress] ?? ""
         appSettings.portNumber = Int(texts[.portNumber] ?? "0") ?? 0
         appSettings.deviceUUID = texts[.uuid] ?? ""
     }

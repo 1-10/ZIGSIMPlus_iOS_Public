@@ -19,7 +19,7 @@ public class CommandPlayer {
     private init() {}
 
     private var updatingTimer: Timer?
-    private let networkQueue = DispatchQueue(label: "com.zigsim.commandPlayer.network")
+    private var networkSendTask: Task<Void, Never>?
     public var onUpdate: (() -> Void)?
     private var state: CommandPlayerState = .stopped
 
@@ -57,12 +57,11 @@ public class CommandPlayer {
 
     private func startCommands() {
         updatingTimer = Timer.scheduledTimer(
-            timeInterval: Utils.getMessageInterval(),
-            target: self,
-            selector: #selector(monitorCommands),
-            userInfo: nil,
+            withTimeInterval: Utils.getMessageInterval(),
             repeats: true
-        )
+        ) { [weak self] _ in
+            self?.monitorCommands()
+        }
 
         for command in Command.allCases {
             if isActive(command) {
@@ -81,7 +80,7 @@ public class CommandPlayer {
         onUpdate?()
     }
 
-    @objc private func monitorCommands() {
+    private func monitorCommands() {
         if isActive(.battery) {
             BatteryService.shared.updateBattery()
         }
@@ -124,8 +123,16 @@ public class CommandPlayer {
 
     private func enqueueNetworkSend() {
         let data = ServiceManager.shared.getData()
-        networkQueue.async {
-            NetworkAdapter.shared.send(data)
+        let previousTask = networkSendTask
+
+        networkSendTask = Task.detached { [previousTask] in
+            await previousTask?.value
+
+            do {
+                try await NetworkAdapter.shared.send(data)
+            } catch {
+                // NetworkAdapter stores the mapped error for ServiceManager.getErrorLog().
+            }
         }
     }
 }

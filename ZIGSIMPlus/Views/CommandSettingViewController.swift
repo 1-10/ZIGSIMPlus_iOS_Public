@@ -30,7 +30,7 @@ public class CommandSettingViewController: UIViewController {
         let userDefaultTexts = presenter.getUserDefaultTexts()
         for textField in textFields {
             if textField.tag == 0 {
-                setTextFieldSetting(texField: textField, text: userDefaultTexts[.ipAdress]?.description ?? "")
+                setTextFieldSetting(texField: textField, text: userDefaultTexts[.ipAddress]?.description ?? "")
             } else if textField.tag == 1 {
                 setTextFieldSetting(texField: textField, text: userDefaultTexts[.portNumber]?.description ?? "")
             } else if textField.tag == 2 {
@@ -61,7 +61,6 @@ public class CommandSettingViewController: UIViewController {
     }
 
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touch screen!")
         if updateSettingTextData() {
             view.endEditing(true)
         }
@@ -72,7 +71,6 @@ public class CommandSettingViewController: UIViewController {
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("should end editing!")
         if updateSettingTextData() {
             view.endEditing(true)
             return true
@@ -86,7 +84,7 @@ public class CommandSettingViewController: UIViewController {
         for textField in textFields {
             if textField.tag == 0 {
                 if Utils.isValidSettingViewText(text: textField, textType: .ipAddress), textField.text != "" {
-                    texts[.ipAdress] = textField.text ?? ""
+                    texts[.ipAddress] = textField.text ?? ""
                 } else {
                     return false
                 }
@@ -169,14 +167,16 @@ extension CommandSettingViewController: ContentScrollable {
             forName: UIResponder.keyboardWillShowNotification,
             object: nil,
             queue: nil
-        ) { notification in
+        ) { [weak self] notification in
+            guard let self = self else { return }
             self.keyboardWillShow(notification)
         }
         hideObserver = NotificationCenter.default.addObserver(
             forName: UIResponder.keyboardWillHideNotification,
             object: nil,
             queue: nil
-        ) { notification in
+        ) { [weak self] notification in
+            guard let self = self else { return }
             self.keyboardWillHide(notification)
         }
     }

@@ -8,12 +8,17 @@
 
 import Foundation
 import MediaPlayer
+import os.log
 import OSCKit
 import SwiftyJSON
 
 public class RemoteControlService: NSObject {
     // Singleton instance
     static let shared = RemoteControlService()
+    private static let log = OSLog(
+        subsystem: Bundle.main.bundleIdentifier ?? "com.zigsim",
+        category: "RemoteControlService"
+    )
 
     // MARK: - Instance Properties
 
@@ -41,8 +46,11 @@ public class RemoteControlService: NSObject {
     }
 
     @objc func onVolumeChange(notification: NSNotification) {
-        // swiftlint:disable:next force_cast
-        volume = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as! Double
+        guard let userInfo = notification.userInfo,
+              let value = userInfo["AVSystemController_AudioVolumeNotificationParameter"] as? Double else {
+            return
+        }
+        volume = value
     }
 
     @objc func onTogglePlayPause(_ event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
@@ -64,7 +72,12 @@ public class RemoteControlService: NSObject {
                 action: #selector(onTogglePlayPause(_:))
             )
         } catch {
-            print(">> yo Failed to start audio engine")
+            os_log(
+                "Failed to start audio engine: %{public}@",
+                log: Self.log,
+                type: .error,
+                String(describing: error)
+            )
         }
 
         // Add trigger for volumes

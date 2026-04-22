@@ -121,7 +121,12 @@ class ServiceManager {
             try data.merge(with: VideoCaptureService.shared.toJSON())
             try data.merge(with: NFCService.shared.toJSON())
         } catch {
-            print(">> JSON convert error")
+            os_log(
+                "JSON convert error: %{public}@",
+                log: Self.log,
+                type: .error,
+                String(describing: error)
+            )
         }
 
         let device = Device.current

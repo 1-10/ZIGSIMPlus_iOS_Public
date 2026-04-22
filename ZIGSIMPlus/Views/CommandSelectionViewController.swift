@@ -150,9 +150,9 @@ extension CommandSelectionViewController: UITableViewDataSource {
         cells[Command.allCases[indexPath.row]] = cell
 
         if AppSettingModel.shared.isActiveByCommand[Command.allCases[indexPath.row]] ?? false {
-            cell.checkMarkLavel.text = checkMark
+            cell.checkMarkLabel.text = checkMark
         } else {
-            cell.checkMarkLavel.text = ""
+            cell.checkMarkLabel.text = ""
         }
 
         if CommandAndServiceMediator.isAvailable(Command.allCases[indexPath.row]) {

@@ -35,7 +35,8 @@ public class MotionService {
             return
         }
 
-        motionManager.startDeviceMotionUpdates(to: OperationQueue.current!) { deviceMotion, error in
+        motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { [weak self] deviceMotion, error in
+            guard let self = self else { return }
             guard error == nil,
                 let motion = deviceMotion else {
                 self.isError = true
@@ -112,19 +113,21 @@ extension MotionService: Service {
         var messages = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.acceleration] ?? false {
-            messages.append(osc("accel", accel.x, accel.y, accel.z))
+            messages.append(osc("accel", Float(accel.x), Float(accel.y), Float(accel.z)))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.gravity] ?? false {
-            messages.append(osc("gravity", gravity.x, gravity.y, gravity.z))
+            messages.append(osc("gravity", Float(gravity.x), Float(gravity.y), Float(gravity.z)))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.gyro] ?? false {
-            messages.append(osc("gyro", gyro.x, gyro.y, gyro.z))
+            messages.append(osc("gyro", Float(gyro.x), Float(gyro.y), Float(gyro.z)))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.quaternion] ?? false {
-            messages.append(osc("quaternion", quaternion.x, quaternion.y, quaternion.z, quaternion.w))
+            messages.append(
+                osc("quaternion", Float(quaternion.x), Float(quaternion.y), Float(quaternion.z), Float(quaternion.w))
+            )
         }
 
         return messages

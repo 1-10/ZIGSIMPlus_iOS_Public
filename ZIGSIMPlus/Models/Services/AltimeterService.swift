@@ -17,7 +17,7 @@ public class AltimeterService {
 
     // MARK: - Instance Properties
 
-    var altimeter: AnyObject!
+    var altimeter = CMAltimeter()
     var isWorking: Bool
     var pressureData: Double
     var altitudeData: Double
@@ -28,16 +28,9 @@ public class AltimeterService {
         pressureData = 0.0
         altitudeData = 0.0
         callbackAltimeter = nil
-        if #available(iOS 8.0, *) {
-            altimeter = CMAltimeter()
-        } else {
-            altimeter = false as AnyObject
-        }
     }
 
     private func updateAltimeterData() {
-        print("pressure:pressure: \(pressureData)")
-        print("pressure:altitude: \(altitudeData)")
         var altimeterData = [0.0, 0.0]
         altimeterData[0] = pressureData
         altimeterData[1] = altitudeData
@@ -47,26 +40,24 @@ public class AltimeterService {
     // MARK: - Public methods
 
     func isAvailable() -> Bool {
-        if #available(iOS 8.0, *) {
-            return CMAltimeter.isRelativeAltitudeAvailable()
-        }
-        return false
+        return CMAltimeter.isRelativeAltitudeAvailable()
     }
 
     func startAltimeter() {
-        if #available(iOS 8.0, *) {
-            if CMAltimeter.isRelativeAltitudeAvailable() {
-                isWorking = true
-                altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: { data, error in
+        if CMAltimeter.isRelativeAltitudeAvailable() {
+            isWorking = true
+            altimeter.startRelativeAltitudeUpdates(
+                to: OperationQueue.main,
+                withHandler: { [weak self] data, error in
+                    guard let self = self else { return }
                     if error == nil {
-                        self.pressureData = Double(truncating: data!.pressure) * 10.0
-                        self.altitudeData = Double(truncating: data!.relativeAltitude)
+                        guard let data = data else { return }
+                        self.pressureData = Double(truncating: data.pressure) * 10.0
+                        self.altitudeData = Double(truncating: data.relativeAltitude)
                         self.updateAltimeterData()
                     }
-                })
-            }
-        } else {
-            // Fallback on earlier versions
+                }
+            )
         }
     }
 
@@ -96,7 +87,7 @@ extension AltimeterService: Service {
         var messages = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.pressure] ?? false {
-            messages.append(osc("pressure", pressureData, altitudeData))
+            messages.append(osc("pressure", Float(pressureData), Float(altitudeData)))
         }
 
         return messages

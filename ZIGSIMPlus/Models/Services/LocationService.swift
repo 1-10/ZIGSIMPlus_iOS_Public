@@ -124,17 +124,14 @@ public class LocationService: NSObject {
 
 extension LocationService: CLLocationManagerDelegate {
     public final func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        latitudeData = (locations.last?.coordinate.latitude)!
-        longitudeData = (locations.last?.coordinate.longitude)!
+        guard let location = locations.last else { return }
+
+        latitudeData = location.coordinate.latitude
+        longitudeData = location.coordinate.longitude
     }
 
     public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         compassData = newHeading.magneticHeading
-    }
-
-    // Called when the device started monitoring
-    public func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        print("Start monitoring for iBeacon")
     }
 
     // Called when new data is received from beacons
@@ -149,17 +146,17 @@ extension LocationService: CLLocationManagerDelegate {
                 $0.proximityUUID == beacon.proximityUUID && $0.major == beacon.major && $0.minor == beacon.minor
             })
 
-            if index == nil {
-                beacons.append(beacon)
+            if let index = index {
+                beacons[index] = beacon
             } else {
-                beacons[index!] = beacon
+                beacons.append(beacon)
             }
         }
     }
 
     // Called when the user authorized monitorin location data
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status != .authorizedAlways || status != .authorizedWhenInUse {
+        if status != .authorizedAlways && status != .authorizedWhenInUse {
             // TODO: Show error message
         }
     }
@@ -199,11 +196,11 @@ extension LocationService: Service {
         var data = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.gps] ?? false {
-            data.append(osc("gps", latitudeData, longitudeData))
+            data.append(osc("gps", Float(latitudeData), Float(longitudeData)))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.compass] ?? false {
-            data.append(osc("compass", compassData, AppSettingModel.shared.compassOrientation.rawValue))
+            data.append(osc("compass", Float(compassData), AppSettingModel.shared.compassOrientation.rawValue))
         }
 
         if AppSettingModel.shared.isActiveByCommand[Command.beacon] ?? false {
