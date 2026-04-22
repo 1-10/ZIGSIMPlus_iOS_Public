@@ -96,7 +96,7 @@ extension AltimeterService: Service {
         var messages = [OSCMessage]()
 
         if AppSettingModel.shared.isActiveByCommand[Command.pressure] ?? false {
-            messages.append(osc("pressure", pressureData, altitudeData))
+            messages.append(osc("pressure", Float(pressureData), Float(altitudeData)))
         }
 
         return messages
