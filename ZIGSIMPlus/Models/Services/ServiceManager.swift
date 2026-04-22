@@ -152,17 +152,30 @@ class ServiceManager {
 
     #if DEBUG
         private func logOSCPacketBytes(_ data: Data) {
-            let hexDump = data.prefix(64)
-                .map { String(format: "%02x", $0) }
-                .joined(separator: " ")
-
             os_log(
-                "OSC bundle bytes: size=%{public}d first64=%{public}@",
+                "OSC bundle bytes: size=%{public}d",
                 log: Self.log,
                 type: .debug,
-                data.count,
-                hexDump
+                data.count
             )
+
+            for offset in stride(from: 0, to: data.count, by: 16) {
+                let lineBytes = data[offset..<min(offset + 16, data.count)]
+                let hexDump = lineBytes.enumerated()
+                    .map { index, byte in
+                        index == 8
+                            ? " " + String(format: "%02x", byte)
+                            : String(format: "%02x", byte)
+                    }
+                    .joined(separator: " ")
+
+                os_log(
+                    "[OSCBundle] %{public}@",
+                    log: Self.log,
+                    type: .debug,
+                    String(format: "%08x: %@", offset, hexDump)
+                )
+            }
         }
     #endif
 }
