@@ -149,37 +149,37 @@ final class CommandDetailSettingsPresenter: CommandDetailSettingsPresenterProtoc
         case let data as SegmentedInt:
             switch data.key {
             case .ndiSceneType:
-                AppSettingModel.shared.ndiSceneType = NdiSceneType(rawValue: data.value)!
+                AppSettingModel.shared.ndiSceneType = NdiSceneType(rawValue: data.value) ?? .WORLD
             case .ndiWorldType:
-                AppSettingModel.shared.ndiWorldType = NdiWorldType(rawValue: data.value)!
+                AppSettingModel.shared.ndiWorldType = NdiWorldType(rawValue: data.value) ?? .CAMERA
             case .ndiCamera:
-                AppSettingModel.shared.ndiCameraPosition = CameraPosition(rawValue: data.value)!
+                AppSettingModel.shared.ndiCameraPosition = CameraPosition(rawValue: data.value) ?? .BACK
             case .ndiDepthType:
-                AppSettingModel.shared.depthType = DepthType(rawValue: data.value)!
+                AppSettingModel.shared.depthType = DepthType(rawValue: data.value) ?? .DEPTH
             case .ndiHumanType:
-                AppSettingModel.shared.ndiHumanType = NdiHumanType(rawValue: data.value)!
+                AppSettingModel.shared.ndiHumanType = NdiHumanType(rawValue: data.value) ?? .HUMAN
             case .ndiResolution:
-                AppSettingModel.shared.ndiResolution = VideoResolution(rawValue: data.value)!
+                AppSettingModel.shared.ndiResolution = VideoResolution(rawValue: data.value) ?? .vga
             case .ndiAudioBufferSize:
-                AppSettingModel.shared.ndiAudioBufferSize = NdiAudioBufferSize(rawValue: data.value)!
+                AppSettingModel.shared.ndiAudioBufferSize = NdiAudioBufferSize(rawValue: data.value) ?? .large
             case .ndiAudioEnabled:
-                AppSettingModel.shared.ndiAudioEnabled = NdiAudioEnabled(rawValue: data.value)!
+                AppSettingModel.shared.ndiAudioEnabled = NdiAudioEnabled(rawValue: data.value) ?? .enabled
             case .compassOrientation:
-                AppSettingModel.shared.compassOrientation = CompassOrientation(rawValue: data.value)!
+                AppSettingModel.shared.compassOrientation = CompassOrientation(rawValue: data.value) ?? .portrait
             case .arkitTrackingType:
-                AppSettingModel.shared.arkitTrackingType = ArkitTrackingType(rawValue: data.value)!
+                AppSettingModel.shared.arkitTrackingType = ArkitTrackingType(rawValue: data.value) ?? .device
             case .arkitFeaturePointsEnabled:
-                AppSettingModel.shared.arkitFeaturePointsEnabled = ArkitFeaturePointsEnabled(rawValue: data.value)!
+                AppSettingModel.shared.arkitFeaturePointsEnabled = ArkitFeaturePointsEnabled(rawValue: data.value) ?? .enabled
             case .imageDetectorType:
-                AppSettingModel.shared.imageDetectorType = ImageDetectorType(rawValue: data.value)!
+                AppSettingModel.shared.imageDetectorType = ImageDetectorType(rawValue: data.value) ?? .face
             case .imageDetectorCameraPosition:
-                AppSettingModel.shared.imageDetectorCameraPosition = CameraPosition(rawValue: data.value)!
+                AppSettingModel.shared.imageDetectorCameraPosition = CameraPosition(rawValue: data.value) ?? .BACK
             case .imageDetectorResolution:
-                AppSettingModel.shared.imageDetectorResolution = VideoResolution(rawValue: data.value)!
+                AppSettingModel.shared.imageDetectorResolution = VideoResolution(rawValue: data.value) ?? .vga
             case .imageDetectorAccuracy:
-                AppSettingModel.shared.imageDetectorAccuracy = ImageDetectorAccuracy(rawValue: data.value)!
+                AppSettingModel.shared.imageDetectorAccuracy = ImageDetectorAccuracy(rawValue: data.value) ?? .high
             case .imageDetectorNumberOfAngles:
-                AppSettingModel.shared.imageDetectorNumberOfAngles = ImageDetectorNumberOfAngles(rawValue: data.value)!
+                AppSettingModel.shared.imageDetectorNumberOfAngles = ImageDetectorNumberOfAngles(rawValue: data.value) ?? .one
             default:
                 fatalError("Undefined key")
             }
