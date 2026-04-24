@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyUserDefaults
 
 /// Command is a constant label corresponds to features.
 /// NOTE: the order of cases affects selection view.
@@ -31,26 +30,26 @@ public enum Command: String, CaseIterable {
     case remoteControl = "Remote Control"
     case battery = "Battery"
 
-    var userDefaultsKey: DefaultsKey<Bool> {
+    var userDefaultsKey: String {
         switch self {
-        case .ndi: return DefaultsKeys.isNdiCommandActive
-        case .arkit: return DefaultsKeys.isArkitCommandActive
-        case .imageDetection: return DefaultsKeys.isImageDetectionCommandActive
-        case .nfc: return DefaultsKeys.isNfcReaderCommandActive
-        case .applePencil: return DefaultsKeys.isApplePencilCommandActive
-        case .acceleration: return DefaultsKeys.isAccelerationCommandActive
-        case .gravity: return DefaultsKeys.isGravityCommandActive
-        case .gyro: return DefaultsKeys.isGyroCommandActive
-        case .quaternion: return DefaultsKeys.isQuaternionCommandActive
-        case .compass: return DefaultsKeys.isCompassCommandActive
-        case .pressure: return DefaultsKeys.isPressureCommandActive
-        case .gps: return DefaultsKeys.isGpsCommandActive
-        case .touch: return DefaultsKeys.isTouchCommandActive
-        case .beacon: return DefaultsKeys.isBeaconCommandActive
-        case .proximity: return DefaultsKeys.isProximityCommandActive
-        case .micLevel: return DefaultsKeys.isMicLevelCommandActive
-        case .remoteControl: return DefaultsKeys.isRemoteControlCommandActive
-        case .battery: return DefaultsKeys.isBatteryCommandActive
+        case .ndi: return "isNdiCommandActive"
+        case .arkit: return "isArkitCommandActive"
+        case .imageDetection: return "isImageDetectionCommandActive"
+        case .nfc: return "isNfcReaderCommandActive"
+        case .applePencil: return "isApplePencilCommandActive"
+        case .acceleration: return "isAccelerationCommandActive"
+        case .gravity: return "isGravityCommandActive"
+        case .gyro: return "isGyroCommandActive"
+        case .quaternion: return "isQuaternionCommandActive"
+        case .compass: return "isCompassCommandActive"
+        case .pressure: return "isPressureCommandActive"
+        case .gps: return "isGpsCommandActive"
+        case .touch: return "isTouchCommandActive"
+        case .beacon: return "isBeaconCommandActive"
+        case .proximity: return "isProximityCommandActive"
+        case .micLevel: return "isMicLevelCommandActive"
+        case .remoteControl: return "isRemoteControlCommandActive"
+        case .battery: return "isBatteryCommandActive"
         }
     }
 

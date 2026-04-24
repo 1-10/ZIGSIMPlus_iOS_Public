@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyUserDefaults
 
 public enum TextFieldName {
     case ipAddress

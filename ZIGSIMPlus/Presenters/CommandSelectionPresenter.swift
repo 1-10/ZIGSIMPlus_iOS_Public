@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyUserDefaults
 
 protocol CommandSelectionPresenterProtocol {
     var numberOfCommandToSelect: Int { get }
@@ -49,12 +48,12 @@ final class CommandSelectionPresenter: CommandSelectionPresenterProtocol {
     }
 
     func saveCommandOnOffToUserDefaults(_ command: Command, _ isOn: Bool) {
-        Defaults[key: command.userDefaultsKey] = isOn
+        UserDefaults.standard.set(isOn, forKey: command.userDefaultsKey)
     }
 
     func loadCommandOnOffFromUserDefaults() {
         for command in Command.allCases {
-            AppSettingModel.shared.isActiveByCommand[command] = Defaults[key: command.userDefaultsKey]
+            AppSettingModel.shared.isActiveByCommand[command] = UserDefaults.standard.bool(forKey: command.userDefaultsKey)
         }
     }
 
