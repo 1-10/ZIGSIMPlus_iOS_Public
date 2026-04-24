@@ -56,8 +56,19 @@ final class CommandSelectionViewController: UIViewController {
         // Get detail view controller
         switch command {
         case .compass, .ndi, .arkit, .beacon, .imageDetection:
-            // swiftlint:disable:next line_length force_cast
-            let vc = storyboard!.instantiateViewController(withIdentifier: "CommandDetailSettingsView") as! CommandDetailSettingsViewController
+            guard let storyboard else {
+                NSLog("Missing storyboard in CommandSelectionViewController.")
+                assertionFailure("Missing storyboard in CommandSelectionViewController.")
+                return
+            }
+            let viewController = storyboard.instantiateViewController(
+                withIdentifier: "CommandDetailSettingsView"
+            )
+            guard let vc = viewController as? CommandDetailSettingsViewController else {
+                NSLog("Failed to load CommandDetailSettingsViewController.")
+                assertionFailure("Failed to load CommandDetailSettingsViewController.")
+                return
+            }
             vc.command = command
 
             // Move to detail view
