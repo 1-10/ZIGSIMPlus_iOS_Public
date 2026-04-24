@@ -7,43 +7,42 @@
 //
 
 import Foundation
-import SwiftyUserDefaults
 
-enum DataDestination: Int, DefaultsSerializable {
+enum DataDestination: Int {
     case localFile = 0
     case otherApp = 1
 }
 
-enum TransportProtocol: Int, DefaultsSerializable {
+enum TransportProtocol: Int {
     case UDP = 0
     case TCP = 1
 }
 
-enum TransportFormat: Int, DefaultsSerializable {
+enum TransportFormat: Int {
     case JSON = 0
     case OSC = 1
 }
 
-enum RatePerSecond: Int, DefaultsSerializable {
+enum RatePerSecond: Int {
     case one = 0
     case ten = 1
     case thirty = 2
     case sixty = 3
 }
 
-enum ImageDetectorType: Int, DefaultsSerializable {
+enum ImageDetectorType: Int {
     case face = 0
     case qrCode = 1
     case rectangle = 2
     case text = 3
 }
 
-enum ImageDetectorAccuracy: Int, DefaultsSerializable {
+enum ImageDetectorAccuracy: Int {
     case low = 0
     case high = 1
 }
 
-enum ImageDetectorNumberOfAngles: Int, DefaultsSerializable {
+enum ImageDetectorNumberOfAngles: Int {
     case one = 0
     case three = 1
     case five = 2
@@ -52,63 +51,63 @@ enum ImageDetectorNumberOfAngles: Int, DefaultsSerializable {
     case eleven = 5
 }
 
-enum ArkitTrackingType: Int, DefaultsSerializable {
+enum ArkitTrackingType: Int {
     case device = 0
     case face = 1
     case image = 2
     case body = 3
 }
 
-enum ArkitFeaturePointsEnabled: Int, DefaultsSerializable {
+enum ArkitFeaturePointsEnabled: Int {
     case enabled
     case disabled
 }
 
-enum NdiSceneType: Int, DefaultsSerializable {
+enum NdiSceneType: Int {
     case WORLD = 0
     case HUMAN = 1
 }
 
-enum NdiWorldType: Int, DefaultsSerializable {
+enum NdiWorldType: Int {
     case CAMERA = 0
     case DEPTH = 1
     case BOTH = 2
 }
 
-enum CameraPosition: Int, DefaultsSerializable {
+enum CameraPosition: Int {
     case BACK = 0
     case FRONT = 1
 }
 
-enum DepthType: Int, DefaultsSerializable {
+enum DepthType: Int {
     case DEPTH = 0
     case DISPARITY = 1
 }
 
-enum NdiHumanType: Int, DefaultsSerializable {
+enum NdiHumanType: Int {
     case HUMAN = 0
     case BOTH1 = 1
     case BOTH2 = 2
 }
 
-enum VideoResolution: Int, DefaultsSerializable {
+enum VideoResolution: Int {
     case vga = 0
     case hd = 1
     case fhd = 2
 }
 
-enum NdiAudioEnabled: Int, DefaultsSerializable {
+enum NdiAudioEnabled: Int {
     case enabled = 0
     case disabled = 1
 }
 
-enum NdiAudioBufferSize: Int, DefaultsSerializable {
+enum NdiAudioBufferSize: Int {
     case small = 0
     case medium = 1
     case large = 2
 }
 
-enum CompassOrientation: Int, DefaultsSerializable {
+enum CompassOrientation: Int {
     case portrait = 0
     case faceup = 1
 }
@@ -131,6 +130,149 @@ public class AppSettingModel {
     // MARK: - properties
 
     var isActiveByCommand: [Command: Bool] = [:]
+
+    // MARK: - Settings properties
+
+    // swiftlint:disable line_length
+    var dataDestination: DataDestination {
+        get { ud.enumValue(forKey: "dataDestination", default: .otherApp) }
+        set { ud.set(newValue.rawValue, forKey: "dataDestination") }
+    }
+
+    var transportProtocol: TransportProtocol {
+        get { ud.enumValue(forKey: "transportProtocol", default: .UDP) }
+        set { ud.set(newValue.rawValue, forKey: "transportProtocol") }
+    }
+
+    var ipAddress: String {
+        get { ud.string(forKey: "ipAddress") ?? "172.17.1.20" }
+        set { ud.set(newValue, forKey: "ipAddress") }
+    }
+
+    var portNumber: Int {
+        get { ud.object(forKey: "portNumber") != nil ? ud.integer(forKey: "portNumber") : 3333 }
+        set { ud.set(newValue, forKey: "portNumber") }
+    }
+
+    // Note: UserDefaults key is "messageFormat" (not "transportFormat") for backward compatibility
+    var transportFormat: TransportFormat {
+        get { ud.enumValue(forKey: "messageFormat", default: .OSC) }
+        set { ud.set(newValue.rawValue, forKey: "messageFormat") }
+    }
+
+    var messageRatePerSecond: RatePerSecond {
+        get { ud.enumValue(forKey: "messageRatePerSecond", default: .ten) }
+        set { ud.set(newValue.rawValue, forKey: "messageRatePerSecond") }
+    }
+
+    var compassOrientation: CompassOrientation {
+        get { ud.enumValue(forKey: "compassOrientation", default: .portrait) }
+        set { ud.set(newValue.rawValue, forKey: "compassOrientation") }
+    }
+
+    var deviceUUID: String {
+        get { ud.string(forKey: "deviceUUID") ?? Utils.randomStringWithLength(16) }
+        set { ud.set(newValue, forKey: "deviceUUID") }
+    }
+
+    var beaconUUID: String {
+        get { ud.string(forKey: "beaconUUID") ?? "B9407F30-F5F8-466E-AFF9-25556B570000" }
+        set { ud.set(newValue, forKey: "beaconUUID") }
+    }
+
+    var ndiSceneType: NdiSceneType {
+        get { ud.enumValue(forKey: "ndiSceneType", default: .WORLD) }
+        set { ud.set(newValue.rawValue, forKey: "ndiSceneType") }
+    }
+
+    // Note: UserDefaults key is "ndiType" (not "ndiWorldType") for backward compatibility
+    var ndiWorldType: NdiWorldType {
+        get { ud.enumValue(forKey: "ndiType", default: .CAMERA) }
+        set { ud.set(newValue.rawValue, forKey: "ndiType") }
+    }
+
+    var ndiCameraPosition: CameraPosition {
+        get { ud.enumValue(forKey: "ndiCameraPosition", default: .BACK) }
+        set { ud.set(newValue.rawValue, forKey: "ndiCameraPosition") }
+    }
+
+    var depthType: DepthType {
+        get { ud.enumValue(forKey: "depthType", default: .DEPTH) }
+        set { ud.set(newValue.rawValue, forKey: "depthType") }
+    }
+
+    var ndiHumanType: NdiHumanType {
+        get { ud.enumValue(forKey: "ndiHumanType", default: .HUMAN) }
+        set { ud.set(newValue.rawValue, forKey: "ndiHumanType") }
+    }
+
+    var ndiResolution: VideoResolution {
+        get { ud.enumValue(forKey: "ndiResolution", default: .vga) }
+        set { ud.set(newValue.rawValue, forKey: "ndiResolution") }
+    }
+
+    var ndiAudioEnabled: NdiAudioEnabled {
+        get { ud.enumValue(forKey: "ndiAudioEnabled", default: .enabled) }
+        set { ud.set(newValue.rawValue, forKey: "ndiAudioEnabled") }
+    }
+
+    var ndiAudioBufferSize: NdiAudioBufferSize {
+        get { ud.enumValue(forKey: "ndiAudioBufferSize", default: .large) }
+        set { ud.set(newValue.rawValue, forKey: "ndiAudioBufferSize") }
+    }
+
+    var arkitTrackingType: ArkitTrackingType {
+        get { ud.enumValue(forKey: "arkitTrackingType", default: .device) }
+        set { ud.set(newValue.rawValue, forKey: "arkitTrackingType") }
+    }
+
+    var arkitFeaturePointsEnabled: ArkitFeaturePointsEnabled {
+        get { ud.enumValue(forKey: "arkitFeaturePointsEnabled", default: .enabled) }
+        set { ud.set(newValue.rawValue, forKey: "arkitFeaturePointsEnabled") }
+    }
+
+    var imageDetectorType: ImageDetectorType {
+        get { ud.enumValue(forKey: "imageDetectorType", default: .face) }
+        set { ud.set(newValue.rawValue, forKey: "imageDetectorType") }
+    }
+
+    // Note: UserDefaults key is "userImageDetectorCameraPosition" for backward compatibility
+    var imageDetectorCameraPosition: CameraPosition {
+        get { ud.enumValue(forKey: "userImageDetectorCameraPosition", default: .BACK) }
+        set { ud.set(newValue.rawValue, forKey: "userImageDetectorCameraPosition") }
+    }
+
+    // Note: UserDefaults key is "userImageDetectorResolution" for backward compatibility
+    var imageDetectorResolution: VideoResolution {
+        get { ud.enumValue(forKey: "userImageDetectorResolution", default: .vga) }
+        set { ud.set(newValue.rawValue, forKey: "userImageDetectorResolution") }
+    }
+
+    var imageDetectorAccuracy: ImageDetectorAccuracy {
+        get { ud.enumValue(forKey: "imageDetectorAccuracy", default: .high) }
+        set { ud.set(newValue.rawValue, forKey: "imageDetectorAccuracy") }
+    }
+
+    var imageDetectorTracks: Bool {
+        get { ud.object(forKey: "imageDetectorTracks") != nil ? ud.bool(forKey: "imageDetectorTracks") : true }
+        set { ud.set(newValue, forKey: "imageDetectorTracks") }
+    }
+
+    var imageDetectorNumberOfAngles: ImageDetectorNumberOfAngles {
+        get { ud.enumValue(forKey: "imageDetectorNumberOfAngles", default: .one) }
+        set { ud.set(newValue.rawValue, forKey: "imageDetectorNumberOfAngles") }
+    }
+
+    var imageDetectorDetectsEyeBlink: Bool {
+        get { ud.object(forKey: "imageDetectorDetectsEyeBlink") != nil ? ud.bool(forKey: "imageDetectorDetectsEyeBlink") : true }
+        set { ud.set(newValue, forKey: "imageDetectorDetectsEyeBlink") }
+    }
+
+    var imageDetectorDetectsSmile: Bool {
+        get { ud.object(forKey: "imageDetectorDetectsSmile") != nil ? ud.bool(forKey: "imageDetectorDetectsSmile") : true }
+        set { ud.set(newValue, forKey: "imageDetectorDetectsSmile") }
+    }
+    // swiftlint:enable line_length
 
     // MARK: - public methods
 
@@ -170,58 +312,15 @@ public class AppSettingModel {
     }
 }
 
-// user default value
-// swiftlint:disable line_length
-extension DefaultsKeys {
-    // Keys for App Settings.
-    // Properties of AppSettingModel will be generated by these keys by Sourcery.
-    static let dataDestination = DefaultsKey<DataDestination>("dataDestination", defaultValue: .otherApp)
-    static let transportProtocol = DefaultsKey<TransportProtocol>("transportProtocol", defaultValue: .UDP)
-    static let ipAddress = DefaultsKey<String>("ipAddress", defaultValue: "172.17.1.20")
-    static let portNumber = DefaultsKey<Int>("portNumber", defaultValue: 3333)
-    static let transportFormat = DefaultsKey<TransportFormat>("messageFormat", defaultValue: .OSC)
-    static let messageRatePerSecond = DefaultsKey<RatePerSecond>("messageRatePerSecond", defaultValue: .ten)
-    static let compassOrientation = DefaultsKey<CompassOrientation>("compassOrientation", defaultValue: .portrait)
-    static let deviceUUID = DefaultsKey<String>("deviceUUID", defaultValue: Utils.randomStringWithLength(16))
-    static let beaconUUID = DefaultsKey<String>("beaconUUID", defaultValue: "B9407F30-F5F8-466E-AFF9-25556B570000")
-    static let ndiSceneType = DefaultsKey<NdiSceneType>("ndiSceneType", defaultValue: .WORLD)
-    static let ndiWorldType = DefaultsKey<NdiWorldType>("ndiType", defaultValue: .CAMERA)
-    static let ndiCameraPosition = DefaultsKey<CameraPosition>("ndiCameraPosition", defaultValue: .BACK)
-    static let depthType = DefaultsKey<DepthType>("depthType", defaultValue: .DEPTH)
-    static let ndiHumanType = DefaultsKey<NdiHumanType>("ndiHumanType", defaultValue: .HUMAN)
-    static let ndiResolution = DefaultsKey<VideoResolution>("ndiResolution", defaultValue: .vga)
-    static let ndiAudioEnabled = DefaultsKey<NdiAudioEnabled>("ndiAudioEnabled", defaultValue: .enabled)
-    static let ndiAudioBufferSize = DefaultsKey<NdiAudioBufferSize>("ndiAudioBufferSize", defaultValue: .large)
-    static let arkitTrackingType = DefaultsKey<ArkitTrackingType>("arkitTrackingType", defaultValue: .device)
-    static let arkitFeaturePointsEnabled = DefaultsKey<ArkitFeaturePointsEnabled>("arkitFeaturePointsEnabled", defaultValue: .enabled)
-    static let imageDetectorType = DefaultsKey<ImageDetectorType>("imageDetectorType", defaultValue: .face)
-    static let imageDetectorCameraPosition = DefaultsKey<CameraPosition>("userImageDetectorCameraPosition", defaultValue: .BACK)
-    static let imageDetectorResolution = DefaultsKey<VideoResolution>("userImageDetectorResolution", defaultValue: .vga)
-    static let imageDetectorAccuracy = DefaultsKey<ImageDetectorAccuracy>("imageDetectorAccuracy", defaultValue: .high)
-    static let imageDetectorTracks = DefaultsKey<Bool>("imageDetectorTracks", defaultValue: true)
-    static let imageDetectorNumberOfAngles = DefaultsKey<ImageDetectorNumberOfAngles>("imageDetectorNumberOfAngles", defaultValue: .one)
-    static let imageDetectorDetectsEyeBlink = DefaultsKey<Bool>("imageDetectorDetectsEyeBlink", defaultValue: true)
-    static let imageDetectorDetectsSmile = DefaultsKey<Bool>("imageDetectorDetectsSmile", defaultValue: true)
+// MARK: - Private helpers
 
-    // Commands
-    static let isNdiCommandActive = DefaultsKey<Bool>("isNdiCommandActive", defaultValue: false)
-    static let isArkitCommandActive = DefaultsKey<Bool>("isArkitCommandActive", defaultValue: false)
-    static let isImageDetectionCommandActive = DefaultsKey<Bool>("isImageDetectionCommandActive", defaultValue: false)
-    static let isNfcReaderCommandActive = DefaultsKey<Bool>("isNfcReaderCommandActive", defaultValue: false)
-    static let isApplePencilCommandActive = DefaultsKey<Bool>("isApplePencilCommandActive", defaultValue: false)
-    static let isAccelerationCommandActive = DefaultsKey<Bool>("isAccelerationCommandActive", defaultValue: false)
-    static let isGravityCommandActive = DefaultsKey<Bool>("isGravityCommandActive", defaultValue: false)
-    static let isGyroCommandActive = DefaultsKey<Bool>("isGyroCommandActive", defaultValue: false)
-    static let isQuaternionCommandActive = DefaultsKey<Bool>("isQuaternionCommandActive", defaultValue: false)
-    static let isCompassCommandActive = DefaultsKey<Bool>("isCompassCommandActive", defaultValue: false)
-    static let isPressureCommandActive = DefaultsKey<Bool>("isPressureCommandActive", defaultValue: false)
-    static let isGpsCommandActive = DefaultsKey<Bool>("isGpsCommandActive", defaultValue: false)
-    static let isTouchCommandActive = DefaultsKey<Bool>("isTouchCommandActive", defaultValue: false)
-    static let isBeaconCommandActive = DefaultsKey<Bool>("isBeaconCommandActive", defaultValue: false)
-    static let isProximityCommandActive = DefaultsKey<Bool>("isProximityCommandActive", defaultValue: false)
-    static let isMicLevelCommandActive = DefaultsKey<Bool>("isMicLevelCommandActive", defaultValue: false)
-    static let isRemoteControlCommandActive = DefaultsKey<Bool>("isRemoteControlCommandActive", defaultValue: false)
-    static let isBatteryCommandActive = DefaultsKey<Bool>("isBatteryCommandActive", defaultValue: false)
+private extension AppSettingModel {
+    var ud: UserDefaults { .standard }
 }
 
-// swiftlint:enable line_length
+private extension UserDefaults {
+    func enumValue<T: RawRepresentable>(forKey key: String, default defaultValue: T) -> T where T.RawValue == Int {
+        guard object(forKey: key) != nil else { return defaultValue }
+        return T(rawValue: integer(forKey: key)) ?? defaultValue
+    }
+}
