@@ -25,8 +25,8 @@ class AudioLevelService {
 
     // MARK: - Instance Properties
 
-    var queue: AudioQueueRef!
-    var timer: Timer!
+    var queue: AudioQueueRef?
+    var timer: Timer?
     var dataFormat = AudioStreamBasicDescription(
         mSampleRate: 44100.0,
         mFormatID: kAudioFormatLinearPCM,
@@ -45,6 +45,10 @@ class AudioLevelService {
     var callbackAudio: (([Float]) -> Void)?
 
     @objc func detectVolume(timer: Timer) {
+        guard let queue else {
+            return
+        }
+
         // Get level
         var levelMeter = AudioQueueLevelMeterState()
         var propertySize = UInt32(MemoryLayout<AudioQueueLevelMeterState>.size)
@@ -99,7 +103,15 @@ class AudioLevelService {
 
         if error == noErr {
             queue = audioQueue
+        } else {
+            queue = nil
+            return
         }
+
+        guard let queue else {
+            return
+        }
+
         AudioQueueStart(queue, nil)
 
         // Enable level meter
@@ -122,11 +134,17 @@ class AudioLevelService {
 
     public func stop() {
         // Finish observation
-        timer.invalidate()
+        timer?.invalidate()
         timer = nil
+
+        guard let queue else {
+            return
+        }
+
         AudioQueueFlush(queue)
         AudioQueueStop(queue, false)
         AudioQueueDispose(queue, true)
+        self.queue = nil
     }
 }
 
