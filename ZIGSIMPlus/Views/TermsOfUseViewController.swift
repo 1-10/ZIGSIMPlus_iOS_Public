@@ -14,8 +14,18 @@ public class TermsOfUseViewController: UIViewController {
     @IBOutlet var text: UITextView!
     public override func viewDidLoad() {
         super.viewDidLoad()
-        let filePath = Bundle.main.path(forResource: "TermsOfUse", ofType: "plist")
-        let plist = NSDictionary(contentsOfFile: filePath!)
+        guard let filePath = Bundle.main.path(forResource: "TermsOfUse", ofType: "plist") else {
+            NSLog("TermsOfUse.plist was not found in the main bundle.")
+            DispatchQueue.main.async { [weak self] in
+                if let navigationController = self?.navigationController {
+                    navigationController.popViewController(animated: true)
+                } else {
+                    self?.dismiss(animated: true)
+                }
+            }
+            return
+        }
+        let plist = NSDictionary(contentsOfFile: filePath)
         let termsOfuse: String? = plist?["TermsOfUse"] as? String
         let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 10))
         markdownParser.bold.font = UIFont.systemFont(ofSize: 24)
