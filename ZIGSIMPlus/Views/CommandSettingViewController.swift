@@ -60,6 +60,16 @@ public class CommandSettingViewController: UIViewController {
         initNavigationBar()
     }
 
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureObserver()
+    }
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeObserver()
+    }
+
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if updateSettingTextData() {
             view.endEditing(true)
@@ -152,16 +162,6 @@ extension CommandSettingViewController: UITextFieldDelegate {
 }
 
 extension CommandSettingViewController: ContentScrollable {
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureObserver()
-    }
-
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeObserver()
-    }
-
     func configureObserver() {
         showObserver = NotificationCenter.default.addObserver(
             forName: UIResponder.keyboardWillShowNotification,
