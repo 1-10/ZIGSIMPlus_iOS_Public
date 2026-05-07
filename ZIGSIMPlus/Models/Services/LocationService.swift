@@ -11,9 +11,11 @@ import Foundation
 import OSCKit
 import SwiftyJSON
 
+private let defaultBeaconUUID = UUID()
+
 private func createBeaconRegion(_ appSetting: AppSettingModel) -> CLBeaconRegion {
     // TODO: Refactor AppSettingModel to return default values if invalid stored values are invalid
-    let uuid = UUID(uuidString: appSetting.beaconUUID) ?? UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B570000")!
+    let uuid = UUID(uuidString: appSetting.beaconUUID) ?? defaultBeaconUUID
     let deviceUUID = appSetting.deviceUUID
     return CLBeaconRegion(proximityUUID: uuid, identifier: "\(deviceUUID) region")
 }
