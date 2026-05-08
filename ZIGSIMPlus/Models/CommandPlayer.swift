@@ -115,10 +115,7 @@ public class CommandPlayer {
     }
 
     private func isActive(_ command: Command) -> Bool {
-        guard let res = AppSettingModel.shared.isActiveByCommand[command] else {
-            fatalError("AppSetting for Command \"\(command)\" is nil")
-        }
-        return res
+        AppSettingModel.shared.isActiveByCommand[command] ?? false
     }
 
     private func enqueueNetworkSend() {
