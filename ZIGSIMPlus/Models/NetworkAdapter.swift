@@ -72,10 +72,7 @@ public class NetworkAdapter {
         case .TCP:
             try await sendTCP(data)
         case .UDP:
-            sendUDP(data)
-            if let error = error {
-                throw error
-            }
+            try await sendUDP(data)
         }
     }
 
@@ -196,14 +193,14 @@ public class NetworkAdapter {
         }
     }
 
-    private func sendUDP(_ data: Data) {
+    private func sendUDP(_ data: Data) async throws {
         assert(!Thread.isMainThread)
 
         let appSetting = AppSettingModel.shared
 
         guard let nwPort = NWEndpoint.Port(rawValue: UInt16(appSetting.portNumber)) else {
             error = NetworkError.queryFailed
-            return
+            throw NetworkError.queryFailed
         }
 
         let conn = NWConnection(
@@ -212,33 +209,42 @@ public class NetworkAdapter {
             using: .udp
         )
 
-        let semaphore = DispatchSemaphore(value: 0)
-        var sendError: Error?
+        do {
+            try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                let gate = ConnectionContinuationGate(continuation)
 
-        conn.stateUpdateHandler = { state in
-            switch state {
-            case .ready:
-                conn.send(content: data, completion: .contentProcessed { nwError in
-                    sendError = nwError
-                    conn.cancel()
-                    semaphore.signal()
-                })
-            case .failed(let err):
-                sendError = err
-                semaphore.signal()
-            default:
-                break
+                conn.stateUpdateHandler = { state in
+                    switch state {
+                    case .ready:
+                        conn.send(content: data, completion: .contentProcessed { nwError in
+                            conn.cancel()
+                            if let nwError = nwError {
+                                gate.resume(throwing: nwError)
+                            } else {
+                                gate.resume()
+                            }
+                        })
+                    case .failed(let err):
+                        gate.resume(throwing: err)
+                    case .cancelled:
+                        gate.resume(throwing: NetworkError.connectionClosed)
+                    default:
+                        break
+                    }
+                }
+                conn.start(queue: connectionQueue)
+
+                connectionQueue.asyncAfter(deadline: .now() + 1.0) {
+                    if gate.resume(throwing: NetworkError.connectionTimeout) {
+                        conn.cancel()
+                    }
+                }
             }
-        }
-        conn.start(queue: connectionQueue)
-
-        if semaphore.wait(timeout: .now() + 1.0) == .timedOut {
-            conn.cancel()
-            error = NetworkError.connectionTimeout
-        } else if let err = sendError {
-            error = mapNWError(err)
-        } else {
             error = nil
+        } catch {
+            let networkError = mapNetworkError(error)
+            self.error = networkError
+            throw networkError
         }
     }
 
