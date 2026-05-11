@@ -33,9 +33,6 @@ class ServiceManager {
         if AppSettingModel.shared.transportFormat == .OSC {
             let osc = getOSC()
             data = (try? OSCPacket.bundle(osc).rawData()) ?? Data()
-            #if DEBUG
-                logOSCPacketBytes(data)
-            #endif
         } else {
             let json = getJSON()
             data = (try? json.rawData()) ?? Data()
@@ -154,33 +151,4 @@ class ServiceManager {
 
         return log.count == 0 ? nil : log.joined(separator: "\n")
     }
-
-    #if DEBUG
-        private func logOSCPacketBytes(_ data: Data) {
-            os_log(
-                "OSC bundle bytes: size=%{public}d",
-                log: Self.log,
-                type: .debug,
-                data.count
-            )
-
-            for offset in stride(from: 0, to: data.count, by: 16) {
-                let lineBytes = data[offset..<min(offset + 16, data.count)]
-                let hexDump = lineBytes.enumerated()
-                    .map { index, byte in
-                        index == 8
-                            ? " " + String(format: "%02x", byte)
-                            : String(format: "%02x", byte)
-                    }
-                    .joined(separator: " ")
-
-                os_log(
-                    "[OSCBundle] %{public}@",
-                    log: Self.log,
-                    type: .debug,
-                    String(format: "%08x: %@", offset, hexDump)
-                )
-            }
-        }
-    #endif
 }
