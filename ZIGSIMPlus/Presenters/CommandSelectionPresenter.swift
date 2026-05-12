@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CommandSelectionPresenterProtocol {
+protocol CommandSelectionPresenterProtocol: AnyObject {
     var numberOfCommandToSelect: Int { get }
     func getCommandToSelect(forRow row: Int) -> CommandToSelect
     func didSelectRow(atLabel labelString: String)

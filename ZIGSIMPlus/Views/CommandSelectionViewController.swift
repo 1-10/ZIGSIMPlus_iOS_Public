@@ -156,7 +156,7 @@ extension CommandSelectionViewController: UITableViewDataSource {
         cell.commandLabel.text = commandToSelect.labelString
         cell.commandLabel.tag = indexPath.row
         cell.commandOnOffButton.tag = indexPath.row
-        cell.viewController = self
+        cell.delegate = self
         cell.commandSelectionPresenter = presenter
         cells[Command.allCases[indexPath.row]] = cell
 
@@ -221,3 +221,5 @@ extension CommandSelectionViewController: UITableViewDataSource {
 }
 
 extension CommandSelectionViewController: CommandSelectionPresenterDelegate {}
+
+extension CommandSelectionViewController: StandardCellDelegate {}
