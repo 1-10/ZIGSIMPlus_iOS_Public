@@ -49,7 +49,7 @@
 		02E49EA022C20DA200987C1A /* ZIGLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E49E9F22C20DA200987C1A /* ZIGLabel.swift */; };
 		02E9AE1C22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1B22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift */; };
 		02E9AE1E22B8FF490070A380 /* CommandDetailSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */; };
-		02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */; };
+		02F0DBF1229FBB3600D45E56 /* ARKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF0229FBB3600D45E56 /* ARKitViewController.swift */; };
 		02F0DBF3229FC2EA00D45E56 /* ArkitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */; };
 		4A6EA2F02F6A3E25003FF4F8 /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A6EA2F52F6A3E25003FF4F8 /* OSCKit */; };
 		4A6EA2F12F6A3E25003FF4F8 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A6EA2F62F6A3E25003FF4F8 /* DeviceKit */; };
@@ -163,7 +163,7 @@
 		02E49E9F22C20DA200987C1A /* ZIGLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIGLabel.swift; sourceTree = "<group>"; };
 		02E9AE1B22B8FF3B0070A380 /* CommandDetailSettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsPresenter.swift; sourceTree = "<group>"; };
 		02E9AE1D22B8FF490070A380 /* CommandDetailSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDetailSettingsViewController.swift; sourceTree = "<group>"; };
-		02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitViewController.swift; sourceTree = "<group>"; };
+		02F0DBF0229FBB3600D45E56 /* ARKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitViewController.swift; sourceTree = "<group>"; };
 		02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkitService.swift; sourceTree = "<group>"; };
 		6326759322B3B1DA009A26B8 /* AppSettingModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingModelTests.swift; sourceTree = "<group>"; };
 		633A82CE22ABB77D007B58AD /* CIQRCodeDescriptorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIQRCodeDescriptorExtension.swift; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				02F0DBF2229FC2EA00D45E56 /* ArkitService.swift */,
-				02F0DBF0229FBB3600D45E56 /* ArkitViewController.swift */,
+				02F0DBF0229FBB3600D45E56 /* ARKitViewController.swift */,
 				02CF468122A8D9A8006F93EF /* ArkitUtils.swift */,
 			);
 			path = ARKit;
@@ -713,7 +713,7 @@
 				021F241222D434F80065D641 /* SwiftOSCExtension.swift in Sources */,
 				023A16B8237F21CC00569FCB /* CompositeRGBWithAlpha.metal in Sources */,
 				02A8FA882296B62D001FB3DD /* TouchService.swift in Sources */,
-				02F0DBF1229FBB3600D45E56 /* ArkitViewController.swift in Sources */,
+				02F0DBF1229FBB3600D45E56 /* ARKitViewController.swift in Sources */,
 				638345F422A6832700370600 /* NFCService.swift in Sources */,
 				026A3C3422BB831F0016DEF6 /* CommandOutputTabNavigationController.swift in Sources */,
 				902EB9CC227BE68D008F1650 /* CommandSelectionViewController.swift in Sources */,
