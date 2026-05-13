@@ -46,15 +46,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBar = tabBarController.tabBar
         tabBar.isTranslucent = false
         tabBar.tintColor = Theme.main
-        //tabBar.backgroundColor = Theme.dark
+        tabBar.backgroundColor = Theme.dark
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            //appearance.backgroundColor = Theme.dark
+            appearance.backgroundColor = Theme.dark
             tabBar.standardAppearance = appearance
             tabBar.scrollEdgeAppearance = appearance
         } else {
-            //tabBar.barTintColor = Theme.dark
+            tabBar.barTintColor = Theme.dark
         }
 
         for viewController in tabBarController.viewControllers ?? [] {

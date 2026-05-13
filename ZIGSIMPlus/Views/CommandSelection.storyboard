@@ -110,7 +110,7 @@
         <scene sceneID="HMt-Mt-5eU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Cw-W1-YeO" customClass="CommandSelectionTabNavigationController" customModule="ZIG_SIM_PRO" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" image="sensorLogo" id="q3R-r8-tFu">
+                    <tabBarItem key="tabBarItem" tag="1" title="" image="sensorLogo" id="q3R-r8-tFu">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
                     </tabBarItem>
