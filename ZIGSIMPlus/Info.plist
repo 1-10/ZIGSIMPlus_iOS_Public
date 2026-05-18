@@ -38,6 +38,8 @@
 	<string>This app uses location in Compass, GPS and Beacon commands to get device data and output them over network.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app uses microphone in NDI and Mic Level commands. NDI command outputs the audio over NDI protocol. Mic Level command monitors the level of mic input, then send the data over network.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>This app uses motion sensors in Acceleration, Gravity, Gyro, Quaternion, and Pressure commands to get device data and output them over network.</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>
