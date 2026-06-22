@@ -43,7 +43,7 @@ Forking and building this public repository without the `Private/` submodule is 
 ### Clone
 
 ```bash
-git clone https://github.com/1-10/ZIGSIMPlus_iOS_Public.git
+git clone --recursive https://github.com/1-10/ZIGSIMPlus_iOS_Public.git
 ```
 
 ### Open
@@ -101,7 +101,6 @@ Managed via Swift Package Manager.
 | OSCKit | OSC protocol |
 | CocoaAsyncSocket | Async networking |
 | SwiftyJSON | JSON serialization |
-| SwiftyUserDefaults | Settings persistence |
 | DeviceKit | Device identification |
 | CryptoSwift | Cryptographic utilities |
 | MarkdownKit | Markdown rendering |
@@ -134,12 +133,12 @@ Managed via Swift Package Manager.
 
 | Branch | Purpose |
 |---|---|
-| `master` | Stable integration only |
-| `modernize` | Active development integration branch |
+| `master` | Main branch — direct commits prohibited |
+| `legacy` | Snapshot of the pre-modernization codebase |
 | `future/issue-<n>-<desc>` | Short-lived feature branches |
 
-- Always branch from `modernize`
-- Never commit directly to `modernize`
+- Always branch from `master`
+- Never commit directly to `master`
 - 1 PR = 1 Issue; open as Draft first
 
 ### Linting and formatting
